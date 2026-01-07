@@ -28,7 +28,9 @@
  */
 
 export interface NodeHeightSyncConfig {
-  /** Minimum height for nodes (default: 80) */
+  /** Fixed height for nodes - if set, this height is used instead of measuring content */
+  fixedHeight?: number;
+  /** Minimum height for nodes (default: 80) - only used when fixedHeight is not set */
   minHeight?: number;
   /** Maximum height for nodes (default: none) */
   maxHeight?: number;
@@ -40,12 +42,18 @@ export interface NodeHeightSyncConfig {
   onHeightChange?: (newHeight: number) => void;
 }
 
+/** Internal config type with fixedHeight remaining optional */
+type InternalNodeHeightSyncConfig = Omit<Required<NodeHeightSyncConfig>, 'fixedHeight'> & {
+  fixedHeight: number | undefined;
+};
+
 export class NodeHeightSyncService {
   private container: HTMLElement | SVGElement;
-  private config: Required<NodeHeightSyncConfig>;
+  private config: InternalNodeHeightSyncConfig;
   private resizeObserver?: ResizeObserver;
   private resizeTimeout?: number;
   private currentUnifiedHeight: number = 0;
+  private isSyncing: boolean = false;
 
   constructor(
     container: HTMLElement | SVGElement,
@@ -53,6 +61,7 @@ export class NodeHeightSyncService {
   ) {
     this.container = container;
     this.config = {
+      fixedHeight: config.fixedHeight,
       minHeight: config.minHeight ?? 80,
       maxHeight: config.maxHeight ?? Infinity,
       heightPadding: config.heightPadding ?? 0,
@@ -75,20 +84,43 @@ export class NodeHeightSyncService {
    * @returns The unified height applied to all nodes
    */
   syncNodeHeights(): number {
-    // Step 1: Reset heights to 'auto' to measure natural content height
-    this.resetHeightsToAuto();
+    // Prevent re-entry during sync to avoid Firefox height expansion bug
+    if (this.isSyncing) {
+      return this.currentUnifiedHeight;
+    }
+    
+    this.isSyncing = true;
+    
+    try {
+      let targetHeight: number;
 
-    // Step 2: Measure all node content heights
-    const maxHeight = this.measureMaxContentHeight();
+      // If fixedHeight is set, use it directly without measuring content
+      if (this.config.fixedHeight !== undefined) {
+        targetHeight = this.config.fixedHeight;
+      } else {
+        // Step 1: Reset heights to 'auto' to measure natural content height
+        this.resetHeightsToAuto();
 
-    // Step 3: Apply unified height to all nodes
-    this.applyUnifiedHeight(maxHeight);
+        // Step 2: Measure all node content heights
+        targetHeight = this.measureMaxContentHeight();
+      }
 
-    // Step 4: Store and notify
-    this.currentUnifiedHeight = maxHeight;
-    this.config.onHeightChange(maxHeight);
+      // Step 3: Apply unified height to all nodes
+      this.applyUnifiedHeight(targetHeight);
 
-    return maxHeight;
+      // Step 4: Store and notify only if height changed
+      if (targetHeight !== this.currentUnifiedHeight) {
+        this.currentUnifiedHeight = targetHeight;
+        this.config.onHeightChange(targetHeight);
+      }
+
+      return targetHeight;
+    } finally {
+      // Use setTimeout to prevent immediate re-sync from ResizeObserver
+      setTimeout(() => {
+        this.isSyncing = false;
+      }, 50);
+    }
   }
 
   /**
@@ -135,11 +167,19 @@ export class NodeHeightSyncService {
       const contentDiv = fo.querySelector<HTMLDivElement>('.node-foreign-object-div');
       if (!contentDiv) return;
 
-      // Force a reflow to ensure accurate measurement
-      contentDiv.offsetHeight;
+      // Get the actual card content (first child with position:relative)
+      // This avoids measuring floating elements like the siblings button
+      const cardContent = contentDiv.querySelector<HTMLDivElement>('div[style*="position:relative"], div[style*="position: relative"]') || 
+                          contentDiv.firstElementChild as HTMLDivElement;
+      
+      if (!cardContent) return;
 
-      // Measure the actual scrollHeight (full content height)
-      const contentHeight = contentDiv.scrollHeight;
+      // Force a reflow to ensure accurate measurement
+      cardContent.offsetHeight;
+
+      // Use offsetHeight which doesn't include overflow content
+      // This prevents the floating siblings button from affecting the measurement
+      const contentHeight = cardContent.offsetHeight;
 
       // Update max height
       if (contentHeight > maxHeight) {
@@ -218,7 +258,10 @@ export class NodeHeightSyncService {
     // Observe all node content divs
     const contentDivs = this.container.querySelectorAll('.node-foreign-object-div');
     contentDivs.forEach((div) => {
-      this.resizeObserver!.observe(div);
+      if (!div.hasAttribute('data-height-observed')) {
+        div.setAttribute('data-height-observed', 'true');
+        this.resizeObserver!.observe(div);
+      }
     });
 
     // Also observe for new nodes being added

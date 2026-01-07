@@ -1296,7 +1296,7 @@ export class OrgChart {
         })
             .style('width', d => `${d.width}px`)
             .style('height', d => `${d.height}px`)
-            .style('overflow', 'hidden')
+            .style('overflow', 'visible')
             .style('user-select', 'text')
             .style('-webkit-user-select', 'text')
             .on('mousedown', function(event) {
@@ -1566,7 +1566,7 @@ export class OrgChart {
                 .selectAll(".node-foreign-object-div")
                 .style("width", ({ width }) => `${width}px`)
                 .style("height", ({ height }) => `${height}px`)
-                .style("overflow", "hidden")
+                .style("overflow", "visible")
                 .style("visibility", "visible")
                 .html(function (d, i, arr) {
                     if (d.data._pagingButton) {
@@ -1692,13 +1692,16 @@ export class OrgChart {
         });
         
         overlayMerged
-            .style("width", d => `${d.width}px`)
-            .style("height", d => `${d.height}px`)
+            .style("width", d => `${attrs.nodeWidth(d)}px`)
+            .style("height", d => `${attrs.nodeHeight(d)}px`)
             .each(function(d) {
                 const nodeX = d.x;
                 const nodeY = d.y;
+                // Use current dimensions from attrs functions instead of stale d.width/d.height
+                const currentWidth = attrs.nodeWidth(d);
+                const currentHeight = attrs.nodeHeight(d);
                 // Apply layout transform
-                const layoutTransform = attrs.layoutBindings[attrs.layout].nodeUpdateTransform({ x: nodeX, y: nodeY, width: d.width, height: d.height });
+                const layoutTransform = attrs.layoutBindings[attrs.layout].nodeUpdateTransform({ x: nodeX, y: nodeY, width: currentWidth, height: currentHeight });
                 const match = layoutTransform.match(/translate\(([^,]+),\s*([^)]+)\)/);
                 let tx = nodeX, ty = nodeY;
                 if (match) {
@@ -1727,7 +1730,7 @@ export class OrgChart {
                     .attr("class", "ychart-overlay-content overlay-content")
                     .style("width", "100%")
                     .style("height", "100%")
-                    .style("overflow", "hidden")
+                    .style("overflow", "visible")
                     .style("user-select", "text")
                     .style("-webkit-user-select", "text")
                     .style("cursor", "text");
@@ -1754,8 +1757,11 @@ export class OrgChart {
                 }
                 
                 // Get button position from layout
-                const buttonX = attrs.layoutBindings[attrs.layout].buttonX({ width: d.width, height: d.height });
-                const buttonY = attrs.layoutBindings[attrs.layout].buttonY({ width: d.width, height: d.height });
+                // Use attrs.nodeHeight(d) to get current height instead of stale d.height
+                const currentWidth = attrs.nodeWidth(d);
+                const currentHeight = attrs.nodeHeight(d);
+                const buttonX = attrs.layoutBindings[attrs.layout].buttonX({ width: currentWidth, height: currentHeight });
+                const buttonY = attrs.layoutBindings[attrs.layout].buttonY({ width: currentWidth, height: currentHeight });
                 const buttonWidth = attrs.nodeButtonWidth(d);
                 const buttonHeight = attrs.nodeButtonHeight(d);
                 

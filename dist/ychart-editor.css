@@ -85,7 +85,7 @@
   --yc-color-shadow-medium: rgba(0, 0, 0, 0.15);
   --yc-color-shadow-dark: rgba(0, 0, 0, 0.2);
   --yc-color-shadow-3xl: rgba(0, 0, 0, 0.3);
-  --yc-color-pattern: #cccccc;
+  --yc-color-pattern: #cacaca;
   --yc-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   --yc-font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
   --yc-font-size-xs: 0.6875rem;
@@ -12120,7 +12120,7 @@ textarea.form-control-lg {
 
 body {
   font-family: var(--yc-font-family-base);
-  background: var(--yc-color-bg-secondary);
+  background: var(--yc-color-gray-100);
   overflow: hidden;
 }
 

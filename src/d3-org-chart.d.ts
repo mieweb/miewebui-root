@@ -36,4 +36,6 @@ export class OrgChart {
   buttonContent(content: string | ((d: any) => string)): this;
   layoutBindings(bindings?: any): any;
   getChartState(): any;
+  updateHtmlOverlay(): void;
+  update(root: any): this;
 }

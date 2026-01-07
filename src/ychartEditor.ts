@@ -95,6 +95,13 @@ class YChartEditor {
   private supervisorFields: string[] = ['supervisor', 'reports', 'reports_to', 'manager', 'leader', 'parent'];
   private nameField: string = 'name';
   private nodeHeightSync: NodeHeightSyncService | null = null;
+  // Current merged options (defaultOptions + YAML options)
+  private currentOptions: YChartOptions = {};
+  // Person of Interest feature
+  private personOfInterest: any = null; // Currently selected person
+  private poiSelector: HTMLElement | null = null;
+  private truthData: any[] = []; // Complete YAML data (source of truth)
+  private expandedSiblings: Set<string> = new Set(); // Track supervisor nodes with expanded siblings
   
   constructor(options?: YChartOptions) {
     this.instanceId = generateUUID();
@@ -141,6 +148,9 @@ class YChartEditor {
     
     // Set up keyboard shortcuts
     this.setupKeyboardShortcuts();
+    
+    // Set up expand siblings handlers for POI feature
+    this.setupExpandSiblingsHandlers();
     
     // Render initial chart
     this.renderChart();
@@ -198,6 +208,10 @@ class YChartEditor {
     // Create floating search bar
     this.floatingSearchBar = this.createFloatingSearchBar();
     chartWrapper.appendChild(this.floatingSearchBar);
+
+    // Create person of interest selector
+    this.poiSelector = this.createPOISelector();
+    chartWrapper.appendChild(this.poiSelector);
 
     // Create editor sidebar (now on right side, open by default)
     const editorSidebar = document.createElement('div');
@@ -708,6 +722,172 @@ class YChartEditor {
     return container;
   }
 
+  private createPOISelector(): HTMLElement {
+    const container = document.createElement('div');
+    container.setAttribute('data-id', `ychart-poi-selector-${this.instanceId}`);
+    container.className = 'ychart-poi-selector';
+    container.style.cssText = `
+      position: absolute;
+      top: var(--yc-spacing-4xl);
+      left: var(--yc-spacing-4xl);
+      z-index: var(--yc-z-index-search-popup);
+      display: flex;
+      flex-direction: column;
+      gap: var(--yc-spacing-xs);
+    `;
+
+    const selectorWrapper = document.createElement('div');
+    selectorWrapper.className = 'ychart-poi-selector-wrapper';
+    selectorWrapper.style.cssText = `
+      display: flex;
+      align-items: center;
+      gap: var(--yc-spacing-xs);
+      background: var(--yc-color-bg-card);
+      border-radius: var(--yc-border-radius-pill);
+      padding: var(--yc-spacing-xs) var(--yc-spacing-sm);
+      box-shadow: var(--yc-shadow-2xl);
+      border: var(--yc-border-width-thin) solid var(--yc-color-shadow-light);
+      transition: all var(--yc-transition-fast);
+    `;
+
+    // Target/focus icon (smaller)
+    const focusIcon = document.createElement('span');
+    focusIcon.innerHTML = `
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <circle cx="12" cy="12" r="6"/>
+        <circle cx="12" cy="12" r="2"/>
+      </svg>
+    `;
+    focusIcon.style.cssText = `
+      color: var(--yc-color-text-muted);
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    `;
+
+    // Dropdown select
+    const select = document.createElement('select');
+    select.setAttribute('data-id', `ychart-poi-select-${this.instanceId}`);
+    select.setAttribute('aria-label', 'Select person of interest');
+    select.style.cssText = `
+      border: none;
+      background: transparent;
+      font-size: var(--yc-font-size-xs);
+      color: var(--yc-color-text-primary);
+      cursor: pointer;
+      outline: none;
+      font-weight: var(--yc-font-weight-medium);
+      max-width: 140px;
+      text-overflow: ellipsis;
+    `;
+
+    // Add default option
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = 'Select...';
+    select.appendChild(defaultOption);
+
+    // Handle selection change
+    select.addEventListener('change', (e) => {
+      const selectedId = (e.target as HTMLSelectElement).value;
+      this.setPersonOfInterest(selectedId);
+    });
+
+    // Clear to root button
+    const clearBtn = document.createElement('button');
+    clearBtn.setAttribute('data-id', `ychart-poi-clear-${this.instanceId}`);
+    clearBtn.setAttribute('aria-label', 'Reset focus to root');
+    clearBtn.style.cssText = `
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border: none;
+      background: var(--yc-color-button-bg);
+      border-radius: var(--yc-border-radius-full);
+      cursor: pointer;
+      color: var(--yc-color-text-muted);
+      flex-shrink: 0;
+      transition: all var(--yc-transition-fast);
+    `;
+
+    // Add icon
+    const clearIcon = document.createElement('span');
+    clearIcon.innerHTML = `
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+    `;
+    clearIcon.style.cssText = 'display: flex; align-items: center; justify-content: center;';
+    clearBtn.appendChild(clearIcon);
+
+    // Add styled tooltip
+    const clearTooltip = document.createElement('span');
+    clearTooltip.className = 'ychart-tooltip';
+    clearTooltip.textContent = 'Reset to root';
+    clearTooltip.style.cssText = `
+      position: absolute;
+      top: calc(100% + var(--yc-spacing-md));
+      left: 50%;
+      transform: translateX(-50%) scale(0.8);
+      background: var(--yc-color-overlay-dark);
+      color: white;
+      padding: var(--yc-spacing-sm) var(--yc-spacing-xl);
+      border-radius: var(--yc-border-radius-md);
+      font-size: var(--yc-font-size-sm);
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: all var(--yc-transition-fast) var(--yc-transition-bounce);
+      z-index: var(--yc-z-index-search-popup);
+      box-shadow: var(--yc-shadow-md);
+    `;
+    clearBtn.appendChild(clearTooltip);
+
+    clearBtn.addEventListener('mouseenter', () => {
+      clearBtn.style.background = 'var(--yc-color-primary)';
+      clearBtn.style.color = 'white';
+      clearTooltip.style.opacity = '1';
+      clearTooltip.style.transform = 'translateX(-50%) scale(1)';
+    });
+
+    clearBtn.addEventListener('mouseleave', () => {
+      clearBtn.style.background = 'var(--yc-color-button-bg)';
+      clearBtn.style.color = 'var(--yc-color-text-muted)';
+      clearTooltip.style.opacity = '0';
+      clearTooltip.style.transform = 'translateX(-50%) scale(0.8)';
+    });
+
+    clearBtn.addEventListener('click', () => {
+      this.resetToRoot();
+    });
+
+    selectorWrapper.appendChild(focusIcon);
+    selectorWrapper.appendChild(select);
+    selectorWrapper.appendChild(clearBtn);
+    container.appendChild(selectorWrapper);
+
+    return container;
+  }
+
+  /**
+   * Reset the POI to the root node
+   */
+  private resetToRoot(): void {
+    // Find root node from truth data
+    const rootNode = this.truthData.find(item => item.parentId === null || item.parentId === undefined);
+    
+    if (rootNode) {
+      const rootId = String(rootNode.id);
+      this.setPersonOfInterest(rootId);
+      this.updatePOISelectorValue(rootId);
+    }
+  }
+
   private updateSearchFieldOptions(fieldSelect: HTMLSelectElement): void {
     const currentValue = fieldSelect.value;
     
@@ -828,6 +1008,10 @@ class YChartEditor {
       const displayName = nodeData.name || attrs.nodeId(nodeData);
       const displayTitle = nodeData.title || '';
       const displayDept = nodeData.department || '';
+      const nodeId = String(nodeData.id);
+
+      // Check if this node is currently the POI
+      const isCurrentPOI = this.personOfInterest && String(this.personOfInterest.id) === nodeId;
 
       resultItem.innerHTML = `
         <div style="display: flex; justify-content: space-between; align-items: start; gap: var(--yc-spacing-md);">
@@ -836,12 +1020,87 @@ class YChartEditor {
             ${displayTitle ? `<div style="font-size: var(--yc-font-size-sm); line-height: var(--yc-line-height-tight); color: var(--yc-color-text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${displayTitle}</div>` : ''}
             ${displayDept ? `<div style="font-size: var(--yc-font-size-xs); line-height: var(--yc-line-height-tight); color: var(--yc-color-text-light); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${displayDept}</div>` : ''}
           </div>
-          <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px; flex-shrink: 0;">
-            <span style="font-size: var(--yc-font-size-xs); color: var(--yc-color-primary); font-weight: var(--yc-font-weight-semibold);">${Math.round(score * 100)}%</span>
-            <span style="font-size: var(--yc-font-size-xs); color: var(--yc-color-text-light); background: var(--yc-color-button-bg); padding: 1px 6px; border-radius: var(--yc-border-radius-sm);">${matchedField}</span>
+          <div style="display: flex; align-items: center; gap: var(--yc-spacing-md); flex-shrink: 0;">
+            <button class="ychart-set-poi-btn" data-node-id="${nodeId}" data-tooltip="${isCurrentPOI ? 'Current Focus' : 'Set as Focus'}" style="
+              position: relative;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 28px;
+              height: 28px;
+              border: none;
+              border-radius: var(--yc-border-radius-md);
+              background: ${isCurrentPOI ? 'var(--yc-color-primary)' : 'var(--yc-color-button-bg)'};
+              color: ${isCurrentPOI ? 'white' : 'var(--yc-color-text-muted)'};
+              cursor: pointer;
+              transition: all var(--yc-transition-fast);
+            ">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+              <span class="ychart-tooltip" style="
+                position: absolute;
+                right: calc(100% + var(--yc-spacing-md));
+                top: 50%;
+                transform: translateY(-50%) scale(0.8);
+                background: var(--yc-color-overlay-dark);
+                color: white;
+                padding: var(--yc-spacing-sm) var(--yc-spacing-xl);
+                border-radius: var(--yc-border-radius-md);
+                font-size: var(--yc-font-size-sm);
+                white-space: nowrap;
+                pointer-events: none;
+                opacity: 0;
+                transition: all var(--yc-transition-fast) var(--yc-transition-bounce);
+                z-index: var(--yc-z-index-search-popup);
+                box-shadow: var(--yc-shadow-md);
+              ">${isCurrentPOI ? 'Current Focus' : 'Set as Focus'}</span>
+            </button>
+            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px;">
+              <span style="font-size: var(--yc-font-size-xs); color: var(--yc-color-primary); font-weight: var(--yc-font-weight-semibold);">${Math.round(score * 100)}%</span>
+              <span style="font-size: var(--yc-font-size-xs); color: var(--yc-color-text-light); background: var(--yc-color-button-bg); padding: 1px 6px; border-radius: var(--yc-border-radius-sm);">${matchedField}</span>
+            </div>
           </div>
         </div>
       `;
+
+      // Set POI button click handler
+      const poiBtn = resultItem.querySelector('.ychart-set-poi-btn') as HTMLButtonElement;
+      if (poiBtn) {
+        poiBtn.addEventListener('click', (e) => {
+          e.stopPropagation(); // Prevent triggering the result item click
+          this.setPersonOfInterest(nodeId);
+          this.clearFloatingSearch();
+          // Update the POI selector dropdown to reflect the change
+          this.updatePOISelectorValue(nodeId);
+        });
+
+        // Hover effect for POI button with tooltip animation
+        const poiTooltip = poiBtn.querySelector('.ychart-tooltip') as HTMLElement;
+        poiBtn.addEventListener('mouseenter', () => {
+          if (!isCurrentPOI) {
+            poiBtn.style.background = 'var(--yc-color-primary)';
+            poiBtn.style.color = 'white';
+          }
+          if (poiTooltip) {
+            poiTooltip.style.opacity = '1';
+            poiTooltip.style.transform = 'translateY(-50%) scale(1)';
+          }
+        });
+
+        poiBtn.addEventListener('mouseleave', () => {
+          if (!isCurrentPOI) {
+            poiBtn.style.background = 'var(--yc-color-button-bg)';
+            poiBtn.style.color = 'var(--yc-color-text-muted)';
+          }
+          if (poiTooltip) {
+            poiTooltip.style.opacity = '0';
+            poiTooltip.style.transform = 'translateY(-50%) scale(0.8)';
+          }
+        });
+      }
 
       // Hover effects
       resultItem.addEventListener('mouseenter', () => {
@@ -860,8 +1119,10 @@ class YChartEditor {
         resultItem.style.background = 'transparent';
       });
 
-      // Click to select
-      resultItem.addEventListener('click', () => {
+      // Click to select (navigate to node)
+      resultItem.addEventListener('click', (e) => {
+        // Don't trigger if clicking on the POI button
+        if ((e.target as HTMLElement).closest('.ychart-set-poi-btn')) return;
         this.selectAndHighlightNode(node);
         this.clearFloatingSearch();
       });
@@ -872,6 +1133,12 @@ class YChartEditor {
           e.preventDefault();
           this.selectAndHighlightNode(node);
           this.clearFloatingSearch();
+        } else if (e.key === 'p' || e.key === 'P') {
+          // Press 'P' to set as POI
+          e.preventDefault();
+          this.setPersonOfInterest(nodeId);
+          this.clearFloatingSearch();
+          this.updatePOISelectorValue(nodeId);
         } else if (e.key === 'ArrowDown') {
           e.preventDefault();
           const next = resultItem.nextElementSibling as HTMLElement;
@@ -908,6 +1175,16 @@ class YChartEditor {
     if (this.searchResultsDropdown) {
       this.searchResultsDropdown.style.display = 'none';
       this.searchResultsDropdown.innerHTML = '';
+    }
+  }
+
+  /**
+   * Update the POI selector dropdown to reflect the current selection
+   */
+  private updatePOISelectorValue(nodeId: string): void {
+    const poiSelect = document.querySelector(`[data-id="ychart-poi-select-${this.instanceId}"]`) as HTMLSelectElement;
+    if (poiSelect) {
+      poiSelect.value = nodeId;
     }
   }
 
@@ -3094,6 +3371,335 @@ class YChartEditor {
     return this;
   }
 
+  /**
+   * Set the person of interest and filter the chart to show only relevant nodes
+   */
+  private setPersonOfInterest(personId: string): void {
+    if (!personId) {
+      // Reset to show all nodes
+      this.personOfInterest = null;
+      this.expandedSiblings.clear(); // Clear expanded siblings when POI changes
+      this.renderChart();
+      return;
+    }
+
+    // Find the person in truth data
+    const person = this.truthData.find((item: any) => String(item.id) === personId);
+    if (!person) return;
+
+    this.personOfInterest = person;
+    this.expandedSiblings.clear(); // Clear expanded siblings when POI changes
+    this.renderChart();
+    
+    // Center on the POI and select it after chart renders
+    setTimeout(() => {
+      this.centerOnPOI();
+      // Also select the POI node
+      this.selectNode(person.id);
+    }, 150);
+  }
+
+  /**
+   * Center the view on the person of interest
+   */
+  private centerOnPOI(): void {
+    if (!this.orgChart || !this.personOfInterest) return;
+    
+    try {
+      // Get the chart state to access nodes
+      const attrs = this.orgChart.getChartState();
+      const allNodes = attrs.allNodes || [];
+      
+      // Find the POI node
+      const poiNode = allNodes.find((node: any) => node.data.id === this.personOfInterest.id);
+      
+      if (poiNode) {
+        // Center on this node
+        this.orgChart.setCentered(poiNode.data.id);
+      }
+    } catch (error) {
+      // Silently handle if centering fails
+    }
+  }
+
+  /**
+   * Select a node in the org chart (visually highlight it)
+   */
+  private selectNode(nodeId: any): void {
+    if (!this.orgChart) return;
+    
+    try {
+      const attrs = this.orgChart.getChartState();
+      attrs.selectedNodeId = nodeId;
+      // Update the chart to reflect the selection
+      if (attrs.root) {
+        this.orgChart.update(attrs.root);
+      }
+    } catch (error) {
+      // Silently handle if selection fails
+    }
+  }
+
+  /**
+   * Filter data based on person of interest
+   * Shows: POI, their direct children, and their direct supervisory chain to root
+   */
+  /**
+   * Build virtual data list from truth data based on POI selection.
+   * 
+   * When a POI is set:
+   * - Start with POI node
+   * - Procedurally add each supervisor up to root
+   * - Exclude siblings of chain nodes unless expandedSiblings includes that node
+   * 
+   * This compares truth list (complete YAML) to virtual list (what's displayed).
+   */
+  private buildVirtualData(data: any[]): any[] {
+    // First, reset all expansion flags on a deep copy
+    const virtualData = data.map(item => ({ ...item }));
+    virtualData.forEach(item => {
+      delete item._expanded;
+      delete item._centered;
+    });
+
+    if (!this.personOfInterest) {
+      // No POI filter, return all data with default expansion
+      return virtualData;
+    }
+
+    const poiId = this.personOfInterest.id;
+    const dataMap = new Map(virtualData.map(item => [item.id, item]));
+    
+    // Build parent-to-children map from truth data
+    const childrenMap = new Map<any, any[]>();
+    virtualData.forEach(item => {
+      if (item.parentId != null) {
+        if (!childrenMap.has(item.parentId)) {
+          childrenMap.set(item.parentId, []);
+        }
+        childrenMap.get(item.parentId)!.push(item);
+      }
+    });
+
+    // Find root node
+    const rootNode = virtualData.find(item => item.parentId === null || item.parentId === undefined);
+    const rootId = rootNode?.id;
+
+    // If POI is root, just return all data with root expanded
+    if (poiId === rootId) {
+      if (rootNode) {
+        rootNode._expanded = true;
+      }
+      return virtualData;
+    }
+
+    // Build the supervisory chain from POI to root
+    const supervisoryChain: any[] = [];
+    let currentId = poiId;
+    while (currentId != null) {
+      supervisoryChain.push(currentId);
+      const currentNode = dataMap.get(currentId);
+      if (!currentNode) break;
+      currentId = currentNode.parentId;
+    }
+    const supervisoryChainSet = new Set(supervisoryChain);
+
+    // Determine which nodes should be in the virtual list
+    const visibleNodeIds = new Set<any>();
+    
+    // Helper function to add all descendants of a node
+    const addAllDescendants = (nodeId: any) => {
+      const children = childrenMap.get(nodeId) || [];
+      children.forEach(child => {
+        visibleNodeIds.add(child.id);
+        addAllDescendants(child.id); // Recursively add descendants
+      });
+    };
+    
+    // All nodes in the supervisory chain are visible
+    supervisoryChain.forEach(id => visibleNodeIds.add(id));
+    
+    // POI's direct children and all their descendants should be visible
+    const poiChildren = childrenMap.get(poiId) || [];
+    poiChildren.forEach(child => {
+      visibleNodeIds.add(child.id);
+      addAllDescendants(child.id); // Add all descendants of POI's children
+    });
+    
+    // For each chain node (including POI), check if siblings should be shown
+    supervisoryChain.forEach(chainNodeId => {
+      const nodeIdStr = String(chainNodeId);
+      if (this.expandedSiblings.has(nodeIdStr)) {
+        // This chain node has expanded siblings - add all siblings and their descendants
+        // But NOT the chain node itself (it's already handled via the supervisory chain)
+        const chainNode = dataMap.get(chainNodeId);
+        if (chainNode && chainNode.parentId != null) {
+          const siblings = childrenMap.get(chainNode.parentId) || [];
+          siblings.forEach(sibling => {
+            // Skip the chain node itself - only add actual siblings
+            if (sibling.id === chainNodeId) return;
+            visibleNodeIds.add(sibling.id);
+            addAllDescendants(sibling.id); // Add all descendants of siblings
+          });
+        }
+      }
+    });
+
+    // Filter to create virtual list - only include visible nodes
+    const filteredData = virtualData.filter(item => visibleNodeIds.has(item.id));
+
+    // Set expansion flags on the virtual list
+    filteredData.forEach(item => {
+      if (supervisoryChainSet.has(item.id)) {
+        // Nodes in the supervisory chain should be expanded
+        item._expanded = true;
+      }
+    });
+
+    // Center on the POI
+    const poiNode = filteredData.find(item => item.id === poiId);
+    if (poiNode) {
+      poiNode._centered = true;
+      poiNode._expanded = true;
+    }
+
+    return filteredData;
+  }
+
+  /**
+   * Check if a node should show the expand siblings button.
+   * Only supervisor nodes in the POI's chain (except root) should show this button.
+   */
+  private shouldShowExpandSiblings(nodeId: any): boolean {
+    if (!this.personOfInterest) return false;
+    
+    const poiId = this.personOfInterest.id;
+    const dataMap = new Map(this.truthData.map(item => [item.id, item]));
+    const poiNode = dataMap.get(poiId);
+    
+    if (!poiNode) return false;
+    
+    // Find the supervisory chain from POI to root
+    const supervisoryChain: any[] = [];
+    let currentId = poiId;
+    while (currentId != null) {
+      supervisoryChain.push(currentId);
+      const currentNode = dataMap.get(currentId);
+      if (!currentNode) break;
+      currentId = currentNode.parentId;
+    }
+    
+    // The node must be in the supervisory chain (which includes POI)
+    if (!supervisoryChain.includes(nodeId)) return false;
+    
+    // Don't show on root node (it has no siblings)
+    const node = dataMap.get(nodeId);
+    if (!node || node.parentId === null || node.parentId === undefined) return false;
+    
+    // Check if this node has siblings from truth data
+    const siblingCount = this.getSiblingCount(nodeId);
+    return siblingCount > 0;
+  }
+
+  /**
+   * Get the count of siblings for a node (from truth data).
+   */
+  private getSiblingCount(nodeId: any): number {
+    const dataMap = new Map(this.truthData.map(item => [item.id, item]));
+    const node = dataMap.get(nodeId);
+    if (!node || node.parentId === null || node.parentId === undefined) return 0;
+    
+    const siblings = this.truthData.filter(item => 
+      item.parentId === node.parentId && item.id !== nodeId
+    );
+    return siblings.length;
+  }
+
+  /**
+   * Toggle siblings expansion for a supervisor node
+   */
+  private toggleSiblingsExpansion(nodeId: any): void {
+    const nodeIdStr = String(nodeId);
+    if (this.expandedSiblings.has(nodeIdStr)) {
+      this.expandedSiblings.delete(nodeIdStr);
+    } else {
+      this.expandedSiblings.add(nodeIdStr);
+    }
+    // Re-render the chart to apply the new expansion state
+    this.renderChart();
+  }
+
+  /**
+   * Set up event handlers for expand siblings buttons
+   */
+  private setupExpandSiblingsHandlers(): void {
+    if (!this.chartContainer) return;
+    
+    // Use event delegation on the chart container
+    this.chartContainer.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      const expandBtn = target.closest('.expand-siblings-btn');
+      if (expandBtn) {
+        e.stopPropagation();
+        const nodeId = expandBtn.getAttribute('data-node-id');
+        if (nodeId) {
+          this.toggleSiblingsExpansion(nodeId);
+        }
+      }
+    });
+  }
+
+  /**
+   * Update the POI selector dropdown with all people in the org
+   */
+  private updatePOISelector(data: any[]): void {
+    if (!this.poiSelector) return;
+
+    const select = this.poiSelector.querySelector('select');
+    if (!select) return;
+
+    // Save current selection
+    const currentValue = select.value;
+
+    // Clear existing options except the first (default) one
+    while (select.options.length > 1) {
+      select.remove(1);
+    }
+
+    // Find root node from truth data (node with no parent)
+    const rootNode = this.truthData.find(item => item.parentId === null || item.parentId === undefined) || 
+                     data.find(item => item.parentId === null || item.parentId === undefined);
+
+    // Add all people sorted by name
+    const sortedData = [...data].sort((a, b) => {
+      const nameA = (a.name || '').toLowerCase();
+      const nameB = (b.name || '').toLowerCase();
+      return nameA.localeCompare(nameB);
+    });
+
+    sortedData.forEach(item => {
+      const option = document.createElement('option');
+      option.value = String(item.id);
+      option.textContent = item.name || String(item.id);
+      
+      // Add "(Root)" label to root node
+      if (rootNode && item.id === rootNode.id) {
+        option.textContent += ' [Root]';
+      }
+      
+      select.appendChild(option);
+    });
+
+    // Restore selection if it still exists
+    if (currentValue && Array.from(select.options).some(opt => opt.value === currentValue)) {
+      select.value = currentValue;
+    } else if (rootNode) {
+      // Default to root
+      select.value = String(rootNode.id);
+      this.personOfInterest = rootNode;
+    }
+  }
+
   private renderChart(): void {
     try {
       if (this.forceGraph) {
@@ -3106,6 +3712,10 @@ class YChartEditor {
       const yamlContent = this.editor.state.doc.toString();
       const { options: userOptions, schema: schemaDef, card: cardDef, data: yamlData } = this.parseFrontMatter(yamlContent);
       const options = { ...this.defaultOptions, ...userOptions };
+      
+      // Store current merged options for use by other methods (e.g., initializeHeightSync)
+      this.currentOptions = options;
+      
       let parsedData = jsyaml.load(yamlData);
 
       // Store current schema and card template for template access
@@ -3117,7 +3727,16 @@ class YChartEditor {
       }
 
       // Resolve missing parentId values by looking up supervisor names
-      parsedData = this.resolveMissingParentIds(parsedData);
+      const resolvedData = this.resolveMissingParentIds(parsedData);
+
+      // Store truth data (complete YAML) for POI filtering comparisons
+      this.truthData = resolvedData;
+
+      // Update POI selector with all people from truth data
+      this.updatePOISelector(resolvedData);
+
+      // Build virtual data list - filters based on POI and expanded siblings
+      const virtualData = this.buildVirtualData(resolvedData);
 
       if (!this.orgChart) {
         this.orgChart = new OrgChart();
@@ -3125,7 +3744,7 @@ class YChartEditor {
 
       this.orgChart
         .container(`#ychart-chart-${this.instanceId}`)
-        .data(parsedData)
+        .data(virtualData)
         .nodeHeight(() => options.nodeHeight!)
         .nodeWidth(() => options.nodeWidth!)
         .childrenMargin(() => options.childrenMargin!)
@@ -3176,9 +3795,27 @@ class YChartEditor {
   }
 
   private getNodeContent(d: any): string {
+    // Generate expand siblings button if applicable (styled like expand child button)
+    // Positioned floating at the bottom of the node, offset to the left of the expand child button
+    const showExpandSiblings = this.shouldShowExpandSiblings(d.data.id);
+    const siblingsExpanded = this.expandedSiblings.has(String(d.data.id));
+    const siblingCount = showExpandSiblings ? this.getSiblingCount(d.data.id) : 0;
+    
+    // User icon SVG for siblings
+    const userIcon = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#716E7B"/></svg>`;
+    
+    // Position: floating at bottom of node, offset to left of center (expand child button is at center)
+    const expandSiblingsBtn = showExpandSiblings ? `
+      <div class="expand-siblings-btn" data-node-id="${d.data.id}" style="position:absolute;bottom:-10px;left:10%;transform:translateX(-50%);border:1px solid #E4E2E9;border-radius:3px;padding:2px 5px;font-size:9px;background-color:white;display:flex;align-items:center;gap:2px;cursor:pointer;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,0.1);" title="${siblingsExpanded ? 'Hide Siblings' : 'Show ' + siblingCount + ' Siblings'}" aria-label="${siblingsExpanded ? 'Hide Siblings' : 'Show ' + siblingCount + ' Siblings'}" role="button" tabindex="0">
+        <span style="display:flex;align-items:center;">${userIcon}</span>
+        <span style="color:#716E7B;">${siblingsExpanded ? '−' : '+'}${siblingCount}</span>
+      </div>
+    ` : '';
+
     // Priority 1: Use custom template function if provided via .template()
     if (this.customTemplate) {
-      return this.customTemplate(d, this.currentSchema);
+      const customContent = this.customTemplate(d, this.currentSchema);
+      return customContent;
     }
     
     // Priority 2: Use card template from YAML front matter if defined
@@ -3190,6 +3827,7 @@ class YChartEditor {
       return `
         <div style="width:${d.width}px;height:${d.height}px;padding:var(--yc-spacing-xl);background:var(--yc-color-text-inverse);border:var(--yc-border-width-medium) solid var(--yc-color-secondary);border-radius:var(--yc-border-radius-lg);box-sizing:border-box;position:relative">
           <div class="details-btn" style="position:absolute;top:var(--yc-spacing-xs);right:var(--yc-spacing-xs);width:var(--yc-height-icon-sm);height:var(--yc-height-icon-sm);background:var(--yc-color-gray-300);border-radius:var(--yc-border-radius-full);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);z-index:var(--yc-z-index-overlay);border:var(--yc-border-width-thin) solid var(--yc-color-gray-500);" title="Show Details" aria-label="Show Details" role="button" tabindex="0">ℹ</div>
+          ${expandSiblingsBtn}
           ${cardHtml}
         </div>
       `;
@@ -3199,6 +3837,7 @@ class YChartEditor {
     return `
       <div style="width:${d.width}px;height:${d.height}px;padding:var(--yc-spacing-xl);background:var(--yc-color-text-inverse);border:var(--yc-border-width-medium) solid var(--yc-color-secondary);border-radius:var(--yc-border-radius-lg);box-sizing:border-box;display:flex;align-items:center;gap:var(--yc-spacing-xl);position:relative">
         <div class="details-btn" style="position:absolute;top:var(--yc-spacing-xs);right:var(--yc-spacing-xs);width:var(--yc-height-icon-sm);height:var(--yc-height-icon-sm);background:var(--yc-color-gray-300);border-radius:var(--yc-border-radius-full);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);z-index:var(--yc-z-index-overlay);border:var(--yc-border-width-thin) solid var(--yc-color-gray-500);" title="Show Details" aria-label="Show Details" role="button" tabindex="0">ℹ</div>
+        ${expandSiblingsBtn}
         <div style="flex:1;min-width:0">
           <div style="font-size:var(--yc-font-size-md);font-weight:var(--yc-font-weight-bold);color:var(--yc-color-text-primary);margin-bottom:var(--yc-spacing-xs);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${d.data.name || ''}</div>
           <div style="font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${d.data.title || ''}</div>
@@ -3410,7 +4049,7 @@ class YChartEditor {
 
   /**
    * Initialize node height synchronization service
-   * Ensures all nodes have the same height based on the tallest content
+   * Ensures all nodes have the same height based on the configured nodeHeight option
    */
   private initializeHeightSync(): void {
     if (!this.chartContainer) return;
@@ -3427,18 +4066,24 @@ class YChartEditor {
       return;
     }
 
-    // Initialize the height sync service
+    // Get the configured nodeHeight - use current options (from YAML) or default
+    const configuredNodeHeight = this.currentOptions.nodeHeight || this.defaultOptions.nodeHeight || 110;
+
+    // Initialize the height sync service with fixed height from options
     this.nodeHeightSync = new NodeHeightSyncService(svg, {
-      minHeight: this.defaultOptions.nodeHeight || 110,
+      fixedHeight: configuredNodeHeight, // Use configured nodeHeight as the fixed height
+      minHeight: configuredNodeHeight,   // Also set as minimum for safety
       maxHeight: 500, // Reasonable max to prevent excessive heights
-      heightPadding: 10, // Add a bit of padding for breathing room
+      heightPadding: 0, // No extra padding since we're using fixed height
       resizeDebounce: 150,
       onHeightChange: (newHeight) => {
         console.log(`Node heights synchronized to: ${newHeight}px`);
         
-        // Update the org chart's node height setting
+        // Update the org chart's node height setting and refresh overlay
         if (this.orgChart) {
           this.orgChart.nodeHeight(() => newHeight);
+          // Update the HTML overlay to reposition buttons after height change
+          this.orgChart.updateHtmlOverlay?.();
         }
       }
     });
