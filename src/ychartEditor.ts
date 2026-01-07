@@ -2563,11 +2563,108 @@ class YChartEditor {
             message: 'YAML data must be an array of objects (start each item with "- ")'
           });
         } else if (Array.isArray(parsed)) {
+          // Check for duplicate IDs
+          const idCounts = new Map<string, number[]>();
+          let itemIndex = 0;
+          for (const item of parsed) {
+            if (item.id !== undefined && item.id !== null) {
+              const idStr = String(item.id);
+              if (!idCounts.has(idStr)) {
+                idCounts.set(idStr, []);
+              }
+              idCounts.get(idStr)!.push(itemIndex);
+            }
+            itemIndex++;
+          }
+
+          // Report duplicate IDs as warnings
+          for (const [id, indices] of idCounts) {
+            if (indices.length > 1) {
+              // Find the position of each duplicate in the content
+              for (let i = 1; i < indices.length; i++) {
+                const idPattern = new RegExp(`^-\\s*id:\\s*${this.escapeRegex(String(id))}\\s*$`, 'gm');
+                
+                // Find all occurrences and get the i-th one
+                let match;
+                let matchCount = 0;
+                let errorPos = 0;
+                let errorEnd = content.length;
+                
+                while ((match = idPattern.exec(content)) !== null) {
+                  if (matchCount === i) {
+                    errorPos = match.index;
+                    errorEnd = match.index + match[0].length;
+                    break;
+                  }
+                  matchCount++;
+                }
+                
+                const lineNumber = content.substring(0, errorPos).split('\n').length;
+                
+                diagnostics.push({
+                  from: errorPos,
+                  to: errorEnd,
+                  severity: 'warning',
+                  message: `Line ${lineNumber}: Duplicate id "${id}" - this node will be ignored (first occurrence at position ${indices[0] + 1} will be used)`
+                });
+              }
+            }
+          }
+
+          // Also check for duplicate names in name-based format
+          const nameCounts = new Map<string, number[]>();
+          itemIndex = 0;
+          for (const item of parsed) {
+            if (item.name !== undefined && item.name !== null) {
+              const nameStr = String(item.name).toLowerCase();
+              if (!nameCounts.has(nameStr)) {
+                nameCounts.set(nameStr, []);
+              }
+              nameCounts.get(nameStr)!.push(itemIndex);
+            }
+            itemIndex++;
+          }
+
           // Detect which format is being used: id/parentId or name/supervisor
           // If any item has 'name' but no 'id', treat as name-based format
           const hasNameField = parsed.some((item: any) => item.name !== undefined);
           const hasIdField = parsed.some((item: any) => item.id !== undefined);
           const usesNameFormat = hasNameField && !hasIdField;
+
+          // Report duplicate names as warnings in name-based format
+          if (usesNameFormat) {
+            for (const [, indices] of nameCounts) {
+              if (indices.length > 1) {
+                for (let i = 1; i < indices.length; i++) {
+                  const item = parsed[indices[i]];
+                  const namePattern = new RegExp(`^-\\s*name:\\s*${this.escapeRegex(item.name)}`, 'gm');
+                  
+                  let match;
+                  let matchCount = 0;
+                  let errorPos = 0;
+                  let errorEnd = content.length;
+                  
+                  while ((match = namePattern.exec(content)) !== null) {
+                    if (matchCount === i) {
+                      errorPos = match.index;
+                      errorEnd = match.index + match[0].length;
+                      break;
+                    }
+                    matchCount++;
+                  }
+                  
+                  const lineNumber = content.substring(0, errorPos).split('\n').length;
+                  
+                  diagnostics.push({
+                    from: errorPos,
+                    to: errorEnd,
+                    severity: 'warning',
+                    message: `Line ${lineNumber}: Duplicate name "${item.name}" - this node will be ignored (first occurrence will be used)`
+                  });
+                }
+              }
+            }
+          }
           
           if (usesNameFormat) {
             // Validate name/supervisor format
@@ -3274,13 +3371,47 @@ class YChartEditor {
    * Or via .supervisorLookup() fluent API.
    */
   private resolveMissingParentIds(data: any[]): any[] {
-    // First pass: auto-generate missing ids
+    // First pass: deduplicate entries
+    // - For items with explicit IDs: keep only the first occurrence of each ID
+    // - For items without IDs (name-based format): keep only the first occurrence of each name
+    const seenIds = new Set<string>();
+    const seenNamesForDedup = new Set<string>();
+    
+    // Check if we're using name-based format (items have names but no IDs)
+    const usesNameBasedFormat = data.some(item => item[this.nameField] !== undefined) &&
+                                 !data.some(item => item.id !== undefined && item.id !== null);
+    
+    const deduplicatedData = data.filter(item => {
+      // Deduplicate by ID if present
+      if (item.id !== undefined && item.id !== null) {
+        const idStr = String(item.id);
+        if (seenIds.has(idStr)) {
+          console.warn(`Duplicate id "${idStr}" detected - ignoring duplicate entry`);
+          return false;
+        }
+        seenIds.add(idStr);
+      }
+      
+      // Also deduplicate by name in name-based format
+      if (usesNameBasedFormat && item[this.nameField]) {
+        const nameStr = String(item[this.nameField]).toLowerCase();
+        if (seenNamesForDedup.has(nameStr)) {
+          console.warn(`Duplicate name "${item[this.nameField]}" detected - ignoring duplicate entry`);
+          return false;
+        }
+        seenNamesForDedup.add(nameStr);
+      }
+      
+      return true;
+    });
+
+    // Second pass: auto-generate missing ids
     // Detect if existing IDs are numeric or string-based (UUIDs, etc.)
     let hasNumericIds = false;
     let maxNumericId = 0;
     const existingIds = new Set<string>();
 
-    for (const item of data) {
+    for (const item of deduplicatedData) {
       if (item.id !== undefined && item.id !== null) {
         existingIds.add(String(item.id));
         const numId = typeof item.id === 'number' ? item.id : parseInt(String(item.id), 10);
@@ -3321,20 +3452,25 @@ class YChartEditor {
     };
 
     // Assign ids to items that don't have them
-    const dataWithIds = data.map((item) => {
+    const dataWithIds = deduplicatedData.map((item) => {
       if (item.id === undefined || item.id === null) {
         return { ...item, id: generateId(item), _autoGeneratedId: true };
       }
       return item;
     });
 
-    // Build a map of name -> id for quick lookup
+    // Build a map of name -> id for quick lookup (first occurrence wins)
     const nameToId = new Map<string, any>();
+    const seenNames = new Set<string>();
     for (const item of dataWithIds) {
       const name = item[this.nameField];
       if (name) {
         // Store the name (normalized to lowercase for case-insensitive matching)
-        nameToId.set(String(name).toLowerCase(), item.id);
+        const normalizedName = String(name).toLowerCase();
+        if (!seenNames.has(normalizedName)) {
+          nameToId.set(normalizedName, item.id);
+          seenNames.add(normalizedName);
+        }
       }
     }
 
@@ -3682,12 +3818,23 @@ class YChartEditor {
       select.remove(1);
     }
 
+    // Deduplicate data by ID before populating selector
+    const seenIds = new Set<string>();
+    const uniqueData = data.filter(item => {
+      const idStr = String(item.id);
+      if (seenIds.has(idStr)) {
+        return false;
+      }
+      seenIds.add(idStr);
+      return true;
+    });
+
     // Find root node from truth data (node with no parent)
     const rootNode = this.truthData.find(item => item.parentId === null || item.parentId === undefined) || 
-                     data.find(item => item.parentId === null || item.parentId === undefined);
+                     uniqueData.find(item => item.parentId === null || item.parentId === undefined);
 
     // Add all people sorted by name
-    const sortedData = [...data].sort((a, b) => {
+    const sortedData = [...uniqueData].sort((a, b) => {
       const nameA = (a.name || '').toLowerCase();
       const nameB = (b.name || '').toLowerCase();
       return nameA.localeCompare(nameB);

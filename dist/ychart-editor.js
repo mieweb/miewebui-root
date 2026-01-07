@@ -35783,9 +35783,88 @@ ${formattedData.trim()}
               message: 'YAML data must be an array of objects (start each item with "- ")'
             });
           } else if (Array.isArray(parsed)) {
+            const idCounts = /* @__PURE__ */ new Map();
+            let itemIndex = 0;
+            for (const item of parsed) {
+              if (item.id !== void 0 && item.id !== null) {
+                const idStr = String(item.id);
+                if (!idCounts.has(idStr)) {
+                  idCounts.set(idStr, []);
+                }
+                idCounts.get(idStr).push(itemIndex);
+              }
+              itemIndex++;
+            }
+            for (const [id2, indices] of idCounts) {
+              if (indices.length > 1) {
+                for (let i2 = 1; i2 < indices.length; i2++) {
+                  const idPattern = new RegExp(`^-\\s*id:\\s*${this.escapeRegex(String(id2))}\\s*$`, "gm");
+                  let match;
+                  let matchCount = 0;
+                  let errorPos = 0;
+                  let errorEnd = content2.length;
+                  while ((match = idPattern.exec(content2)) !== null) {
+                    if (matchCount === i2) {
+                      errorPos = match.index;
+                      errorEnd = match.index + match[0].length;
+                      break;
+                    }
+                    matchCount++;
+                  }
+                  const lineNumber = content2.substring(0, errorPos).split("\n").length;
+                  diagnostics.push({
+                    from: errorPos,
+                    to: errorEnd,
+                    severity: "warning",
+                    message: `Line ${lineNumber}: Duplicate id "${id2}" - this node will be ignored (first occurrence at position ${indices[0] + 1} will be used)`
+                  });
+                }
+              }
+            }
+            const nameCounts = /* @__PURE__ */ new Map();
+            itemIndex = 0;
+            for (const item of parsed) {
+              if (item.name !== void 0 && item.name !== null) {
+                const nameStr = String(item.name).toLowerCase();
+                if (!nameCounts.has(nameStr)) {
+                  nameCounts.set(nameStr, []);
+                }
+                nameCounts.get(nameStr).push(itemIndex);
+              }
+              itemIndex++;
+            }
             const hasNameField = parsed.some((item) => item.name !== void 0);
             const hasIdField = parsed.some((item) => item.id !== void 0);
             const usesNameFormat = hasNameField && !hasIdField;
+            if (usesNameFormat) {
+              for (const [, indices] of nameCounts) {
+                if (indices.length > 1) {
+                  for (let i2 = 1; i2 < indices.length; i2++) {
+                    const item = parsed[indices[i2]];
+                    const namePattern = new RegExp(`^-\\s*name:\\s*${this.escapeRegex(item.name)}`, "gm");
+                    let match;
+                    let matchCount = 0;
+                    let errorPos = 0;
+                    let errorEnd = content2.length;
+                    while ((match = namePattern.exec(content2)) !== null) {
+                      if (matchCount === i2) {
+                        errorPos = match.index;
+                        errorEnd = match.index + match[0].length;
+                        break;
+                      }
+                      matchCount++;
+                    }
+                    const lineNumber = content2.substring(0, errorPos).split("\n").length;
+                    diagnostics.push({
+                      from: errorPos,
+                      to: errorEnd,
+                      severity: "warning",
+                      message: `Line ${lineNumber}: Duplicate name "${item.name}" - this node will be ignored (first occurrence will be used)`
+                    });
+                  }
+                }
+              }
+            }
             if (usesNameFormat) {
               const names = new Set(parsed.map((item) => item[this.nameField]));
               const getSupervisor = (item) => {
@@ -36312,10 +36391,32 @@ ${formattedData.trim()}
      * Or via .supervisorLookup() fluent API.
      */
     resolveMissingParentIds(data) {
+      const seenIds = /* @__PURE__ */ new Set();
+      const seenNamesForDedup = /* @__PURE__ */ new Set();
+      const usesNameBasedFormat = data.some((item) => item[this.nameField] !== void 0) && !data.some((item) => item.id !== void 0 && item.id !== null);
+      const deduplicatedData = data.filter((item) => {
+        if (item.id !== void 0 && item.id !== null) {
+          const idStr = String(item.id);
+          if (seenIds.has(idStr)) {
+            console.warn(`Duplicate id "${idStr}" detected - ignoring duplicate entry`);
+            return false;
+          }
+          seenIds.add(idStr);
+        }
+        if (usesNameBasedFormat && item[this.nameField]) {
+          const nameStr = String(item[this.nameField]).toLowerCase();
+          if (seenNamesForDedup.has(nameStr)) {
+            console.warn(`Duplicate name "${item[this.nameField]}" detected - ignoring duplicate entry`);
+            return false;
+          }
+          seenNamesForDedup.add(nameStr);
+        }
+        return true;
+      });
       let hasNumericIds = false;
       let maxNumericId = 0;
       const existingIds = /* @__PURE__ */ new Set();
-      for (const item of data) {
+      for (const item of deduplicatedData) {
         if (item.id !== void 0 && item.id !== null) {
           existingIds.add(String(item.id));
           const numId = typeof item.id === "number" ? item.id : parseInt(String(item.id), 10);
@@ -36348,17 +36449,22 @@ ${formattedData.trim()}
           return newId2;
         }
       };
-      const dataWithIds = data.map((item) => {
+      const dataWithIds = deduplicatedData.map((item) => {
         if (item.id === void 0 || item.id === null) {
           return __spreadProps(__spreadValues({}, item), { id: generateId(item), _autoGeneratedId: true });
         }
         return item;
       });
       const nameToId = /* @__PURE__ */ new Map();
+      const seenNames = /* @__PURE__ */ new Set();
       for (const item of dataWithIds) {
         const name2 = item[this.nameField];
         if (name2) {
-          nameToId.set(String(name2).toLowerCase(), item.id);
+          const normalizedName = String(name2).toLowerCase();
+          if (!seenNames.has(normalizedName)) {
+            nameToId.set(normalizedName, item.id);
+            seenNames.add(normalizedName);
+          }
         }
       }
       return dataWithIds.map((item) => {
@@ -36615,8 +36721,17 @@ ${formattedData.trim()}
       while (select2.options.length > 1) {
         select2.remove(1);
       }
-      const rootNode = this.truthData.find((item) => item.parentId === null || item.parentId === void 0) || data.find((item) => item.parentId === null || item.parentId === void 0);
-      const sortedData = [...data].sort((a2, b) => {
+      const seenIds = /* @__PURE__ */ new Set();
+      const uniqueData = data.filter((item) => {
+        const idStr = String(item.id);
+        if (seenIds.has(idStr)) {
+          return false;
+        }
+        seenIds.add(idStr);
+        return true;
+      });
+      const rootNode = this.truthData.find((item) => item.parentId === null || item.parentId === void 0) || uniqueData.find((item) => item.parentId === null || item.parentId === void 0);
+      const sortedData = [...uniqueData].sort((a2, b) => {
         const nameA = (a2.name || "").toLowerCase();
         const nameB = (b.name || "").toLowerCase();
         return nameA.localeCompare(nameB);
