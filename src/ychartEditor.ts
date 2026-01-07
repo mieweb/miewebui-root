@@ -62,6 +62,21 @@ function generateUUID(): string {
   });
 }
 
+/**
+ * Escape HTML special characters to prevent XSS attacks.
+ * This should be used for all user-supplied content before rendering.
+ */
+function escapeHtml(text: string | null | undefined): string {
+  if (text === null || text === undefined) return '';
+  const str = String(text);
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 class YChartEditor {
   private viewContainer: HTMLElement | null = null;
   private editorContainer: HTMLElement | null = null;
@@ -1005,9 +1020,9 @@ class YChartEditor {
       `;
 
       const nodeData = node.data;
-      const displayName = nodeData.name || attrs.nodeId(nodeData);
-      const displayTitle = nodeData.title || '';
-      const displayDept = nodeData.department || '';
+      const displayName = escapeHtml(nodeData.name || attrs.nodeId(nodeData));
+      const displayTitle = escapeHtml(nodeData.title || '');
+      const displayDept = escapeHtml(nodeData.department || '');
       const nodeId = String(nodeData.id);
 
       // Check if this node is currently the POI
@@ -3244,7 +3259,8 @@ class YChartEditor {
       if (value === null || value === undefined || value === '') {
         return '';
       }
-      return String(value);
+      // Escape HTML to prevent XSS attacks
+      return escapeHtml(String(value));
     });
   }
 
@@ -3839,9 +3855,9 @@ class YChartEditor {
         <div class="details-btn" style="position:absolute;top:var(--yc-spacing-xs);right:var(--yc-spacing-xs);width:var(--yc-height-icon-sm);height:var(--yc-height-icon-sm);background:var(--yc-color-gray-300);border-radius:var(--yc-border-radius-full);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);z-index:var(--yc-z-index-overlay);border:var(--yc-border-width-thin) solid var(--yc-color-gray-500);" title="Show Details" aria-label="Show Details" role="button" tabindex="0">ℹ</div>
         ${expandSiblingsBtn}
         <div style="flex:1;min-width:0">
-          <div style="font-size:var(--yc-font-size-md);font-weight:var(--yc-font-weight-bold);color:var(--yc-color-text-primary);margin-bottom:var(--yc-spacing-xs);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${d.data.name || ''}</div>
-          <div style="font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${d.data.title || ''}</div>
-          <div style="font-size:var(--yc-font-size-xs);color:var(--yc-color-gray-600);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${d.data.department || ''}</div>
+          <div style="font-size:var(--yc-font-size-md);font-weight:var(--yc-font-weight-bold);color:var(--yc-color-text-primary);margin-bottom:var(--yc-spacing-xs);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(d.data.name)}</div>
+          <div style="font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(d.data.title)}</div>
+          <div style="font-size:var(--yc-font-size-xs);color:var(--yc-color-gray-600);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(d.data.department)}</div>
         </div>
       </div>
     `;
@@ -3851,17 +3867,17 @@ class YChartEditor {
     if (!this.detailsPanel) return;
 
     let html = '<div class="node-details-content" style="font-family:var(--yc-font-family-base);">';
-    html += `<h3 style="margin:0 0 var(--yc-spacing-3xl) 0;color:var(--yc-color-text-primary);">${data.name || 'Unknown'}</h3>`;
+    html += `<h3 style="margin:0 0 var(--yc-spacing-3xl) 0;color:var(--yc-color-text-primary);">${escapeHtml(data.name) || 'Unknown'}</h3>`;
     html += '<div style="display:grid;gap:var(--yc-spacing-md);">';
     
     for (const [key, value] of Object.entries(data)) {
       if (key.startsWith('_') || key === 'picture') continue;
       
-      const label = key.charAt(0).toUpperCase() + key.slice(1);
+      const label = escapeHtml(key.charAt(0).toUpperCase() + key.slice(1));
       html += `
         <div style="display:grid;grid-template-columns:120px 1fr;gap:var(--yc-spacing-md);">
           <span style="font-weight:var(--yc-font-weight-semibold);color:var(--yc-color-text-secondary);">${label}:</span>
-          <span style="color:var(--yc-color-text-primary);">${value || 'N/A'}</span>
+          <span style="color:var(--yc-color-text-primary);">${escapeHtml(value as string) || 'N/A'}</span>
         </div>
       `;
     }

@@ -33541,6 +33541,7 @@ ${d.email || ""}`);
       var _a2, _b, _c, _d, _e;
       this.container = container;
       this.config = {
+        fixedHeight: config2.fixedHeight,
         minHeight: (_a2 = config2.minHeight) != null ? _a2 : 80,
         maxHeight: (_b = config2.maxHeight) != null ? _b : Infinity,
         heightPadding: (_c = config2.heightPadding) != null ? _c : 0,
@@ -33567,14 +33568,19 @@ ${d.email || ""}`);
       }
       this.isSyncing = true;
       try {
-        this.resetHeightsToAuto();
-        const maxHeight = this.measureMaxContentHeight();
-        this.applyUnifiedHeight(maxHeight);
-        if (maxHeight !== this.currentUnifiedHeight) {
-          this.currentUnifiedHeight = maxHeight;
-          this.config.onHeightChange(maxHeight);
+        let targetHeight;
+        if (this.config.fixedHeight !== void 0) {
+          targetHeight = this.config.fixedHeight;
+        } else {
+          this.resetHeightsToAuto();
+          targetHeight = this.measureMaxContentHeight();
         }
-        return maxHeight;
+        this.applyUnifiedHeight(targetHeight);
+        if (targetHeight !== this.currentUnifiedHeight) {
+          this.currentUnifiedHeight = targetHeight;
+          this.config.onHeightChange(targetHeight);
+        }
+        return targetHeight;
       } finally {
         setTimeout(() => {
           this.isSyncing = false;
@@ -33745,6 +33751,11 @@ ${d.email || ""}`);
       return v.toString(16);
     });
   }
+  function escapeHtml(text) {
+    if (text === null || text === void 0) return "";
+    const str2 = String(text);
+    return str2.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+  }
   class YChartEditor2 {
     // Track supervisor nodes with expanded siblings
     constructor(options) {
@@ -33780,6 +33791,8 @@ ${d.email || ""}`);
       __publicField(this, "supervisorFields", ["supervisor", "reports", "reports_to", "manager", "leader", "parent"]);
       __publicField(this, "nameField", "name");
       __publicField(this, "nodeHeightSync", null);
+      // Current merged options (defaultOptions + YAML options)
+      __publicField(this, "currentOptions", {});
       // Person of Interest feature
       __publicField(this, "personOfInterest", null);
       // Currently selected person
@@ -34302,62 +34315,129 @@ ${d.email || ""}`);
       selectorWrapper.style.cssText = `
       display: flex;
       align-items: center;
-      gap: var(--yc-spacing-sm);
+      gap: var(--yc-spacing-xs);
       background: var(--yc-color-bg-card);
       border-radius: var(--yc-border-radius-pill);
-      padding: var(--yc-spacing-sm) var(--yc-spacing-lg);
+      padding: var(--yc-spacing-xs) var(--yc-spacing-sm);
       box-shadow: var(--yc-shadow-2xl);
       border: var(--yc-border-width-thin) solid var(--yc-color-shadow-light);
-      min-width: 280px;
       transition: all var(--yc-transition-fast);
     `;
-      const personIcon = document.createElement("span");
-      personIcon.innerHTML = `
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-        <circle cx="12" cy="7" r="4"/>
+      const focusIcon = document.createElement("span");
+      focusIcon.innerHTML = `
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <circle cx="12" cy="12" r="6"/>
+        <circle cx="12" cy="12" r="2"/>
       </svg>
     `;
-      personIcon.style.cssText = `
+      focusIcon.style.cssText = `
       color: var(--yc-color-text-muted);
       display: flex;
       align-items: center;
-      flex-shrink: 0;
-    `;
-      const label = document.createElement("span");
-      label.textContent = "Focus:";
-      label.style.cssText = `
-      font-size: var(--yc-font-size-sm);
-      color: var(--yc-color-text-secondary);
-      font-weight: var(--yc-font-weight-semibold);
       flex-shrink: 0;
     `;
       const select2 = document.createElement("select");
       select2.setAttribute("data-id", `ychart-poi-select-${this.instanceId}`);
       select2.setAttribute("aria-label", "Select person of interest");
       select2.style.cssText = `
-      flex: 1;
       border: none;
       background: transparent;
-      font-size: var(--yc-font-size-sm);
+      font-size: var(--yc-font-size-xs);
       color: var(--yc-color-text-primary);
       cursor: pointer;
       outline: none;
       font-weight: var(--yc-font-weight-medium);
+      max-width: 140px;
+      text-overflow: ellipsis;
     `;
       const defaultOption = document.createElement("option");
       defaultOption.value = "";
-      defaultOption.textContent = "Select person...";
+      defaultOption.textContent = "Select...";
       select2.appendChild(defaultOption);
       select2.addEventListener("change", (e) => {
         const selectedId = e.target.value;
         this.setPersonOfInterest(selectedId);
       });
-      selectorWrapper.appendChild(personIcon);
-      selectorWrapper.appendChild(label);
+      const clearBtn = document.createElement("button");
+      clearBtn.setAttribute("data-id", `ychart-poi-clear-${this.instanceId}`);
+      clearBtn.setAttribute("aria-label", "Reset focus to root");
+      clearBtn.style.cssText = `
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border: none;
+      background: var(--yc-color-button-bg);
+      border-radius: var(--yc-border-radius-full);
+      cursor: pointer;
+      color: var(--yc-color-text-muted);
+      flex-shrink: 0;
+      transition: all var(--yc-transition-fast);
+    `;
+      const clearIcon = document.createElement("span");
+      clearIcon.innerHTML = `
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+    `;
+      clearIcon.style.cssText = "display: flex; align-items: center; justify-content: center;";
+      clearBtn.appendChild(clearIcon);
+      const clearTooltip = document.createElement("span");
+      clearTooltip.className = "ychart-tooltip";
+      clearTooltip.textContent = "Reset to root";
+      clearTooltip.style.cssText = `
+      position: absolute;
+      top: calc(100% + var(--yc-spacing-md));
+      left: 50%;
+      transform: translateX(-50%) scale(0.8);
+      background: var(--yc-color-overlay-dark);
+      color: white;
+      padding: var(--yc-spacing-sm) var(--yc-spacing-xl);
+      border-radius: var(--yc-border-radius-md);
+      font-size: var(--yc-font-size-sm);
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: all var(--yc-transition-fast) var(--yc-transition-bounce);
+      z-index: var(--yc-z-index-search-popup);
+      box-shadow: var(--yc-shadow-md);
+    `;
+      clearBtn.appendChild(clearTooltip);
+      clearBtn.addEventListener("mouseenter", () => {
+        clearBtn.style.background = "var(--yc-color-primary)";
+        clearBtn.style.color = "white";
+        clearTooltip.style.opacity = "1";
+        clearTooltip.style.transform = "translateX(-50%) scale(1)";
+      });
+      clearBtn.addEventListener("mouseleave", () => {
+        clearBtn.style.background = "var(--yc-color-button-bg)";
+        clearBtn.style.color = "var(--yc-color-text-muted)";
+        clearTooltip.style.opacity = "0";
+        clearTooltip.style.transform = "translateX(-50%) scale(0.8)";
+      });
+      clearBtn.addEventListener("click", () => {
+        this.resetToRoot();
+      });
+      selectorWrapper.appendChild(focusIcon);
       selectorWrapper.appendChild(select2);
+      selectorWrapper.appendChild(clearBtn);
       container.appendChild(selectorWrapper);
       return container;
+    }
+    /**
+     * Reset the POI to the root node
+     */
+    resetToRoot() {
+      const rootNode = this.truthData.find((item) => item.parentId === null || item.parentId === void 0);
+      if (rootNode) {
+        const rootId = String(rootNode.id);
+        this.setPersonOfInterest(rootId);
+        this.updatePOISelectorValue(rootId);
+      }
     }
     updateSearchFieldOptions(fieldSelect) {
       const currentValue = fieldSelect.value;
@@ -34444,9 +34524,11 @@ ${d.email || ""}`);
         outline: none;
       `;
         const nodeData = node.data;
-        const displayName = nodeData.name || attrs.nodeId(nodeData);
-        const displayTitle = nodeData.title || "";
-        const displayDept = nodeData.department || "";
+        const displayName = escapeHtml(nodeData.name || attrs.nodeId(nodeData));
+        const displayTitle = escapeHtml(nodeData.title || "");
+        const displayDept = escapeHtml(nodeData.department || "");
+        const nodeId = String(nodeData.id);
+        const isCurrentPOI = this.personOfInterest && String(this.personOfInterest.id) === nodeId;
         resultItem.innerHTML = `
         <div style="display: flex; justify-content: space-between; align-items: start; gap: var(--yc-spacing-md);">
           <div style="flex: 1; min-width: 0;">
@@ -34454,12 +34536,81 @@ ${d.email || ""}`);
             ${displayTitle ? `<div style="font-size: var(--yc-font-size-sm); line-height: var(--yc-line-height-tight); color: var(--yc-color-text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${displayTitle}</div>` : ""}
             ${displayDept ? `<div style="font-size: var(--yc-font-size-xs); line-height: var(--yc-line-height-tight); color: var(--yc-color-text-light); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${displayDept}</div>` : ""}
           </div>
-          <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px; flex-shrink: 0;">
-            <span style="font-size: var(--yc-font-size-xs); color: var(--yc-color-primary); font-weight: var(--yc-font-weight-semibold);">${Math.round(score2 * 100)}%</span>
-            <span style="font-size: var(--yc-font-size-xs); color: var(--yc-color-text-light); background: var(--yc-color-button-bg); padding: 1px 6px; border-radius: var(--yc-border-radius-sm);">${matchedField}</span>
+          <div style="display: flex; align-items: center; gap: var(--yc-spacing-md); flex-shrink: 0;">
+            <button class="ychart-set-poi-btn" data-node-id="${nodeId}" data-tooltip="${isCurrentPOI ? "Current Focus" : "Set as Focus"}" style="
+              position: relative;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 28px;
+              height: 28px;
+              border: none;
+              border-radius: var(--yc-border-radius-md);
+              background: ${isCurrentPOI ? "var(--yc-color-primary)" : "var(--yc-color-button-bg)"};
+              color: ${isCurrentPOI ? "white" : "var(--yc-color-text-muted)"};
+              cursor: pointer;
+              transition: all var(--yc-transition-fast);
+            ">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+              <span class="ychart-tooltip" style="
+                position: absolute;
+                right: calc(100% + var(--yc-spacing-md));
+                top: 50%;
+                transform: translateY(-50%) scale(0.8);
+                background: var(--yc-color-overlay-dark);
+                color: white;
+                padding: var(--yc-spacing-sm) var(--yc-spacing-xl);
+                border-radius: var(--yc-border-radius-md);
+                font-size: var(--yc-font-size-sm);
+                white-space: nowrap;
+                pointer-events: none;
+                opacity: 0;
+                transition: all var(--yc-transition-fast) var(--yc-transition-bounce);
+                z-index: var(--yc-z-index-search-popup);
+                box-shadow: var(--yc-shadow-md);
+              ">${isCurrentPOI ? "Current Focus" : "Set as Focus"}</span>
+            </button>
+            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px;">
+              <span style="font-size: var(--yc-font-size-xs); color: var(--yc-color-primary); font-weight: var(--yc-font-weight-semibold);">${Math.round(score2 * 100)}%</span>
+              <span style="font-size: var(--yc-font-size-xs); color: var(--yc-color-text-light); background: var(--yc-color-button-bg); padding: 1px 6px; border-radius: var(--yc-border-radius-sm);">${matchedField}</span>
+            </div>
           </div>
         </div>
       `;
+        const poiBtn = resultItem.querySelector(".ychart-set-poi-btn");
+        if (poiBtn) {
+          poiBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            this.setPersonOfInterest(nodeId);
+            this.clearFloatingSearch();
+            this.updatePOISelectorValue(nodeId);
+          });
+          const poiTooltip = poiBtn.querySelector(".ychart-tooltip");
+          poiBtn.addEventListener("mouseenter", () => {
+            if (!isCurrentPOI) {
+              poiBtn.style.background = "var(--yc-color-primary)";
+              poiBtn.style.color = "white";
+            }
+            if (poiTooltip) {
+              poiTooltip.style.opacity = "1";
+              poiTooltip.style.transform = "translateY(-50%) scale(1)";
+            }
+          });
+          poiBtn.addEventListener("mouseleave", () => {
+            if (!isCurrentPOI) {
+              poiBtn.style.background = "var(--yc-color-button-bg)";
+              poiBtn.style.color = "var(--yc-color-text-muted)";
+            }
+            if (poiTooltip) {
+              poiTooltip.style.opacity = "0";
+              poiTooltip.style.transform = "translateY(-50%) scale(0.8)";
+            }
+          });
+        }
         resultItem.addEventListener("mouseenter", () => {
           resultItem.style.background = "var(--yc-color-button-bg)";
         });
@@ -34472,7 +34623,8 @@ ${d.email || ""}`);
         resultItem.addEventListener("blur", () => {
           resultItem.style.background = "transparent";
         });
-        resultItem.addEventListener("click", () => {
+        resultItem.addEventListener("click", (e) => {
+          if (e.target.closest(".ychart-set-poi-btn")) return;
           this.selectAndHighlightNode(node);
           this.clearFloatingSearch();
         });
@@ -34482,6 +34634,11 @@ ${d.email || ""}`);
             e.preventDefault();
             this.selectAndHighlightNode(node);
             this.clearFloatingSearch();
+          } else if (e.key === "p" || e.key === "P") {
+            e.preventDefault();
+            this.setPersonOfInterest(nodeId);
+            this.clearFloatingSearch();
+            this.updatePOISelectorValue(nodeId);
           } else if (e.key === "ArrowDown") {
             e.preventDefault();
             const next = resultItem.nextElementSibling;
@@ -34515,6 +34672,15 @@ ${d.email || ""}`);
       if (this.searchResultsDropdown) {
         this.searchResultsDropdown.style.display = "none";
         this.searchResultsDropdown.innerHTML = "";
+      }
+    }
+    /**
+     * Update the POI selector dropdown to reflect the current selection
+     */
+    updatePOISelectorValue(nodeId) {
+      const poiSelect = document.querySelector(`[data-id="ychart-poi-select-${this.instanceId}"]`);
+      if (poiSelect) {
+        poiSelect.value = nodeId;
       }
     }
     handleFit() {
@@ -36133,7 +36299,7 @@ ${formattedData.trim()}
         if (value === null || value === void 0 || value === "") {
           return "";
         }
-        return String(value);
+        return escapeHtml(String(value));
       });
     }
     /**
@@ -36460,7 +36626,7 @@ ${formattedData.trim()}
         option.value = String(item.id);
         option.textContent = item.name || String(item.id);
         if (rootNode && item.id === rootNode.id) {
-          option.textContent += " (Root)";
+          option.textContent += " [Root]";
         }
         select2.appendChild(option);
       });
@@ -36481,6 +36647,7 @@ ${formattedData.trim()}
         const yamlContent = this.editor.state.doc.toString();
         const { options: userOptions, schema: schemaDef, card: cardDef, data: yamlData } = this.parseFrontMatter(yamlContent);
         const options = __spreadValues(__spreadValues({}, this.defaultOptions), userOptions);
+        this.currentOptions = options;
         let parsedData = load(yamlData);
         this.currentSchema = schemaDef;
         this.cardTemplate = cardDef || null;
@@ -36548,9 +36715,9 @@ ${formattedData.trim()}
         <div class="details-btn" style="position:absolute;top:var(--yc-spacing-xs);right:var(--yc-spacing-xs);width:var(--yc-height-icon-sm);height:var(--yc-height-icon-sm);background:var(--yc-color-gray-300);border-radius:var(--yc-border-radius-full);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);z-index:var(--yc-z-index-overlay);border:var(--yc-border-width-thin) solid var(--yc-color-gray-500);" title="Show Details" aria-label="Show Details" role="button" tabindex="0">ℹ</div>
         ${expandSiblingsBtn}
         <div style="flex:1;min-width:0">
-          <div style="font-size:var(--yc-font-size-md);font-weight:var(--yc-font-weight-bold);color:var(--yc-color-text-primary);margin-bottom:var(--yc-spacing-xs);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${d.data.name || ""}</div>
-          <div style="font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${d.data.title || ""}</div>
-          <div style="font-size:var(--yc-font-size-xs);color:var(--yc-color-gray-600);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${d.data.department || ""}</div>
+          <div style="font-size:var(--yc-font-size-md);font-weight:var(--yc-font-weight-bold);color:var(--yc-color-text-primary);margin-bottom:var(--yc-spacing-xs);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(d.data.name)}</div>
+          <div style="font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(d.data.title)}</div>
+          <div style="font-size:var(--yc-font-size-xs);color:var(--yc-color-gray-600);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(d.data.department)}</div>
         </div>
       </div>
     `;
@@ -36558,15 +36725,15 @@ ${formattedData.trim()}
     showNodeDetails(data) {
       if (!this.detailsPanel) return;
       let html = '<div class="node-details-content" style="font-family:var(--yc-font-family-base);">';
-      html += `<h3 style="margin:0 0 var(--yc-spacing-3xl) 0;color:var(--yc-color-text-primary);">${data.name || "Unknown"}</h3>`;
+      html += `<h3 style="margin:0 0 var(--yc-spacing-3xl) 0;color:var(--yc-color-text-primary);">${escapeHtml(data.name) || "Unknown"}</h3>`;
       html += '<div style="display:grid;gap:var(--yc-spacing-md);">';
       for (const [key, value] of Object.entries(data)) {
         if (key.startsWith("_") || key === "picture") continue;
-        const label = key.charAt(0).toUpperCase() + key.slice(1);
+        const label = escapeHtml(key.charAt(0).toUpperCase() + key.slice(1));
         html += `
         <div style="display:grid;grid-template-columns:120px 1fr;gap:var(--yc-spacing-md);">
           <span style="font-weight:var(--yc-font-weight-semibold);color:var(--yc-color-text-secondary);">${label}:</span>
-          <span style="color:var(--yc-color-text-primary);">${value || "N/A"}</span>
+          <span style="color:var(--yc-color-text-primary);">${escapeHtml(value) || "N/A"}</span>
         </div>
       `;
       }
@@ -36706,7 +36873,7 @@ ${formattedData.trim()}
     }
     /**
      * Initialize node height synchronization service
-     * Ensures all nodes have the same height based on the tallest content
+     * Ensures all nodes have the same height based on the configured nodeHeight option
      */
     initializeHeightSync() {
       if (!this.chartContainer) return;
@@ -36718,12 +36885,16 @@ ${formattedData.trim()}
         console.warn("SVG not found for height sync");
         return;
       }
+      const configuredNodeHeight = this.currentOptions.nodeHeight || this.defaultOptions.nodeHeight || 110;
       this.nodeHeightSync = new NodeHeightSyncService(svg2, {
-        minHeight: this.defaultOptions.nodeHeight || 110,
+        fixedHeight: configuredNodeHeight,
+        // Use configured nodeHeight as the fixed height
+        minHeight: configuredNodeHeight,
+        // Also set as minimum for safety
         maxHeight: 500,
         // Reasonable max to prevent excessive heights
-        heightPadding: 10,
-        // Add a bit of padding for breathing room
+        heightPadding: 0,
+        // No extra padding since we're using fixed height
         resizeDebounce: 150,
         onHeightChange: (newHeight) => {
           var _a2, _b;
