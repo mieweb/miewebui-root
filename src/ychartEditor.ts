@@ -345,10 +345,13 @@ class YChartEditor {
 
   private getToolbarPositionStyles(): string {
     const margin = 'var(--yc-spacing-4xl)';
+    // Increased top margin to avoid overlap with search bar and POI selector
+    const topMargin = 'calc(var(--yc-spacing-4xl) + 50px)';
     
     switch (this.toolbarPosition) {
       case 'topleft':
-        return `top: ${margin}; left: ${margin};`;
+        // Offset below the POI selector
+        return `top: ${topMargin}; left: ${margin};`;
       case 'topright':
         return `top: ${margin}; right: ${margin};`;
       case 'bottomleft':
@@ -356,7 +359,8 @@ class YChartEditor {
       case 'bottomright':
         return `bottom: ${margin}; right: ${margin};`;
       case 'topcenter':
-        return `top: ${margin}; left: 50%; transform: translateX(-50%);`;
+        // Offset below the search bar
+        return `top: ${topMargin}; left: 50%; transform: translateX(-50%);`;
       case 'bottomcenter':
         return `bottom: ${margin}; left: 50%; transform: translateX(-50%);`;
       default:

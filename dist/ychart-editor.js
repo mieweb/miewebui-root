@@ -33972,9 +33972,10 @@ ${d.email || ""}`);
     }
     getToolbarPositionStyles() {
       const margin = "var(--yc-spacing-4xl)";
+      const topMargin = "calc(var(--yc-spacing-4xl) + 50px)";
       switch (this.toolbarPosition) {
         case "topleft":
-          return `top: ${margin}; left: ${margin};`;
+          return `top: ${topMargin}; left: ${margin};`;
         case "topright":
           return `top: ${margin}; right: ${margin};`;
         case "bottomleft":
@@ -33982,7 +33983,7 @@ ${d.email || ""}`);
         case "bottomright":
           return `bottom: ${margin}; right: ${margin};`;
         case "topcenter":
-          return `top: ${margin}; left: 50%; transform: translateX(-50%);`;
+          return `top: ${topMargin}; left: 50%; transform: translateX(-50%);`;
         case "bottomcenter":
           return `bottom: ${margin}; left: 50%; transform: translateX(-50%);`;
         default:
