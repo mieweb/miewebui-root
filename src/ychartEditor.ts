@@ -3972,8 +3972,10 @@ class YChartEditor {
     const userIcon = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#716E7B"/></svg>`;
     
     // Position: floating at bottom of node, offset to left of center (expand child button is at center)
+    const siblingsTooltipText = siblingsExpanded ? 'Hide Siblings' : `Show ${siblingCount} Siblings`;
     const expandSiblingsBtn = showExpandSiblings ? `
-      <div class="expand-siblings-btn" data-node-id="${d.data.id}" style="position:absolute;bottom:-10px;left:10%;transform:translateX(-50%);border:1px solid #E4E2E9;border-radius:3px;padding:2px 5px;font-size:9px;background-color:white;display:flex;align-items:center;gap:2px;cursor:pointer;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,0.1);" title="${siblingsExpanded ? 'Hide Siblings' : 'Show ' + siblingCount + ' Siblings'}" aria-label="${siblingsExpanded ? 'Hide Siblings' : 'Show ' + siblingCount + ' Siblings'}" role="button" tabindex="0">
+      <div class="expand-siblings-btn" data-node-id="${d.data.id}" style="position:absolute;bottom:-10px;left:10%;transform:translateX(-50%);border:1px solid #E4E2E9;border-radius:3px;padding:2px 5px;font-size:9px;background-color:white;display:flex;align-items:center;gap:2px;cursor:pointer;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,0.1);" aria-label="${siblingsTooltipText}" role="button" tabindex="0">
+        <span class="node-tooltip">${siblingsTooltipText}</span>
         <span style="display:flex;align-items:center;">${userIcon}</span>
         <span style="color:#716E7B;">${siblingsExpanded ? '−' : '+'}${siblingCount}</span>
       </div>

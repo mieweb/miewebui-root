@@ -126,6 +126,8 @@ export class OrgChart {
                 const direct = node.data._directSubordinatesPaging;
                 const total = node.data._totalSubordinates;
                 const countDisplay = (total && total > direct) ? `${direct}&nbsp[${total}]` : `${direct}`;
+                const isExpanded = !!node.children;
+                const tooltipText = isExpanded ? `Collapse ${direct} Children` : `Expand ${direct} Children`;
                 const icons = {
                     "left": d => d ?
                         `<div class="ychart-expand-btn-content" style="display:flex;"><span class="ychart-expand-btn-icon" style="align-items:center;display:flex;"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -156,7 +158,7 @@ export class OrgChart {
                         </svg></span><span class="ychart-expand-btn-count" style="margin-left:1px;color:#716E7B">${countDisplay} </span></div>
                     `,
                 }
-                return `<div class="ychart-expand-btn-wrapper" style="border:1px solid #E4E2E9;border-radius:3px;padding:3px;font-size:9px;margin:auto auto;background-color:white"> ${icons[state.layout](node.children)}  </div>`
+                return `<div class="ychart-expand-btn-wrapper" style="border:1px solid #E4E2E9;border-radius:3px;padding:3px;font-size:9px;margin:auto auto;background-color:white;pointer-events:auto;position:relative;" aria-label="${tooltipText}" role="button"><span class="node-tooltip">${tooltipText}</span>${icons[state.layout](node.children)}</div>`
             },
             /* Node paging button content and styling. You can access same helper methods as above. */
             pagingButton: (d, i, arr, state) => {

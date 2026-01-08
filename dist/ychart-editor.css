@@ -12587,6 +12587,36 @@ header h1, header .h1 {
     max-width: calc(100% - var(--yc-spacing-6xl));
   }
 }
+/* Custom tooltip styles for expand buttons */
+.expand-siblings-btn,
+.ychart-expand-btn-wrapper {
+  position: relative;
+}
+.expand-siblings-btn .node-tooltip,
+.ychart-expand-btn-wrapper .node-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  background: var(--yc-color-overlay-dark);
+  color: white;
+  padding: var(--yc-spacing-sm) var(--yc-spacing-xl);
+  border-radius: var(--yc-border-radius-md);
+  font-size: var(--yc-font-size-sm);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: all var(--yc-transition-fast) var(--yc-transition-bounce);
+  z-index: var(--yc-z-index-search-popup);
+  box-shadow: var(--yc-shadow-md);
+  margin-bottom: var(--yc-spacing-sm);
+}
+.expand-siblings-btn:hover .node-tooltip,
+.ychart-expand-btn-wrapper:hover .node-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 10px;
