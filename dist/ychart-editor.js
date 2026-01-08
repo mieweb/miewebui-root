@@ -34540,19 +34540,20 @@ ${d.email || ""}`);
             ${displayDept ? `<div style="font-size: var(--yc-font-size-xs); line-height: var(--yc-line-height-tight); color: var(--yc-color-text-light); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${displayDept}</div>` : ""}
           </div>
           <div style="display: flex; align-items: center; gap: var(--yc-spacing-md); flex-shrink: 0;">
-            <button class="ychart-set-poi-btn" data-node-id="${nodeId}" data-tooltip="${isCurrentPOI ? "Current Focus" : "Set as Focus"}" style="
+            <button class="ychart-set-poi-btn" data-node-id="${nodeId}" data-tooltip="${isCurrentPOI ? "Current Person of Interest" : "Set Person of Interest"}" style="
               position: relative;
               display: flex;
               align-items: center;
               justify-content: center;
               width: 28px;
               height: 28px;
-              border: none;
+              border: ${isCurrentPOI ? "none" : "var(--yc-border-width-thin) solid var(--yc-color-gray-400)"};
               border-radius: var(--yc-border-radius-md);
-              background: ${isCurrentPOI ? "var(--yc-color-primary)" : "var(--yc-color-button-bg)"};
-              color: ${isCurrentPOI ? "white" : "var(--yc-color-text-muted)"};
+              background: ${isCurrentPOI ? "var(--yc-color-primary)" : "var(--yc-color-text-inverse)"};
+              color: ${isCurrentPOI ? "white" : "var(--yc-color-text-secondary)"};
               cursor: pointer;
               transition: all var(--yc-transition-fast);
+              box-shadow: ${isCurrentPOI ? "none" : "var(--yc-shadow-sm)"};
             ">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"/>
@@ -34561,9 +34562,9 @@ ${d.email || ""}`);
               </svg>
               <span class="ychart-tooltip" style="
                 position: absolute;
-                right: calc(100% + var(--yc-spacing-md));
-                top: 50%;
-                transform: translateY(-50%) scale(0.8);
+                top: calc(100% + var(--yc-spacing-md));
+                left: 50%;
+                transform: translateX(-50%) scale(0.8);
                 background: var(--yc-color-overlay-dark);
                 color: white;
                 padding: var(--yc-spacing-sm) var(--yc-spacing-xl);
@@ -34575,7 +34576,22 @@ ${d.email || ""}`);
                 transition: all var(--yc-transition-fast) var(--yc-transition-bounce);
                 z-index: var(--yc-z-index-search-popup);
                 box-shadow: var(--yc-shadow-md);
-              ">${isCurrentPOI ? "Current Focus" : "Set as Focus"}</span>
+              ">${isCurrentPOI ? "Current Person of Interest" : "Set Person of Interest"}</span>
+              <span class="ychart-tooltip-arrow" style="
+                position: absolute;
+                top: calc(100% + 2px);
+                left: 50%;
+                transform: translateX(-50%) scale(0.8);
+                width: 0;
+                height: 0;
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                border-bottom: 6px solid var(--yc-color-overlay-dark);
+                pointer-events: none;
+                opacity: 0;
+                transition: all var(--yc-transition-fast) var(--yc-transition-bounce);
+                z-index: var(--yc-z-index-search-popup);
+              "></span>
             </button>
             <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px;">
               <span style="font-size: var(--yc-font-size-xs); color: var(--yc-color-primary); font-weight: var(--yc-font-weight-semibold);">${Math.round(score2 * 100)}%</span>
@@ -34593,24 +34609,37 @@ ${d.email || ""}`);
             this.updatePOISelectorValue(nodeId);
           });
           const poiTooltip = poiBtn.querySelector(".ychart-tooltip");
+          const poiArrow = poiBtn.querySelector(".ychart-tooltip-arrow");
           poiBtn.addEventListener("mouseenter", () => {
             if (!isCurrentPOI) {
               poiBtn.style.background = "var(--yc-color-primary)";
               poiBtn.style.color = "white";
+              poiBtn.style.borderColor = "var(--yc-color-primary)";
+              poiBtn.style.boxShadow = "var(--yc-shadow-md)";
             }
             if (poiTooltip) {
               poiTooltip.style.opacity = "1";
-              poiTooltip.style.transform = "translateY(-50%) scale(1)";
+              poiTooltip.style.transform = "translateX(-50%) scale(1)";
+            }
+            if (poiArrow) {
+              poiArrow.style.opacity = "1";
+              poiArrow.style.transform = "translateX(-50%) scale(1)";
             }
           });
           poiBtn.addEventListener("mouseleave", () => {
             if (!isCurrentPOI) {
-              poiBtn.style.background = "var(--yc-color-button-bg)";
-              poiBtn.style.color = "var(--yc-color-text-muted)";
+              poiBtn.style.background = "var(--yc-color-text-inverse)";
+              poiBtn.style.color = "var(--yc-color-text-secondary)";
+              poiBtn.style.borderColor = "var(--yc-color-gray-400)";
+              poiBtn.style.boxShadow = "var(--yc-shadow-sm)";
             }
             if (poiTooltip) {
               poiTooltip.style.opacity = "0";
-              poiTooltip.style.transform = "translateY(-50%) scale(0.8)";
+              poiTooltip.style.transform = "translateX(-50%) scale(0.8)";
+            }
+            if (poiArrow) {
+              poiArrow.style.opacity = "0";
+              poiArrow.style.transform = "translateX(-50%) scale(0.8)";
             }
           });
         }

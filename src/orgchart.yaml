@@ -1,7 +1,7 @@
 ---
 options:
   nodeWidth: 250
-  nodeHeight: 140
+  nodeHeight: 160
   childrenMargin: 60
   compactMarginBetween: 40
   compactMarginPair: 35
