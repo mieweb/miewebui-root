@@ -33837,6 +33837,23 @@ ${d.email || ""}`);
       this.toggleEditor();
       return this;
     }
+    /**
+     * Load new YAML data into the editor and re-render the chart
+     */
+    loadYaml(yamlData) {
+      if (!this.editor) {
+        throw new Error("Editor not initialized. Call initView first.");
+      }
+      this.editor.dispatch({
+        changes: {
+          from: 0,
+          to: this.editor.state.doc.length,
+          insert: yamlData
+        }
+      });
+      this.renderChart();
+      return this;
+    }
     createLayout() {
       if (!this.viewContainer) return;
       this.viewContainer.innerHTML = "";

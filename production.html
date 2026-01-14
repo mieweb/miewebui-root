@@ -122,6 +122,42 @@
             border-radius: 4px;
         }
 
+        .examples-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .examples-selector label {
+            font-size: 0.85rem;
+            color: var(--yc-color-overlay-white-90);
+        }
+
+        .examples-selector select {
+            padding: 0.35rem 0.6rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.15);
+            color: white;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .examples-selector select:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        .examples-selector select:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.4);
+        }
+
+        .examples-selector select option {
+            background: #4a5568;
+            color: white;
+        }
+
         .ychart-wrapper {
             flex: 1;
             background: var(--yc-color-bg-card);
@@ -191,6 +227,15 @@
                         <span class="commit-hash" id="commit-hash">loading...</span>
                     </a>
                 </div>
+                <div class="examples-selector">
+                    <label for="example-select">📁 Example:</label>
+                    <select id="example-select">
+                        <option value="default">Org Chart (Default)</option>
+                        <option value="budget">💰 Budget Indicators</option>
+                        <option value="okr">🎯 OKR - Objectives & Key Results</option>
+                        <option value="salary">👥 Salary & Headcount</option>
+                    </select>
+                </div>
             </div>
         </header>
 
@@ -204,6 +249,16 @@
     </div>
 
     <script>
+        // Example YAML file paths
+        const exampleFiles = {
+            default: null, // Will use the inline yamlData below
+            budget: './examples/budget-indicators/orgchart.yaml',
+            okr: './examples/okr/orgchart.yaml',
+            salary: './examples/salary-headcount/orgchart.yaml'
+        };
+
+        let currentEditor = null;
+
         // Fetch and display git commit info from GitHub API
         (async function() {
             const repoUrl = 'https://github.com/mieweb/ychart';
@@ -534,8 +589,14 @@ card:
   supervisor: Justin Scott
 `;
 
-        function initializeYChartEditor() {
+        function initializeYChartEditor(data) {
             console.log('🚀 Initializing YChart Editor...');
+            
+            // Clear existing editor if any
+            const container = document.getElementById('ychart-container');
+            if (container) {
+                container.innerHTML = '';
+            }
             
             // Initialize YChart Editor with beautiful configuration
             const editor = new window.YChartEditor({
@@ -549,7 +610,7 @@ card:
 
             // Setup the editor
             editor
-                .initView('ychart-container', yamlData)
+                .initView('ychart-container', data || yamlData)
                 .bgPatternStyle('dotted')
                 .actionBtnPos('bottomleft', 'horizontal');
 
@@ -562,6 +623,7 @@ card:
             
             // Make it accessible globally
             window.ychartEditor = editor;
+            currentEditor = editor;
             
             // Auto-fit after a short delay
             setTimeout(() => {
@@ -570,12 +632,49 @@ card:
                 }
             }, 500);
         }
+
+        // Load example YAML file
+        async function loadExample(exampleKey) {
+            const filePath = exampleFiles[exampleKey];
+            
+            if (!filePath) {
+                // Use default inline data
+                initializeYChartEditor(yamlData);
+                return;
+            }
+            
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) {
+                    throw new Error(`Failed to load ${filePath}`);
+                }
+                const data = await response.text();
+                initializeYChartEditor(data);
+            } catch (error) {
+                console.error('Error loading example:', error);
+                alert(`Failed to load example: ${error.message}`);
+            }
+        }
+
+        // Setup example selector
+        function setupExampleSelector() {
+            const select = document.getElementById('example-select');
+            if (select) {
+                select.addEventListener('change', (e) => {
+                    loadExample(e.target.value);
+                });
+            }
+        }
         
         // Initialize when page loads
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initializeYChartEditor);
+            document.addEventListener('DOMContentLoaded', () => {
+                initializeYChartEditor(yamlData);
+                setupExampleSelector();
+            });
         } else {
-            initializeYChartEditor();
+            initializeYChartEditor(yamlData);
+            setupExampleSelector();
         }
     </script>
 </body>
