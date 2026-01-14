@@ -22,6 +22,11 @@ interface YChartOptions {
   toolbarPosition?: 'topleft' | 'topright' | 'bottomleft' | 'bottomright' | 'topcenter' | 'bottomcenter';
   toolbarOrientation?: 'horizontal' | 'vertical';
   experimental?: boolean;
+  /** 
+   * Set the initial Person of Interest (POI) when the chart loads.
+   * Can be an id, name, email, or any field value that matches a person in the data.
+   */
+  self?: string | number;
 }
 
 interface FieldSchema {
@@ -118,6 +123,9 @@ class YChartEditor {
   private poiClearBtn: HTMLButtonElement | null = null;
   private truthData: any[] = []; // Complete YAML data (source of truth)
   private expandedSiblings: Set<string> = new Set(); // Track supervisor nodes with expanded siblings
+  private supervisorChainExpanded: boolean = false; // Track if POI's supervisor chain is expanded
+  private initialSelf: string | number | null = null; // Initial POI from 'self' option
+  private selfApplied: boolean = false; // Track if initial self POI has been applied
   
   constructor(options?: YChartOptions) {
     this.instanceId = generateUUID();
@@ -3605,6 +3613,120 @@ class YChartEditor {
   }
 
   /**
+   * Set the initial Person of Interest (POI) programmatically.
+   * The chart will focus on this person, showing their supervisory chain and direct reports.
+   * 
+   * Can be called before or after initialization:
+   * - Before: Sets the initial POI to apply when chart first renders
+   * - After: Immediately sets the POI and re-renders the chart
+   * 
+   * @param selfValue - The id, name, email, or any field value that identifies the person.
+   *                    Pass null or empty string to clear the POI.
+   * 
+   * @example
+   * // Set by email
+   * editor.self('john.doe@company.com');
+   * 
+   * @example
+   * // Set by name
+   * editor.self('John Doe');
+   * 
+   * @example
+   * // Set by id
+   * editor.self(5);
+   */
+  self(selfValue: string | number | null): this {
+    if (selfValue === null || selfValue === '') {
+      // Clear POI
+      this.initialSelf = null;
+      this.selfApplied = false;
+      if (this.orgChart && this.truthData.length > 0) {
+        this.setPersonOfInterest('');
+      }
+      return this;
+    }
+
+    this.initialSelf = selfValue;
+    this.selfApplied = false;
+    
+    // If chart is already initialized, apply immediately
+    if (this.orgChart && this.truthData.length > 0) {
+      const personId = this.resolveSelfToPersonId(selfValue);
+      if (personId) {
+        this.setPersonOfInterest(personId);
+      }
+      this.selfApplied = true;
+    }
+    
+    return this;
+  }
+
+  /**
+   * Resolve a 'self' identifier to a person's ID.
+   * Searches across multiple fields to find a matching person.
+   * 
+   * @param selfValue - The value to search for (id, name, email, etc.)
+   * @returns The person's ID if found, null otherwise
+   */
+  private resolveSelfToPersonId(selfValue: string | number): string | null {
+    if (!this.truthData || this.truthData.length === 0) {
+      return null;
+    }
+
+    const searchValue = String(selfValue).toLowerCase();
+    
+    // Fields to search in order of priority
+    const searchFields = ['id', 'email', this.nameField, 'name', 'title', ...this.supervisorFields];
+    
+    // First, try exact match on id (case-sensitive for ids)
+    const exactIdMatch = this.truthData.find((item: any) => 
+      String(item.id) === String(selfValue)
+    );
+    if (exactIdMatch) {
+      return String(exactIdMatch.id);
+    }
+
+    // Then try case-insensitive match on other fields
+    for (const field of searchFields) {
+      if (field === 'id') continue; // Already checked
+      
+      const match = this.truthData.find((item: any) => {
+        const fieldValue = item[field];
+        if (fieldValue === undefined || fieldValue === null) return false;
+        return String(fieldValue).toLowerCase() === searchValue;
+      });
+      
+      if (match) {
+        return String(match.id);
+      }
+    }
+
+    // No match found
+    console.warn(`[YChart] Could not resolve 'self' value "${selfValue}" to any person in the data`);
+    return null;
+  }
+
+  /**
+   * Apply the initial 'self' POI if set in options.
+   * This is called once after the first chart render.
+   */
+  private applyInitialSelf(): void {
+    if (this.selfApplied || this.initialSelf === null) {
+      return;
+    }
+    
+    this.selfApplied = true;
+    
+    const personId = this.resolveSelfToPersonId(this.initialSelf);
+    if (personId) {
+      // Use setTimeout to ensure chart is fully rendered
+      setTimeout(() => {
+        this.setPersonOfInterest(personId);
+      }, 200);
+    }
+  }
+
+  /**
    * Set the person of interest and filter the chart to show only relevant nodes
    */
   private setPersonOfInterest(personId: string): void {
@@ -3612,6 +3734,7 @@ class YChartEditor {
       // Reset to show all nodes
       this.personOfInterest = null;
       this.expandedSiblings.clear(); // Clear expanded siblings when POI changes
+      this.supervisorChainExpanded = false; // Reset supervisor chain expansion
       this.renderChart();
       this.updatePOIResetButtonAnimation();
       return;
@@ -3623,6 +3746,7 @@ class YChartEditor {
 
     this.personOfInterest = person;
     this.expandedSiblings.clear(); // Clear expanded siblings when POI changes
+    this.supervisorChainExpanded = false; // Collapse supervisor chain by default
     this.renderChart();
     this.updatePOIResetButtonAnimation();
     
@@ -3751,8 +3875,20 @@ class YChartEditor {
       });
     };
     
-    // All nodes in the supervisory chain are visible
-    supervisoryChain.forEach(id => visibleNodeIds.add(id));
+    // Add POI itself
+    visibleNodeIds.add(poiId);
+    
+    // Handle supervisor chain visibility based on expansion state
+    if (this.supervisorChainExpanded) {
+      // All nodes in the supervisory chain are visible
+      supervisoryChain.forEach(id => visibleNodeIds.add(id));
+    } else {
+      // Only show direct supervisor (if exists)
+      const poiNode = dataMap.get(poiId);
+      if (poiNode && poiNode.parentId != null) {
+        visibleNodeIds.add(poiNode.parentId);
+      }
+    }
     
     // POI's direct children and all their descendants should be visible
     const poiChildren = childrenMap.get(poiId) || [];
@@ -3762,7 +3898,9 @@ class YChartEditor {
     });
     
     // For each chain node (including POI), check if siblings should be shown
-    supervisoryChain.forEach(chainNodeId => {
+    // Only check visible chain nodes
+    const visibleChainNodes = supervisoryChain.filter(id => visibleNodeIds.has(id));
+    visibleChainNodes.forEach(chainNodeId => {
       const nodeIdStr = String(chainNodeId);
       if (this.expandedSiblings.has(nodeIdStr)) {
         // This chain node has expanded siblings - add all siblings and their descendants
@@ -3783,10 +3921,29 @@ class YChartEditor {
     // Filter to create virtual list - only include visible nodes
     const filteredData = virtualData.filter(item => visibleNodeIds.has(item.id));
 
+    // Get POI's direct children IDs for expansion
+    const poiDirectChildrenIds = new Set((childrenMap.get(poiId) || []).map(child => child.id));
+
+    // When supervisor chain is collapsed, make the topmost visible supervisor the virtual root
+    if (!this.supervisorChainExpanded) {
+      const poiNode = dataMap.get(poiId);
+      if (poiNode && poiNode.parentId != null) {
+        // Find the direct supervisor in filtered data and make it the root
+        const directSupervisor = filteredData.find(item => item.id === poiNode.parentId);
+        if (directSupervisor) {
+          directSupervisor.parentId = null; // Make it the virtual root
+        }
+      }
+    }
+
     // Set expansion flags on the virtual list
     filteredData.forEach(item => {
       if (supervisoryChainSet.has(item.id)) {
         // Nodes in the supervisory chain should be expanded
+        item._expanded = true;
+      }
+      // POI's direct children should also be expanded to show their children
+      if (poiDirectChildrenIds.has(item.id)) {
         item._expanded = true;
       }
     });
@@ -3851,6 +4008,50 @@ class YChartEditor {
   }
 
   /**
+   * Get the supervisor chain info for the POI.
+   * Returns { directSupervisor: name, chainLength: number of people above direct supervisor }
+   */
+  private getSupervisorChainInfo(): { directSupervisor: any | null; chainLength: number } {
+    if (!this.personOfInterest) {
+      return { directSupervisor: null, chainLength: 0 };
+    }
+
+    const poiId = this.personOfInterest.id;
+    const dataMap = new Map(this.truthData.map(item => [item.id, item]));
+    const poiNode = dataMap.get(poiId);
+
+    if (!poiNode || poiNode.parentId == null) {
+      return { directSupervisor: null, chainLength: 0 };
+    }
+
+    // Get direct supervisor
+    const directSupervisor = dataMap.get(poiNode.parentId);
+    if (!directSupervisor) {
+      return { directSupervisor: null, chainLength: 0 };
+    }
+
+    // Count nodes above direct supervisor (excluding POI and direct supervisor)
+    let chainLength = 0;
+    let currentId = directSupervisor.parentId;
+    while (currentId != null) {
+      chainLength++;
+      const currentNode = dataMap.get(currentId);
+      if (!currentNode) break;
+      currentId = currentNode.parentId;
+    }
+
+    return { directSupervisor, chainLength };
+  }
+
+  /**
+   * Toggle the supervisor chain expansion for POI
+   */
+  private toggleSupervisorChainExpansion(): void {
+    this.supervisorChainExpanded = !this.supervisorChainExpanded;
+    this.renderChart();
+  }
+
+  /**
    * Toggle siblings expansion for a supervisor node
    */
   private toggleSiblingsExpansion(nodeId: any): void {
@@ -3873,13 +4074,24 @@ class YChartEditor {
     // Use event delegation on the chart container
     this.chartContainer.addEventListener('click', (e) => {
       const target = e.target as HTMLElement;
-      const expandBtn = target.closest('.expand-siblings-btn');
-      if (expandBtn) {
+      
+      // Handle expand siblings button
+      const expandSiblingsBtn = target.closest('.expand-siblings-btn');
+      if (expandSiblingsBtn) {
         e.stopPropagation();
-        const nodeId = expandBtn.getAttribute('data-node-id');
+        const nodeId = expandSiblingsBtn.getAttribute('data-node-id');
         if (nodeId) {
           this.toggleSiblingsExpansion(nodeId);
         }
+        return;
+      }
+      
+      // Handle expand supervisor chain button
+      const expandSupervisorBtn = target.closest('.expand-supervisor-chain-btn');
+      if (expandSupervisorBtn) {
+        e.stopPropagation();
+        this.toggleSupervisorChainExpansion();
+        return;
       }
     });
   }
@@ -3962,6 +4174,11 @@ class YChartEditor {
       // Store current merged options for use by other methods (e.g., initializeHeightSync)
       this.currentOptions = options;
       
+      // Capture 'self' option for initial POI (only on first render)
+      if (!this.selfApplied && options.self !== undefined) {
+        this.initialSelf = options.self;
+      }
+      
       let parsedData = jsyaml.load(yamlData);
 
       // Store current schema and card template for template access
@@ -4031,6 +4248,9 @@ class YChartEditor {
           
           // Initialize height synchronization after nodes are rendered
           this.initializeHeightSync();
+          
+          // Apply initial 'self' POI if set in options (only once)
+          this.applyInitialSelf();
         }
       }, 100);
       
@@ -4060,6 +4280,27 @@ class YChartEditor {
       </div>
     ` : '';
 
+    // Generate expand supervisor chain button if this is the POI node and has supervisors
+    const isPOI = this.personOfInterest && d.data.id === this.personOfInterest.id;
+    const { directSupervisor, chainLength } = this.getSupervisorChainInfo();
+    const showSupervisorChainBtn = isPOI && directSupervisor !== null;
+    
+    // Up arrow icon for supervisor chain (smaller)
+    const upArrowIcon = `<svg width="8" height="8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4l-8 8h5v8h6v-8h5l-8-8z" fill="#716E7B"/></svg>`;
+    
+    // Format: "1[N]" where 1 is direct supervisor, N is count above
+    const supervisorChainTooltip = this.supervisorChainExpanded 
+      ? 'Collapse Supervisor Chain' 
+      : `Expand Supervisor Chain (${chainLength + 1} total)`;
+    const supervisorChainLabel = chainLength > 0 ? `1[${chainLength}]` : '1';
+    const expandSupervisorChainBtn = showSupervisorChainBtn ? `
+      <div class="expand-supervisor-chain-btn" style="position:absolute;top:-8px;left:50%;transform:translateX(-50%);border:1px solid #E4E2E9;border-radius:3px;padding:1px 3px;font-size:8px;background-color:white;display:flex;align-items:center;gap:1px;cursor:pointer;z-index:100;box-shadow:0 1px 2px rgba(0,0,0,0.08);" aria-label="${supervisorChainTooltip}" role="button" tabindex="0">
+        <span class="node-tooltip">${supervisorChainTooltip}</span>
+        <span style="display:flex;align-items:center;">${upArrowIcon}</span>
+        <span style="color:#716E7B;">${this.supervisorChainExpanded ? '−' : '+'}${supervisorChainLabel}</span>
+      </div>
+    ` : '';
+
     // Priority 1: Use custom template function if provided via .template()
     if (this.customTemplate) {
       const customContent = this.customTemplate(d, this.currentSchema);
@@ -4075,6 +4316,7 @@ class YChartEditor {
       return `
         <div style="width:${d.width}px;height:${d.height}px;padding:var(--yc-spacing-xl);background:var(--yc-color-text-inverse);border:var(--yc-border-width-medium) solid var(--yc-color-secondary);border-radius:var(--yc-border-radius-lg);box-sizing:border-box;position:relative">
           <div class="details-btn" style="position:absolute;top:var(--yc-spacing-xs);right:var(--yc-spacing-xs);width:var(--yc-height-icon-sm);height:var(--yc-height-icon-sm);background:var(--yc-color-gray-300);border-radius:var(--yc-border-radius-full);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);z-index:var(--yc-z-index-overlay);border:var(--yc-border-width-thin) solid var(--yc-color-gray-500);" title="Show Details" aria-label="Show Details" role="button" tabindex="0">ℹ</div>
+          ${expandSupervisorChainBtn}
           ${expandSiblingsBtn}
           ${cardHtml}
         </div>
@@ -4085,6 +4327,7 @@ class YChartEditor {
     return `
       <div style="width:${d.width}px;height:${d.height}px;padding:var(--yc-spacing-xl);background:var(--yc-color-text-inverse);border:var(--yc-border-width-medium) solid var(--yc-color-secondary);border-radius:var(--yc-border-radius-lg);box-sizing:border-box;display:flex;align-items:center;gap:var(--yc-spacing-xl);position:relative">
         <div class="details-btn" style="position:absolute;top:var(--yc-spacing-xs);right:var(--yc-spacing-xs);width:var(--yc-height-icon-sm);height:var(--yc-height-icon-sm);background:var(--yc-color-gray-300);border-radius:var(--yc-border-radius-full);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);z-index:var(--yc-z-index-overlay);border:var(--yc-border-width-thin) solid var(--yc-color-gray-500);" title="Show Details" aria-label="Show Details" role="button" tabindex="0">ℹ</div>
+        ${expandSupervisorChainBtn}
         ${expandSiblingsBtn}
         <div style="flex:1;min-width:0">
           <div style="font-size:var(--yc-font-size-md);font-weight:var(--yc-font-weight-bold);color:var(--yc-color-text-primary);margin-bottom:var(--yc-spacing-xs);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(d.data.name)}</div>

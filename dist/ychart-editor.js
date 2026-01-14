@@ -33759,7 +33759,7 @@ ${d.email || ""}`);
     return str2.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
   }
   class YChartEditor2 {
-    // Track supervisor nodes with expanded siblings
+    // Track if initial self POI has been applied
     constructor(options) {
       __publicField(this, "viewContainer", null);
       __publicField(this, "editorContainer", null);
@@ -33803,6 +33803,12 @@ ${d.email || ""}`);
       __publicField(this, "truthData", []);
       // Complete YAML data (source of truth)
       __publicField(this, "expandedSiblings", /* @__PURE__ */ new Set());
+      // Track supervisor nodes with expanded siblings
+      __publicField(this, "supervisorChainExpanded", false);
+      // Track if POI's supervisor chain is expanded
+      __publicField(this, "initialSelf", null);
+      // Initial POI from 'self' option
+      __publicField(this, "selfApplied", false);
       this.instanceId = generateUUID();
       this.defaultOptions = __spreadValues({
         nodeWidth: 220,
@@ -36569,12 +36575,105 @@ ${formattedData.trim()}
       return this;
     }
     /**
+     * Set the initial Person of Interest (POI) programmatically.
+     * The chart will focus on this person, showing their supervisory chain and direct reports.
+     * 
+     * Can be called before or after initialization:
+     * - Before: Sets the initial POI to apply when chart first renders
+     * - After: Immediately sets the POI and re-renders the chart
+     * 
+     * @param selfValue - The id, name, email, or any field value that identifies the person.
+     *                    Pass null or empty string to clear the POI.
+     * 
+     * @example
+     * // Set by email
+     * editor.self('john.doe@company.com');
+     * 
+     * @example
+     * // Set by name
+     * editor.self('John Doe');
+     * 
+     * @example
+     * // Set by id
+     * editor.self(5);
+     */
+    self(selfValue) {
+      if (selfValue === null || selfValue === "") {
+        this.initialSelf = null;
+        this.selfApplied = false;
+        if (this.orgChart && this.truthData.length > 0) {
+          this.setPersonOfInterest("");
+        }
+        return this;
+      }
+      this.initialSelf = selfValue;
+      this.selfApplied = false;
+      if (this.orgChart && this.truthData.length > 0) {
+        const personId = this.resolveSelfToPersonId(selfValue);
+        if (personId) {
+          this.setPersonOfInterest(personId);
+        }
+        this.selfApplied = true;
+      }
+      return this;
+    }
+    /**
+     * Resolve a 'self' identifier to a person's ID.
+     * Searches across multiple fields to find a matching person.
+     * 
+     * @param selfValue - The value to search for (id, name, email, etc.)
+     * @returns The person's ID if found, null otherwise
+     */
+    resolveSelfToPersonId(selfValue) {
+      if (!this.truthData || this.truthData.length === 0) {
+        return null;
+      }
+      const searchValue = String(selfValue).toLowerCase();
+      const searchFields = ["id", "email", this.nameField, "name", "title", ...this.supervisorFields];
+      const exactIdMatch = this.truthData.find(
+        (item) => String(item.id) === String(selfValue)
+      );
+      if (exactIdMatch) {
+        return String(exactIdMatch.id);
+      }
+      for (const field of searchFields) {
+        if (field === "id") continue;
+        const match = this.truthData.find((item) => {
+          const fieldValue = item[field];
+          if (fieldValue === void 0 || fieldValue === null) return false;
+          return String(fieldValue).toLowerCase() === searchValue;
+        });
+        if (match) {
+          return String(match.id);
+        }
+      }
+      console.warn(`[YChart] Could not resolve 'self' value "${selfValue}" to any person in the data`);
+      return null;
+    }
+    /**
+     * Apply the initial 'self' POI if set in options.
+     * This is called once after the first chart render.
+     */
+    applyInitialSelf() {
+      if (this.selfApplied || this.initialSelf === null) {
+        return;
+      }
+      this.selfApplied = true;
+      const personId = this.resolveSelfToPersonId(this.initialSelf);
+      if (personId) {
+        setTimeout(() => {
+          this.setPersonOfInterest(personId);
+        }, 200);
+      }
+    }
+    /**
      * Set the person of interest and filter the chart to show only relevant nodes
      */
     setPersonOfInterest(personId) {
       if (!personId) {
         this.personOfInterest = null;
         this.expandedSiblings.clear();
+        this.supervisorChainExpanded = false;
         this.renderChart();
         this.updatePOIResetButtonAnimation();
         return;
@@ -36583,6 +36682,7 @@ ${formattedData.trim()}
       if (!person) return;
       this.personOfInterest = person;
       this.expandedSiblings.clear();
+      this.supervisorChainExpanded = false;
       this.renderChart();
       this.updatePOIResetButtonAnimation();
       setTimeout(() => {
@@ -36678,13 +36778,22 @@ ${formattedData.trim()}
           addAllDescendants(child.id);
         });
       };
-      supervisoryChain.forEach((id2) => visibleNodeIds.add(id2));
+      visibleNodeIds.add(poiId);
+      if (this.supervisorChainExpanded) {
+        supervisoryChain.forEach((id2) => visibleNodeIds.add(id2));
+      } else {
+        const poiNode2 = dataMap.get(poiId);
+        if (poiNode2 && poiNode2.parentId != null) {
+          visibleNodeIds.add(poiNode2.parentId);
+        }
+      }
       const poiChildren = childrenMap.get(poiId) || [];
       poiChildren.forEach((child) => {
         visibleNodeIds.add(child.id);
         addAllDescendants(child.id);
       });
-      supervisoryChain.forEach((chainNodeId) => {
+      const visibleChainNodes = supervisoryChain.filter((id2) => visibleNodeIds.has(id2));
+      visibleChainNodes.forEach((chainNodeId) => {
         const nodeIdStr = String(chainNodeId);
         if (this.expandedSiblings.has(nodeIdStr)) {
           const chainNode = dataMap.get(chainNodeId);
@@ -36699,8 +36808,21 @@ ${formattedData.trim()}
         }
       });
       const filteredData = virtualData.filter((item) => visibleNodeIds.has(item.id));
+      const poiDirectChildrenIds = new Set((childrenMap.get(poiId) || []).map((child) => child.id));
+      if (!this.supervisorChainExpanded) {
+        const poiNode2 = dataMap.get(poiId);
+        if (poiNode2 && poiNode2.parentId != null) {
+          const directSupervisor = filteredData.find((item) => item.id === poiNode2.parentId);
+          if (directSupervisor) {
+            directSupervisor.parentId = null;
+          }
+        }
+      }
       filteredData.forEach((item) => {
         if (supervisoryChainSet.has(item.id)) {
+          item._expanded = true;
+        }
+        if (poiDirectChildrenIds.has(item.id)) {
           item._expanded = true;
         }
       });
@@ -36748,6 +36870,41 @@ ${formattedData.trim()}
       return siblings.length;
     }
     /**
+     * Get the supervisor chain info for the POI.
+     * Returns { directSupervisor: name, chainLength: number of people above direct supervisor }
+     */
+    getSupervisorChainInfo() {
+      if (!this.personOfInterest) {
+        return { directSupervisor: null, chainLength: 0 };
+      }
+      const poiId = this.personOfInterest.id;
+      const dataMap = new Map(this.truthData.map((item) => [item.id, item]));
+      const poiNode = dataMap.get(poiId);
+      if (!poiNode || poiNode.parentId == null) {
+        return { directSupervisor: null, chainLength: 0 };
+      }
+      const directSupervisor = dataMap.get(poiNode.parentId);
+      if (!directSupervisor) {
+        return { directSupervisor: null, chainLength: 0 };
+      }
+      let chainLength = 0;
+      let currentId = directSupervisor.parentId;
+      while (currentId != null) {
+        chainLength++;
+        const currentNode = dataMap.get(currentId);
+        if (!currentNode) break;
+        currentId = currentNode.parentId;
+      }
+      return { directSupervisor, chainLength };
+    }
+    /**
+     * Toggle the supervisor chain expansion for POI
+     */
+    toggleSupervisorChainExpansion() {
+      this.supervisorChainExpanded = !this.supervisorChainExpanded;
+      this.renderChart();
+    }
+    /**
      * Toggle siblings expansion for a supervisor node
      */
     toggleSiblingsExpansion(nodeId) {
@@ -36766,13 +36923,20 @@ ${formattedData.trim()}
       if (!this.chartContainer) return;
       this.chartContainer.addEventListener("click", (e) => {
         const target = e.target;
-        const expandBtn = target.closest(".expand-siblings-btn");
-        if (expandBtn) {
+        const expandSiblingsBtn = target.closest(".expand-siblings-btn");
+        if (expandSiblingsBtn) {
           e.stopPropagation();
-          const nodeId = expandBtn.getAttribute("data-node-id");
+          const nodeId = expandSiblingsBtn.getAttribute("data-node-id");
           if (nodeId) {
             this.toggleSiblingsExpansion(nodeId);
           }
+          return;
+        }
+        const expandSupervisorBtn = target.closest(".expand-supervisor-chain-btn");
+        if (expandSupervisorBtn) {
+          e.stopPropagation();
+          this.toggleSupervisorChainExpansion();
+          return;
         }
       });
     }
@@ -36829,6 +36993,9 @@ ${formattedData.trim()}
         const { options: userOptions, schema: schemaDef, card: cardDef, data: yamlData } = this.parseFrontMatter(yamlContent);
         const options = __spreadValues(__spreadValues({}, this.defaultOptions), userOptions);
         this.currentOptions = options;
+        if (!this.selfApplied && options.self !== void 0) {
+          this.initialSelf = options.self;
+        }
         let parsedData = load(yamlData);
         this.currentSchema = schemaDef;
         this.cardTemplate = cardDef || null;
@@ -36860,6 +37027,7 @@ ${formattedData.trim()}
               this.applyBackgroundPattern();
             }
             this.initializeHeightSync();
+            this.applyInitialSelf();
           }
         }, 100);
         this.currentView = "hierarchy";
@@ -36879,6 +37047,19 @@ ${formattedData.trim()}
         <span style="color:#716E7B;">${siblingsExpanded ? "−" : "+"}${siblingCount}</span>
       </div>
     ` : "";
+      const isPOI = this.personOfInterest && d.data.id === this.personOfInterest.id;
+      const { directSupervisor, chainLength } = this.getSupervisorChainInfo();
+      const showSupervisorChainBtn = isPOI && directSupervisor !== null;
+      const upArrowIcon = `<svg width="8" height="8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4l-8 8h5v8h6v-8h5l-8-8z" fill="#716E7B"/></svg>`;
+      const supervisorChainTooltip = this.supervisorChainExpanded ? "Collapse Supervisor Chain" : `Expand Supervisor Chain (${chainLength + 1} total)`;
+      const supervisorChainLabel = chainLength > 0 ? `1[${chainLength}]` : "1";
+      const expandSupervisorChainBtn = showSupervisorChainBtn ? `
+      <div class="expand-supervisor-chain-btn" style="position:absolute;top:-8px;left:50%;transform:translateX(-50%);border:1px solid #E4E2E9;border-radius:3px;padding:1px 3px;font-size:8px;background-color:white;display:flex;align-items:center;gap:1px;cursor:pointer;z-index:100;box-shadow:0 1px 2px rgba(0,0,0,0.08);" aria-label="${supervisorChainTooltip}" role="button" tabindex="0">
+        <span class="node-tooltip">${supervisorChainTooltip}</span>
+        <span style="display:flex;align-items:center;">${upArrowIcon}</span>
+        <span style="color:#716E7B;">${this.supervisorChainExpanded ? "−" : "+"}${supervisorChainLabel}</span>
+      </div>
+    ` : "";
       if (this.customTemplate) {
         const customContent = this.customTemplate(d, this.currentSchema);
         return customContent;
@@ -36888,6 +37069,7 @@ ${formattedData.trim()}
         return `
         <div style="width:${d.width}px;height:${d.height}px;padding:var(--yc-spacing-xl);background:var(--yc-color-text-inverse);border:var(--yc-border-width-medium) solid var(--yc-color-secondary);border-radius:var(--yc-border-radius-lg);box-sizing:border-box;position:relative">
           <div class="details-btn" style="position:absolute;top:var(--yc-spacing-xs);right:var(--yc-spacing-xs);width:var(--yc-height-icon-sm);height:var(--yc-height-icon-sm);background:var(--yc-color-gray-300);border-radius:var(--yc-border-radius-full);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);z-index:var(--yc-z-index-overlay);border:var(--yc-border-width-thin) solid var(--yc-color-gray-500);" title="Show Details" aria-label="Show Details" role="button" tabindex="0">ℹ</div>
+          ${expandSupervisorChainBtn}
           ${expandSiblingsBtn}
           ${cardHtml}
         </div>
@@ -36896,6 +37078,7 @@ ${formattedData.trim()}
       return `
       <div style="width:${d.width}px;height:${d.height}px;padding:var(--yc-spacing-xl);background:var(--yc-color-text-inverse);border:var(--yc-border-width-medium) solid var(--yc-color-secondary);border-radius:var(--yc-border-radius-lg);box-sizing:border-box;display:flex;align-items:center;gap:var(--yc-spacing-xl);position:relative">
         <div class="details-btn" style="position:absolute;top:var(--yc-spacing-xs);right:var(--yc-spacing-xs);width:var(--yc-height-icon-sm);height:var(--yc-height-icon-sm);background:var(--yc-color-gray-300);border-radius:var(--yc-border-radius-full);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);z-index:var(--yc-z-index-overlay);border:var(--yc-border-width-thin) solid var(--yc-color-gray-500);" title="Show Details" aria-label="Show Details" role="button" tabindex="0">ℹ</div>
+        ${expandSupervisorChainBtn}
         ${expandSiblingsBtn}
         <div style="flex:1;min-width:0">
           <div style="font-size:var(--yc-font-size-md);font-weight:var(--yc-font-weight-bold);color:var(--yc-color-text-primary);margin-bottom:var(--yc-spacing-xs);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(d.data.name)}</div>

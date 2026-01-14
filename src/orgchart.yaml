@@ -6,6 +6,7 @@ options:
   compactMarginBetween: 40
   compactMarginPair: 35
   neighbourMargin: 25
+  self: null
 schema:
   name: string | required
   title: string | required
