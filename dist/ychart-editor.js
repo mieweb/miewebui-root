@@ -36682,6 +36682,7 @@ ${formattedData.trim()}
       if (!person) return;
       this.personOfInterest = person;
       this.expandedSiblings.clear();
+      this.expandedSiblings.add(String(person.id));
       this.supervisorChainExpanded = false;
       this.renderChart();
       this.updatePOIResetButtonAnimation();

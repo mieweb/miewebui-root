@@ -3746,6 +3746,7 @@ class YChartEditor {
 
     this.personOfInterest = person;
     this.expandedSiblings.clear(); // Clear expanded siblings when POI changes
+    this.expandedSiblings.add(String(person.id)); // Expand POI's siblings by default
     this.supervisorChainExpanded = false; // Collapse supervisor chain by default
     this.renderChart();
     this.updatePOIResetButtonAnimation();
