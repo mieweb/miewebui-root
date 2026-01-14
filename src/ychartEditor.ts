@@ -115,6 +115,7 @@ class YChartEditor {
   // Person of Interest feature
   private personOfInterest: any = null; // Currently selected person
   private poiSelector: HTMLElement | null = null;
+  private poiClearBtn: HTMLButtonElement | null = null;
   private truthData: any[] = []; // Complete YAML data (source of truth)
   private expandedSiblings: Set<string> = new Set(); // Track supervisor nodes with expanded siblings
   
@@ -885,6 +886,9 @@ class YChartEditor {
       this.resetToRoot();
     });
 
+    // Store reference to clear button for animation updates
+    this.poiClearBtn = clearBtn;
+
     selectorWrapper.appendChild(focusIcon);
     selectorWrapper.appendChild(select);
     selectorWrapper.appendChild(clearBtn);
@@ -904,6 +908,26 @@ class YChartEditor {
       const rootId = String(rootNode.id);
       this.setPersonOfInterest(rootId);
       this.updatePOISelectorValue(rootId);
+    }
+  }
+
+  /**
+   * Update the reset button animation state based on POI status
+   */
+  private updatePOIResetButtonAnimation(): void {
+    if (!this.poiClearBtn) return;
+
+    // Find root node
+    const rootNode = this.truthData.find(item => item.parentId === null || item.parentId === undefined);
+    const isViewingRoot = !this.personOfInterest || 
+                          (rootNode && String(this.personOfInterest.id) === String(rootNode.id));
+
+    if (isViewingRoot) {
+      // Remove animation when viewing root
+      this.poiClearBtn.style.animation = 'none';
+    } else {
+      // Add pulse animation when viewing non-root node
+      this.poiClearBtn.style.animation = 'pulseGlow 2s ease-in-out infinite';
     }
   }
 
@@ -3565,6 +3589,7 @@ class YChartEditor {
       this.personOfInterest = null;
       this.expandedSiblings.clear(); // Clear expanded siblings when POI changes
       this.renderChart();
+      this.updatePOIResetButtonAnimation();
       return;
     }
 
@@ -3575,6 +3600,7 @@ class YChartEditor {
     this.personOfInterest = person;
     this.expandedSiblings.clear(); // Clear expanded siblings when POI changes
     this.renderChart();
+    this.updatePOIResetButtonAnimation();
     
     // Center on the POI and select it after chart renders
     setTimeout(() => {

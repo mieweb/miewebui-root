@@ -384,6 +384,17 @@ header {
   10%, 90% { opacity: var(--yc-opacity-full); }
 }
 
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(102, 126, 234, 0);
+    transform: scale(1.05);
+  }
+}
+
 #node-details {
   position: absolute;
   top: var(--yc-spacing-3xl);
