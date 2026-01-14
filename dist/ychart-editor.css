@@ -12599,10 +12599,12 @@ header h1, header .h1 {
 }
 /* Custom tooltip styles for expand buttons */
 .expand-siblings-btn,
+.expand-supervisor-chain-btn,
 .ychart-expand-btn-wrapper {
   position: relative;
 }
 .expand-siblings-btn .node-tooltip,
+.expand-supervisor-chain-btn .node-tooltip,
 .ychart-expand-btn-wrapper .node-tooltip {
   position: absolute;
   bottom: 100%;
@@ -12622,6 +12624,7 @@ header h1, header .h1 {
   margin-bottom: var(--yc-spacing-sm);
 }
 .expand-siblings-btn:hover .node-tooltip,
+.expand-supervisor-chain-btn:hover .node-tooltip,
 .ychart-expand-btn-wrapper:hover .node-tooltip {
   opacity: 1;
   transform: translateX(-50%) scale(1);
