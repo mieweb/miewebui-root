@@ -1,5 +1,5 @@
 {
-  "name": "@mieweb/ychart-editor",
+  "name": "@mieweb/ychart",
   "version": "1.0.0",
   "description": "A flexible organizational chart editor with YAML-based data management",
   "type": "module",
@@ -17,6 +17,13 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "keywords": [
     "org-chart",
     "organizational-chart",
