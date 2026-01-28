@@ -4045,6 +4045,49 @@ class YChartEditor {
   }
 
   /**
+   * Check if a node is the topmost visible supervisor in the current view.
+   * This is always the direct supervisor of POI (stays static regardless of expansion state).
+   */
+  private isTopmostVisibleSupervisor(nodeId: any): boolean {
+    if (!this.personOfInterest) return false;
+
+    const poiId = this.personOfInterest.id;
+    const dataMap = new Map(this.truthData.map(item => [item.id, item]));
+    const poiNode = dataMap.get(poiId);
+
+    // If POI has no parent, there's no supervisor to show button on
+    if (!poiNode || poiNode.parentId == null) return false;
+
+    // Always show on the direct supervisor of POI (stays static)
+    return nodeId === poiNode.parentId;
+  }
+
+  /**
+   * Get the count of hidden supervisors above a given node.
+   * Used to show how many nodes will be revealed when expanding.
+   */
+  private getHiddenSupervisorCount(nodeId: any): number {
+    if (!this.personOfInterest) return 0;
+
+    const dataMap = new Map(this.truthData.map(item => [item.id, item]));
+    const node = dataMap.get(nodeId);
+
+    if (!node) return 0;
+
+    // Count nodes above this node up to the root
+    let count = 0;
+    let currentId = node.parentId;
+    while (currentId != null) {
+      count++;
+      const currentNode = dataMap.get(currentId);
+      if (!currentNode) break;
+      currentId = currentNode.parentId;
+    }
+
+    return count;
+  }
+
+  /**
    * Toggle the supervisor chain expansion for POI
    */
   private toggleSupervisorChainExpansion(): void {
@@ -4281,24 +4324,26 @@ class YChartEditor {
       </div>
     ` : '';
 
-    // Generate expand supervisor chain button if this is the POI node and has supervisors
-    const isPOI = this.personOfInterest && d.data.id === this.personOfInterest.id;
-    const { directSupervisor, chainLength } = this.getSupervisorChainInfo();
-    const showSupervisorChainBtn = isPOI && directSupervisor !== null;
+    // Generate expand supervisor chain button - shown on the direct supervisor of POI (stays static)
+    // Floats above the node to indicate there are more supervisors in the chain
+    const { directSupervisor } = this.getSupervisorChainInfo();
+    const isTopmostVisibleSupervisor = this.isTopmostVisibleSupervisor(d.data.id);
+    const showSupervisorChainBtn = isTopmostVisibleSupervisor && directSupervisor !== null;
     
-    // Up arrow icon for supervisor chain (smaller)
-    const upArrowIcon = `<svg width="8" height="8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4l-8 8h5v8h6v-8h5l-8-8z" fill="#716E7B"/></svg>`;
+    // Up arrow icon for supervisor chain
+    const upArrowIcon = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4l-8 8h5v8h6v-8h5l-8-8z" fill="#716E7B"/></svg>`;
     
-    // Format: "1[N]" where 1 is direct supervisor, N is count above
+    // Format: show count of hidden supervisors above this node
+    const hiddenSupervisorCount = this.getHiddenSupervisorCount(d.data.id);
     const supervisorChainTooltip = this.supervisorChainExpanded 
       ? 'Collapse Supervisor Chain' 
-      : `Expand Supervisor Chain (${chainLength + 1} total)`;
-    const supervisorChainLabel = chainLength > 0 ? `1[${chainLength}]` : '1';
+      : `Expand Supervisor Chain (${hiddenSupervisorCount} above)`;
+    const supervisorChainLabel = this.supervisorChainExpanded ? '−' : `+${hiddenSupervisorCount}`;
     const expandSupervisorChainBtn = showSupervisorChainBtn ? `
-      <div class="expand-supervisor-chain-btn" style="position:absolute;top:-8px;left:50%;transform:translateX(-50%);border:1px solid #E4E2E9;border-radius:3px;padding:1px 3px;font-size:8px;background-color:white;display:flex;align-items:center;gap:1px;cursor:pointer;z-index:100;box-shadow:0 1px 2px rgba(0,0,0,0.08);" aria-label="${supervisorChainTooltip}" role="button" tabindex="0">
+      <div class="expand-supervisor-chain-btn" style="position:absolute;top:-28px;left:50%;transform:translateX(-50%);border:1px solid #E4E2E9;border-radius:4px;padding:3px 8px;font-size:10px;background-color:white;display:flex;align-items:center;gap:3px;cursor:pointer;z-index:100;box-shadow:0 2px 4px rgba(0,0,0,0.12);" aria-label="${supervisorChainTooltip}" role="button" tabindex="0">
         <span class="node-tooltip">${supervisorChainTooltip}</span>
         <span style="display:flex;align-items:center;">${upArrowIcon}</span>
-        <span style="color:#716E7B;">${this.supervisorChainExpanded ? '−' : '+'}${supervisorChainLabel}</span>
+        <span style="color:#716E7B;font-weight:500;">${supervisorChainLabel}</span>
       </div>
     ` : '';
 
