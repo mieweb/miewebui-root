@@ -85,17 +85,19 @@ pnpm run build
 npm publish --access public
 ```
 
-Or using the token directly:
+Or using the token from `.env` file:
 ```bash
-# Set token for this session
-export NPM_TOKEN="your-token-here"
+# Load token from .env file
+source .env
 
 # Configure npm to use the token
-echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> ~/.npmrc
+npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
 
 # Publish
 npm publish --access public
 ```
+
+> 💡 **Tip:** The `.env` file in the project root contains the npm token. It's gitignored for security.
 
 ## Package Configuration
 

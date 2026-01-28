@@ -18,6 +18,10 @@ A beautiful, interactive organizational chart editor with YAML input powered by 
 - 🖱️ **Draggable Nodes** - Rearrange nodes by dragging them
 - 💾 **Position Persistence** - Node positions saved in browser localStorage
 - 🔀 **Dual View Modes** - Switch between hierarchical and force-directed graph layouts
+- 👤 **Person of Interest (POI)** - Focus view on a specific person with their chain of command
+- 🔗 **Supervisor Resolution** - Auto-resolve parent relationships from supervisor names
+- 🎭 **Custom Templates** - Define node appearance via YAML or JavaScript
+- 🌐 **CDN Ready** - Use directly from jsDelivr or unpkg
 
 ## Getting Started
 
@@ -581,6 +585,108 @@ watch(() => props.data, (newData) => {
 - Chrome/Edge (latest)
 - Firefox (latest)
 - Safari (latest)
+
+## Programmatic API (Fluent Interface)
+
+YChartEditor provides a fluent API for programmatic configuration:
+
+### Basic Initialization
+
+```javascript
+const editor = new YChartEditor()
+  .initView('container', yamlData);
+```
+
+### Person of Interest (POI) - Focus on a Specific Person
+
+```javascript
+// Focus on a person by email, name, or ID
+editor.self('john.doe@company.com');
+editor.self('John Doe');
+editor.self(5);
+
+// Clear POI
+editor.self(null);
+```
+
+When a POI is set, the chart shows:
+- The selected person
+- Their direct reports (and descendants)
+- Their supervisory chain to the root
+- Collapsible siblings at each level
+
+### Supervisor Field Configuration
+
+Configure which fields are used for automatic parent resolution:
+
+```javascript
+// Use 'manager' field instead of default 'supervisor'
+editor.supervisorLookup('manager');
+
+// Check multiple fields in order
+editor.supervisorLookup(['supervisor', 'manager', 'reports_to']);
+
+// Use a custom name field for matching
+editor.supervisorLookup('manager', 'full_name');
+```
+
+Default supervisor fields checked: `supervisor`, `reports`, `reports_to`, `manager`, `leader`, `parent`
+
+### Background Patterns
+
+```javascript
+// Add dotted or dashed background pattern
+editor.bgPatternStyle('dotted');
+editor.bgPatternStyle('dashed');
+```
+
+### Action Button Position
+
+```javascript
+// Position: 'topleft' | 'topright' | 'bottomleft' | 'bottomright'
+// Orientation: 'horizontal' | 'vertical'
+editor.actionBtnPos('bottomleft', 'horizontal');
+editor.actionBtnPos('topright', 'vertical');
+```
+
+### Custom Node Templates
+
+```javascript
+editor.template((d, schema) => `
+  <div style="width:${d.width}px;height:${d.height}px;padding:16px;background:white;border-radius:8px;">
+    <h3>${d.data.name}</h3>
+    <p>${d.data.title || ''}</p>
+  </div>
+`);
+```
+
+### Chaining Example
+
+```javascript
+new YChartEditor({ nodeWidth: 250, nodeHeight: 120 })
+  .initView('container', yamlData)
+  .bgPatternStyle('dotted')
+  .actionBtnPos('bottomright', 'horizontal')
+  .supervisorLookup(['manager', 'supervisor'])
+  .self('jane.smith@company.com')
+  .template((d, schema) => `<div>...</div>`);
+```
+
+### YAML Front Matter: `self` Option
+
+You can also set POI via YAML front matter:
+
+```yaml
+---
+options:
+  nodeWidth: 220
+  nodeHeight: 110
+  self: jane.smith@company.com  # or name, or ID
+---
+- id: 1
+  name: Jane Smith
+  email: jane.smith@company.com
+```
 
 ## License
 
