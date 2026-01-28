@@ -41,6 +41,52 @@ pnpm build
 
 ## Usage as a Library (NPM/CDN)
 
+### Installation
+
+```bash
+# npm
+npm install @mieweb/ychart
+
+# pnpm
+pnpm add @mieweb/ychart
+
+# yarn
+yarn add @mieweb/ychart
+```
+
+### CDN Usage
+
+You can use YChart directly from a CDN without any build tools:
+
+**jsDelivr (Recommended)**
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mieweb/ychart/dist/ychart.css">
+<script src="https://cdn.jsdelivr.net/npm/@mieweb/ychart/dist/ychart-editor.js"></script>
+```
+
+**unpkg**
+```html
+<link rel="stylesheet" href="https://unpkg.com/@mieweb/ychart/dist/ychart.css">
+<script src="https://unpkg.com/@mieweb/ychart/dist/ychart-editor.js"></script>
+```
+
+**Specific version (recommended for production)**
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mieweb/ychart@1.0.1/dist/ychart.css">
+<script src="https://cdn.jsdelivr.net/npm/@mieweb/ychart@1.0.1/dist/ychart-editor.js"></script>
+```
+
+### ES Module Import
+
+```javascript
+import { YChartEditor } from '@mieweb/ychart';
+import '@mieweb/ychart/style.css';
+
+const editor = new YChartEditor().initView('container', yamlData);
+```
+
+### Loading Styles
+
 When using YChart as a library, you have two options for loading styles:
 
 ### Option 1: JS-Only (Automatic CSS Injection)
@@ -48,7 +94,7 @@ When using YChart as a library, you have two options for loading styles:
 The JS file includes CSS and auto-injects it. Simple but may cause a brief flash of unstyled content (FOUC):
 
 ```html
-<script src="https://cdn.example.com/ychart-editor.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mieweb/ychart/dist/ychart-editor.js"></script>
 ```
 
 ### Option 2: Separate CSS (Recommended - No FOUC)
@@ -57,11 +103,11 @@ Load the CSS file in `<head>` for instant styling, then load JS:
 
 ```html
 <head>
-  <link rel="stylesheet" href="https://cdn.example.com/ychart-editor.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mieweb/ychart/dist/ychart.css">
 </head>
 <body>
   <div id="container"></div>
-  <script src="https://cdn.example.com/ychart-editor.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mieweb/ychart/dist/ychart-editor.js"></script>
 </body>
 ```
 
@@ -81,7 +127,7 @@ For the best user experience, add critical inline CSS to prevent any flash while
     }
     #container { height: 100%; overflow: hidden; }
   </style>
-  <link rel="stylesheet" href="https://cdn.example.com/ychart-editor.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mieweb/ychart/dist/ychart.css">
 </head>
 ```
 
@@ -91,11 +137,11 @@ For the best user experience, add critical inline CSS to prevent any flash while
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="./dist/ychart-editor.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mieweb/ychart/dist/ychart.css">
 </head>
 <body>
   <div id="container" style="width: 100%; height: 600px;"></div>
-  <script src="./dist/ychart-editor.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mieweb/ychart/dist/ychart-editor.js"></script>
   <script>
     const yaml = `
 - id: 1
