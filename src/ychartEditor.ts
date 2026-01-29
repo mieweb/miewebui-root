@@ -998,18 +998,24 @@ class YChartEditor {
     }
 
     const attrs = this.orgChart.getChartState();
-    const allNodes = attrs.allNodes || [];
+    
+    // Always search from truthData (full data), not the cropped chart data
+    // This ensures search works correctly even when viewing a POI
+    const allData = this.truthData.length > 0 ? this.truthData : (attrs.data || []);
 
     // Perform search
     const matches: { node: any; score: number; matchedField: string }[] = [];
 
-    allNodes.forEach((node: any) => {
+    allData.forEach((item: any) => {
+      // Wrap the data item to look like a node for compatibility with displaySearchResults
+      const node = { data: item };
+      
       if (field === '__all__') {
         // Search across all fields
         let bestScore = 0;
         let bestField = '';
         
-        Object.entries(node.data).forEach(([key, value]) => {
+        Object.entries(item).forEach(([key, value]) => {
           if (key.startsWith('_') || value === null || value === undefined) return;
           
           const strValue = String(value).toLowerCase();
@@ -1026,7 +1032,7 @@ class YChartEditor {
         }
       } else {
         // Search in specific field
-        const fieldValue = node.data[field];
+        const fieldValue = item[field];
         if (fieldValue !== null && fieldValue !== undefined) {
           const score = this.fuzzyMatch(trimmedQuery, String(fieldValue).toLowerCase());
           if (score > 0) {
