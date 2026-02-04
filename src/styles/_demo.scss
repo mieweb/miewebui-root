@@ -1,0 +1,187 @@
+// Demo Page Styles - NOT included in the library build
+// These styles are only for the demo/development page (index.html)
+// and should NOT affect production integrations.
+
+@use 'variables' as *;
+
+// Global resets - DEMO ONLY
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--yc-font-family-base);
+  background: var(--yc-color-gray-100);
+  overflow: hidden;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+// Demo page header
+header {
+  background: var(--yc-gradient-primary);
+  color: var(--yc-color-text-inverse);
+  padding: var(--yc-spacing-5xl) var(--yc-spacing-6xl);
+  box-shadow: var(--yc-shadow-md);
+  z-index: var(--yc-z-index-overlay);
+
+  h1 {
+    font-size: var(--yc-font-size-3xl);
+    font-weight: var(--yc-font-weight-bold);
+    margin-bottom: var(--yc-spacing-md);
+  }
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--yc-spacing-md);
+}
+
+.git-info {
+  display: flex;
+  align-items: center;
+  gap: var(--yc-spacing-3xl);
+  font-size: var(--yc-font-size-sm);
+
+  a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: var(--yc-spacing-xs);
+    transition: color var(--yc-transition-fast);
+
+    &:hover {
+      color: var(--yc-color-text-inverse);
+      text-decoration: underline;
+    }
+  }
+
+  svg {
+    width: var(--yc-height-icon-sm);
+    height: var(--yc-height-icon-sm);
+    fill: currentColor;
+  }
+}
+
+.commit-hash {
+  font-family: var(--yc-font-family-mono);
+  background: rgba(255, 255, 255, 0.15);
+  padding: var(--yc-spacing-xs) var(--yc-spacing-md);
+  border-radius: var(--yc-border-radius-sm);
+}
+
+.controls {
+  display: flex;
+  gap: var(--yc-spacing-md);
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: var(--yc-spacing-md) var(--yc-spacing-3xl);
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--yc-color-text-inverse);
+  border: var(--yc-border-width-thin) solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--yc-border-radius-md);
+  cursor: pointer;
+  font-size: var(--yc-font-size-base);
+  font-weight: var(--yc-font-weight-medium);
+  transition: all var(--yc-transition-fast);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+  }
+}
+
+#error {
+  background: var(--yc-color-error-light);
+  color: var(--yc-color-error);
+  padding: var(--yc-spacing-3xl) var(--yc-spacing-6xl);
+  border-left: var(--yc-border-width-heavy) solid var(--yc-color-error);
+  margin: 0;
+  font-weight: var(--yc-font-weight-medium);
+}
+
+// Demo container
+#container {
+  flex: 1;
+  overflow: hidden;
+}
+
+// Examples selector in header
+.examples-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--yc-spacing-3xl);
+
+  label {
+    font-size: var(--yc-font-size-sm);
+    opacity: 0.9;
+  }
+
+  select {
+    padding: var(--yc-spacing-md) var(--yc-spacing-3xl);
+    border-radius: var(--yc-border-radius-md);
+    border: var(--yc-border-width-thin) solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--yc-color-text-inverse);
+    font-size: var(--yc-font-size-sm);
+    cursor: pointer;
+    transition: all var(--yc-transition-fast);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
+    }
+
+    option {
+      background: var(--yc-color-gray-700);
+      color: var(--yc-color-text-inverse);
+    }
+  }
+}
+
+// Responsive design for demo page
+@media (max-width: 768px) {
+  header h1 {
+    font-size: var(--yc-font-size-3xl);
+  }
+  
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+// Demo scrollbar styling
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--yc-color-gray-300);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--yc-color-gray-500);
+  border-radius: var(--yc-border-radius-sm);
+
+  &:hover {
+    background: var(--yc-color-gray-600);
+  }
+}

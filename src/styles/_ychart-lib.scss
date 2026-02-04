@@ -1,0 +1,501 @@
+// YChart Library Styles - Scoped to .ychart-container
+// These styles are for the YChart library itself and are scoped
+// to avoid interfering with host page styles.
+
+@use 'variables' as *;
+
+// All library styles are scoped under .ychart-container
+.ychart-container {
+  // Reset only within the container
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  // Base container styles
+  font-family: var(--yc-font-family-base);
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  // Chart container
+  .ychart-chart-wrapper {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+  }
+
+  .ychart-editor-panel {
+    display: flex;
+    flex-direction: column;
+    background: var(--yc-color-bg-primary);
+    overflow: hidden;
+    border-right: var(--yc-border-width-thin) solid var(--yc-color-gray-400);
+  }
+
+  .ychart-chart-panel {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+  }
+
+  // Editor styles
+  .ychart-editor {
+    flex: 1;
+    overflow: auto;
+
+    .cm-editor {
+      height: 100%;
+      font-size: var(--yc-font-size-md);
+
+      .cm-lintRange-error {
+        background-color: var(--yc-color-error-red-bg);
+        border-bottom: var(--yc-border-width-medium) wavy var(--yc-color-error-red);
+      }
+
+      .cm-lintRange-warning {
+        background-color: var(--yc-color-warning-bg);
+        border-bottom: var(--yc-border-width-medium) wavy var(--yc-color-warning);
+      }
+
+      .cm-gutter-lint {
+        width: var(--yc-spacing-xl);
+      }
+
+      .cm-lint-marker-error {
+        content: "●";
+        color: var(--yc-color-error-red);
+      }
+
+      .cm-lint-marker-warning {
+        content: "●";
+        color: var(--yc-color-warning);
+      }
+
+      .cm-tooltip-lint {
+        background-color: var(--yc-color-editor-bg);
+        border: var(--yc-border-width-thin) solid var(--yc-color-gray-700);
+        border-radius: var(--yc-border-radius-sm);
+        padding: var(--yc-spacing-xs) var(--yc-spacing-md);
+        font-size: var(--yc-font-size-base);
+        max-width: var(--yc-width-detail-panel-max);
+      }
+
+      .cm-diagnostic {
+        padding: var(--yc-spacing-xs) var(--yc-spacing-md);
+        border-left: var(--yc-border-width-thick) solid;
+        margin: var(--yc-spacing-xxs) 0;
+      }
+
+      .cm-diagnostic-error {
+        border-left-color: var(--yc-color-error-red);
+        background-color: var(--yc-color-error-red-bg);
+      }
+
+      .cm-diagnostic-warning {
+        border-left-color: var(--yc-color-warning);
+        background-color: var(--yc-color-warning-bg);
+      }
+    }
+  }
+
+  // Chart area
+  .ychart-chart {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    background: var(--yc-gradient-background);
+
+    // Safari HTML overlay for foreignObject workaround
+    .html-overlay-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: var(--yc-z-index-overlay);
+
+      .overlay-node {
+        pointer-events: auto;
+        background: transparent;
+        border-radius: var(--yc-border-radius-lg);
+      }
+
+      .overlay-content {
+        user-select: text;
+        -webkit-user-select: text;
+        cursor: text;
+
+        .details-btn,
+        button,
+        a {
+          cursor: pointer;
+        }
+      }
+
+      .overlay-button {
+        z-index: var(--yc-z-index-overlay-button);
+
+        &:hover {
+          opacity: var(--yc-opacity-hover);
+        }
+      }
+    }
+
+    svg {
+      display: block;
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+
+      circle {
+        cursor: pointer;
+        transition: all var(--yc-transition-fast);
+
+        &:hover {
+          fill: var(--yc-color-secondary-hover);
+          r: 45;
+          stroke-width: var(--yc-border-width-heavy);
+        }
+      }
+
+      text {
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      g {
+        cursor: move;
+      }
+
+      @supports (-webkit-touch-callout: none) {
+        foreignObject {
+          overflow: visible !important;
+        }
+      }
+
+      .node-foreign-object {
+        overflow: visible;
+        
+        &:not([data-height-synced]) {
+          height: auto !important;
+        }
+      }
+
+      .node-foreign-object-div {
+        position: relative;
+        user-select: text;
+        -webkit-user-select: text;
+        cursor: text;
+        
+        &:not([data-height-synced]) {
+          height: auto !important;
+          min-height: auto !important;
+          
+          > div {
+            height: auto !important;
+            min-height: auto !important;
+          }
+        }
+
+        .details-btn,
+        button,
+        a {
+          cursor: pointer;
+        }
+      }
+    }
+
+    // Draggable node styles
+    .node-group {
+      cursor: move;
+      transition: opacity var(--yc-transition-fast);
+
+      &.dragging {
+        opacity: var(--yc-opacity-dragging);
+        cursor: grabbing !important;
+      }
+
+      &:hover {
+        opacity: var(--yc-opacity-node-hover);
+
+        rect,
+        foreignObject {
+          filter: brightness(1.05);
+        }
+      }
+
+      rect,
+      foreignObject {
+        transition: box-shadow var(--yc-transition-fast);
+      }
+    }
+  }
+
+  // Node details panel
+  .ychart-node-details {
+    position: absolute;
+    top: var(--yc-spacing-3xl);
+    right: var(--yc-spacing-3xl);
+    background: var(--yc-color-bg-primary);
+    border: var(--yc-border-width-thin) solid var(--yc-color-gray-400);
+    border-radius: var(--yc-border-radius-lg);
+    box-shadow: var(--yc-shadow-3xl);
+    max-width: var(--yc-width-detail-panel-max);
+    z-index: var(--yc-z-index-detail-panel);
+    max-height: calc(100vh - 12rem);
+    overflow-y: auto;
+
+    .node-details-content {
+      padding: var(--yc-spacing-5xl);
+    }
+
+    h3 {
+      color: var(--yc-color-text-primary);
+      font-size: var(--yc-font-size-3xl);
+      margin-bottom: var(--yc-spacing-3xl);
+      padding-bottom: var(--yc-spacing-xl);
+      border-bottom: var(--yc-border-width-medium) solid var(--yc-color-primary);
+    }
+
+    .details-grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--yc-spacing-xl);
+      margin-bottom: var(--yc-spacing-5xl);
+    }
+
+    .detail-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: var(--yc-spacing-md);
+      align-items: start;
+    }
+
+    .detail-label {
+      color: var(--yc-color-text-secondary);
+      font-size: var(--yc-font-size-md);
+      font-weight: var(--yc-font-weight-semibold);
+      text-transform: capitalize;
+    }
+
+    .detail-value {
+      color: var(--yc-color-text-primary);
+      font-size: var(--yc-font-size-lg);
+      word-break: break-word;
+    }
+
+    .btn-close {
+      width: 100%;
+      background: var(--yc-color-primary);
+      color: var(--yc-color-text-inverse);
+      border: none;
+      padding: var(--yc-spacing-xl);
+      border-radius: var(--yc-border-radius-md);
+      font-size: var(--yc-font-size-lg);
+      font-weight: var(--yc-font-weight-semibold);
+      cursor: pointer;
+      transition: all var(--yc-transition-normal);
+
+      &:hover {
+        background: var(--yc-color-primary-dark);
+        transform: var(--yc-transform-button-lift-sm);
+        box-shadow: var(--yc-shadow-button);
+      }
+
+      &:active {
+        transform: var(--yc-transform-button-active);
+      }
+    }
+
+    .btn-reorder {
+      transition: all var(--yc-transition-normal);
+
+      &:hover {
+        background: var(--yc-color-primary-dark) !important;
+        transform: var(--yc-transform-button-lift-sm);
+        box-shadow: var(--yc-shadow-button);
+      }
+
+      &:active {
+        transform: var(--yc-transform-button-active);
+      }
+    }
+
+    p {
+      margin: var(--yc-spacing-md) 0;
+      color: var(--yc-color-text-secondary);
+      font-size: var(--yc-font-size-lg);
+    }
+
+    strong {
+      color: var(--yc-color-text-primary);
+      font-weight: var(--yc-font-weight-semibold);
+    }
+
+    a {
+      color: var(--yc-color-primary);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  // Selected node styling
+  .node.selected .node-rect {
+    stroke: var(--yc-color-success) !important;
+    stroke-width: var(--yc-border-width-heavy) !important;
+    filter: drop-shadow(var(--yc-shadow-node-selected));
+  }
+
+  // Focus outline for accessibility
+  .svg-chart-container:focus {
+    outline: var(--yc-border-width-medium) solid var(--yc-color-success);
+    outline-offset: calc(-1 * var(--yc-border-width-medium));
+  }
+
+  // Custom tooltip styles for expand buttons
+  .expand-siblings-btn,
+  .expand-supervisor-chain-btn,
+  .ychart-expand-btn-wrapper {
+    position: relative;
+
+    .node-tooltip {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%) scale(0.8);
+      background: var(--yc-color-overlay-dark);
+      color: white;
+      padding: var(--yc-spacing-sm) var(--yc-spacing-xl);
+      border-radius: var(--yc-border-radius-md);
+      font-size: var(--yc-font-size-sm);
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: all var(--yc-transition-fast) var(--yc-transition-bounce);
+      z-index: var(--yc-z-index-search-popup);
+      box-shadow: var(--yc-shadow-md);
+      margin-bottom: var(--yc-spacing-sm);
+    }
+
+    &:hover .node-tooltip {
+      opacity: 1;
+      transform: translateX(-50%) scale(1);
+    }
+  }
+
+  // Toolbar styles
+  .ychart-toolbar {
+    display: flex;
+    gap: var(--yc-spacing-sm);
+    background: var(--yc-color-bg-primary);
+    border: var(--yc-border-width-thin) solid var(--yc-color-gray-400);
+    border-radius: var(--yc-border-radius-md);
+    padding: var(--yc-spacing-sm);
+    box-shadow: var(--yc-shadow-md);
+    z-index: var(--yc-z-index-toolbar);
+  }
+
+  // Search components
+  .ychart-search-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--yc-spacing-sm);
+    background: var(--yc-color-bg-primary);
+    border: var(--yc-border-width-thin) solid var(--yc-color-gray-400);
+    border-radius: var(--yc-border-radius-md);
+    padding: var(--yc-spacing-sm) var(--yc-spacing-md);
+  }
+
+  .ychart-search-input {
+    border: none;
+    outline: none;
+    font-size: var(--yc-font-size-base);
+    background: transparent;
+    color: var(--yc-color-text-primary);
+    
+    &::placeholder {
+      color: var(--yc-color-text-muted);
+    }
+  }
+
+  .ychart-search-results {
+    position: absolute;
+    background: var(--yc-color-bg-primary);
+    border: var(--yc-border-width-thin) solid var(--yc-color-gray-400);
+    border-radius: var(--yc-border-radius-md);
+    box-shadow: var(--yc-shadow-lg);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: var(--yc-z-index-search-popup);
+  }
+
+  // POI Selector
+  .ychart-poi-selector {
+    display: flex;
+    align-items: center;
+    gap: var(--yc-spacing-sm);
+  }
+
+  // Error banner
+  .ychart-error-banner {
+    background: var(--yc-color-error-bg);
+    border: var(--yc-border-width-thin) solid var(--yc-color-error-border);
+    border-radius: var(--yc-border-radius-md);
+    padding: var(--yc-spacing-sm) var(--yc-spacing-md);
+    color: var(--yc-color-error-red-text);
+    font-size: var(--yc-font-size-sm);
+  }
+
+  // Editor header
+  .ychart-editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--yc-spacing-md) var(--yc-spacing-lg);
+    background: var(--yc-color-bg-tertiary);
+    border-bottom: var(--yc-border-width-thin) solid var(--yc-color-gray-400);
+  }
+
+  // Toggle button for editor panel
+  .ychart-toggle-editor {
+    position: absolute;
+    background: var(--yc-color-bg-primary);
+    border: var(--yc-border-width-thin) solid var(--yc-color-gray-400);
+    border-radius: var(--yc-border-radius-sm);
+    padding: var(--yc-spacing-sm);
+    cursor: pointer;
+    z-index: var(--yc-z-index-toolbar);
+    
+    &:hover {
+      background: var(--yc-color-gray-200);
+    }
+  }
+}
+
+// Animations - defined at root level since keyframes can't be scoped
+@keyframes ychart-fadeInOut {
+  0%, 100% { opacity: 0; }
+  10%, 90% { opacity: 1; }
+}
+
+@keyframes ychart-pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(102, 126, 234, 0);
+    transform: scale(1.05);
+  }
+}

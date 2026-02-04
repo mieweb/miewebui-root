@@ -214,8 +214,9 @@ class YChartEditor {
   private createLayout(): void {
     if (!this.viewContainer) return;
 
-    // Clear container
+    // Clear container and add scoping class
     this.viewContainer.innerHTML = '';
+    this.viewContainer.classList.add('ychart-container');
     this.viewContainer.style.cssText = 'display:flex;width:100%;height:100%;position:relative;';
 
     // Create chart container (now on left side)
