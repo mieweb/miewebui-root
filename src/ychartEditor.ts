@@ -930,16 +930,31 @@ class YChartEditor {
   }
 
   /**
-   * Reset the POI to the root node
+   * Reset the POI - clears the person of interest to show the full org chart.
+   * In multi-root scenarios, this shows all root nodes.
    */
   private resetToRoot(): void {
-    // Find root node from truth data
-    const rootNode = this.truthData.find(item => item.parentId === null || item.parentId === undefined);
+    // Clear POI to show full org chart (all roots in multi-root scenarios)
+    this.personOfInterest = null;
+    this.expandedSiblings.clear();
+    this.supervisorChainExpanded = false;
     
-    if (rootNode) {
-      const rootId = String(rootNode.id);
-      this.setPersonOfInterest(rootId);
-      this.updatePOISelectorValue(rootId);
+    // Update the POI selector to show "Select Person..."
+    if (this.poiSelector) {
+      const selectEl = this.poiSelector.querySelector('select') as HTMLSelectElement;
+      if (selectEl) {
+        selectEl.value = '';
+      }
+    }
+    
+    // Re-render chart with full data
+    this.renderChart();
+    
+    // Fit the chart to show everything
+    if (this.orgChart) {
+      setTimeout(() => {
+        this.orgChart.fit();
+      }, 100);
     }
   }
 
@@ -949,13 +964,11 @@ class YChartEditor {
   private updatePOIResetButtonAnimation(): void {
     if (!this.poiClearBtn) return;
 
-    // Find root node
-    const rootNode = this.truthData.find(item => item.parentId === null || item.parentId === undefined);
-    const isViewingRoot = !this.personOfInterest || 
-                          (rootNode && String(this.personOfInterest.id) === String(rootNode.id));
+    // Animation should pulse when any POI is set (chart is filtered)
+    const isViewingAll = !this.personOfInterest;
 
-    if (isViewingRoot) {
-      // Remove animation when viewing root
+    if (isViewingAll) {
+      // Remove animation when viewing full org chart
       this.poiClearBtn.style.animation = 'none';
     } else {
       // Add pulse animation when viewing non-root node
@@ -2762,26 +2775,13 @@ class YChartEditor {
           }
           
           if (usesNameFormat) {
-            // Validate name/supervisor format
-            const names = new Set(parsed.map((item: any) => item[this.nameField]));
-            
-            // Helper to get supervisor value from any of the alias fields
-            const getSupervisor = (item: any): string | undefined => {
-              for (const field of this.supervisorFields) {
-                if (item[field]) return item[field];
-              }
-              return undefined;
-            };
-            
             // Multiple root nodes are supported - the chart creates a virtual root to contain them
             // Root nodes are nodes with no supervisor OR supervisor that doesn't match any name
             // (e.g., "Board of Directors" is a valid supervisor for the CEO even though
             // there's no person with that name in the org)
-            
+            // 
             // Note: We don't flag "invalid supervisor" errors for name-based format
             // because a supervisor that doesn't match any name is treated as a root node
-            // (e.g., "Board of Directors" is a valid supervisor for the CEO even though
-            // there's no person with that name in the org)
           } else {
             // Validate id/parentId format (or mixed format with both id and supervisor)
             // Build set of valid IDs: explicit IDs + emails (as potential auto-generated IDs)
@@ -3774,16 +3774,50 @@ class YChartEditor {
       }
     });
 
-    // Find root node
-    const rootNode = virtualData.find(item => item.parentId === null || item.parentId === undefined);
-    const rootId = rootNode?.id;
+    // Find all root nodes (for multi-root scenarios)
+    const rootNodes = virtualData.filter(item => item.parentId === null || item.parentId === undefined);
+    const isMultiRoot = rootNodes.length > 1;
 
-    // If POI is root, just return all data with root expanded
-    if (poiId === rootId) {
-      if (rootNode) {
-        rootNode._expanded = true;
+    // Check if POI is a root node
+    const poiNodeData = dataMap.get(poiId);
+    const poiIsRoot = poiNodeData && (poiNodeData.parentId === null || poiNodeData.parentId === undefined);
+
+    // If POI is root and there's only one root OR all roots should be visible, return accordingly
+    if (poiIsRoot) {
+      // Check if root siblings are expanded
+      const poiIdStr = String(poiId);
+      if (this.expandedSiblings.has(poiIdStr) || !isMultiRoot) {
+        // Show all data with POI root expanded
+        if (poiNodeData) {
+          poiNodeData._expanded = true;
+        }
+        return virtualData;
+      } else {
+        // Only show POI root and its descendants
+        const visibleNodeIds = new Set<any>();
+        visibleNodeIds.add(poiId);
+        
+        // Helper function to add all descendants of a node
+        const addDescendants = (nodeId: any) => {
+          const children = childrenMap.get(nodeId) || [];
+          children.forEach(child => {
+            visibleNodeIds.add(child.id);
+            addDescendants(child.id);
+          });
+        };
+        
+        addDescendants(poiId);
+        
+        const filteredData = virtualData.filter(item => visibleNodeIds.has(item.id));
+        
+        // Expand POI
+        const poiInFiltered = filteredData.find(item => item.id === poiId);
+        if (poiInFiltered) {
+          poiInFiltered._expanded = true;
+        }
+        
+        return filteredData;
       }
-      return virtualData;
     }
 
     // Build the supervisory chain from POI to root
@@ -3840,14 +3874,26 @@ class YChartEditor {
         // This chain node has expanded siblings - add all siblings and their descendants
         // But NOT the chain node itself (it's already handled via the supervisory chain)
         const chainNode = dataMap.get(chainNodeId);
-        if (chainNode && chainNode.parentId != null) {
-          const siblings = childrenMap.get(chainNode.parentId) || [];
-          siblings.forEach(sibling => {
-            // Skip the chain node itself - only add actual siblings
-            if (sibling.id === chainNodeId) return;
-            visibleNodeIds.add(sibling.id);
-            addAllDescendants(sibling.id); // Add all descendants of siblings
-          });
+        if (chainNode) {
+          const isChainNodeRoot = chainNode.parentId === null || chainNode.parentId === undefined;
+          
+          if (isChainNodeRoot) {
+            // For root nodes, "siblings" are other root nodes
+            rootNodes.forEach(rootSibling => {
+              if (rootSibling.id === chainNodeId) return; // Skip self
+              visibleNodeIds.add(rootSibling.id);
+              addAllDescendants(rootSibling.id);
+            });
+          } else {
+            // For non-root nodes, get siblings from same parent
+            const siblings = childrenMap.get(chainNode.parentId) || [];
+            siblings.forEach(sibling => {
+              // Skip the chain node itself - only add actual siblings
+              if (sibling.id === chainNodeId) return;
+              visibleNodeIds.add(sibling.id);
+              addAllDescendants(sibling.id); // Add all descendants of siblings
+            });
+          }
         }
       }
     });
@@ -3883,10 +3929,10 @@ class YChartEditor {
     });
 
     // Center on the POI
-    const poiNode = filteredData.find(item => item.id === poiId);
-    if (poiNode) {
-      poiNode._centered = true;
-      poiNode._expanded = true;
+    const poiNodeFiltered = filteredData.find(item => item.id === poiId);
+    if (poiNodeFiltered) {
+      poiNodeFiltered._centered = true;
+      poiNodeFiltered._expanded = true;
     }
 
     return filteredData;
@@ -3895,6 +3941,7 @@ class YChartEditor {
   /**
    * Check if a node should show the expand siblings button.
    * Only supervisor nodes in the POI's chain (except root) should show this button.
+   * For root nodes in multi-root scenarios, show button if there are other roots.
    */
   private shouldShowExpandSiblings(nodeId: any): boolean {
     if (!this.personOfInterest) return false;
@@ -3918,23 +3965,45 @@ class YChartEditor {
     // The node must be in the supervisory chain (which includes POI)
     if (!supervisoryChain.includes(nodeId)) return false;
     
-    // Don't show on root node (it has no siblings)
+    // Check if this is a root node
     const node = dataMap.get(nodeId);
-    if (!node || node.parentId === null || node.parentId === undefined) return false;
+    if (!node) return false;
     
-    // Check if this node has siblings from truth data
+    const isRootNode = node.parentId === null || node.parentId === undefined;
+    
+    if (isRootNode) {
+      // For root nodes, check if there are other root nodes (multi-root scenario)
+      const otherRoots = this.truthData.filter(item => 
+        (item.parentId === null || item.parentId === undefined) && item.id !== nodeId
+      );
+      return otherRoots.length > 0;
+    }
+    
+    // For non-root nodes, check if this node has siblings from truth data
     const siblingCount = this.getSiblingCount(nodeId);
     return siblingCount > 0;
   }
 
   /**
    * Get the count of siblings for a node (from truth data).
+   * For root nodes, returns count of other root nodes (multi-root siblings).
    */
   private getSiblingCount(nodeId: any): number {
     const dataMap = new Map(this.truthData.map(item => [item.id, item]));
     const node = dataMap.get(nodeId);
-    if (!node || node.parentId === null || node.parentId === undefined) return 0;
+    if (!node) return 0;
     
+    const isRootNode = node.parentId === null || node.parentId === undefined;
+    
+    if (isRootNode) {
+      // For root nodes, count other root nodes as "siblings"
+      const otherRoots = this.truthData.filter(item => 
+        (item.parentId === null || item.parentId === undefined) && item.id !== nodeId
+      );
+      return otherRoots.length;
+    }
+    
+    // For non-root nodes, count siblings with same parent
     const siblings = this.truthData.filter(item => 
       item.parentId === node.parentId && item.id !== nodeId
     );
