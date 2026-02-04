@@ -170,25 +170,10 @@
             min-height: 0;
         }
         
+        /* The YChart container just needs a parent with defined height (flex:1 + min-height:0) */
         #ychart-container {
             flex: 1;
-            overflow: hidden;
             min-height: 0;
-        }
-        
-        /* Ensure CodeMirror editor can scroll properly */
-        #ychart-editor {
-            height: 100% !important;
-            overflow: hidden !important;
-        }
-        
-        #ychart-editor .cm-editor {
-            height: 100% !important;
-        }
-        
-        #ychart-editor .cm-scroller {
-            overflow-y: auto !important;
-            max-height: 100% !important;
         }
 
         .footer {

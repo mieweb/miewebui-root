@@ -115,6 +115,41 @@ Load the CSS file in `<head>` for instant styling, then load JS:
 </body>
 ```
 
+### Container Sizing (Important!)
+
+**The YChart container must have a defined height.** The library uses CSS flexbox internally and will fill whatever space you give it. Choose one of these approaches:
+
+#### Option A: Explicit Height (Simplest)
+```html
+<div id="container" style="width: 100%; height: 600px;"></div>
+```
+
+#### Option B: Percentage Height (Full Page)
+For percentage heights to work, all parent elements must also have defined heights:
+```html
+<style>
+  html, body { height: 100%; margin: 0; }
+  #container { width: 100%; height: 100%; }
+</style>
+<div id="container"></div>
+```
+
+#### Option C: Flexbox Layout (Recommended for Complex Layouts)
+Use `flex: 1` with `min-height: 0` to let the container fill available space:
+```html
+<style>
+  .app { display: flex; flex-direction: column; height: 100vh; }
+  .header { height: 60px; }
+  .chart-wrapper { flex: 1; min-height: 0; }
+</style>
+<div class="app">
+  <header class="header">My App</header>
+  <div id="container" class="chart-wrapper"></div>
+</div>
+```
+
+> **Note:** The `min-height: 0` is critical for flexbox containers - without it, the content may overflow instead of scrolling.
+
 ### Option 3: Critical CSS (Best Performance)
 
 For the best user experience, add critical inline CSS to prevent any flash while styles load:

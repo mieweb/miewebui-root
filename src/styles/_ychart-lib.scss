@@ -1,6 +1,10 @@
 // YChart Library Styles - Scoped to .ychart-container
 // These styles are for the YChart library itself and are scoped
 // to avoid interfering with host page styles.
+//
+// INTEGRATION NOTE: The .ychart-container element must have a defined height
+// (either explicit like `height: 500px` or flex-based like `flex: 1` with `min-height: 0`).
+// The internal elements will automatically fill and scroll within the container.
 
 @use 'variables' as *;
 
@@ -13,42 +17,60 @@
     box-sizing: border-box;
   }
 
-  // Base container styles
+  // Base container styles - designed to fill its parent
+  // Parent must have a defined height (explicit or via flexbox)
   font-family: var(--yc-font-family-base);
   position: relative;
   width: 100%;
   height: 100%;
+  min-height: 0; // Critical for flexbox height containment
+  display: flex;
+  overflow: hidden;
 
-  // Chart container
+  // Chart wrapper - contains the canvas and overlays
   .ychart-chart-wrapper {
     display: flex;
     flex: 1;
+    flex-direction: column;
+    min-width: 0; // Prevent flex item from overflowing
+    min-height: 0; // Critical for flexbox height containment
     overflow: hidden;
     position: relative;
     height: 100%;
   }
 
+  // Editor sidebar panel
   .ychart-editor-panel {
     display: flex;
     flex-direction: column;
+    min-height: 0; // Critical for flexbox height containment
     background: var(--yc-color-bg-primary);
     overflow: hidden;
-    border-right: var(--yc-border-width-thin) solid var(--yc-color-gray-400);
+    border-left: var(--yc-border-width-thin) solid var(--yc-color-gray-400);
   }
 
   .ychart-chart-panel {
     flex: 1;
+    min-height: 0;
     position: relative;
     overflow: hidden;
   }
 
-  // Editor styles
+  // Editor container styles - must properly contain CodeMirror
   .ychart-editor {
     flex: 1;
-    overflow: auto;
+    min-height: 0; // Critical for flexbox height containment
+    overflow: hidden; // Let CodeMirror handle its own scrolling
+    display: flex;
+    flex-direction: column;
 
+    // CodeMirror editor - fill container and handle scrolling
     .cm-editor {
+      flex: 1;
+      min-height: 0;
       height: 100%;
+      display: flex;
+      flex-direction: column;
       font-size: var(--yc-font-size-md);
 
       .cm-lintRange-error {
@@ -100,11 +122,19 @@
         background-color: var(--yc-color-warning-bg);
       }
     }
+
+    // CodeMirror scroller - handles the actual scrolling
+    .cm-scroller {
+      flex: 1;
+      min-height: 0;
+      overflow: auto !important; // Ensure scrolling works
+    }
   }
 
   // Chart area
   .ychart-chart {
     flex: 1;
+    min-height: 0;
     overflow: hidden;
     position: relative;
     background: var(--yc-gradient-background);

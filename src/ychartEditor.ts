@@ -223,16 +223,19 @@ class YChartEditor {
     // Clear container and add scoping class
     this.viewContainer.innerHTML = '';
     this.viewContainer.classList.add('ychart-container');
-    this.viewContainer.style.cssText = 'display:flex;width:100%;height:100%;position:relative;';
+    // Use flex with min-height:0 to allow proper flex containment without needing parent height
+    this.viewContainer.style.cssText = 'display:flex;width:100%;height:100%;min-height:0;position:relative;overflow:hidden;';
 
     // Create chart container (now on left side)
     const chartWrapper = document.createElement('div');
-    chartWrapper.style.cssText = 'flex:1;height:100%;position:relative;display:flex;flex-direction:column;overflow:hidden;';
+    chartWrapper.className = 'ychart-chart-wrapper';
+    chartWrapper.style.cssText = 'flex:1;min-width:0;min-height:0;height:100%;position:relative;display:flex;flex-direction:column;overflow:hidden;';
 
     this.chartContainer = document.createElement('div');
     this.chartContainer.id = `ychart-chart-${this.instanceId}`;
+    this.chartContainer.className = 'ychart-chart';
     this.chartContainer.setAttribute('data-id', `ychart-chart-${this.instanceId}`);
-    this.chartContainer.style.cssText = 'flex:1;width:100%;height:100%;position:relative;';
+    this.chartContainer.style.cssText = 'flex:1;width:100%;min-height:0;position:relative;overflow:hidden;';
     chartWrapper.appendChild(this.chartContainer);
 
     // Create details panel
@@ -271,10 +274,12 @@ class YChartEditor {
     // Create editor sidebar (now on right side, open by default)
     const editorSidebar = document.createElement('div');
     editorSidebar.id = `ychart-editor-sidebar-${this.instanceId}`;
+    editorSidebar.className = 'ychart-editor-panel';
     editorSidebar.setAttribute('data-id', `ychart-editor-sidebar-${this.instanceId}`);
     editorSidebar.style.cssText = `
       width: var(--yc-width-sidebar);
       height: 100%;
+      min-height: 0;
       border-left: var(--yc-border-width-thin) solid var(--yc-color-gray-500);
       overflow: hidden;
       position: relative;
@@ -350,8 +355,10 @@ class YChartEditor {
     // Create editor container
     this.editorContainer = document.createElement('div');
     this.editorContainer.id = `ychart-editor-${this.instanceId}`;
+    this.editorContainer.className = 'ychart-editor';
     this.editorContainer.setAttribute('data-id', `ychart-editor-${this.instanceId}`);
-    this.editorContainer.style.cssText = 'width:100%;height:100%;flex:1;overflow:hidden;';
+    // Use min-height:0 to allow flexbox to constrain height properly
+    this.editorContainer.style.cssText = 'width:100%;flex:1;min-height:0;overflow:hidden;';
     editorSidebar.appendChild(this.editorContainer);
 
     // Create collapse button (positioned outside sidebar, on the left side of editor)
