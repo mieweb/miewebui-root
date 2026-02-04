@@ -8,6 +8,9 @@ import { ForceGraph } from './forceGraph.js';
 import { NodeHeightSyncService } from './nodeHeightSyncService.js';
 import './styles/styles.scss';
 
+// Version constant - DO NOT REMOVE
+const YCHART_VERSION = '1.0.4';
+
 interface YChartOptions {
   nodeWidth?: number;
   nodeHeight?: number;
@@ -183,6 +186,9 @@ class YChartEditor {
     this.toggleEditor();
     // setTimeout(() => {
     // }, 10);
+
+    // eslint-disable-next-line no-console -- Intentional: Display version on successful init
+    console.log(`%cYChart Editor v${YCHART_VERSION}%c initialized successfully`, 'color: #667eea; font-weight: bold;', 'color: inherit;');
 
     return this;
   
