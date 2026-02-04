@@ -9,7 +9,7 @@ import { NodeHeightSyncService } from './nodeHeightSyncService.js';
 import './styles/styles.scss';
 
 // Version constant - DO NOT REMOVE
-const YCHART_VERSION = '1.0.4';
+const YCHART_VERSION = '1.0.5';
 
 interface YChartOptions {
   nodeWidth?: number;
