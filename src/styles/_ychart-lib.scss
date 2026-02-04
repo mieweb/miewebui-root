@@ -213,9 +213,12 @@
 
       .node-foreign-object {
         overflow: visible;
+        // Smooth height transitions to prevent flickering
+        transition: height 0.15s ease-out;
         
         &:not([data-height-synced]) {
           height: auto !important;
+          transition: none;
         }
       }
 
@@ -224,15 +227,23 @@
         user-select: text;
         -webkit-user-select: text;
         cursor: text;
+        // Smooth height transitions to prevent flickering
+        transition: height 0.15s ease-out, min-height 0.15s ease-out;
         
         &:not([data-height-synced]) {
           height: auto !important;
           min-height: auto !important;
+          transition: none;
           
           > div {
             height: auto !important;
             min-height: auto !important;
           }
+        }
+        
+        // Inner content wrapper
+        > div {
+          transition: height 0.15s ease-out, min-height 0.15s ease-out;
         }
 
         .details-btn,

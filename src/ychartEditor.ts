@@ -4635,15 +4635,21 @@ class YChartEditor {
       minHeight: configuredNodeHeight,   // Also set as minimum for safety
       maxHeight: 500, // Reasonable max to prevent excessive heights
       heightPadding: 0, // No extra padding since we're using fixed height
-      resizeDebounce: 150,
+      resizeDebounce: 250, // Longer debounce for stability
       onHeightChange: (newHeight) => {
-        console.log(`Node heights synchronized to: ${newHeight}px`);
+        // Only log in dev mode to reduce noise
+        if (import.meta.env?.DEV) {
+          console.log(`Node heights synchronized to: ${newHeight}px`);
+        }
         
-        // Update the org chart's node height setting and refresh overlay
+        // Update the org chart's node height setting
+        // Use requestAnimationFrame to avoid interrupting render cycle
         if (this.orgChart) {
-          this.orgChart.nodeHeight(() => newHeight);
-          // Update the HTML overlay to reposition buttons after height change
-          this.orgChart.updateHtmlOverlay?.();
+          requestAnimationFrame(() => {
+            this.orgChart?.nodeHeight(() => newHeight);
+            // Update the HTML overlay to reposition buttons after height change
+            this.orgChart?.updateHtmlOverlay?.();
+          });
         }
       }
     });

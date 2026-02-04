@@ -51,9 +51,12 @@ export class NodeHeightSyncService {
   private container: HTMLElement | SVGElement;
   private config: InternalNodeHeightSyncConfig;
   private resizeObserver?: ResizeObserver;
+  private mutationObserver?: MutationObserver;
   private resizeTimeout?: number;
   private currentUnifiedHeight: number = 0;
   private isSyncing: boolean = false;
+  private lastSyncTime: number = 0;
+  private pendingSync: boolean = false;
 
   constructor(
     container: HTMLElement | SVGElement,
@@ -86,10 +89,19 @@ export class NodeHeightSyncService {
   syncNodeHeights(): number {
     // Prevent re-entry during sync to avoid Firefox height expansion bug
     if (this.isSyncing) {
+      this.pendingSync = true;
+      return this.currentUnifiedHeight;
+    }
+    
+    // Throttle syncs to prevent flickering - minimum 100ms between syncs
+    const now = Date.now();
+    if (now - this.lastSyncTime < 100) {
+      this.pendingSync = true;
       return this.currentUnifiedHeight;
     }
     
     this.isSyncing = true;
+    this.lastSyncTime = now;
     
     try {
       let targetHeight: number;
@@ -105,11 +117,12 @@ export class NodeHeightSyncService {
         targetHeight = this.measureMaxContentHeight();
       }
 
-      // Step 3: Apply unified height to all nodes
-      this.applyUnifiedHeight(targetHeight);
-
-      // Step 4: Store and notify only if height changed
+      // Only apply if height actually changed (prevents unnecessary DOM manipulation)
       if (targetHeight !== this.currentUnifiedHeight) {
+        // Step 3: Apply unified height to all nodes
+        this.applyUnifiedHeight(targetHeight);
+
+        // Step 4: Store and notify
         this.currentUnifiedHeight = targetHeight;
         this.config.onHeightChange(targetHeight);
       }
@@ -119,7 +132,13 @@ export class NodeHeightSyncService {
       // Use setTimeout to prevent immediate re-sync from ResizeObserver
       setTimeout(() => {
         this.isSyncing = false;
-      }, 50);
+        
+        // If a sync was requested while we were syncing, do it now
+        if (this.pendingSync) {
+          this.pendingSync = false;
+          this.debouncedSync();
+        }
+      }, 100);
     }
   }
 
@@ -197,6 +216,7 @@ export class NodeHeightSyncService {
 
   /**
    * Apply the unified height to all nodes
+   * Uses batch DOM updates to prevent flickering
    * @param height The height to apply
    */
   private applyUnifiedHeight(height: number): void {
@@ -204,31 +224,46 @@ export class NodeHeightSyncService {
       'foreignObject.node-foreign-object'
     );
 
+    // Batch all DOM reads first, then writes (prevents layout thrashing)
+    const updates: Array<{
+      fo: SVGForeignObjectElement;
+      contentDiv: HTMLDivElement | null;
+      innerDiv: HTMLDivElement | null;
+    }> = [];
+    
     foreignObjects.forEach((fo) => {
-      // Mark as synced for CSS targeting
-      fo.setAttribute('data-height-synced', 'true');
-      
-      // Set foreignObject height
-      fo.setAttribute('height', String(height));
-      fo.style.height = `${height}px`;
-
-      // Set content div heights
       const contentDiv = fo.querySelector<HTMLDivElement>('.node-foreign-object-div');
-      if (contentDiv) {
-        contentDiv.setAttribute('data-height-synced', 'true');
-        contentDiv.style.height = `${height}px`;
-        contentDiv.style.minHeight = `${height}px`;
-      }
-
-      const innerDiv = contentDiv?.querySelector<HTMLDivElement>('div');
-      if (innerDiv) {
-        innerDiv.style.height = `${height}px`;
-        innerDiv.style.minHeight = `${height}px`;
-      }
+      const innerDiv = contentDiv?.querySelector<HTMLDivElement>('div') || null;
+      updates.push({ fo, contentDiv, innerDiv });
     });
+    
+    // Now do all DOM writes in one batch using requestAnimationFrame
+    // to align with the browser's paint cycle
+    requestAnimationFrame(() => {
+      updates.forEach(({ fo, contentDiv, innerDiv }) => {
+        // Mark as synced for CSS targeting
+        fo.setAttribute('data-height-synced', 'true');
+        
+        // Set foreignObject height
+        fo.setAttribute('height', String(height));
+        fo.style.height = `${height}px`;
 
-    // Also update any data-driven height attributes (for d3-org-chart)
-    this.updateNodeDataHeights(height);
+        // Set content div heights
+        if (contentDiv) {
+          contentDiv.setAttribute('data-height-synced', 'true');
+          contentDiv.style.height = `${height}px`;
+          contentDiv.style.minHeight = `${height}px`;
+        }
+
+        if (innerDiv) {
+          innerDiv.style.height = `${height}px`;
+          innerDiv.style.minHeight = `${height}px`;
+        }
+      });
+
+      // Also update any data-driven height attributes (for d3-org-chart)
+      this.updateNodeDataHeights(height);
+    });
   }
 
   /**
@@ -248,11 +283,30 @@ export class NodeHeightSyncService {
 
   /**
    * Observe content changes and trigger re-sync
+   * Uses passive observation to avoid interfering with rendering
    */
   private observeContentChanges(): void {
     // Use ResizeObserver to watch for content size changes
-    this.resizeObserver = new ResizeObserver(() => {
-      this.debouncedSync();
+    // Only trigger sync if not currently in a sync cycle
+    this.resizeObserver = new ResizeObserver((entries) => {
+      // Skip if we're currently syncing (we caused this resize)
+      if (this.isSyncing) return;
+      
+      // Skip if the resize is just setting our own height
+      const hasRealChange = entries.some(entry => {
+        const el = entry.target as HTMLElement;
+        // If element has our sync marker and height matches, skip
+        if (el.hasAttribute('data-height-synced') && 
+            this.currentUnifiedHeight > 0 &&
+            Math.abs(entry.contentRect.height - this.currentUnifiedHeight) < 2) {
+          return false;
+        }
+        return true;
+      });
+      
+      if (hasRealChange) {
+        this.debouncedSync();
+      }
     });
 
     // Observe all node content divs
@@ -265,18 +319,30 @@ export class NodeHeightSyncService {
     });
 
     // Also observe for new nodes being added
-    const mutationObserver = new MutationObserver(() => {
-      // Re-observe new content divs
-      const newDivs = this.container.querySelectorAll('.node-foreign-object-div');
-      newDivs.forEach((div) => {
-        if (!this.isObserved(div)) {
-          this.resizeObserver!.observe(div);
-        }
-      });
-      this.debouncedSync();
+    this.mutationObserver = new MutationObserver((mutations) => {
+      // Skip if triggered by our own updates
+      if (this.isSyncing) return;
+      
+      // Check if new nodes were actually added (not just attribute changes)
+      const hasNewNodes = mutations.some(m => 
+        m.type === 'childList' && 
+        (m.addedNodes.length > 0 || m.removedNodes.length > 0)
+      );
+      
+      if (hasNewNodes) {
+        // Re-observe new content divs
+        const newDivs = this.container.querySelectorAll('.node-foreign-object-div');
+        newDivs.forEach((div) => {
+          if (!this.isObserved(div)) {
+            div.setAttribute('data-height-observed', 'true');
+            this.resizeObserver!.observe(div);
+          }
+        });
+        this.debouncedSync();
+      }
     });
 
-    mutationObserver.observe(this.container, {
+    this.mutationObserver.observe(this.container, {
       childList: true,
       subtree: true,
     });
@@ -293,15 +359,17 @@ export class NodeHeightSyncService {
 
   /**
    * Debounced sync to avoid excessive recalculations
+   * Uses a longer debounce for stability
    */
   private debouncedSync(): void {
     if (this.resizeTimeout) {
       clearTimeout(this.resizeTimeout);
     }
 
+    // Use a slightly longer debounce to let D3 transitions complete
     this.resizeTimeout = window.setTimeout(() => {
       this.syncNodeHeights();
-    }, this.config.resizeDebounce);
+    }, Math.max(this.config.resizeDebounce, 200));
   }
 
   /**
@@ -327,9 +395,15 @@ export class NodeHeightSyncService {
   destroy(): void {
     if (this.resizeObserver) {
       this.resizeObserver.disconnect();
+      this.resizeObserver = undefined;
+    }
+    if (this.mutationObserver) {
+      this.mutationObserver.disconnect();
+      this.mutationObserver = undefined;
     }
     if (this.resizeTimeout) {
       clearTimeout(this.resizeTimeout);
+      this.resizeTimeout = undefined;
     }
   }
 }
