@@ -1,0 +1,127 @@
+---
+options:
+  nodeWidth: 180
+  nodeHeight: 100
+schema:
+  id: number | required
+  name: string | required
+  title: string | optional
+  email: string | optional
+  department: string | optional
+  company: string | optional
+---
+# Multiple Root Nodes - Holding Company Structure
+# This example demonstrates multiple independent organizational hierarchies
+# under a single holding company view (e.g., conglomerate with subsidiaries)
+
+# ===== TechCorp Division =====
+- id: 1
+  name: Sarah Chen
+  title: CEO - TechCorp
+  email: sarah.chen@techcorp.com
+  department: Executive
+  company: TechCorp
+
+- id: 2
+  parentId: 1
+  name: Marcus Johnson
+  title: CTO
+  email: marcus.j@techcorp.com
+  department: Technology
+  company: TechCorp
+
+- id: 3
+  parentId: 1
+  name: Emily Rodriguez
+  title: CFO
+  email: emily.r@techcorp.com
+  department: Finance
+  company: TechCorp
+
+- id: 4
+  parentId: 2
+  name: Alex Kim
+  title: VP Engineering
+  email: alex.k@techcorp.com
+  department: Engineering
+  company: TechCorp
+
+- id: 5
+  parentId: 2
+  name: Jordan Lee
+  title: VP Product
+  email: jordan.l@techcorp.com
+  department: Product
+  company: TechCorp
+
+# ===== MediaGroup Division =====
+- id: 10
+  name: Michael Torres
+  title: CEO - MediaGroup
+  email: m.torres@mediagroup.com
+  department: Executive
+  company: MediaGroup
+
+- id: 11
+  parentId: 10
+  name: Lisa Wang
+  title: Creative Director
+  email: lisa.w@mediagroup.com
+  department: Creative
+  company: MediaGroup
+
+- id: 12
+  parentId: 10
+  name: David Park
+  title: Head of Production
+  email: david.p@mediagroup.com
+  department: Production
+  company: MediaGroup
+
+- id: 13
+  parentId: 11
+  name: Rachel Green
+  title: Senior Designer
+  email: rachel.g@mediagroup.com
+  department: Design
+  company: MediaGroup
+
+# ===== FinanceHub Division =====
+- id: 20
+  name: Amanda Foster
+  title: CEO - FinanceHub
+  email: a.foster@financehub.com
+  department: Executive
+  company: FinanceHub
+
+- id: 21
+  parentId: 20
+  name: Robert Chen
+  title: Chief Investment Officer
+  email: robert.c@financehub.com
+  department: Investments
+  company: FinanceHub
+
+- id: 22
+  parentId: 20
+  name: Nicole Adams
+  title: Chief Risk Officer
+  email: nicole.a@financehub.com
+  department: Risk Management
+  company: FinanceHub
+
+- id: 23
+  parentId: 21
+  name: James Wilson
+  title: Portfolio Manager
+  email: james.w@financehub.com
+  department: Investments
+  company: FinanceHub
+
+- id: 24
+  parentId: 22
+  name: Sophie Martinez
+  title: Risk Analyst
+  email: sophie.m@financehub.com
+  department: Risk Management
+  company: FinanceHub

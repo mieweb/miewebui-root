@@ -2773,38 +2773,10 @@ class YChartEditor {
               return undefined;
             };
             
-            // Identify root nodes: nodes with no supervisor OR supervisor that doesn't match any name
-            // Root nodes are allowed - their supervisor field is informational (e.g., "Board of Directors")
-            const rootNodes = (parsed as any[]).filter((item: any) => {
-              const supervisor = getSupervisor(item);
-              return !supervisor || !names.has(supervisor);
-            });
-            
-            if (rootNodes.length > 1) {
-              // Mark all root nodes after the first as errors
-              for (let i = 1; i < rootNodes.length; i++) {
-                const item = rootNodes[i];
-                const namePattern = new RegExp(`^-\\s*name:\\s*${this.escapeRegex(item.name)}`, 'm');
-                
-                const itemMatch = content.match(namePattern);
-                let errorPos = 0;
-                let errorEnd = content.length;
-                
-                if (itemMatch && itemMatch.index !== undefined) {
-                  errorPos = itemMatch.index;
-                  errorEnd = itemMatch.index + itemMatch[0].length;
-                }
-                
-                const lineNumber = content.substring(0, errorPos).split('\n').length;
-                
-                diagnostics.push({
-                  from: errorPos,
-                  to: errorEnd,
-                  severity: 'error',
-                  message: `Line ${lineNumber}: Multiple root nodes detected - only one node can have no supervisor (name: ${item.name})`
-                });
-              }
-            }
+            // Multiple root nodes are supported - the chart creates a virtual root to contain them
+            // Root nodes are nodes with no supervisor OR supervisor that doesn't match any name
+            // (e.g., "Board of Directors" is a valid supervisor for the CEO even though
+            // there's no person with that name in the org)
             
             // Note: We don't flag "invalid supervisor" errors for name-based format
             // because a supervisor that doesn't match any name is treated as a root node
@@ -2824,53 +2796,8 @@ class YChartEditor {
               }
             }
             
-            // Skip multiple roots check when using supervisor-based resolution
-            // (nodes without parentId will have it resolved from supervisor field)
-            const hasSupervisorFields = parsed.some((item: any) => 
-              this.supervisorFields.some(field => item[field] !== undefined)
-            );
-            
-            if (!hasSupervisorFields) {
-              // Only check for multiple roots if not using supervisor-based resolution
-              const rootNodes = (parsed as any[]).filter((item: any) => 
-                item.parentId === null || item.parentId === undefined
-              );
-              
-              if (rootNodes.length > 1) {
-                // Mark all root nodes after the first as errors
-                for (let i = 1; i < rootNodes.length; i++) {
-                  const item = rootNodes[i];
-                  const itemIdPattern = new RegExp(`^-\\s*id:\\s*${item.id}\\s*$`, 'm');
-                  const parentIdPattern = new RegExp(`parentId:\\s*null`, 'm');
-                  
-                  const itemMatch = content.match(itemIdPattern);
-                  let errorPos = 0;
-                  let errorEnd = content.length;
-                  
-                  if (itemMatch && itemMatch.index !== undefined) {
-                    const afterId = content.substring(itemMatch.index);
-                    const parentIdMatch = afterId.match(parentIdPattern);
-                    if (parentIdMatch && parentIdMatch.index !== undefined) {
-                      errorPos = itemMatch.index + parentIdMatch.index;
-                      errorEnd = errorPos + parentIdMatch[0].length;
-                    } else {
-                      // If no explicit parentId: null, mark the id line
-                      errorPos = itemMatch.index;
-                      errorEnd = itemMatch.index + itemMatch[0].length;
-                    }
-                  }
-                  
-                  const lineNumber = content.substring(0, errorPos).split('\n').length;
-                  
-                  diagnostics.push({
-                    from: errorPos,
-                    to: errorEnd,
-                    severity: 'error',
-                    message: `Line ${lineNumber}: Multiple root nodes detected - only one node can have parentId: null (node id: ${item.id})`
-                  });
-                }
-              }
-            }
+            // Multiple root nodes are supported - the chart creates a virtual root to contain them
+            // Nodes with parentId: null or undefined are treated as root nodes
             
             // Check for missing/invalid parentId references (only if explicitly set)
             for (const item of parsed as any[]) {

@@ -4,6 +4,7 @@ import orgChartDataRaw from './orgchart.yaml?raw';
 import budgetDataRaw from '../examples/budget-indicators/orgchart.yaml?raw';
 import okrDataRaw from '../examples/okr/orgchart.yaml?raw';
 import salaryDataRaw from '../examples/salary-headcount/orgchart.yaml?raw';
+import multipleRootsDataRaw from '../examples/multiple-roots/orgchart.yaml?raw';
 import { commitHash, commitHashFull, repoUrl } from 'virtual:git-info';
 
 // Example data mapping
@@ -12,6 +13,7 @@ const exampleData: Record<string, string> = {
   budget: budgetDataRaw,
   okr: okrDataRaw,
   salary: salaryDataRaw,
+  'multiple-roots': multipleRootsDataRaw,
 };
 
 // Update git info in header
