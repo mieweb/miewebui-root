@@ -3782,18 +3782,27 @@ class YChartEditor {
     const poiNodeData = dataMap.get(poiId);
     const poiIsRoot = poiNodeData && (poiNodeData.parentId === null || poiNodeData.parentId === undefined);
 
-    // If POI is root and there's only one root OR all roots should be visible, return accordingly
-    if (poiIsRoot) {
-      // Check if root siblings are expanded
+    // If POI is root in single-root scenario, just show everything
+    if (poiIsRoot && !isMultiRoot) {
+      if (poiNodeData) {
+        poiNodeData._expanded = true;
+      }
+      return virtualData;
+    }
+
+    // If POI is a root node in multi-root scenario
+    if (poiIsRoot && isMultiRoot) {
       const poiIdStr = String(poiId);
-      if (this.expandedSiblings.has(poiIdStr) || !isMultiRoot) {
-        // Show all data with POI root expanded
+      // Default is to show all roots (siblings expanded by default)
+      // Only hide other roots if POI is NOT in expandedSiblings (user explicitly collapsed)
+      if (this.expandedSiblings.has(poiIdStr)) {
+        // Show all data with POI root expanded (default behavior)
         if (poiNodeData) {
           poiNodeData._expanded = true;
         }
         return virtualData;
       } else {
-        // Only show POI root and its descendants
+        // User explicitly collapsed siblings - only show POI root and its descendants
         const visibleNodeIds = new Set<any>();
         visibleNodeIds.add(poiId);
         
