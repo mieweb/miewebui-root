@@ -4206,11 +4206,9 @@ class YChartEditor {
     // Restore selection if it still exists
     if (currentValue && Array.from(select.options).some(opt => opt.value === currentValue)) {
       select.value = currentValue;
-    } else if (rootNode) {
-      // Default to root
-      select.value = String(rootNode.id);
-      this.personOfInterest = rootNode;
     }
+    // Note: We no longer auto-select root node as POI - users should explicitly choose a POI
+    // In multi-root scenarios, showing all roots by default is the intended behavior
   }
 
   private renderChart(): void {
