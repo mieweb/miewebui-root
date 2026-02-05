@@ -1279,6 +1279,8 @@ export class OrgChart {
             .classed("selected", d => attrs.nodeId(d.data) === attrs.selectedNodeId);
 
         // Add foreignObject element inside rectangle
+        // Use attrs.nodeHeight(d) instead of d.height to ensure consistent heights
+        // when nodes are expanded/collapsed (d.height may be stale)
         const fo = nodeUpdate.patternify({
             tag: "foreignObject",
             selector: "node-foreign-object",
@@ -1286,7 +1288,7 @@ export class OrgChart {
         })
             .style('overflow', 'visible')
             .attr('width', d => d.width)
-            .attr('height', d => d.height)
+            .attr('height', d => attrs.nodeHeight(d))
             .attr('x', 0)
             .attr('y', 0)
 
@@ -1297,7 +1299,7 @@ export class OrgChart {
             data: (d) => [d]
         })
             .style('width', d => `${d.width}px`)
-            .style('height', d => `${d.height}px`)
+            .style('height', d => `${attrs.nodeHeight(d)}px`)
             .style('overflow', 'visible')
             .style('user-select', 'text')
             .style('-webkit-user-select', 'text')

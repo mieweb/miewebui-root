@@ -4382,8 +4382,11 @@ class YChartEditor {
         .map(element => this.renderCardElement(element, d.data))
         .join('');
       
+      // Use configured nodeHeight for consistent card heights across all nodes
+      const nodeHeight = this.currentOptions.nodeHeight || this.defaultOptions.nodeHeight || 110;
+      
       return `
-        <div style="width:${d.width}px;height:${d.height}px;padding:var(--yc-spacing-xl);background:var(--yc-color-text-inverse);border:var(--yc-border-width-medium) solid var(--yc-color-secondary);border-radius:var(--yc-border-radius-lg);box-sizing:border-box;position:relative">
+        <div style="width:${d.width}px !important;height:${nodeHeight}px !important;padding:var(--yc-spacing-xl);background:var(--yc-color-text-inverse);border:var(--yc-border-width-medium) solid var(--yc-color-secondary);border-radius:var(--yc-border-radius-lg);box-sizing:border-box;position:relative">
           <div class="details-btn" style="position:absolute;top:var(--yc-spacing-xs);right:var(--yc-spacing-xs);width:var(--yc-height-icon-sm);height:var(--yc-height-icon-sm);background:var(--yc-color-gray-300);border-radius:var(--yc-border-radius-full);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);z-index:var(--yc-z-index-overlay);border:var(--yc-border-width-thin) solid var(--yc-color-gray-500);" title="Show Details" aria-label="Show Details" role="button" tabindex="0">ℹ</div>
           ${expandSupervisorChainBtn}
           ${expandSiblingsBtn}
@@ -4393,8 +4396,11 @@ class YChartEditor {
     }
     
     // Priority 3: Default template
+    // Use configured nodeHeight for consistent card heights across all nodes
+    const defaultNodeHeight = this.currentOptions.nodeHeight || this.defaultOptions.nodeHeight || 110;
+    
     return `
-      <div style="width:${d.width}px;height:${d.height}px;padding:var(--yc-spacing-xl);background:var(--yc-color-text-inverse);border:var(--yc-border-width-medium) solid var(--yc-color-secondary);border-radius:var(--yc-border-radius-lg);box-sizing:border-box;display:flex;align-items:center;gap:var(--yc-spacing-xl);position:relative">
+      <div style="width:${d.width}px !important;height:${defaultNodeHeight}px !important;padding:var(--yc-spacing-xl);background:var(--yc-color-text-inverse);border:var(--yc-border-width-medium) solid var(--yc-color-secondary);border-radius:var(--yc-border-radius-lg);box-sizing:border-box;display:flex;align-items:center;gap:var(--yc-spacing-xl);position:relative">
         <div class="details-btn" style="position:absolute;top:var(--yc-spacing-xs);right:var(--yc-spacing-xs);width:var(--yc-height-icon-sm);height:var(--yc-height-icon-sm);background:var(--yc-color-gray-300);border-radius:var(--yc-border-radius-full);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);z-index:var(--yc-z-index-overlay);border:var(--yc-border-width-thin) solid var(--yc-color-gray-500);" title="Show Details" aria-label="Show Details" role="button" tabindex="0">ℹ</div>
         ${expandSupervisorChainBtn}
         ${expandSiblingsBtn}
