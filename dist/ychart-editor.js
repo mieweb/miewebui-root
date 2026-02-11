@@ -33792,7 +33792,7 @@ ${d.email || ""}`);
       }
     }
   }
-  const YCHART_VERSION = "1.0.5";
+  const YCHART_VERSION = "1.0.6";
   function generateUUID() {
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c2) {
       const r = Math.random() * 16 | 0;
