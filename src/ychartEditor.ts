@@ -6,10 +6,10 @@ import * as jsyaml from 'js-yaml';
 import { OrgChart } from './d3-org-chart.js';
 import { ForceGraph } from './forceGraph.js';
 import { NodeHeightSyncService } from './nodeHeightSyncService.js';
-import './styles/styles.scss';
+import './styles/ychart-lib-entry.scss';
 
 // Version constant - DO NOT REMOVE
-const YCHART_VERSION = '1.0.6';
+const YCHART_VERSION = '1.0.7';
 
 interface YChartOptions {
   nodeWidth?: number;
