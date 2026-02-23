@@ -90,6 +90,7 @@ export {
   Image as ImageIcon,
   Camera as CameraIcon,
   Paperclip as PaperclipIcon,
+  Printer as PrinterIcon,
 } from 'lucide-react';
 
 // Data & Charts

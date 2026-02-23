@@ -1,6 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { CountBadge } from './CountBadge';
-import { CheckCircleIcon, AlertCircleIcon, InfoIcon } from '../Icons';
+import { CountBadge, type CountBadgeItem } from './CountBadge';
+import {
+  CheckCircleIcon,
+  AlertCircleIcon,
+  InfoIcon,
+  SearchIcon,
+  PencilIcon,
+  TrashIcon,
+} from '../Icons';
 
 const meta: Meta<typeof CountBadge> = {
   title: 'Data Display/CountBadge',
@@ -147,6 +154,135 @@ export const WithIcons: Story = {
         variant="alert"
         icon={<AlertCircleIcon size={14} />}
       />
+    </div>
+  ),
+};
+
+// =============================================================================
+// Hover menu stories
+// =============================================================================
+
+const sampleTasks: CountBadgeItem[] = [
+  { id: '1', label: 'Review lab results', status: 'active' },
+  { id: '2', label: 'Sign prescription order', status: 'pending' },
+  { id: '3', label: 'Update medication list', status: 'overdue' },
+];
+
+const sampleEncounters: CountBadgeItem[] = [
+  { id: 'e1', label: 'Office Visit – Smith', status: 'active' },
+  { id: 'e2', label: 'Follow-up – Jones', status: 'active' },
+  { id: 'e3', label: 'Annual Physical – Lee', status: 'pending' },
+  { id: 'e4', label: 'Urgent Care – Patel', status: 'overdue' },
+  { id: 'e5', label: 'Telehealth – Davis', status: 'completed' },
+];
+
+const sampleEsigns: CountBadgeItem[] = [
+  { id: 's1', label: 'Lab Order #4521', status: 'pending' },
+  { id: 's2', label: 'Referral – Cardiology', status: 'pending' },
+  { id: 's3', label: 'Prescription – Lisinopril', status: 'overdue' },
+  { id: 's4', label: 'Office Visit Note', status: 'pending' },
+  { id: 's5', label: 'Discharge Summary', status: 'active' },
+  { id: 's6', label: 'Radiology Order', status: 'pending' },
+  { id: 's7', label: 'PT Referral', status: 'overdue' },
+];
+
+/** Hover over the badge to see the item table with default View / Edit / Delete actions. */
+export const WithHoverMenu: Story = {
+  args: {
+    label: 'Tasks',
+    count: 3,
+    items: sampleTasks,
+    onView: (item) => console.log('View:', item),
+    onEdit: (item) => console.log('Edit:', item),
+    onDelete: (item) => console.log('Delete:', item),
+  },
+};
+
+/** Info variant with 5 encounters. Hover to see the table. */
+export const HoverMenuInfo: Story = {
+  render: () => (
+    <CountBadge
+      label="Open Enc"
+      count={5}
+      variant="info"
+      items={sampleEncounters}
+      onView={(item) => console.log('View:', item)}
+      onEdit={(item) => console.log('Edit:', item)}
+      onDelete={(item) => console.log('Delete:', item)}
+    />
+  ),
+};
+
+/** Alert variant with many items showing scroll behavior. */
+export const HoverMenuAlert: Story = {
+  render: () => (
+    <CountBadge
+      label="eSign"
+      count={7}
+      variant="alert"
+      items={sampleEsigns}
+      onView={(item) => console.log('View:', item)}
+      onEdit={(item) => console.log('Edit:', item)}
+      onDelete={(item) => console.log('Delete:', item)}
+    />
+  ),
+};
+
+/** Custom actions in the overflow menu. */
+export const HoverMenuCustomActions: Story = {
+  render: () => (
+    <CountBadge
+      label="Due List"
+      count={3}
+      variant="warning"
+      items={sampleTasks}
+      actions={[
+        {
+          key: 'view',
+          label: 'View Details',
+          icon: <SearchIcon size={12} />,
+          onClick: (item) => console.log('View:', item),
+        },
+        {
+          key: 'edit',
+          label: 'Edit Item',
+          icon: <PencilIcon size={12} />,
+          onClick: (item) => console.log('Edit:', item),
+        },
+        {
+          key: 'delete',
+          label: 'Remove',
+          icon: <TrashIcon size={12} />,
+          variant: 'danger',
+          onClick: (item) => console.log('Delete:', item),
+        },
+      ]}
+    />
+  ),
+};
+
+/** Row of badges — some with hover menus, some without. */
+export const MixedRow: Story = {
+  render: () => (
+    <div className="flex flex-wrap gap-2">
+      <CountBadge
+        label="Tasks"
+        count={3}
+        items={sampleTasks}
+        onView={(item) => console.log('View:', item)}
+        onEdit={(item) => console.log('Edit:', item)}
+        onDelete={(item) => console.log('Delete:', item)}
+      />
+      <CountBadge label="Open Enc" count={5} variant="info" />
+      <CountBadge
+        label="eSign"
+        count={7}
+        variant="alert"
+        items={sampleEsigns}
+        onView={(item) => console.log('View:', item)}
+        onDelete={(item) => console.log('Delete:', item)}
+      />
+      <CountBadge label="Order Req" count={4} variant="informative" />
     </div>
   ),
 };
