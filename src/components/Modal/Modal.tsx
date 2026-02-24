@@ -25,7 +25,7 @@ export const __resetScrollLockState = () => scrollLockState.reset();
 
 const modalOverlayVariants = cva(
   [
-    'fixed inset-0 z-50',
+    'fixed inset-0',
     'bg-black/50 backdrop-blur-sm',
     'data-[state=open]:animate-in data-[state=open]:fade-in-0',
     'data-[state=closed]:animate-out data-[state=closed]:fade-out-0',
@@ -38,10 +38,13 @@ const modalOverlayVariants = cva(
 
 const modalContentVariants = cva(
   [
-    'fixed left-1/2 top-1/2 z-50',
-    '-translate-x-1/2 -translate-y-1/2',
-    'w-full bg-card text-card-foreground',
+    'relative w-full bg-card text-card-foreground',
     'border border-border rounded-xl shadow-lg',
+    'flex flex-col',
+    'max-h-[calc(100dvh-2rem)]',
+    // If a <form> is used as a direct child (wrapping ModalBody + ModalFooter),
+    // make it participate in the flex column layout so overflow constraints work.
+    '[&>form]:flex [&>form]:flex-col [&>form]:flex-1 [&>form]:min-h-0',
     'focus:outline-none',
     'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
     'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
@@ -181,27 +184,37 @@ function Modal({
     >
       {/* Portal to body */}
       <div className="fixed inset-0 z-50">
-        {/* Overlay */}
+        {/* Overlay backdrop */}
         <div
           className={cn(modalOverlayVariants())}
           data-state={open ? 'open' : 'closed'}
-          onClick={handleOverlayClick}
           aria-hidden="true"
         />
-        {/* Content */}
-        <div
-          ref={focusTrapRef}
-          role="dialog"
-          aria-modal="true"
-          aria-label={ariaLabel}
-          aria-labelledby={ariaLabelledBy || `${modalId}-title`}
-          aria-describedby={ariaDescribedBy}
-          id={modalId}
-          tabIndex={-1}
-          data-state={open ? 'open' : 'closed'}
-          className={cn(modalContentVariants({ size }), className)}
-        >
-          {children}
+        {/* Scrollable centering container — click outside to close */}
+        <div className="fixed inset-0 overflow-y-auto">
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
+          <div
+            className="flex min-h-full items-center justify-center p-4"
+            onClick={handleOverlayClick}
+          >
+            {/* Content */}
+            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
+            <div
+              ref={focusTrapRef}
+              role="dialog"
+              aria-modal="true"
+              aria-label={ariaLabel}
+              aria-labelledby={ariaLabelledBy || `${modalId}-title`}
+              aria-describedby={ariaDescribedBy}
+              id={modalId}
+              tabIndex={-1}
+              data-state={open ? 'open' : 'closed'}
+              className={cn(modalContentVariants({ size }), className)}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {children}
+            </div>
+          </div>
         </div>
       </div>
     </ModalContext.Provider>
@@ -245,7 +258,7 @@ const ModalHeader = React.forwardRef<HTMLDivElement, ModalHeaderProps>(
     <div
       ref={ref}
       className={cn(
-        'flex items-center justify-between',
+        'flex shrink-0 items-center justify-between',
         'border-border border-b px-6 py-4',
         className
       )}
@@ -343,7 +356,11 @@ export type ModalBodyProps = React.HTMLAttributes<HTMLDivElement>;
  */
 const ModalBody = React.forwardRef<HTMLDivElement, ModalBodyProps>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn('px-6 py-4', className)} {...props} />
+    <div
+      ref={ref}
+      className={cn('min-h-0 flex-1 overflow-y-auto px-6 py-4', className)}
+      {...props}
+    />
   )
 );
 
@@ -363,7 +380,7 @@ const ModalFooter = React.forwardRef<HTMLDivElement, ModalFooterProps>(
     <div
       ref={ref}
       className={cn(
-        'flex items-center justify-end gap-3',
+        'flex shrink-0 items-center justify-end gap-3',
         'border-border border-t px-6 py-4',
         className
       )}
