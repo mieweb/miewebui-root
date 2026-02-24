@@ -17,27 +17,30 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          cache: 'pnpm'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Lint
-        run: npm run lint
+        run: pnpm lint
 
       - name: Type check
-        run: npm run typecheck
+        run: pnpm typecheck
 
       - name: Run unit tests
-        run: npm run test
+        run: pnpm test
 
       - name: Build package
-        run: npm run build
+        run: pnpm build
         env:
           NODE_OPTIONS: '--max-old-space-size=8192'
 
@@ -45,7 +48,7 @@ jobs:
         run: |
           VERSION=${GITHUB_REF#refs/tags/v}
           echo "Setting version to $VERSION"
-          npm version $VERSION --no-git-tag-version --allow-same-version
+          node -e "const fs=require('fs'),p=JSON.parse(fs.readFileSync('./package.json'));p.version='$VERSION';fs.writeFileSync('./package.json',JSON.stringify(p,null,2)+'\n')"
 
       - name: Determine npm tag
         id: npm-tag
@@ -62,7 +65,7 @@ jobs:
           fi
 
       - name: Publish to npm
-        run: npm publish --access public --provenance --tag ${{ steps.npm-tag.outputs.tag }}
+        run: pnpm publish --access public --provenance --tag ${{ steps.npm-tag.outputs.tag }} --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_SECRET }}
 

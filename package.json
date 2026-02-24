@@ -12,6 +12,7 @@
   "bugs": {
     "url": "https://github.com/mieweb/ui/issues"
   },
+  "packageManager": "pnpm@10.29.1",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"

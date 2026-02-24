@@ -24,11 +24,14 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          cache: 'pnpm'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Configure Git
@@ -37,19 +40,19 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Lint
-        run: npm run lint
+        run: pnpm lint
 
       - name: Type check
-        run: npm run typecheck
+        run: pnpm typecheck
 
       - name: Run unit tests
-        run: npm run test
+        run: pnpm test
 
       - name: Build package
-        run: npm run build
+        run: pnpm build
         env:
           NODE_OPTIONS: '--max-old-space-size=8192'
 
@@ -64,10 +67,10 @@ jobs:
           PRERELEASE_VERSION="${BASE_VERSION}-dev.${GITHUB_RUN_NUMBER}"
           echo "version=$PRERELEASE_VERSION" >> $GITHUB_OUTPUT
           echo "Setting prerelease version to $PRERELEASE_VERSION"
-          npm version $PRERELEASE_VERSION --no-git-tag-version --allow-same-version
+          node -e "const fs=require('fs'),p=JSON.parse(fs.readFileSync('./package.json'));p.version='$PRERELEASE_VERSION';fs.writeFileSync('./package.json',JSON.stringify(p,null,2)+'\n')"
 
       - name: Publish prerelease to npm
-        run: npm publish --access public --provenance --tag next
+        run: pnpm publish --access public --provenance --tag next --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_SECRET }}
 
