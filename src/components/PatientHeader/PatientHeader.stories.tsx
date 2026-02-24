@@ -1,6 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { PatientHeader, type PatientData } from './PatientHeader';
-import { CountBadge } from '../CountBadge';
+import {
+  PatientHeader,
+  type PatientData,
+  type PatientOverflowAction,
+} from './PatientHeader';
+import { CountBadge, type CountBadgeItem } from '../CountBadge';
 import { Button } from '../Button';
 
 const meta: Meta<typeof PatientHeader> = {
@@ -62,6 +66,46 @@ const sampleMedications = [
   { name: 'Lisinopril' },
 ];
 
+// ─── CountBadge Hover‑Menu Sample Data ─────────────────────────────────
+
+const sampleTasks: CountBadgeItem[] = [
+  { id: 'task-1', label: 'Complete intake questionnaire', status: 'pending' },
+  { id: 'task-2', label: 'Review lab results', status: 'active' },
+  { id: 'task-3', label: 'Follow-up referral', status: 'overdue' },
+];
+
+const sampleEncounters: CountBadgeItem[] = [
+  { id: 'enc-1', label: 'Office visit 02/20', status: 'active' },
+  { id: 'enc-2', label: 'Telehealth 02/18', status: 'active' },
+  { id: 'enc-3', label: 'Lab draw 02/15', status: 'pending' },
+  { id: 'enc-4', label: 'Physical exam 02/10', status: 'completed' },
+  { id: 'enc-5', label: 'Urgent care 02/05', status: 'completed' },
+];
+
+const sampleDueList: CountBadgeItem[] = [
+  { id: 'due-1', label: 'Hemoglobin A1c', status: 'overdue' },
+  { id: 'due-2', label: 'Lipid panel', status: 'pending' },
+  { id: 'due-3', label: 'Annual wellness visit', status: 'pending' },
+  { id: 'due-4', label: 'Pneumonia vaccine', status: 'active' },
+];
+
+const sampleOrders: CountBadgeItem[] = [
+  { id: 'ord-1', label: 'CBC w/ differential', status: 'pending' },
+  { id: 'ord-2', label: 'Comprehensive metabolic panel', status: 'pending' },
+  { id: 'ord-3', label: 'Chest X-ray', status: 'active' },
+  { id: 'ord-4', label: 'PT/INR', status: 'overdue' },
+];
+
+const sampleEsigns: CountBadgeItem[] = [
+  { id: 'esign-1', label: 'Office visit note 02/20', status: 'pending' },
+  { id: 'esign-2', label: 'Referral letter — Cardiology', status: 'pending' },
+  { id: 'esign-3', label: 'Lab order 02/18', status: 'active' },
+  { id: 'esign-4', label: 'Prescription — Lisinopril', status: 'pending' },
+  { id: 'esign-5', label: 'Consent — Telehealth', status: 'completed' },
+  { id: 'esign-6', label: 'Discharge summary 02/05', status: 'overdue' },
+  { id: 'esign-7', label: 'Immunization record update', status: 'active' },
+];
+
 // ─── Stories ───────────────────────────────────────────────────────────────
 
 /** Full-featured header matching the reference design with alerts, details, and action buttons. */
@@ -77,13 +121,74 @@ export const Default: Story = {
     showDetails: true,
     actions: (
       <div className="flex flex-wrap gap-2">
-        <CountBadge label="Tasks" count={3} />
-        <CountBadge label="Open Enc" count={5} />
-        <CountBadge label="Due List" count={4} />
-        <CountBadge label="Order Req" count={4} />
-        <CountBadge label="eSign" count={7} />
+        <CountBadge
+          label="Tasks"
+          count={3}
+          variant="warning"
+          items={sampleTasks}
+          deleteLabel="task"
+          onView={(item) => console.log('View task', item)}
+          onEdit={(item, formData) => console.log('Saved task', item, formData)}
+          onDelete={(item) => console.log('Deleted task', item)}
+        />
+        <CountBadge
+          label="Open Enc"
+          count={5}
+          variant="info"
+          items={sampleEncounters}
+          deleteLabel="encounter"
+          onView={(item) => console.log('View encounter', item)}
+          onEdit={(item, formData) =>
+            console.log('Saved encounter', item, formData)
+          }
+          onDelete={(item) => console.log('Deleted encounter', item)}
+        />
+        <CountBadge
+          label="Due List"
+          count={4}
+          variant="alert"
+          items={sampleDueList}
+          deleteLabel="due list item"
+          onView={(item) => console.log('View due item', item)}
+          onEdit={(item, formData) =>
+            console.log('Saved due item', item, formData)
+          }
+          onDelete={(item) => console.log('Deleted due item', item)}
+        />
+        <CountBadge
+          label="Order Req"
+          count={4}
+          items={sampleOrders}
+          deleteLabel="order"
+          onView={(item) => console.log('View order', item)}
+          onEdit={(item, formData) =>
+            console.log('Saved order', item, formData)
+          }
+          onDelete={(item) => console.log('Deleted order', item)}
+        />
+        <CountBadge
+          label="eSign"
+          count={7}
+          variant="warning"
+          items={sampleEsigns}
+          deleteLabel="e-sign request"
+          onView={(item) => console.log('View esign', item)}
+          onEdit={(item, formData) =>
+            console.log('Saved esign', item, formData)
+          }
+          onDelete={(item) => console.log('Deleted esign', item)}
+        />
       </div>
     ),
+    showOverflowMenu: true,
+    onOverflowAction: (action: PatientOverflowAction) =>
+      console.log('Overflow action:', action),
+    onAddItem: (
+      entityType: PatientOverflowAction,
+      formData: Record<string, string>
+    ) => console.log('Add item:', entityType, formData),
+    onEditPatient: (formData: Record<string, string>) =>
+      console.log('Edit patient:', formData),
   },
 };
 

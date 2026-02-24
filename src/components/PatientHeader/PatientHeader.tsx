@@ -5,6 +5,15 @@ import { useEscapeKey } from '../../hooks/useEscapeKey';
 import { Avatar } from '../Avatar';
 import { Badge } from '../Badge';
 import { Button } from '../Button';
+import { Input } from '../Input';
+import {
+  Modal,
+  ModalHeader,
+  ModalTitle,
+  ModalClose,
+  ModalBody,
+  ModalFooter,
+} from '../Modal';
 import {
   ArrowLeftIcon,
   CalendarIcon,
@@ -19,6 +28,18 @@ import {
   StethoscopeIcon,
   UsersIcon,
   MenuIcon,
+  MoreVerticalIcon,
+  PencilIcon,
+  ClipboardPlusIcon,
+  ClipboardCheckIcon,
+  FilePlusIcon,
+  FileCheckIcon,
+  AllergyIcon,
+  PillIcon,
+  BellIcon,
+  SendIcon,
+  DownloadIcon,
+  PrinterIcon,
 } from '../Icons';
 
 // =============================================================================
@@ -71,6 +92,33 @@ export interface PatientData {
   familyProvider?: string;
 }
 
+export type PatientOverflowAction =
+  | 'edit-patient'
+  | 'add-task'
+  | 'add-encounter'
+  | 'add-due-list'
+  | 'add-order'
+  | 'add-esign'
+  | 'add-allergy'
+  | 'add-medication'
+  | 'add-alert'
+  | 'send-message'
+  | 'schedule-appointment'
+  | 'print-summary'
+  | 'export-record';
+
+/** Maps add-* actions to human-readable entity labels */
+const ADD_ENTITY_LABELS: Record<string, string> = {
+  'add-task': 'Task',
+  'add-encounter': 'Encounter',
+  'add-due-list': 'Due List Item',
+  'add-order': 'Order Request',
+  'add-esign': 'eSign Request',
+  'add-allergy': 'Allergy',
+  'add-medication': 'Medication',
+  'add-alert': 'Alert',
+};
+
 export interface PatientHeaderProps extends Omit<
   React.HTMLAttributes<HTMLDivElement>,
   'className'
@@ -103,6 +151,17 @@ export interface PatientHeaderProps extends Omit<
   detailsExpanded?: boolean;
   /** Maximum medications to display before "+N more" (default: 4) */
   maxVisibleMeds?: number;
+  /** Show the patient-level overflow menu to the right of count badges (default: false) */
+  showOverflowMenu?: boolean;
+  /** Called when a patient overflow menu action is selected */
+  onOverflowAction?: (action: PatientOverflowAction) => void;
+  /** Called when an 'Add' modal is submitted from the overflow menu */
+  onAddItem?: (
+    entityType: PatientOverflowAction,
+    formData: Record<string, string>
+  ) => void;
+  /** Called when the Edit Patient modal is saved */
+  onEditPatient?: (formData: Record<string, string>) => void;
   /** Additional CSS classes */
   className?: string;
   /** Test ID for testing */
@@ -234,6 +293,185 @@ function MedicationRow({
   );
 }
 
+/** Single menu item inside the overflow dropdown */
+function OverflowMenuItem({
+  icon,
+  label,
+  onClick,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      role="menuitem"
+      onClick={onClick}
+      className={cn(
+        'flex w-full items-center gap-2.5 px-3 py-2 text-sm',
+        'text-foreground hover:bg-muted/50 transition-colors',
+        'focus-visible:bg-muted/50 focus-visible:outline-none'
+      )}
+    >
+      <span className="text-muted-foreground shrink-0">{icon}</span>
+      <span>{label}</span>
+    </button>
+  );
+}
+
+/** Patient-level overflow menu (⋮) with grouped actions */
+function PatientOverflowMenu({
+  onAction,
+}: {
+  onAction?: (action: PatientOverflowAction) => void;
+}) {
+  const [open, setOpen] = React.useState(false);
+  const menuRef = React.useRef<HTMLDivElement>(null);
+
+  useClickOutside(
+    menuRef,
+    React.useCallback(() => setOpen(false), [])
+  );
+  useEscapeKey(
+    React.useCallback(() => setOpen(false), []),
+    open
+  );
+
+  const handleAction = (action: PatientOverflowAction) => {
+    onAction?.(action);
+    setOpen(false);
+  };
+
+  return (
+    <div className="relative" ref={menuRef}>
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={() => setOpen(!open)}
+        aria-label="Patient actions menu"
+        aria-haspopup="menu"
+        aria-expanded={open}
+        className="h-8 w-8"
+      >
+        <MoreVerticalIcon size={18} />
+      </Button>
+
+      {open && (
+        <div
+          role="menu"
+          aria-label="Patient actions"
+          className={cn(
+            'absolute top-full right-0 z-50 mt-1',
+            'border-border bg-card rounded-xl border py-1 shadow-lg',
+            'max-h-[420px] overflow-y-auto',
+            'motion-safe:animate-fade-in',
+            'w-56 sm:w-auto'
+          )}
+        >
+          {/* ── Edit (full width, top) ── */}
+          <div className="px-3 py-1.5">
+            <span className="text-muted-foreground text-[11px] font-semibold tracking-wide uppercase">
+              Edit
+            </span>
+          </div>
+          <OverflowMenuItem
+            icon={<PencilIcon size={15} />}
+            label="Edit Patient"
+            onClick={() => handleAction('edit-patient')}
+          />
+
+          <div className="border-border my-1 border-t" />
+
+          {/* ── Add + Quick Actions side-by-side on sm+, stacked on mobile ── */}
+          <div className="flex flex-col sm:flex-row">
+            {/* Add column */}
+            <div className="min-w-[13rem]">
+              <div className="px-3 py-1.5">
+                <span className="text-muted-foreground text-[11px] font-semibold tracking-wide uppercase">
+                  Add
+                </span>
+              </div>
+              <OverflowMenuItem
+                icon={<ClipboardPlusIcon size={15} />}
+                label="Task"
+                onClick={() => handleAction('add-task')}
+              />
+              <OverflowMenuItem
+                icon={<StethoscopeIcon size={15} />}
+                label="Encounter"
+                onClick={() => handleAction('add-encounter')}
+              />
+              <OverflowMenuItem
+                icon={<ClipboardCheckIcon size={15} />}
+                label="Due List Item"
+                onClick={() => handleAction('add-due-list')}
+              />
+              <OverflowMenuItem
+                icon={<FilePlusIcon size={15} />}
+                label="Order Request"
+                onClick={() => handleAction('add-order')}
+              />
+              <OverflowMenuItem
+                icon={<FileCheckIcon size={15} />}
+                label="eSign Request"
+                onClick={() => handleAction('add-esign')}
+              />
+              <OverflowMenuItem
+                icon={<AllergyIcon size={15} />}
+                label="Allergy"
+                onClick={() => handleAction('add-allergy')}
+              />
+              <OverflowMenuItem
+                icon={<PillIcon size={15} />}
+                label="Medication"
+                onClick={() => handleAction('add-medication')}
+              />
+              <OverflowMenuItem
+                icon={<BellIcon size={15} />}
+                label="Alert"
+                onClick={() => handleAction('add-alert')}
+              />
+            </div>
+
+            {/* Divider: horizontal on mobile, vertical on desktop */}
+            <div className="border-border my-1 border-t sm:my-0 sm:border-t-0 sm:border-l" />
+
+            {/* Quick Actions column */}
+            <div className="min-w-[13rem]">
+              <div className="px-3 py-1.5">
+                <span className="text-muted-foreground text-[11px] font-semibold tracking-wide uppercase">
+                  Quick Actions
+                </span>
+              </div>
+              <OverflowMenuItem
+                icon={<SendIcon size={15} />}
+                label="Send Message"
+                onClick={() => handleAction('send-message')}
+              />
+              <OverflowMenuItem
+                icon={<CalendarIcon size={15} />}
+                label="Schedule Appointment"
+                onClick={() => handleAction('schedule-appointment')}
+              />
+              <OverflowMenuItem
+                icon={<PrinterIcon size={15} />}
+                label="Print Summary"
+                onClick={() => handleAction('print-summary')}
+              />
+              <OverflowMenuItem
+                icon={<DownloadIcon size={15} />}
+                label="Export Record"
+                onClick={() => handleAction('export-record')}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 /** Comments/alert row */
 function AlertRow({ comments }: { comments: string[] }) {
   return (
@@ -305,6 +543,10 @@ export const PatientHeader = React.forwardRef<
       showCommentsBanner = false,
       showDetails = false,
       detailsExpanded: detailsExpandedProp,
+      showOverflowMenu = false,
+      onOverflowAction,
+      onAddItem,
+      onEditPatient,
       maxVisibleMeds = 4,
       className,
       'data-testid': testId = 'patient-header',
@@ -338,6 +580,58 @@ export const PatientHeader = React.forwardRef<
         setDetailsExpanded(detailsExpandedProp);
       }
     }, [detailsExpandedProp]);
+
+    // ─── Add-entity modal state ───
+    const [addModalType, setAddModalType] =
+      React.useState<PatientOverflowAction | null>(null);
+    const [addForm, setAddForm] = React.useState<Record<string, string>>({});
+
+    const addEntityLabel = addModalType
+      ? (ADD_ENTITY_LABELS[addModalType] ?? '')
+      : '';
+
+    // ─── Edit Patient modal state ───
+    const [editPatientOpen, setEditPatientOpen] = React.useState(false);
+    const [editPatientForm, setEditPatientForm] = React.useState<
+      Record<string, string>
+    >({});
+
+    /** Intercept overflow actions — open add modal for add-* keys, edit-patient modal */
+    const handleOverflowAction = React.useCallback(
+      (action: PatientOverflowAction) => {
+        if (action === 'edit-patient') {
+          setEditPatientOpen(true);
+          setEditPatientForm({
+            firstName: patient.name.first,
+            middleName: patient.name.middle ?? '',
+            lastName: patient.name.last,
+            suffix: patient.name.suffix ?? '',
+            mrn: patient.mrn,
+            status: patient.status ?? 'active',
+            dob: patient.dob,
+            sex: patient.sex,
+            email: patient.email ?? '',
+            phone: patient.phone ?? '',
+            employer: patient.employer ?? '',
+            attendingProvider: patient.attendingProvider ?? '',
+            familyProvider: patient.familyProvider ?? '',
+          });
+        } else if (action.startsWith('add-')) {
+          setAddModalType(action);
+          setAddForm({
+            label: '',
+            status: 'pending',
+            priority: 'Normal',
+            assignedTo: '',
+            dueDate: '',
+            notes: '',
+          });
+        } else {
+          onOverflowAction?.(action);
+        }
+      },
+      [onOverflowAction, patient]
+    );
 
     const displayName = formatPatientName(patient.name);
 
@@ -414,37 +708,46 @@ export const PatientHeader = React.forwardRef<
             )}
           </div>
 
-          {/* Right side: actions slot */}
-          {actions && (
-            <div className="relative mt-1 shrink-0" ref={actionsMenuRef}>
-              {/* Mobile: popover toggle button */}
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setActionsMenuOpen(!actionsMenuOpen)}
-                aria-label="Open actions menu"
-                aria-haspopup="true"
-                aria-expanded={actionsMenuOpen}
-                aria-controls="patient-actions-menu"
-                className="h-8 w-8 md:hidden"
-              >
-                <MenuIcon size={18} />
-              </Button>
+          {/* Right side: actions + overflow menu */}
+          {(actions || showOverflowMenu) && (
+            <div className="mt-1 flex shrink-0 items-start gap-1">
+              {actions && (
+                <div className="relative" ref={actionsMenuRef}>
+                  {/* Mobile: popover toggle button */}
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setActionsMenuOpen(!actionsMenuOpen)}
+                    aria-label="Open actions menu"
+                    aria-haspopup="true"
+                    aria-expanded={actionsMenuOpen}
+                    aria-controls="patient-actions-menu"
+                    className="h-8 w-8 md:hidden"
+                  >
+                    <MenuIcon size={18} />
+                  </Button>
 
-              {/* Actions: inline on desktop, popover on mobile */}
-              <div
-                id="patient-actions-menu"
-                role="group"
-                aria-label="Patient actions"
-                className={cn(
-                  'hidden items-center gap-2 md:flex',
-                  actionsMenuOpen &&
-                    'border-border bg-card motion-safe:animate-fade-in absolute top-full right-0 z-50 mt-1 !flex min-w-[12rem] flex-col gap-1.5 rounded-xl border p-2 shadow-lg',
-                  'md:static md:z-auto md:mt-0 md:min-w-0 md:flex-row md:gap-2 md:rounded-none md:border-0 md:bg-transparent md:p-0 md:shadow-none'
-                )}
-              >
-                {actions}
-              </div>
+                  {/* Actions: inline on desktop, popover on mobile */}
+                  <div
+                    id="patient-actions-menu"
+                    role="group"
+                    aria-label="Patient actions"
+                    className={cn(
+                      'hidden items-center gap-2 md:flex',
+                      actionsMenuOpen &&
+                        'border-border bg-card motion-safe:animate-fade-in absolute top-full right-0 z-50 mt-1 !flex min-w-[12rem] flex-col gap-1.5 rounded-xl border p-2 shadow-lg',
+                      'md:static md:z-auto md:mt-0 md:min-w-0 md:flex-row md:gap-2 md:rounded-none md:border-0 md:bg-transparent md:p-0 md:shadow-none'
+                    )}
+                  >
+                    {actions}
+                  </div>
+                </div>
+              )}
+
+              {/* Patient-level overflow menu */}
+              {showOverflowMenu && (
+                <PatientOverflowMenu onAction={handleOverflowAction} />
+              )}
             </div>
           )}
         </div>
@@ -545,6 +848,359 @@ export const PatientHeader = React.forwardRef<
             )}
           </>
         )}
+
+        {/* ─── Add entity modal ─── */}
+        <Modal
+          open={!!addModalType}
+          onOpenChange={(isOpen) => {
+            if (!isOpen) {
+              setAddModalType(null);
+              setAddForm({});
+            }
+          }}
+          size="md"
+        >
+          <ModalHeader>
+            <ModalTitle>Add {addEntityLabel}</ModalTitle>
+            <ModalClose />
+          </ModalHeader>
+          <ModalBody>
+            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+              <Input
+                label="Label"
+                value={addForm.label ?? ''}
+                onChange={(e) =>
+                  setAddForm((f) => ({ ...f, label: e.target.value }))
+                }
+                placeholder={`Enter ${addEntityLabel.toLowerCase()} name…`}
+              />
+
+              <div>
+                <label
+                  htmlFor="ph-add-status"
+                  className="text-foreground mb-1.5 block text-sm font-medium"
+                >
+                  Status
+                </label>
+                <select
+                  id="ph-add-status"
+                  value={addForm.status ?? 'pending'}
+                  onChange={(e) =>
+                    setAddForm((f) => ({ ...f, status: e.target.value }))
+                  }
+                  className={cn(
+                    'border-input bg-background text-foreground w-full rounded-lg border px-3 py-2 text-base',
+                    'transition-colors duration-200',
+                    'focus:ring-ring focus:border-transparent focus:ring-2 focus:outline-none'
+                  )}
+                >
+                  <option value="active">Active</option>
+                  <option value="pending">Pending</option>
+                  <option value="overdue">Overdue</option>
+                  <option value="completed">Completed</option>
+                  <option value="cancelled">Cancelled</option>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  htmlFor="ph-add-priority"
+                  className="text-foreground mb-1.5 block text-sm font-medium"
+                >
+                  Priority
+                </label>
+                <select
+                  id="ph-add-priority"
+                  value={addForm.priority ?? 'Normal'}
+                  onChange={(e) =>
+                    setAddForm((f) => ({ ...f, priority: e.target.value }))
+                  }
+                  className={cn(
+                    'border-input bg-background text-foreground w-full rounded-lg border px-3 py-2 text-base',
+                    'transition-colors duration-200',
+                    'focus:ring-ring focus:border-transparent focus:ring-2 focus:outline-none'
+                  )}
+                >
+                  <option value="Low">Low</option>
+                  <option value="Normal">Normal</option>
+                  <option value="High">High</option>
+                  <option value="Urgent">Urgent</option>
+                </select>
+              </div>
+
+              <Input
+                label="Assigned To"
+                value={addForm.assignedTo ?? ''}
+                onChange={(e) =>
+                  setAddForm((f) => ({ ...f, assignedTo: e.target.value }))
+                }
+              />
+
+              <Input
+                label="Due Date"
+                type="date"
+                value={addForm.dueDate ?? ''}
+                onChange={(e) =>
+                  setAddForm((f) => ({ ...f, dueDate: e.target.value }))
+                }
+              />
+
+              <div>
+                <label
+                  htmlFor="ph-add-notes"
+                  className="text-foreground mb-1.5 block text-sm font-medium"
+                >
+                  Notes
+                </label>
+                <textarea
+                  id="ph-add-notes"
+                  rows={3}
+                  value={addForm.notes ?? ''}
+                  onChange={(e) =>
+                    setAddForm((f) => ({ ...f, notes: e.target.value }))
+                  }
+                  className={cn(
+                    'border-input bg-background text-foreground w-full rounded-lg border px-3 py-2 text-base',
+                    'placeholder:text-muted-foreground',
+                    'transition-colors duration-200',
+                    'focus:ring-ring focus:border-transparent focus:ring-2 focus:outline-none'
+                  )}
+                  placeholder="Add notes…"
+                />
+              </div>
+            </form>
+          </ModalBody>
+          <ModalFooter>
+            <Button
+              variant="secondary"
+              onClick={() => {
+                setAddModalType(null);
+                setAddForm({});
+              }}
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={() => {
+                if (addModalType) {
+                  onAddItem?.(addModalType, addForm);
+                }
+                setAddModalType(null);
+                setAddForm({});
+              }}
+            >
+              Add {addEntityLabel}
+            </Button>
+          </ModalFooter>
+        </Modal>
+
+        {/* ─── Edit Patient modal ─── */}
+        <Modal
+          open={editPatientOpen}
+          onOpenChange={(isOpen) => {
+            if (!isOpen) {
+              setEditPatientOpen(false);
+              setEditPatientForm({});
+            }
+          }}
+          size="2xl"
+        >
+          <ModalHeader>
+            <ModalTitle>Edit Patient</ModalTitle>
+            <ModalClose />
+          </ModalHeader>
+          <ModalBody>
+            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+              {/* First / Middle / Last / Suffix */}
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
+                <Input
+                  label="First Name"
+                  value={editPatientForm.firstName ?? ''}
+                  onChange={(e) =>
+                    setEditPatientForm((f) => ({
+                      ...f,
+                      firstName: e.target.value,
+                    }))
+                  }
+                />
+                <Input
+                  label="Middle Name"
+                  value={editPatientForm.middleName ?? ''}
+                  onChange={(e) =>
+                    setEditPatientForm((f) => ({
+                      ...f,
+                      middleName: e.target.value,
+                    }))
+                  }
+                />
+                <Input
+                  label="Last Name"
+                  value={editPatientForm.lastName ?? ''}
+                  onChange={(e) =>
+                    setEditPatientForm((f) => ({
+                      ...f,
+                      lastName: e.target.value,
+                    }))
+                  }
+                />
+                <Input
+                  label="Suffix"
+                  value={editPatientForm.suffix ?? ''}
+                  onChange={(e) =>
+                    setEditPatientForm((f) => ({
+                      ...f,
+                      suffix: e.target.value,
+                    }))
+                  }
+                  placeholder="Jr., Sr., III…"
+                />
+              </div>
+
+              {/* Sex / DOB */}
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div>
+                  <label
+                    htmlFor="ph-edit-sex"
+                    className="text-foreground mb-1.5 block text-sm font-medium"
+                  >
+                    Sex
+                  </label>
+                  <select
+                    id="ph-edit-sex"
+                    value={editPatientForm.sex ?? 'U'}
+                    onChange={(e) =>
+                      setEditPatientForm((f) => ({ ...f, sex: e.target.value }))
+                    }
+                    className={cn(
+                      'border-input bg-background text-foreground w-full rounded-lg border px-3 py-2 text-base',
+                      'transition-colors duration-200',
+                      'focus:ring-ring focus:border-transparent focus:ring-2 focus:outline-none'
+                    )}
+                  >
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="U">Unknown</option>
+                  </select>
+                </div>
+                <Input
+                  label="Date of Birth"
+                  value={editPatientForm.dob ?? ''}
+                  onChange={(e) =>
+                    setEditPatientForm((f) => ({ ...f, dob: e.target.value }))
+                  }
+                  placeholder="MM-DD-YYYY"
+                />
+              </div>
+
+              {/* MRN (read-only) / Status */}
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <Input
+                  label="MRN"
+                  value={editPatientForm.mrn ?? ''}
+                  readOnly
+                  className="bg-muted/50 cursor-not-allowed opacity-70"
+                />
+                <div>
+                  <label
+                    htmlFor="ph-edit-status"
+                    className="text-foreground mb-1.5 block text-sm font-medium"
+                  >
+                    Status
+                  </label>
+                  <select
+                    id="ph-edit-status"
+                    value={editPatientForm.status ?? 'active'}
+                    onChange={(e) =>
+                      setEditPatientForm((f) => ({
+                        ...f,
+                        status: e.target.value,
+                      }))
+                    }
+                    className={cn(
+                      'border-input bg-background text-foreground w-full rounded-lg border px-3 py-2 text-base',
+                      'transition-colors duration-200',
+                      'focus:ring-ring focus:border-transparent focus:ring-2 focus:outline-none'
+                    )}
+                  >
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                    <option value="deceased">Deceased</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Email / Phone */}
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <Input
+                  label="Email"
+                  type="email"
+                  value={editPatientForm.email ?? ''}
+                  onChange={(e) =>
+                    setEditPatientForm((f) => ({ ...f, email: e.target.value }))
+                  }
+                />
+                <Input
+                  label="Phone"
+                  type="tel"
+                  value={editPatientForm.phone ?? ''}
+                  onChange={(e) =>
+                    setEditPatientForm((f) => ({ ...f, phone: e.target.value }))
+                  }
+                />
+              </div>
+
+              {/* Read-only Employer */}
+              <Input
+                label="Employer"
+                value={editPatientForm.employer ?? ''}
+                readOnly
+                className="bg-muted/50 cursor-not-allowed opacity-70"
+              />
+
+              <Input
+                label="Attending Provider"
+                value={editPatientForm.attendingProvider ?? ''}
+                onChange={(e) =>
+                  setEditPatientForm((f) => ({
+                    ...f,
+                    attendingProvider: e.target.value,
+                  }))
+                }
+              />
+
+              <Input
+                label="Family MD"
+                value={editPatientForm.familyProvider ?? ''}
+                onChange={(e) =>
+                  setEditPatientForm((f) => ({
+                    ...f,
+                    familyProvider: e.target.value,
+                  }))
+                }
+              />
+            </form>
+          </ModalBody>
+          <ModalFooter>
+            <Button
+              variant="secondary"
+              onClick={() => {
+                setEditPatientOpen(false);
+                setEditPatientForm({});
+              }}
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={() => {
+                onEditPatient?.(editPatientForm);
+                setEditPatientOpen(false);
+                setEditPatientForm({});
+              }}
+            >
+              Save
+            </Button>
+          </ModalFooter>
+        </Modal>
       </div>
     );
   }
