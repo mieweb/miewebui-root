@@ -586,7 +586,7 @@ export const PatientHeader = React.forwardRef<
       Record<string, string>
     >({});
 
-    /** Intercept overflow actions — open add modal for add-* keys, edit-patient modal */
+    /** Intercept overflow actions — open contact modal, add-* modals, and edit-patient modal */
     const handleOverflowAction = React.useCallback(
       (action: PatientOverflowAction) => {
         if (action === 'contact') {
