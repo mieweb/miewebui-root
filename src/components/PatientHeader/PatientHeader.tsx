@@ -646,7 +646,7 @@ export const PatientHeader = React.forwardRef<
             name={formatFullName(patient.name)}
             src={patient.photo}
             size="md"
-            className="hidden shrink-0 md:block"
+            className="hidden shrink-0 md:inline-flex"
           />
 
           {/* Content block */}
