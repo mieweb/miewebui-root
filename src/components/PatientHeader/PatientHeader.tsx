@@ -555,6 +555,7 @@ export const PatientHeader = React.forwardRef<
     const hasInfoRows =
       hasAllergies || hasMedications || hasComments || hasProviders;
 
+    const actionsMenuId = React.useId();
     const [actionsMenuOpen, setActionsMenuOpen] = React.useState(false);
     const actionsMenuRef = React.useRef<HTMLDivElement>(null);
 
@@ -683,7 +684,7 @@ export const PatientHeader = React.forwardRef<
                         aria-label="Open actions menu"
                         aria-haspopup="true"
                         aria-expanded={actionsMenuOpen}
-                        aria-controls="patient-actions-menu"
+                        aria-controls={actionsMenuId}
                         className="h-8 w-8 md:hidden"
                       >
                         <MenuIcon size={18} />
@@ -691,7 +692,7 @@ export const PatientHeader = React.forwardRef<
 
                       {/* Actions: inline on desktop, popover on mobile */}
                       <div
-                        id="patient-actions-menu"
+                        id={actionsMenuId}
                         role="group"
                         aria-label="Patient actions"
                         className={cn(
@@ -716,24 +717,29 @@ export const PatientHeader = React.forwardRef<
 
             {/* Second line: Status, MRN, Age/Sex, DOB, Employer */}
             <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
-              {patient.status && (
-                <span className="inline-flex items-center gap-1 whitespace-nowrap">
-                  <span
-                    className={`inline-block h-2 w-2 rounded-full ${
-                      patient.status.toLowerCase() === 'active'
-                        ? 'bg-green-500'
-                        : patient.status.toLowerCase() === 'inactive'
-                          ? 'bg-gray-400'
-                          : patient.status.toLowerCase() === 'deceased'
-                            ? 'bg-red-500'
-                            : 'bg-yellow-500'
-                    }`}
-                  />
-                  <span className="text-muted-foreground capitalize">
-                    {patient.status.toLowerCase()}
-                  </span>
-                </span>
-              )}
+              {patient.status &&
+                (() => {
+                  const normalizedStatus = patient.status.toLowerCase();
+                  const statusColorMap: Record<string, string> = {
+                    active: 'bg-green-500',
+                    inactive: 'bg-gray-400',
+                    deceased: 'bg-red-500',
+                  };
+                  const statusColorClass =
+                    statusColorMap[normalizedStatus] ?? 'bg-yellow-500';
+
+                  return (
+                    <span className="inline-flex items-center gap-1 whitespace-nowrap">
+                      <span
+                        aria-hidden="true"
+                        className={`inline-block h-2 w-2 rounded-full ${statusColorClass}`}
+                      />
+                      <span className="text-muted-foreground capitalize">
+                        {normalizedStatus}
+                      </span>
+                    </span>
+                  );
+                })()}
               <span className="text-muted-foreground whitespace-nowrap">
                 MRN: {patient.mrn}
               </span>
