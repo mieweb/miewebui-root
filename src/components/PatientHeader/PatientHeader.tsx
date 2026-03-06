@@ -671,8 +671,8 @@ export const PatientHeader = React.forwardRef<
                   className={cn(
                     'order-4 w-full md:order-2 md:w-auto md:shrink-0',
                     'mt-1 md:mt-0',
-                    '[&>div>div>button]:gap-1.5 [&>div>div>button]:px-2 [&>div>div>button]:py-0.5 [&>div>div>button]:text-xs',
-                    'md:[&>div>div>button]:gap-2 md:[&>div>div>button]:px-3 md:[&>div>div>button]:py-1 md:[&>div>div>button]:text-sm'
+                    '[&_button[data-count-badge]]:gap-1.5 [&_button[data-count-badge]]:px-2 [&_button[data-count-badge]]:py-0.5 [&_button[data-count-badge]]:text-xs',
+                    'md:[&_button[data-count-badge]]:gap-2 md:[&_button[data-count-badge]]:px-3 md:[&_button[data-count-badge]]:py-1 md:[&_button[data-count-badge]]:text-sm'
                   )}
                 >
                   {actions}
