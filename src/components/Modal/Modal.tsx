@@ -39,9 +39,13 @@ const modalOverlayVariants = cva(
 const modalContentVariants = cva(
   [
     'relative w-full bg-card text-card-foreground',
-    'border border-border rounded-xl shadow-lg',
+    'border border-border shadow-lg',
+    // Full-screen on mobile, rounded on larger screens
+    'rounded-none sm:rounded-xl',
     'flex flex-col',
-    'max-h-[calc(100dvh-2rem)]',
+    // Full viewport height on mobile, constrained on larger screens
+    'max-h-dvh sm:max-h-[calc(100dvh-2rem)]',
+    'min-h-dvh sm:min-h-0',
     // If a <form> is used as a direct child (wrapping ModalBody + ModalFooter),
     // make it participate in the flex column layout so overflow constraints work.
     '[&>form]:flex [&>form]:flex-col [&>form]:flex-1 [&>form]:min-h-0',
@@ -53,13 +57,13 @@ const modalContentVariants = cva(
   {
     variants: {
       size: {
-        sm: 'max-w-sm',
-        md: 'max-w-md',
-        lg: 'max-w-lg',
-        xl: 'max-w-xl',
-        '2xl': 'max-w-2xl',
-        '3xl': 'max-w-3xl',
-        '4xl': 'max-w-4xl',
+        sm: 'sm:max-w-sm',
+        md: 'sm:max-w-md',
+        lg: 'sm:max-w-lg',
+        xl: 'sm:max-w-xl',
+        '2xl': 'sm:max-w-2xl',
+        '3xl': 'sm:max-w-3xl',
+        '4xl': 'sm:max-w-4xl',
         full: 'max-w-[calc(100vw-2rem)]',
       },
     },
@@ -194,7 +198,7 @@ function Modal({
         <div className="fixed inset-0 overflow-y-auto">
           {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
           <div
-            className="flex min-h-full items-center justify-center p-4"
+            className="flex min-h-full items-center justify-center p-0 sm:p-4"
             onClick={handleOverlayClick}
           >
             {/* Content */}
