@@ -424,15 +424,36 @@ addons.register('mieweb-brand-sync', (api) => {
 addons.register('mieweb-404-redirect', (api) => {
   const FALLBACK_ID = 'introduction--docs';
 
-  api.on('storyMissing', () => {
-    api.selectStory(FALLBACK_ID);
-  });
-
-  // Also check on initial load — if the requested story doesn't resolve
-  setTimeout(() => {
-    const current = api.getCurrentStoryData();
-    if (!current) {
+  const selectFallbackIfAvailable = () => {
+    const fallbackStory = api.getData?.(FALLBACK_ID as any);
+    if (fallbackStory) {
       api.selectStory(FALLBACK_ID);
     }
-  }, 1500);
+  };
+
+  api.on('storyMissing', () => {
+    selectFallbackIfAvailable();
+  });
+
+  // Poll for a limited time on initial load so slower environments
+  // don't trigger an unnecessary redirect.
+  const MAX_WAIT_MS = 5000;
+  const POLL_INTERVAL_MS = 200;
+  let elapsedMs = 0;
+
+  const pollForStory = setInterval(() => {
+    const current = api.getCurrentStoryData();
+
+    if (current) {
+      clearInterval(pollForStory);
+      return;
+    }
+
+    elapsedMs += POLL_INTERVAL_MS;
+
+    if (elapsedMs >= MAX_WAIT_MS) {
+      clearInterval(pollForStory);
+      selectFallbackIfAvailable();
+    }
+  }, POLL_INTERVAL_MS);
 });
