@@ -75,17 +75,32 @@ function getCountries(): CountryData[] {
 // Region display name mapping
 // =============================================================================
 
+/** Lazy singleton for Intl.DisplayNames so we only construct it once. */
+let _regionDisplayNames: Intl.DisplayNames | null = null;
+
+function getRegionDisplayNames(): Intl.DisplayNames | null {
+  if (_regionDisplayNames === null) {
+    try {
+      const locales =
+        typeof navigator !== 'undefined' && navigator.languages?.length
+          ? [...navigator.languages]
+          : ['en'];
+      _regionDisplayNames = new Intl.DisplayNames(locales, { type: 'region' });
+    } catch {
+      return null;
+    }
+  }
+  return _regionDisplayNames;
+}
+
 /**
  * Use the browser Intl API for display names where available,
  * falling back to the raw ISO code.
  */
 function regionDisplayName(code: string): string {
-  try {
-    const dn = new Intl.DisplayNames(['en'], { type: 'region' });
-    return dn.of(code) ?? code;
-  } catch {
-    return code;
-  }
+  const dn = getRegionDisplayNames();
+  if (!dn) return code;
+  return dn.of(code) ?? code;
 }
 
 // =============================================================================
@@ -172,14 +187,32 @@ function CountryCodeDropdown({
   const isControlled = value !== undefined;
   const activeValue = isControlled ? value : internalValue;
 
-  const countries = React.useMemo(() => getCountries(), []);
-
-  const selected = React.useMemo(
-    () =>
-      countries.find((c) => c.code === activeValue) ??
-      countries.find((c) => c.code === 'US')!,
-    [activeValue, countries]
+  // Defer building the full country list until the dropdown is first opened
+  const [countriesLoaded, setCountriesLoaded] = React.useState(false);
+  const countries = React.useMemo(
+    () => (countriesLoaded ? getCountries() : []),
+    [countriesLoaded]
   );
+
+  React.useEffect(() => {
+    if (isOpen && !countriesLoaded) setCountriesLoaded(true);
+  }, [isOpen, countriesLoaded]);
+
+  const selected = React.useMemo(() => {
+    if (countries.length) {
+      return (
+        countries.find((c) => c.code === activeValue) ??
+        countries.find((c) => c.code === 'US')!
+      );
+    }
+    // Lightweight fallback while list hasn't loaded yet
+    return {
+      code: activeValue ?? 'US',
+      name: regionDisplayName(activeValue ?? 'US'),
+      dialCode: `+${PhoneNumberUtil.getInstance().getCountryCodeForRegion(activeValue ?? 'US')}`,
+      flag: isoToEmoji(activeValue ?? 'US'),
+    };
+  }, [activeValue, countries]);
 
   const filtered = React.useMemo(() => {
     if (!search) return countries;
@@ -303,7 +336,7 @@ function CountryCodeDropdown({
         <div
           id={menuId}
           role="listbox"
-          aria-label="Country codes"
+          aria-label={ariaLabel}
           tabIndex={-1}
           onKeyDown={handleKeyDown}
           className={cn(
