@@ -419,3 +419,20 @@ addons.register('mieweb-brand-sync', (api) => {
     api.setOptions({ theme: createBrandTheme(brand, isDark) });
   });
 });
+
+// Redirect old/broken story bookmarks to the Introduction page
+addons.register('mieweb-404-redirect', (api) => {
+  const FALLBACK_ID = 'introduction--docs';
+
+  api.on('storyMissing', () => {
+    api.selectStory(FALLBACK_ID);
+  });
+
+  // Also check on initial load — if the requested story doesn't resolve
+  setTimeout(() => {
+    const current = api.getCurrentStoryData();
+    if (!current) {
+      api.selectStory(FALLBACK_ID);
+    }
+  }, 1500);
+});
