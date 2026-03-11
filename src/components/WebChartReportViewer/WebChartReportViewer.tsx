@@ -8,7 +8,7 @@ import { Card, CardContent } from '../Card';
 import { Alert, AlertDescription, AlertTitle } from '../Alert';
 import { Skeleton } from '../Skeleton';
 import { Spinner } from '../Spinner';
-import { Input } from '../Input';
+import { DateInput } from '../DateInput';
 import {
   Modal,
   ModalHeader,
@@ -149,9 +149,22 @@ export function WebChartReportViewer({
     onClose?.();
   };
 
-  const formatDate = (date: Date | string) => {
+  // Convert Date or ISO string to MM/DD/YYYY format for DateInput
+  const formatDateForInput = (date: Date | string): string => {
     const d = typeof date === 'string' ? new Date(date) : date;
-    return d.toISOString().split('T')[0];
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    const year = d.getFullYear();
+    return `${month}/${day}/${year}`;
+  };
+
+  // Convert MM/DD/YYYY format back to ISO string for the callback
+  const formatDateForCallback = (value: string): string => {
+    const [month, day, year] = value.split('/');
+    if (month && day && year && year.length === 4) {
+      return `${year}-${month}-${day}`;
+    }
+    return value;
   };
 
   return (
@@ -269,24 +282,24 @@ export function WebChartReportViewer({
               <label className="text-muted-foreground text-sm">
                 {dateFrom}:
               </label>
-              <Input
-                type="date"
+              <DateInput
                 size="sm"
-                value={formatDate(dateRange.start)}
-                onChange={(e) =>
-                  onDateRangeChange(e.target.value, dateRange.end)
+                showCalendar
+                width="fixed"
+                value={formatDateForInput(dateRange.start)}
+                onChange={(value) =>
+                  onDateRangeChange(formatDateForCallback(value), dateRange.end)
                 }
-                className="w-auto"
               />
               <label className="text-muted-foreground text-sm">{dateTo}:</label>
-              <Input
-                type="date"
+              <DateInput
                 size="sm"
-                value={formatDate(dateRange.end)}
-                onChange={(e) =>
-                  onDateRangeChange(dateRange.start, e.target.value)
+                showCalendar
+                width="fixed"
+                value={formatDateForInput(dateRange.end)}
+                onChange={(value) =>
+                  onDateRangeChange(dateRange.start, formatDateForCallback(value))
                 }
-                className="w-auto"
               />
             </div>
           )}
@@ -413,10 +426,23 @@ export function ReportDatePicker({
 }: ReportDatePickerProps) {
   const [preset, setPreset] = React.useState('this-month');
 
-  const formatDate = (date?: Date | string) => {
+  // Convert Date or ISO string to MM/DD/YYYY format for DateInput
+  const formatDateForInput = (date?: Date | string): string => {
     if (!date) return '';
     const d = typeof date === 'string' ? new Date(date) : date;
-    return d.toISOString().split('T')[0];
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    const year = d.getFullYear();
+    return `${month}/${day}/${year}`;
+  };
+
+  // Convert MM/DD/YYYY format back to ISO string for the callback
+  const formatDateForCallback = (value: string): string => {
+    const [month, day, year] = value.split('/');
+    if (month && day && year && year.length === 4) {
+      return `${year}-${month}-${day}`;
+    }
+    return value;
   };
 
   const handlePresetChange = (value: string) => {
@@ -467,22 +493,24 @@ export function ReportDatePicker({
 
       {preset === 'custom' && (
         <>
-          <Input
-            type="date"
+          <DateInput
             size="sm"
-            value={formatDate(startDate)}
-            onChange={(e) => onChange?.(e.target.value, endDate || new Date())}
-            className="w-auto"
+            showCalendar
+            width="fixed"
+            value={formatDateForInput(startDate)}
+            onChange={(value) =>
+              onChange?.(formatDateForCallback(value), endDate || new Date())
+            }
           />
           <span className="text-muted-foreground">to</span>
-          <Input
-            type="date"
+          <DateInput
             size="sm"
-            value={formatDate(endDate)}
-            onChange={(e) =>
-              onChange?.(startDate || new Date(), e.target.value)
+            showCalendar
+            width="fixed"
+            value={formatDateForInput(endDate)}
+            onChange={(value) =>
+              onChange?.(startDate || new Date(), formatDateForCallback(value))
             }
-            className="w-auto"
           />
         </>
       )}
