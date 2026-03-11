@@ -7,6 +7,28 @@ import salaryDataRaw from '../examples/salary-headcount/orgchart.yaml?raw';
 import multipleRootsDataRaw from '../examples/multiple-roots/orgchart.yaml?raw';
 import { commitHash, commitHashFull, repoUrl } from 'virtual:git-info';
 
+// Brand CSS imports (raw strings for theme switching)
+import bluehiveCSS from '../../ui/src/brands/bluehive.css?raw';
+import enterpriseHealthCSS from '../../ui/src/brands/enterprise-health.css?raw';
+import miewebCSS from '../../ui/src/brands/mieweb.css?raw';
+import wagglelineCSS from '../../ui/src/brands/waggleline.css?raw';
+import webchartCSS from '../../ui/src/brands/webchart.css?raw';
+
+const brandCSS: Record<string, string> = {
+  'default': `:root {
+    --mieweb-primary-50: #f8fafc; --mieweb-primary-100: #f1f5f9;
+    --mieweb-primary-200: #e2e8f0; --mieweb-primary-300: #cbd5e1;
+    --mieweb-primary-400: #94a3b8; --mieweb-primary-500: #667eea;
+    --mieweb-primary-600: #5568d3; --mieweb-primary-700: #4a5abb;
+    --mieweb-primary-800: #3e4da3; --mieweb-primary-900: #334089;
+  }`,
+  'bluehive': bluehiveCSS,
+  'enterprise-health': enterpriseHealthCSS,
+  'mieweb': miewebCSS,
+  'waggleline': wagglelineCSS,
+  'webchart': webchartCSS,
+};
+
 // Example data mapping
 const exampleData: Record<string, string> = {
   default: orgChartDataRaw,
@@ -190,3 +212,20 @@ function setupExampleSelector() {
 }
 
 setupExampleSelector();
+
+// Theme selector
+function setupThemeSelector() {
+  const style = document.createElement('style');
+  style.id = 'ychart-brand-theme';
+  document.head.appendChild(style);
+
+  const select = document.getElementById('theme-select') as HTMLSelectElement;
+  if (!select) return;
+
+  select.addEventListener('change', (e) => {
+    const theme = (e.target as HTMLSelectElement).value;
+    style.textContent = brandCSS[theme] || brandCSS['default'];
+  });
+}
+
+setupThemeSelector();

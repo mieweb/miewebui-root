@@ -154,6 +154,14 @@ export default defineConfig(({ mode }) => {
       host: 'localhost',
       port: 5173
     },
+    esbuild: {
+      jsx: 'automatic',
+      jsxImportSource: 'react'
+    },
+    define: {
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env': JSON.stringify({})
+    },
     build: {
       outDir: 'dist',
       lib: {

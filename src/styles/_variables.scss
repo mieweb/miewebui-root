@@ -7,10 +7,13 @@
   // COLOR PALETTE
   // ============================================
   
-  // Primary Brand Colors
-  --yc-color-primary: #667eea;
-  --yc-color-primary-dark: #5568d3;
-  --yc-color-primary-light: #764ba2;
+  // Primary Brand Colors – bridged to @mieweb/ui brand tokens
+  --color-primary: var(--mieweb-primary-500, #667eea);
+  --color-primary-dark: var(--mieweb-primary-700, #5568d3);
+  --color-primary-light: var(--mieweb-primary-300, #764ba2);
+  --yc-color-primary: var(--color-primary, #667eea);
+  --yc-color-primary-dark: var(--color-primary-dark, #5568d3);
+  --yc-color-primary-light: var(--color-primary-light, #764ba2);
   
   // Secondary Colors
   --yc-color-secondary: #4A90E2;

@@ -6,7 +6,7 @@
     <title>YChart Editor - Interactive Org Chart</title>
     
     <!-- Load YChart Editor CSS and JS from dist -->
-    <link rel="stylesheet" href="./dist/ychart-editor.css">
+    <link rel="stylesheet" href="./dist/ychart.css">
     <script src="./dist/ychart-editor.js"></script>
 
     <style>
@@ -219,6 +219,17 @@
                         <option value="budget">💰 Budget Indicators</option>
                         <option value="okr">🎯 OKR - Objectives & Key Results</option>
                         <option value="salary">👥 Salary & Headcount</option>
+                    </select>
+                </div>
+                <div class="examples-selector">
+                    <label for="theme-select">🎨 Theme:</label>
+                    <select id="theme-select">
+                        <option value="default">Default</option>
+                        <option value="bluehive">BlueHive</option>
+                        <option value="enterprise-health">Enterprise Health</option>
+                        <option value="mieweb">MIE Web</option>
+                        <option value="waggleline">Waggleline</option>
+                        <option value="webchart">WebChart</option>
                     </select>
                 </div>
             </div>
@@ -1611,15 +1622,78 @@ card:
             }
         }
         
+        // ── Brand Theme Support ──────────────────────────────────────────
+        const brandCSS = {
+            'default': `:root {
+                --mieweb-primary-50: #f8fafc; --mieweb-primary-100: #f1f5f9;
+                --mieweb-primary-200: #e2e8f0; --mieweb-primary-300: #cbd5e1;
+                --mieweb-primary-400: #94a3b8; --mieweb-primary-500: #667eea;
+                --mieweb-primary-600: #5568d3; --mieweb-primary-700: #4a5abb;
+                --mieweb-primary-800: #3e4da3; --mieweb-primary-900: #334089;
+            }`,
+            'bluehive': `:root {
+                --mieweb-primary-50: #eff6ff; --mieweb-primary-100: #dbeafe;
+                --mieweb-primary-200: #bfdbfe; --mieweb-primary-300: #93c5fd;
+                --mieweb-primary-400: #60a5fa; --mieweb-primary-500: #3b82f6;
+                --mieweb-primary-600: #2563eb; --mieweb-primary-700: #1d4ed8;
+                --mieweb-primary-800: #1e40af; --mieweb-primary-900: #1e3a8a;
+            }`,
+            'enterprise-health': `:root {
+                --mieweb-primary-50: #ecfdf5; --mieweb-primary-100: #d1fae5;
+                --mieweb-primary-200: #a7f3d0; --mieweb-primary-300: #6ee7b7;
+                --mieweb-primary-400: #34d399; --mieweb-primary-500: #10b981;
+                --mieweb-primary-600: #059669; --mieweb-primary-700: #047857;
+                --mieweb-primary-800: #065f46; --mieweb-primary-900: #064e3b;
+            }`,
+            'mieweb': `:root {
+                --mieweb-primary-50: #fdf4ff; --mieweb-primary-100: #fae8ff;
+                --mieweb-primary-200: #f5d0fe; --mieweb-primary-300: #f0abfc;
+                --mieweb-primary-400: #e879f9; --mieweb-primary-500: #d946ef;
+                --mieweb-primary-600: #c026d3; --mieweb-primary-700: #a21caf;
+                --mieweb-primary-800: #86198f; --mieweb-primary-900: #701a75;
+            }`,
+            'waggleline': `:root {
+                --mieweb-primary-50: #fefce8; --mieweb-primary-100: #fef9c3;
+                --mieweb-primary-200: #fef08a; --mieweb-primary-300: #fde047;
+                --mieweb-primary-400: #facc15; --mieweb-primary-500: #eab308;
+                --mieweb-primary-600: #ca8a04; --mieweb-primary-700: #a16207;
+                --mieweb-primary-800: #854d0e; --mieweb-primary-900: #713f12;
+            }`,
+            'webchart': `:root {
+                --mieweb-primary-50: #fff7ed; --mieweb-primary-100: #ffedd5;
+                --mieweb-primary-200: #fed7aa; --mieweb-primary-300: #fdba74;
+                --mieweb-primary-400: #fb923c; --mieweb-primary-500: #f97316;
+                --mieweb-primary-600: #ea580c; --mieweb-primary-700: #c2410c;
+                --mieweb-primary-800: #9a3412; --mieweb-primary-900: #7c2d12;
+            }`
+        };
+
+        function setupThemeSelector() {
+            // Create theme style element
+            const style = document.createElement('style');
+            style.id = 'ychart-brand-theme';
+            document.head.appendChild(style);
+
+            const select = document.getElementById('theme-select');
+            if (!select) return;
+
+            select.addEventListener('change', (e) => {
+                const theme = e.target.value;
+                style.textContent = brandCSS[theme] || brandCSS['default'];
+            });
+        }
+
         // Initialize when page loads
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => {
                 initializeYChartEditor(yamlData);
                 setupExampleSelector();
+                setupThemeSelector();
             });
         } else {
             initializeYChartEditor(yamlData);
             setupExampleSelector();
+            setupThemeSelector();
         }
     </script>
 </body>

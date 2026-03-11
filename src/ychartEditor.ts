@@ -6,10 +6,11 @@ import * as jsyaml from 'js-yaml';
 import { OrgChart } from './d3-org-chart.js';
 import { ForceGraph } from './forceGraph.js';
 import { NodeHeightSyncService } from './nodeHeightSyncService.js';
+import { renderSelect, unmountAllReactRoots } from './reactBridge';
 import './styles/ychart-lib-entry.scss';
 
 // Version constant - DO NOT REMOVE
-const YCHART_VERSION = '1.0.7';
+const YCHART_VERSION = '1.0.8';
 
 interface YChartOptions {
   nodeWidth?: number;
@@ -858,33 +859,13 @@ class YChartEditor {
       flex-shrink: 0;
     `;
 
-    // Dropdown select
-    const select = document.createElement('select');
-    select.setAttribute('data-id', `ychart-poi-select-${this.instanceId}`);
-    select.setAttribute('aria-label', 'Select person of interest');
-    select.style.cssText = `
-      border: none;
-      background: transparent;
-      font-size: var(--yc-font-size-xs);
-      color: var(--yc-color-text-primary);
-      cursor: pointer;
-      outline: none;
-      font-weight: var(--yc-font-weight-medium);
-      max-width: 140px;
-      text-overflow: ellipsis;
+    // React Select container for POI dropdown
+    const selectContainer = document.createElement('div');
+    selectContainer.setAttribute('data-id', `ychart-poi-select-${this.instanceId}`);
+    selectContainer.style.cssText = `
+      min-width: 140px;
+      max-width: 180px;
     `;
-
-    // Add default option
-    const defaultOption = document.createElement('option');
-    defaultOption.value = '';
-    defaultOption.textContent = 'Select...';
-    select.appendChild(defaultOption);
-
-    // Handle selection change
-    select.addEventListener('change', (e) => {
-      const selectedId = (e.target as HTMLSelectElement).value;
-      this.setPersonOfInterest(selectedId);
-    });
 
     // Clear to root button
     const clearBtn = document.createElement('button');
@@ -962,7 +943,7 @@ class YChartEditor {
     this.poiClearBtn = clearBtn;
 
     selectorWrapper.appendChild(focusIcon);
-    selectorWrapper.appendChild(select);
+    selectorWrapper.appendChild(selectContainer);
     selectorWrapper.appendChild(clearBtn);
     container.appendChild(selectorWrapper);
 
@@ -979,12 +960,9 @@ class YChartEditor {
     this.expandedSiblings.clear();
     this.supervisorChainExpanded = false;
     
-    // Update the POI selector to show "Select Person..."
+    // Update the POI selector to show "Select..."
     if (this.poiSelector) {
-      const selectEl = this.poiSelector.querySelector('select') as HTMLSelectElement;
-      if (selectEl) {
-        selectEl.value = '';
-      }
+      this.updatePOISelector(this.truthData);
     }
     
     // Re-render chart with full data
@@ -1344,10 +1322,10 @@ class YChartEditor {
   /**
    * Update the POI selector dropdown to reflect the current selection
    */
-  private updatePOISelectorValue(nodeId: string): void {
-    const poiSelect = document.querySelector(`[data-id="ychart-poi-select-${this.instanceId}"]`) as HTMLSelectElement;
-    if (poiSelect) {
-      poiSelect.value = nodeId;
+  private updatePOISelectorValue(_nodeId: string): void {
+    // Re-render the POI selector with the new value by calling updatePOISelector with truth data
+    if (this.truthData.length > 0) {
+      this.updatePOISelector(this.truthData);
     }
   }
 
@@ -1785,35 +1763,44 @@ class YChartEditor {
       align-items: center;
     `;
 
-    // Field selector dropdown
-    const fieldSelect = document.createElement('select');
-    fieldSelect.style.cssText = `
-      padding: var(--yc-spacing-sm) var(--yc-spacing-lg);
-      border: 1px solid var(--yc-color-button-border);
-      border-radius: var(--yc-border-radius-md);
-      font-size: var(--yc-font-size-base);
-      outline: none;
-      cursor: pointer;
-      background: var(--yc-color-bg-card);
-      min-width: 120px;
-      transition: border-color 0.2s;
-    `;
+    // Field selector dropdown (React @mieweb/ui Select)
+    const fieldSelectContainer = document.createElement('div');
+    fieldSelectContainer.setAttribute('data-id', 'filter-field-select');
+    fieldSelectContainer.style.cssText = `min-width: 120px;`;
+
+    // Track selected field value
+    let selectedField = '';
 
     // Get available fields from schema or from data
     const fields = this.getAvailableFields();
-    fields.forEach(field => {
-      const option = document.createElement('option');
-      option.value = field;
-      option.textContent = field.charAt(0).toUpperCase() + field.slice(1);
-      fieldSelect.appendChild(option);
+    if (fields.length > 0) {
+      selectedField = fields[0];
+    }
+
+    const fieldOptions = fields.map(field => ({
+      label: field.charAt(0).toUpperCase() + field.slice(1),
+      value: field,
+    }));
+
+    renderSelect(fieldSelectContainer, {
+      options: fieldOptions,
+      value: selectedField,
+      placeholder: 'Field...',
+      ariaLabel: 'Filter field',
+      size: 'sm',
+      onValueChange: (value: string) => {
+        selectedField = value;
+        // Re-trigger search with new field
+        const input = filterRow.querySelector('input[type="text"]') as HTMLInputElement;
+        if (input && input.value.trim()) {
+          this.performFuzzySearch(input.value, selectedField);
+        }
+      },
     });
 
-    fieldSelect.addEventListener('focus', () => {
-      fieldSelect.style.borderColor = 'var(--yc-color-primary)';
-    });
-
-    fieldSelect.addEventListener('blur', () => {
-      fieldSelect.style.borderColor = 'var(--yc-color-button-border)';
+    // Expose the selected field via a getter on the container
+    Object.defineProperty(fieldSelectContainer, 'value', {
+      get: () => selectedField,
     });
 
     // Search input container with suggestions
@@ -1848,7 +1835,7 @@ class YChartEditor {
 
     // Real-time search as user types
     searchInput.addEventListener('input', () => {
-      this.performFuzzySearch(searchInput.value, fieldSelect.value);
+      this.performFuzzySearch(searchInput.value, selectedField);
     });
 
     searchInput.addEventListener('keydown', (e) => {
@@ -1898,7 +1885,7 @@ class YChartEditor {
     });
 
     filterRow.setAttribute('data-id', 'filter-row');
-    filterRow.appendChild(fieldSelect);
+    filterRow.appendChild(fieldSelectContainer);
     filterRow.appendChild(inputWrapper);
     filterRow.appendChild(removeBtn);
 
@@ -1942,10 +1929,10 @@ class YChartEditor {
 
     const filters: { field: string; query: string }[] = [];
     filterRows.forEach(row => {
-      const select = row.querySelector('select') as HTMLSelectElement;
+      const selectContainer = row.querySelector('[data-id="filter-field-select"]') as any;
       const input = row.querySelector('input') as HTMLInputElement;
-      if (select && input && input.value.trim()) {
-        filters.push({ field: select.value, query: input.value.trim().toLowerCase() });
+      if (selectContainer && input && input.value.trim()) {
+        filters.push({ field: selectContainer.value || '', query: input.value.trim().toLowerCase() });
       }
     });
 
@@ -4197,16 +4184,8 @@ class YChartEditor {
   private updatePOISelector(data: any[]): void {
     if (!this.poiSelector) return;
 
-    const select = this.poiSelector.querySelector('select');
-    if (!select) return;
-
-    // Save current selection
-    const currentValue = select.value;
-
-    // Clear existing options except the first (default) one
-    while (select.options.length > 1) {
-      select.remove(1);
-    }
+    const selectContainer = this.poiSelector.querySelector(`[data-id="ychart-poi-select-${this.instanceId}"]`) as HTMLElement;
+    if (!selectContainer) return;
 
     // Deduplicate data by ID before populating selector
     const seenIds = new Set<string>();
@@ -4223,32 +4202,35 @@ class YChartEditor {
     const rootNode = this.truthData.find(item => item.parentId === null || item.parentId === undefined) || 
                      uniqueData.find(item => item.parentId === null || item.parentId === undefined);
 
-    // Add all people sorted by name
+    // Build options sorted by name
     const sortedData = [...uniqueData].sort((a, b) => {
       const nameA = (a.name || '').toLowerCase();
       const nameB = (b.name || '').toLowerCase();
       return nameA.localeCompare(nameB);
     });
 
-    sortedData.forEach(item => {
-      const option = document.createElement('option');
-      option.value = String(item.id);
-      option.textContent = item.name || String(item.id);
-      
-      // Add "(Root)" label to root node
+    const options = sortedData.map(item => {
+      let label = item.name || String(item.id);
       if (rootNode && item.id === rootNode.id) {
-        option.textContent += ' [Root]';
+        label += ' [Root]';
       }
-      
-      select.appendChild(option);
+      return { label, value: String(item.id) };
     });
 
-    // Restore selection if it still exists
-    if (currentValue && Array.from(select.options).some(opt => opt.value === currentValue)) {
-      select.value = currentValue;
-    }
-    // Note: We no longer auto-select root node as POI - users should explicitly choose a POI
-    // In multi-root scenarios, showing all roots by default is the intended behavior
+    // Get current POI value
+    const currentValue = this.personOfInterest ? String(this.personOfInterest.id) : '';
+
+    renderSelect(selectContainer, {
+      options,
+      value: currentValue,
+      placeholder: 'Select...',
+      ariaLabel: 'Select person of interest',
+      size: 'sm',
+      searchable: true,
+      onValueChange: (value: string) => {
+        this.setPersonOfInterest(value);
+      },
+    });
   }
 
   private renderChart(): void {
@@ -5540,6 +5522,8 @@ ${Object.entries(schemaDef).map(([key, field]) => {
     if ((this as any)._patternObserver) {
       (this as any)._patternObserver.disconnect();
     }
+    // Clean up all React roots
+    unmountAllReactRoots();
     if (this.viewContainer) {
       this.viewContainer.innerHTML = '';
     }
