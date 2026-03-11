@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { AlertTriangle, Check, Link, RefreshCw } from 'lucide-react';
-import { cn } from '../../utils';
+import { cn, dateToDisplayFormat, displayFormatToDateString, isValidDate } from '../../utils';
 import { Button } from '../Button';
 import { Card, CardContent } from '../Card';
 import { Alert, AlertDescription, AlertTitle } from '../Alert';
@@ -149,22 +149,17 @@ export function WebChartReportViewer({
     onClose?.();
   };
 
-  // Convert Date or ISO string to MM/DD/YYYY format for DateInput
-  const formatDateForInput = (date: Date | string): string => {
-    const d = typeof date === 'string' ? new Date(date) : date;
-    const month = String(d.getMonth() + 1).padStart(2, '0');
-    const day = String(d.getDate()).padStart(2, '0');
-    const year = d.getFullYear();
-    return `${month}/${day}/${year}`;
+  // Handle date input change - only propagate when valid
+  const handleStartDateChange = (value: string) => {
+    if (isValidDate(value)) {
+      onDateRangeChange?.(displayFormatToDateString(value), dateRange?.end || new Date());
+    }
   };
 
-  // Convert MM/DD/YYYY format back to ISO string for the callback
-  const formatDateForCallback = (value: string): string => {
-    const [month, day, year] = value.split('/');
-    if (month && day && year && year.length === 4) {
-      return `${year}-${month}-${day}`;
+  const handleEndDateChange = (value: string) => {
+    if (isValidDate(value)) {
+      onDateRangeChange?.(dateRange?.start || new Date(), displayFormatToDateString(value));
     }
-    return value;
   };
 
   return (
@@ -286,20 +281,16 @@ export function WebChartReportViewer({
                 size="sm"
                 showCalendar
                 width="fixed"
-                value={formatDateForInput(dateRange.start)}
-                onChange={(value) =>
-                  onDateRangeChange(formatDateForCallback(value), dateRange.end)
-                }
+                value={dateToDisplayFormat(dateRange.start)}
+                onChange={handleStartDateChange}
               />
               <label className="text-muted-foreground text-sm">{dateTo}:</label>
               <DateInput
                 size="sm"
                 showCalendar
                 width="fixed"
-                value={formatDateForInput(dateRange.end)}
-                onChange={(value) =>
-                  onDateRangeChange(dateRange.start, formatDateForCallback(value))
-                }
+                value={dateToDisplayFormat(dateRange.end)}
+                onChange={handleEndDateChange}
               />
             </div>
           )}
@@ -395,9 +386,9 @@ export function WebChartReportViewer({
   );
 }
 
-/* Date Picker for Reports */
+/* Time Range Selector for Reports */
 
-export interface ReportDatePickerProps {
+export interface ReportTimeRangeProps {
   /** Start date */
   startDate?: Date | string;
   /** End date */
@@ -410,7 +401,7 @@ export interface ReportDatePickerProps {
   className?: string;
 }
 
-export function ReportDatePicker({
+export function ReportTimeRange({
   startDate,
   endDate,
   onChange,
@@ -423,27 +414,8 @@ export function ReportDatePicker({
     { label: 'Custom', value: 'custom' },
   ],
   className,
-}: ReportDatePickerProps) {
+}: ReportTimeRangeProps) {
   const [preset, setPreset] = React.useState('this-month');
-
-  // Convert Date or ISO string to MM/DD/YYYY format for DateInput
-  const formatDateForInput = (date?: Date | string): string => {
-    if (!date) return '';
-    const d = typeof date === 'string' ? new Date(date) : date;
-    const month = String(d.getMonth() + 1).padStart(2, '0');
-    const day = String(d.getDate()).padStart(2, '0');
-    const year = d.getFullYear();
-    return `${month}/${day}/${year}`;
-  };
-
-  // Convert MM/DD/YYYY format back to ISO string for the callback
-  const formatDateForCallback = (value: string): string => {
-    const [month, day, year] = value.split('/');
-    if (month && day && year && year.length === 4) {
-      return `${year}-${month}-${day}`;
-    }
-    return value;
-  };
 
   const handlePresetChange = (value: string) => {
     setPreset(value);
@@ -482,6 +454,19 @@ export function ReportDatePicker({
     label: p.label,
   }));
 
+  // Only propagate changes when we have a valid complete date
+  const handleStartChange = (value: string) => {
+    if (isValidDate(value)) {
+      onChange?.(displayFormatToDateString(value), endDate || new Date());
+    }
+  };
+
+  const handleEndChange = (value: string) => {
+    if (isValidDate(value)) {
+      onChange?.(startDate || new Date(), displayFormatToDateString(value));
+    }
+  };
+
   return (
     <div className={cn('flex flex-wrap items-center gap-3', className)}>
       <Select
@@ -497,25 +482,27 @@ export function ReportDatePicker({
             size="sm"
             showCalendar
             width="fixed"
-            value={formatDateForInput(startDate)}
-            onChange={(value) =>
-              onChange?.(formatDateForCallback(value), endDate || new Date())
-            }
+            value={dateToDisplayFormat(startDate || '')}
+            onChange={handleStartChange}
           />
           <span className="text-muted-foreground">to</span>
           <DateInput
             size="sm"
             showCalendar
             width="fixed"
-            value={formatDateForInput(endDate)}
-            onChange={(value) =>
-              onChange?.(startDate || new Date(), formatDateForCallback(value))
-            }
+            value={dateToDisplayFormat(endDate || '')}
+            onChange={handleEndChange}
           />
         </>
       )}
     </div>
   );
 }
+
+/** @deprecated Use ReportTimeRange instead */
+export const ReportDatePicker = ReportTimeRange;
+
+/** @deprecated Use ReportTimeRangeProps instead */
+export type ReportDatePickerProps = ReportTimeRangeProps;
 
 export default WebChartReportViewer;
