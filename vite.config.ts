@@ -154,6 +154,9 @@ export default defineConfig(({ mode }) => {
       host: 'localhost',
       port: 5173
     },
+    resolve: {
+      dedupe: ['react', 'react-dom', 'react/jsx-runtime']
+    },
     esbuild: {
       jsx: 'automatic',
       jsxImportSource: 'react'
