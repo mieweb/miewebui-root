@@ -1632,32 +1632,32 @@ card:
                 --mieweb-primary-800: #3e4da3; --mieweb-primary-900: #334089;
             }`,
             'bluehive': `:root {
-                --mieweb-primary-50: #eff6ff; --mieweb-primary-100: #dbeafe;
-                --mieweb-primary-200: #bfdbfe; --mieweb-primary-300: #93c5fd;
-                --mieweb-primary-400: #60a5fa; --mieweb-primary-500: #3b82f6;
-                --mieweb-primary-600: #2563eb; --mieweb-primary-700: #1d4ed8;
-                --mieweb-primary-800: #1e40af; --mieweb-primary-900: #1e3a8a;
+                --mieweb-primary-50: #e6f7fc; --mieweb-primary-100: #b3e6f6;
+                --mieweb-primary-200: #80d5f0; --mieweb-primary-300: #4dc4ea;
+                --mieweb-primary-400: #27aae1; --mieweb-primary-500: #27aae1;
+                --mieweb-primary-600: #1f98ca; --mieweb-primary-700: #1786b3;
+                --mieweb-primary-800: #0f749c; --mieweb-primary-900: #086285;
             }`,
             'enterprise-health': `:root {
-                --mieweb-primary-50: #ecfdf5; --mieweb-primary-100: #d1fae5;
-                --mieweb-primary-200: #a7f3d0; --mieweb-primary-300: #6ee7b7;
-                --mieweb-primary-400: #34d399; --mieweb-primary-500: #10b981;
-                --mieweb-primary-600: #059669; --mieweb-primary-700: #047857;
-                --mieweb-primary-800: #065f46; --mieweb-primary-900: #064e3b;
+                --mieweb-primary-50: #f5e6f4; --mieweb-primary-100: #e0b8dd;
+                --mieweb-primary-200: #cc8bc7; --mieweb-primary-300: #b85db1;
+                --mieweb-primary-400: #a3409c; --mieweb-primary-500: #6E2B68;
+                --mieweb-primary-600: #62265d; --mieweb-primary-700: #562152;
+                --mieweb-primary-800: #4a1c47; --mieweb-primary-900: #3e173c;
             }`,
             'mieweb': `:root {
-                --mieweb-primary-50: #fdf4ff; --mieweb-primary-100: #fae8ff;
-                --mieweb-primary-200: #f5d0fe; --mieweb-primary-300: #f0abfc;
-                --mieweb-primary-400: #e879f9; --mieweb-primary-500: #d946ef;
-                --mieweb-primary-600: #c026d3; --mieweb-primary-700: #a21caf;
-                --mieweb-primary-800: #86198f; --mieweb-primary-900: #701a75;
+                --mieweb-primary-50: #e8f8ef; --mieweb-primary-100: #c5edd6;
+                --mieweb-primary-200: #9fe2bb; --mieweb-primary-300: #79d7a0;
+                --mieweb-primary-400: #53cc85; --mieweb-primary-500: #27ae60;
+                --mieweb-primary-600: #219c55; --mieweb-primary-700: #1b894a;
+                --mieweb-primary-800: #15773e; --mieweb-primary-900: #0f6533;
             }`,
             'waggleline': `:root {
-                --mieweb-primary-50: #fefce8; --mieweb-primary-100: #fef9c3;
-                --mieweb-primary-200: #fef08a; --mieweb-primary-300: #fde047;
-                --mieweb-primary-400: #facc15; --mieweb-primary-500: #eab308;
-                --mieweb-primary-600: #ca8a04; --mieweb-primary-700: #a16207;
-                --mieweb-primary-800: #854d0e; --mieweb-primary-900: #713f12;
+                --mieweb-primary-50: #e6f7ff; --mieweb-primary-100: #bae7ff;
+                --mieweb-primary-200: #91d5ff; --mieweb-primary-300: #69c0ff;
+                --mieweb-primary-400: #40a9ff; --mieweb-primary-500: #17AEED;
+                --mieweb-primary-600: #1296d3; --mieweb-primary-700: #0d7eb9;
+                --mieweb-primary-800: #08669f; --mieweb-primary-900: #034e85;
             }`,
             'webchart': `:root {
                 --mieweb-primary-50: #fff7ed; --mieweb-primary-100: #ffedd5;
@@ -1677,9 +1677,19 @@ card:
             const select = document.getElementById('theme-select');
             if (!select) return;
 
+            // Restore persisted theme or default
+            const savedTheme = localStorage.getItem('ychart-theme') || 'default';
+            select.value = savedTheme;
+            style.textContent = brandCSS[savedTheme] || brandCSS['default'];
+
             select.addEventListener('change', (e) => {
                 const theme = e.target.value;
                 style.textContent = brandCSS[theme] || brandCSS['default'];
+                localStorage.setItem('ychart-theme', theme);
+                // Re-render chart so stroke colors pick up the new CSS variable values
+                if (currentEditor && currentEditor.orgChart) {
+                    currentEditor.orgChart.render();
+                }
             });
         }
 

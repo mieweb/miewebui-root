@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../ui"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "orgchart"
+	}
+}

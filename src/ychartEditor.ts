@@ -121,6 +121,9 @@ class YChartEditor {
   private errorBanner: HTMLElement | null = null;
   private floatingSearchBar: HTMLElement | null = null;
   private searchResultsDropdown: HTMLElement | null = null;
+  private activeFieldFilters: Map<string, Set<string>> = new Map();
+  private filterPopup: HTMLElement | null = null;
+
   // Default supervisor field aliases - can be overridden via schema or supervisorLookup()
   private supervisorFields: string[] = ['supervisor', 'reports', 'reports_to', 'manager', 'leader', 'parent'];
   private nameField: string = 'name';
@@ -293,6 +296,9 @@ class YChartEditor {
     // Create floating search bar
     this.floatingSearchBar = this.createFloatingSearchBar();
     chartWrapper.appendChild(this.floatingSearchBar);
+
+    // Create search/filter popup
+    this.createSearchPopup();
 
     // Create person of interest selector
     this.poiSelector = this.createPOISelector();
@@ -661,6 +667,8 @@ class YChartEditor {
       flex-direction: column;
       align-items: center;
     `;
+    // Ensure relative positioning for absolutely-positioned dropdown
+    container.style.position = 'absolute';
 
     const searchBarWrapper = document.createElement('div');
     searchBarWrapper.className = 'ychart-search-bar-wrapper';
@@ -747,6 +755,53 @@ class YChartEditor {
     searchBarWrapper.appendChild(searchIcon);
     searchBarWrapper.appendChild(searchInput);
     searchBarWrapper.appendChild(fieldSelect);
+
+    // Populate field options when field select is focused (not just search input)
+    fieldSelect.addEventListener('focus', () => {
+      this.updateSearchFieldOptions(fieldSelect);
+    });
+
+    // Filter (funnel-plus) button
+    const filterBtn = document.createElement('button');
+    filterBtn.setAttribute('data-id', `ychart-filter-btn-${this.instanceId}`);
+    filterBtn.setAttribute('aria-label', 'Filter nodes');
+    filterBtn.innerHTML = `
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+        <line x1="19" y1="9" x2="19" y2="15"/>
+        <line x1="16" y1="12" x2="22" y2="12"/>
+      </svg>
+    `;
+    filterBtn.style.cssText = `
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      color: var(--yc-color-text-muted);
+      cursor: pointer;
+      padding: var(--yc-spacing-xs);
+      border-radius: var(--yc-border-radius-md);
+      transition: all 0.2s;
+      flex-shrink: 0;
+      position: relative;
+    `;
+    filterBtn.addEventListener('mouseenter', () => {
+      filterBtn.style.background = 'var(--yc-color-button-bg)';
+      filterBtn.style.color = 'var(--yc-color-primary)';
+    });
+    filterBtn.addEventListener('mouseleave', () => {
+      if (!this.filterPopup || this.filterPopup.style.display === 'none') {
+        filterBtn.style.background = 'transparent';
+        filterBtn.style.color = this.activeFieldFilters.size > 0 ? 'var(--yc-color-primary)' : 'var(--yc-color-text-muted)';
+      }
+    });
+    filterBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.toggleFilterPopup();
+    });
+
+    searchBarWrapper.appendChild(filterBtn);
     searchBarWrapper.appendChild(shortcutHint);
 
     // Results dropdown
@@ -765,6 +820,10 @@ class YChartEditor {
       overflow-y: auto;
       min-width: 320px;
       width: 100%;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
     `;
     this.searchResultsDropdown = resultsDropdown;
 
@@ -805,10 +864,20 @@ class YChartEditor {
       if (e.key === 'Escape') {
         searchInput.blur();
         resultsDropdown.style.display = 'none';
+        if (this.filterPopup) this.filterPopup.style.display = 'none';
       } else if (e.key === 'ArrowDown') {
         e.preventDefault();
         const firstResult = resultsDropdown.querySelector('.ychart-search-result-item') as HTMLElement;
         if (firstResult) firstResult.focus();
+      }
+    });
+
+    // Close filter popup on outside click
+    document.addEventListener('mousedown', (e) => {
+      if (this.filterPopup && this.filterPopup.style.display !== 'none') {
+        if (!this.filterPopup.contains(e.target as Node) && !(e.target as Element)?.closest('[data-id^="ychart-filter-btn"]')) {
+          this.filterPopup.style.display = 'none';
+        }
       }
     });
 
@@ -839,7 +908,7 @@ class YChartEditor {
       border-radius: var(--yc-border-radius-pill);
       padding: var(--yc-spacing-xs) var(--yc-spacing-sm);
       box-shadow: var(--yc-shadow-2xl);
-      border: var(--yc-border-width-thin) solid var(--yc-color-shadow-light);
+      border: none;
       transition: all var(--yc-transition-fast);
     `;
 
@@ -1518,12 +1587,6 @@ class YChartEditor {
     }
   }
 
-  /**
-   * @deprecated Legacy search popup - kept for search history functionality
-   * The floating search bar is now the primary search UI
-   * @internal
-   */
-  /* @ts-expect-error Legacy code kept for potential future use */
   private createSearchPopup(): void {
     if (!this.chartContainer) return;
 
@@ -2031,6 +2094,7 @@ class YChartEditor {
 
       suggestionsContainer.appendChild(suggestionItem);
     });
+
   }
 
   private fuzzyMatch(pattern: string, text: string): number {
@@ -2079,6 +2143,480 @@ class YChartEditor {
     if (this.searchHistoryPopup) {
       this.searchHistoryPopup.style.display = 'none';
     }
+  }
+
+  // ─── Field Filter System ─────────────────────────────────
+
+  private toggleFilterPopup(): void {
+    if (!this.filterPopup) {
+      this.createFilterPopup();
+    }
+    if (!this.filterPopup) return;
+    const isVisible = this.filterPopup.style.display !== 'none';
+    this.filterPopup.style.display = isVisible ? 'none' : 'block';
+  }
+
+  private createFilterPopup(): void {
+    const searchContainer = this.floatingSearchBar;
+    if (!searchContainer) return;
+
+    const popup = document.createElement('div');
+    popup.setAttribute('data-id', `ychart-filter-popup-${this.instanceId}`);
+    popup.style.cssText = `
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: var(--yc-spacing-sm);
+      background: var(--yc-color-bg-card);
+      border-radius: var(--yc-border-radius-lg);
+      box-shadow: var(--yc-shadow-4xl);
+      border: 1px solid var(--yc-color-shadow-light);
+      padding: var(--yc-spacing-lg);
+      min-width: 300px;
+      max-width: 400px;
+      z-index: 1001;
+    `;
+
+    // Header
+    const header = document.createElement('div');
+    header.style.cssText = `display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--yc-spacing-md);`;
+    const title = document.createElement('span');
+    title.textContent = 'Filter by Field';
+    title.style.cssText = `font-size: var(--yc-font-size-sm); font-weight: var(--yc-font-weight-semibold); color: var(--yc-color-text-heading);`;
+    header.appendChild(title);
+    popup.appendChild(header);
+
+    // Field selector
+    const fieldSelectWrapper = document.createElement('div');
+    fieldSelectWrapper.style.cssText = `margin-bottom: var(--yc-spacing-md);`;
+
+    const fieldLabel = document.createElement('label');
+    fieldLabel.textContent = 'Select field';
+    fieldLabel.style.cssText = `display: block; font-size: var(--yc-font-size-xs); color: var(--yc-color-text-muted); margin-bottom: var(--yc-spacing-xs);`;
+
+    const fieldSelect = document.createElement('select');
+    fieldSelect.setAttribute('aria-label', 'Select field to filter by');
+    fieldSelect.style.cssText = `
+      width: 100%;
+      padding: var(--yc-spacing-sm) var(--yc-spacing-md);
+      border: 1px solid var(--yc-color-button-border);
+      border-radius: var(--yc-border-radius-md);
+      font-size: var(--yc-font-size-sm);
+      background: var(--yc-color-bg-card);
+      color: var(--yc-color-text-primary);
+      outline: none;
+      cursor: pointer;
+    `;
+    fieldSelect.addEventListener('focus', () => { fieldSelect.style.borderColor = 'var(--yc-color-primary)'; });
+    fieldSelect.addEventListener('blur', () => { fieldSelect.style.borderColor = 'var(--yc-color-button-border)'; });
+
+    const placeholderOption = document.createElement('option');
+    placeholderOption.value = '';
+    placeholderOption.textContent = '— Choose a field —';
+    placeholderOption.disabled = true;
+    placeholderOption.selected = true;
+    fieldSelect.appendChild(placeholderOption);
+
+    fieldSelectWrapper.appendChild(fieldLabel);
+    fieldSelectWrapper.appendChild(fieldSelect);
+    popup.appendChild(fieldSelectWrapper);
+
+    // Value search input
+    const valueInputWrapper = document.createElement('div');
+    valueInputWrapper.style.cssText = `display: none; margin-bottom: var(--yc-spacing-md);`;
+
+    const valueInput = document.createElement('input');
+    valueInput.type = 'text';
+    valueInput.placeholder = 'Search values...';
+    valueInput.setAttribute('aria-label', 'Search filter values');
+    valueInput.style.cssText = `
+      width: 100%;
+      padding: var(--yc-spacing-sm) var(--yc-spacing-md);
+      border: 1px solid var(--yc-color-button-border);
+      border-radius: var(--yc-border-radius-md);
+      font-size: var(--yc-font-size-sm);
+      outline: none;
+      box-sizing: border-box;
+    `;
+    valueInput.addEventListener('focus', () => { valueInput.style.borderColor = 'var(--yc-color-primary)'; });
+    valueInput.addEventListener('blur', () => { valueInput.style.borderColor = 'var(--yc-color-button-border)'; });
+
+    valueInputWrapper.appendChild(valueInput);
+    popup.appendChild(valueInputWrapper);
+
+    // Values dropdown list
+    const valuesDropdown = document.createElement('div');
+    valuesDropdown.style.cssText = `
+      display: none;
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid var(--yc-color-button-border);
+      border-radius: var(--yc-border-radius-md);
+      background: var(--yc-color-bg-card);
+      margin-bottom: var(--yc-spacing-md);
+    `;
+    popup.appendChild(valuesDropdown);
+
+    // Selected values badges inside popup
+    const selectedBadges = document.createElement('div');
+    selectedBadges.setAttribute('data-id', 'filter-selected-badges');
+    selectedBadges.style.cssText = `
+      display: none;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: var(--yc-spacing-md);
+    `;
+    popup.appendChild(selectedBadges);
+
+    // Footer with Apply and Clear buttons
+    const footer = document.createElement('div');
+    footer.style.cssText = `
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--yc-spacing-sm);
+      padding-top: var(--yc-spacing-md);
+      border-top: 1px solid var(--yc-color-button-border);
+    `;
+
+    const clearBtn = document.createElement('button');
+    clearBtn.textContent = 'Clear';
+    clearBtn.setAttribute('aria-label', 'Clear all filters');
+    clearBtn.style.cssText = `
+      padding: var(--yc-spacing-sm) var(--yc-spacing-lg);
+      border: 1px solid var(--yc-color-button-border);
+      border-radius: var(--yc-border-radius-md);
+      background: var(--yc-color-bg-card);
+      color: var(--yc-color-text-primary);
+      font-size: var(--yc-font-size-sm);
+      cursor: pointer;
+      transition: background 0.15s;
+    `;
+    clearBtn.addEventListener('mouseenter', () => { clearBtn.style.background = 'var(--yc-color-button-bg)'; });
+    clearBtn.addEventListener('mouseleave', () => { clearBtn.style.background = 'var(--yc-color-bg-card)'; });
+    clearBtn.addEventListener('click', () => {
+      this.clearAllFieldFilters();
+      this.renderFilterPopupBadges(fieldSelect.value, selectedBadges);
+    });
+
+    const applyBtn = document.createElement('button');
+    applyBtn.textContent = 'Apply';
+    applyBtn.setAttribute('aria-label', 'Apply filters');
+    applyBtn.style.cssText = `
+      padding: var(--yc-spacing-sm) var(--yc-spacing-lg);
+      border: none;
+      border-radius: var(--yc-border-radius-md);
+      background: var(--yc-color-primary);
+      color: white;
+      font-size: var(--yc-font-size-sm);
+      font-weight: var(--yc-font-weight-semibold);
+      cursor: pointer;
+      transition: opacity 0.15s;
+    `;
+    applyBtn.addEventListener('mouseenter', () => { applyBtn.style.opacity = '0.85'; });
+    applyBtn.addEventListener('mouseleave', () => { applyBtn.style.opacity = '1'; });
+    applyBtn.addEventListener('click', () => {
+      this.renderFilterBadges();
+      this.applyFieldFilters();
+      this.filterPopup!.style.display = 'none';
+    });
+
+    footer.appendChild(clearBtn);
+    footer.appendChild(applyBtn);
+    popup.appendChild(footer);
+
+    // Field change: populate values
+    fieldSelect.addEventListener('change', () => {
+      const field = fieldSelect.value;
+      if (!field) return;
+      valueInputWrapper.style.display = 'block';
+      valueInput.value = '';
+      valueInput.placeholder = `Search ${field} values...`;
+      this.populateFilterValues(field, '', valuesDropdown, selectedBadges);
+      this.renderFilterPopupBadges(field, selectedBadges);
+      valueInput.focus();
+    });
+
+    // Input search: fuzzy filter the values list
+    valueInput.addEventListener('input', () => {
+      const field = fieldSelect.value;
+      if (!field) return;
+      this.populateFilterValues(field, valueInput.value, valuesDropdown, selectedBadges);
+    });
+
+    searchContainer.appendChild(popup);
+    this.filterPopup = popup;
+
+    // Populate field options now
+    this.updateFilterFieldOptions(fieldSelect);
+  }
+
+  private updateFilterFieldOptions(fieldSelect: HTMLSelectElement): void {
+    // Keep only the placeholder option
+    while (fieldSelect.options.length > 1) {
+      fieldSelect.remove(1);
+    }
+    const fields = this.getAvailableFields();
+    fields.forEach(field => {
+      const opt = document.createElement('option');
+      opt.value = field;
+      opt.textContent = field.charAt(0).toUpperCase() + field.slice(1).replace(/_/g, ' ');
+      fieldSelect.appendChild(opt);
+    });
+  }
+
+  private populateFilterValues(field: string, query: string, dropdown: HTMLElement, _selectedBadges: HTMLElement): void {
+    dropdown.innerHTML = '';
+
+    // Gather all unique values for this field from truthData
+    const valueSet = new Set<string>();
+    this.truthData.forEach(item => {
+      const val = item[field];
+      if (val !== null && val !== undefined && String(val).trim()) {
+        valueSet.add(String(val).trim());
+      }
+    });
+
+    let values = Array.from(valueSet).sort();
+
+    // Fuzzy filter if query is provided
+    if (query.trim()) {
+      const q = query.trim().toLowerCase();
+      values = values
+        .map(v => ({ value: v, score: this.fuzzyMatch(q, v.toLowerCase()) }))
+        .filter(v => v.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .map(v => v.value);
+    }
+
+    if (values.length === 0) {
+      dropdown.style.display = 'block';
+      const noItems = document.createElement('div');
+      noItems.textContent = 'No matching values';
+      noItems.style.cssText = `padding: var(--yc-spacing-md); text-align: center; color: var(--yc-color-text-muted); font-size: var(--yc-font-size-sm);`;
+      dropdown.appendChild(noItems);
+      return;
+    }
+
+    dropdown.style.display = 'block';
+    const currentSelected = this.activeFieldFilters.get(field) || new Set<string>();
+
+    values.forEach(val => {
+      const isSelected = currentSelected.has(val);
+      const item = document.createElement('div');
+      item.style.cssText = `
+        padding: var(--yc-spacing-sm) var(--yc-spacing-md);
+        font-size: var(--yc-font-size-sm);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: var(--yc-spacing-sm);
+        transition: background 0.15s;
+        background: ${isSelected ? 'var(--yc-color-button-bg-hover)' : 'transparent'};
+      `;
+
+      const checkbox = document.createElement('span');
+      checkbox.innerHTML = isSelected
+        ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="var(--yc-color-primary)" stroke="white" stroke-width="3"><rect x="2" y="2" width="20" height="20" rx="4"/><polyline points="6 12 10 16 18 8"/></svg>`
+        : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="4"/></svg>`;
+      checkbox.style.cssText = `flex-shrink: 0; display: flex;`;
+
+      const label = document.createElement('span');
+      label.textContent = val;
+      label.style.cssText = `overflow: hidden; text-overflow: ellipsis; white-space: nowrap;`;
+
+      item.appendChild(checkbox);
+      item.appendChild(label);
+
+      item.addEventListener('mouseenter', () => { item.style.background = 'var(--yc-color-button-bg)'; });
+      item.addEventListener('mouseleave', () => { item.style.background = isSelected ? 'var(--yc-color-button-bg-hover)' : 'transparent'; });
+
+      item.addEventListener('click', () => {
+        if (isSelected) {
+          currentSelected.delete(val);
+        } else {
+          currentSelected.add(val);
+        }
+        if (currentSelected.size === 0) {
+          this.activeFieldFilters.delete(field);
+        } else {
+          this.activeFieldFilters.set(field, currentSelected);
+        }
+        // Refresh the values list to update checkboxes
+        const queryInput = this.filterPopup?.querySelector('input[type="text"]') as HTMLInputElement;
+        this.populateFilterValues(field, queryInput?.value || '', dropdown, _selectedBadges);
+        // Update selected badges in popup
+        this.renderFilterPopupBadges(field, _selectedBadges);
+      });
+
+      dropdown.appendChild(item);
+    });
+  }
+
+  private renderFilterBadges(): void {
+    const funnelBtn = this.floatingSearchBar?.querySelector('[data-id^="ychart-filter-btn"]') as HTMLElement;
+    if (!funnelBtn) return;
+
+    const totalFilters = Array.from(this.activeFieldFilters.values()).reduce((sum, set) => sum + set.size, 0);
+
+    // Remove existing badge if any
+    const existingBadge = funnelBtn.querySelector('.filter-count-badge');
+    if (existingBadge) existingBadge.remove();
+
+    if (totalFilters === 0) {
+      funnelBtn.style.color = 'var(--yc-color-text-muted)';
+      return;
+    }
+
+    funnelBtn.style.color = 'var(--yc-color-primary)';
+
+    // Add count badge
+    const badge = document.createElement('span');
+    badge.className = 'filter-count-badge';
+    badge.textContent = String(totalFilters);
+    badge.style.cssText = `
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      min-width: 16px;
+      height: 16px;
+      background: var(--yc-color-primary);
+      color: white;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+      line-height: 1;
+      pointer-events: none;
+    `;
+    funnelBtn.appendChild(badge);
+  }
+
+  private renderFilterPopupBadges(field: string, badgesContainer: HTMLElement): void {
+    badgesContainer.innerHTML = '';
+    const selected = this.activeFieldFilters.get(field);
+
+    if (!selected || selected.size === 0) {
+      badgesContainer.style.display = 'none';
+      return;
+    }
+
+    badgesContainer.style.display = 'flex';
+
+    selected.forEach(val => {
+      const badge = document.createElement('span');
+      badge.style.cssText = `
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 2px 8px;
+        background: color-mix(in srgb, var(--yc-color-primary) 15%, transparent);
+        color: var(--yc-color-primary);
+        border-radius: var(--yc-border-radius-pill);
+        font-size: var(--yc-font-size-xs, 11px);
+        white-space: nowrap;
+        max-width: 160px;
+      `;
+
+      const label = document.createElement('span');
+      label.textContent = val;
+      label.style.cssText = `overflow: hidden; text-overflow: ellipsis;`;
+
+      const removeBtn = document.createElement('button');
+      removeBtn.innerHTML = '×';
+      removeBtn.setAttribute('aria-label', `Remove filter ${val}`);
+      removeBtn.style.cssText = `
+        background: none; border: none; color: var(--yc-color-text-muted);
+        cursor: pointer; padding: 0; font-size: 14px; line-height: 1;
+        display: flex; align-items: center;
+      `;
+      removeBtn.addEventListener('mouseenter', () => { removeBtn.style.color = 'var(--yc-color-error-red-accent, #ef4444)'; });
+      removeBtn.addEventListener('mouseleave', () => { removeBtn.style.color = 'var(--yc-color-text-muted)'; });
+      removeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        selected.delete(val);
+        if (selected.size === 0) this.activeFieldFilters.delete(field);
+        this.renderFilterPopupBadges(field, badgesContainer);
+        // Refresh dropdown checkboxes
+        const dropdown = this.filterPopup?.querySelector('[style*="max-height: 200px"]') as HTMLElement;
+        const queryInput = this.filterPopup?.querySelector('input[type="text"]') as HTMLInputElement;
+        if (dropdown) this.populateFilterValues(field, queryInput?.value || '', dropdown, badgesContainer);
+      });
+
+      badge.appendChild(label);
+      badge.appendChild(removeBtn);
+      badgesContainer.appendChild(badge);
+    });
+  }
+
+  private clearAllFieldFilters(): void {
+    this.activeFieldFilters.clear();
+    this.renderFilterBadges();
+    this.applyFieldFilters();
+    // Reset filter popup if open
+    if (this.filterPopup && this.filterPopup.style.display !== 'none') {
+      const fieldSelect = this.filterPopup.querySelector('select') as HTMLSelectElement;
+      if (fieldSelect) fieldSelect.selectedIndex = 0;
+      const valueInputWrapper = this.filterPopup.querySelector('input[type="text"]')?.parentElement as HTMLElement;
+      if (valueInputWrapper) valueInputWrapper.style.display = 'none';
+      const valuesDropdown = this.filterPopup.querySelector('[style*="max-height: 200px"]') as HTMLElement;
+      if (valuesDropdown) { valuesDropdown.innerHTML = ''; valuesDropdown.style.display = 'none'; }
+      const selectedBadges = this.filterPopup.querySelector('[data-id="filter-selected-badges"]') as HTMLElement;
+      if (selectedBadges) { selectedBadges.innerHTML = ''; selectedBadges.style.display = 'none'; }
+    }
+  }
+
+  private applyFieldFilters(): void {
+    if (!this.orgChart) return;
+
+    const totalFilters = Array.from(this.activeFieldFilters.values()).reduce((sum, set) => sum + set.size, 0);
+
+    if (totalFilters === 0) {
+      // No filters: clear highlighting, expand all, re-render
+      this.orgChart.clearHighlighting();
+      this.orgChart.expandAll();
+      return;
+    }
+
+    // Find matching node ids from truthData
+    const matchedIds: any[] = [];
+    this.truthData.forEach(item => {
+      let matches = true;
+      this.activeFieldFilters.forEach((values, field) => {
+        const nodeVal = item[field];
+        if (nodeVal === null || nodeVal === undefined) {
+          matches = false;
+        } else if (!values.has(String(nodeVal).trim())) {
+          matches = false;
+        }
+      });
+      if (matches) matchedIds.push(item.id);
+    });
+
+    if (matchedIds.length === 0) return;
+
+    // Collapse all nodes first
+    const attrs = this.orgChart.getChartState();
+    attrs.allNodes.forEach((d: any) => {
+      d.data._expanded = false;
+      d.data._highlighted = false;
+      d.data._upToTheRootHighlighted = false;
+    });
+
+    // Highlight matched nodes (this expands their ancestor chains)
+    matchedIds.forEach(id => {
+      this.orgChart!.setHighlighted(id);
+    });
+
+    // Re-render and fit
+    this.orgChart.render();
+    setTimeout(() => {
+      if (this.orgChart) this.orgChart.fit();
+    }, 300);
   }
 
   private toggleSearchHistory(): void {
@@ -4394,7 +4932,7 @@ class YChartEditor {
       const nodeHeight = this.currentOptions.nodeHeight || this.defaultOptions.nodeHeight || 110;
       
       return `
-        <div style="width:${d.width}px !important;height:${nodeHeight}px !important;padding:var(--yc-spacing-xl);background:var(--yc-color-text-inverse);border:var(--yc-border-width-medium) solid var(--yc-color-secondary);border-radius:var(--yc-border-radius-lg);box-sizing:border-box;position:relative">
+        <div style="width:${d.width}px !important;height:${nodeHeight}px !important;padding:var(--yc-spacing-xl);background:var(--yc-color-text-inverse);border:var(--yc-border-width-medium) solid var(--yc-color-primary);border-radius:var(--yc-border-radius-lg);box-sizing:border-box;position:relative">
           <div class="details-btn" style="position:absolute;top:var(--yc-spacing-xs);right:var(--yc-spacing-xs);width:var(--yc-height-icon-sm);height:var(--yc-height-icon-sm);background:var(--yc-color-gray-300);border-radius:var(--yc-border-radius-full);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);z-index:var(--yc-z-index-overlay);border:var(--yc-border-width-thin) solid var(--yc-color-gray-500);" title="Show Details" aria-label="Show Details" role="button" tabindex="0">ℹ</div>
           ${expandSupervisorChainBtn}
           ${expandSiblingsBtn}
@@ -4408,7 +4946,7 @@ class YChartEditor {
     const defaultNodeHeight = this.currentOptions.nodeHeight || this.defaultOptions.nodeHeight || 110;
     
     return `
-      <div style="width:${d.width}px !important;height:${defaultNodeHeight}px !important;padding:var(--yc-spacing-xl);background:var(--yc-color-text-inverse);border:var(--yc-border-width-medium) solid var(--yc-color-secondary);border-radius:var(--yc-border-radius-lg);box-sizing:border-box;display:flex;align-items:center;gap:var(--yc-spacing-xl);position:relative">
+      <div style="width:${d.width}px !important;height:${defaultNodeHeight}px !important;padding:var(--yc-spacing-xl);background:var(--yc-color-text-inverse);border:var(--yc-border-width-medium) solid var(--yc-color-primary);border-radius:var(--yc-border-radius-lg);box-sizing:border-box;display:flex;align-items:center;gap:var(--yc-spacing-xl);position:relative">
         <div class="details-btn" style="position:absolute;top:var(--yc-spacing-xs);right:var(--yc-spacing-xs);width:var(--yc-height-icon-sm);height:var(--yc-height-icon-sm);background:var(--yc-color-gray-300);border-radius:var(--yc-border-radius-full);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);z-index:var(--yc-z-index-overlay);border:var(--yc-border-width-thin) solid var(--yc-color-gray-500);" title="Show Details" aria-label="Show Details" role="button" tabindex="0">ℹ</div>
         ${expandSupervisorChainBtn}
         ${expandSiblingsBtn}
@@ -4936,9 +5474,9 @@ ${Object.entries(schemaDef).map(([key, field]) => {
        * ============================================================================= */
       :host {
         /* COLOR PALETTE */
-        --yc-color-primary: #667eea;
-        --yc-color-primary-dark: #5568d3;
-        --yc-color-primary-light: #764ba2;
+        --yc-color-primary: var(--color-primary, #667eea);
+        --yc-color-primary-dark: var(--color-primary-dark, #5568d3);
+        --yc-color-primary-light: var(--color-primary-light, #764ba2);
         --yc-color-secondary: #4A90E2;
         --yc-color-secondary-hover: #5a7fc4;
         

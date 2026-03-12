@@ -1,6 +1,6 @@
 {
   "name": "@mieweb/ychart",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "A flexible organizational chart editor with YAML-based data management",
   "type": "module",
   "main": "./dist/ychart-editor.js",

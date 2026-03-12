@@ -1,0 +1,165 @@
+h1. YChart CSS Scoping Implementation (v1.0.7)
+
+h2. Summary
+
+All YChart library styles are now scoped under the @.ychart-container@ class to prevent CSS conflicts with host applications. This ensures the library can be safely embedded in any environment without style interference.
+
+h2. Implementation Details
+
+h3. Automatic Scoping
+
+When @YChartEditor.initView()@ is called, the library automatically:
+* Adds @ychart-container@ class to the target container element
+* All internal styles are prefixed with @.ychart-container@ selector
+* CSS resets and base styles only apply within the scoped container
+
+h3. File Changes (v1.0.7)
+
+* *src/styles/ychart-lib-entry.scss* - New entry point for library styles
+* *src/styles/_ychart-lib.scss* - All styles wrapped in @.ychart-container { ... }@
+* *src/ychartEditor.ts* - Automatically applies @ychart-container@ class at line 251
+
+<pre>
+this.viewContainer.classList.add('ychart-container');
+</pre>
+
+h2. Integration Guide
+
+h3. CDN Usage (Recommended)
+
+<pre><code class="html">
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Load CSS first to prevent FOUC -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mieweb/ychart@1.0.7/dist/ychart-editor.css">
+</head>
+<body>
+  <!-- Container MUST have defined height -->
+  <div id="ychart-app" style="width: 100%; height: 600px;"></div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/@mieweb/ychart@1.0.7/dist/ychart-editor.js"></script>
+  <script>
+    const yaml = `
+- id: 1
+  name: CEO
+- id: 2
+  parentId: 1
+  name: CTO
+`;
+    new YChartEditor().initView('ychart-app', yaml);
+  </script>
+</body>
+</html>
+</code></pre>
+
+h3. Critical: Container Height Requirement
+
+The YChart container *must have a defined height* for proper rendering. Choose one approach:
+
+h4. Option A: Explicit Height (Simplest)
+
+<pre><code class="html">
+<div id="ychart-app" style="height: 600px;"></div>
+</code></pre>
+
+h4. Option B: Full Viewport
+
+<pre><code class="html">
+<style>
+  html, body { height: 100%; margin: 0; }
+  #ychart-app { height: 100%; }
+</style>
+</code></pre>
+
+h4. Option C: Flexbox Layout (Recommended for Complex Apps)
+
+<pre><code class="html">
+<style>
+  .app-layout { display: flex; flex-direction: column; height: 100vh; }
+  .header { height: 60px; }
+  .chart-area { flex: 1; min-height: 0; } /* min-height: 0 is critical! */
+</style>
+<div class="app-layout">
+  <header class="header">My Application Header</header>
+  <div id="ychart-app" class="chart-area"></div>
+</div>
+</code></pre>
+
+h3. NPM/Build Tool Usage
+
+<pre><code class="javascript">
+import { YChartEditor } from '@mieweb/ychart';
+import '@mieweb/ychart/style.css';
+
+const editor = new YChartEditor().initView('container', yamlData);
+</code></pre>
+
+h2. Benefits
+
+* ✅ *Zero Conflicts* - YChart styles won't interfere with host page CSS
+* ✅ *Isolation* - Host page styles won't break YChart rendering
+* ✅ *Framework Compatible* - Works alongside Bootstrap, Tailwind, Material UI, etc.
+* ✅ *Safe Embedding* - Can be embedded in legacy applications without refactoring
+* ✅ *Automatic* - No manual configuration needed, scoping happens automatically
+
+h2. Technical Notes
+
+h3. Scope Mechanism
+
+All library styles are wrapped in a single parent selector:
+
+<pre><code class="scss">
+// src/styles/_ychart-lib.scss
+.ychart-container {
+  // All YChart styles here
+  font-family: var(--yc-font-family-base);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  
+  .ychart-editor-panel { ... }
+  .ychart-chart-wrapper { ... }
+  // etc.
+}
+</code></pre>
+
+h3. CSS Variables
+
+YChart uses CSS custom properties with @--yc-@ prefix for theming:
+* @--yc-color-primary@
+* @--yc-color-bg-secondary@
+* @--yc-font-family-base@
+* etc.
+
+These can be overridden in the host application without breaking isolation.
+
+h2. Migration from Previous Versions
+
+If upgrading from v1.0.6 or earlier:
+* No code changes required
+* Scoping is automatic
+* Existing integrations continue to work
+* Just update the version number in your CDN links or package.json
+
+h2. Testing
+
+Verified in production environments:
+* ✅ Alongside Bootstrap 5.x
+* ✅ Alongside Material-UI
+* ✅ Legacy applications with global CSS resets
+* ✅ Multiple YChart instances on same page
+
+h2. Related Files
+
+* @src/ychartEditor.ts@ - Main entry point, applies scoping class
+* @src/styles/ychart-lib-entry.scss@ - Library style entry point
+* @src/styles/_ychart-lib.scss@ - Scoped library styles
+* @dist/ychart-editor.css@ - Compiled scoped CSS
+
+h2. Deployment
+
+* *Release*: v1.0.7
+* *NPM*: @@mieweb/ychart@1.0.7@
+* *CDN*: https://cdn.jsdelivr.net/npm/@mieweb/ychart@1.0.7/
+* *GitHub*: https://github.com/mieweb/ychart/releases/tag/v1.0.7

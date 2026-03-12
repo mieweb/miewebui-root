@@ -222,9 +222,17 @@ function setupThemeSelector() {
   const select = document.getElementById('theme-select') as HTMLSelectElement;
   if (!select) return;
 
+  // Restore persisted theme or default
+  const savedTheme = localStorage.getItem('ychart-theme') || 'default';
+  select.value = savedTheme;
+  style.textContent = brandCSS[savedTheme] || brandCSS['default'];
+
   select.addEventListener('change', (e) => {
     const theme = (e.target as HTMLSelectElement).value;
     style.textContent = brandCSS[theme] || brandCSS['default'];
+    localStorage.setItem('ychart-theme', theme);
+    // Re-render chart so stroke colors pick up the new CSS variable values
+    (ychartEditor as any).orgChart?.render();
   });
 }
 
