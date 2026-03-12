@@ -271,7 +271,7 @@ function ControlledInput({ config }: { config: RenderInputConfig }) {
       size={config.size ?? 'md'}
       aria-label={config.ariaLabel}
       className={config.className}
-      onChange={(e) => {
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
         config.onChange?.(e.target.value);
       }}
@@ -382,7 +382,7 @@ export function renderCheckboxItem(container: HTMLElement, config: RenderCheckbo
       label={config.label}
       checked={config.checked}
       size={config.size ?? 'sm'}
-      onChange={(e) => config.onChange(e.target.checked)}
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) => config.onChange(e.target.checked)}
     />
   );
 }
