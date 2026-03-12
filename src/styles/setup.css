@@ -1,0 +1,29 @@
+/**
+ * @mieweb/ui — Tailwind CSS 4 Setup
+ *
+ * This file contains the critical directives that every Tailwind CSS 4
+ * consumer MUST add to their CSS for @mieweb/ui components to work.
+ *
+ * Usage — copy these two lines into your main CSS file:
+ *
+ *   @source "../node_modules/@mieweb/ui/dist";
+ *   @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+ *
+ * NOTE: The @source path is relative to YOUR CSS file, not this file.
+ * Adjust the path if your CSS is not at the project root. Importing this
+ * file directly may not work because @source resolves relative to the
+ * importing file's location.
+ *
+ * Why these are needed:
+ *
+ * 1. @source tells Tailwind 4 to scan @mieweb/ui's dist folder for class
+ *    names. Without it, component classes like `bg-primary` won't be
+ *    generated (Tailwind 4 doesn't scan node_modules by default).
+ *
+ * 2. @custom-variant dark registers the dark mode variant so that
+ *    `dark:bg-neutral-900` works with the `data-theme="dark"` attribute
+ *    that @mieweb/ui uses for theme switching.
+ */
+
+@source "../node_modules/@mieweb/ui/dist";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
