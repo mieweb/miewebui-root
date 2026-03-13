@@ -29,8 +29,7 @@
  * them when components are imported from node_modules.
  *
  * **Tailwind CSS 4**: The safelist is NOT needed if you add the `@source`
- * directive to your CSS. See `@mieweb/ui/setup.css` or add this line to your
- * main CSS file:
+ * directive to your CSS. Add this line to your main CSS file:
  *
  *   @source "../node_modules/@mieweb/ui/dist";
  *

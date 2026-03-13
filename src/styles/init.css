@@ -1,23 +1,21 @@
 /**
  * @mieweb/ui — Quick-Start Init
  *
- * A single import that gives consumers a complete working baseline for
- * Tailwind CSS 4 + @mieweb/ui. Add this to your main CSS file:
+ * Provides a complete working baseline for Tailwind CSS 4 + @mieweb/ui.
+ * Add these three lines to your main CSS entry point:
  *
+ *   @import 'tailwindcss';
+ *   @source "../node_modules/@mieweb/ui/dist";
  *   @import '@mieweb/ui/init.css';
  *
- * This includes:
+ * The first two lines MUST live in your own CSS file (not inside a
+ * package) because the paths resolve relative to your project root.
+ * The third line imports this file, which includes:
+ *
  *   - Dark mode custom variant (data-theme="dark")
  *   - @theme with all color scales + fallback values
  *   - BlueHive brand tokens (default brand)
  *   - Base typography and reset styles
- *
- * IMPORTANT: You must ALSO add these lines to your own CSS entry point
- * (they cannot be imported from a package because the paths are relative
- * to your project, not to node_modules):
- *
- *   @import 'tailwindcss';
- *   @source "../node_modules/@mieweb/ui/dist";
  *
  * For advanced usage (custom brand, selective imports), see the README
  * and import the pieces you need individually:

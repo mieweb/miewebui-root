@@ -102,18 +102,14 @@ This is **backwards compatible** — existing brand configs that only define `pr
 **Proposal:** Export a documented CSS file that consumers can import to get the critical Tailwind 4 directives:
 
 ```css
-/* @mieweb/ui/setup.css */
+/* Add to your CSS entry point */
 @source "../node_modules/@mieweb/ui/dist";
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 ```
 
-**Why:** Every consumer MUST add these two lines to their CSS. Currently they have to discover this through trial and error. By shipping a file, we document the requirement AND give consumers a copy-paste import:
+**Why:** Every consumer MUST add these two lines to their CSS. Currently they have to discover this through trial and error. These cannot be shipped as an importable CSS file because `@source` uses a relative path that must resolve from the consumer's project root, not from inside `node_modules`. Document the snippet prominently in the README so consumers can copy-paste it.
 
-```css
-@import '@mieweb/ui/setup.css';
-```
-
-> Note: `@source` with a relative path may not resolve correctly when imported as a module. If so, document the snippet instead of shipping a file. Either way, this needs to be prominent in the README.
+> See `src/styles/setup.css` for a reference snippet with full explanatory comments.
 
 ---
 
