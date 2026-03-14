@@ -395,6 +395,45 @@ const chartColors: ColorInfo[] = [
 ];
 
 // ============================================================================
+// Theme version context — single observer shared by all swatches
+// ============================================================================
+
+const ThemeVersionContext = React.createContext(0);
+
+function useThemeVersion() {
+  return React.useContext(ThemeVersionContext);
+}
+
+function ThemeVersionProvider({ children }: { children: React.ReactNode }) {
+  const [version, setVersion] = React.useState(0);
+
+  React.useEffect(() => {
+    const bump = () => setVersion((v) => v + 1);
+    const observer = new window.MutationObserver(bump);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class', 'data-theme', 'style'],
+    });
+    const headObserver = new window.MutationObserver(bump);
+    headObserver.observe(document.head, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+    });
+    return () => {
+      observer.disconnect();
+      headObserver.disconnect();
+    };
+  }, []);
+
+  return (
+    <ThemeVersionContext.Provider value={version}>
+      {children}
+    </ThemeVersionContext.Provider>
+  );
+}
+
+// ============================================================================
 // Color Swatch Component
 // ============================================================================
 
@@ -406,29 +445,23 @@ function ColorSwatch({ color }: ColorSwatchProps) {
   const [copied, setCopied] = React.useState<string | null>(null);
   const [computedHex, setComputedHex] = React.useState<string>('');
   const swatchRef = React.useRef<HTMLDivElement>(null);
+  const themeVersion = useThemeVersion();
 
   React.useEffect(() => {
     const el = swatchRef.current;
     if (!el) return;
-    const update = () => {
-      const bg = getComputedStyle(el).backgroundColor;
-      const match = bg.match(/\d+/g);
-      if (match && match.length >= 3) {
-        const hex = '#' + match.slice(0, 3).map(n => Number(n).toString(16).padStart(2, '0')).join('');
-        setComputedHex(hex);
-      }
-    };
-    // Initial read + observe for brand/theme changes
-    update();
-    // eslint-disable-next-line no-undef
-    const observer = new MutationObserver(update);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'data-theme', 'style'] });
-    // Also watch for <style> changes (brand CSS injection)
-    // eslint-disable-next-line no-undef
-    const headObserver = new MutationObserver(update);
-    headObserver.observe(document.head, { childList: true, subtree: true, characterData: true });
-    return () => { observer.disconnect(); headObserver.disconnect(); };
-  }, [color.variable]);
+    const bg = getComputedStyle(el).backgroundColor;
+    const match = bg.match(/\d+/g);
+    if (match && match.length >= 3) {
+      const hex =
+        '#' +
+        match
+          .slice(0, 3)
+          .map((n) => Number(n).toString(16).padStart(2, '0'))
+          .join('');
+      setComputedHex(hex);
+    }
+  }, [color.variable, themeVersion]);
 
   const copyToClipboard = (text: string, type: string) => {
     navigator.clipboard.writeText(text);
@@ -530,6 +563,7 @@ function ColorSection({ title, description, colors }: ColorSectionProps) {
 
 function ColorsPage() {
   return (
+    <ThemeVersionProvider>
     <div className="bg-background min-h-screen p-8">
       <div className="mx-auto max-w-4xl">
         {/* Header */}
@@ -656,6 +690,7 @@ function ColorsPage() {
         </div>
       </div>
     </div>
+    </ThemeVersionProvider>
   );
 }
 
