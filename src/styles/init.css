@@ -1,15 +1,32 @@
-@import 'tailwindcss';
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
-
 /**
- * BlueHive Brand Theme
- * Primary color: #27aae1 (BlueHive Blue)
+ * @mieweb/ui — Quick-Start Init
  *
- * For Tailwind CSS 4, brand tokens are defined in the @theme block below.
- * For standalone CSS usage, import: @mieweb/ui/brands/bluehive.css
+ * Provides a complete working baseline for Tailwind CSS 4 + @mieweb/ui.
+ * Add these three lines to your main CSS entry point:
+ *
+ *   @import 'tailwindcss';
+ *   @source "../node_modules/@mieweb/ui/dist";
+ *   @import '@mieweb/ui/init.css';
+ *
+ * The first two lines MUST live in your own CSS file (not inside a
+ * package) because the paths resolve relative to your project root.
+ * The third line imports this file, which includes:
+ *
+ *   - Dark mode custom variant (data-theme="dark")
+ *   - @theme with all color scales + fallback values
+ *   - BlueHive brand tokens (default brand)
+ *   - Base typography and reset styles
+ *
+ * For advanced usage (custom brand, selective imports), see the README
+ * and import the pieces you need individually:
+ *   - @mieweb/ui/styles.css          (theme + resets only)
+ *   - @mieweb/ui/brands/bluehive.css  (or another brand)
  */
 
-/* Brand colors - exposed as Tailwind utilities */
+/* ── Dark Mode Variant ───────────────────────────────────────────────── */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+/* ── Theme: Color Scales with Fallbacks ──────────────────────────────── */
 @theme {
   /* ── Primary Color Scale ───────────────────────────────────────────── */
   --color-primary: var(--mieweb-primary-500);
@@ -138,12 +155,10 @@
   --font-mono: var(--mieweb-font-mono, ui-monospace);
 }
 
-/* ============================================
-   BlueHive Design System Tokens
-   ============================================ */
+/* ── BlueHive Brand Tokens (Default) ─────────────────────────────────── */
 
 :root {
-  /* ── Primary Color Scale ───────────────────────────────────────────── */
+  /* Primary Color Scale */
   --mieweb-primary-50: #e6f7fc;
   --mieweb-primary-100: #b3e6f6;
   --mieweb-primary-200: #80d5f0;
@@ -156,7 +171,7 @@
   --mieweb-primary-900: #086285;
   --mieweb-primary-950: #00506e;
 
-  /* ── Secondary Color Scale (Indigo) ────────────────────────────────── */
+  /* Secondary Color Scale (Indigo) */
   --mieweb-secondary-50: #eef2ff;
   --mieweb-secondary-100: #e0e7ff;
   --mieweb-secondary-200: #c7d2fe;
@@ -170,7 +185,7 @@
   --mieweb-secondary-950: #1e1b4b;
   --mieweb-secondary-foreground: #ffffff;
 
-  /* ── Neutral / Gray Scale ──────────────────────────────────────────── */
+  /* Neutral / Gray Scale */
   --mieweb-neutral-50: #fafafa;
   --mieweb-neutral-100: #f5f5f5;
   --mieweb-neutral-200: #e5e5e5;
@@ -183,7 +198,7 @@
   --mieweb-neutral-900: #171717;
   --mieweb-neutral-950: #0a0a0a;
 
-  /* ── Destructive / Error Scale (Red) ───────────────────────────────── */
+  /* Destructive / Error Scale (Red) */
   --mieweb-destructive-50: #fef2f2;
   --mieweb-destructive-100: #fee2e2;
   --mieweb-destructive-200: #fecaca;
@@ -197,7 +212,7 @@
   --mieweb-destructive-950: #450a0a;
   --mieweb-destructive-foreground: #ffffff;
 
-  /* ── Success Scale (Green) ─────────────────────────────────────────── */
+  /* Success Scale (Green) */
   --mieweb-success-50: #f0fdf4;
   --mieweb-success-100: #dcfce7;
   --mieweb-success-200: #bbf7d0;
@@ -211,7 +226,7 @@
   --mieweb-success-950: #052e16;
   --mieweb-success-foreground: #ffffff;
 
-  /* ── Warning Scale (Amber) ─────────────────────────────────────────── */
+  /* Warning Scale (Amber) */
   --mieweb-warning-50: #fffbeb;
   --mieweb-warning-100: #fef3c7;
   --mieweb-warning-200: #fde68a;
@@ -225,7 +240,7 @@
   --mieweb-warning-950: #451a03;
   --mieweb-warning-foreground: #ffffff;
 
-  /* ── Info Scale (Sky Blue) ─────────────────────────────────────────── */
+  /* Info Scale (Sky Blue) */
   --mieweb-info-50: #f0f9ff;
   --mieweb-info-100: #e0f2fe;
   --mieweb-info-200: #bae6fd;
@@ -239,14 +254,14 @@
   --mieweb-info-950: #082f49;
   --mieweb-info-foreground: #ffffff;
 
-  /* ── Chart / Data Visualization ────────────────────────────────────── */
+  /* Chart / Data Visualization */
   --mieweb-chart-1: #27aae1;
   --mieweb-chart-2: #22c55e;
   --mieweb-chart-3: #f59e0b;
   --mieweb-chart-4: #ef4444;
   --mieweb-chart-5: #6366f1;
 
-  /* ── Layout Semantic Colors ────────────────────────────────────────── */
+  /* Layout Semantic Colors */
   --mieweb-background: #ffffff;
   --mieweb-foreground: #171717;
   --mieweb-card: #ffffff;
@@ -260,29 +275,12 @@
   /* Typography */
   --mieweb-font-sans: 'Nunito', ui-sans-serif, system-ui, sans-serif;
   --mieweb-font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
-
-  /* Border Radius */
-  --mieweb-radius-none: 0;
-  --mieweb-radius-sm: 0.25rem;
-  --mieweb-radius-md: 0.5rem;
-  --mieweb-radius-lg: 0.75rem;
-  --mieweb-radius-xl: 1rem;
-  --mieweb-radius-2xl: 1.5rem;
-  --mieweb-radius-full: 9999px;
-
-  /* Shadows */
-  --mieweb-shadow-card:
-    0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --mieweb-shadow-dropdown:
-    0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --mieweb-shadow-modal:
-    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
-/* Dark Mode */
+/* ── Dark Mode ───────────────────────────────────────────────────────── */
+
 [data-theme='dark'],
 .dark {
-  /* Layout */
   --mieweb-background: #171717;
   --mieweb-foreground: #fafafa;
   --mieweb-card: #262626;
@@ -292,15 +290,11 @@
   --mieweb-border: #404040;
   --mieweb-input: #404040;
   --mieweb-ring: #27aae1;
-
-  /* Status foregrounds */
   --mieweb-destructive-foreground: #fafafa;
   --mieweb-success-foreground: #fafafa;
   --mieweb-warning-foreground: #fafafa;
   --mieweb-info-foreground: #fafafa;
   --mieweb-secondary-foreground: #fafafa;
-
-  /* Chart */
   --mieweb-chart-1: #38bdf8;
   --mieweb-chart-2: #4ade80;
   --mieweb-chart-3: #fbbf24;
@@ -308,9 +302,7 @@
   --mieweb-chart-5: #818cf8;
 }
 
-/* ============================================
-   Base Typography & Resets
-   ============================================ */
+/* ── Base Typography ─────────────────────────────────────────────────── */
 
 body {
   font-family: var(--mieweb-font-sans);
@@ -325,37 +317,7 @@ kbd {
   font-family: var(--mieweb-font-mono);
 }
 
-/* Focus visible styles for accessibility */
 :focus-visible {
   outline: 2px solid var(--mieweb-ring);
   outline-offset: 2px;
-}
-
-/* Reduce motion for users who prefer it */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* ============================================
-   Waveform Animation (for RecordButton)
-   ============================================ */
-
-@keyframes waveform {
-  0%,
-  100% {
-    transform: scaleY(0.3);
-  }
-  50% {
-    transform: scaleY(1);
-  }
-}
-
-.animate-waveform {
-  animation: waveform 0.5s ease-in-out infinite;
 }
