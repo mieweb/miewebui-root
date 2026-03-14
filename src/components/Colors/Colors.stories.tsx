@@ -404,6 +404,31 @@ interface ColorSwatchProps {
 
 function ColorSwatch({ color }: ColorSwatchProps) {
   const [copied, setCopied] = React.useState<string | null>(null);
+  const [computedHex, setComputedHex] = React.useState<string>('');
+  const swatchRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const el = swatchRef.current;
+    if (!el) return;
+    const update = () => {
+      const bg = getComputedStyle(el).backgroundColor;
+      const match = bg.match(/\d+/g);
+      if (match && match.length >= 3) {
+        const hex = '#' + match.slice(0, 3).map(n => Number(n).toString(16).padStart(2, '0')).join('');
+        setComputedHex(hex);
+      }
+    };
+    // Initial read + observe for brand/theme changes
+    update();
+    // eslint-disable-next-line no-undef
+    const observer = new MutationObserver(update);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'data-theme', 'style'] });
+    // Also watch for <style> changes (brand CSS injection)
+    // eslint-disable-next-line no-undef
+    const headObserver = new MutationObserver(update);
+    headObserver.observe(document.head, { childList: true, subtree: true, characterData: true });
+    return () => { observer.disconnect(); headObserver.disconnect(); };
+  }, [color.variable]);
 
   const copyToClipboard = (text: string, type: string) => {
     navigator.clipboard.writeText(text);
@@ -415,6 +440,7 @@ function ColorSwatch({ color }: ColorSwatchProps) {
     <div className="border-border hover:bg-muted/50 flex items-center gap-4 border-b px-4 py-3 transition-colors">
       {/* Color Block */}
       <div
+        ref={swatchRef}
         className="border-border h-16 w-16 flex-shrink-0 rounded-lg border shadow-sm"
         style={{ backgroundColor: `var(${color.variable})` }}
       />
@@ -440,23 +466,14 @@ function ColorSwatch({ color }: ColorSwatchProps) {
             {copied === 'var' ? '✓ Copied!' : color.variable}
           </button>
 
-          {/* Hex Value */}
-          <button
-            onClick={() => copyToClipboard(color.lightValue, 'hex')}
-            className="text-muted-foreground hover:text-foreground cursor-pointer font-mono transition-colors"
-            title="Click to copy"
-          >
-            {copied === 'hex' ? '✓ Copied!' : color.lightValue}
-          </button>
-
-          {/* Tailwind Class */}
-          {color.tailwindClass && (
+          {/* Live Hex Value */}
+          {computedHex && (
             <button
-              onClick={() => copyToClipboard(color.tailwindClass!, 'tw')}
-              className="text-primary-600 hover:text-primary-700 cursor-pointer font-mono transition-colors"
+              onClick={() => copyToClipboard(computedHex, 'hex')}
+              className="text-muted-foreground hover:text-foreground cursor-pointer font-mono transition-colors"
               title="Click to copy"
             >
-              {copied === 'tw' ? '✓ Copied!' : color.tailwindClass}
+              {copied === 'hex' ? '✓ Copied!' : computedHex}
             </button>
           )}
         </div>
