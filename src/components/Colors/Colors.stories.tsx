@@ -17,9 +17,6 @@ export default meta;
 interface ColorInfo {
   name: string;
   variable: string;
-  lightValue: string;
-  darkValue?: string;
-  tailwindClass?: string;
   description?: string;
 }
 
@@ -27,69 +24,47 @@ const primaryColors: ColorInfo[] = [
   {
     name: 'Primary 50',
     variable: '--mieweb-primary-50',
-    lightValue: '#e6f7fc',
-    tailwindClass: 'bg-primary-50',
   },
   {
     name: 'Primary 100',
     variable: '--mieweb-primary-100',
-    lightValue: '#b3e6f6',
-    tailwindClass: 'bg-primary-100',
   },
   {
     name: 'Primary 200',
     variable: '--mieweb-primary-200',
-    lightValue: '#80d5f0',
-    tailwindClass: 'bg-primary-200',
   },
   {
     name: 'Primary 300',
     variable: '--mieweb-primary-300',
-    lightValue: '#4dc4ea',
-    tailwindClass: 'bg-primary-300',
   },
   {
     name: 'Primary 400',
     variable: '--mieweb-primary-400',
-    lightValue: '#27aae1',
-    tailwindClass: 'bg-primary-400',
   },
   {
     name: 'Primary 500',
     variable: '--mieweb-primary-500',
-    lightValue: '#27aae1',
-    tailwindClass: 'bg-primary-500',
     description: 'Main brand color',
   },
   {
     name: 'Primary 600',
     variable: '--mieweb-primary-600',
-    lightValue: '#1f98ca',
-    tailwindClass: 'bg-primary-600',
   },
   {
     name: 'Primary 700',
     variable: '--mieweb-primary-700',
-    lightValue: '#1786b3',
-    tailwindClass: 'bg-primary-700',
   },
   {
     name: 'Primary 800',
     variable: '--mieweb-primary-800',
-    lightValue: '#0f749c',
-    tailwindClass: 'bg-primary-800',
   },
   {
     name: 'Primary 900',
     variable: '--mieweb-primary-900',
-    lightValue: '#086285',
-    tailwindClass: 'bg-primary-900',
   },
   {
     name: 'Primary 950',
     variable: '--mieweb-primary-950',
-    lightValue: '#00506e',
-    tailwindClass: 'bg-primary-950',
   },
 ];
 
@@ -97,73 +72,46 @@ const semanticColors: ColorInfo[] = [
   {
     name: 'Background',
     variable: '--mieweb-background',
-    lightValue: '#ffffff',
-    darkValue: '#171717',
-    tailwindClass: 'bg-background',
     description: 'Page background',
   },
   {
     name: 'Foreground',
     variable: '--mieweb-foreground',
-    lightValue: '#171717',
-    darkValue: '#fafafa',
-    tailwindClass: 'text-foreground',
     description: 'Primary text color',
   },
   {
     name: 'Card',
     variable: '--mieweb-card',
-    lightValue: '#ffffff',
-    darkValue: '#262626',
-    tailwindClass: 'bg-card',
     description: 'Card/panel background',
   },
   {
     name: 'Card Foreground',
     variable: '--mieweb-card-foreground',
-    lightValue: '#171717',
-    darkValue: '#fafafa',
-    tailwindClass: 'text-card-foreground',
     description: 'Card text color',
   },
   {
     name: 'Muted',
     variable: '--mieweb-muted',
-    lightValue: '#f5f5f5',
-    darkValue: '#404040',
-    tailwindClass: 'bg-muted',
     description: 'Subtle background',
   },
   {
     name: 'Muted Foreground',
     variable: '--mieweb-muted-foreground',
-    lightValue: '#737373',
-    darkValue: '#a1a1aa',
-    tailwindClass: 'text-muted-foreground',
     description: 'Secondary text',
   },
   {
     name: 'Border',
     variable: '--mieweb-border',
-    lightValue: '#e5e7eb',
-    darkValue: '#404040',
-    tailwindClass: 'border-border',
     description: 'Border color',
   },
   {
     name: 'Input',
     variable: '--mieweb-input',
-    lightValue: '#e5e7eb',
-    darkValue: '#404040',
-    tailwindClass: 'border-input',
     description: 'Input border',
   },
   {
     name: 'Ring',
     variable: '--mieweb-ring',
-    lightValue: '#27aae1',
-    darkValue: '#27aae1',
-    tailwindClass: 'ring-ring',
     description: 'Focus ring color',
   },
 ];
@@ -172,33 +120,21 @@ const statusColors: ColorInfo[] = [
   {
     name: 'Destructive',
     variable: '--mieweb-destructive',
-    lightValue: '#ef4444',
-    darkValue: '#dc2626',
-    tailwindClass: 'bg-destructive',
     description: 'Error/danger actions',
   },
   {
     name: 'Success',
     variable: '--mieweb-success',
-    lightValue: '#22c55e',
-    darkValue: '#16a34a',
-    tailwindClass: 'bg-success',
     description: 'Success states',
   },
   {
     name: 'Warning',
     variable: '--mieweb-warning',
-    lightValue: '#f59e0b',
-    darkValue: '#d97706',
-    tailwindClass: 'bg-warning',
     description: 'Warning states',
   },
   {
     name: 'Info',
     variable: '--mieweb-info',
-    lightValue: '#0ea5e9',
-    darkValue: '#0284c7',
-    tailwindClass: 'bg-info',
     description: 'Informational states',
   },
 ];
@@ -207,7 +143,6 @@ const statusColors: ColorInfo[] = [
 function makeScale(
   label: string,
   prefix: string,
-  values: Record<string, string>,
   opts?: { description500?: string; hasForeground?: boolean }
 ): ColorInfo[] {
   const steps = [
@@ -226,8 +161,6 @@ function makeScale(
   const colors: ColorInfo[] = steps.map((step) => ({
     name: `${label} ${step}`,
     variable: `--mieweb-${prefix}-${step}`,
-    lightValue: values[step],
-    tailwindClass: `bg-${prefix}-${step}`,
     ...(step === '500' && opts?.description500
       ? { description: opts.description500 }
       : {}),
@@ -236,9 +169,6 @@ function makeScale(
     colors.push({
       name: `${label} Foreground`,
       variable: `--mieweb-${prefix}-foreground`,
-      lightValue: '#ffffff',
-      darkValue: '#fafafa',
-      tailwindClass: `text-${prefix}-foreground`,
       description: `Text on ${label.toLowerCase()} bg`,
     });
   }
@@ -248,109 +178,32 @@ function makeScale(
 const secondaryColors = makeScale(
   'Secondary',
   'secondary',
-  {
-    '50': '#eef2ff',
-    '100': '#e0e7ff',
-    '200': '#c7d2fe',
-    '300': '#a5b4fc',
-    '400': '#818cf8',
-    '500': '#6366f1',
-    '600': '#4f46e5',
-    '700': '#4338ca',
-    '800': '#3730a3',
-    '900': '#312e81',
-    '950': '#1e1b4b',
-  },
   { description500: 'Secondary brand / accent', hasForeground: true }
 );
 
-const neutralColors = makeScale('Neutral', 'neutral', {
-  '50': '#fafafa',
-  '100': '#f5f5f5',
-  '200': '#e5e5e5',
-  '300': '#d4d4d4',
-  '400': '#a3a3a3',
-  '500': '#737373',
-  '600': '#525252',
-  '700': '#404040',
-  '800': '#262626',
-  '900': '#171717',
-  '950': '#0a0a0a',
-});
+const neutralColors = makeScale('Neutral', 'neutral');
 
 const destructiveScale = makeScale(
   'Destructive',
   'destructive',
-  {
-    '50': '#fef2f2',
-    '100': '#fee2e2',
-    '200': '#fecaca',
-    '300': '#fca5a5',
-    '400': '#f87171',
-    '500': '#ef4444',
-    '600': '#dc2626',
-    '700': '#b91c1c',
-    '800': '#991b1b',
-    '900': '#7f1d1d',
-    '950': '#450a0a',
-  },
   { description500: 'Error / danger', hasForeground: true }
 );
 
 const successScale = makeScale(
   'Success',
   'success',
-  {
-    '50': '#f0fdf4',
-    '100': '#dcfce7',
-    '200': '#bbf7d0',
-    '300': '#86efac',
-    '400': '#4ade80',
-    '500': '#22c55e',
-    '600': '#16a34a',
-    '700': '#15803d',
-    '800': '#166534',
-    '900': '#14532d',
-    '950': '#052e16',
-  },
   { description500: 'Success / positive', hasForeground: true }
 );
 
 const warningScale = makeScale(
   'Warning',
   'warning',
-  {
-    '50': '#fffbeb',
-    '100': '#fef3c7',
-    '200': '#fde68a',
-    '300': '#fcd34d',
-    '400': '#fbbf24',
-    '500': '#f59e0b',
-    '600': '#d97706',
-    '700': '#b45309',
-    '800': '#92400e',
-    '900': '#78350f',
-    '950': '#451a03',
-  },
   { description500: 'Warning / caution', hasForeground: true }
 );
 
 const infoScale = makeScale(
   'Info',
   'info',
-  {
-    '50': '#f0f9ff',
-    '100': '#e0f2fe',
-    '200': '#bae6fd',
-    '300': '#7dd3fc',
-    '400': '#38bdf8',
-    '500': '#0ea5e9',
-    '600': '#0284c7',
-    '700': '#0369a1',
-    '800': '#075985',
-    '900': '#0c4a6e',
-    '950': '#082f49',
-  },
   { description500: 'Informational', hasForeground: true }
 );
 
@@ -358,39 +211,24 @@ const chartColors: ColorInfo[] = [
   {
     name: 'Chart 1',
     variable: '--mieweb-chart-1',
-    lightValue: '#27aae1',
-    darkValue: '#38bdf8',
-    tailwindClass: 'bg-chart-1',
     description: 'Primary data series',
   },
   {
     name: 'Chart 2',
     variable: '--mieweb-chart-2',
-    lightValue: '#22c55e',
-    darkValue: '#4ade80',
-    tailwindClass: 'bg-chart-2',
     description: 'Secondary data series',
   },
   {
     name: 'Chart 3',
     variable: '--mieweb-chart-3',
-    lightValue: '#f59e0b',
-    darkValue: '#fbbf24',
-    tailwindClass: 'bg-chart-3',
   },
   {
     name: 'Chart 4',
     variable: '--mieweb-chart-4',
-    lightValue: '#ef4444',
-    darkValue: '#f87171',
-    tailwindClass: 'bg-chart-4',
   },
   {
     name: 'Chart 5',
     variable: '--mieweb-chart-5',
-    lightValue: '#6366f1',
-    darkValue: '#818cf8',
-    tailwindClass: 'bg-chart-5',
   },
 ];
 
@@ -408,7 +246,14 @@ function ThemeVersionProvider({ children }: { children: React.ReactNode }) {
   const [version, setVersion] = React.useState(0);
 
   React.useEffect(() => {
-    const bump = () => setVersion((v) => v + 1);
+    let rafId = 0;
+    const bump = () => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = 0;
+        setVersion((v) => v + 1);
+      });
+    };
     const observer = new window.MutationObserver(bump);
     observer.observe(document.documentElement, {
       attributes: true,
@@ -423,6 +268,7 @@ function ThemeVersionProvider({ children }: { children: React.ReactNode }) {
     return () => {
       observer.disconnect();
       headObserver.disconnect();
+      cancelAnimationFrame(rafId);
     };
   }, []);
 
@@ -460,6 +306,8 @@ function ColorSwatch({ color }: ColorSwatchProps) {
           .map((n) => Number(n).toString(16).padStart(2, '0'))
           .join('');
       setComputedHex(hex);
+    } else {
+      setComputedHex('');
     }
   }, [color.variable, themeVersion]);
 
@@ -511,20 +359,6 @@ function ColorSwatch({ color }: ColorSwatchProps) {
           )}
         </div>
       </div>
-
-      {/* Dark mode value (if different) */}
-      {color.darkValue && color.darkValue !== color.lightValue && (
-        <div className="hidden text-right text-sm sm:block">
-          <div className="text-muted-foreground text-xs">Dark mode</div>
-          <button
-            onClick={() => copyToClipboard(color.darkValue!, 'dark')}
-            className="text-muted-foreground hover:text-foreground cursor-pointer font-mono transition-colors"
-            title="Click to copy"
-          >
-            {copied === 'dark' ? '✓ Copied!' : color.darkValue}
-          </button>
-        </div>
-      )}
     </div>
   );
 }
@@ -564,8 +398,8 @@ function ColorSection({ title, description, colors }: ColorSectionProps) {
 function ColorsPage() {
   return (
     <ThemeVersionProvider>
-    <div className="bg-background min-h-screen p-8">
-      <div className="mx-auto max-w-4xl">
+      <div className="bg-background min-h-screen p-8">
+        <div className="mx-auto max-w-4xl">
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-foreground mb-2 text-3xl font-bold">
@@ -689,7 +523,7 @@ function ColorsPage() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
     </ThemeVersionProvider>
   );
 }
