@@ -5,7 +5,7 @@
 import * as React from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import '@mieweb/ui/styles.css';
-import './styles/mieweb-ui-overrides.css';
+import '../styles/mieweb-ui-overrides.css';
 import {
   Select as MieSelect,
   Button as MieButton,

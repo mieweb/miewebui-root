@@ -1,7 +1,7 @@
 
 (function() {
   if (typeof document !== 'undefined') {
-    var css = "@charset \"UTF-8\";/*! tailwindcss v4.2.1 | MIT License | https://tailwindcss.com */\n@layer properties{@supports (((-webkit-hyphens:none)) and (not (margin-trim:inline))) or ((-moz-orient:inline) and (not (color:rgb(from red r g b)))){*,:before,:after,::backdrop{--tw-translate-x:0;--tw-translate-y:0;--tw-translate-z:0;--tw-scale-x:1;--tw-scale-y:1;--tw-scale-z:1;--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-space-y-reverse:0;--tw-space-x-reverse:0;--tw-divide-y-reverse:0;--tw-border-style:solid;--tw-gradient-position:initial;--tw-gradient-from:#0000;--tw-gradient-via:#0000;--tw-gradient-to:#0000;--tw-gradient-stops:initial;--tw-gradient-via-stops:initial;--tw-gradient-from-position:0%;--tw-gradient-via-position:50%;--tw-gradient-to-position:100%;--tw-leading:initial;--tw-font-weight:initial;--tw-tracking:initial;--tw-ordinal:initial;--tw-slashed-zero:initial;--tw-numeric-figure:initial;--tw-numeric-spacing:initial;--tw-numeric-fraction:initial;--tw-shadow:0 0 #0000;--tw-shadow-color:initial;--tw-shadow-alpha:100%;--tw-inset-shadow:0 0 #0000;--tw-inset-shadow-color:initial;--tw-inset-shadow-alpha:100%;--tw-ring-color:initial;--tw-ring-shadow:0 0 #0000;--tw-inset-ring-color:initial;--tw-inset-ring-shadow:0 0 #0000;--tw-ring-inset:initial;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-offset-shadow:0 0 #0000;--tw-outline-style:solid;--tw-blur:initial;--tw-brightness:initial;--tw-contrast:initial;--tw-grayscale:initial;--tw-hue-rotate:initial;--tw-invert:initial;--tw-opacity:initial;--tw-saturate:initial;--tw-sepia:initial;--tw-drop-shadow:initial;--tw-drop-shadow-color:initial;--tw-drop-shadow-alpha:100%;--tw-drop-shadow-size:initial;--tw-backdrop-blur:initial;--tw-backdrop-brightness:initial;--tw-backdrop-contrast:initial;--tw-backdrop-grayscale:initial;--tw-backdrop-hue-rotate:initial;--tw-backdrop-invert:initial;--tw-backdrop-opacity:initial;--tw-backdrop-saturate:initial;--tw-backdrop-sepia:initial;--tw-duration:initial;--tw-ease:initial}}}@layer theme{:root,:host{--font-sans:var(--mieweb-font-sans,ui-sans-serif);--font-mono:var(--mieweb-font-mono,ui-monospace);--color-red-50:oklch(97.1% .013 17.38);--color-red-100:oklch(93.6% .032 17.717);--color-red-200:oklch(88.5% .062 18.334);--color-red-300:oklch(80.8% .114 19.571);--color-red-400:oklch(70.4% .191 22.216);--color-red-500:oklch(63.7% .237 25.331);--color-red-600:oklch(57.7% .245 27.325);--color-red-700:oklch(50.5% .213 27.518);--color-red-800:oklch(44.4% .177 26.899);--color-red-900:oklch(39.6% .141 25.723);--color-red-950:oklch(25.8% .092 26.042);--color-orange-50:oklch(98% .016 73.684);--color-orange-100:oklch(95.4% .038 75.164);--color-orange-300:oklch(83.7% .128 66.29);--color-orange-400:oklch(75% .183 55.934);--color-orange-500:oklch(70.5% .213 47.604);--color-orange-600:oklch(64.6% .222 41.116);--color-orange-700:oklch(55.3% .195 38.402);--color-orange-800:oklch(47% .157 37.304);--color-orange-900:oklch(40.8% .123 38.172);--color-amber-50:oklch(98.7% .022 95.277);--color-amber-100:oklch(96.2% .059 95.617);--color-amber-200:oklch(92.4% .12 95.746);--color-amber-300:oklch(87.9% .169 91.605);--color-amber-400:oklch(82.8% .189 84.429);--color-amber-500:oklch(76.9% .188 70.08);--color-amber-600:oklch(66.6% .179 58.318);--color-amber-700:oklch(55.5% .163 48.998);--color-amber-800:oklch(47.3% .137 46.201);--color-amber-900:oklch(41.4% .112 45.904);--color-amber-950:oklch(27.9% .077 45.635);--color-yellow-50:oklch(98.7% .026 102.212);--color-yellow-100:oklch(97.3% .071 103.193);--color-yellow-200:oklch(94.5% .129 101.54);--color-yellow-300:oklch(90.5% .182 98.111);--color-yellow-400:oklch(85.2% .199 91.936);--color-yellow-500:oklch(79.5% .184 86.047);--color-yellow-600:oklch(68.1% .162 75.834);--color-yellow-700:oklch(55.4% .135 66.442);--color-yellow-800:oklch(47.6% .114 61.907);--color-yellow-900:oklch(42.1% .095 57.708);--color-yellow-950:oklch(28.6% .066 53.813);--color-green-50:oklch(98.2% .018 155.826);--color-green-100:oklch(96.2% .044 156.743);--color-green-200:oklch(92.5% .084 155.995);--color-green-300:oklch(87.1% .15 154.449);--color-green-400:oklch(79.2% .209 151.711);--color-green-500:oklch(72.3% .219 149.579);--color-green-600:oklch(62.7% .194 149.214);--color-green-700:oklch(52.7% .154 150.069);--color-green-800:oklch(44.8% .119 151.328);--color-green-900:oklch(39.3% .095 152.535);--color-green-950:oklch(26.6% .065 152.934);--color-emerald-100:oklch(95% .052 163.051);--color-emerald-300:oklch(84.5% .143 164.978);--color-emerald-400:oklch(76.5% .177 163.223);--color-emerald-600:oklch(59.6% .145 163.225);--color-emerald-700:oklch(50.8% .118 165.612);--color-emerald-900:oklch(37.8% .077 168.94);--color-teal-600:oklch(60% .118 184.704);--color-cyan-100:oklch(95.6% .045 203.388);--color-cyan-500:oklch(71.5% .143 215.221);--color-cyan-900:oklch(39.8% .07 227.392);--color-sky-100:oklch(95.1% .026 236.824);--color-sky-300:oklch(82.8% .111 230.318);--color-sky-400:oklch(74.6% .16 232.661);--color-sky-600:oklch(58.8% .158 241.966);--color-sky-700:oklch(50% .134 242.749);--color-sky-900:oklch(39.1% .09 240.876);--color-blue-50:oklch(97% .014 254.604);--color-blue-100:oklch(93.2% .032 255.585);--color-blue-200:oklch(88.2% .059 254.128);--color-blue-300:oklch(80.9% .105 251.813);--color-blue-400:oklch(70.7% .165 254.624);--color-blue-500:oklch(62.3% .214 259.815);--color-blue-600:oklch(54.6% .245 262.881);--color-blue-700:oklch(48.8% .243 264.376);--color-blue-800:oklch(42.4% .199 265.638);--color-blue-900:oklch(37.9% .146 265.522);--color-blue-950:oklch(28.2% .091 267.935);--color-indigo-600:oklch(51.1% .262 276.966);--color-violet-100:oklch(94.3% .029 294.588);--color-violet-300:oklch(81.1% .111 293.571);--color-violet-400:oklch(70.2% .183 293.541);--color-violet-500:oklch(60.6% .25 292.717);--color-violet-600:oklch(54.1% .281 293.009);--color-violet-700:oklch(49.1% .27 292.581);--color-violet-900:oklch(38% .189 293.745);--color-purple-50:oklch(97.7% .014 308.299);--color-purple-100:oklch(94.6% .033 307.174);--color-purple-300:oklch(82.7% .119 306.383);--color-purple-400:oklch(71.4% .203 305.504);--color-purple-500:oklch(62.7% .265 303.9);--color-purple-600:oklch(55.8% .288 302.321);--color-purple-700:oklch(49.6% .265 301.924);--color-purple-800:oklch(43.8% .218 303.724);--color-purple-900:oklch(38.1% .176 304.987);--color-pink-600:oklch(59.2% .249 .584);--color-rose-100:oklch(94.1% .03 12.58);--color-rose-400:oklch(71.2% .194 13.428);--color-rose-600:oklch(58.6% .253 17.585);--color-rose-900:oklch(41% .159 10.272);--color-slate-400:oklch(70.4% .04 256.788);--color-slate-900:oklch(20.8% .042 265.755);--color-gray-50:oklch(98.5% .002 247.839);--color-gray-100:oklch(96.7% .003 264.542);--color-gray-200:oklch(92.8% .006 264.531);--color-gray-300:oklch(87.2% .01 258.338);--color-gray-400:oklch(70.7% .022 261.325);--color-gray-500:oklch(55.1% .027 264.364);--color-gray-600:oklch(44.6% .03 256.802);--color-gray-700:oklch(37.3% .034 259.733);--color-gray-800:oklch(27.8% .033 256.848);--color-gray-900:oklch(21% .034 264.665);--color-gray-950:oklch(13% .028 261.692);--color-neutral-50:var(--mieweb-neutral-50);--color-neutral-100:var(--mieweb-neutral-100);--color-neutral-200:var(--mieweb-neutral-200);--color-neutral-300:var(--mieweb-neutral-300);--color-neutral-400:var(--mieweb-neutral-400);--color-neutral-500:var(--mieweb-neutral-500);--color-neutral-600:var(--mieweb-neutral-600);--color-neutral-700:var(--mieweb-neutral-700);--color-neutral-800:var(--mieweb-neutral-800);--color-neutral-900:var(--mieweb-neutral-900);--color-neutral-950:var(--mieweb-neutral-950);--color-black:#000;--color-white:#fff;--spacing:.25rem;--container-xs:20rem;--container-sm:24rem;--container-md:28rem;--container-lg:32rem;--container-xl:36rem;--container-2xl:42rem;--container-3xl:48rem;--container-4xl:56rem;--container-5xl:64rem;--container-6xl:72rem;--text-xs:.75rem;--text-xs--line-height:calc(1 / .75);--text-sm:.875rem;--text-sm--line-height:calc(1.25 / .875);--text-base:1rem;--text-base--line-height:calc(1.5 / 1);--text-lg:1.125rem;--text-lg--line-height:calc(1.75 / 1.125);--text-xl:1.25rem;--text-xl--line-height:calc(1.75 / 1.25);--text-2xl:1.5rem;--text-2xl--line-height:calc(2 / 1.5);--text-3xl:1.875rem;--text-3xl--line-height:calc(2.25 / 1.875);--text-4xl:2.25rem;--text-4xl--line-height:calc(2.5 / 2.25);--text-5xl:3rem;--text-5xl--line-height:1;--text-6xl:3.75rem;--text-6xl--line-height:1;--text-8xl:6rem;--text-8xl--line-height:1;--font-weight-normal:400;--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--tracking-tight:-.025em;--tracking-wide:.025em;--tracking-wider:.05em;--leading-tight:1.25;--leading-normal:1.5;--leading-relaxed:1.625;--radius-sm:.25rem;--radius-md:.375rem;--radius-lg:.5rem;--radius-xl:.75rem;--radius-2xl:1rem;--ease-in:cubic-bezier(.4, 0, 1, 1);--ease-out:cubic-bezier(0, 0, .2, 1);--ease-in-out:cubic-bezier(.4, 0, .2, 1);--animate-spin:spin 1s linear infinite;--animate-ping:ping 1s cubic-bezier(0, 0, .2, 1) infinite;--animate-pulse:pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;--animate-bounce:bounce 1s infinite;--blur-sm:8px;--blur-md:12px;--aspect-video:16 / 9;--default-transition-duration:.15s;--default-transition-timing-function:cubic-bezier(.4, 0, .2, 1);--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono);--color-primary:var(--mieweb-primary-500);--color-primary-50:var(--mieweb-primary-50);--color-primary-100:var(--mieweb-primary-100);--color-primary-200:var(--mieweb-primary-200);--color-primary-300:var(--mieweb-primary-300);--color-primary-400:var(--mieweb-primary-400);--color-primary-500:var(--mieweb-primary-500);--color-primary-600:var(--mieweb-primary-600);--color-primary-700:var(--mieweb-primary-700);--color-primary-800:var(--mieweb-primary-800);--color-primary-900:var(--mieweb-primary-900);--color-primary-950:var(--mieweb-primary-950);--color-primary-foreground:var(--mieweb-primary-foreground,#fff);--color-secondary:var(--mieweb-secondary-500);--color-secondary-50:var(--mieweb-secondary-50);--color-secondary-100:var(--mieweb-secondary-100);--color-secondary-200:var(--mieweb-secondary-200);--color-secondary-300:var(--mieweb-secondary-300);--color-secondary-500:var(--mieweb-secondary-500);--color-secondary-600:var(--mieweb-secondary-600);--color-secondary-700:var(--mieweb-secondary-700);--color-secondary-900:var(--mieweb-secondary-900);--color-secondary-foreground:var(--mieweb-secondary-foreground,#fff);--color-destructive:var(--mieweb-destructive,var(--mieweb-destructive-500));--color-destructive-50:var(--mieweb-destructive-50);--color-destructive-100:var(--mieweb-destructive-100);--color-destructive-200:var(--mieweb-destructive-200);--color-destructive-300:var(--mieweb-destructive-300);--color-destructive-400:var(--mieweb-destructive-400);--color-destructive-500:var(--mieweb-destructive-500);--color-destructive-600:var(--mieweb-destructive-600);--color-destructive-700:var(--mieweb-destructive-700);--color-destructive-800:var(--mieweb-destructive-800);--color-destructive-900:var(--mieweb-destructive-900);--color-destructive-950:var(--mieweb-destructive-950);--color-destructive-foreground:var(--mieweb-destructive-foreground,#fff);--color-success:var(--mieweb-success,var(--mieweb-success-500));--color-success-50:var(--mieweb-success-50);--color-success-100:var(--mieweb-success-100);--color-success-200:var(--mieweb-success-200);--color-success-300:var(--mieweb-success-300);--color-success-400:var(--mieweb-success-400);--color-success-500:var(--mieweb-success-500);--color-success-600:var(--mieweb-success-600);--color-success-700:var(--mieweb-success-700);--color-success-800:var(--mieweb-success-800);--color-success-900:var(--mieweb-success-900);--color-success-950:var(--mieweb-success-950);--color-success-foreground:var(--mieweb-success-foreground,#fff);--color-warning:var(--mieweb-warning,var(--mieweb-warning-500));--color-warning-50:var(--mieweb-warning-50);--color-warning-100:var(--mieweb-warning-100);--color-warning-200:var(--mieweb-warning-200);--color-warning-300:var(--mieweb-warning-300);--color-warning-400:var(--mieweb-warning-400);--color-warning-500:var(--mieweb-warning-500);--color-warning-600:var(--mieweb-warning-600);--color-warning-700:var(--mieweb-warning-700);--color-warning-800:var(--mieweb-warning-800);--color-warning-900:var(--mieweb-warning-900);--color-warning-950:var(--mieweb-warning-950);--color-warning-foreground:var(--mieweb-warning-foreground,#fff);--color-info:var(--mieweb-info,var(--mieweb-info-500));--color-info-50:var(--mieweb-info-50);--color-info-100:var(--mieweb-info-100);--color-info-200:var(--mieweb-info-200);--color-info-300:var(--mieweb-info-300);--color-info-400:var(--mieweb-info-400);--color-info-500:var(--mieweb-info-500);--color-info-600:var(--mieweb-info-600);--color-info-700:var(--mieweb-info-700);--color-info-800:var(--mieweb-info-800);--color-info-900:var(--mieweb-info-900);--color-info-950:var(--mieweb-info-950);--color-info-foreground:var(--mieweb-info-foreground,#fff);--color-border:var(--mieweb-border,#e5e7eb);--color-input:var(--mieweb-input,#e5e7eb);--color-ring:var(--mieweb-ring,#27aae1);--color-background:var(--mieweb-background,#fff);--color-foreground:var(--mieweb-foreground,#171717);--color-card:var(--mieweb-card,#fff);--color-card-foreground:var(--mieweb-card-foreground,#171717);--color-muted:var(--mieweb-muted,#f5f5f5);--color-muted-foreground:var(--mieweb-muted-foreground,#737373);--color-chart-1:var(--mieweb-chart-1);--color-chart-2:var(--mieweb-chart-2);--color-chart-3:var(--mieweb-chart-3);--color-chart-4:var(--mieweb-chart-4);--color-chart-5:var(--mieweb-chart-5)}}@layer base{*,:after,:before,::backdrop{box-sizing:border-box;border:0 solid;margin:0;padding:0}::file-selector-button{box-sizing:border-box;border:0 solid;margin:0;padding:0}html,:host{-webkit-text-size-adjust:100%;tab-size:4;line-height:1.5;font-family:var(--default-font-family,ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-webkit-tap-highlight-color:transparent}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;-webkit-text-decoration:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,samp,pre{font-family:var(--default-mono-font-family,ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-variation-settings:var(--default-mono-font-variation-settings,normal);font-size:1em}small{font-size:80%}sub,sup{vertical-align:baseline;font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}ol,ul,menu{list-style:none}img,svg,video,canvas,audio,iframe,embed,object{vertical-align:middle;display:block}img,video{max-width:100%;height:auto}button,input,select,optgroup,textarea{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}::file-selector-button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::placeholder{opacity:1}@supports (not ((-webkit-appearance:-apple-pay-button))) or (contain-intrinsic-size:1px){::placeholder{color:currentColor}@supports (color:color-mix(in lab, red, red)){::placeholder{color:color-mix(in oklab, currentcolor 50%, transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit{padding-block:0}::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-datetime-edit-month-field{padding-block:0}::-webkit-datetime-edit-day-field{padding-block:0}::-webkit-datetime-edit-hour-field{padding-block:0}::-webkit-datetime-edit-minute-field{padding-block:0}::-webkit-datetime-edit-second-field{padding-block:0}::-webkit-datetime-edit-millisecond-field{padding-block:0}::-webkit-datetime-edit-meridiem-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}button,input:where([type=button],[type=reset],[type=submit]){appearance:button}::file-selector-button{appearance:button}::-webkit-inner-spin-button{height:auto}::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer components;@layer utilities{.\\@container{container-type:inline-size}.pointer-events-auto{pointer-events:auto}.pointer-events-none{pointer-events:none}.collapse{visibility:collapse}.invisible{visibility:hidden}.visible{visibility:visible}.sr-only{clip-path:inset(50%);white-space:nowrap;border-width:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}.\\!absolute{position:absolute!important}.absolute{position:absolute}.fixed{position:fixed}.relative{position:relative}.static{position:static}.sticky{position:sticky}.\\!inset-0{inset:calc(var(--spacing) * 0)!important}.inset-0{inset:calc(var(--spacing) * 0)}.inset-2{inset:calc(var(--spacing) * 2)}.inset-4{inset:calc(var(--spacing) * 4)}.inset-8{inset:calc(var(--spacing) * 8)}.inset-x-0{inset-inline:calc(var(--spacing) * 0)}.inset-y-0{inset-block:calc(var(--spacing) * 0)}.\\!start{inset-inline-start:var(--spacing)!important}.start{inset-inline-start:var(--spacing)}.\\!end{inset-inline-end:var(--spacing)!important}.end{inset-inline-end:var(--spacing)}.-top-0\\.5{top:calc(var(--spacing) * -.5)}.-top-1{top:calc(var(--spacing) * -1)}.top-0{top:calc(var(--spacing) * 0)}.top-1{top:calc(var(--spacing) * 1)}.top-1\\/2{top:50%}.top-2{top:calc(var(--spacing) * 2)}.top-3{top:calc(var(--spacing) * 3)}.top-4{top:calc(var(--spacing) * 4)}.top-6{top:calc(var(--spacing) * 6)}.top-12{top:calc(var(--spacing) * 12)}.top-16{top:calc(var(--spacing) * 16)}.top-20{top:calc(var(--spacing) * 20)}.top-full{top:100%}.-right-0\\.5{right:calc(var(--spacing) * -.5)}.-right-1{right:calc(var(--spacing) * -1)}.-right-3{right:calc(var(--spacing) * -3)}.right-0{right:calc(var(--spacing) * 0)}.right-1{right:calc(var(--spacing) * 1)}.right-2{right:calc(var(--spacing) * 2)}.right-3{right:calc(var(--spacing) * 3)}.right-4{right:calc(var(--spacing) * 4)}.right-12{right:calc(var(--spacing) * 12)}.-bottom-0\\.5{bottom:calc(var(--spacing) * -.5)}.-bottom-1{bottom:calc(var(--spacing) * -1)}.bottom-0{bottom:calc(var(--spacing) * 0)}.bottom-1\\.5{bottom:calc(var(--spacing) * 1.5)}.bottom-2{bottom:calc(var(--spacing) * 2)}.bottom-3{bottom:calc(var(--spacing) * 3)}.bottom-4{bottom:calc(var(--spacing) * 4)}.bottom-20{bottom:calc(var(--spacing) * 20)}.bottom-24{bottom:calc(var(--spacing) * 24)}.-left-0\\.5{left:calc(var(--spacing) * -.5)}.-left-1{left:calc(var(--spacing) * -1)}.left-0{left:calc(var(--spacing) * 0)}.left-1{left:calc(var(--spacing) * 1)}.left-1\\/2{left:50%}.left-2{left:calc(var(--spacing) * 2)}.left-3{left:calc(var(--spacing) * 3)}.left-4{left:calc(var(--spacing) * 4)}.left-5{left:calc(var(--spacing) * 5)}.z-10{z-index:10}.z-30{z-index:30}.z-40{z-index:40}.z-50{z-index:50}.z-\\[100\\]{z-index:100}.z-\\[9999\\]{z-index:9999}.order-1{order:1}.order-2{order:2}.order-3{order:3}.order-4{order:4}.col-span-1{grid-column:span 1/span 1}.col-span-2{grid-column:span 2/span 2}.col-span-3{grid-column:span 3/span 3}.col-span-4{grid-column:span 4/span 4}.col-span-6{grid-column:span 6/span 6}.col-span-8{grid-column:span 8/span 8}.col-span-12{grid-column:span 12/span 12}.col-span-full{grid-column:1/-1}.container{width:100%}@media (min-width:40rem){.container{max-width:40rem}}@media (min-width:48rem){.container{max-width:48rem}}@media (min-width:64rem){.container{max-width:64rem}}@media (min-width:80rem){.container{max-width:80rem}}@media (min-width:96rem){.container{max-width:96rem}}.-m-1{margin:calc(var(--spacing) * -1)}.m-0{margin:calc(var(--spacing) * 0)}.m-4{margin:calc(var(--spacing) * 4)}.-mx-3{margin-inline:calc(var(--spacing) * -3)}.-mx-4{margin-inline:calc(var(--spacing) * -4)}.mx-1{margin-inline:calc(var(--spacing) * 1)}.mx-2{margin-inline:calc(var(--spacing) * 2)}.mx-4{margin-inline:calc(var(--spacing) * 4)}.mx-5{margin-inline:calc(var(--spacing) * 5)}.mx-auto{margin-inline:auto}.my-1{margin-block:calc(var(--spacing) * 1)}.my-4{margin-block:calc(var(--spacing) * 4)}.my-6{margin-block:calc(var(--spacing) * 6)}.-mt-1{margin-top:calc(var(--spacing) * -1)}.-mt-4{margin-top:calc(var(--spacing) * -4)}.mt-0{margin-top:calc(var(--spacing) * 0)}.mt-0\\.5{margin-top:calc(var(--spacing) * .5)}.mt-1{margin-top:calc(var(--spacing) * 1)}.mt-1\\.5{margin-top:calc(var(--spacing) * 1.5)}.mt-2{margin-top:calc(var(--spacing) * 2)}.mt-2\\.5{margin-top:calc(var(--spacing) * 2.5)}.mt-3{margin-top:calc(var(--spacing) * 3)}.mt-4{margin-top:calc(var(--spacing) * 4)}.mt-6{margin-top:calc(var(--spacing) * 6)}.mt-8{margin-top:calc(var(--spacing) * 8)}.mt-12{margin-top:calc(var(--spacing) * 12)}.mt-auto{margin-top:auto}.-mr-2{margin-right:calc(var(--spacing) * -2)}.mr-1{margin-right:calc(var(--spacing) * 1)}.mr-1\\.5{margin-right:calc(var(--spacing) * 1.5)}.mr-2{margin-right:calc(var(--spacing) * 2)}.mr-3{margin-right:calc(var(--spacing) * 3)}.mr-auto{margin-right:auto}.-mb-px{margin-bottom:-1px}.mb-0{margin-bottom:calc(var(--spacing) * 0)}.mb-1{margin-bottom:calc(var(--spacing) * 1)}.mb-1\\.5{margin-bottom:calc(var(--spacing) * 1.5)}.mb-2{margin-bottom:calc(var(--spacing) * 2)}.mb-3{margin-bottom:calc(var(--spacing) * 3)}.mb-4{margin-bottom:calc(var(--spacing) * 4)}.mb-6{margin-bottom:calc(var(--spacing) * 6)}.mb-8{margin-bottom:calc(var(--spacing) * 8)}.-ml-1{margin-left:calc(var(--spacing) * -1)}.-ml-2{margin-left:calc(var(--spacing) * -2)}.ml-0\\.5{margin-left:calc(var(--spacing) * .5)}.ml-1{margin-left:calc(var(--spacing) * 1)}.ml-1\\.5{margin-left:calc(var(--spacing) * 1.5)}.ml-2{margin-left:calc(var(--spacing) * 2)}.ml-3{margin-left:calc(var(--spacing) * 3)}.ml-4{margin-left:calc(var(--spacing) * 4)}.ml-6{margin-left:calc(var(--spacing) * 6)}.ml-auto{margin-left:auto}.line-clamp-2{-webkit-line-clamp:2;-webkit-box-orient:vertical;display:-webkit-box;overflow:hidden}.block{display:block}.contents{display:contents}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline{display:inline}.inline-block{display:inline-block}.inline-flex{display:inline-flex}.table{display:table}.aspect-\\[4\\/3\\]{aspect-ratio:4/3}.aspect-\\[21\\/9\\]{aspect-ratio:21/9}.aspect-square{aspect-ratio:1}.aspect-video{aspect-ratio:var(--aspect-video)}.size-4{width:calc(var(--spacing) * 4);height:calc(var(--spacing) * 4)}.size-5{width:calc(var(--spacing) * 5);height:calc(var(--spacing) * 5)}.size-6{width:calc(var(--spacing) * 6);height:calc(var(--spacing) * 6)}.size-10{width:calc(var(--spacing) * 10);height:calc(var(--spacing) * 10)}.size-12{width:calc(var(--spacing) * 12);height:calc(var(--spacing) * 12)}.size-14{width:calc(var(--spacing) * 14);height:calc(var(--spacing) * 14)}.\\!h-full{height:100%!important}.h-0{height:calc(var(--spacing) * 0)}.h-0\\.5{height:calc(var(--spacing) * .5)}.h-1{height:calc(var(--spacing) * 1)}.h-1\\.5{height:calc(var(--spacing) * 1.5)}.h-2{height:calc(var(--spacing) * 2)}.h-2\\.5{height:calc(var(--spacing) * 2.5)}.h-3{height:calc(var(--spacing) * 3)}.h-3\\.5{height:calc(var(--spacing) * 3.5)}.h-4{height:calc(var(--spacing) * 4)}.h-5{height:calc(var(--spacing) * 5)}.h-6{height:calc(var(--spacing) * 6)}.h-7{height:calc(var(--spacing) * 7)}.h-8{height:calc(var(--spacing) * 8)}.h-9{height:calc(var(--spacing) * 9)}.h-10{height:calc(var(--spacing) * 10)}.h-11{height:calc(var(--spacing) * 11)}.h-12{height:calc(var(--spacing) * 12)}.h-14{height:calc(var(--spacing) * 14)}.h-16{height:calc(var(--spacing) * 16)}.h-20{height:calc(var(--spacing) * 20)}.h-24{height:calc(var(--spacing) * 24)}.h-32{height:calc(var(--spacing) * 32)}.h-40{height:calc(var(--spacing) * 40)}.h-48{height:calc(var(--spacing) * 48)}.h-64{height:calc(var(--spacing) * 64)}.h-96{height:calc(var(--spacing) * 96)}.h-\\[18px\\]{height:18px}.h-\\[60\\%\\]{height:60%}.h-\\[200vh\\]{height:200vh}.h-\\[300px\\]{height:300px}.h-\\[400px\\]{height:400px}.h-\\[500px\\]{height:500px}.h-\\[600px\\]{height:600px}.h-\\[700px\\]{height:700px}.h-\\[calc\\(100\\%-8rem\\)\\]{height:calc(100% - 8rem)}.h-auto{height:auto}.h-full{height:100%}.h-px{height:1px}.h-screen{height:100vh}.max-h-0{max-height:calc(var(--spacing) * 0)}.max-h-40{max-height:calc(var(--spacing) * 40)}.max-h-48{max-height:calc(var(--spacing) * 48)}.max-h-60{max-height:calc(var(--spacing) * 60)}.max-h-64{max-height:calc(var(--spacing) * 64)}.max-h-80{max-height:calc(var(--spacing) * 80)}.max-h-\\[60vh\\]{max-height:60vh}.max-h-\\[90vh\\]{max-height:90vh}.max-h-\\[100px\\]{max-height:100px}.max-h-\\[150px\\]{max-height:150px}.max-h-\\[240px\\]{max-height:240px}.max-h-\\[400px\\]{max-height:400px}.max-h-\\[1000px\\]{max-height:1000px}.max-h-\\[2000px\\]{max-height:2000px}.max-h-\\[calc\\(100vh_-_3rem\\)\\]{max-height:calc(100vh - 3rem)}.max-h-dvh{max-height:100dvh}.max-h-full{max-height:100%}.min-h-0{min-height:calc(var(--spacing) * 0)}.min-h-4{min-height:calc(var(--spacing) * 4)}.min-h-48{min-height:calc(var(--spacing) * 48)}.min-h-\\[40vh\\]{min-height:40vh}.min-h-\\[60px\\]{min-height:60px}.min-h-\\[60vh\\]{min-height:60vh}.min-h-\\[80px\\]{min-height:80px}.min-h-\\[100px\\]{min-height:100px}.min-h-\\[120px\\]{min-height:120px}.min-h-\\[160px\\]{min-height:160px}.min-h-\\[200px\\]{min-height:200px}.min-h-\\[240px\\]{min-height:240px}.min-h-\\[300px\\]{min-height:300px}.min-h-\\[400px\\]{min-height:400px}.min-h-\\[500px\\]{min-height:500px}.min-h-\\[600px\\]{min-height:600px}.min-h-\\[700px\\]{min-height:700px}.min-h-\\[900px\\]{min-height:900px}.min-h-dvh{min-height:100dvh}.min-h-full{min-height:100%}.min-h-screen{min-height:100vh}.w-0{width:calc(var(--spacing) * 0)}.w-0\\.5{width:calc(var(--spacing) * .5)}.w-1{width:calc(var(--spacing) * 1)}.w-1\\.5{width:calc(var(--spacing) * 1.5)}.w-1\\/2{width:50%}.w-1\\/3{width:33.3333%}.w-2{width:calc(var(--spacing) * 2)}.w-2\\.5{width:calc(var(--spacing) * 2.5)}.w-2\\/3{width:66.6667%}.w-3{width:calc(var(--spacing) * 3)}.w-3\\.5{width:calc(var(--spacing) * 3.5)}.w-3\\/4{width:75%}.w-4{width:calc(var(--spacing) * 4)}.w-5{width:calc(var(--spacing) * 5)}.w-6{width:calc(var(--spacing) * 6)}.w-7{width:calc(var(--spacing) * 7)}.w-8{width:calc(var(--spacing) * 8)}.w-9{width:calc(var(--spacing) * 9)}.w-10{width:calc(var(--spacing) * 10)}.w-11{width:calc(var(--spacing) * 11)}.w-12{width:calc(var(--spacing) * 12)}.w-14{width:calc(var(--spacing) * 14)}.w-16{width:calc(var(--spacing) * 16)}.w-20{width:calc(var(--spacing) * 20)}.w-24{width:calc(var(--spacing) * 24)}.w-28{width:calc(var(--spacing) * 28)}.w-32{width:calc(var(--spacing) * 32)}.w-36{width:calc(var(--spacing) * 36)}.w-40{width:calc(var(--spacing) * 40)}.w-44{width:calc(var(--spacing) * 44)}.w-48{width:calc(var(--spacing) * 48)}.w-56{width:calc(var(--spacing) * 56)}.w-60{width:calc(var(--spacing) * 60)}.w-64{width:calc(var(--spacing) * 64)}.w-72{width:calc(var(--spacing) * 72)}.w-80{width:calc(var(--spacing) * 80)}.w-96{width:calc(var(--spacing) * 96)}.w-\\[60\\%\\]{width:60%}.w-\\[200px\\]{width:200px}.w-\\[280px\\]{width:280px}.w-\\[300px\\]{width:300px}.w-\\[320px\\]{width:320px}.w-\\[350px\\]{width:350px}.w-\\[400px\\]{width:400px}.w-\\[420px\\]{width:420px}.w-\\[480px\\]{width:480px}.w-\\[500px\\]{width:500px}.w-\\[600px\\]{width:600px}.w-\\[800px\\]{width:800px}.w-\\[calc\\(100vw_-_2rem\\)\\]{width:calc(100vw - 2rem)}.w-auto{width:auto}.w-fit{width:fit-content}.w-full{width:100%}.w-px{width:1px}.max-w-2xl{max-width:var(--container-2xl)}.max-w-3xl{max-width:var(--container-3xl)}.max-w-4xl{max-width:var(--container-4xl)}.max-w-5xl{max-width:var(--container-5xl)}.max-w-6xl{max-width:var(--container-6xl)}.max-w-\\[85\\%\\]{max-width:85%}.max-w-\\[90vw\\]{max-width:90vw}.max-w-\\[95\\%\\]{max-width:95%}.max-w-\\[140px\\]{max-width:140px}.max-w-\\[150px\\]{max-width:150px}.max-w-\\[200px\\]{max-width:200px}.max-w-\\[300px\\]{max-width:300px}.max-w-\\[420px\\]{max-width:420px}.max-w-\\[1100px\\]{max-width:1100px}.max-w-\\[1200px\\]{max-width:1200px}.max-w-\\[1800px\\]{max-width:1800px}.max-w-\\[calc\\(100vw-2rem\\)\\]{max-width:calc(100vw - 2rem)}.max-w-full{max-width:100%}.max-w-lg{max-width:var(--container-lg)}.max-w-md{max-width:var(--container-md)}.max-w-none{max-width:none}.max-w-sm{max-width:var(--container-sm)}.max-w-xl{max-width:var(--container-xl)}.max-w-xs{max-width:var(--container-xs)}.min-w-0{min-width:calc(var(--spacing) * 0)}.min-w-5{min-width:calc(var(--spacing) * 5)}.min-w-8{min-width:calc(var(--spacing) * 8)}.min-w-10{min-width:calc(var(--spacing) * 10)}.min-w-12{min-width:calc(var(--spacing) * 12)}.min-w-\\[1\\.25rem\\]{min-width:1.25rem}.min-w-\\[3ch\\]{min-width:3ch}.min-w-\\[10rem\\]{min-width:10rem}.min-w-\\[12rem\\]{min-width:12rem}.min-w-\\[13rem\\]{min-width:13rem}.min-w-\\[18px\\]{min-width:18px}.min-w-\\[20px\\]{min-width:20px}.min-w-\\[80px\\]{min-width:80px}.min-w-\\[100px\\]{min-width:100px}.min-w-\\[120px\\]{min-width:120px}.min-w-\\[140px\\]{min-width:140px}.min-w-\\[150px\\]{min-width:150px}.min-w-\\[180px\\]{min-width:180px}.min-w-\\[200px\\]{min-width:200px}.min-w-\\[300px\\]{min-width:300px}.min-w-\\[320px\\]{min-width:320px}.min-w-\\[350px\\]{min-width:350px}.min-w-\\[600px\\]{min-width:600px}.flex-1{flex:1}.flex-shrink-0,.shrink-0{flex-shrink:0}.flex-grow,.grow{flex-grow:1}.caption-bottom{caption-side:bottom}.origin-left{transform-origin:0}.-translate-x-1\\/2{--tw-translate-x:calc(calc(1 / 2 * 100%) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)}.-translate-x-full{--tw-translate-x:-100%;translate:var(--tw-translate-x) var(--tw-translate-y)}.translate-x-0{--tw-translate-x:calc(var(--spacing) * 0);translate:var(--tw-translate-x) var(--tw-translate-y)}.translate-x-0\\.5{--tw-translate-x:calc(var(--spacing) * .5);translate:var(--tw-translate-x) var(--tw-translate-y)}.translate-x-4{--tw-translate-x:calc(var(--spacing) * 4);translate:var(--tw-translate-x) var(--tw-translate-y)}.translate-x-5{--tw-translate-x:calc(var(--spacing) * 5);translate:var(--tw-translate-x) var(--tw-translate-y)}.translate-x-7{--tw-translate-x:calc(var(--spacing) * 7);translate:var(--tw-translate-x) var(--tw-translate-y)}.-translate-y-1\\/2{--tw-translate-y:calc(calc(1 / 2 * 100%) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)}.-translate-y-full{--tw-translate-y:-100%;translate:var(--tw-translate-x) var(--tw-translate-y)}.translate-y-4{--tw-translate-y:calc(var(--spacing) * 4);translate:var(--tw-translate-x) var(--tw-translate-y)}.scale-0{--tw-scale-x:0%;--tw-scale-y:0%;--tw-scale-z:0%;scale:var(--tw-scale-x) var(--tw-scale-y)}.scale-100{--tw-scale-x:100%;--tw-scale-y:100%;--tw-scale-z:100%;scale:var(--tw-scale-x) var(--tw-scale-y)}.scale-\\[1\\.01\\]{scale:1.01}.-rotate-90{rotate:-90deg}.-rotate-180{rotate:-180deg}.rotate-90{rotate:90deg}.rotate-180{rotate:180deg}.transform{transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.animate-\\[indeterminate_1\\.5s_ease-in-out_infinite\\]{animation:1.5s ease-in-out infinite indeterminate}.animate-\\[progress-stripes_1s_linear_infinite\\]{animation:1s linear infinite progress-stripes}.animate-bounce{animation:var(--animate-bounce)}.animate-ping{animation:var(--animate-ping)}.animate-pulse{animation:var(--animate-pulse)}.animate-spin{animation:var(--animate-spin)}.cursor-default{cursor:default}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.cursor-wait{cursor:wait}.resize{resize:both}.resize-none{resize:none}.resize-x{resize:horizontal}.resize-y{resize:vertical}.list-inside{list-style-position:inside}.list-decimal{list-style-type:decimal}.list-disc{list-style-type:disc}.appearance-none{appearance:none}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}.grid-cols-7{grid-template-columns:repeat(7,minmax(0,1fr))}.grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}.grid-rows-\\[0fr\\]{grid-template-rows:0fr}.grid-rows-\\[1fr\\]{grid-template-rows:1fr}.flex-col{flex-direction:column}.flex-col-reverse{flex-direction:column-reverse}.flex-row{flex-direction:row}.flex-row-reverse{flex-direction:row-reverse}.flex-wrap{flex-wrap:wrap}.items-baseline{align-items:baseline}.items-center{align-items:center}.items-end{align-items:flex-end}.items-start{align-items:flex-start}.items-stretch{align-items:stretch}.justify-around{justify-content:space-around}.justify-between{justify-content:space-between}.justify-center{justify-content:center}.justify-end{justify-content:flex-end}.justify-start{justify-content:flex-start}.gap-0{gap:calc(var(--spacing) * 0)}.gap-0\\.5{gap:calc(var(--spacing) * .5)}.gap-1{gap:calc(var(--spacing) * 1)}.gap-1\\.5{gap:calc(var(--spacing) * 1.5)}.gap-2{gap:calc(var(--spacing) * 2)}.gap-2\\.5{gap:calc(var(--spacing) * 2.5)}.gap-3{gap:calc(var(--spacing) * 3)}.gap-4{gap:calc(var(--spacing) * 4)}.gap-6{gap:calc(var(--spacing) * 6)}.gap-8{gap:calc(var(--spacing) * 8)}.gap-12{gap:calc(var(--spacing) * 12)}.gap-20{gap:calc(var(--spacing) * 20)}:where(.space-y-0>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 0) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 0) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-0\\.5>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * .5) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * .5) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-1>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 1) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-1\\.5>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 1.5) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 1.5) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-2>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-2\\.5>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 2.5) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 2.5) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-3>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-4>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-6>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-8>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 8) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-12>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 12) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 12) * calc(1 - var(--tw-space-y-reverse)))}.gap-x-2{column-gap:calc(var(--spacing) * 2)}.gap-x-3{column-gap:calc(var(--spacing) * 3)}.gap-x-4{column-gap:calc(var(--spacing) * 4)}.gap-x-6{column-gap:calc(var(--spacing) * 6)}.gap-x-8{column-gap:calc(var(--spacing) * 8)}:where(.-space-x-1>:not(:last-child)){--tw-space-x-reverse:0;margin-inline-start:calc(calc(var(--spacing) * -1) * var(--tw-space-x-reverse));margin-inline-end:calc(calc(var(--spacing) * -1) * calc(1 - var(--tw-space-x-reverse)))}:where(.-space-x-2>:not(:last-child)){--tw-space-x-reverse:0;margin-inline-start:calc(calc(var(--spacing) * -2) * var(--tw-space-x-reverse));margin-inline-end:calc(calc(var(--spacing) * -2) * calc(1 - var(--tw-space-x-reverse)))}.gap-y-1{row-gap:calc(var(--spacing) * 1)}.gap-y-2{row-gap:calc(var(--spacing) * 2)}.gap-y-3{row-gap:calc(var(--spacing) * 3)}:where(.divide-y>:not(:last-child)){--tw-divide-y-reverse:0;border-bottom-style:var(--tw-border-style);border-top-style:var(--tw-border-style);border-top-width:calc(1px * var(--tw-divide-y-reverse));border-bottom-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)))}:where(.divide-border>:not(:last-child)),:where(.divide-border\\/50>:not(:last-child)){border-color:var(--color-border)}@supports (color:color-mix(in lab, red, red)){:where(.divide-border\\/50>:not(:last-child)){border-color:color-mix(in oklab, var(--color-border) 50%, transparent)}}:where(.divide-gray-100>:not(:last-child)){border-color:var(--color-gray-100)}:where(.divide-gray-200>:not(:last-child)){border-color:var(--color-gray-200)}:where(.divide-neutral-100>:not(:last-child)){border-color:var(--color-neutral-100)}:where(.divide-neutral-200>:not(:last-child)){border-color:var(--color-neutral-200)}.self-center{align-self:center}.self-start{align-self:flex-start}.truncate{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.overflow-auto{overflow:auto}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.scroll-smooth{scroll-behavior:smooth}.rounded{border-radius:.25rem}.rounded-2xl{border-radius:var(--radius-2xl)}.rounded-\\[16px\\]{border-radius:16px}.rounded-\\[20px\\]{border-radius:20px}.rounded-full{border-radius:3.40282e38px}.rounded-lg{border-radius:var(--radius-lg)}.rounded-md{border-radius:var(--radius-md)}.rounded-none{border-radius:0}.rounded-sm{border-radius:var(--radius-sm)}.rounded-xl{border-radius:var(--radius-xl)}.rounded-t{border-top-left-radius:.25rem;border-top-right-radius:.25rem}.rounded-t-2xl{border-top-left-radius:var(--radius-2xl);border-top-right-radius:var(--radius-2xl)}.rounded-t-lg{border-top-left-radius:var(--radius-lg);border-top-right-radius:var(--radius-lg)}.rounded-t-xl{border-top-left-radius:var(--radius-xl);border-top-right-radius:var(--radius-xl)}.rounded-l-lg{border-top-left-radius:var(--radius-lg);border-bottom-left-radius:var(--radius-lg)}.rounded-l-md{border-top-left-radius:var(--radius-md);border-bottom-left-radius:var(--radius-md)}.rounded-l-none{border-top-left-radius:0;border-bottom-left-radius:0}.rounded-l-xl{border-top-left-radius:var(--radius-xl);border-bottom-left-radius:var(--radius-xl)}.rounded-tl{border-top-left-radius:.25rem}.rounded-tl-lg{border-top-left-radius:var(--radius-lg)}.rounded-tl-sm{border-top-left-radius:var(--radius-sm)}.rounded-r-lg{border-top-right-radius:var(--radius-lg);border-bottom-right-radius:var(--radius-lg)}.rounded-r-md{border-top-right-radius:var(--radius-md);border-bottom-right-radius:var(--radius-md)}.rounded-tr{border-top-right-radius:.25rem}.rounded-tr-lg{border-top-right-radius:var(--radius-lg)}.rounded-tr-sm{border-top-right-radius:var(--radius-sm)}.rounded-b-lg{border-bottom-right-radius:var(--radius-lg);border-bottom-left-radius:var(--radius-lg)}.rounded-b-none{border-bottom-right-radius:0;border-bottom-left-radius:0}.rounded-br{border-bottom-right-radius:.25rem}.rounded-br-lg{border-bottom-right-radius:var(--radius-lg)}.rounded-br-md{border-bottom-right-radius:var(--radius-md)}.rounded-bl{border-bottom-left-radius:.25rem}.rounded-bl-lg{border-bottom-left-radius:var(--radius-lg)}.rounded-bl-md{border-bottom-left-radius:var(--radius-md)}.border{border-style:var(--tw-border-style);border-width:1px}.border-0{border-style:var(--tw-border-style);border-width:0}.border-2{border-style:var(--tw-border-style);border-width:2px}.border-4{border-style:var(--tw-border-style);border-width:4px}.border-t{border-top-style:var(--tw-border-style);border-top-width:1px}.border-t-0{border-top-style:var(--tw-border-style);border-top-width:0}.border-t-4{border-top-style:var(--tw-border-style);border-top-width:4px}.border-r{border-right-style:var(--tw-border-style);border-right-width:1px}.border-r-0{border-right-style:var(--tw-border-style);border-right-width:0}.border-r-4{border-right-style:var(--tw-border-style);border-right-width:4px}.border-b{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.border-b-2{border-bottom-style:var(--tw-border-style);border-bottom-width:2px}.border-b-4{border-bottom-style:var(--tw-border-style);border-bottom-width:4px}.border-l{border-left-style:var(--tw-border-style);border-left-width:1px}.border-l-0{border-left-style:var(--tw-border-style);border-left-width:0}.border-l-2{border-left-style:var(--tw-border-style);border-left-width:2px}.border-l-4{border-left-style:var(--tw-border-style);border-left-width:4px}.border-dashed{--tw-border-style:dashed;border-style:dashed}.border-none{--tw-border-style:none;border-style:none}.border-\\[\\#635bff\\]\\/30{border-color:oklab(57.843% .0338314 -.232163/.3)}.border-\\[var\\(--mieweb-border\\)\\]{border-color:var(--mieweb-border)}.border-amber-200{border-color:var(--color-amber-200)}.border-blue-200{border-color:var(--color-blue-200)}.border-blue-500{border-color:var(--color-blue-500)}.border-blue-500\\/50{border-color:#3080ff80}@supports (color:color-mix(in lab, red, red)){.border-blue-500\\/50{border-color:color-mix(in oklab, var(--color-blue-500) 50%, transparent)}}.border-blue-600{border-color:var(--color-blue-600)}.border-blue-800{border-color:var(--color-blue-800)}.border-border,.border-border\\/50{border-color:var(--color-border)}@supports (color:color-mix(in lab, red, red)){.border-border\\/50{border-color:color-mix(in oklab, var(--color-border) 50%, transparent)}}.border-border\\/80{border-color:var(--color-border)}@supports (color:color-mix(in lab, red, red)){.border-border\\/80{border-color:color-mix(in oklab, var(--color-border) 80%, transparent)}}.border-chart-1{border-color:var(--color-chart-1)}.border-chart-2{border-color:var(--color-chart-2)}.border-chart-3{border-color:var(--color-chart-3)}.border-chart-4{border-color:var(--color-chart-4)}.border-chart-5{border-color:var(--color-chart-5)}.border-current{border-color:currentColor}.border-destructive{border-color:var(--color-destructive)}.border-destructive-200{border-color:var(--color-destructive-200)}.border-destructive-300{border-color:var(--color-destructive-300)}.border-destructive\\/20{border-color:var(--color-destructive)}@supports (color:color-mix(in lab, red, red)){.border-destructive\\/20{border-color:color-mix(in oklab, var(--color-destructive) 20%, transparent)}}.border-destructive\\/30{border-color:var(--color-destructive)}@supports (color:color-mix(in lab, red, red)){.border-destructive\\/30{border-color:color-mix(in oklab, var(--color-destructive) 30%, transparent)}}.border-destructive\\/50{border-color:var(--color-destructive)}@supports (color:color-mix(in lab, red, red)){.border-destructive\\/50{border-color:color-mix(in oklab, var(--color-destructive) 50%, transparent)}}.border-foreground{border-color:var(--color-foreground)}.border-gray-100{border-color:var(--color-gray-100)}.border-gray-200{border-color:var(--color-gray-200)}.border-gray-300{border-color:var(--color-gray-300)}.border-gray-700{border-color:var(--color-gray-700)}.border-green-200{border-color:var(--color-green-200)}.border-green-500{border-color:var(--color-green-500)}.border-green-500\\/50{border-color:#00c75880}@supports (color:color-mix(in lab, red, red)){.border-green-500\\/50{border-color:color-mix(in oklab, var(--color-green-500) 50%, transparent)}}.border-green-800{border-color:var(--color-green-800)}.border-info-200{border-color:var(--color-info-200)}.border-info-300{border-color:var(--color-info-300)}.border-info\\/30{border-color:var(--color-info)}@supports (color:color-mix(in lab, red, red)){.border-info\\/30{border-color:color-mix(in oklab, var(--color-info) 30%, transparent)}}.border-input{border-color:var(--color-input)}.border-muted{border-color:var(--color-muted)}.border-muted-foreground,.border-muted-foreground\\/25{border-color:var(--color-muted-foreground)}@supports (color:color-mix(in lab, red, red)){.border-muted-foreground\\/25{border-color:color-mix(in oklab, var(--color-muted-foreground) 25%, transparent)}}.border-muted-foreground\\/40{border-color:var(--color-muted-foreground)}@supports (color:color-mix(in lab, red, red)){.border-muted-foreground\\/40{border-color:color-mix(in oklab, var(--color-muted-foreground) 40%, transparent)}}.border-neutral-50{border-color:var(--color-neutral-50)}.border-neutral-100{border-color:var(--color-neutral-100)}.border-neutral-200{border-color:var(--color-neutral-200)}.border-neutral-300{border-color:var(--color-neutral-300)}.border-neutral-500{border-color:var(--color-neutral-500)}.border-primary{border-color:var(--color-primary)}.border-primary-200{border-color:var(--color-primary-200)}.border-primary-500{border-color:var(--color-primary-500)}.border-primary-800{border-color:var(--color-primary-800)}.border-primary\\/30{border-color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.border-primary\\/30{border-color:color-mix(in oklab, var(--color-primary) 30%, transparent)}}.border-primary\\/50{border-color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.border-primary\\/50{border-color:color-mix(in oklab, var(--color-primary) 50%, transparent)}}.border-red-200{border-color:var(--color-red-200)}.border-red-300{border-color:var(--color-red-300)}.border-red-400{border-color:var(--color-red-400)}.border-red-500{border-color:var(--color-red-500)}.border-red-500\\/50{border-color:#fb2c3680}@supports (color:color-mix(in lab, red, red)){.border-red-500\\/50{border-color:color-mix(in oklab, var(--color-red-500) 50%, transparent)}}.border-red-800{border-color:var(--color-red-800)}.border-secondary{border-color:var(--color-secondary)}.border-secondary-200{border-color:var(--color-secondary-200)}.border-success{border-color:var(--color-success)}.border-success-200{border-color:var(--color-success-200)}.border-success-300{border-color:var(--color-success-300)}.border-success\\/30{border-color:var(--color-success)}@supports (color:color-mix(in lab, red, red)){.border-success\\/30{border-color:color-mix(in oklab, var(--color-success) 30%, transparent)}}.border-success\\/50{border-color:var(--color-success)}@supports (color:color-mix(in lab, red, red)){.border-success\\/50{border-color:color-mix(in oklab, var(--color-success) 50%, transparent)}}.border-transparent{border-color:#0000}.border-warning{border-color:var(--color-warning)}.border-warning-200{border-color:var(--color-warning-200)}.border-warning-300{border-color:var(--color-warning-300)}.border-warning-700{border-color:var(--color-warning-700)}.border-warning\\/30{border-color:var(--color-warning)}@supports (color:color-mix(in lab, red, red)){.border-warning\\/30{border-color:color-mix(in oklab, var(--color-warning) 30%, transparent)}}.border-white{border-color:var(--color-white)}.border-white\\/10{border-color:#ffffff1a}@supports (color:color-mix(in lab, red, red)){.border-white\\/10{border-color:color-mix(in oklab, var(--color-white) 10%, transparent)}}.border-white\\/30{border-color:#ffffff4d}@supports (color:color-mix(in lab, red, red)){.border-white\\/30{border-color:color-mix(in oklab, var(--color-white) 30%, transparent)}}.border-white\\/40{border-color:#fff6}@supports (color:color-mix(in lab, red, red)){.border-white\\/40{border-color:color-mix(in oklab, var(--color-white) 40%, transparent)}}.border-yellow-200{border-color:var(--color-yellow-200)}.border-yellow-300{border-color:var(--color-yellow-300)}.border-yellow-400{border-color:var(--color-yellow-400)}.border-yellow-500{border-color:var(--color-yellow-500)}.border-yellow-500\\/50{border-color:#edb20080}@supports (color:color-mix(in lab, red, red)){.border-yellow-500\\/50{border-color:color-mix(in oklab, var(--color-yellow-500) 50%, transparent)}}.border-yellow-800{border-color:var(--color-yellow-800)}.border-t-transparent{border-top-color:#0000}.bg-\\[\\#635bff\\]\\/10{background-color:oklab(57.843% .0338314 -.232163/.1)}.bg-\\[var\\(--mieweb-background\\)\\]{background-color:var(--mieweb-background)}.bg-\\[var\\(--mieweb-card\\)\\]{background-color:var(--mieweb-card)}.bg-\\[var\\(--mieweb-destructive\\)\\]{background-color:var(--mieweb-destructive)}.bg-\\[var\\(--mieweb-muted\\)\\]{background-color:var(--mieweb-muted)}.bg-\\[var\\(--mieweb-primary-500\\)\\]{background-color:var(--mieweb-primary-500)}.bg-\\[var\\(--mieweb-success\\)\\]{background-color:var(--mieweb-success)}.bg-amber-50{background-color:var(--color-amber-50)}.bg-amber-100{background-color:var(--color-amber-100)}.bg-amber-500{background-color:var(--color-amber-500)}.bg-amber-600{background-color:var(--color-amber-600)}.bg-amber-700{background-color:var(--color-amber-700)}.bg-background,.bg-background\\/60{background-color:var(--color-background)}@supports (color:color-mix(in lab, red, red)){.bg-background\\/60{background-color:color-mix(in oklab, var(--color-background) 60%, transparent)}}.bg-background\\/80{background-color:var(--color-background)}@supports (color:color-mix(in lab, red, red)){.bg-background\\/80{background-color:color-mix(in oklab, var(--color-background) 80%, transparent)}}.bg-background\\/90{background-color:var(--color-background)}@supports (color:color-mix(in lab, red, red)){.bg-background\\/90{background-color:color-mix(in oklab, var(--color-background) 90%, transparent)}}.bg-background\\/95{background-color:var(--color-background)}@supports (color:color-mix(in lab, red, red)){.bg-background\\/95{background-color:color-mix(in oklab, var(--color-background) 95%, transparent)}}.bg-black{background-color:var(--color-black)}.bg-black\\/0{background-color:#0000}@supports (color:color-mix(in lab, red, red)){.bg-black\\/0{background-color:color-mix(in oklab, var(--color-black) 0%, transparent)}}.bg-black\\/30{background-color:#0000004d}@supports (color:color-mix(in lab, red, red)){.bg-black\\/30{background-color:color-mix(in oklab, var(--color-black) 30%, transparent)}}.bg-black\\/40{background-color:#0006}@supports (color:color-mix(in lab, red, red)){.bg-black\\/40{background-color:color-mix(in oklab, var(--color-black) 40%, transparent)}}.bg-black\\/50{background-color:#00000080}@supports (color:color-mix(in lab, red, red)){.bg-black\\/50{background-color:color-mix(in oklab, var(--color-black) 50%, transparent)}}.bg-black\\/60{background-color:#0009}@supports (color:color-mix(in lab, red, red)){.bg-black\\/60{background-color:color-mix(in oklab, var(--color-black) 60%, transparent)}}.bg-black\\/70{background-color:#000000b3}@supports (color:color-mix(in lab, red, red)){.bg-black\\/70{background-color:color-mix(in oklab, var(--color-black) 70%, transparent)}}.bg-black\\/90{background-color:#000000e6}@supports (color:color-mix(in lab, red, red)){.bg-black\\/90{background-color:color-mix(in oklab, var(--color-black) 90%, transparent)}}.bg-blue-50{background-color:var(--color-blue-50)}.bg-blue-50\\/50{background-color:#eff6ff80}@supports (color:color-mix(in lab, red, red)){.bg-blue-50\\/50{background-color:color-mix(in oklab, var(--color-blue-50) 50%, transparent)}}.bg-blue-100{background-color:var(--color-blue-100)}.bg-blue-200{background-color:var(--color-blue-200)}.bg-blue-500{background-color:var(--color-blue-500)}.bg-blue-700{background-color:var(--color-blue-700)}.bg-blue-900{background-color:var(--color-blue-900)}.bg-border{background-color:var(--color-border)}.bg-card,.bg-card\\/80{background-color:var(--color-card)}@supports (color:color-mix(in lab, red, red)){.bg-card\\/80{background-color:color-mix(in oklab, var(--color-card) 80%, transparent)}}.bg-chart-1{background-color:var(--color-chart-1)}.bg-chart-2{background-color:var(--color-chart-2)}.bg-chart-3{background-color:var(--color-chart-3)}.bg-chart-4{background-color:var(--color-chart-4)}.bg-chart-5{background-color:var(--color-chart-5)}.bg-current{background-color:currentColor}.bg-cyan-100{background-color:var(--color-cyan-100)}.bg-destructive{background-color:var(--color-destructive)}.bg-destructive-50{background-color:var(--color-destructive-50)}.bg-destructive-100{background-color:var(--color-destructive-100)}.bg-destructive-500{background-color:var(--color-destructive-500)}.bg-destructive-600{background-color:var(--color-destructive-600)}.bg-destructive\\/5{background-color:var(--color-destructive)}@supports (color:color-mix(in lab, red, red)){.bg-destructive\\/5{background-color:color-mix(in oklab, var(--color-destructive) 5%, transparent)}}.bg-destructive\\/10{background-color:var(--color-destructive)}@supports (color:color-mix(in lab, red, red)){.bg-destructive\\/10{background-color:color-mix(in oklab, var(--color-destructive) 10%, transparent)}}.bg-emerald-100{background-color:var(--color-emerald-100)}.bg-foreground,.bg-foreground\\/50{background-color:var(--color-foreground)}@supports (color:color-mix(in lab, red, red)){.bg-foreground\\/50{background-color:color-mix(in oklab, var(--color-foreground) 50%, transparent)}}.bg-gray-50{background-color:var(--color-gray-50)}.bg-gray-100{background-color:var(--color-gray-100)}.bg-gray-200{background-color:var(--color-gray-200)}.bg-gray-400{background-color:var(--color-gray-400)}.bg-gray-600{background-color:var(--color-gray-600)}.bg-gray-900{background-color:var(--color-gray-900)}.bg-green-50{background-color:var(--color-green-50)}.bg-green-50\\/50{background-color:#f0fdf480}@supports (color:color-mix(in lab, red, red)){.bg-green-50\\/50{background-color:color-mix(in oklab, var(--color-green-50) 50%, transparent)}}.bg-green-100{background-color:var(--color-green-100)}.bg-green-400{background-color:var(--color-green-400)}.bg-green-500{background-color:var(--color-green-500)}.bg-green-500\\/20{background-color:#00c75833}@supports (color:color-mix(in lab, red, red)){.bg-green-500\\/20{background-color:color-mix(in oklab, var(--color-green-500) 20%, transparent)}}.bg-green-500\\/80{background-color:#00c758cc}@supports (color:color-mix(in lab, red, red)){.bg-green-500\\/80{background-color:color-mix(in oklab, var(--color-green-500) 80%, transparent)}}.bg-green-500\\/90{background-color:#00c758e6}@supports (color:color-mix(in lab, red, red)){.bg-green-500\\/90{background-color:color-mix(in oklab, var(--color-green-500) 90%, transparent)}}.bg-green-600{background-color:var(--color-green-600)}.bg-green-700{background-color:var(--color-green-700)}.bg-info{background-color:var(--color-info)}.bg-info-50{background-color:var(--color-info-50)}.bg-info-100{background-color:var(--color-info-100)}.bg-info-500{background-color:var(--color-info-500)}.bg-info-600{background-color:var(--color-info-600)}.bg-info\\/10{background-color:var(--color-info)}@supports (color:color-mix(in lab, red, red)){.bg-info\\/10{background-color:color-mix(in oklab, var(--color-info) 10%, transparent)}}.bg-muted{background-color:var(--color-muted)}.bg-muted-foreground{background-color:var(--color-muted-foreground)}.bg-muted\\/10{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.bg-muted\\/10{background-color:color-mix(in oklab, var(--color-muted) 10%, transparent)}}.bg-muted\\/30{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.bg-muted\\/30{background-color:color-mix(in oklab, var(--color-muted) 30%, transparent)}}.bg-muted\\/50{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.bg-muted\\/50{background-color:color-mix(in oklab, var(--color-muted) 50%, transparent)}}.bg-neutral-50{background-color:var(--color-neutral-50)}.bg-neutral-100{background-color:var(--color-neutral-100)}.bg-neutral-200{background-color:var(--color-neutral-200)}.bg-neutral-300{background-color:var(--color-neutral-300)}.bg-neutral-400{background-color:var(--color-neutral-400)}.bg-neutral-500{background-color:var(--color-neutral-500)}.bg-neutral-600{background-color:var(--color-neutral-600)}.bg-neutral-700{background-color:var(--color-neutral-700)}.bg-neutral-800{background-color:var(--color-neutral-800)}.bg-neutral-900{background-color:var(--color-neutral-900)}.bg-orange-50{background-color:var(--color-orange-50)}.bg-orange-100{background-color:var(--color-orange-100)}.bg-orange-500{background-color:var(--color-orange-500)}.bg-orange-600{background-color:var(--color-orange-600)}.bg-pink-600{background-color:var(--color-pink-600)}.bg-primary{background-color:var(--color-primary)}.bg-primary-50,.bg-primary-50\\/50{background-color:var(--color-primary-50)}@supports (color:color-mix(in lab, red, red)){.bg-primary-50\\/50{background-color:color-mix(in oklab, var(--color-primary-50) 50%, transparent)}}.bg-primary-50\\/90{background-color:var(--color-primary-50)}@supports (color:color-mix(in lab, red, red)){.bg-primary-50\\/90{background-color:color-mix(in oklab, var(--color-primary-50) 90%, transparent)}}.bg-primary-100{background-color:var(--color-primary-100)}.bg-primary-200{background-color:var(--color-primary-200)}.bg-primary-300{background-color:var(--color-primary-300)}.bg-primary-400{background-color:var(--color-primary-400)}.bg-primary-500,.bg-primary-500\\/10{background-color:var(--color-primary-500)}@supports (color:color-mix(in lab, red, red)){.bg-primary-500\\/10{background-color:color-mix(in oklab, var(--color-primary-500) 10%, transparent)}}.bg-primary-600{background-color:var(--color-primary-600)}.bg-primary-700,.bg-primary-700\\/50{background-color:var(--color-primary-700)}@supports (color:color-mix(in lab, red, red)){.bg-primary-700\\/50{background-color:color-mix(in oklab, var(--color-primary-700) 50%, transparent)}}.bg-primary-800,.bg-primary-800\\/30{background-color:var(--color-primary-800)}@supports (color:color-mix(in lab, red, red)){.bg-primary-800\\/30{background-color:color-mix(in oklab, var(--color-primary-800) 30%, transparent)}}.bg-primary-900{background-color:var(--color-primary-900)}.bg-primary-950{background-color:var(--color-primary-950)}.bg-primary\\/5{background-color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.bg-primary\\/5{background-color:color-mix(in oklab, var(--color-primary) 5%, transparent)}}.bg-primary\\/10{background-color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.bg-primary\\/10{background-color:color-mix(in oklab, var(--color-primary) 10%, transparent)}}.bg-purple-50{background-color:var(--color-purple-50)}.bg-purple-100{background-color:var(--color-purple-100)}.bg-purple-600{background-color:var(--color-purple-600)}.bg-red-50{background-color:var(--color-red-50)}.bg-red-50\\/50{background-color:#fef2f280}@supports (color:color-mix(in lab, red, red)){.bg-red-50\\/50{background-color:color-mix(in oklab, var(--color-red-50) 50%, transparent)}}.bg-red-100{background-color:var(--color-red-100)}.bg-red-400{background-color:var(--color-red-400)}.bg-red-400\\/40{background-color:#ff656866}@supports (color:color-mix(in lab, red, red)){.bg-red-400\\/40{background-color:color-mix(in oklab, var(--color-red-400) 40%, transparent)}}.bg-red-500{background-color:var(--color-red-500)}.bg-red-500\\/10{background-color:#fb2c361a}@supports (color:color-mix(in lab, red, red)){.bg-red-500\\/10{background-color:color-mix(in oklab, var(--color-red-500) 10%, transparent)}}.bg-red-500\\/20{background-color:#fb2c3633}@supports (color:color-mix(in lab, red, red)){.bg-red-500\\/20{background-color:color-mix(in oklab, var(--color-red-500) 20%, transparent)}}.bg-red-500\\/30{background-color:#fb2c364d}@supports (color:color-mix(in lab, red, red)){.bg-red-500\\/30{background-color:color-mix(in oklab, var(--color-red-500) 30%, transparent)}}.bg-red-600{background-color:var(--color-red-600)}.bg-red-700{background-color:var(--color-red-700)}.bg-rose-100{background-color:var(--color-rose-100)}.bg-secondary{background-color:var(--color-secondary)}.bg-secondary-50{background-color:var(--color-secondary-50)}.bg-secondary-100{background-color:var(--color-secondary-100)}.bg-secondary-500{background-color:var(--color-secondary-500)}.bg-secondary-600{background-color:var(--color-secondary-600)}.bg-sky-100{background-color:var(--color-sky-100)}.bg-slate-900{background-color:var(--color-slate-900)}.bg-success{background-color:var(--color-success)}.bg-success-50{background-color:var(--color-success-50)}.bg-success-100{background-color:var(--color-success-100)}.bg-success-500{background-color:var(--color-success-500)}.bg-success-600{background-color:var(--color-success-600)}.bg-success-700{background-color:var(--color-success-700)}.bg-success\\/10{background-color:var(--color-success)}@supports (color:color-mix(in lab, red, red)){.bg-success\\/10{background-color:color-mix(in oklab, var(--color-success) 10%, transparent)}}.bg-teal-600{background-color:var(--color-teal-600)}.bg-transparent{background-color:#0000}.bg-violet-100{background-color:var(--color-violet-100)}.bg-violet-500{background-color:var(--color-violet-500)}.bg-warning{background-color:var(--color-warning)}.bg-warning-50{background-color:var(--color-warning-50)}.bg-warning-100{background-color:var(--color-warning-100)}.bg-warning-500{background-color:var(--color-warning-500)}.bg-warning-600{background-color:var(--color-warning-600)}.bg-warning-700{background-color:var(--color-warning-700)}.bg-warning\\/10{background-color:var(--color-warning)}@supports (color:color-mix(in lab, red, red)){.bg-warning\\/10{background-color:color-mix(in oklab, var(--color-warning) 10%, transparent)}}.bg-white{background-color:var(--color-white)}.bg-white\\/10{background-color:#ffffff1a}@supports (color:color-mix(in lab, red, red)){.bg-white\\/10{background-color:color-mix(in oklab, var(--color-white) 10%, transparent)}}.bg-white\\/20{background-color:#fff3}@supports (color:color-mix(in lab, red, red)){.bg-white\\/20{background-color:color-mix(in oklab, var(--color-white) 20%, transparent)}}.bg-white\\/50{background-color:#ffffff80}@supports (color:color-mix(in lab, red, red)){.bg-white\\/50{background-color:color-mix(in oklab, var(--color-white) 50%, transparent)}}.bg-white\\/80{background-color:#fffc}@supports (color:color-mix(in lab, red, red)){.bg-white\\/80{background-color:color-mix(in oklab, var(--color-white) 80%, transparent)}}.bg-white\\/90{background-color:#ffffffe6}@supports (color:color-mix(in lab, red, red)){.bg-white\\/90{background-color:color-mix(in oklab, var(--color-white) 90%, transparent)}}.bg-yellow-50{background-color:var(--color-yellow-50)}.bg-yellow-100{background-color:var(--color-yellow-100)}.bg-yellow-400{background-color:var(--color-yellow-400)}.bg-yellow-500{background-color:var(--color-yellow-500)}.bg-yellow-600{background-color:var(--color-yellow-600)}.bg-yellow-700{background-color:var(--color-yellow-700)}.bg-gradient-to-br{--tw-gradient-position:to bottom right in oklab;background-image:linear-gradient(var(--tw-gradient-stops))}.bg-gradient-to-r{--tw-gradient-position:to right in oklab;background-image:linear-gradient(var(--tw-gradient-stops))}.bg-gradient-to-t{--tw-gradient-position:to top in oklab;background-image:linear-gradient(var(--tw-gradient-stops))}.from-blue-600{--tw-gradient-from:var(--color-blue-600);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-gray-200{--tw-gradient-from:var(--color-gray-200);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-neutral-900\\/60{--tw-gradient-from:var(--color-neutral-900)}@supports (color:color-mix(in lab, red, red)){.from-neutral-900\\/60{--tw-gradient-from:color-mix(in oklab, var(--color-neutral-900) 60%, transparent)}}.from-neutral-900\\/60{--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-primary-500{--tw-gradient-from:var(--color-primary-500);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-transparent{--tw-gradient-from:transparent;--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-violet-500{--tw-gradient-from:var(--color-violet-500);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.via-gray-100{--tw-gradient-via:var(--color-gray-100);--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)}.via-white\\/20{--tw-gradient-via:#fff3}@supports (color:color-mix(in lab, red, red)){.via-white\\/20{--tw-gradient-via:color-mix(in oklab, var(--color-white) 20%, transparent)}}.via-white\\/20{--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)}.to-blue-800{--tw-gradient-to:var(--color-blue-800);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-gray-200{--tw-gradient-to:var(--color-gray-200);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-purple-600{--tw-gradient-to:var(--color-purple-600);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-transparent{--tw-gradient-to:transparent;--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.bg-\\[length\\:1\\.5em_1\\.5em\\]{background-size:1.5em 1.5em}.bg-\\[length\\:1rem_100\\%\\]{background-size:1rem 100%}.bg-\\[length\\:200\\%_100\\%\\]{background-size:200% 100%}.bg-\\[right_0\\.5rem_center\\]{background-position:right .5rem center}.bg-right{background-position:100%}.bg-no-repeat{background-repeat:no-repeat}.fill-warning{fill:var(--color-warning)}.stroke-green-500{stroke:var(--color-green-500)}.stroke-neutral-200{stroke:var(--color-neutral-200)}.stroke-primary-500{stroke:var(--color-primary-500)}.stroke-red-500{stroke:var(--color-red-500)}.stroke-yellow-500{stroke:var(--color-yellow-500)}.object-contain{object-fit:contain}.object-cover{object-fit:cover}.p-0{padding:calc(var(--spacing) * 0)}.p-0\\.5{padding:calc(var(--spacing) * .5)}.p-1{padding:calc(var(--spacing) * 1)}.p-1\\.5{padding:calc(var(--spacing) * 1.5)}.p-2{padding:calc(var(--spacing) * 2)}.p-3{padding:calc(var(--spacing) * 3)}.p-4{padding:calc(var(--spacing) * 4)}.p-5{padding:calc(var(--spacing) * 5)}.p-6{padding:calc(var(--spacing) * 6)}.p-8{padding:calc(var(--spacing) * 8)}.p-20{padding:calc(var(--spacing) * 20)}.px-1{padding-inline:calc(var(--spacing) * 1)}.px-1\\.5{padding-inline:calc(var(--spacing) * 1.5)}.px-2{padding-inline:calc(var(--spacing) * 2)}.px-2\\.5{padding-inline:calc(var(--spacing) * 2.5)}.px-3{padding-inline:calc(var(--spacing) * 3)}.px-4{padding-inline:calc(var(--spacing) * 4)}.px-5{padding-inline:calc(var(--spacing) * 5)}.px-6{padding-inline:calc(var(--spacing) * 6)}.py-0{padding-block:calc(var(--spacing) * 0)}.py-0\\.5{padding-block:calc(var(--spacing) * .5)}.py-1{padding-block:calc(var(--spacing) * 1)}.py-1\\.5{padding-block:calc(var(--spacing) * 1.5)}.py-2{padding-block:calc(var(--spacing) * 2)}.py-2\\.5{padding-block:calc(var(--spacing) * 2.5)}.py-3{padding-block:calc(var(--spacing) * 3)}.py-4{padding-block:calc(var(--spacing) * 4)}.py-6{padding-block:calc(var(--spacing) * 6)}.py-8{padding-block:calc(var(--spacing) * 8)}.py-12{padding-block:calc(var(--spacing) * 12)}.py-16{padding-block:calc(var(--spacing) * 16)}.pt-0{padding-top:calc(var(--spacing) * 0)}.pt-0\\.5{padding-top:calc(var(--spacing) * .5)}.pt-2{padding-top:calc(var(--spacing) * 2)}.pt-3{padding-top:calc(var(--spacing) * 3)}.pt-4{padding-top:calc(var(--spacing) * 4)}.pt-6{padding-top:calc(var(--spacing) * 6)}.pt-8{padding-top:calc(var(--spacing) * 8)}.pt-24{padding-top:calc(var(--spacing) * 24)}.pr-2{padding-right:calc(var(--spacing) * 2)}.pr-3{padding-right:calc(var(--spacing) * 3)}.pr-4{padding-right:calc(var(--spacing) * 4)}.pr-8{padding-right:calc(var(--spacing) * 8)}.pr-10{padding-right:calc(var(--spacing) * 10)}.pr-12{padding-right:calc(var(--spacing) * 12)}.pr-14{padding-right:calc(var(--spacing) * 14)}.pr-16{padding-right:calc(var(--spacing) * 16)}.pb-2{padding-bottom:calc(var(--spacing) * 2)}.pb-3{padding-bottom:calc(var(--spacing) * 3)}.pb-4{padding-bottom:calc(var(--spacing) * 4)}.pb-6{padding-bottom:calc(var(--spacing) * 6)}.pl-0{padding-left:calc(var(--spacing) * 0)}.pl-2{padding-left:calc(var(--spacing) * 2)}.pl-3{padding-left:calc(var(--spacing) * 3)}.pl-4{padding-left:calc(var(--spacing) * 4)}.pl-6{padding-left:calc(var(--spacing) * 6)}.pl-7{padding-left:calc(var(--spacing) * 7)}.pl-8{padding-left:calc(var(--spacing) * 8)}.pl-9{padding-left:calc(var(--spacing) * 9)}.pl-10{padding-left:calc(var(--spacing) * 10)}.pl-11{padding-left:calc(var(--spacing) * 11)}.pl-12{padding-left:calc(var(--spacing) * 12)}.text-center{text-align:center}.text-left{text-align:left}.text-right{text-align:right}.align-middle{vertical-align:middle}.font-mono{font-family:var(--font-mono)}.font-sans{font-family:var(--font-sans)}.text-2xl{font-size:var(--text-2xl);line-height:var(--tw-leading,var(--text-2xl--line-height))}.text-3xl{font-size:var(--text-3xl);line-height:var(--tw-leading,var(--text-3xl--line-height))}.text-4xl{font-size:var(--text-4xl);line-height:var(--tw-leading,var(--text-4xl--line-height))}.text-5xl{font-size:var(--text-5xl);line-height:var(--tw-leading,var(--text-5xl--line-height))}.text-6xl{font-size:var(--text-6xl);line-height:var(--tw-leading,var(--text-6xl--line-height))}.text-base{font-size:var(--text-base);line-height:var(--tw-leading,var(--text-base--line-height))}.text-lg{font-size:var(--text-lg);line-height:var(--tw-leading,var(--text-lg--line-height))}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.text-xl{font-size:var(--text-xl);line-height:var(--tw-leading,var(--text-xl--line-height))}.text-xs{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))}.text-\\[8px\\]{font-size:8px}.text-\\[9px\\]{font-size:9px}.text-\\[10px\\]{font-size:10px}.text-\\[11px\\]{font-size:11px}.leading-none{--tw-leading:1;line-height:1}.leading-normal{--tw-leading:var(--leading-normal);line-height:var(--leading-normal)}.leading-relaxed{--tw-leading:var(--leading-relaxed);line-height:var(--leading-relaxed)}.leading-tight{--tw-leading:var(--leading-tight);line-height:var(--leading-tight)}.font-bold{--tw-font-weight:var(--font-weight-bold);font-weight:var(--font-weight-bold)}.font-medium{--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)}.font-normal{--tw-font-weight:var(--font-weight-normal);font-weight:var(--font-weight-normal)}.font-semibold{--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.tracking-tight{--tw-tracking:var(--tracking-tight);letter-spacing:var(--tracking-tight)}.tracking-wide{--tw-tracking:var(--tracking-wide);letter-spacing:var(--tracking-wide)}.tracking-wider{--tw-tracking:var(--tracking-wider);letter-spacing:var(--tracking-wider)}.break-words{overflow-wrap:break-word}.break-all{word-break:break-all}.whitespace-nowrap{white-space:nowrap}.whitespace-pre-line{white-space:pre-line}.whitespace-pre-wrap{white-space:pre-wrap}.text-\\[\\#0A66C2\\]{color:#0a66c2}.text-\\[\\#635bff\\]{color:#635bff}.text-\\[var\\(--mieweb-muted-foreground\\)\\]{color:var(--mieweb-muted-foreground)}.text-\\[var\\(--mieweb-primary-500\\)\\]{color:var(--mieweb-primary-500)}.text-\\[var\\(--mieweb-primary-700\\)\\]{color:var(--mieweb-primary-700)}.text-amber-500{color:var(--color-amber-500)}.text-amber-600{color:var(--color-amber-600)}.text-amber-700{color:var(--color-amber-700)}.text-amber-800{color:var(--color-amber-800)}.text-background{color:var(--color-background)}.text-blue-100{color:var(--color-blue-100)}.text-blue-500{color:var(--color-blue-500)}.text-blue-600{color:var(--color-blue-600)}.text-blue-700{color:var(--color-blue-700)}.text-blue-800{color:var(--color-blue-800)}.text-blue-900{color:var(--color-blue-900)}.text-card-foreground{color:var(--color-card-foreground)}.text-chart-1{color:var(--color-chart-1)}.text-chart-2{color:var(--color-chart-2)}.text-chart-3{color:var(--color-chart-3)}.text-chart-4{color:var(--color-chart-4)}.text-chart-5{color:var(--color-chart-5)}.text-current{color:currentColor}.text-cyan-500{color:var(--color-cyan-500)}.text-destructive{color:var(--color-destructive)}.text-destructive-500{color:var(--color-destructive-500)}.text-destructive-600{color:var(--color-destructive-600)}.text-destructive-700{color:var(--color-destructive-700)}.text-destructive-800{color:var(--color-destructive-800)}.text-destructive-900{color:var(--color-destructive-900)}.text-destructive-foreground{color:var(--color-destructive-foreground)}.text-emerald-600{color:var(--color-emerald-600)}.text-emerald-700{color:var(--color-emerald-700)}.text-foreground,.text-foreground\\/70{color:var(--color-foreground)}@supports (color:color-mix(in lab, red, red)){.text-foreground\\/70{color:color-mix(in oklab, var(--color-foreground) 70%, transparent)}}.text-gray-300{color:var(--color-gray-300)}.text-gray-400{color:var(--color-gray-400)}.text-gray-500{color:var(--color-gray-500)}.text-gray-600{color:var(--color-gray-600)}.text-gray-700{color:var(--color-gray-700)}.text-gray-900{color:var(--color-gray-900)}.text-green-400{color:var(--color-green-400)}.text-green-500{color:var(--color-green-500)}.text-green-600{color:var(--color-green-600)}.text-green-700{color:var(--color-green-700)}.text-green-800{color:var(--color-green-800)}.text-green-900{color:var(--color-green-900)}.text-indigo-600{color:var(--color-indigo-600)}.text-info{color:var(--color-info)}.text-info-500{color:var(--color-info-500)}.text-info-600{color:var(--color-info-600)}.text-info-700{color:var(--color-info-700)}.text-info-800{color:var(--color-info-800)}.text-info-900{color:var(--color-info-900)}.text-info-foreground{color:var(--color-info-foreground)}.text-muted-foreground,.text-muted-foreground\\/30{color:var(--color-muted-foreground)}@supports (color:color-mix(in lab, red, red)){.text-muted-foreground\\/30{color:color-mix(in oklab, var(--color-muted-foreground) 30%, transparent)}}.text-muted-foreground\\/40{color:var(--color-muted-foreground)}@supports (color:color-mix(in lab, red, red)){.text-muted-foreground\\/40{color:color-mix(in oklab, var(--color-muted-foreground) 40%, transparent)}}.text-muted-foreground\\/50{color:var(--color-muted-foreground)}@supports (color:color-mix(in lab, red, red)){.text-muted-foreground\\/50{color:color-mix(in oklab, var(--color-muted-foreground) 50%, transparent)}}.text-muted-foreground\\/60{color:var(--color-muted-foreground)}@supports (color:color-mix(in lab, red, red)){.text-muted-foreground\\/60{color:color-mix(in oklab, var(--color-muted-foreground) 60%, transparent)}}.text-muted-foreground\\/70{color:var(--color-muted-foreground)}@supports (color:color-mix(in lab, red, red)){.text-muted-foreground\\/70{color:color-mix(in oklab, var(--color-muted-foreground) 70%, transparent)}}.text-neutral-300{color:var(--color-neutral-300)}.text-neutral-400{color:var(--color-neutral-400)}.text-neutral-500{color:var(--color-neutral-500)}.text-neutral-600{color:var(--color-neutral-600)}.text-neutral-700{color:var(--color-neutral-700)}.text-neutral-800{color:var(--color-neutral-800)}.text-neutral-900{color:var(--color-neutral-900)}.text-orange-500{color:var(--color-orange-500)}.text-orange-600{color:var(--color-orange-600)}.text-orange-700{color:var(--color-orange-700)}.text-primary{color:var(--color-primary)}.text-primary-500{color:var(--color-primary-500)}.text-primary-600{color:var(--color-primary-600)}.text-primary-700{color:var(--color-primary-700)}.text-primary-800{color:var(--color-primary-800)}.text-primary-900{color:var(--color-primary-900)}.text-primary-foreground,.text-primary-foreground\\/90{color:var(--color-primary-foreground)}@supports (color:color-mix(in lab, red, red)){.text-primary-foreground\\/90{color:color-mix(in oklab, var(--color-primary-foreground) 90%, transparent)}}.text-primary\\/80{color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.text-primary\\/80{color:color-mix(in oklab, var(--color-primary) 80%, transparent)}}.text-purple-500{color:var(--color-purple-500)}.text-purple-600{color:var(--color-purple-600)}.text-purple-700{color:var(--color-purple-700)}.text-red-400{color:var(--color-red-400)}.text-red-500{color:var(--color-red-500)}.text-red-600{color:var(--color-red-600)}.text-red-700{color:var(--color-red-700)}.text-red-800{color:var(--color-red-800)}.text-red-900{color:var(--color-red-900)}.text-rose-600{color:var(--color-rose-600)}.text-secondary{color:var(--color-secondary)}.text-secondary-500{color:var(--color-secondary-500)}.text-secondary-600{color:var(--color-secondary-600)}.text-secondary-700{color:var(--color-secondary-700)}.text-secondary-foreground{color:var(--color-secondary-foreground)}.text-sky-600{color:var(--color-sky-600)}.text-sky-700{color:var(--color-sky-700)}.text-slate-400{color:var(--color-slate-400)}.text-success{color:var(--color-success)}.text-success-500{color:var(--color-success-500)}.text-success-600{color:var(--color-success-600)}.text-success-700{color:var(--color-success-700)}.text-success-800{color:var(--color-success-800)}.text-success-900{color:var(--color-success-900)}.text-success-foreground{color:var(--color-success-foreground)}.text-violet-600{color:var(--color-violet-600)}.text-violet-700{color:var(--color-violet-700)}.text-warning{color:var(--color-warning)}.text-warning-50{color:var(--color-warning-50)}.text-warning-500{color:var(--color-warning-500)}.text-warning-600{color:var(--color-warning-600)}.text-warning-700{color:var(--color-warning-700)}.text-warning-800{color:var(--color-warning-800)}.text-warning-900{color:var(--color-warning-900)}.text-warning-foreground{color:var(--color-warning-foreground)}.text-white{color:var(--color-white)}.text-white\\/40{color:#fff6}@supports (color:color-mix(in lab, red, red)){.text-white\\/40{color:color-mix(in oklab, var(--color-white) 40%, transparent)}}.text-white\\/50{color:#ffffff80}@supports (color:color-mix(in lab, red, red)){.text-white\\/50{color:color-mix(in oklab, var(--color-white) 50%, transparent)}}.text-white\\/60{color:#fff9}@supports (color:color-mix(in lab, red, red)){.text-white\\/60{color:color-mix(in oklab, var(--color-white) 60%, transparent)}}.text-white\\/70{color:#ffffffb3}@supports (color:color-mix(in lab, red, red)){.text-white\\/70{color:color-mix(in oklab, var(--color-white) 70%, transparent)}}.text-white\\/80{color:#fffc}@supports (color:color-mix(in lab, red, red)){.text-white\\/80{color:color-mix(in oklab, var(--color-white) 80%, transparent)}}.text-white\\/90{color:#ffffffe6}@supports (color:color-mix(in lab, red, red)){.text-white\\/90{color:color-mix(in oklab, var(--color-white) 90%, transparent)}}.text-yellow-500{color:var(--color-yellow-500)}.text-yellow-600{color:var(--color-yellow-600)}.text-yellow-700{color:var(--color-yellow-700)}.text-yellow-800{color:var(--color-yellow-800)}.text-yellow-900{color:var(--color-yellow-900)}.capitalize{text-transform:capitalize}.uppercase{text-transform:uppercase}.italic{font-style:italic}.not-italic{font-style:normal}.tabular-nums{--tw-numeric-spacing:tabular-nums;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.line-through{text-decoration-line:line-through}.underline{text-decoration-line:underline}.underline-offset-2{text-underline-offset:2px}.underline-offset-4{text-underline-offset:4px}.placeholder-gray-500::placeholder{color:var(--color-gray-500)}.placeholder-neutral-400::placeholder{color:var(--color-neutral-400)}.placeholder-white\\/60::placeholder{color:#fff9}@supports (color:color-mix(in lab, red, red)){.placeholder-white\\/60::placeholder{color:color-mix(in oklab, var(--color-white) 60%, transparent)}}.accent-primary{accent-color:var(--color-primary)}.opacity-0{opacity:0}.opacity-25{opacity:.25}.opacity-50{opacity:.5}.opacity-60{opacity:.6}.opacity-70{opacity:.7}.opacity-75{opacity:.75}.opacity-90{opacity:.9}.opacity-100{opacity:1}.shadow{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px var(--tw-shadow-color,#00000040);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px var(--tw-shadow-color,#0000001a), 0 4px 6px -4px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px var(--tw-shadow-color,#0000001a), 0 2px 4px -2px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-none{--tw-shadow:0 0 #0000;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px var(--tw-shadow-color,#0000001a), 0 8px 10px -6px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.ring{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.ring-0{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.ring-1{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.ring-2{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.ring-4{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-card{--tw-shadow-color:var(--color-card)}@supports (color:color-mix(in lab, red, red)){.shadow-card{--tw-shadow-color:color-mix(in oklab, var(--color-card) var(--tw-shadow-alpha), transparent)}}.shadow-primary-500\\/30{--tw-shadow-color:var(--color-primary-500)}@supports (color:color-mix(in lab, red, red)){.shadow-primary-500\\/30{--tw-shadow-color:color-mix(in oklab, color-mix(in oklab, var(--color-primary-500) 30%, transparent) var(--tw-shadow-alpha), transparent)}}.shadow-red-500\\/30{--tw-shadow-color:#fb2c364d}@supports (color:color-mix(in lab, red, red)){.shadow-red-500\\/30{--tw-shadow-color:color-mix(in oklab, color-mix(in oklab, var(--color-red-500) 30%, transparent) var(--tw-shadow-alpha), transparent)}}.ring-black\\/5{--tw-ring-color:#0000000d}@supports (color:color-mix(in lab, red, red)){.ring-black\\/5{--tw-ring-color:color-mix(in oklab, var(--color-black) 5%, transparent)}}.ring-blue-100{--tw-ring-color:var(--color-blue-100)}.ring-green-100{--tw-ring-color:var(--color-green-100)}.ring-neutral-100{--tw-ring-color:var(--color-neutral-100)}.ring-neutral-400{--tw-ring-color:var(--color-neutral-400)}.ring-orange-100{--tw-ring-color:var(--color-orange-100)}.ring-primary{--tw-ring-color:var(--color-primary)}.ring-primary-100{--tw-ring-color:var(--color-primary-100)}.ring-primary-200{--tw-ring-color:var(--color-primary-200)}.ring-primary-400\\/30{--tw-ring-color:var(--color-primary-400)}@supports (color:color-mix(in lab, red, red)){.ring-primary-400\\/30{--tw-ring-color:color-mix(in oklab, var(--color-primary-400) 30%, transparent)}}.ring-primary-500{--tw-ring-color:var(--color-primary-500)}.ring-primary-600{--tw-ring-color:var(--color-primary-600)}.ring-purple-100{--tw-ring-color:var(--color-purple-100)}.ring-red-100{--tw-ring-color:var(--color-red-100)}.ring-red-500\\/50{--tw-ring-color:#fb2c3680}@supports (color:color-mix(in lab, red, red)){.ring-red-500\\/50{--tw-ring-color:color-mix(in oklab, var(--color-red-500) 50%, transparent)}}.ring-ring{--tw-ring-color:var(--color-ring)}.ring-warning-700\\/50{--tw-ring-color:var(--color-warning-700)}@supports (color:color-mix(in lab, red, red)){.ring-warning-700\\/50{--tw-ring-color:color-mix(in oklab, var(--color-warning-700) 50%, transparent)}}.ring-white{--tw-ring-color:var(--color-white)}.ring-offset-2{--tw-ring-offset-width:2px;--tw-ring-offset-shadow:var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)}.outline{outline-style:var(--tw-outline-style);outline-width:1px}.blur{--tw-blur:blur(8px);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.brightness-0{--tw-brightness:brightness(0%);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.drop-shadow{--tw-drop-shadow-size:drop-shadow(0 1px 2px var(--tw-drop-shadow-color,#0000001a)) drop-shadow(0 1px 1px var(--tw-drop-shadow-color,#0000000f));--tw-drop-shadow:drop-shadow(0 1px 2px #0000001a) drop-shadow(0 1px 1px #0000000f);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.grayscale{--tw-grayscale:grayscale(100%);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.invert{--tw-invert:invert(100%);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.filter{filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.backdrop-blur{--tw-backdrop-blur:blur(8px);-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.backdrop-blur-md{--tw-backdrop-blur:blur(var(--blur-md));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.backdrop-blur-sm{--tw-backdrop-blur:blur(var(--blur-sm));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.transition{transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,-webkit-backdrop-filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-all{transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-colors{transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-opacity{transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-shadow{transition-property:box-shadow;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-transform{transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.duration-75{--tw-duration:75ms;transition-duration:75ms}.duration-100{--tw-duration:.1s;transition-duration:.1s}.duration-150{--tw-duration:.15s;transition-duration:.15s}.duration-200{--tw-duration:.2s;transition-duration:.2s}.duration-300{--tw-duration:.3s;transition-duration:.3s}.ease-in{--tw-ease:var(--ease-in);transition-timing-function:var(--ease-in)}.ease-in-out{--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)}.ease-out{--tw-ease:var(--ease-out);transition-timing-function:var(--ease-out)}.outline-none{--tw-outline-style:none;outline-style:none}.select-none{-webkit-user-select:none;user-select:none}.\\[animation-delay\\:-0\\.3s\\]{animation-delay:-.3s}.\\[animation-delay\\:-0\\.15s\\]{animation-delay:-.15s}@media (hover:hover){.group-hover\\:visible:is(:where(.group):hover *){visibility:visible}.group-hover\\:bg-black\\/30:is(:where(.group):hover *){background-color:#0000004d}@supports (color:color-mix(in lab, red, red)){.group-hover\\:bg-black\\/30:is(:where(.group):hover *){background-color:color-mix(in oklab, var(--color-black) 30%, transparent)}}.group-hover\\:text-foreground:is(:where(.group):hover *){color:var(--color-foreground)}.group-hover\\:text-primary-500:is(:where(.group):hover *){color:var(--color-primary-500)}.group-hover\\:text-primary-900:is(:where(.group):hover *){color:var(--color-primary-900)}.group-hover\\:opacity-100:is(:where(.group):hover *){opacity:1}}.group-data-\\[disabled\\=true\\]\\:pointer-events-none:is(:where(.group)[data-disabled=true] *){pointer-events:none}.group-data-\\[disabled\\=true\\]\\:cursor-not-allowed:is(:where(.group)[data-disabled=true] *){cursor:not-allowed}.group-data-\\[disabled\\=true\\]\\:opacity-50:is(:where(.group)[data-disabled=true] *){opacity:.5}.peer-checked\\:scale-100:is(:where(.peer):checked~*){--tw-scale-x:100%;--tw-scale-y:100%;--tw-scale-z:100%;scale:var(--tw-scale-x) var(--tw-scale-y)}.peer-checked\\:opacity-100:is(:where(.peer):checked~*),.peer-indeterminate\\:opacity-100:is(:where(.peer):indeterminate~*){opacity:1}.peer-placeholder-shown\\:translate-y-0:is(:where(.peer):placeholder-shown~*){--tw-translate-y:calc(var(--spacing) * 0);translate:var(--tw-translate-x) var(--tw-translate-y)}.peer-placeholder-shown\\:scale-100:is(:where(.peer):placeholder-shown~*){--tw-scale-x:100%;--tw-scale-y:100%;--tw-scale-z:100%;scale:var(--tw-scale-x) var(--tw-scale-y)}@media (hover:hover){.peer-hover\\:shadow-lg:is(:where(.peer):hover~*){--tw-shadow:0 10px 15px -3px var(--tw-shadow-color,#0000001a), 0 4px 6px -4px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}}.peer-focus\\:-translate-y-2:is(:where(.peer):focus~*){--tw-translate-y:calc(var(--spacing) * -2);translate:var(--tw-translate-x) var(--tw-translate-y)}.peer-focus\\:scale-75:is(:where(.peer):focus~*){--tw-scale-x:75%;--tw-scale-y:75%;--tw-scale-z:75%;scale:var(--tw-scale-x) var(--tw-scale-y)}.peer-focus-visible\\:ring-2:is(:where(.peer):focus-visible~*){--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.peer-focus-visible\\:ring-ring:is(:where(.peer):focus-visible~*){--tw-ring-color:var(--color-ring)}.peer-focus-visible\\:ring-offset-2:is(:where(.peer):focus-visible~*){--tw-ring-offset-width:2px;--tw-ring-offset-shadow:var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)}.peer-focus-visible\\:outline-none:is(:where(.peer):focus-visible~*){--tw-outline-style:none;outline-style:none}.peer-active\\:scale-110:is(:where(.peer):active~*){--tw-scale-x:110%;--tw-scale-y:110%;--tw-scale-z:110%;scale:var(--tw-scale-x) var(--tw-scale-y)}.peer-active\\:shadow-xl:is(:where(.peer):active~*){--tw-shadow:0 20px 25px -5px var(--tw-shadow-color,#0000001a), 0 8px 10px -6px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.peer-\\[\\:not\\(\\:placeholder-shown\\)\\]\\:-translate-y-2:is(:where(.peer):not(:placeholder-shown)~*){--tw-translate-y:calc(var(--spacing) * -2);translate:var(--tw-translate-x) var(--tw-translate-y)}.peer-\\[\\:not\\(\\:placeholder-shown\\)\\]\\:scale-75:is(:where(.peer):not(:placeholder-shown)~*){--tw-scale-x:75%;--tw-scale-y:75%;--tw-scale-z:75%;scale:var(--tw-scale-x) var(--tw-scale-y)}.placeholder\\:text-muted-foreground::placeholder{color:var(--color-muted-foreground)}.placeholder\\:text-neutral-400::placeholder{color:var(--color-neutral-400)}.placeholder\\:text-neutral-500::placeholder{color:var(--color-neutral-500)}.placeholder\\:text-warning-700::placeholder{color:var(--color-warning-700)}.first\\:rounded-t-xl:first-child{border-top-left-radius:var(--radius-xl);border-top-right-radius:var(--radius-xl)}.last\\:border-0:last-child{border-style:var(--tw-border-style);border-width:0}.checked\\:border-primary-500:checked{border-color:var(--color-primary-500)}.checked\\:bg-primary-500:checked{background-color:var(--color-primary-500)}.indeterminate\\:border-primary-500:indeterminate{border-color:var(--color-primary-500)}.indeterminate\\:bg-primary-500:indeterminate{background-color:var(--color-primary-500)}.focus-within\\:ring-2:focus-within{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.focus-within\\:ring-primary-500:focus-within{--tw-ring-color:var(--color-primary-500)}.focus-within\\:ring-offset-2:focus-within{--tw-ring-offset-width:2px;--tw-ring-offset-shadow:var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)}.focus-within\\:outline-none:focus-within{--tw-outline-style:none;outline-style:none}@media (hover:hover){.hover\\:scale-\\[1\\.02\\]:hover{scale:1.02}.hover\\:border-blue-300:hover{border-color:var(--color-blue-300)}.hover\\:border-border:hover,.hover\\:border-border\\/80:hover{border-color:var(--color-border)}@supports (color:color-mix(in lab, red, red)){.hover\\:border-border\\/80:hover{border-color:color-mix(in oklab, var(--color-border) 80%, transparent)}}.hover\\:border-gray-300:hover{border-color:var(--color-gray-300)}.hover\\:border-gray-400:hover{border-color:var(--color-gray-400)}.hover\\:border-green-300:hover{border-color:var(--color-green-300)}.hover\\:border-muted-foreground:hover,.hover\\:border-muted-foreground\\/50:hover{border-color:var(--color-muted-foreground)}@supports (color:color-mix(in lab, red, red)){.hover\\:border-muted-foreground\\/50:hover{border-color:color-mix(in oklab, var(--color-muted-foreground) 50%, transparent)}}.hover\\:border-neutral-200:hover{border-color:var(--color-neutral-200)}.hover\\:border-neutral-300:hover{border-color:var(--color-neutral-300)}.hover\\:border-primary:hover{border-color:var(--color-primary)}.hover\\:border-primary-200:hover{border-color:var(--color-primary-200)}.hover\\:border-primary-300:hover{border-color:var(--color-primary-300)}.hover\\:border-primary-400:hover{border-color:var(--color-primary-400)}.hover\\:border-red-300:hover{border-color:var(--color-red-300)}.hover\\:border-red-500:hover{border-color:var(--color-red-500)}.hover\\:border-yellow-300:hover{border-color:var(--color-yellow-300)}.hover\\:bg-amber-800:hover{background-color:var(--color-amber-800)}.hover\\:bg-black\\/10:hover{background-color:#0000001a}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-black\\/10:hover{background-color:color-mix(in oklab, var(--color-black) 10%, transparent)}}.hover\\:bg-blue-50:hover{background-color:var(--color-blue-50)}.hover\\:bg-blue-200:hover{background-color:var(--color-blue-200)}.hover\\:bg-destructive\\/10:hover{background-color:var(--color-destructive)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-destructive\\/10:hover{background-color:color-mix(in oklab, var(--color-destructive) 10%, transparent)}}.hover\\:bg-foreground:hover{background-color:var(--color-foreground)}.hover\\:bg-gray-50:hover{background-color:var(--color-gray-50)}.hover\\:bg-gray-100:hover{background-color:var(--color-gray-100)}.hover\\:bg-gray-200:hover{background-color:var(--color-gray-200)}.hover\\:bg-green-50:hover{background-color:var(--color-green-50)}.hover\\:bg-green-200:hover{background-color:var(--color-green-200)}.hover\\:bg-green-600:hover{background-color:var(--color-green-600)}.hover\\:bg-green-800:hover{background-color:var(--color-green-800)}.hover\\:bg-muted:hover,.hover\\:bg-muted\\/10:hover{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-muted\\/10:hover{background-color:color-mix(in oklab, var(--color-muted) 10%, transparent)}}.hover\\:bg-muted\\/20:hover{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-muted\\/20:hover{background-color:color-mix(in oklab, var(--color-muted) 20%, transparent)}}.hover\\:bg-muted\\/50:hover{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-muted\\/50:hover{background-color:color-mix(in oklab, var(--color-muted) 50%, transparent)}}.hover\\:bg-muted\\/60:hover{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-muted\\/60:hover{background-color:color-mix(in oklab, var(--color-muted) 60%, transparent)}}.hover\\:bg-muted\\/80:hover{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-muted\\/80:hover{background-color:color-mix(in oklab, var(--color-muted) 80%, transparent)}}.hover\\:bg-neutral-50:hover{background-color:var(--color-neutral-50)}.hover\\:bg-neutral-100:hover{background-color:var(--color-neutral-100)}.hover\\:bg-neutral-200:hover{background-color:var(--color-neutral-200)}.hover\\:bg-neutral-300:hover{background-color:var(--color-neutral-300)}.hover\\:bg-neutral-700:hover{background-color:var(--color-neutral-700)}.hover\\:bg-primary-50:hover,.hover\\:bg-primary-50\\/50:hover{background-color:var(--color-primary-50)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-primary-50\\/50:hover{background-color:color-mix(in oklab, var(--color-primary-50) 50%, transparent)}}.hover\\:bg-primary-100:hover{background-color:var(--color-primary-100)}.hover\\:bg-primary-200:hover{background-color:var(--color-primary-200)}.hover\\:bg-primary-600:hover{background-color:var(--color-primary-600)}.hover\\:bg-primary-700:hover{background-color:var(--color-primary-700)}.hover\\:bg-primary-800:hover{background-color:var(--color-primary-800)}.hover\\:bg-primary\\/5:hover{background-color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-primary\\/5:hover{background-color:color-mix(in oklab, var(--color-primary) 5%, transparent)}}.hover\\:bg-primary\\/10:hover{background-color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-primary\\/10:hover{background-color:color-mix(in oklab, var(--color-primary) 10%, transparent)}}.hover\\:bg-primary\\/20:hover{background-color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-primary\\/20:hover{background-color:color-mix(in oklab, var(--color-primary) 20%, transparent)}}.hover\\:bg-primary\\/90:hover{background-color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-primary\\/90:hover{background-color:color-mix(in oklab, var(--color-primary) 90%, transparent)}}.hover\\:bg-red-50:hover{background-color:var(--color-red-50)}.hover\\:bg-red-200:hover{background-color:var(--color-red-200)}.hover\\:bg-red-500\\/10:hover{background-color:#fb2c361a}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-red-500\\/10:hover{background-color:color-mix(in oklab, var(--color-red-500) 10%, transparent)}}.hover\\:bg-red-500\\/20:hover{background-color:#fb2c3633}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-red-500\\/20:hover{background-color:color-mix(in oklab, var(--color-red-500) 20%, transparent)}}.hover\\:bg-red-600:hover{background-color:var(--color-red-600)}.hover\\:bg-red-700:hover{background-color:var(--color-red-700)}.hover\\:bg-transparent:hover{background-color:#0000}.hover\\:bg-white:hover{background-color:var(--color-white)}.hover\\:bg-white\\/10:hover{background-color:#ffffff1a}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-white\\/10:hover{background-color:color-mix(in oklab, var(--color-white) 10%, transparent)}}.hover\\:bg-white\\/20:hover{background-color:#fff3}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-white\\/20:hover{background-color:color-mix(in oklab, var(--color-white) 20%, transparent)}}.hover\\:bg-white\\/90:hover{background-color:#ffffffe6}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-white\\/90:hover{background-color:color-mix(in oklab, var(--color-white) 90%, transparent)}}.hover\\:bg-yellow-50:hover{background-color:var(--color-yellow-50)}.hover\\:bg-yellow-200:hover{background-color:var(--color-yellow-200)}.hover\\:bg-yellow-700:hover{background-color:var(--color-yellow-700)}.hover\\:text-\\[\\#635bff\\]:hover{color:#635bff}.hover\\:text-blue-500:hover{color:var(--color-blue-500)}.hover\\:text-blue-700:hover{color:var(--color-blue-700)}.hover\\:text-destructive:hover,.hover\\:text-destructive\\/80:hover{color:var(--color-destructive)}@supports (color:color-mix(in lab, red, red)){.hover\\:text-destructive\\/80:hover{color:color-mix(in oklab, var(--color-destructive) 80%, transparent)}}.hover\\:text-foreground:hover{color:var(--color-foreground)}.hover\\:text-gray-600:hover{color:var(--color-gray-600)}.hover\\:text-gray-700:hover{color:var(--color-gray-700)}.hover\\:text-gray-800:hover{color:var(--color-gray-800)}.hover\\:text-gray-900:hover{color:var(--color-gray-900)}.hover\\:text-green-500:hover{color:var(--color-green-500)}.hover\\:text-neutral-600:hover{color:var(--color-neutral-600)}.hover\\:text-neutral-700:hover{color:var(--color-neutral-700)}.hover\\:text-neutral-900:hover{color:var(--color-neutral-900)}.hover\\:text-primary:hover{color:var(--color-primary)}.hover\\:text-primary-600:hover{color:var(--color-primary-600)}.hover\\:text-primary-700:hover{color:var(--color-primary-700)}.hover\\:text-primary-900:hover{color:var(--color-primary-900)}.hover\\:text-primary\\/80:hover{color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.hover\\:text-primary\\/80:hover{color:color-mix(in oklab, var(--color-primary) 80%, transparent)}}.hover\\:text-red-500:hover{color:var(--color-red-500)}.hover\\:text-red-500\\/80:hover{color:#fb2c36cc}@supports (color:color-mix(in lab, red, red)){.hover\\:text-red-500\\/80:hover{color:color-mix(in oklab, var(--color-red-500) 80%, transparent)}}.hover\\:text-red-600:hover{color:var(--color-red-600)}.hover\\:text-red-700:hover{color:var(--color-red-700)}.hover\\:text-white:hover{color:var(--color-white)}.hover\\:text-white\\/80:hover{color:#fffc}@supports (color:color-mix(in lab, red, red)){.hover\\:text-white\\/80:hover{color:color-mix(in oklab, var(--color-white) 80%, transparent)}}.hover\\:no-underline:hover{text-decoration-line:none}.hover\\:underline:hover{text-decoration-line:underline}.hover\\:opacity-80:hover{opacity:.8}.hover\\:opacity-100:hover{opacity:1}.hover\\:shadow-md:hover{--tw-shadow:0 4px 6px -1px var(--tw-shadow-color,#0000001a), 0 2px 4px -2px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.hover\\:shadow-sm:hover{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.hover\\:ring-2:hover{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.hover\\:ring-primary-500:hover{--tw-ring-color:var(--color-primary-500)}}.focus\\:z-10:focus{z-index:10}.focus\\:translate-y-0:focus{--tw-translate-y:calc(var(--spacing) * 0);translate:var(--tw-translate-x) var(--tw-translate-y)}.focus\\:border-destructive:focus{border-color:var(--color-destructive)}.focus\\:border-primary:focus{border-color:var(--color-primary)}.focus\\:border-primary-500:focus{border-color:var(--color-primary-500)}.focus\\:border-success:focus{border-color:var(--color-success)}.focus\\:border-transparent:focus{border-color:#0000}.focus\\:border-white\\/60:focus{border-color:#fff9}@supports (color:color-mix(in lab, red, red)){.focus\\:border-white\\/60:focus{border-color:color-mix(in oklab, var(--color-white) 60%, transparent)}}.focus\\:bg-neutral-50:focus{background-color:var(--color-neutral-50)}.focus\\:bg-neutral-100:focus{background-color:var(--color-neutral-100)}.focus\\:bg-red-50:focus{background-color:var(--color-red-50)}.focus\\:bg-white:focus{background-color:var(--color-white)}.focus\\:text-foreground:focus{color:var(--color-foreground)}.focus\\:opacity-100:focus{opacity:1}.focus\\:ring-1:focus{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.focus\\:ring-2:focus{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.focus\\:ring-\\[var\\(--mieweb-ring\\)\\]:focus{--tw-ring-color:var(--mieweb-ring)}.focus\\:ring-blue-500:focus{--tw-ring-color:var(--color-blue-500)}.focus\\:ring-current:focus{--tw-ring-color:currentcolor}.focus\\:ring-destructive:focus,.focus\\:ring-destructive\\/20:focus{--tw-ring-color:var(--color-destructive)}@supports (color:color-mix(in lab, red, red)){.focus\\:ring-destructive\\/20:focus{--tw-ring-color:color-mix(in oklab, var(--color-destructive) 20%, transparent)}}.focus\\:ring-gray-500:focus{--tw-ring-color:var(--color-gray-500)}.focus\\:ring-green-500:focus{--tw-ring-color:var(--color-green-500)}.focus\\:ring-neutral-400:focus{--tw-ring-color:var(--color-neutral-400)}.focus\\:ring-primary:focus{--tw-ring-color:var(--color-primary)}.focus\\:ring-primary-500:focus,.focus\\:ring-primary-500\\/20:focus{--tw-ring-color:var(--color-primary-500)}@supports (color:color-mix(in lab, red, red)){.focus\\:ring-primary-500\\/20:focus{--tw-ring-color:color-mix(in oklab, var(--color-primary-500) 20%, transparent)}}.focus\\:ring-primary-500\\/40:focus{--tw-ring-color:var(--color-primary-500)}@supports (color:color-mix(in lab, red, red)){.focus\\:ring-primary-500\\/40:focus{--tw-ring-color:color-mix(in oklab, var(--color-primary-500) 40%, transparent)}}.focus\\:ring-red-500:focus{--tw-ring-color:var(--color-red-500)}.focus\\:ring-ring:focus{--tw-ring-color:var(--color-ring)}.focus\\:ring-success\\/20:focus{--tw-ring-color:var(--color-success)}@supports (color:color-mix(in lab, red, red)){.focus\\:ring-success\\/20:focus{--tw-ring-color:color-mix(in oklab, var(--color-success) 20%, transparent)}}.focus\\:ring-white:focus{--tw-ring-color:var(--color-white)}.focus\\:ring-yellow-500:focus{--tw-ring-color:var(--color-yellow-500)}.focus\\:ring-offset-1:focus{--tw-ring-offset-width:1px;--tw-ring-offset-shadow:var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)}.focus\\:ring-offset-2:focus{--tw-ring-offset-width:2px;--tw-ring-offset-shadow:var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)}.focus\\:outline-none:focus{--tw-outline-style:none;outline-style:none}.focus-visible\\:bg-muted\\/50:focus-visible{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.focus-visible\\:bg-muted\\/50:focus-visible{background-color:color-mix(in oklab, var(--color-muted) 50%, transparent)}}.focus-visible\\:opacity-100:focus-visible{opacity:1}.focus-visible\\:ring-0:focus-visible{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.focus-visible\\:ring-2:focus-visible{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.focus-visible\\:ring-primary-500:focus-visible{--tw-ring-color:var(--color-primary-500)}.focus-visible\\:ring-ring:focus-visible{--tw-ring-color:var(--color-ring)}.focus-visible\\:ring-offset-0:focus-visible{--tw-ring-offset-width:0px;--tw-ring-offset-shadow:var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)}.focus-visible\\:ring-offset-2:focus-visible{--tw-ring-offset-width:2px;--tw-ring-offset-shadow:var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)}.focus-visible\\:ring-offset-background:focus-visible{--tw-ring-offset-color:var(--color-background)}.focus-visible\\:outline-none:focus-visible{--tw-outline-style:none;outline-style:none}.active\\:scale-95:active{--tw-scale-x:95%;--tw-scale-y:95%;--tw-scale-z:95%;scale:var(--tw-scale-x) var(--tw-scale-y)}.active\\:scale-\\[0\\.98\\]:active{scale:.98}.active\\:bg-neutral-200:active{background-color:var(--color-neutral-200)}.active\\:bg-neutral-400:active{background-color:var(--color-neutral-400)}.active\\:bg-primary-100:active{background-color:var(--color-primary-100)}.active\\:bg-primary-800:active{background-color:var(--color-primary-800)}.active\\:bg-primary-900:active{background-color:var(--color-primary-900)}.active\\:bg-red-800:active{background-color:var(--color-red-800)}.active\\:text-primary-950:active{color:var(--color-primary-950)}.disabled\\:pointer-events-none:disabled{pointer-events:none}.disabled\\:cursor-default:disabled{cursor:default}.disabled\\:cursor-not-allowed:disabled{cursor:not-allowed}.disabled\\:bg-gray-50:disabled{background-color:var(--color-gray-50)}.disabled\\:bg-muted:disabled{background-color:var(--color-muted)}.disabled\\:text-gray-300:disabled{color:var(--color-gray-300)}.disabled\\:text-gray-500:disabled{color:var(--color-gray-500)}.disabled\\:text-muted-foreground:disabled{color:var(--color-muted-foreground)}.disabled\\:opacity-50:disabled{opacity:.5}@media (hover:hover){.disabled\\:hover\\:bg-transparent:disabled:hover{background-color:#0000}}.data-\\[active\\=true\\]\\:border-primary-500[data-active=true]{border-color:var(--color-primary-500)}.data-\\[active\\=true\\]\\:bg-primary-50[data-active=true]{background-color:var(--color-primary-50)}.data-\\[active\\=true\\]\\:bg-primary-500[data-active=true]{background-color:var(--color-primary-500)}.data-\\[active\\=true\\]\\:font-semibold[data-active=true]{--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.data-\\[active\\=true\\]\\:text-primary-500[data-active=true]{color:var(--color-primary-500)}.data-\\[active\\=true\\]\\:text-white[data-active=true]{color:var(--color-white)}.data-\\[selected\\=true\\]\\:bg-muted[data-selected=true]{background-color:var(--color-muted)}.data-\\[state\\=active\\]\\:border-border[data-state=active]{border-color:var(--color-border)}.data-\\[state\\=active\\]\\:border-primary-700[data-state=active]{border-color:var(--color-primary-700)}.data-\\[state\\=active\\]\\:border-b-background[data-state=active]{border-bottom-color:var(--color-background)}.data-\\[state\\=active\\]\\:bg-background[data-state=active]{background-color:var(--color-background)}.data-\\[state\\=active\\]\\:text-foreground[data-state=active]{color:var(--color-foreground)}.data-\\[state\\=active\\]\\:text-primary-800[data-state=active]{color:var(--color-primary-800)}.data-\\[state\\=active\\]\\:shadow-sm[data-state=active]{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.data-\\[state\\=checked\\]\\:translate-x-4[data-state=checked]{--tw-translate-x:calc(var(--spacing) * 4);translate:var(--tw-translate-x) var(--tw-translate-y)}.data-\\[state\\=checked\\]\\:translate-x-5[data-state=checked]{--tw-translate-x:calc(var(--spacing) * 5);translate:var(--tw-translate-x) var(--tw-translate-y)}.data-\\[state\\=checked\\]\\:translate-x-7[data-state=checked]{--tw-translate-x:calc(var(--spacing) * 7);translate:var(--tw-translate-x) var(--tw-translate-y)}.data-\\[state\\=checked\\]\\:bg-primary-500[data-state=checked]{background-color:var(--color-primary-500)}@supports ((-webkit-backdrop-filter:var(--tw)) or (backdrop-filter:var(--tw))){.supports-\\[backdrop-filter\\]\\:bg-background\\/60{background-color:var(--color-background)}@supports (color:color-mix(in lab, red, red)){.supports-\\[backdrop-filter\\]\\:bg-background\\/60{background-color:color-mix(in oklab, var(--color-background) 60%, transparent)}}}@media (min-width:40rem){.sm\\:not-sr-only{clip-path:none;white-space:normal;width:auto;height:auto;margin:0;padding:0;position:static;overflow:visible}.sm\\:col-span-1{grid-column:span 1/span 1}.sm\\:block{display:block}.sm\\:flex{display:flex}.sm\\:hidden{display:none}.sm\\:inline{display:inline}.sm\\:inline-flex{display:inline-flex}.sm\\:table-cell{display:table-cell}.sm\\:max-h-\\[calc\\(100dvh-2rem\\)\\]{max-height:calc(100dvh - 2rem)}.sm\\:min-h-0{min-height:calc(var(--spacing) * 0)}.sm\\:w-1\\/2{width:50%}.sm\\:w-28{width:calc(var(--spacing) * 28)}.sm\\:w-40{width:calc(var(--spacing) * 40)}.sm\\:w-64{width:calc(var(--spacing) * 64)}.sm\\:max-w-2xl{max-width:var(--container-2xl)}.sm\\:max-w-3xl{max-width:var(--container-3xl)}.sm\\:max-w-4xl{max-width:var(--container-4xl)}.sm\\:max-w-\\[70\\%\\]{max-width:70%}.sm\\:max-w-lg{max-width:var(--container-lg)}.sm\\:max-w-md{max-width:var(--container-md)}.sm\\:max-w-sm{max-width:var(--container-sm)}.sm\\:max-w-xl{max-width:var(--container-xl)}.sm\\:min-w-\\[300px\\]{min-width:300px}.sm\\:grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.sm\\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.sm\\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.sm\\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.sm\\:grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}.sm\\:flex-row{flex-direction:row}.sm\\:flex-nowrap{flex-wrap:nowrap}.sm\\:items-center{align-items:center}.sm\\:justify-between{justify-content:space-between}.sm\\:justify-end{justify-content:flex-end}.sm\\:rounded-xl{border-radius:var(--radius-xl)}.sm\\:p-4{padding:calc(var(--spacing) * 4)}.sm\\:p-8{padding:calc(var(--spacing) * 8)}.sm\\:text-left{text-align:left}.sm\\:text-right{text-align:right}.sm\\:text-3xl{font-size:var(--text-3xl);line-height:var(--tw-leading,var(--text-3xl--line-height))}.sm\\:text-8xl{font-size:var(--text-8xl);line-height:var(--tw-leading,var(--text-8xl--line-height))}}@media (min-width:48rem){.md\\:right-4{right:calc(var(--spacing) * 4)}.md\\:left-auto{left:auto}.md\\:order-2{order:2}.md\\:order-3{order:3}.md\\:order-4{order:4}.md\\:col-span-2{grid-column:span 2/span 2}.md\\:col-span-3{grid-column:span 3/span 3}.md\\:col-span-6{grid-column:span 6/span 6}.md\\:my-0{margin-block:calc(var(--spacing) * 0)}.md\\:mt-0{margin-top:calc(var(--spacing) * 0)}.md\\:mb-0{margin-bottom:calc(var(--spacing) * 0)}.md\\:block{display:block}.md\\:flex{display:flex}.md\\:grid{display:grid}.md\\:hidden{display:none}.md\\:inline{display:inline}.md\\:inline-flex{display:inline-flex}.md\\:table-cell{display:table-cell}.md\\:max-h-\\[calc\\(100vh_-_4rem\\)\\]{max-height:calc(100vh - 4rem)}.md\\:w-1\\/2{width:50%}.md\\:w-auto{width:auto}.md\\:max-w-sm{max-width:var(--container-sm)}.md\\:min-w-\\[26rem\\]{min-width:26rem}.md\\:shrink-0{flex-shrink:0}.md\\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.md\\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.md\\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}.md\\:grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}.md\\:grid-cols-8{grid-template-columns:repeat(8,minmax(0,1fr))}.md\\:flex-col{flex-direction:column}.md\\:flex-row{flex-direction:row}.md\\:items-center{align-items:center}.md\\:justify-between{justify-content:space-between}.md\\:justify-center{justify-content:center}.md\\:gap-2{gap:calc(var(--spacing) * 2)}.md\\:border-t-0{border-top-style:var(--tw-border-style);border-top-width:0}.md\\:border-l{border-left-style:var(--tw-border-style);border-left-width:1px}.md\\:text-left{text-align:left}.md\\:text-4xl{font-size:var(--text-4xl);line-height:var(--tw-leading,var(--text-4xl--line-height))}.md\\:text-xl{font-size:var(--text-xl);line-height:var(--tw-leading,var(--text-xl--line-height))}}@media (min-width:64rem){.lg\\:static{position:static}.lg\\:col-span-1{grid-column:span 1/span 1}.lg\\:col-span-2{grid-column:span 2/span 2}.lg\\:col-span-3{grid-column:span 3/span 3}.lg\\:col-span-4{grid-column:span 4/span 4}.lg\\:col-span-8{grid-column:span 8/span 8}.lg\\:block{display:block}.lg\\:flex{display:flex}.lg\\:hidden{display:none}.lg\\:inline{display:inline}.lg\\:table-cell{display:table-cell}.lg\\:max-w-md{max-width:var(--container-md)}.lg\\:min-w-\\[300px\\]{min-width:300px}.lg\\:translate-x-0{--tw-translate-x:calc(var(--spacing) * 0);translate:var(--tw-translate-x) var(--tw-translate-y)}.lg\\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.lg\\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.lg\\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.lg\\:grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}.lg\\:grid-cols-10{grid-template-columns:repeat(10,minmax(0,1fr))}.lg\\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}.lg\\:border-r{border-right-style:var(--tw-border-style);border-right-width:1px}.lg\\:border-neutral-200{border-color:var(--color-neutral-200)}.lg\\:p-6{padding:calc(var(--spacing) * 6)}.lg\\:px-6{padding-inline:calc(var(--spacing) * 6)}.lg\\:text-5xl{font-size:var(--text-5xl);line-height:var(--tw-leading,var(--text-5xl--line-height))}.lg\\:shadow-none{--tw-shadow:0 0 #0000;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}}@media (min-width:80rem){.xl\\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}}:where(.dark\\:divide-gray-700:where([data-theme=dark],[data-theme=dark] *)>:not(:last-child)){border-color:var(--color-gray-700)}:where(.dark\\:divide-gray-800:where([data-theme=dark],[data-theme=dark] *)>:not(:last-child)){border-color:var(--color-gray-800)}:where(.dark\\:divide-neutral-700:where([data-theme=dark],[data-theme=dark] *)>:not(:last-child)){border-color:var(--color-neutral-700)}:where(.dark\\:divide-neutral-800:where([data-theme=dark],[data-theme=dark] *)>:not(:last-child)){border-color:var(--color-neutral-800)}.dark\\:border-b:where([data-theme=dark],[data-theme=dark] *){border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.dark\\:border-amber-700:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-amber-700)}.dark\\:border-amber-800:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-amber-800)}.dark\\:border-amber-800\\/40:where([data-theme=dark],[data-theme=dark] *){border-color:#953d0066}@supports (color:color-mix(in lab, red, red)){.dark\\:border-amber-800\\/40:where([data-theme=dark],[data-theme=dark] *){border-color:color-mix(in oklab, var(--color-amber-800) 40%, transparent)}}.dark\\:border-blue-800:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-blue-800)}.dark\\:border-border\\/40:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-border)}@supports (color:color-mix(in lab, red, red)){.dark\\:border-border\\/40:where([data-theme=dark],[data-theme=dark] *){border-color:color-mix(in oklab, var(--color-border) 40%, transparent)}}.dark\\:border-gray-400:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-gray-400)}.dark\\:border-gray-500:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-gray-500)}.dark\\:border-gray-600:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-gray-600)}.dark\\:border-gray-700:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-gray-700)}.dark\\:border-gray-800:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-gray-800)}.dark\\:border-green-800:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-green-800)}.dark\\:border-neutral-600:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-neutral-600)}.dark\\:border-neutral-700:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-neutral-700)}.dark\\:border-primary-300:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-primary-300)}.dark\\:border-primary-400:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-primary-400)}.dark\\:border-primary-800:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-primary-800)}.dark\\:border-red-600:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-red-600)}.dark\\:border-red-700:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-red-700)}.dark\\:border-red-800:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-red-800)}.dark\\:border-warning-400:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-warning-400)}.dark\\:border-yellow-600:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-yellow-600)}.dark\\:border-yellow-700:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-yellow-700)}.dark\\:border-yellow-800:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-yellow-800)}.dark\\:bg-\\[\\#635bff\\]\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:oklab(57.843% .0338314 -.232163/.2)}.dark\\:bg-amber-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#7b330633}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-amber-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-amber-900) 20%, transparent)}}.dark\\:bg-amber-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#7b33064d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-amber-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-amber-900) 30%, transparent)}}.dark\\:bg-amber-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#7b330666}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-amber-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-amber-900) 40%, transparent)}}.dark\\:bg-amber-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#7b330680}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-amber-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-amber-900) 50%, transparent)}}.dark\\:bg-amber-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#46190166}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-amber-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-amber-950) 40%, transparent)}}.dark\\:bg-black\\/70:where([data-theme=dark],[data-theme=dark] *){background-color:#000000b3}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-black\\/70:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-black) 70%, transparent)}}.dark\\:bg-blue-400:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-blue-400)}.dark\\:bg-blue-800:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-blue-800)}.dark\\:bg-blue-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-blue-900)}.dark\\:bg-blue-900\\/10:where([data-theme=dark],[data-theme=dark] *){background-color:#1c398e1a}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-blue-900\\/10:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-blue-900) 10%, transparent)}}.dark\\:bg-blue-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#1c398e33}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-blue-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-blue-900) 20%, transparent)}}.dark\\:bg-blue-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#1c398e4d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-blue-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-blue-900) 30%, transparent)}}.dark\\:bg-blue-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#1c398e80}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-blue-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-blue-900) 50%, transparent)}}.dark\\:bg-blue-950\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#16245633}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-blue-950\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-blue-950) 20%, transparent)}}.dark\\:bg-blue-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#16245666}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-blue-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-blue-950) 40%, transparent)}}.dark\\:bg-blue-950\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#16245680}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-blue-950\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-blue-950) 50%, transparent)}}.dark\\:bg-cyan-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#104e644d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-cyan-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-cyan-900) 30%, transparent)}}.dark\\:bg-destructive-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-destructive-900)}.dark\\:bg-destructive-950:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-destructive-950)}.dark\\:bg-emerald-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#004e3b4d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-emerald-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-emerald-900) 30%, transparent)}}.dark\\:bg-emerald-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#004e3b66}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-emerald-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-emerald-900) 40%, transparent)}}.dark\\:bg-emerald-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#004e3b80}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-emerald-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-emerald-900) 50%, transparent)}}.dark\\:bg-gray-600:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-gray-600)}.dark\\:bg-gray-700:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-gray-700)}.dark\\:bg-gray-800:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-gray-800)}.dark\\:bg-gray-800\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#1e293980}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-gray-800\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-gray-800) 50%, transparent)}}.dark\\:bg-gray-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-gray-900)}.dark\\:bg-gray-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#10182880}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-gray-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-gray-900) 50%, transparent)}}.dark\\:bg-gray-900\\/80:where([data-theme=dark],[data-theme=dark] *){background-color:#101828cc}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-gray-900\\/80:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-gray-900) 80%, transparent)}}.dark\\:bg-gray-950:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-gray-950)}.dark\\:bg-green-400:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-green-400)}.dark\\:bg-green-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-green-900)}.dark\\:bg-green-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#0d542b33}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-green-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-green-900) 20%, transparent)}}.dark\\:bg-green-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#0d542b4d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-green-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-green-900) 30%, transparent)}}.dark\\:bg-green-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#0d542b80}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-green-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-green-900) 50%, transparent)}}.dark\\:bg-green-950:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-green-950)}.dark\\:bg-green-950\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#032e1533}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-green-950\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-green-950) 20%, transparent)}}.dark\\:bg-green-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#032e1566}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-green-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-green-950) 40%, transparent)}}.dark\\:bg-info-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-info-900)}.dark\\:bg-info-950:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-info-950)}.dark\\:bg-muted:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-muted)}.dark\\:bg-neutral-100:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-neutral-100)}.dark\\:bg-neutral-400:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-neutral-400)}.dark\\:bg-neutral-600:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-neutral-600)}.dark\\:bg-neutral-700:where([data-theme=dark],[data-theme=dark] *),.dark\\:bg-neutral-700\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-neutral-700)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-neutral-700\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-neutral-700) 50%, transparent)}}.dark\\:bg-neutral-800:where([data-theme=dark],[data-theme=dark] *),.dark\\:bg-neutral-800\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-neutral-800)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-neutral-800\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-neutral-800) 50%, transparent)}}.dark\\:bg-neutral-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-neutral-900)}.dark\\:bg-neutral-950:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-neutral-950)}.dark\\:bg-orange-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#7e2a0c33}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-orange-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-orange-900) 20%, transparent)}}.dark\\:bg-orange-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#7e2a0c4d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-orange-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-orange-900) 30%, transparent)}}.dark\\:bg-orange-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#7e2a0c66}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-orange-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-orange-900) 40%, transparent)}}.dark\\:bg-orange-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#7e2a0c80}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-orange-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-orange-900) 50%, transparent)}}.dark\\:bg-primary-400:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-400)}.dark\\:bg-primary-500:where([data-theme=dark],[data-theme=dark] *),.dark\\:bg-primary-500\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-500)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-primary-500\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-primary-500) 20%, transparent)}}.dark\\:bg-primary-600:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-600)}.dark\\:bg-primary-800:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-800)}.dark\\:bg-primary-900:where([data-theme=dark],[data-theme=dark] *),.dark\\:bg-primary-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-900)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-primary-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-primary-900) 20%, transparent)}}.dark\\:bg-primary-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-900)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-primary-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-primary-900) 30%, transparent)}}.dark\\:bg-primary-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-900)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-primary-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-primary-900) 40%, transparent)}}.dark\\:bg-primary-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-900)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-primary-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-primary-900) 50%, transparent)}}.dark\\:bg-primary-900\\/90:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-900)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-primary-900\\/90:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-primary-900) 90%, transparent)}}.dark\\:bg-primary-950:where([data-theme=dark],[data-theme=dark] *),.dark\\:bg-primary-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-950)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-primary-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-primary-950) 40%, transparent)}}.dark\\:bg-purple-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#59168b33}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-purple-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-purple-900) 20%, transparent)}}.dark\\:bg-purple-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#59168b4d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-purple-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-purple-900) 30%, transparent)}}.dark\\:bg-red-500:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-red-500)}.dark\\:bg-red-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-red-900)}.dark\\:bg-red-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#82181a33}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-red-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-red-900) 20%, transparent)}}.dark\\:bg-red-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#82181a4d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-red-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-red-900) 30%, transparent)}}.dark\\:bg-red-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#82181a66}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-red-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-red-900) 40%, transparent)}}.dark\\:bg-red-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#82181a80}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-red-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-red-900) 50%, transparent)}}.dark\\:bg-red-950:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-red-950)}.dark\\:bg-red-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#46080966}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-red-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-red-950) 40%, transparent)}}.dark\\:bg-rose-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#8b083680}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-rose-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-rose-900) 50%, transparent)}}.dark\\:bg-secondary-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-secondary-900)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-secondary-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-secondary-900) 30%, transparent)}}.dark\\:bg-sky-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#024a704d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-sky-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-sky-900) 30%, transparent)}}.dark\\:bg-sky-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#024a7066}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-sky-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-sky-900) 40%, transparent)}}.dark\\:bg-sky-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#024a7080}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-sky-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-sky-900) 50%, transparent)}}.dark\\:bg-success-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-success-900)}.dark\\:bg-success-950:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-success-950)}.dark\\:bg-violet-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#4d179a66}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-violet-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-violet-900) 40%, transparent)}}.dark\\:bg-violet-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#4d179a80}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-violet-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-violet-900) 50%, transparent)}}.dark\\:bg-warning-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-warning-900)}.dark\\:bg-warning-950:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-warning-950)}.dark\\:bg-yellow-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-yellow-900)}.dark\\:bg-yellow-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#733e0a33}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-yellow-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-yellow-900) 20%, transparent)}}.dark\\:bg-yellow-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#733e0a4d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-yellow-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-yellow-900) 30%, transparent)}}.dark\\:bg-yellow-950:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-yellow-950)}.dark\\:bg-yellow-950\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#43200433}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-yellow-950\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-yellow-950) 20%, transparent)}}.dark\\:bg-yellow-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#43200466}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-yellow-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-yellow-950) 40%, transparent)}}.dark\\:from-gray-700:where([data-theme=dark],[data-theme=dark] *){--tw-gradient-from:var(--color-gray-700);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.dark\\:via-gray-600:where([data-theme=dark],[data-theme=dark] *){--tw-gradient-via:var(--color-gray-600);--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)}.dark\\:to-gray-700:where([data-theme=dark],[data-theme=dark] *){--tw-gradient-to:var(--color-gray-700);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.dark\\:stroke-neutral-700:where([data-theme=dark],[data-theme=dark] *){stroke:var(--color-neutral-700)}.dark\\:text-\\[var\\(--mieweb-primary-400\\)\\]:where([data-theme=dark],[data-theme=dark] *){color:var(--mieweb-primary-400)}.dark\\:text-amber-200:where([data-theme=dark],[data-theme=dark] *){color:var(--color-amber-200)}.dark\\:text-amber-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-amber-300)}.dark\\:text-amber-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-amber-400)}.dark\\:text-blue-100:where([data-theme=dark],[data-theme=dark] *){color:var(--color-blue-100)}.dark\\:text-blue-200:where([data-theme=dark],[data-theme=dark] *){color:var(--color-blue-200)}.dark\\:text-blue-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-blue-300)}.dark\\:text-blue-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-blue-400)}.dark\\:text-destructive-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-destructive-300)}.dark\\:text-destructive-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-destructive-400)}.dark\\:text-emerald-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-emerald-300)}.dark\\:text-emerald-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-emerald-400)}.dark\\:text-foreground\\/70:where([data-theme=dark],[data-theme=dark] *){color:var(--color-foreground)}@supports (color:color-mix(in lab, red, red)){.dark\\:text-foreground\\/70:where([data-theme=dark],[data-theme=dark] *){color:color-mix(in oklab, var(--color-foreground) 70%, transparent)}}.dark\\:text-gray-100:where([data-theme=dark],[data-theme=dark] *){color:var(--color-gray-100)}.dark\\:text-gray-200:where([data-theme=dark],[data-theme=dark] *){color:var(--color-gray-200)}.dark\\:text-gray-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-gray-300)}.dark\\:text-gray-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-gray-400)}.dark\\:text-gray-500:where([data-theme=dark],[data-theme=dark] *){color:var(--color-gray-500)}.dark\\:text-gray-600:where([data-theme=dark],[data-theme=dark] *){color:var(--color-gray-600)}.dark\\:text-green-100:where([data-theme=dark],[data-theme=dark] *){color:var(--color-green-100)}.dark\\:text-green-200:where([data-theme=dark],[data-theme=dark] *){color:var(--color-green-200)}.dark\\:text-green-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-green-300)}.dark\\:text-green-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-green-400)}.dark\\:text-green-500:where([data-theme=dark],[data-theme=dark] *){color:var(--color-green-500)}.dark\\:text-info-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-info-300)}.dark\\:text-info-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-info-400)}.dark\\:text-neutral-100:where([data-theme=dark],[data-theme=dark] *){color:var(--color-neutral-100)}.dark\\:text-neutral-200:where([data-theme=dark],[data-theme=dark] *){color:var(--color-neutral-200)}.dark\\:text-neutral-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-neutral-300)}.dark\\:text-neutral-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-neutral-400)}.dark\\:text-neutral-500:where([data-theme=dark],[data-theme=dark] *){color:var(--color-neutral-500)}.dark\\:text-neutral-600:where([data-theme=dark],[data-theme=dark] *){color:var(--color-neutral-600)}.dark\\:text-orange-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-orange-300)}.dark\\:text-orange-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-orange-400)}.dark\\:text-primary-100:where([data-theme=dark],[data-theme=dark] *){color:var(--color-primary-100)}.dark\\:text-primary-200:where([data-theme=dark],[data-theme=dark] *){color:var(--color-primary-200)}.dark\\:text-primary-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-primary-300)}.dark\\:text-primary-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-primary-400)}.dark\\:text-primary-foreground:where([data-theme=dark],[data-theme=dark] *){color:var(--color-primary-foreground)}.dark\\:text-purple-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-purple-300)}.dark\\:text-purple-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-purple-400)}.dark\\:text-red-100:where([data-theme=dark],[data-theme=dark] *){color:var(--color-red-100)}.dark\\:text-red-200:where([data-theme=dark],[data-theme=dark] *){color:var(--color-red-200)}.dark\\:text-red-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-red-300)}.dark\\:text-red-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-red-400)}.dark\\:text-rose-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-rose-400)}.dark\\:text-secondary-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-secondary-300)}.dark\\:text-sky-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-sky-300)}.dark\\:text-sky-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-sky-400)}.dark\\:text-success-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-success-300)}.dark\\:text-success-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-success-400)}.dark\\:text-violet-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-violet-300)}.dark\\:text-violet-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-violet-400)}.dark\\:text-warning-200:where([data-theme=dark],[data-theme=dark] *){color:var(--color-warning-200)}.dark\\:text-warning-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-warning-300)}.dark\\:text-warning-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-warning-400)}.dark\\:text-white:where([data-theme=dark],[data-theme=dark] *){color:var(--color-white)}.dark\\:text-yellow-100:where([data-theme=dark],[data-theme=dark] *){color:var(--color-yellow-100)}.dark\\:text-yellow-200:where([data-theme=dark],[data-theme=dark] *){color:var(--color-yellow-200)}.dark\\:text-yellow-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-yellow-300)}.dark\\:text-yellow-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-yellow-400)}.dark\\:placeholder-gray-400:where([data-theme=dark],[data-theme=dark] *)::placeholder{color:var(--color-gray-400)}.dark\\:placeholder-neutral-500:where([data-theme=dark],[data-theme=dark] *)::placeholder{color:var(--color-neutral-500)}.dark\\:ring-blue-800\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:#193cb866}@supports (color:color-mix(in lab, red, red)){.dark\\:ring-blue-800\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:color-mix(in oklab, var(--color-blue-800) 40%, transparent)}}.dark\\:ring-gray-700:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:var(--color-gray-700)}.dark\\:ring-green-800\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:#01663066}@supports (color:color-mix(in lab, red, red)){.dark\\:ring-green-800\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:color-mix(in oklab, var(--color-green-800) 40%, transparent)}}.dark\\:ring-neutral-600:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:var(--color-neutral-600)}.dark\\:ring-neutral-700\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:var(--color-neutral-700)}@supports (color:color-mix(in lab, red, red)){.dark\\:ring-neutral-700\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:color-mix(in oklab, var(--color-neutral-700) 40%, transparent)}}.dark\\:ring-neutral-900:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:var(--color-neutral-900)}.dark\\:ring-orange-800\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:#9f2d0066}@supports (color:color-mix(in lab, red, red)){.dark\\:ring-orange-800\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:color-mix(in oklab, var(--color-orange-800) 40%, transparent)}}.dark\\:ring-primary-500:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:var(--color-primary-500)}.dark\\:ring-primary-800:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:var(--color-primary-800)}.dark\\:ring-primary-900\\/50:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:var(--color-primary-900)}@supports (color:color-mix(in lab, red, red)){.dark\\:ring-primary-900\\/50:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:color-mix(in oklab, var(--color-primary-900) 50%, transparent)}}.dark\\:ring-purple-800\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:#6e11b066}@supports (color:color-mix(in lab, red, red)){.dark\\:ring-purple-800\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:color-mix(in oklab, var(--color-purple-800) 40%, transparent)}}.dark\\:ring-red-900\\/50:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:#82181a80}@supports (color:color-mix(in lab, red, red)){.dark\\:ring-red-900\\/50:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:color-mix(in oklab, var(--color-red-900) 50%, transparent)}}.dark\\:ring-warning-400\\/50:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:var(--color-warning-400)}@supports (color:color-mix(in lab, red, red)){.dark\\:ring-warning-400\\/50:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:color-mix(in oklab, var(--color-warning-400) 50%, transparent)}}.dark\\:ring-white\\/10:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:#ffffff1a}@supports (color:color-mix(in lab, red, red)){.dark\\:ring-white\\/10:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:color-mix(in oklab, var(--color-white) 10%, transparent)}}.dark\\:ring-offset-neutral-900:where([data-theme=dark],[data-theme=dark] *){--tw-ring-offset-color:var(--color-neutral-900)}@media (hover:hover){.dark\\:group-hover\\:text-primary-200:where([data-theme=dark],[data-theme=dark] *):is(:where(.group):hover *){color:var(--color-primary-200)}}.dark\\:placeholder\\:text-neutral-400:where([data-theme=dark],[data-theme=dark] *)::placeholder{color:var(--color-neutral-400)}.dark\\:placeholder\\:text-neutral-500:where([data-theme=dark],[data-theme=dark] *)::placeholder{color:var(--color-neutral-500)}.dark\\:placeholder\\:text-warning-400:where([data-theme=dark],[data-theme=dark] *)::placeholder{color:var(--color-warning-400)}@media (hover:hover){.dark\\:hover\\:border-blue-700:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-blue-700)}.dark\\:hover\\:border-border:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-border)}.dark\\:hover\\:border-gray-300:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-gray-300)}.dark\\:hover\\:border-gray-500:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-gray-500)}.dark\\:hover\\:border-gray-600:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-gray-600)}.dark\\:hover\\:border-green-700:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-green-700)}.dark\\:hover\\:border-neutral-600:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-neutral-600)}.dark\\:hover\\:border-neutral-700:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-neutral-700)}.dark\\:hover\\:border-primary-500:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-primary-500)}.dark\\:hover\\:border-primary-700:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-primary-700)}.dark\\:hover\\:border-primary-800:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-primary-800)}.dark\\:hover\\:border-red-700:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-red-700)}.dark\\:hover\\:border-yellow-700:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-yellow-700)}.dark\\:hover\\:bg-blue-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#1c398e80}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-blue-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-blue-900) 50%, transparent)}}.dark\\:hover\\:bg-blue-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#16245680}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-blue-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-blue-950) 50%, transparent)}}.dark\\:hover\\:bg-gray-600:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-gray-600)}.dark\\:hover\\:bg-gray-700:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-gray-700)}.dark\\:hover\\:bg-gray-700\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#36415380}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-gray-700\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-gray-700) 50%, transparent)}}.dark\\:hover\\:bg-gray-800:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-gray-800)}.dark\\:hover\\:bg-gray-800\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#1e293980}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-gray-800\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-gray-800) 50%, transparent)}}.dark\\:hover\\:bg-green-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#0d542b80}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-green-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-green-900) 50%, transparent)}}.dark\\:hover\\:bg-green-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#032e1580}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-green-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-green-950) 50%, transparent)}}.dark\\:hover\\:bg-muted\\/30:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-muted\\/30:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-muted) 30%, transparent)}}.dark\\:hover\\:bg-muted\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-muted\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-muted) 50%, transparent)}}.dark\\:hover\\:bg-neutral-600:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-neutral-600)}.dark\\:hover\\:bg-neutral-700:where([data-theme=dark],[data-theme=dark] *):hover,.dark\\:hover\\:bg-neutral-700\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-neutral-700)}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-neutral-700\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-neutral-700) 50%, transparent)}}.dark\\:hover\\:bg-neutral-800:where([data-theme=dark],[data-theme=dark] *):hover,.dark\\:hover\\:bg-neutral-800\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-neutral-800)}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-neutral-800\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-neutral-800) 50%, transparent)}}.dark\\:hover\\:bg-primary-700:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-primary-700)}.dark\\:hover\\:bg-primary-800:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-primary-800)}.dark\\:hover\\:bg-primary-900\\/20:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-primary-900)}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-primary-900\\/20:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-primary-900) 20%, transparent)}}.dark\\:hover\\:bg-primary-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-primary-900)}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-primary-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-primary-900) 50%, transparent)}}.dark\\:hover\\:bg-primary-950:where([data-theme=dark],[data-theme=dark] *):hover,.dark\\:hover\\:bg-primary-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-primary-950)}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-primary-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-primary-950) 50%, transparent)}}.dark\\:hover\\:bg-red-900\\/20:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#82181a33}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-red-900\\/20:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-red-900) 20%, transparent)}}.dark\\:hover\\:bg-red-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#82181a80}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-red-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-red-900) 50%, transparent)}}.dark\\:hover\\:bg-red-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#46080980}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-red-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-red-950) 50%, transparent)}}.dark\\:hover\\:bg-white\\/10:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#ffffff1a}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-white\\/10:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-white) 10%, transparent)}}.dark\\:hover\\:bg-yellow-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#733e0a80}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-yellow-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-yellow-900) 50%, transparent)}}.dark\\:hover\\:bg-yellow-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#43200480}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-yellow-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-yellow-950) 50%, transparent)}}.dark\\:hover\\:text-blue-300:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-blue-300)}.dark\\:hover\\:text-blue-400:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-blue-400)}.dark\\:hover\\:text-gray-100:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-gray-100)}.dark\\:hover\\:text-gray-200:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-gray-200)}.dark\\:hover\\:text-gray-300:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-gray-300)}.dark\\:hover\\:text-green-400:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-green-400)}.dark\\:hover\\:text-neutral-200:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-neutral-200)}.dark\\:hover\\:text-neutral-300:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-neutral-300)}.dark\\:hover\\:text-primary-200:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-primary-200)}.dark\\:hover\\:text-primary-300:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-primary-300)}.dark\\:hover\\:text-primary-400:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-primary-400)}.dark\\:hover\\:text-red-300:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-red-300)}.dark\\:hover\\:text-red-400:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-red-400)}.dark\\:hover\\:text-white:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-white)}}.dark\\:focus\\:bg-neutral-700:where([data-theme=dark],[data-theme=dark] *):focus{background-color:var(--color-neutral-700)}.dark\\:focus\\:bg-neutral-800\\/50:where([data-theme=dark],[data-theme=dark] *):focus{background-color:var(--color-neutral-800)}@supports (color:color-mix(in lab, red, red)){.dark\\:focus\\:bg-neutral-800\\/50:where([data-theme=dark],[data-theme=dark] *):focus{background-color:color-mix(in oklab, var(--color-neutral-800) 50%, transparent)}}.dark\\:focus\\:bg-red-900\\/20:where([data-theme=dark],[data-theme=dark] *):focus{background-color:#82181a33}@supports (color:color-mix(in lab, red, red)){.dark\\:focus\\:bg-red-900\\/20:where([data-theme=dark],[data-theme=dark] *):focus{background-color:color-mix(in oklab, var(--color-red-900) 20%, transparent)}}.dark\\:focus\\:ring-offset-neutral-900:where([data-theme=dark],[data-theme=dark] *):focus,.dark\\:focus-visible\\:ring-offset-neutral-900:where([data-theme=dark],[data-theme=dark] *):focus-visible{--tw-ring-offset-color:var(--color-neutral-900)}.dark\\:active\\:bg-neutral-500:where([data-theme=dark],[data-theme=dark] *):active{background-color:var(--color-neutral-500)}.dark\\:active\\:bg-neutral-700:where([data-theme=dark],[data-theme=dark] *):active{background-color:var(--color-neutral-700)}.dark\\:active\\:bg-primary-900:where([data-theme=dark],[data-theme=dark] *):active{background-color:var(--color-primary-900)}.dark\\:disabled\\:text-gray-600:where([data-theme=dark],[data-theme=dark] *):disabled{color:var(--color-gray-600)}.dark\\:data-\\[active\\=true\\]\\:bg-primary-950:where([data-theme=dark],[data-theme=dark] *)[data-active=true]{background-color:var(--color-primary-950)}@media (min-width:64rem){.dark\\:lg\\:border-neutral-700:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-neutral-700)}}@media print{.print\\:border-0{border-style:var(--tw-border-style);border-width:0}.print\\:shadow-none{--tw-shadow:0 0 #0000;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}}.\\[\\&_\\.ag-cell\\]\\:px-2 .ag-cell{padding-inline:calc(var(--spacing) * 2)}.\\[\\&_\\.ag-cell\\]\\:px-3 .ag-cell{padding-inline:calc(var(--spacing) * 3)}.\\[\\&_\\.ag-cell\\]\\:px-4 .ag-cell{padding-inline:calc(var(--spacing) * 4)}.\\[\\&_\\.ag-cell\\]\\:px-6 .ag-cell{padding-inline:calc(var(--spacing) * 6)}.\\[\\&_\\.ag-header-row\\]\\:h-7 .ag-header-row{height:calc(var(--spacing) * 7)}.\\[\\&_\\.ag-header-row\\]\\:h-8 .ag-header-row{height:calc(var(--spacing) * 8)}.\\[\\&_\\.ag-header-row\\]\\:h-10 .ag-header-row{height:calc(var(--spacing) * 10)}.\\[\\&_\\.ag-header-row\\]\\:h-12 .ag-header-row{height:calc(var(--spacing) * 12)}.\\[\\&_\\.ag-header-row\\]\\:h-14 .ag-header-row{height:calc(var(--spacing) * 14)}.\\[\\&_\\.ag-root-wrapper\\]\\:rounded-lg .ag-root-wrapper{border-radius:var(--radius-lg)}.\\[\\&_\\.ag-root-wrapper\\]\\:border .ag-root-wrapper{border-style:var(--tw-border-style);border-width:1px}.\\[\\&_\\.ag-root-wrapper\\]\\:border-0 .ag-root-wrapper{border-style:var(--tw-border-style);border-width:0}.\\[\\&_\\.ag-root-wrapper\\]\\:border-border .ag-root-wrapper{border-color:var(--color-border)}.\\[\\&_\\.ag-root-wrapper\\]\\:shadow-card .ag-root-wrapper{--tw-shadow-color:var(--color-card)}@supports (color:color-mix(in lab, red, red)){.\\[\\&_\\.ag-root-wrapper\\]\\:shadow-card .ag-root-wrapper{--tw-shadow-color:color-mix(in oklab, var(--color-card) var(--tw-shadow-alpha), transparent)}}.\\[\\&_\\.ag-row\\]\\:h-7 .ag-row{height:calc(var(--spacing) * 7)}.\\[\\&_\\.ag-row\\]\\:h-8 .ag-row{height:calc(var(--spacing) * 8)}.\\[\\&_\\.ag-row\\]\\:h-10 .ag-row{height:calc(var(--spacing) * 10)}.\\[\\&_\\.ag-row\\]\\:h-12 .ag-row{height:calc(var(--spacing) * 12)}.\\[\\&_\\.ag-row\\]\\:h-14 .ag-row{height:calc(var(--spacing) * 14)}.\\[\\&_\\.ag-row-odd\\]\\:bg-muted\\/50 .ag-row-odd{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.\\[\\&_\\.ag-row-odd\\]\\:bg-muted\\/50 .ag-row-odd{background-color:color-mix(in oklab, var(--color-muted) 50%, transparent)}}.\\[\\&_button\\]\\:bg-white\\/20 button{background-color:#fff3}@supports (color:color-mix(in lab, red, red)){.\\[\\&_button\\]\\:bg-white\\/20 button{background-color:color-mix(in oklab, var(--color-white) 20%, transparent)}}.\\[\\&_button\\]\\:text-white button{color:var(--color-white)}.\\[\\&_button\\[data-count-badge\\]\\]\\:gap-1\\.5 button[data-count-badge]{gap:calc(var(--spacing) * 1.5)}.\\[\\&_button\\[data-count-badge\\]\\]\\:px-2 button[data-count-badge]{padding-inline:calc(var(--spacing) * 2)}.\\[\\&_button\\[data-count-badge\\]\\]\\:py-0\\.5 button[data-count-badge]{padding-block:calc(var(--spacing) * .5)}.\\[\\&_button\\[data-count-badge\\]\\]\\:text-xs button[data-count-badge]{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))}@media (min-width:48rem){.md\\:\\[\\&_button\\[data-count-badge\\]\\]\\:gap-2 button[data-count-badge]{gap:calc(var(--spacing) * 2)}.md\\:\\[\\&_button\\[data-count-badge\\]\\]\\:px-3 button[data-count-badge]{padding-inline:calc(var(--spacing) * 3)}.md\\:\\[\\&_button\\[data-count-badge\\]\\]\\:py-1 button[data-count-badge]{padding-block:calc(var(--spacing) * 1)}.md\\:\\[\\&_button\\[data-count-badge\\]\\]\\:text-sm button[data-count-badge]{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}}.\\[\\&_div\\]\\:bg-white\\/30 div{background-color:#ffffff4d}@supports (color:color-mix(in lab, red, red)){.\\[\\&_div\\]\\:bg-white\\/30 div{background-color:color-mix(in oklab, var(--color-white) 30%, transparent)}}.\\[\\&_div\\>div\\]\\:bg-white div>div{background-color:var(--color-white)}.\\[\\&_p\\]\\:leading-relaxed p{--tw-leading:var(--leading-relaxed);line-height:var(--leading-relaxed)}.\\[\\&_span\\]\\:text-white\\/80 span{color:#fffc}@supports (color:color-mix(in lab, red, red)){.\\[\\&_span\\]\\:text-white\\/80 span{color:color-mix(in oklab, var(--color-white) 80%, transparent)}}.\\[\\&_tr\\]\\:border-b tr{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.\\[\\&_tr\\:last-child\\]\\:border-0 tr:last-child{border-style:var(--tw-border-style);border-width:0}.\\[\\&\\:has\\(\\[role\\=checkbox\\]\\)\\]\\:pr-0:has([role=checkbox]){padding-right:calc(var(--spacing) * 0)}.\\[\\&\\>\\*\\]\\:min-w-0>*{min-width:calc(var(--spacing) * 0)}.\\[\\&\\>form\\]\\:flex>form{display:flex}.\\[\\&\\>form\\]\\:min-h-0>form{min-height:calc(var(--spacing) * 0)}.\\[\\&\\>form\\]\\:flex-1>form{flex:1}.\\[\\&\\>form\\]\\:flex-col>form{flex-direction:column}.\\[\\&\\>svg\\]\\:absolute>svg{position:absolute}.\\[\\&\\>svg\\]\\:top-4>svg{top:calc(var(--spacing) * 4)}.\\[\\&\\>svg\\]\\:left-4>svg{left:calc(var(--spacing) * 4)}.\\[\\&\\>svg\\]\\:text-current>svg{color:currentColor}.\\[\\&\\>svg\\+div\\]\\:translate-y-\\[-3px\\]>svg+div{--tw-translate-y:-3px;translate:var(--tw-translate-x) var(--tw-translate-y)}.\\[\\&\\>tr\\]\\:last\\:border-b-0>tr:last-child{border-bottom-style:var(--tw-border-style);border-bottom-width:0}}:root{--mieweb-primary-50:#e6f7fc;--mieweb-primary-100:#b3e6f6;--mieweb-primary-200:#80d5f0;--mieweb-primary-300:#4dc4ea;--mieweb-primary-400:#27aae1;--mieweb-primary-500:#27aae1;--mieweb-primary-600:#1f98ca;--mieweb-primary-700:#1786b3;--mieweb-primary-800:#0f749c;--mieweb-primary-900:#086285;--mieweb-primary-950:#00506e;--mieweb-secondary-50:#eef2ff;--mieweb-secondary-100:#e0e7ff;--mieweb-secondary-200:#c7d2fe;--mieweb-secondary-300:#a5b4fc;--mieweb-secondary-400:#818cf8;--mieweb-secondary-500:#6366f1;--mieweb-secondary-600:#4f46e5;--mieweb-secondary-700:#4338ca;--mieweb-secondary-800:#3730a3;--mieweb-secondary-900:#312e81;--mieweb-secondary-950:#1e1b4b;--mieweb-secondary-foreground:#fff;--mieweb-neutral-50:#fafafa;--mieweb-neutral-100:#f5f5f5;--mieweb-neutral-200:#e5e5e5;--mieweb-neutral-300:#d4d4d4;--mieweb-neutral-400:#a3a3a3;--mieweb-neutral-500:#737373;--mieweb-neutral-600:#525252;--mieweb-neutral-700:#404040;--mieweb-neutral-800:#262626;--mieweb-neutral-900:#171717;--mieweb-neutral-950:#0a0a0a;--mieweb-destructive-50:#fef2f2;--mieweb-destructive-100:#fee2e2;--mieweb-destructive-200:#fecaca;--mieweb-destructive-300:#fca5a5;--mieweb-destructive-400:#f87171;--mieweb-destructive-500:#ef4444;--mieweb-destructive-600:#dc2626;--mieweb-destructive-700:#b91c1c;--mieweb-destructive-800:#991b1b;--mieweb-destructive-900:#7f1d1d;--mieweb-destructive-950:#450a0a;--mieweb-destructive-foreground:#fff;--mieweb-success-50:#f0fdf4;--mieweb-success-100:#dcfce7;--mieweb-success-200:#bbf7d0;--mieweb-success-300:#86efac;--mieweb-success-400:#4ade80;--mieweb-success-500:#22c55e;--mieweb-success-600:#16a34a;--mieweb-success-700:#15803d;--mieweb-success-800:#166534;--mieweb-success-900:#14532d;--mieweb-success-950:#052e16;--mieweb-success-foreground:#fff;--mieweb-warning-50:#fffbeb;--mieweb-warning-100:#fef3c7;--mieweb-warning-200:#fde68a;--mieweb-warning-300:#fcd34d;--mieweb-warning-400:#fbbf24;--mieweb-warning-500:#f59e0b;--mieweb-warning-600:#d97706;--mieweb-warning-700:#b45309;--mieweb-warning-800:#92400e;--mieweb-warning-900:#78350f;--mieweb-warning-950:#451a03;--mieweb-warning-foreground:#fff;--mieweb-info-50:#f0f9ff;--mieweb-info-100:#e0f2fe;--mieweb-info-200:#bae6fd;--mieweb-info-300:#7dd3fc;--mieweb-info-400:#38bdf8;--mieweb-info-500:#0ea5e9;--mieweb-info-600:#0284c7;--mieweb-info-700:#0369a1;--mieweb-info-800:#075985;--mieweb-info-900:#0c4a6e;--mieweb-info-950:#082f49;--mieweb-info-foreground:#fff;--mieweb-chart-1:#27aae1;--mieweb-chart-2:#22c55e;--mieweb-chart-3:#f59e0b;--mieweb-chart-4:#ef4444;--mieweb-chart-5:#6366f1;--mieweb-background:#fff;--mieweb-foreground:#171717;--mieweb-card:#fff;--mieweb-card-foreground:#171717;--mieweb-muted:#f5f5f5;--mieweb-muted-foreground:#737373;--mieweb-border:#e5e7eb;--mieweb-input:#e5e7eb;--mieweb-ring:#27aae1;--mieweb-font-sans:\"Nunito\", ui-sans-serif, system-ui, sans-serif;--mieweb-font-mono:ui-monospace, SFMono-Regular, Menlo, monospace;--mieweb-radius-none:0;--mieweb-radius-sm:.25rem;--mieweb-radius-md:.5rem;--mieweb-radius-lg:.75rem;--mieweb-radius-xl:1rem;--mieweb-radius-2xl:1.5rem;--mieweb-radius-full:9999px;--mieweb-shadow-card:0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a;--mieweb-shadow-dropdown:0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a;--mieweb-shadow-modal:0 10px 15px -3px #0000001a, 0 4px 6px -4px #0000001a}[data-theme=dark]{--mieweb-background:#171717;--mieweb-foreground:#fafafa;--mieweb-card:#262626;--mieweb-card-foreground:#fafafa;--mieweb-muted:#404040;--mieweb-muted-foreground:#a1a1aa;--mieweb-border:#404040;--mieweb-input:#404040;--mieweb-ring:#27aae1;--mieweb-destructive-foreground:#fafafa;--mieweb-success-foreground:#fafafa;--mieweb-warning-foreground:#fafafa;--mieweb-info-foreground:#fafafa;--mieweb-secondary-foreground:#fafafa;--mieweb-chart-1:#38bdf8;--mieweb-chart-2:#4ade80;--mieweb-chart-3:#fbbf24;--mieweb-chart-4:#f87171;--mieweb-chart-5:#818cf8}body{font-family:var(--mieweb-font-sans);background-color:var(--mieweb-background);color:var(--mieweb-foreground);-webkit-font-smoothing:antialiased}code,pre,kbd{font-family:var(--mieweb-font-mono)}:focus-visible{outline:2px solid var(--mieweb-ring);outline-offset:2px}.dark{--mieweb-background:#171717;--mieweb-foreground:#fafafa;--mieweb-card:#262626;--mieweb-card-foreground:#fafafa;--mieweb-muted:#404040;--mieweb-muted-foreground:#a1a1aa;--mieweb-border:#404040;--mieweb-input:#404040;--mieweb-ring:#27aae1;--mieweb-destructive-foreground:#fafafa;--mieweb-success-foreground:#fafafa;--mieweb-warning-foreground:#fafafa;--mieweb-info-foreground:#fafafa;--mieweb-secondary-foreground:#fafafa;--mieweb-chart-1:#38bdf8;--mieweb-chart-2:#4ade80;--mieweb-chart-3:#fbbf24;--mieweb-chart-4:#f87171;--mieweb-chart-5:#818cf8}@media (prefers-reduced-motion:reduce){*,:before,:after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}@keyframes waveform{0%,to{transform:scaleY(.3)}50%{transform:scaleY(1)}}.animate-waveform{animation:.5s ease-in-out infinite waveform}@property --tw-translate-x{syntax:\"*\";inherits:false;initial-value:0}@property --tw-translate-y{syntax:\"*\";inherits:false;initial-value:0}@property --tw-translate-z{syntax:\"*\";inherits:false;initial-value:0}@property --tw-scale-x{syntax:\"*\";inherits:false;initial-value:1}@property --tw-scale-y{syntax:\"*\";inherits:false;initial-value:1}@property --tw-scale-z{syntax:\"*\";inherits:false;initial-value:1}@property --tw-rotate-x{syntax:\"*\";inherits:false}@property --tw-rotate-y{syntax:\"*\";inherits:false}@property --tw-rotate-z{syntax:\"*\";inherits:false}@property --tw-skew-x{syntax:\"*\";inherits:false}@property --tw-skew-y{syntax:\"*\";inherits:false}@property --tw-space-y-reverse{syntax:\"*\";inherits:false;initial-value:0}@property --tw-space-x-reverse{syntax:\"*\";inherits:false;initial-value:0}@property --tw-divide-y-reverse{syntax:\"*\";inherits:false;initial-value:0}@property --tw-border-style{syntax:\"*\";inherits:false;initial-value:solid}@property --tw-gradient-position{syntax:\"*\";inherits:false}@property --tw-gradient-from{syntax:\"<color>\";inherits:false;initial-value:#0000}@property --tw-gradient-via{syntax:\"<color>\";inherits:false;initial-value:#0000}@property --tw-gradient-to{syntax:\"<color>\";inherits:false;initial-value:#0000}@property --tw-gradient-stops{syntax:\"*\";inherits:false}@property --tw-gradient-via-stops{syntax:\"*\";inherits:false}@property --tw-gradient-from-position{syntax:\"<length-percentage>\";inherits:false;initial-value:0%}@property --tw-gradient-via-position{syntax:\"<length-percentage>\";inherits:false;initial-value:50%}@property --tw-gradient-to-position{syntax:\"<length-percentage>\";inherits:false;initial-value:100%}@property --tw-leading{syntax:\"*\";inherits:false}@property --tw-font-weight{syntax:\"*\";inherits:false}@property --tw-tracking{syntax:\"*\";inherits:false}@property --tw-ordinal{syntax:\"*\";inherits:false}@property --tw-slashed-zero{syntax:\"*\";inherits:false}@property --tw-numeric-figure{syntax:\"*\";inherits:false}@property --tw-numeric-spacing{syntax:\"*\";inherits:false}@property --tw-numeric-fraction{syntax:\"*\";inherits:false}@property --tw-shadow{syntax:\"*\";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:\"*\";inherits:false}@property --tw-shadow-alpha{syntax:\"<percentage>\";inherits:false;initial-value:100%}@property --tw-inset-shadow{syntax:\"*\";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:\"*\";inherits:false}@property --tw-inset-shadow-alpha{syntax:\"<percentage>\";inherits:false;initial-value:100%}@property --tw-ring-color{syntax:\"*\";inherits:false}@property --tw-ring-shadow{syntax:\"*\";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:\"*\";inherits:false}@property --tw-inset-ring-shadow{syntax:\"*\";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:\"*\";inherits:false}@property --tw-ring-offset-width{syntax:\"<length>\";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:\"*\";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:\"*\";inherits:false;initial-value:0 0 #0000}@property --tw-outline-style{syntax:\"*\";inherits:false;initial-value:solid}@property --tw-blur{syntax:\"*\";inherits:false}@property --tw-brightness{syntax:\"*\";inherits:false}@property --tw-contrast{syntax:\"*\";inherits:false}@property --tw-grayscale{syntax:\"*\";inherits:false}@property --tw-hue-rotate{syntax:\"*\";inherits:false}@property --tw-invert{syntax:\"*\";inherits:false}@property --tw-opacity{syntax:\"*\";inherits:false}@property --tw-saturate{syntax:\"*\";inherits:false}@property --tw-sepia{syntax:\"*\";inherits:false}@property --tw-drop-shadow{syntax:\"*\";inherits:false}@property --tw-drop-shadow-color{syntax:\"*\";inherits:false}@property --tw-drop-shadow-alpha{syntax:\"<percentage>\";inherits:false;initial-value:100%}@property --tw-drop-shadow-size{syntax:\"*\";inherits:false}@property --tw-backdrop-blur{syntax:\"*\";inherits:false}@property --tw-backdrop-brightness{syntax:\"*\";inherits:false}@property --tw-backdrop-contrast{syntax:\"*\";inherits:false}@property --tw-backdrop-grayscale{syntax:\"*\";inherits:false}@property --tw-backdrop-hue-rotate{syntax:\"*\";inherits:false}@property --tw-backdrop-invert{syntax:\"*\";inherits:false}@property --tw-backdrop-opacity{syntax:\"*\";inherits:false}@property --tw-backdrop-saturate{syntax:\"*\";inherits:false}@property --tw-backdrop-sepia{syntax:\"*\";inherits:false}@property --tw-duration{syntax:\"*\";inherits:false}@property --tw-ease{syntax:\"*\";inherits:false}@keyframes spin{to{transform:rotate(360deg)}}@keyframes ping{75%,to{opacity:0;transform:scale(2)}}@keyframes pulse{50%{opacity:.5}}@keyframes bounce{0%,to{animation-timing-function:cubic-bezier(.8,0,1,1);transform:translateY(-25%)}50%{animation-timing-function:cubic-bezier(0,0,.2,1);transform:none}}/**\n * Overrides for @mieweb/ui Tailwind CSS components.\n *\n * @mieweb/ui ships its styles in CSS cascade layers (@layer utilities, etc.).\n * Bootstrap's un-layered resets (e.g. `button { border-radius: 0 }`) have\n * higher cascade priority than any layered rule, breaking component styles.\n *\n * This file re-declares the affected utilities WITHOUT @layer so they match\n * Bootstrap's cascade level and win by specificity (class > type selector).\n */\n\n/* ── Border radius (Bootstrap resets button border-radius to 0) ── */\n.rounded-sm  { border-radius: var(--radius-sm, 0.125rem); }\n.rounded-md  { border-radius: var(--radius-md, 0.375rem); }\n.rounded-lg  { border-radius: var(--radius-lg, 0.5rem); }\n.rounded-xl  { border-radius: var(--radius-xl, 0.75rem); }\n.rounded-2xl { border-radius: var(--radius-2xl, 1rem); }\n.rounded-full { border-radius: 9999px; }\n\n/* ── Border color (ensure Tailwind border-input overrides inherited colors) ── */\n.border-input { border-color: var(--color-input, #e5e7eb); }\n.border-border { border-color: var(--color-border, #e5e7eb); }\n\n/* ── Background colors used by @mieweb/ui components ── */\n.bg-background { background-color: var(--color-background, #fff); }\n.bg-primary-700 { background-color: var(--color-primary-700); }\n\n/* ── Text colors ── */\n.text-foreground { color: var(--color-foreground, #171717); }\n.text-muted-foreground { color: var(--color-muted-foreground, #737373); }\n\n/* ── Font sizes (Bootstrap sets font-size: inherit on buttons/inputs) ── */\n.text-xs { font-size: var(--text-xs, 0.75rem); line-height: var(--tw-leading, var(--text-xs--line-height)); }\n.text-sm { font-size: var(--text-sm, 0.875rem); line-height: var(--tw-leading, var(--text-sm--line-height)); }\n.text-base { font-size: var(--text-base, 1rem); line-height: var(--tw-leading, var(--text-base--line-height)); }\n\n/* ── Padding overrides (Bootstrap .px-3 = 1rem !important vs Tailwind .px-3 = 0.75rem) ── */\n.mw-ui .px-3 { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }\n\n/* ── Compact/dense Select overrides ── */\n\n/* Trigger: reduce height and padding for sm size */\n.mw-ui button[role=\"combobox\"] {\n  height: 1.75rem;    /* 28px instead of 32px */\n  padding: 0 0.5rem;  /* px-2 instead of px-3 */\n  font-size: 0.75rem; /* text-xs instead of text-sm */\n}\n\n/* Dropdown option items: reduce padding and font size */\n[role=\"option\"].px-3.py-2 {\n  padding: 0.25rem 0.5rem !important;  /* py-1 px-2 */\n  font-size: 0.75rem !important;       /* text-xs */\n  gap: 0.25rem;\n}\n\n/* Dropdown option check icon: slightly smaller */\n[role=\"option\"] svg.h-4.w-4 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n\n/* Dropdown search input: reduce padding and font */\n[role=\"listbox\"] ~ div input,\ndiv:has(> [role=\"listbox\"]) input[type=\"text\"] {\n  padding: 0.25rem 0.5rem !important;\n  font-size: 0.75rem !important;\n}\n\n/* Dropdown \"no results\" text */\n[role=\"listbox\"] .px-3.py-2.text-center {\n  padding: 0.25rem 0.5rem !important;\n  font-size: 0.75rem !important;\n}\n\n/* Dropdown container padding */\n[role=\"listbox\"].p-1 {\n  padding: 0.125rem;\n}\n\n/* ── POI dropdown: ensure portaled dropdown is wide enough for names ── */\nbody > div:has([role=\"listbox\"]) {\n  min-width: 220px !important;\n}\n\n/* ── POI selector: borderless combobox to blend with its pill container ── */\n.ychart-poi-selector-wrapper .mw-ui button[role=\"combobox\"] {\n  border: none !important;\n  border-color: transparent !important;\n  box-shadow: none !important;\n  background-color: #f5f5f5 !important;\n}\n\n/* ── Prevent @mieweb/ui body-level styles from leaking into orgchart ── */\n\n:root {\n  --color-primary: var(--mieweb-primary-500, #667eea);\n  --color-primary-dark: var(--mieweb-primary-700, #5568d3);\n  --color-primary-light: var(--mieweb-primary-300, #764ba2);\n  --yc-color-primary: var(--color-primary, #667eea);\n  --yc-color-primary-dark: var(--color-primary-dark, #5568d3);\n  --yc-color-primary-light: var(--color-primary-light, #764ba2);\n  --yc-color-secondary: #4A90E2;\n  --yc-color-secondary-hover: #5a7fc4;\n  --yc-color-gray-50: #fafbfc;\n  --yc-color-gray-100: #f7fafc;\n  --yc-color-gray-200: #f5f7fa;\n  --yc-color-gray-300: #f1f1f1;\n  --yc-color-gray-400: #e0e0e0;\n  --yc-color-gray-500: #ccc;\n  --yc-color-gray-600: #999;\n  --yc-color-gray-700: #666;\n  --yc-color-gray-800: #333;\n  --yc-color-gray-900: #1a202c;\n  --yc-color-text-primary: var(--yc-color-gray-800);\n  --yc-color-text-secondary: var(--yc-color-gray-700);\n  --yc-color-text-tertiary: var(--yc-color-gray-600);\n  --yc-color-text-muted: #718096;\n  --yc-color-text-light: #a0aec0;\n  --yc-color-text-heading: #2d3748;\n  --yc-color-text-inverse: #ffffff;\n  --yc-color-bg-primary: #ffffff;\n  --yc-color-bg-secondary: var(--yc-color-gray-200);\n  --yc-color-bg-tertiary: var(--yc-color-gray-50);\n  --yc-color-bg-card: #ffffff;\n  --yc-color-editor-bg: #282c34;\n  --yc-color-editor-border: #3e4451;\n  --yc-color-editor-text: #abb2bf;\n  --yc-color-error: #c33;\n  --yc-color-error-light: #fee;\n  --yc-color-error-bg: #fee2e2;\n  --yc-color-error-bg-gradient: #fecaca;\n  --yc-color-error-border: #ef4444;\n  --yc-color-error-red: #ff4444;\n  --yc-color-error-red-bg: rgba(255, 68, 68, 0.1);\n  --yc-color-error-red-light: #dc2626;\n  --yc-color-error-red-dark: #b91c1c;\n  --yc-color-error-red-text: #7f1d1d;\n  --yc-color-error-red-accent: #c53030;\n  --yc-color-error-red-hover: #feb2b2;\n  --yc-color-error-red-border: #fc8181;\n  --yc-color-warning: #ffaa00;\n  --yc-color-warning-bg: rgba(255, 170, 0, 0.1);\n  --yc-color-warning-amber: #f59e0b;\n  --yc-color-warning-amber-dark: #d97706;\n  --yc-color-warning-amber-darker: #b45309;\n  --yc-color-success: #2196F3;\n  --yc-color-success-shadow: rgba(33, 150, 243, 0.6);\n  --yc-color-accent-purple: #9b59b6;\n  --yc-color-accent-purple-dark: #8e44ad;\n  --yc-color-accent-red: #e74c3c;\n  --yc-color-red: #ff0000;\n  --yc-color-orange: #ff7f00;\n  --yc-color-yellow: #ffff00;\n  --yc-color-green: #00ff00;\n  --yc-color-blue: #0000ff;\n  --yc-color-indigo: #4b0082;\n  --yc-color-violet: #9400d3;\n  --yc-color-white: #ffffff;\n  --yc-color-black: #000000;\n  --yc-color-cyan: #a8dadc;\n  --yc-color-mint: #f1faee;\n  --yc-color-navy: #1a1a2e;\n  --yc-color-navy-medium: #16213e;\n  --yc-color-navy-light: #0f3460;\n  --yc-color-button-text: var(--yc-color-primary);\n  --yc-color-button-bg: var(--yc-color-gray-100);\n  --yc-color-button-bg-hover: #edf2f7;\n  --yc-color-button-border: #e2e8f0;\n  --yc-color-button-border-hover: #cbd5e0;\n  --yc-color-icon: #4a5568;\n  --yc-color-ui-slate: #2c3e50;\n  --yc-color-ui-slate-light: #7f8c8d;\n  --yc-color-ui-slate-lighter: #95a5a6;\n  --yc-color-ui-gray-light: #ecf0f1;\n  --yc-color-header-subtext: #b0c4de;\n  --yc-color-overlay-bg: rgba(255, 255, 255, 0.95);\n  --yc-color-overlay-dark: rgba(0, 0, 0, 0.9);\n  --yc-color-overlay-white-15: rgba(255, 255, 255, 0.15);\n  --yc-color-overlay-white-90: rgba(255, 255, 255, 0.9);\n  --yc-color-shadow-light: rgba(0, 0, 0, 0.1);\n  --yc-color-shadow-medium: rgba(0, 0, 0, 0.15);\n  --yc-color-shadow-dark: rgba(0, 0, 0, 0.2);\n  --yc-color-shadow-3xl: rgba(0, 0, 0, 0.3);\n  --yc-color-pattern: #cacaca;\n  --yc-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;\n  --yc-font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;\n  --yc-font-size-xs: 0.6875rem;\n  --yc-font-size-sm: 0.75rem;\n  --yc-font-size-base: 0.8125rem;\n  --yc-font-size-md: 0.875rem;\n  --yc-font-size-lg: 0.9375rem;\n  --yc-font-size-xl: 1rem;\n  --yc-font-size-2xl: 1.125rem;\n  --yc-font-size-3xl: 1.3rem;\n  --yc-font-size-4xl: 1.8rem;\n  --yc-line-height-tight: 1.3;\n  --yc-line-height-normal: 1.5;\n  --yc-line-height-relaxed: 1.75;\n  --yc-font-weight-normal: 400;\n  --yc-font-weight-medium: 500;\n  --yc-font-weight-semibold: 600;\n  --yc-font-weight-bold: 700;\n  --yc-spacing-unit: 0.5rem;\n  --yc-spacing-xxs: 0.125rem;\n  --yc-spacing-xs: 0.25rem;\n  --yc-spacing-sm: 0.375rem;\n  --yc-spacing-md: 0.5rem;\n  --yc-spacing-lg: 0.625rem;\n  --yc-spacing-xl: 0.75rem;\n  --yc-spacing-2xl: 0.875rem;\n  --yc-spacing-3xl: 1rem;\n  --yc-spacing-4xl: 1.25rem;\n  --yc-spacing-5xl: 1.5rem;\n  --yc-spacing-6xl: 2rem;\n  --yc-spacing-toolbar-gap: 0.5rem;\n  --yc-spacing-toolbar-padding: 0.5rem;\n  --yc-spacing-button-padding-sm: 0.25rem 0.5rem;\n  --yc-spacing-button-padding-md: 0.5rem 0.75rem;\n  --yc-spacing-button-padding-lg: 0.75rem 1.5rem;\n  --yc-border-width-thin: 1px;\n  --yc-border-width-medium: 2px;\n  --yc-border-width-thick: 3px;\n  --yc-border-width-heavy: 4px;\n  --yc-border-radius-sm: 0.25rem;\n  --yc-border-radius-md: 0.375rem;\n  --yc-border-radius-lg: 0.5rem;\n  --yc-border-radius-xl: 0.75rem;\n  --yc-border-radius-full: 50%;\n  --yc-border-radius-pill: 1.25rem;\n  --yc-border-radius-left: 0.25rem 0 0 0.25rem;\n  --yc-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);\n  --yc-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);\n  --yc-shadow-md: 0 2px 5px rgba(0, 0, 0, 0.1);\n  --yc-shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.1);\n  --yc-shadow-xl: 0 4px 10px rgba(0, 0, 0, 0.15);\n  --yc-shadow-2xl: 0 4px 12px rgba(0, 0, 0, 0.15);\n  --yc-shadow-3xl: 0 4px 15px rgba(0, 0, 0, 0.1);\n  --yc-shadow-4xl: 0 8px 24px rgba(0, 0, 0, 0.2);\n  --yc-shadow-button: 0 2px 8px rgba(102, 126, 234, 0.3);\n  --yc-shadow-node-selected: 0 0 8px rgba(33, 150, 243, 0.6);\n  --yc-shadow-header: 0 4px 12px rgba(0, 0, 0, 0.3);\n  --yc-shadow-wrapper: 0 8px 32px rgba(0, 0, 0, 0.2);\n  --yc-width-sidebar: 400px;\n  --yc-width-sidebar-collapsed: 0px;\n  --yc-width-detail-panel: 400px;\n  --yc-width-detail-panel-max: 350px;\n  --yc-width-search-popup: 500px;\n  --yc-width-toolbar-button: 36px;\n  --yc-height-toolbar-button: 36px;\n  --yc-height-badge: 16px;\n  --yc-height-icon-sm: 20px;\n  --yc-height-icon-md: 24px;\n  --yc-height-button-sm: 24px;\n  --yc-height-button-md: 28px;\n  --yc-height-error-banner-max: 120px;\n  --yc-z-index-base: 1;\n  --yc-z-index-overlay-button: 5;\n  --yc-z-index-overlay: 10;\n  --yc-z-index-toolbar: 50;\n  --yc-z-index-detail-panel: 100;\n  --yc-z-index-search-popup: 1000;\n  --yc-z-index-search-history: 999;\n  --yc-z-index-collapse-button: 1001;\n  --yc-transition-fast: 0.2s ease;\n  --yc-transition-normal: 0.3s ease;\n  --yc-transition-slow: 0.4s ease;\n  --yc-transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);\n  --yc-opacity-disabled: 0.5;\n  --yc-opacity-hover: 0.8;\n  --yc-opacity-dragging: 0.7;\n  --yc-opacity-node-hover: 0.9;\n  --yc-opacity-transparent: 0;\n  --yc-opacity-full: 1;\n  --yc-blur-sm: 5px;\n  --yc-blur-md: 10px;\n  --yc-transform-button-hover: translateY(-2px);\n  --yc-transform-button-active: translateY(0);\n  --yc-transform-button-lift-sm: translateY(-1px);\n  --yc-gradient-primary: linear-gradient(135deg, var(--yc-color-primary) 0%, var(--yc-color-primary-light) 100%);\n  --yc-gradient-error: linear-gradient(135deg, var(--yc-color-error-bg) 0%, var(--yc-color-error-bg-gradient) 100%);\n  --yc-gradient-background: linear-gradient(to bottom, var(--yc-color-gray-50) 0%, var(--yc-color-gray-200) 100%);\n  --yc-gradient-header-dark: linear-gradient(135deg, var(--yc-color-navy) 0%, var(--yc-color-navy-medium) 50%, var(--yc-color-navy-light) 100%);\n  --yc-gradient-rainbow: linear-gradient(90deg, var(--yc-color-red), var(--yc-color-orange), var(--yc-color-yellow), var(--yc-color-green), var(--yc-color-blue), var(--yc-color-indigo), var(--yc-color-violet), var(--yc-color-red));\n  --yc-gradient-title-light: linear-gradient(135deg, var(--yc-color-white) 0%, var(--yc-color-cyan) 50%, var(--yc-color-mint) 100%);\n  --yc-backdrop-blur: blur(10px);\n}\n\n:root {\n  --color-primary: var(--mieweb-primary-500, #667eea);\n  --color-primary-dark: var(--mieweb-primary-700, #5568d3);\n  --color-primary-light: var(--mieweb-primary-300, #764ba2);\n  --yc-color-primary: var(--color-primary, #667eea);\n  --yc-color-primary-dark: var(--color-primary-dark, #5568d3);\n  --yc-color-primary-light: var(--color-primary-light, #764ba2);\n  --yc-color-secondary: #4A90E2;\n  --yc-color-secondary-hover: #5a7fc4;\n  --yc-color-gray-50: #fafbfc;\n  --yc-color-gray-100: #f7fafc;\n  --yc-color-gray-200: #f5f7fa;\n  --yc-color-gray-300: #f1f1f1;\n  --yc-color-gray-400: #e0e0e0;\n  --yc-color-gray-500: #ccc;\n  --yc-color-gray-600: #999;\n  --yc-color-gray-700: #666;\n  --yc-color-gray-800: #333;\n  --yc-color-gray-900: #1a202c;\n  --yc-color-text-primary: var(--yc-color-gray-800);\n  --yc-color-text-secondary: var(--yc-color-gray-700);\n  --yc-color-text-tertiary: var(--yc-color-gray-600);\n  --yc-color-text-muted: #718096;\n  --yc-color-text-light: #a0aec0;\n  --yc-color-text-heading: #2d3748;\n  --yc-color-text-inverse: #ffffff;\n  --yc-color-bg-primary: #ffffff;\n  --yc-color-bg-secondary: var(--yc-color-gray-200);\n  --yc-color-bg-tertiary: var(--yc-color-gray-50);\n  --yc-color-bg-card: #ffffff;\n  --yc-color-editor-bg: #282c34;\n  --yc-color-editor-border: #3e4451;\n  --yc-color-editor-text: #abb2bf;\n  --yc-color-error: #c33;\n  --yc-color-error-light: #fee;\n  --yc-color-error-bg: #fee2e2;\n  --yc-color-error-bg-gradient: #fecaca;\n  --yc-color-error-border: #ef4444;\n  --yc-color-error-red: #ff4444;\n  --yc-color-error-red-bg: rgba(255, 68, 68, 0.1);\n  --yc-color-error-red-light: #dc2626;\n  --yc-color-error-red-dark: #b91c1c;\n  --yc-color-error-red-text: #7f1d1d;\n  --yc-color-error-red-accent: #c53030;\n  --yc-color-error-red-hover: #feb2b2;\n  --yc-color-error-red-border: #fc8181;\n  --yc-color-warning: #ffaa00;\n  --yc-color-warning-bg: rgba(255, 170, 0, 0.1);\n  --yc-color-warning-amber: #f59e0b;\n  --yc-color-warning-amber-dark: #d97706;\n  --yc-color-warning-amber-darker: #b45309;\n  --yc-color-success: #2196F3;\n  --yc-color-success-shadow: rgba(33, 150, 243, 0.6);\n  --yc-color-accent-purple: #9b59b6;\n  --yc-color-accent-purple-dark: #8e44ad;\n  --yc-color-accent-red: #e74c3c;\n  --yc-color-red: #ff0000;\n  --yc-color-orange: #ff7f00;\n  --yc-color-yellow: #ffff00;\n  --yc-color-green: #00ff00;\n  --yc-color-blue: #0000ff;\n  --yc-color-indigo: #4b0082;\n  --yc-color-violet: #9400d3;\n  --yc-color-white: #ffffff;\n  --yc-color-black: #000000;\n  --yc-color-cyan: #a8dadc;\n  --yc-color-mint: #f1faee;\n  --yc-color-navy: #1a1a2e;\n  --yc-color-navy-medium: #16213e;\n  --yc-color-navy-light: #0f3460;\n  --yc-color-button-text: var(--yc-color-primary);\n  --yc-color-button-bg: var(--yc-color-gray-100);\n  --yc-color-button-bg-hover: #edf2f7;\n  --yc-color-button-border: #e2e8f0;\n  --yc-color-button-border-hover: #cbd5e0;\n  --yc-color-icon: #4a5568;\n  --yc-color-ui-slate: #2c3e50;\n  --yc-color-ui-slate-light: #7f8c8d;\n  --yc-color-ui-slate-lighter: #95a5a6;\n  --yc-color-ui-gray-light: #ecf0f1;\n  --yc-color-header-subtext: #b0c4de;\n  --yc-color-overlay-bg: rgba(255, 255, 255, 0.95);\n  --yc-color-overlay-dark: rgba(0, 0, 0, 0.9);\n  --yc-color-overlay-white-15: rgba(255, 255, 255, 0.15);\n  --yc-color-overlay-white-90: rgba(255, 255, 255, 0.9);\n  --yc-color-shadow-light: rgba(0, 0, 0, 0.1);\n  --yc-color-shadow-medium: rgba(0, 0, 0, 0.15);\n  --yc-color-shadow-dark: rgba(0, 0, 0, 0.2);\n  --yc-color-shadow-3xl: rgba(0, 0, 0, 0.3);\n  --yc-color-pattern: #cacaca;\n  --yc-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;\n  --yc-font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;\n  --yc-font-size-xs: 0.6875rem;\n  --yc-font-size-sm: 0.75rem;\n  --yc-font-size-base: 0.8125rem;\n  --yc-font-size-md: 0.875rem;\n  --yc-font-size-lg: 0.9375rem;\n  --yc-font-size-xl: 1rem;\n  --yc-font-size-2xl: 1.125rem;\n  --yc-font-size-3xl: 1.3rem;\n  --yc-font-size-4xl: 1.8rem;\n  --yc-line-height-tight: 1.3;\n  --yc-line-height-normal: 1.5;\n  --yc-line-height-relaxed: 1.75;\n  --yc-font-weight-normal: 400;\n  --yc-font-weight-medium: 500;\n  --yc-font-weight-semibold: 600;\n  --yc-font-weight-bold: 700;\n  --yc-spacing-unit: 0.5rem;\n  --yc-spacing-xxs: 0.125rem;\n  --yc-spacing-xs: 0.25rem;\n  --yc-spacing-sm: 0.375rem;\n  --yc-spacing-md: 0.5rem;\n  --yc-spacing-lg: 0.625rem;\n  --yc-spacing-xl: 0.75rem;\n  --yc-spacing-2xl: 0.875rem;\n  --yc-spacing-3xl: 1rem;\n  --yc-spacing-4xl: 1.25rem;\n  --yc-spacing-5xl: 1.5rem;\n  --yc-spacing-6xl: 2rem;\n  --yc-spacing-toolbar-gap: 0.5rem;\n  --yc-spacing-toolbar-padding: 0.5rem;\n  --yc-spacing-button-padding-sm: 0.25rem 0.5rem;\n  --yc-spacing-button-padding-md: 0.5rem 0.75rem;\n  --yc-spacing-button-padding-lg: 0.75rem 1.5rem;\n  --yc-border-width-thin: 1px;\n  --yc-border-width-medium: 2px;\n  --yc-border-width-thick: 3px;\n  --yc-border-width-heavy: 4px;\n  --yc-border-radius-sm: 0.25rem;\n  --yc-border-radius-md: 0.375rem;\n  --yc-border-radius-lg: 0.5rem;\n  --yc-border-radius-xl: 0.75rem;\n  --yc-border-radius-full: 50%;\n  --yc-border-radius-pill: 1.25rem;\n  --yc-border-radius-left: 0.25rem 0 0 0.25rem;\n  --yc-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);\n  --yc-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);\n  --yc-shadow-md: 0 2px 5px rgba(0, 0, 0, 0.1);\n  --yc-shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.1);\n  --yc-shadow-xl: 0 4px 10px rgba(0, 0, 0, 0.15);\n  --yc-shadow-2xl: 0 4px 12px rgba(0, 0, 0, 0.15);\n  --yc-shadow-3xl: 0 4px 15px rgba(0, 0, 0, 0.1);\n  --yc-shadow-4xl: 0 8px 24px rgba(0, 0, 0, 0.2);\n  --yc-shadow-button: 0 2px 8px rgba(102, 126, 234, 0.3);\n  --yc-shadow-node-selected: 0 0 8px rgba(33, 150, 243, 0.6);\n  --yc-shadow-header: 0 4px 12px rgba(0, 0, 0, 0.3);\n  --yc-shadow-wrapper: 0 8px 32px rgba(0, 0, 0, 0.2);\n  --yc-width-sidebar: 400px;\n  --yc-width-sidebar-collapsed: 0px;\n  --yc-width-detail-panel: 400px;\n  --yc-width-detail-panel-max: 350px;\n  --yc-width-search-popup: 500px;\n  --yc-width-toolbar-button: 36px;\n  --yc-height-toolbar-button: 36px;\n  --yc-height-badge: 16px;\n  --yc-height-icon-sm: 20px;\n  --yc-height-icon-md: 24px;\n  --yc-height-button-sm: 24px;\n  --yc-height-button-md: 28px;\n  --yc-height-error-banner-max: 120px;\n  --yc-z-index-base: 1;\n  --yc-z-index-overlay-button: 5;\n  --yc-z-index-overlay: 10;\n  --yc-z-index-toolbar: 50;\n  --yc-z-index-detail-panel: 100;\n  --yc-z-index-search-popup: 1000;\n  --yc-z-index-search-history: 999;\n  --yc-z-index-collapse-button: 1001;\n  --yc-transition-fast: 0.2s ease;\n  --yc-transition-normal: 0.3s ease;\n  --yc-transition-slow: 0.4s ease;\n  --yc-transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);\n  --yc-opacity-disabled: 0.5;\n  --yc-opacity-hover: 0.8;\n  --yc-opacity-dragging: 0.7;\n  --yc-opacity-node-hover: 0.9;\n  --yc-opacity-transparent: 0;\n  --yc-opacity-full: 1;\n  --yc-blur-sm: 5px;\n  --yc-blur-md: 10px;\n  --yc-transform-button-hover: translateY(-2px);\n  --yc-transform-button-active: translateY(0);\n  --yc-transform-button-lift-sm: translateY(-1px);\n  --yc-gradient-primary: linear-gradient(135deg, var(--yc-color-primary) 0%, var(--yc-color-primary-light) 100%);\n  --yc-gradient-error: linear-gradient(135deg, var(--yc-color-error-bg) 0%, var(--yc-color-error-bg-gradient) 100%);\n  --yc-gradient-background: linear-gradient(to bottom, var(--yc-color-gray-50) 0%, var(--yc-color-gray-200) 100%);\n  --yc-gradient-header-dark: linear-gradient(135deg, var(--yc-color-navy) 0%, var(--yc-color-navy-medium) 50%, var(--yc-color-navy-light) 100%);\n  --yc-gradient-rainbow: linear-gradient(90deg, var(--yc-color-red), var(--yc-color-orange), var(--yc-color-yellow), var(--yc-color-green), var(--yc-color-blue), var(--yc-color-indigo), var(--yc-color-violet), var(--yc-color-red));\n  --yc-gradient-title-light: linear-gradient(135deg, var(--yc-color-white) 0%, var(--yc-color-cyan) 50%, var(--yc-color-mint) 100%);\n  --yc-backdrop-blur: blur(10px);\n}\n\n.ychart-container *,\n.ychart-container *::before,\n.ychart-container *::after {\n  box-sizing: border-box;\n}\n.ychart-container {\n  font-family: var(--yc-font-family-base);\n  position: relative;\n  width: 100%;\n  height: 100%;\n  min-height: 0;\n  display: flex;\n  overflow: hidden;\n}\n.ychart-container .ychart-chart-wrapper {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-width: 0;\n  min-height: 0;\n  overflow: hidden;\n  position: relative;\n  height: 100%;\n}\n.ychart-container .ychart-editor-panel {\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n  background: var(--yc-color-bg-primary);\n  overflow: hidden;\n  border-left: var(--yc-border-width-thin) solid var(--yc-color-gray-400);\n}\n.ychart-container .ychart-chart-panel {\n  flex: 1;\n  min-height: 0;\n  position: relative;\n  overflow: hidden;\n}\n.ychart-container .ychart-editor {\n  flex: 1;\n  min-height: 0;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n}\n.ychart-container .ychart-editor .cm-editor {\n  flex: 1;\n  min-height: 0;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  font-size: var(--yc-font-size-md);\n}\n.ychart-container .ychart-editor .cm-editor .cm-lintRange-error {\n  background-color: var(--yc-color-error-red-bg);\n  border-bottom: var(--yc-border-width-medium) wavy var(--yc-color-error-red);\n}\n.ychart-container .ychart-editor .cm-editor .cm-lintRange-warning {\n  background-color: var(--yc-color-warning-bg);\n  border-bottom: var(--yc-border-width-medium) wavy var(--yc-color-warning);\n}\n.ychart-container .ychart-editor .cm-editor .cm-gutter-lint {\n  width: var(--yc-spacing-xl);\n}\n.ychart-container .ychart-editor .cm-editor .cm-lint-marker-error {\n  content: \"●\";\n  color: var(--yc-color-error-red);\n}\n.ychart-container .ychart-editor .cm-editor .cm-lint-marker-warning {\n  content: \"●\";\n  color: var(--yc-color-warning);\n}\n.ychart-container .ychart-editor .cm-editor .cm-tooltip-lint {\n  background-color: var(--yc-color-editor-bg);\n  border: var(--yc-border-width-thin) solid var(--yc-color-gray-700);\n  border-radius: var(--yc-border-radius-sm);\n  padding: var(--yc-spacing-xs) var(--yc-spacing-md);\n  font-size: var(--yc-font-size-base);\n  max-width: var(--yc-width-detail-panel-max);\n}\n.ychart-container .ychart-editor .cm-editor .cm-diagnostic {\n  padding: var(--yc-spacing-xs) var(--yc-spacing-md);\n  border-left: var(--yc-border-width-thick) solid;\n  margin: var(--yc-spacing-xxs) 0;\n}\n.ychart-container .ychart-editor .cm-editor .cm-diagnostic-error {\n  border-left-color: var(--yc-color-error-red);\n  background-color: var(--yc-color-error-red-bg);\n}\n.ychart-container .ychart-editor .cm-editor .cm-diagnostic-warning {\n  border-left-color: var(--yc-color-warning);\n  background-color: var(--yc-color-warning-bg);\n}\n.ychart-container .ychart-editor .cm-scroller {\n  flex: 1;\n  min-height: 0;\n  overflow: auto !important;\n}\n.ychart-container .ychart-chart {\n  flex: 1;\n  min-height: 0;\n  overflow: hidden;\n  position: relative;\n  background: var(--yc-gradient-background);\n}\n.ychart-container .ychart-chart .html-overlay-container {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  pointer-events: none;\n  overflow: hidden;\n  z-index: var(--yc-z-index-overlay);\n}\n.ychart-container .ychart-chart .html-overlay-container .overlay-node {\n  pointer-events: auto;\n  background: transparent;\n  border-radius: var(--yc-border-radius-lg);\n}\n.ychart-container .ychart-chart .html-overlay-container .overlay-content {\n  user-select: text;\n  -webkit-user-select: text;\n  cursor: text;\n}\n.ychart-container .ychart-chart .html-overlay-container .overlay-content .details-btn,\n.ychart-container .ychart-chart .html-overlay-container .overlay-content button,\n.ychart-container .ychart-chart .html-overlay-container .overlay-content a {\n  cursor: pointer;\n}\n.ychart-container .ychart-chart .html-overlay-container .overlay-button {\n  z-index: var(--yc-z-index-overlay-button);\n}\n.ychart-container .ychart-chart .html-overlay-container .overlay-button:hover {\n  opacity: var(--yc-opacity-hover);\n}\n.ychart-container .ychart-chart svg {\n  display: block;\n  cursor: grab;\n}\n.ychart-container .ychart-chart svg:active {\n  cursor: grabbing;\n}\n.ychart-container .ychart-chart svg circle {\n  cursor: pointer;\n  transition: all var(--yc-transition-fast);\n}\n.ychart-container .ychart-chart svg circle:hover {\n  fill: var(--yc-color-secondary-hover);\n  r: 45;\n  stroke-width: var(--yc-border-width-heavy);\n}\n.ychart-container .ychart-chart svg text {\n  user-select: none;\n  -webkit-user-select: none;\n}\n.ychart-container .ychart-chart svg g {\n  cursor: move;\n}\n@supports (-webkit-touch-callout: none) {\n  .ychart-container .ychart-chart svg foreignObject {\n    overflow: visible !important;\n  }\n}\n.ychart-container .ychart-chart svg .node-foreign-object {\n  overflow: visible;\n  transition: height 0.15s ease-out;\n}\n.ychart-container .ychart-chart svg .node-foreign-object:not([data-height-synced]) {\n  height: auto !important;\n  transition: none;\n}\n.ychart-container .ychart-chart svg .node-foreign-object-div {\n  position: relative;\n  user-select: text;\n  -webkit-user-select: text;\n  cursor: text;\n  transition: height 0.15s ease-out, min-height 0.15s ease-out;\n}\n.ychart-container .ychart-chart svg .node-foreign-object-div:not([data-height-synced]) {\n  height: auto !important;\n  min-height: auto !important;\n  transition: none;\n}\n.ychart-container .ychart-chart svg .node-foreign-object-div:not([data-height-synced]) > div {\n  height: auto !important;\n  min-height: auto !important;\n}\n.ychart-container .ychart-chart svg .node-foreign-object-div > div {\n  transition: height 0.15s ease-out, min-height 0.15s ease-out;\n}\n.ychart-container .ychart-chart svg .node-foreign-object-div .details-btn,\n.ychart-container .ychart-chart svg .node-foreign-object-div button,\n.ychart-container .ychart-chart svg .node-foreign-object-div a {\n  cursor: pointer;\n}\n.ychart-container .ychart-chart .node-group {\n  cursor: move;\n  transition: opacity var(--yc-transition-fast);\n}\n.ychart-container .ychart-chart .node-group.dragging {\n  opacity: var(--yc-opacity-dragging);\n  cursor: grabbing !important;\n}\n.ychart-container .ychart-chart .node-group:hover {\n  opacity: var(--yc-opacity-node-hover);\n}\n.ychart-container .ychart-chart .node-group:hover rect,\n.ychart-container .ychart-chart .node-group:hover foreignObject {\n  filter: brightness(1.05);\n}\n.ychart-container .ychart-chart .node-group rect,\n.ychart-container .ychart-chart .node-group foreignObject {\n  transition: box-shadow var(--yc-transition-fast);\n}\n.ychart-container .ychart-node-details {\n  position: absolute;\n  top: var(--yc-spacing-3xl);\n  right: var(--yc-spacing-3xl);\n  background: var(--yc-color-bg-primary);\n  border: var(--yc-border-width-thin) solid var(--yc-color-gray-400);\n  border-radius: var(--yc-border-radius-lg);\n  box-shadow: var(--yc-shadow-3xl);\n  max-width: var(--yc-width-detail-panel-max);\n  z-index: var(--yc-z-index-detail-panel);\n  max-height: calc(100vh - 12rem);\n  overflow-y: auto;\n}\n.ychart-container .ychart-node-details .node-details-content {\n  padding: var(--yc-spacing-5xl);\n}\n.ychart-container .ychart-node-details h3 {\n  color: var(--yc-color-text-primary);\n  font-size: var(--yc-font-size-3xl);\n  margin-bottom: var(--yc-spacing-3xl);\n  padding-bottom: var(--yc-spacing-xl);\n  border-bottom: var(--yc-border-width-medium) solid var(--yc-color-primary);\n}\n.ychart-container .ychart-node-details .details-grid {\n  display: flex;\n  flex-direction: column;\n  gap: var(--yc-spacing-xl);\n  margin-bottom: var(--yc-spacing-5xl);\n}\n.ychart-container .ychart-node-details .detail-row {\n  display: grid;\n  grid-template-columns: 120px 1fr;\n  gap: var(--yc-spacing-md);\n  align-items: start;\n}\n.ychart-container .ychart-node-details .detail-label {\n  color: var(--yc-color-text-secondary);\n  font-size: var(--yc-font-size-md);\n  font-weight: var(--yc-font-weight-semibold);\n  text-transform: capitalize;\n}\n.ychart-container .ychart-node-details .detail-value {\n  color: var(--yc-color-text-primary);\n  font-size: var(--yc-font-size-lg);\n  word-break: break-word;\n}\n.ychart-container .ychart-node-details .btn-close {\n  width: 100%;\n  background: var(--yc-color-primary);\n  color: var(--yc-color-text-inverse);\n  border: none;\n  padding: var(--yc-spacing-xl);\n  border-radius: var(--yc-border-radius-md);\n  font-size: var(--yc-font-size-lg);\n  font-weight: var(--yc-font-weight-semibold);\n  cursor: pointer;\n  transition: all var(--yc-transition-normal);\n}\n.ychart-container .ychart-node-details .btn-close:hover {\n  background: var(--yc-color-primary-dark);\n  transform: var(--yc-transform-button-lift-sm);\n  box-shadow: var(--yc-shadow-button);\n}\n.ychart-container .ychart-node-details .btn-close:active {\n  transform: var(--yc-transform-button-active);\n}\n.ychart-container .ychart-node-details .btn-reorder {\n  transition: all var(--yc-transition-normal);\n}\n.ychart-container .ychart-node-details .btn-reorder:hover {\n  background: var(--yc-color-primary-dark) !important;\n  transform: var(--yc-transform-button-lift-sm);\n  box-shadow: var(--yc-shadow-button);\n}\n.ychart-container .ychart-node-details .btn-reorder:active {\n  transform: var(--yc-transform-button-active);\n}\n.ychart-container .ychart-node-details p {\n  margin: var(--yc-spacing-md) 0;\n  color: var(--yc-color-text-secondary);\n  font-size: var(--yc-font-size-lg);\n}\n.ychart-container .ychart-node-details strong {\n  color: var(--yc-color-text-primary);\n  font-weight: var(--yc-font-weight-semibold);\n}\n.ychart-container .ychart-node-details a {\n  color: var(--yc-color-primary);\n  text-decoration: none;\n}\n.ychart-container .ychart-node-details a:hover {\n  text-decoration: underline;\n}\n.ychart-container .node.selected .node-rect {\n  stroke: var(--yc-color-success) !important;\n  stroke-width: var(--yc-border-width-heavy) !important;\n  filter: drop-shadow(var(--yc-shadow-node-selected));\n}\n.ychart-container .svg-chart-container:focus {\n  outline: var(--yc-border-width-medium) solid var(--yc-color-success);\n  outline-offset: calc(-1 * var(--yc-border-width-medium));\n}\n.ychart-container .expand-siblings-btn,\n.ychart-container .expand-supervisor-chain-btn,\n.ychart-container .ychart-expand-btn-wrapper {\n  position: relative;\n}\n.ychart-container .expand-siblings-btn .node-tooltip,\n.ychart-container .expand-supervisor-chain-btn .node-tooltip,\n.ychart-container .ychart-expand-btn-wrapper .node-tooltip {\n  position: absolute;\n  bottom: 100%;\n  left: 50%;\n  transform: translateX(-50%) scale(0.8);\n  background: var(--yc-color-overlay-dark);\n  color: white;\n  padding: var(--yc-spacing-sm) var(--yc-spacing-xl);\n  border-radius: var(--yc-border-radius-md);\n  font-size: var(--yc-font-size-sm);\n  white-space: nowrap;\n  pointer-events: none;\n  opacity: 0;\n  transition: all var(--yc-transition-fast) var(--yc-transition-bounce);\n  z-index: var(--yc-z-index-search-popup);\n  box-shadow: var(--yc-shadow-md);\n  margin-bottom: var(--yc-spacing-sm);\n}\n.ychart-container .expand-siblings-btn:hover .node-tooltip,\n.ychart-container .expand-supervisor-chain-btn:hover .node-tooltip,\n.ychart-container .ychart-expand-btn-wrapper:hover .node-tooltip {\n  opacity: 1;\n  transform: translateX(-50%) scale(1);\n}\n.ychart-container .ychart-toolbar {\n  display: flex;\n  gap: var(--yc-spacing-sm);\n  background: var(--yc-color-bg-primary);\n  border: var(--yc-border-width-thin) solid var(--yc-color-gray-400);\n  border-radius: var(--yc-border-radius-md);\n  padding: var(--yc-spacing-sm);\n  box-shadow: var(--yc-shadow-md);\n  z-index: var(--yc-z-index-toolbar);\n}\n.ychart-container .ychart-search-bar {\n  display: flex;\n  align-items: center;\n  gap: var(--yc-spacing-sm);\n  background: var(--yc-color-bg-primary);\n  border: var(--yc-border-width-thin) solid var(--yc-color-gray-400);\n  border-radius: var(--yc-border-radius-md);\n  padding: var(--yc-spacing-sm) var(--yc-spacing-md);\n}\n.ychart-container .ychart-search-input {\n  border: none;\n  outline: none;\n  font-size: var(--yc-font-size-base);\n  background: transparent;\n  color: var(--yc-color-text-primary);\n}\n.ychart-container .ychart-search-input::placeholder {\n  color: var(--yc-color-text-muted);\n}\n.ychart-container .ychart-search-results {\n  position: absolute;\n  background: var(--yc-color-bg-primary);\n  border: var(--yc-border-width-thin) solid var(--yc-color-gray-400);\n  border-radius: var(--yc-border-radius-md);\n  box-shadow: var(--yc-shadow-lg);\n  max-height: 300px;\n  overflow-y: auto;\n  z-index: var(--yc-z-index-search-popup);\n}\n.ychart-container .ychart-poi-selector {\n  display: flex;\n  align-items: center;\n  gap: var(--yc-spacing-sm);\n}\n.ychart-container .ychart-error-banner {\n  background: var(--yc-color-error-bg);\n  border: var(--yc-border-width-thin) solid var(--yc-color-error-border);\n  border-radius: var(--yc-border-radius-md);\n  padding: var(--yc-spacing-sm) var(--yc-spacing-md);\n  color: var(--yc-color-error-red-text);\n  font-size: var(--yc-font-size-sm);\n}\n.ychart-container .ychart-editor-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: var(--yc-spacing-md) var(--yc-spacing-lg);\n  background: var(--yc-color-bg-tertiary);\n  border-bottom: var(--yc-border-width-thin) solid var(--yc-color-gray-400);\n}\n.ychart-container .ychart-toggle-editor {\n  position: absolute;\n  background: var(--yc-color-bg-primary);\n  border: var(--yc-border-width-thin) solid var(--yc-color-gray-400);\n  border-radius: var(--yc-border-radius-sm);\n  padding: var(--yc-spacing-sm);\n  cursor: pointer;\n  z-index: var(--yc-z-index-toolbar);\n}\n.ychart-container .ychart-toggle-editor:hover {\n  background: var(--yc-color-gray-200);\n}\n\n@keyframes ychart-fadeInOut {\n  0%, 100% {\n    opacity: 0;\n  }\n  10%, 90% {\n    opacity: 1;\n  }\n}\n@keyframes ychart-pulseGlow {\n  0%, 100% {\n    box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);\n    transform: scale(1);\n  }\n  50% {\n    box-shadow: 0 0 0 8px rgba(102, 126, 234, 0);\n    transform: scale(1.05);\n  }\n}";
+    var css = "@charset \"UTF-8\";\n:root {\n  --color-primary: var(--mieweb-primary-500, #667eea);\n  --color-primary-dark: var(--mieweb-primary-700, #5568d3);\n  --color-primary-light: var(--mieweb-primary-300, #764ba2);\n  --yc-color-primary: var(--color-primary, #667eea);\n  --yc-color-primary-dark: var(--color-primary-dark, #5568d3);\n  --yc-color-primary-light: var(--color-primary-light, #764ba2);\n  --yc-color-secondary: #4A90E2;\n  --yc-color-secondary-hover: #5a7fc4;\n  --yc-color-gray-50: #fafbfc;\n  --yc-color-gray-100: #f7fafc;\n  --yc-color-gray-200: #f5f7fa;\n  --yc-color-gray-300: #f1f1f1;\n  --yc-color-gray-400: #e0e0e0;\n  --yc-color-gray-500: #ccc;\n  --yc-color-gray-600: #999;\n  --yc-color-gray-700: #666;\n  --yc-color-gray-800: #333;\n  --yc-color-gray-900: #1a202c;\n  --yc-color-text-primary: var(--yc-color-gray-800);\n  --yc-color-text-secondary: var(--yc-color-gray-700);\n  --yc-color-text-tertiary: var(--yc-color-gray-600);\n  --yc-color-text-muted: #718096;\n  --yc-color-text-light: #a0aec0;\n  --yc-color-text-heading: #2d3748;\n  --yc-color-text-inverse: #ffffff;\n  --yc-color-bg-primary: #ffffff;\n  --yc-color-bg-secondary: var(--yc-color-gray-200);\n  --yc-color-bg-tertiary: var(--yc-color-gray-50);\n  --yc-color-bg-card: #ffffff;\n  --yc-color-editor-bg: #282c34;\n  --yc-color-editor-border: #3e4451;\n  --yc-color-editor-text: #abb2bf;\n  --yc-color-error: #c33;\n  --yc-color-error-light: #fee;\n  --yc-color-error-bg: #fee2e2;\n  --yc-color-error-bg-gradient: #fecaca;\n  --yc-color-error-border: #ef4444;\n  --yc-color-error-red: #ff4444;\n  --yc-color-error-red-bg: rgba(255, 68, 68, 0.1);\n  --yc-color-error-red-light: #dc2626;\n  --yc-color-error-red-dark: #b91c1c;\n  --yc-color-error-red-text: #7f1d1d;\n  --yc-color-error-red-accent: #c53030;\n  --yc-color-error-red-hover: #feb2b2;\n  --yc-color-error-red-border: #fc8181;\n  --yc-color-warning: #ffaa00;\n  --yc-color-warning-bg: rgba(255, 170, 0, 0.1);\n  --yc-color-warning-amber: #f59e0b;\n  --yc-color-warning-amber-dark: #d97706;\n  --yc-color-warning-amber-darker: #b45309;\n  --yc-color-success: #2196F3;\n  --yc-color-success-shadow: rgba(33, 150, 243, 0.6);\n  --yc-color-accent-purple: #9b59b6;\n  --yc-color-accent-purple-dark: #8e44ad;\n  --yc-color-accent-red: #e74c3c;\n  --yc-color-red: #ff0000;\n  --yc-color-orange: #ff7f00;\n  --yc-color-yellow: #ffff00;\n  --yc-color-green: #00ff00;\n  --yc-color-blue: #0000ff;\n  --yc-color-indigo: #4b0082;\n  --yc-color-violet: #9400d3;\n  --yc-color-white: #ffffff;\n  --yc-color-black: #000000;\n  --yc-color-cyan: #a8dadc;\n  --yc-color-mint: #f1faee;\n  --yc-color-navy: #1a1a2e;\n  --yc-color-navy-medium: #16213e;\n  --yc-color-navy-light: #0f3460;\n  --yc-color-button-text: var(--yc-color-primary);\n  --yc-color-button-bg: var(--yc-color-gray-100);\n  --yc-color-button-bg-hover: #edf2f7;\n  --yc-color-button-border: #e2e8f0;\n  --yc-color-button-border-hover: #cbd5e0;\n  --yc-color-icon: #4a5568;\n  --yc-color-ui-slate: #2c3e50;\n  --yc-color-ui-slate-light: #7f8c8d;\n  --yc-color-ui-slate-lighter: #95a5a6;\n  --yc-color-ui-gray-light: #ecf0f1;\n  --yc-color-header-subtext: #b0c4de;\n  --yc-color-overlay-bg: rgba(255, 255, 255, 0.95);\n  --yc-color-overlay-dark: rgba(0, 0, 0, 0.9);\n  --yc-color-overlay-white-15: rgba(255, 255, 255, 0.15);\n  --yc-color-overlay-white-90: rgba(255, 255, 255, 0.9);\n  --yc-color-shadow-light: rgba(0, 0, 0, 0.1);\n  --yc-color-shadow-medium: rgba(0, 0, 0, 0.15);\n  --yc-color-shadow-dark: rgba(0, 0, 0, 0.2);\n  --yc-color-shadow-3xl: rgba(0, 0, 0, 0.3);\n  --yc-color-pattern: #cacaca;\n  --yc-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;\n  --yc-font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;\n  --yc-font-size-xs: 0.6875rem;\n  --yc-font-size-sm: 0.75rem;\n  --yc-font-size-base: 0.8125rem;\n  --yc-font-size-md: 0.875rem;\n  --yc-font-size-lg: 0.9375rem;\n  --yc-font-size-xl: 1rem;\n  --yc-font-size-2xl: 1.125rem;\n  --yc-font-size-3xl: 1.3rem;\n  --yc-font-size-4xl: 1.8rem;\n  --yc-line-height-tight: 1.3;\n  --yc-line-height-normal: 1.5;\n  --yc-line-height-relaxed: 1.75;\n  --yc-font-weight-normal: 400;\n  --yc-font-weight-medium: 500;\n  --yc-font-weight-semibold: 600;\n  --yc-font-weight-bold: 700;\n  --yc-spacing-unit: 0.5rem;\n  --yc-spacing-xxs: 0.125rem;\n  --yc-spacing-xs: 0.25rem;\n  --yc-spacing-sm: 0.375rem;\n  --yc-spacing-md: 0.5rem;\n  --yc-spacing-lg: 0.625rem;\n  --yc-spacing-xl: 0.75rem;\n  --yc-spacing-2xl: 0.875rem;\n  --yc-spacing-3xl: 1rem;\n  --yc-spacing-4xl: 1.25rem;\n  --yc-spacing-5xl: 1.5rem;\n  --yc-spacing-6xl: 2rem;\n  --yc-spacing-toolbar-gap: 0.5rem;\n  --yc-spacing-toolbar-padding: 0.5rem;\n  --yc-spacing-button-padding-sm: 0.25rem 0.5rem;\n  --yc-spacing-button-padding-md: 0.5rem 0.75rem;\n  --yc-spacing-button-padding-lg: 0.75rem 1.5rem;\n  --yc-border-width-thin: 1px;\n  --yc-border-width-medium: 2px;\n  --yc-border-width-thick: 3px;\n  --yc-border-width-heavy: 4px;\n  --yc-border-radius-sm: 0.25rem;\n  --yc-border-radius-md: 0.375rem;\n  --yc-border-radius-lg: 0.5rem;\n  --yc-border-radius-xl: 0.75rem;\n  --yc-border-radius-full: 50%;\n  --yc-border-radius-pill: 1.25rem;\n  --yc-border-radius-left: 0.25rem 0 0 0.25rem;\n  --yc-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);\n  --yc-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);\n  --yc-shadow-md: 0 2px 5px rgba(0, 0, 0, 0.1);\n  --yc-shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.1);\n  --yc-shadow-xl: 0 4px 10px rgba(0, 0, 0, 0.15);\n  --yc-shadow-2xl: 0 4px 12px rgba(0, 0, 0, 0.15);\n  --yc-shadow-3xl: 0 4px 15px rgba(0, 0, 0, 0.1);\n  --yc-shadow-4xl: 0 8px 24px rgba(0, 0, 0, 0.2);\n  --yc-shadow-button: 0 2px 8px rgba(102, 126, 234, 0.3);\n  --yc-shadow-node-selected: 0 0 8px rgba(33, 150, 243, 0.6);\n  --yc-shadow-header: 0 4px 12px rgba(0, 0, 0, 0.3);\n  --yc-shadow-wrapper: 0 8px 32px rgba(0, 0, 0, 0.2);\n  --yc-width-sidebar: 400px;\n  --yc-width-sidebar-collapsed: 0px;\n  --yc-width-detail-panel: 400px;\n  --yc-width-detail-panel-max: 350px;\n  --yc-width-search-popup: 500px;\n  --yc-width-toolbar-button: 36px;\n  --yc-height-toolbar-button: 36px;\n  --yc-height-badge: 16px;\n  --yc-height-icon-sm: 20px;\n  --yc-height-icon-md: 24px;\n  --yc-height-button-sm: 24px;\n  --yc-height-button-md: 28px;\n  --yc-height-error-banner-max: 120px;\n  --yc-z-index-base: 1;\n  --yc-z-index-overlay-button: 5;\n  --yc-z-index-overlay: 10;\n  --yc-z-index-toolbar: 50;\n  --yc-z-index-detail-panel: 100;\n  --yc-z-index-search-popup: 1000;\n  --yc-z-index-search-history: 999;\n  --yc-z-index-collapse-button: 1001;\n  --yc-transition-fast: 0.2s ease;\n  --yc-transition-normal: 0.3s ease;\n  --yc-transition-slow: 0.4s ease;\n  --yc-transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);\n  --yc-opacity-disabled: 0.5;\n  --yc-opacity-hover: 0.8;\n  --yc-opacity-dragging: 0.7;\n  --yc-opacity-node-hover: 0.9;\n  --yc-opacity-transparent: 0;\n  --yc-opacity-full: 1;\n  --yc-blur-sm: 5px;\n  --yc-blur-md: 10px;\n  --yc-transform-button-hover: translateY(-2px);\n  --yc-transform-button-active: translateY(0);\n  --yc-transform-button-lift-sm: translateY(-1px);\n  --yc-gradient-primary: linear-gradient(135deg, var(--yc-color-primary) 0%, var(--yc-color-primary-light) 100%);\n  --yc-gradient-error: linear-gradient(135deg, var(--yc-color-error-bg) 0%, var(--yc-color-error-bg-gradient) 100%);\n  --yc-gradient-background: linear-gradient(to bottom, var(--yc-color-gray-50) 0%, var(--yc-color-gray-200) 100%);\n  --yc-gradient-header-dark: linear-gradient(135deg, var(--yc-color-navy) 0%, var(--yc-color-navy-medium) 50%, var(--yc-color-navy-light) 100%);\n  --yc-gradient-rainbow: linear-gradient(90deg, var(--yc-color-red), var(--yc-color-orange), var(--yc-color-yellow), var(--yc-color-green), var(--yc-color-blue), var(--yc-color-indigo), var(--yc-color-violet), var(--yc-color-red));\n  --yc-gradient-title-light: linear-gradient(135deg, var(--yc-color-white) 0%, var(--yc-color-cyan) 50%, var(--yc-color-mint) 100%);\n  --yc-backdrop-blur: blur(10px);\n}\n\n:root {\n  --color-primary: var(--mieweb-primary-500, #667eea);\n  --color-primary-dark: var(--mieweb-primary-700, #5568d3);\n  --color-primary-light: var(--mieweb-primary-300, #764ba2);\n  --yc-color-primary: var(--color-primary, #667eea);\n  --yc-color-primary-dark: var(--color-primary-dark, #5568d3);\n  --yc-color-primary-light: var(--color-primary-light, #764ba2);\n  --yc-color-secondary: #4A90E2;\n  --yc-color-secondary-hover: #5a7fc4;\n  --yc-color-gray-50: #fafbfc;\n  --yc-color-gray-100: #f7fafc;\n  --yc-color-gray-200: #f5f7fa;\n  --yc-color-gray-300: #f1f1f1;\n  --yc-color-gray-400: #e0e0e0;\n  --yc-color-gray-500: #ccc;\n  --yc-color-gray-600: #999;\n  --yc-color-gray-700: #666;\n  --yc-color-gray-800: #333;\n  --yc-color-gray-900: #1a202c;\n  --yc-color-text-primary: var(--yc-color-gray-800);\n  --yc-color-text-secondary: var(--yc-color-gray-700);\n  --yc-color-text-tertiary: var(--yc-color-gray-600);\n  --yc-color-text-muted: #718096;\n  --yc-color-text-light: #a0aec0;\n  --yc-color-text-heading: #2d3748;\n  --yc-color-text-inverse: #ffffff;\n  --yc-color-bg-primary: #ffffff;\n  --yc-color-bg-secondary: var(--yc-color-gray-200);\n  --yc-color-bg-tertiary: var(--yc-color-gray-50);\n  --yc-color-bg-card: #ffffff;\n  --yc-color-editor-bg: #282c34;\n  --yc-color-editor-border: #3e4451;\n  --yc-color-editor-text: #abb2bf;\n  --yc-color-error: #c33;\n  --yc-color-error-light: #fee;\n  --yc-color-error-bg: #fee2e2;\n  --yc-color-error-bg-gradient: #fecaca;\n  --yc-color-error-border: #ef4444;\n  --yc-color-error-red: #ff4444;\n  --yc-color-error-red-bg: rgba(255, 68, 68, 0.1);\n  --yc-color-error-red-light: #dc2626;\n  --yc-color-error-red-dark: #b91c1c;\n  --yc-color-error-red-text: #7f1d1d;\n  --yc-color-error-red-accent: #c53030;\n  --yc-color-error-red-hover: #feb2b2;\n  --yc-color-error-red-border: #fc8181;\n  --yc-color-warning: #ffaa00;\n  --yc-color-warning-bg: rgba(255, 170, 0, 0.1);\n  --yc-color-warning-amber: #f59e0b;\n  --yc-color-warning-amber-dark: #d97706;\n  --yc-color-warning-amber-darker: #b45309;\n  --yc-color-success: #2196F3;\n  --yc-color-success-shadow: rgba(33, 150, 243, 0.6);\n  --yc-color-accent-purple: #9b59b6;\n  --yc-color-accent-purple-dark: #8e44ad;\n  --yc-color-accent-red: #e74c3c;\n  --yc-color-red: #ff0000;\n  --yc-color-orange: #ff7f00;\n  --yc-color-yellow: #ffff00;\n  --yc-color-green: #00ff00;\n  --yc-color-blue: #0000ff;\n  --yc-color-indigo: #4b0082;\n  --yc-color-violet: #9400d3;\n  --yc-color-white: #ffffff;\n  --yc-color-black: #000000;\n  --yc-color-cyan: #a8dadc;\n  --yc-color-mint: #f1faee;\n  --yc-color-navy: #1a1a2e;\n  --yc-color-navy-medium: #16213e;\n  --yc-color-navy-light: #0f3460;\n  --yc-color-button-text: var(--yc-color-primary);\n  --yc-color-button-bg: var(--yc-color-gray-100);\n  --yc-color-button-bg-hover: #edf2f7;\n  --yc-color-button-border: #e2e8f0;\n  --yc-color-button-border-hover: #cbd5e0;\n  --yc-color-icon: #4a5568;\n  --yc-color-ui-slate: #2c3e50;\n  --yc-color-ui-slate-light: #7f8c8d;\n  --yc-color-ui-slate-lighter: #95a5a6;\n  --yc-color-ui-gray-light: #ecf0f1;\n  --yc-color-header-subtext: #b0c4de;\n  --yc-color-overlay-bg: rgba(255, 255, 255, 0.95);\n  --yc-color-overlay-dark: rgba(0, 0, 0, 0.9);\n  --yc-color-overlay-white-15: rgba(255, 255, 255, 0.15);\n  --yc-color-overlay-white-90: rgba(255, 255, 255, 0.9);\n  --yc-color-shadow-light: rgba(0, 0, 0, 0.1);\n  --yc-color-shadow-medium: rgba(0, 0, 0, 0.15);\n  --yc-color-shadow-dark: rgba(0, 0, 0, 0.2);\n  --yc-color-shadow-3xl: rgba(0, 0, 0, 0.3);\n  --yc-color-pattern: #cacaca;\n  --yc-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;\n  --yc-font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;\n  --yc-font-size-xs: 0.6875rem;\n  --yc-font-size-sm: 0.75rem;\n  --yc-font-size-base: 0.8125rem;\n  --yc-font-size-md: 0.875rem;\n  --yc-font-size-lg: 0.9375rem;\n  --yc-font-size-xl: 1rem;\n  --yc-font-size-2xl: 1.125rem;\n  --yc-font-size-3xl: 1.3rem;\n  --yc-font-size-4xl: 1.8rem;\n  --yc-line-height-tight: 1.3;\n  --yc-line-height-normal: 1.5;\n  --yc-line-height-relaxed: 1.75;\n  --yc-font-weight-normal: 400;\n  --yc-font-weight-medium: 500;\n  --yc-font-weight-semibold: 600;\n  --yc-font-weight-bold: 700;\n  --yc-spacing-unit: 0.5rem;\n  --yc-spacing-xxs: 0.125rem;\n  --yc-spacing-xs: 0.25rem;\n  --yc-spacing-sm: 0.375rem;\n  --yc-spacing-md: 0.5rem;\n  --yc-spacing-lg: 0.625rem;\n  --yc-spacing-xl: 0.75rem;\n  --yc-spacing-2xl: 0.875rem;\n  --yc-spacing-3xl: 1rem;\n  --yc-spacing-4xl: 1.25rem;\n  --yc-spacing-5xl: 1.5rem;\n  --yc-spacing-6xl: 2rem;\n  --yc-spacing-toolbar-gap: 0.5rem;\n  --yc-spacing-toolbar-padding: 0.5rem;\n  --yc-spacing-button-padding-sm: 0.25rem 0.5rem;\n  --yc-spacing-button-padding-md: 0.5rem 0.75rem;\n  --yc-spacing-button-padding-lg: 0.75rem 1.5rem;\n  --yc-border-width-thin: 1px;\n  --yc-border-width-medium: 2px;\n  --yc-border-width-thick: 3px;\n  --yc-border-width-heavy: 4px;\n  --yc-border-radius-sm: 0.25rem;\n  --yc-border-radius-md: 0.375rem;\n  --yc-border-radius-lg: 0.5rem;\n  --yc-border-radius-xl: 0.75rem;\n  --yc-border-radius-full: 50%;\n  --yc-border-radius-pill: 1.25rem;\n  --yc-border-radius-left: 0.25rem 0 0 0.25rem;\n  --yc-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);\n  --yc-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);\n  --yc-shadow-md: 0 2px 5px rgba(0, 0, 0, 0.1);\n  --yc-shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.1);\n  --yc-shadow-xl: 0 4px 10px rgba(0, 0, 0, 0.15);\n  --yc-shadow-2xl: 0 4px 12px rgba(0, 0, 0, 0.15);\n  --yc-shadow-3xl: 0 4px 15px rgba(0, 0, 0, 0.1);\n  --yc-shadow-4xl: 0 8px 24px rgba(0, 0, 0, 0.2);\n  --yc-shadow-button: 0 2px 8px rgba(102, 126, 234, 0.3);\n  --yc-shadow-node-selected: 0 0 8px rgba(33, 150, 243, 0.6);\n  --yc-shadow-header: 0 4px 12px rgba(0, 0, 0, 0.3);\n  --yc-shadow-wrapper: 0 8px 32px rgba(0, 0, 0, 0.2);\n  --yc-width-sidebar: 400px;\n  --yc-width-sidebar-collapsed: 0px;\n  --yc-width-detail-panel: 400px;\n  --yc-width-detail-panel-max: 350px;\n  --yc-width-search-popup: 500px;\n  --yc-width-toolbar-button: 36px;\n  --yc-height-toolbar-button: 36px;\n  --yc-height-badge: 16px;\n  --yc-height-icon-sm: 20px;\n  --yc-height-icon-md: 24px;\n  --yc-height-button-sm: 24px;\n  --yc-height-button-md: 28px;\n  --yc-height-error-banner-max: 120px;\n  --yc-z-index-base: 1;\n  --yc-z-index-overlay-button: 5;\n  --yc-z-index-overlay: 10;\n  --yc-z-index-toolbar: 50;\n  --yc-z-index-detail-panel: 100;\n  --yc-z-index-search-popup: 1000;\n  --yc-z-index-search-history: 999;\n  --yc-z-index-collapse-button: 1001;\n  --yc-transition-fast: 0.2s ease;\n  --yc-transition-normal: 0.3s ease;\n  --yc-transition-slow: 0.4s ease;\n  --yc-transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);\n  --yc-opacity-disabled: 0.5;\n  --yc-opacity-hover: 0.8;\n  --yc-opacity-dragging: 0.7;\n  --yc-opacity-node-hover: 0.9;\n  --yc-opacity-transparent: 0;\n  --yc-opacity-full: 1;\n  --yc-blur-sm: 5px;\n  --yc-blur-md: 10px;\n  --yc-transform-button-hover: translateY(-2px);\n  --yc-transform-button-active: translateY(0);\n  --yc-transform-button-lift-sm: translateY(-1px);\n  --yc-gradient-primary: linear-gradient(135deg, var(--yc-color-primary) 0%, var(--yc-color-primary-light) 100%);\n  --yc-gradient-error: linear-gradient(135deg, var(--yc-color-error-bg) 0%, var(--yc-color-error-bg-gradient) 100%);\n  --yc-gradient-background: linear-gradient(to bottom, var(--yc-color-gray-50) 0%, var(--yc-color-gray-200) 100%);\n  --yc-gradient-header-dark: linear-gradient(135deg, var(--yc-color-navy) 0%, var(--yc-color-navy-medium) 50%, var(--yc-color-navy-light) 100%);\n  --yc-gradient-rainbow: linear-gradient(90deg, var(--yc-color-red), var(--yc-color-orange), var(--yc-color-yellow), var(--yc-color-green), var(--yc-color-blue), var(--yc-color-indigo), var(--yc-color-violet), var(--yc-color-red));\n  --yc-gradient-title-light: linear-gradient(135deg, var(--yc-color-white) 0%, var(--yc-color-cyan) 50%, var(--yc-color-mint) 100%);\n  --yc-backdrop-blur: blur(10px);\n}\n\n.ychart-container *,\n.ychart-container *::before,\n.ychart-container *::after {\n  box-sizing: border-box;\n}\n.ychart-container {\n  font-family: var(--yc-font-family-base);\n  position: relative;\n  width: 100%;\n  height: 100%;\n  min-height: 0;\n  display: flex;\n  overflow: hidden;\n}\n.ychart-container .ychart-chart-wrapper {\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  min-width: 0;\n  min-height: 0;\n  overflow: hidden;\n  position: relative;\n  height: 100%;\n}\n.ychart-container .ychart-editor-panel {\n  display: flex;\n  flex-direction: column;\n  min-height: 0;\n  background: var(--yc-color-bg-primary);\n  overflow: hidden;\n  border-left: var(--yc-border-width-thin) solid var(--yc-color-gray-400);\n}\n.ychart-container .ychart-chart-panel {\n  flex: 1;\n  min-height: 0;\n  position: relative;\n  overflow: hidden;\n}\n.ychart-container .ychart-editor {\n  flex: 1;\n  min-height: 0;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n}\n.ychart-container .ychart-editor .cm-editor {\n  flex: 1;\n  min-height: 0;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  font-size: var(--yc-font-size-md);\n}\n.ychart-container .ychart-editor .cm-editor .cm-lintRange-error {\n  background-color: var(--yc-color-error-red-bg);\n  border-bottom: var(--yc-border-width-medium) wavy var(--yc-color-error-red);\n}\n.ychart-container .ychart-editor .cm-editor .cm-lintRange-warning {\n  background-color: var(--yc-color-warning-bg);\n  border-bottom: var(--yc-border-width-medium) wavy var(--yc-color-warning);\n}\n.ychart-container .ychart-editor .cm-editor .cm-gutter-lint {\n  width: var(--yc-spacing-xl);\n}\n.ychart-container .ychart-editor .cm-editor .cm-lint-marker-error {\n  content: \"●\";\n  color: var(--yc-color-error-red);\n}\n.ychart-container .ychart-editor .cm-editor .cm-lint-marker-warning {\n  content: \"●\";\n  color: var(--yc-color-warning);\n}\n.ychart-container .ychart-editor .cm-editor .cm-tooltip-lint {\n  background-color: var(--yc-color-editor-bg);\n  border: var(--yc-border-width-thin) solid var(--yc-color-gray-700);\n  border-radius: var(--yc-border-radius-sm);\n  padding: var(--yc-spacing-xs) var(--yc-spacing-md);\n  font-size: var(--yc-font-size-base);\n  max-width: var(--yc-width-detail-panel-max);\n}\n.ychart-container .ychart-editor .cm-editor .cm-diagnostic {\n  padding: var(--yc-spacing-xs) var(--yc-spacing-md);\n  border-left: var(--yc-border-width-thick) solid;\n  margin: var(--yc-spacing-xxs) 0;\n}\n.ychart-container .ychart-editor .cm-editor .cm-diagnostic-error {\n  border-left-color: var(--yc-color-error-red);\n  background-color: var(--yc-color-error-red-bg);\n}\n.ychart-container .ychart-editor .cm-editor .cm-diagnostic-warning {\n  border-left-color: var(--yc-color-warning);\n  background-color: var(--yc-color-warning-bg);\n}\n.ychart-container .ychart-editor .cm-scroller {\n  flex: 1;\n  min-height: 0;\n  overflow: auto !important;\n}\n.ychart-container .ychart-chart {\n  flex: 1;\n  min-height: 0;\n  overflow: hidden;\n  position: relative;\n  background: var(--yc-gradient-background);\n}\n.ychart-container .ychart-chart .html-overlay-container {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  pointer-events: none;\n  overflow: hidden;\n  z-index: var(--yc-z-index-overlay);\n}\n.ychart-container .ychart-chart .html-overlay-container .overlay-node {\n  pointer-events: auto;\n  background: transparent;\n  border-radius: var(--yc-border-radius-lg);\n}\n.ychart-container .ychart-chart .html-overlay-container .overlay-content {\n  user-select: text;\n  -webkit-user-select: text;\n  cursor: text;\n}\n.ychart-container .ychart-chart .html-overlay-container .overlay-content .details-btn,\n.ychart-container .ychart-chart .html-overlay-container .overlay-content button,\n.ychart-container .ychart-chart .html-overlay-container .overlay-content a {\n  cursor: pointer;\n}\n.ychart-container .ychart-chart .html-overlay-container .overlay-button {\n  z-index: var(--yc-z-index-overlay-button);\n}\n.ychart-container .ychart-chart .html-overlay-container .overlay-button:hover {\n  opacity: var(--yc-opacity-hover);\n}\n.ychart-container .ychart-chart svg {\n  display: block;\n  cursor: grab;\n}\n.ychart-container .ychart-chart svg:active {\n  cursor: grabbing;\n}\n.ychart-container .ychart-chart svg circle {\n  cursor: pointer;\n  transition: all var(--yc-transition-fast);\n}\n.ychart-container .ychart-chart svg circle:hover {\n  fill: var(--yc-color-secondary-hover);\n  r: 45;\n  stroke-width: var(--yc-border-width-heavy);\n}\n.ychart-container .ychart-chart svg text {\n  user-select: none;\n  -webkit-user-select: none;\n}\n.ychart-container .ychart-chart svg g {\n  cursor: move;\n}\n@supports (-webkit-touch-callout: none) {\n  .ychart-container .ychart-chart svg foreignObject {\n    overflow: visible !important;\n  }\n}\n.ychart-container .ychart-chart svg .node-foreign-object {\n  overflow: visible;\n  transition: height 0.15s ease-out;\n}\n.ychart-container .ychart-chart svg .node-foreign-object:not([data-height-synced]) {\n  height: auto !important;\n  transition: none;\n}\n.ychart-container .ychart-chart svg .node-foreign-object-div {\n  position: relative;\n  user-select: text;\n  -webkit-user-select: text;\n  cursor: text;\n  transition: height 0.15s ease-out, min-height 0.15s ease-out;\n}\n.ychart-container .ychart-chart svg .node-foreign-object-div:not([data-height-synced]) {\n  height: auto !important;\n  min-height: auto !important;\n  transition: none;\n}\n.ychart-container .ychart-chart svg .node-foreign-object-div:not([data-height-synced]) > div {\n  height: auto !important;\n  min-height: auto !important;\n}\n.ychart-container .ychart-chart svg .node-foreign-object-div > div {\n  transition: height 0.15s ease-out, min-height 0.15s ease-out;\n}\n.ychart-container .ychart-chart svg .node-foreign-object-div .details-btn,\n.ychart-container .ychart-chart svg .node-foreign-object-div button,\n.ychart-container .ychart-chart svg .node-foreign-object-div a {\n  cursor: pointer;\n}\n.ychart-container .ychart-chart .node-group {\n  cursor: move;\n  transition: opacity var(--yc-transition-fast);\n}\n.ychart-container .ychart-chart .node-group.dragging {\n  opacity: var(--yc-opacity-dragging);\n  cursor: grabbing !important;\n}\n.ychart-container .ychart-chart .node-group:hover {\n  opacity: var(--yc-opacity-node-hover);\n}\n.ychart-container .ychart-chart .node-group:hover rect,\n.ychart-container .ychart-chart .node-group:hover foreignObject {\n  filter: brightness(1.05);\n}\n.ychart-container .ychart-chart .node-group rect,\n.ychart-container .ychart-chart .node-group foreignObject {\n  transition: box-shadow var(--yc-transition-fast);\n}\n.ychart-container .ychart-node-details {\n  position: absolute;\n  top: var(--yc-spacing-3xl);\n  right: var(--yc-spacing-3xl);\n  background: var(--yc-color-bg-primary);\n  border: var(--yc-border-width-thin) solid var(--yc-color-gray-400);\n  border-radius: var(--yc-border-radius-lg);\n  box-shadow: var(--yc-shadow-3xl);\n  max-width: var(--yc-width-detail-panel-max);\n  z-index: var(--yc-z-index-detail-panel);\n  max-height: calc(100vh - 12rem);\n  overflow-y: auto;\n}\n.ychart-container .ychart-node-details .node-details-content {\n  padding: var(--yc-spacing-5xl);\n}\n.ychart-container .ychart-node-details h3 {\n  color: var(--yc-color-text-primary);\n  font-size: var(--yc-font-size-3xl);\n  margin-bottom: var(--yc-spacing-3xl);\n  padding-bottom: var(--yc-spacing-xl);\n  border-bottom: var(--yc-border-width-medium) solid var(--yc-color-primary);\n}\n.ychart-container .ychart-node-details .details-grid {\n  display: flex;\n  flex-direction: column;\n  gap: var(--yc-spacing-xl);\n  margin-bottom: var(--yc-spacing-5xl);\n}\n.ychart-container .ychart-node-details .detail-row {\n  display: grid;\n  grid-template-columns: 120px 1fr;\n  gap: var(--yc-spacing-md);\n  align-items: start;\n}\n.ychart-container .ychart-node-details .detail-label {\n  color: var(--yc-color-text-secondary);\n  font-size: var(--yc-font-size-md);\n  font-weight: var(--yc-font-weight-semibold);\n  text-transform: capitalize;\n}\n.ychart-container .ychart-node-details .detail-value {\n  color: var(--yc-color-text-primary);\n  font-size: var(--yc-font-size-lg);\n  word-break: break-word;\n}\n.ychart-container .ychart-node-details .btn-close {\n  width: 100%;\n  background: var(--yc-color-primary);\n  color: var(--yc-color-text-inverse);\n  border: none;\n  padding: var(--yc-spacing-xl);\n  border-radius: var(--yc-border-radius-md);\n  font-size: var(--yc-font-size-lg);\n  font-weight: var(--yc-font-weight-semibold);\n  cursor: pointer;\n  transition: all var(--yc-transition-normal);\n}\n.ychart-container .ychart-node-details .btn-close:hover {\n  background: var(--yc-color-primary-dark);\n  transform: var(--yc-transform-button-lift-sm);\n  box-shadow: var(--yc-shadow-button);\n}\n.ychart-container .ychart-node-details .btn-close:active {\n  transform: var(--yc-transform-button-active);\n}\n.ychart-container .ychart-node-details .btn-reorder {\n  transition: all var(--yc-transition-normal);\n}\n.ychart-container .ychart-node-details .btn-reorder:hover {\n  background: var(--yc-color-primary-dark) !important;\n  transform: var(--yc-transform-button-lift-sm);\n  box-shadow: var(--yc-shadow-button);\n}\n.ychart-container .ychart-node-details .btn-reorder:active {\n  transform: var(--yc-transform-button-active);\n}\n.ychart-container .ychart-node-details p {\n  margin: var(--yc-spacing-md) 0;\n  color: var(--yc-color-text-secondary);\n  font-size: var(--yc-font-size-lg);\n}\n.ychart-container .ychart-node-details strong {\n  color: var(--yc-color-text-primary);\n  font-weight: var(--yc-font-weight-semibold);\n}\n.ychart-container .ychart-node-details a {\n  color: var(--yc-color-primary);\n  text-decoration: none;\n}\n.ychart-container .ychart-node-details a:hover {\n  text-decoration: underline;\n}\n.ychart-container .node.selected .node-rect {\n  stroke: var(--yc-color-success) !important;\n  stroke-width: var(--yc-border-width-heavy) !important;\n  filter: drop-shadow(var(--yc-shadow-node-selected));\n}\n.ychart-container .svg-chart-container:focus {\n  outline: var(--yc-border-width-medium) solid var(--yc-color-success);\n  outline-offset: calc(-1 * var(--yc-border-width-medium));\n}\n.ychart-container .expand-siblings-btn,\n.ychart-container .expand-supervisor-chain-btn,\n.ychart-container .ychart-expand-btn-wrapper {\n  position: relative;\n}\n.ychart-container .expand-siblings-btn .node-tooltip,\n.ychart-container .expand-supervisor-chain-btn .node-tooltip,\n.ychart-container .ychart-expand-btn-wrapper .node-tooltip {\n  position: absolute;\n  bottom: 100%;\n  left: 50%;\n  transform: translateX(-50%) scale(0.8);\n  background: var(--yc-color-overlay-dark);\n  color: white;\n  padding: var(--yc-spacing-sm) var(--yc-spacing-xl);\n  border-radius: var(--yc-border-radius-md);\n  font-size: var(--yc-font-size-sm);\n  white-space: nowrap;\n  pointer-events: none;\n  opacity: 0;\n  transition: all var(--yc-transition-fast) var(--yc-transition-bounce);\n  z-index: var(--yc-z-index-search-popup);\n  box-shadow: var(--yc-shadow-md);\n  margin-bottom: var(--yc-spacing-sm);\n}\n.ychart-container .expand-siblings-btn:hover .node-tooltip,\n.ychart-container .expand-supervisor-chain-btn:hover .node-tooltip,\n.ychart-container .ychart-expand-btn-wrapper:hover .node-tooltip {\n  opacity: 1;\n  transform: translateX(-50%) scale(1);\n}\n.ychart-container .ychart-toolbar {\n  display: flex;\n  gap: var(--yc-spacing-sm);\n  background: var(--yc-color-bg-primary);\n  border: var(--yc-border-width-thin) solid var(--yc-color-gray-400);\n  border-radius: var(--yc-border-radius-md);\n  padding: var(--yc-spacing-sm);\n  box-shadow: var(--yc-shadow-md);\n  z-index: var(--yc-z-index-toolbar);\n}\n.ychart-container .ychart-search-bar {\n  display: flex;\n  align-items: center;\n  gap: var(--yc-spacing-sm);\n  background: var(--yc-color-bg-primary);\n  border: var(--yc-border-width-thin) solid var(--yc-color-gray-400);\n  border-radius: var(--yc-border-radius-md);\n  padding: var(--yc-spacing-sm) var(--yc-spacing-md);\n}\n.ychart-container .ychart-search-input {\n  border: none;\n  outline: none;\n  font-size: var(--yc-font-size-base);\n  background: transparent;\n  color: var(--yc-color-text-primary);\n}\n.ychart-container .ychart-search-input::placeholder {\n  color: var(--yc-color-text-muted);\n}\n.ychart-container .ychart-search-results {\n  position: absolute;\n  background: var(--yc-color-bg-primary);\n  border: var(--yc-border-width-thin) solid var(--yc-color-gray-400);\n  border-radius: var(--yc-border-radius-md);\n  box-shadow: var(--yc-shadow-lg);\n  max-height: 300px;\n  overflow-y: auto;\n  z-index: var(--yc-z-index-search-popup);\n}\n.ychart-container .ychart-poi-selector {\n  display: flex;\n  align-items: center;\n  gap: var(--yc-spacing-sm);\n}\n.ychart-container .ychart-error-banner {\n  background: var(--yc-color-error-bg);\n  border: var(--yc-border-width-thin) solid var(--yc-color-error-border);\n  border-radius: var(--yc-border-radius-md);\n  padding: var(--yc-spacing-sm) var(--yc-spacing-md);\n  color: var(--yc-color-error-red-text);\n  font-size: var(--yc-font-size-sm);\n}\n.ychart-container .ychart-editor-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: var(--yc-spacing-md) var(--yc-spacing-lg);\n  background: var(--yc-color-bg-tertiary);\n  border-bottom: var(--yc-border-width-thin) solid var(--yc-color-gray-400);\n}\n.ychart-container .ychart-toggle-editor {\n  position: absolute;\n  background: var(--yc-color-bg-primary);\n  border: var(--yc-border-width-thin) solid var(--yc-color-gray-400);\n  border-radius: var(--yc-border-radius-sm);\n  padding: var(--yc-spacing-sm);\n  cursor: pointer;\n  z-index: var(--yc-z-index-toolbar);\n}\n.ychart-container .ychart-toggle-editor:hover {\n  background: var(--yc-color-gray-200);\n}\n\n@keyframes ychart-fadeInOut {\n  0%, 100% {\n    opacity: 0;\n  }\n  10%, 90% {\n    opacity: 1;\n  }\n}\n@keyframes ychart-pulseGlow {\n  0%, 100% {\n    box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);\n    transform: scale(1);\n  }\n  50% {\n    box-shadow: 0 0 0 8px rgba(102, 126, 234, 0);\n    transform: scale(1.05);\n  }\n}/*! tailwindcss v4.2.1 | MIT License | https://tailwindcss.com */\n@layer properties{@supports (((-webkit-hyphens:none)) and (not (margin-trim:inline))) or ((-moz-orient:inline) and (not (color:rgb(from red r g b)))){*,:before,:after,::backdrop{--tw-translate-x:0;--tw-translate-y:0;--tw-translate-z:0;--tw-scale-x:1;--tw-scale-y:1;--tw-scale-z:1;--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-space-y-reverse:0;--tw-space-x-reverse:0;--tw-divide-y-reverse:0;--tw-border-style:solid;--tw-gradient-position:initial;--tw-gradient-from:#0000;--tw-gradient-via:#0000;--tw-gradient-to:#0000;--tw-gradient-stops:initial;--tw-gradient-via-stops:initial;--tw-gradient-from-position:0%;--tw-gradient-via-position:50%;--tw-gradient-to-position:100%;--tw-leading:initial;--tw-font-weight:initial;--tw-tracking:initial;--tw-ordinal:initial;--tw-slashed-zero:initial;--tw-numeric-figure:initial;--tw-numeric-spacing:initial;--tw-numeric-fraction:initial;--tw-shadow:0 0 #0000;--tw-shadow-color:initial;--tw-shadow-alpha:100%;--tw-inset-shadow:0 0 #0000;--tw-inset-shadow-color:initial;--tw-inset-shadow-alpha:100%;--tw-ring-color:initial;--tw-ring-shadow:0 0 #0000;--tw-inset-ring-color:initial;--tw-inset-ring-shadow:0 0 #0000;--tw-ring-inset:initial;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-offset-shadow:0 0 #0000;--tw-outline-style:solid;--tw-blur:initial;--tw-brightness:initial;--tw-contrast:initial;--tw-grayscale:initial;--tw-hue-rotate:initial;--tw-invert:initial;--tw-opacity:initial;--tw-saturate:initial;--tw-sepia:initial;--tw-drop-shadow:initial;--tw-drop-shadow-color:initial;--tw-drop-shadow-alpha:100%;--tw-drop-shadow-size:initial;--tw-backdrop-blur:initial;--tw-backdrop-brightness:initial;--tw-backdrop-contrast:initial;--tw-backdrop-grayscale:initial;--tw-backdrop-hue-rotate:initial;--tw-backdrop-invert:initial;--tw-backdrop-opacity:initial;--tw-backdrop-saturate:initial;--tw-backdrop-sepia:initial;--tw-duration:initial;--tw-ease:initial}}}@layer theme{:root,:host{--font-sans:var(--mieweb-font-sans,ui-sans-serif);--font-mono:var(--mieweb-font-mono,ui-monospace);--color-red-50:oklch(97.1% .013 17.38);--color-red-100:oklch(93.6% .032 17.717);--color-red-200:oklch(88.5% .062 18.334);--color-red-300:oklch(80.8% .114 19.571);--color-red-400:oklch(70.4% .191 22.216);--color-red-500:oklch(63.7% .237 25.331);--color-red-600:oklch(57.7% .245 27.325);--color-red-700:oklch(50.5% .213 27.518);--color-red-800:oklch(44.4% .177 26.899);--color-red-900:oklch(39.6% .141 25.723);--color-red-950:oklch(25.8% .092 26.042);--color-orange-50:oklch(98% .016 73.684);--color-orange-100:oklch(95.4% .038 75.164);--color-orange-300:oklch(83.7% .128 66.29);--color-orange-400:oklch(75% .183 55.934);--color-orange-500:oklch(70.5% .213 47.604);--color-orange-600:oklch(64.6% .222 41.116);--color-orange-700:oklch(55.3% .195 38.402);--color-orange-800:oklch(47% .157 37.304);--color-orange-900:oklch(40.8% .123 38.172);--color-amber-50:oklch(98.7% .022 95.277);--color-amber-100:oklch(96.2% .059 95.617);--color-amber-200:oklch(92.4% .12 95.746);--color-amber-300:oklch(87.9% .169 91.605);--color-amber-400:oklch(82.8% .189 84.429);--color-amber-500:oklch(76.9% .188 70.08);--color-amber-600:oklch(66.6% .179 58.318);--color-amber-700:oklch(55.5% .163 48.998);--color-amber-800:oklch(47.3% .137 46.201);--color-amber-900:oklch(41.4% .112 45.904);--color-amber-950:oklch(27.9% .077 45.635);--color-yellow-50:oklch(98.7% .026 102.212);--color-yellow-100:oklch(97.3% .071 103.193);--color-yellow-200:oklch(94.5% .129 101.54);--color-yellow-300:oklch(90.5% .182 98.111);--color-yellow-400:oklch(85.2% .199 91.936);--color-yellow-500:oklch(79.5% .184 86.047);--color-yellow-600:oklch(68.1% .162 75.834);--color-yellow-700:oklch(55.4% .135 66.442);--color-yellow-800:oklch(47.6% .114 61.907);--color-yellow-900:oklch(42.1% .095 57.708);--color-yellow-950:oklch(28.6% .066 53.813);--color-green-50:oklch(98.2% .018 155.826);--color-green-100:oklch(96.2% .044 156.743);--color-green-200:oklch(92.5% .084 155.995);--color-green-300:oklch(87.1% .15 154.449);--color-green-400:oklch(79.2% .209 151.711);--color-green-500:oklch(72.3% .219 149.579);--color-green-600:oklch(62.7% .194 149.214);--color-green-700:oklch(52.7% .154 150.069);--color-green-800:oklch(44.8% .119 151.328);--color-green-900:oklch(39.3% .095 152.535);--color-green-950:oklch(26.6% .065 152.934);--color-emerald-100:oklch(95% .052 163.051);--color-emerald-300:oklch(84.5% .143 164.978);--color-emerald-400:oklch(76.5% .177 163.223);--color-emerald-600:oklch(59.6% .145 163.225);--color-emerald-700:oklch(50.8% .118 165.612);--color-emerald-900:oklch(37.8% .077 168.94);--color-teal-600:oklch(60% .118 184.704);--color-cyan-100:oklch(95.6% .045 203.388);--color-cyan-500:oklch(71.5% .143 215.221);--color-cyan-900:oklch(39.8% .07 227.392);--color-sky-100:oklch(95.1% .026 236.824);--color-sky-300:oklch(82.8% .111 230.318);--color-sky-400:oklch(74.6% .16 232.661);--color-sky-600:oklch(58.8% .158 241.966);--color-sky-700:oklch(50% .134 242.749);--color-sky-900:oklch(39.1% .09 240.876);--color-blue-50:oklch(97% .014 254.604);--color-blue-100:oklch(93.2% .032 255.585);--color-blue-200:oklch(88.2% .059 254.128);--color-blue-300:oklch(80.9% .105 251.813);--color-blue-400:oklch(70.7% .165 254.624);--color-blue-500:oklch(62.3% .214 259.815);--color-blue-600:oklch(54.6% .245 262.881);--color-blue-700:oklch(48.8% .243 264.376);--color-blue-800:oklch(42.4% .199 265.638);--color-blue-900:oklch(37.9% .146 265.522);--color-blue-950:oklch(28.2% .091 267.935);--color-indigo-600:oklch(51.1% .262 276.966);--color-violet-100:oklch(94.3% .029 294.588);--color-violet-300:oklch(81.1% .111 293.571);--color-violet-400:oklch(70.2% .183 293.541);--color-violet-500:oklch(60.6% .25 292.717);--color-violet-600:oklch(54.1% .281 293.009);--color-violet-700:oklch(49.1% .27 292.581);--color-violet-900:oklch(38% .189 293.745);--color-purple-50:oklch(97.7% .014 308.299);--color-purple-100:oklch(94.6% .033 307.174);--color-purple-300:oklch(82.7% .119 306.383);--color-purple-400:oklch(71.4% .203 305.504);--color-purple-500:oklch(62.7% .265 303.9);--color-purple-600:oklch(55.8% .288 302.321);--color-purple-700:oklch(49.6% .265 301.924);--color-purple-800:oklch(43.8% .218 303.724);--color-purple-900:oklch(38.1% .176 304.987);--color-pink-600:oklch(59.2% .249 .584);--color-rose-100:oklch(94.1% .03 12.58);--color-rose-400:oklch(71.2% .194 13.428);--color-rose-600:oklch(58.6% .253 17.585);--color-rose-900:oklch(41% .159 10.272);--color-slate-400:oklch(70.4% .04 256.788);--color-slate-900:oklch(20.8% .042 265.755);--color-gray-50:oklch(98.5% .002 247.839);--color-gray-100:oklch(96.7% .003 264.542);--color-gray-200:oklch(92.8% .006 264.531);--color-gray-300:oklch(87.2% .01 258.338);--color-gray-400:oklch(70.7% .022 261.325);--color-gray-500:oklch(55.1% .027 264.364);--color-gray-600:oklch(44.6% .03 256.802);--color-gray-700:oklch(37.3% .034 259.733);--color-gray-800:oklch(27.8% .033 256.848);--color-gray-900:oklch(21% .034 264.665);--color-gray-950:oklch(13% .028 261.692);--color-neutral-50:var(--mieweb-neutral-50);--color-neutral-100:var(--mieweb-neutral-100);--color-neutral-200:var(--mieweb-neutral-200);--color-neutral-300:var(--mieweb-neutral-300);--color-neutral-400:var(--mieweb-neutral-400);--color-neutral-500:var(--mieweb-neutral-500);--color-neutral-600:var(--mieweb-neutral-600);--color-neutral-700:var(--mieweb-neutral-700);--color-neutral-800:var(--mieweb-neutral-800);--color-neutral-900:var(--mieweb-neutral-900);--color-neutral-950:var(--mieweb-neutral-950);--color-black:#000;--color-white:#fff;--spacing:.25rem;--container-xs:20rem;--container-sm:24rem;--container-md:28rem;--container-lg:32rem;--container-xl:36rem;--container-2xl:42rem;--container-3xl:48rem;--container-4xl:56rem;--container-5xl:64rem;--container-6xl:72rem;--text-xs:.75rem;--text-xs--line-height:calc(1 / .75);--text-sm:.875rem;--text-sm--line-height:calc(1.25 / .875);--text-base:1rem;--text-base--line-height:calc(1.5 / 1);--text-lg:1.125rem;--text-lg--line-height:calc(1.75 / 1.125);--text-xl:1.25rem;--text-xl--line-height:calc(1.75 / 1.25);--text-2xl:1.5rem;--text-2xl--line-height:calc(2 / 1.5);--text-3xl:1.875rem;--text-3xl--line-height:calc(2.25 / 1.875);--text-4xl:2.25rem;--text-4xl--line-height:calc(2.5 / 2.25);--text-5xl:3rem;--text-5xl--line-height:1;--text-6xl:3.75rem;--text-6xl--line-height:1;--text-8xl:6rem;--text-8xl--line-height:1;--font-weight-normal:400;--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--tracking-tight:-.025em;--tracking-wide:.025em;--tracking-wider:.05em;--leading-tight:1.25;--leading-normal:1.5;--leading-relaxed:1.625;--radius-sm:.25rem;--radius-md:.375rem;--radius-lg:.5rem;--radius-xl:.75rem;--radius-2xl:1rem;--ease-in:cubic-bezier(.4, 0, 1, 1);--ease-out:cubic-bezier(0, 0, .2, 1);--ease-in-out:cubic-bezier(.4, 0, .2, 1);--animate-spin:spin 1s linear infinite;--animate-ping:ping 1s cubic-bezier(0, 0, .2, 1) infinite;--animate-pulse:pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;--animate-bounce:bounce 1s infinite;--blur-sm:8px;--blur-md:12px;--aspect-video:16 / 9;--default-transition-duration:.15s;--default-transition-timing-function:cubic-bezier(.4, 0, .2, 1);--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono);--color-primary:var(--mieweb-primary-500);--color-primary-50:var(--mieweb-primary-50);--color-primary-100:var(--mieweb-primary-100);--color-primary-200:var(--mieweb-primary-200);--color-primary-300:var(--mieweb-primary-300);--color-primary-400:var(--mieweb-primary-400);--color-primary-500:var(--mieweb-primary-500);--color-primary-600:var(--mieweb-primary-600);--color-primary-700:var(--mieweb-primary-700);--color-primary-800:var(--mieweb-primary-800);--color-primary-900:var(--mieweb-primary-900);--color-primary-950:var(--mieweb-primary-950);--color-primary-foreground:var(--mieweb-primary-foreground,#fff);--color-secondary:var(--mieweb-secondary-500);--color-secondary-50:var(--mieweb-secondary-50);--color-secondary-100:var(--mieweb-secondary-100);--color-secondary-200:var(--mieweb-secondary-200);--color-secondary-300:var(--mieweb-secondary-300);--color-secondary-500:var(--mieweb-secondary-500);--color-secondary-600:var(--mieweb-secondary-600);--color-secondary-700:var(--mieweb-secondary-700);--color-secondary-900:var(--mieweb-secondary-900);--color-secondary-foreground:var(--mieweb-secondary-foreground,#fff);--color-destructive:var(--mieweb-destructive,var(--mieweb-destructive-500));--color-destructive-50:var(--mieweb-destructive-50);--color-destructive-100:var(--mieweb-destructive-100);--color-destructive-200:var(--mieweb-destructive-200);--color-destructive-300:var(--mieweb-destructive-300);--color-destructive-400:var(--mieweb-destructive-400);--color-destructive-500:var(--mieweb-destructive-500);--color-destructive-600:var(--mieweb-destructive-600);--color-destructive-700:var(--mieweb-destructive-700);--color-destructive-800:var(--mieweb-destructive-800);--color-destructive-900:var(--mieweb-destructive-900);--color-destructive-950:var(--mieweb-destructive-950);--color-destructive-foreground:var(--mieweb-destructive-foreground,#fff);--color-success:var(--mieweb-success,var(--mieweb-success-500));--color-success-50:var(--mieweb-success-50);--color-success-100:var(--mieweb-success-100);--color-success-200:var(--mieweb-success-200);--color-success-300:var(--mieweb-success-300);--color-success-400:var(--mieweb-success-400);--color-success-500:var(--mieweb-success-500);--color-success-600:var(--mieweb-success-600);--color-success-700:var(--mieweb-success-700);--color-success-800:var(--mieweb-success-800);--color-success-900:var(--mieweb-success-900);--color-success-950:var(--mieweb-success-950);--color-success-foreground:var(--mieweb-success-foreground,#fff);--color-warning:var(--mieweb-warning,var(--mieweb-warning-500));--color-warning-50:var(--mieweb-warning-50);--color-warning-100:var(--mieweb-warning-100);--color-warning-200:var(--mieweb-warning-200);--color-warning-300:var(--mieweb-warning-300);--color-warning-400:var(--mieweb-warning-400);--color-warning-500:var(--mieweb-warning-500);--color-warning-600:var(--mieweb-warning-600);--color-warning-700:var(--mieweb-warning-700);--color-warning-800:var(--mieweb-warning-800);--color-warning-900:var(--mieweb-warning-900);--color-warning-950:var(--mieweb-warning-950);--color-warning-foreground:var(--mieweb-warning-foreground,#fff);--color-info:var(--mieweb-info,var(--mieweb-info-500));--color-info-50:var(--mieweb-info-50);--color-info-100:var(--mieweb-info-100);--color-info-200:var(--mieweb-info-200);--color-info-300:var(--mieweb-info-300);--color-info-400:var(--mieweb-info-400);--color-info-500:var(--mieweb-info-500);--color-info-600:var(--mieweb-info-600);--color-info-700:var(--mieweb-info-700);--color-info-800:var(--mieweb-info-800);--color-info-900:var(--mieweb-info-900);--color-info-950:var(--mieweb-info-950);--color-info-foreground:var(--mieweb-info-foreground,#fff);--color-border:var(--mieweb-border,#e5e7eb);--color-input:var(--mieweb-input,#e5e7eb);--color-ring:var(--mieweb-ring,#27aae1);--color-background:var(--mieweb-background,#fff);--color-foreground:var(--mieweb-foreground,#171717);--color-card:var(--mieweb-card,#fff);--color-card-foreground:var(--mieweb-card-foreground,#171717);--color-muted:var(--mieweb-muted,#f5f5f5);--color-muted-foreground:var(--mieweb-muted-foreground,#737373);--color-chart-1:var(--mieweb-chart-1);--color-chart-2:var(--mieweb-chart-2);--color-chart-3:var(--mieweb-chart-3);--color-chart-4:var(--mieweb-chart-4);--color-chart-5:var(--mieweb-chart-5)}}@layer base{*,:after,:before,::backdrop{box-sizing:border-box;border:0 solid;margin:0;padding:0}::file-selector-button{box-sizing:border-box;border:0 solid;margin:0;padding:0}html,:host{-webkit-text-size-adjust:100%;tab-size:4;line-height:1.5;font-family:var(--default-font-family,ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-webkit-tap-highlight-color:transparent}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;-webkit-text-decoration:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,samp,pre{font-family:var(--default-mono-font-family,ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-variation-settings:var(--default-mono-font-variation-settings,normal);font-size:1em}small{font-size:80%}sub,sup{vertical-align:baseline;font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}ol,ul,menu{list-style:none}img,svg,video,canvas,audio,iframe,embed,object{vertical-align:middle;display:block}img,video{max-width:100%;height:auto}button,input,select,optgroup,textarea{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}::file-selector-button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::placeholder{opacity:1}@supports (not ((-webkit-appearance:-apple-pay-button))) or (contain-intrinsic-size:1px){::placeholder{color:currentColor}@supports (color:color-mix(in lab, red, red)){::placeholder{color:color-mix(in oklab, currentcolor 50%, transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit{padding-block:0}::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-datetime-edit-month-field{padding-block:0}::-webkit-datetime-edit-day-field{padding-block:0}::-webkit-datetime-edit-hour-field{padding-block:0}::-webkit-datetime-edit-minute-field{padding-block:0}::-webkit-datetime-edit-second-field{padding-block:0}::-webkit-datetime-edit-millisecond-field{padding-block:0}::-webkit-datetime-edit-meridiem-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}button,input:where([type=button],[type=reset],[type=submit]){appearance:button}::file-selector-button{appearance:button}::-webkit-inner-spin-button{height:auto}::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer components;@layer utilities{.\\@container{container-type:inline-size}.pointer-events-auto{pointer-events:auto}.pointer-events-none{pointer-events:none}.collapse{visibility:collapse}.invisible{visibility:hidden}.visible{visibility:visible}.sr-only{clip-path:inset(50%);white-space:nowrap;border-width:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}.\\!absolute{position:absolute!important}.absolute{position:absolute}.fixed{position:fixed}.relative{position:relative}.static{position:static}.sticky{position:sticky}.\\!inset-0{inset:calc(var(--spacing) * 0)!important}.inset-0{inset:calc(var(--spacing) * 0)}.inset-2{inset:calc(var(--spacing) * 2)}.inset-4{inset:calc(var(--spacing) * 4)}.inset-8{inset:calc(var(--spacing) * 8)}.inset-x-0{inset-inline:calc(var(--spacing) * 0)}.inset-y-0{inset-block:calc(var(--spacing) * 0)}.\\!start{inset-inline-start:var(--spacing)!important}.start{inset-inline-start:var(--spacing)}.\\!end{inset-inline-end:var(--spacing)!important}.end{inset-inline-end:var(--spacing)}.-top-0\\.5{top:calc(var(--spacing) * -.5)}.-top-1{top:calc(var(--spacing) * -1)}.top-0{top:calc(var(--spacing) * 0)}.top-1{top:calc(var(--spacing) * 1)}.top-1\\/2{top:50%}.top-2{top:calc(var(--spacing) * 2)}.top-3{top:calc(var(--spacing) * 3)}.top-4{top:calc(var(--spacing) * 4)}.top-6{top:calc(var(--spacing) * 6)}.top-12{top:calc(var(--spacing) * 12)}.top-16{top:calc(var(--spacing) * 16)}.top-20{top:calc(var(--spacing) * 20)}.top-full{top:100%}.-right-0\\.5{right:calc(var(--spacing) * -.5)}.-right-1{right:calc(var(--spacing) * -1)}.-right-3{right:calc(var(--spacing) * -3)}.right-0{right:calc(var(--spacing) * 0)}.right-1{right:calc(var(--spacing) * 1)}.right-2{right:calc(var(--spacing) * 2)}.right-3{right:calc(var(--spacing) * 3)}.right-4{right:calc(var(--spacing) * 4)}.right-12{right:calc(var(--spacing) * 12)}.-bottom-0\\.5{bottom:calc(var(--spacing) * -.5)}.-bottom-1{bottom:calc(var(--spacing) * -1)}.bottom-0{bottom:calc(var(--spacing) * 0)}.bottom-1\\.5{bottom:calc(var(--spacing) * 1.5)}.bottom-2{bottom:calc(var(--spacing) * 2)}.bottom-3{bottom:calc(var(--spacing) * 3)}.bottom-4{bottom:calc(var(--spacing) * 4)}.bottom-20{bottom:calc(var(--spacing) * 20)}.bottom-24{bottom:calc(var(--spacing) * 24)}.-left-0\\.5{left:calc(var(--spacing) * -.5)}.-left-1{left:calc(var(--spacing) * -1)}.left-0{left:calc(var(--spacing) * 0)}.left-1{left:calc(var(--spacing) * 1)}.left-1\\/2{left:50%}.left-2{left:calc(var(--spacing) * 2)}.left-3{left:calc(var(--spacing) * 3)}.left-4{left:calc(var(--spacing) * 4)}.left-5{left:calc(var(--spacing) * 5)}.z-10{z-index:10}.z-30{z-index:30}.z-40{z-index:40}.z-50{z-index:50}.z-\\[100\\]{z-index:100}.z-\\[9999\\]{z-index:9999}.order-1{order:1}.order-2{order:2}.order-3{order:3}.order-4{order:4}.col-span-1{grid-column:span 1/span 1}.col-span-2{grid-column:span 2/span 2}.col-span-3{grid-column:span 3/span 3}.col-span-4{grid-column:span 4/span 4}.col-span-6{grid-column:span 6/span 6}.col-span-8{grid-column:span 8/span 8}.col-span-12{grid-column:span 12/span 12}.col-span-full{grid-column:1/-1}.container{width:100%}@media (min-width:40rem){.container{max-width:40rem}}@media (min-width:48rem){.container{max-width:48rem}}@media (min-width:64rem){.container{max-width:64rem}}@media (min-width:80rem){.container{max-width:80rem}}@media (min-width:96rem){.container{max-width:96rem}}.-m-1{margin:calc(var(--spacing) * -1)}.m-0{margin:calc(var(--spacing) * 0)}.m-4{margin:calc(var(--spacing) * 4)}.-mx-3{margin-inline:calc(var(--spacing) * -3)}.-mx-4{margin-inline:calc(var(--spacing) * -4)}.mx-1{margin-inline:calc(var(--spacing) * 1)}.mx-2{margin-inline:calc(var(--spacing) * 2)}.mx-4{margin-inline:calc(var(--spacing) * 4)}.mx-5{margin-inline:calc(var(--spacing) * 5)}.mx-auto{margin-inline:auto}.my-1{margin-block:calc(var(--spacing) * 1)}.my-4{margin-block:calc(var(--spacing) * 4)}.my-6{margin-block:calc(var(--spacing) * 6)}.-mt-1{margin-top:calc(var(--spacing) * -1)}.-mt-4{margin-top:calc(var(--spacing) * -4)}.mt-0{margin-top:calc(var(--spacing) * 0)}.mt-0\\.5{margin-top:calc(var(--spacing) * .5)}.mt-1{margin-top:calc(var(--spacing) * 1)}.mt-1\\.5{margin-top:calc(var(--spacing) * 1.5)}.mt-2{margin-top:calc(var(--spacing) * 2)}.mt-2\\.5{margin-top:calc(var(--spacing) * 2.5)}.mt-3{margin-top:calc(var(--spacing) * 3)}.mt-4{margin-top:calc(var(--spacing) * 4)}.mt-6{margin-top:calc(var(--spacing) * 6)}.mt-8{margin-top:calc(var(--spacing) * 8)}.mt-12{margin-top:calc(var(--spacing) * 12)}.mt-auto{margin-top:auto}.-mr-2{margin-right:calc(var(--spacing) * -2)}.mr-1{margin-right:calc(var(--spacing) * 1)}.mr-1\\.5{margin-right:calc(var(--spacing) * 1.5)}.mr-2{margin-right:calc(var(--spacing) * 2)}.mr-3{margin-right:calc(var(--spacing) * 3)}.mr-auto{margin-right:auto}.-mb-px{margin-bottom:-1px}.mb-0{margin-bottom:calc(var(--spacing) * 0)}.mb-1{margin-bottom:calc(var(--spacing) * 1)}.mb-1\\.5{margin-bottom:calc(var(--spacing) * 1.5)}.mb-2{margin-bottom:calc(var(--spacing) * 2)}.mb-3{margin-bottom:calc(var(--spacing) * 3)}.mb-4{margin-bottom:calc(var(--spacing) * 4)}.mb-6{margin-bottom:calc(var(--spacing) * 6)}.mb-8{margin-bottom:calc(var(--spacing) * 8)}.-ml-1{margin-left:calc(var(--spacing) * -1)}.-ml-2{margin-left:calc(var(--spacing) * -2)}.ml-0\\.5{margin-left:calc(var(--spacing) * .5)}.ml-1{margin-left:calc(var(--spacing) * 1)}.ml-1\\.5{margin-left:calc(var(--spacing) * 1.5)}.ml-2{margin-left:calc(var(--spacing) * 2)}.ml-3{margin-left:calc(var(--spacing) * 3)}.ml-4{margin-left:calc(var(--spacing) * 4)}.ml-6{margin-left:calc(var(--spacing) * 6)}.ml-auto{margin-left:auto}.line-clamp-2{-webkit-line-clamp:2;-webkit-box-orient:vertical;display:-webkit-box;overflow:hidden}.block{display:block}.contents{display:contents}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline{display:inline}.inline-block{display:inline-block}.inline-flex{display:inline-flex}.table{display:table}.aspect-\\[4\\/3\\]{aspect-ratio:4/3}.aspect-\\[21\\/9\\]{aspect-ratio:21/9}.aspect-square{aspect-ratio:1}.aspect-video{aspect-ratio:var(--aspect-video)}.size-4{width:calc(var(--spacing) * 4);height:calc(var(--spacing) * 4)}.size-5{width:calc(var(--spacing) * 5);height:calc(var(--spacing) * 5)}.size-6{width:calc(var(--spacing) * 6);height:calc(var(--spacing) * 6)}.size-10{width:calc(var(--spacing) * 10);height:calc(var(--spacing) * 10)}.size-12{width:calc(var(--spacing) * 12);height:calc(var(--spacing) * 12)}.size-14{width:calc(var(--spacing) * 14);height:calc(var(--spacing) * 14)}.\\!h-full{height:100%!important}.h-0{height:calc(var(--spacing) * 0)}.h-0\\.5{height:calc(var(--spacing) * .5)}.h-1{height:calc(var(--spacing) * 1)}.h-1\\.5{height:calc(var(--spacing) * 1.5)}.h-2{height:calc(var(--spacing) * 2)}.h-2\\.5{height:calc(var(--spacing) * 2.5)}.h-3{height:calc(var(--spacing) * 3)}.h-3\\.5{height:calc(var(--spacing) * 3.5)}.h-4{height:calc(var(--spacing) * 4)}.h-5{height:calc(var(--spacing) * 5)}.h-6{height:calc(var(--spacing) * 6)}.h-7{height:calc(var(--spacing) * 7)}.h-8{height:calc(var(--spacing) * 8)}.h-9{height:calc(var(--spacing) * 9)}.h-10{height:calc(var(--spacing) * 10)}.h-11{height:calc(var(--spacing) * 11)}.h-12{height:calc(var(--spacing) * 12)}.h-14{height:calc(var(--spacing) * 14)}.h-16{height:calc(var(--spacing) * 16)}.h-20{height:calc(var(--spacing) * 20)}.h-24{height:calc(var(--spacing) * 24)}.h-32{height:calc(var(--spacing) * 32)}.h-40{height:calc(var(--spacing) * 40)}.h-48{height:calc(var(--spacing) * 48)}.h-64{height:calc(var(--spacing) * 64)}.h-96{height:calc(var(--spacing) * 96)}.h-\\[18px\\]{height:18px}.h-\\[60\\%\\]{height:60%}.h-\\[200vh\\]{height:200vh}.h-\\[300px\\]{height:300px}.h-\\[400px\\]{height:400px}.h-\\[500px\\]{height:500px}.h-\\[600px\\]{height:600px}.h-\\[700px\\]{height:700px}.h-\\[calc\\(100\\%-8rem\\)\\]{height:calc(100% - 8rem)}.h-auto{height:auto}.h-full{height:100%}.h-px{height:1px}.h-screen{height:100vh}.max-h-0{max-height:calc(var(--spacing) * 0)}.max-h-40{max-height:calc(var(--spacing) * 40)}.max-h-48{max-height:calc(var(--spacing) * 48)}.max-h-60{max-height:calc(var(--spacing) * 60)}.max-h-64{max-height:calc(var(--spacing) * 64)}.max-h-80{max-height:calc(var(--spacing) * 80)}.max-h-\\[60vh\\]{max-height:60vh}.max-h-\\[90vh\\]{max-height:90vh}.max-h-\\[100px\\]{max-height:100px}.max-h-\\[150px\\]{max-height:150px}.max-h-\\[240px\\]{max-height:240px}.max-h-\\[400px\\]{max-height:400px}.max-h-\\[1000px\\]{max-height:1000px}.max-h-\\[2000px\\]{max-height:2000px}.max-h-\\[calc\\(100vh_-_3rem\\)\\]{max-height:calc(100vh - 3rem)}.max-h-dvh{max-height:100dvh}.max-h-full{max-height:100%}.min-h-0{min-height:calc(var(--spacing) * 0)}.min-h-4{min-height:calc(var(--spacing) * 4)}.min-h-48{min-height:calc(var(--spacing) * 48)}.min-h-\\[40vh\\]{min-height:40vh}.min-h-\\[60px\\]{min-height:60px}.min-h-\\[60vh\\]{min-height:60vh}.min-h-\\[80px\\]{min-height:80px}.min-h-\\[100px\\]{min-height:100px}.min-h-\\[120px\\]{min-height:120px}.min-h-\\[160px\\]{min-height:160px}.min-h-\\[200px\\]{min-height:200px}.min-h-\\[240px\\]{min-height:240px}.min-h-\\[300px\\]{min-height:300px}.min-h-\\[400px\\]{min-height:400px}.min-h-\\[500px\\]{min-height:500px}.min-h-\\[600px\\]{min-height:600px}.min-h-\\[700px\\]{min-height:700px}.min-h-\\[900px\\]{min-height:900px}.min-h-dvh{min-height:100dvh}.min-h-full{min-height:100%}.min-h-screen{min-height:100vh}.w-0{width:calc(var(--spacing) * 0)}.w-0\\.5{width:calc(var(--spacing) * .5)}.w-1{width:calc(var(--spacing) * 1)}.w-1\\.5{width:calc(var(--spacing) * 1.5)}.w-1\\/2{width:50%}.w-1\\/3{width:33.3333%}.w-2{width:calc(var(--spacing) * 2)}.w-2\\.5{width:calc(var(--spacing) * 2.5)}.w-2\\/3{width:66.6667%}.w-3{width:calc(var(--spacing) * 3)}.w-3\\.5{width:calc(var(--spacing) * 3.5)}.w-3\\/4{width:75%}.w-4{width:calc(var(--spacing) * 4)}.w-5{width:calc(var(--spacing) * 5)}.w-6{width:calc(var(--spacing) * 6)}.w-7{width:calc(var(--spacing) * 7)}.w-8{width:calc(var(--spacing) * 8)}.w-9{width:calc(var(--spacing) * 9)}.w-10{width:calc(var(--spacing) * 10)}.w-11{width:calc(var(--spacing) * 11)}.w-12{width:calc(var(--spacing) * 12)}.w-14{width:calc(var(--spacing) * 14)}.w-16{width:calc(var(--spacing) * 16)}.w-20{width:calc(var(--spacing) * 20)}.w-24{width:calc(var(--spacing) * 24)}.w-28{width:calc(var(--spacing) * 28)}.w-32{width:calc(var(--spacing) * 32)}.w-36{width:calc(var(--spacing) * 36)}.w-40{width:calc(var(--spacing) * 40)}.w-44{width:calc(var(--spacing) * 44)}.w-48{width:calc(var(--spacing) * 48)}.w-56{width:calc(var(--spacing) * 56)}.w-60{width:calc(var(--spacing) * 60)}.w-64{width:calc(var(--spacing) * 64)}.w-72{width:calc(var(--spacing) * 72)}.w-80{width:calc(var(--spacing) * 80)}.w-96{width:calc(var(--spacing) * 96)}.w-\\[60\\%\\]{width:60%}.w-\\[200px\\]{width:200px}.w-\\[280px\\]{width:280px}.w-\\[300px\\]{width:300px}.w-\\[320px\\]{width:320px}.w-\\[350px\\]{width:350px}.w-\\[400px\\]{width:400px}.w-\\[420px\\]{width:420px}.w-\\[480px\\]{width:480px}.w-\\[500px\\]{width:500px}.w-\\[600px\\]{width:600px}.w-\\[800px\\]{width:800px}.w-\\[calc\\(100vw_-_2rem\\)\\]{width:calc(100vw - 2rem)}.w-auto{width:auto}.w-fit{width:fit-content}.w-full{width:100%}.w-px{width:1px}.max-w-2xl{max-width:var(--container-2xl)}.max-w-3xl{max-width:var(--container-3xl)}.max-w-4xl{max-width:var(--container-4xl)}.max-w-5xl{max-width:var(--container-5xl)}.max-w-6xl{max-width:var(--container-6xl)}.max-w-\\[85\\%\\]{max-width:85%}.max-w-\\[90vw\\]{max-width:90vw}.max-w-\\[95\\%\\]{max-width:95%}.max-w-\\[140px\\]{max-width:140px}.max-w-\\[150px\\]{max-width:150px}.max-w-\\[200px\\]{max-width:200px}.max-w-\\[300px\\]{max-width:300px}.max-w-\\[420px\\]{max-width:420px}.max-w-\\[1100px\\]{max-width:1100px}.max-w-\\[1200px\\]{max-width:1200px}.max-w-\\[1800px\\]{max-width:1800px}.max-w-\\[calc\\(100vw-2rem\\)\\]{max-width:calc(100vw - 2rem)}.max-w-full{max-width:100%}.max-w-lg{max-width:var(--container-lg)}.max-w-md{max-width:var(--container-md)}.max-w-none{max-width:none}.max-w-sm{max-width:var(--container-sm)}.max-w-xl{max-width:var(--container-xl)}.max-w-xs{max-width:var(--container-xs)}.min-w-0{min-width:calc(var(--spacing) * 0)}.min-w-5{min-width:calc(var(--spacing) * 5)}.min-w-8{min-width:calc(var(--spacing) * 8)}.min-w-10{min-width:calc(var(--spacing) * 10)}.min-w-12{min-width:calc(var(--spacing) * 12)}.min-w-\\[1\\.25rem\\]{min-width:1.25rem}.min-w-\\[3ch\\]{min-width:3ch}.min-w-\\[10rem\\]{min-width:10rem}.min-w-\\[12rem\\]{min-width:12rem}.min-w-\\[13rem\\]{min-width:13rem}.min-w-\\[18px\\]{min-width:18px}.min-w-\\[20px\\]{min-width:20px}.min-w-\\[80px\\]{min-width:80px}.min-w-\\[100px\\]{min-width:100px}.min-w-\\[120px\\]{min-width:120px}.min-w-\\[140px\\]{min-width:140px}.min-w-\\[150px\\]{min-width:150px}.min-w-\\[180px\\]{min-width:180px}.min-w-\\[200px\\]{min-width:200px}.min-w-\\[300px\\]{min-width:300px}.min-w-\\[320px\\]{min-width:320px}.min-w-\\[350px\\]{min-width:350px}.min-w-\\[600px\\]{min-width:600px}.flex-1{flex:1}.flex-shrink-0,.shrink-0{flex-shrink:0}.flex-grow,.grow{flex-grow:1}.caption-bottom{caption-side:bottom}.origin-left{transform-origin:0}.-translate-x-1\\/2{--tw-translate-x:calc(calc(1 / 2 * 100%) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)}.-translate-x-full{--tw-translate-x:-100%;translate:var(--tw-translate-x) var(--tw-translate-y)}.translate-x-0{--tw-translate-x:calc(var(--spacing) * 0);translate:var(--tw-translate-x) var(--tw-translate-y)}.translate-x-0\\.5{--tw-translate-x:calc(var(--spacing) * .5);translate:var(--tw-translate-x) var(--tw-translate-y)}.translate-x-4{--tw-translate-x:calc(var(--spacing) * 4);translate:var(--tw-translate-x) var(--tw-translate-y)}.translate-x-5{--tw-translate-x:calc(var(--spacing) * 5);translate:var(--tw-translate-x) var(--tw-translate-y)}.translate-x-7{--tw-translate-x:calc(var(--spacing) * 7);translate:var(--tw-translate-x) var(--tw-translate-y)}.-translate-y-1\\/2{--tw-translate-y:calc(calc(1 / 2 * 100%) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)}.-translate-y-full{--tw-translate-y:-100%;translate:var(--tw-translate-x) var(--tw-translate-y)}.translate-y-4{--tw-translate-y:calc(var(--spacing) * 4);translate:var(--tw-translate-x) var(--tw-translate-y)}.scale-0{--tw-scale-x:0%;--tw-scale-y:0%;--tw-scale-z:0%;scale:var(--tw-scale-x) var(--tw-scale-y)}.scale-100{--tw-scale-x:100%;--tw-scale-y:100%;--tw-scale-z:100%;scale:var(--tw-scale-x) var(--tw-scale-y)}.scale-\\[1\\.01\\]{scale:1.01}.-rotate-90{rotate:-90deg}.-rotate-180{rotate:-180deg}.rotate-90{rotate:90deg}.rotate-180{rotate:180deg}.transform{transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.animate-\\[indeterminate_1\\.5s_ease-in-out_infinite\\]{animation:1.5s ease-in-out infinite indeterminate}.animate-\\[progress-stripes_1s_linear_infinite\\]{animation:1s linear infinite progress-stripes}.animate-bounce{animation:var(--animate-bounce)}.animate-ping{animation:var(--animate-ping)}.animate-pulse{animation:var(--animate-pulse)}.animate-spin{animation:var(--animate-spin)}.cursor-default{cursor:default}.cursor-not-allowed{cursor:not-allowed}.cursor-pointer{cursor:pointer}.cursor-wait{cursor:wait}.resize{resize:both}.resize-none{resize:none}.resize-x{resize:horizontal}.resize-y{resize:vertical}.list-inside{list-style-position:inside}.list-decimal{list-style-type:decimal}.list-disc{list-style-type:disc}.appearance-none{appearance:none}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}.grid-cols-7{grid-template-columns:repeat(7,minmax(0,1fr))}.grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}.grid-rows-\\[0fr\\]{grid-template-rows:0fr}.grid-rows-\\[1fr\\]{grid-template-rows:1fr}.flex-col{flex-direction:column}.flex-col-reverse{flex-direction:column-reverse}.flex-row{flex-direction:row}.flex-row-reverse{flex-direction:row-reverse}.flex-wrap{flex-wrap:wrap}.items-baseline{align-items:baseline}.items-center{align-items:center}.items-end{align-items:flex-end}.items-start{align-items:flex-start}.items-stretch{align-items:stretch}.justify-around{justify-content:space-around}.justify-between{justify-content:space-between}.justify-center{justify-content:center}.justify-end{justify-content:flex-end}.justify-start{justify-content:flex-start}.gap-0{gap:calc(var(--spacing) * 0)}.gap-0\\.5{gap:calc(var(--spacing) * .5)}.gap-1{gap:calc(var(--spacing) * 1)}.gap-1\\.5{gap:calc(var(--spacing) * 1.5)}.gap-2{gap:calc(var(--spacing) * 2)}.gap-2\\.5{gap:calc(var(--spacing) * 2.5)}.gap-3{gap:calc(var(--spacing) * 3)}.gap-4{gap:calc(var(--spacing) * 4)}.gap-6{gap:calc(var(--spacing) * 6)}.gap-8{gap:calc(var(--spacing) * 8)}.gap-12{gap:calc(var(--spacing) * 12)}.gap-20{gap:calc(var(--spacing) * 20)}:where(.space-y-0>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 0) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 0) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-0\\.5>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * .5) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * .5) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-1>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 1) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-1\\.5>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 1.5) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 1.5) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-2>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-2\\.5>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 2.5) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 2.5) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-3>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-4>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-6>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-8>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 8) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse)))}:where(.space-y-12>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(calc(var(--spacing) * 12) * var(--tw-space-y-reverse));margin-block-end:calc(calc(var(--spacing) * 12) * calc(1 - var(--tw-space-y-reverse)))}.gap-x-2{column-gap:calc(var(--spacing) * 2)}.gap-x-3{column-gap:calc(var(--spacing) * 3)}.gap-x-4{column-gap:calc(var(--spacing) * 4)}.gap-x-6{column-gap:calc(var(--spacing) * 6)}.gap-x-8{column-gap:calc(var(--spacing) * 8)}:where(.-space-x-1>:not(:last-child)){--tw-space-x-reverse:0;margin-inline-start:calc(calc(var(--spacing) * -1) * var(--tw-space-x-reverse));margin-inline-end:calc(calc(var(--spacing) * -1) * calc(1 - var(--tw-space-x-reverse)))}:where(.-space-x-2>:not(:last-child)){--tw-space-x-reverse:0;margin-inline-start:calc(calc(var(--spacing) * -2) * var(--tw-space-x-reverse));margin-inline-end:calc(calc(var(--spacing) * -2) * calc(1 - var(--tw-space-x-reverse)))}.gap-y-1{row-gap:calc(var(--spacing) * 1)}.gap-y-2{row-gap:calc(var(--spacing) * 2)}.gap-y-3{row-gap:calc(var(--spacing) * 3)}:where(.divide-y>:not(:last-child)){--tw-divide-y-reverse:0;border-bottom-style:var(--tw-border-style);border-top-style:var(--tw-border-style);border-top-width:calc(1px * var(--tw-divide-y-reverse));border-bottom-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)))}:where(.divide-border>:not(:last-child)),:where(.divide-border\\/50>:not(:last-child)){border-color:var(--color-border)}@supports (color:color-mix(in lab, red, red)){:where(.divide-border\\/50>:not(:last-child)){border-color:color-mix(in oklab, var(--color-border) 50%, transparent)}}:where(.divide-gray-100>:not(:last-child)){border-color:var(--color-gray-100)}:where(.divide-gray-200>:not(:last-child)){border-color:var(--color-gray-200)}:where(.divide-neutral-100>:not(:last-child)){border-color:var(--color-neutral-100)}:where(.divide-neutral-200>:not(:last-child)){border-color:var(--color-neutral-200)}.self-center{align-self:center}.self-start{align-self:flex-start}.truncate{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.overflow-auto{overflow:auto}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.scroll-smooth{scroll-behavior:smooth}.rounded{border-radius:.25rem}.rounded-2xl{border-radius:var(--radius-2xl)}.rounded-\\[16px\\]{border-radius:16px}.rounded-\\[20px\\]{border-radius:20px}.rounded-full{border-radius:3.40282e38px}.rounded-lg{border-radius:var(--radius-lg)}.rounded-md{border-radius:var(--radius-md)}.rounded-none{border-radius:0}.rounded-sm{border-radius:var(--radius-sm)}.rounded-xl{border-radius:var(--radius-xl)}.rounded-t{border-top-left-radius:.25rem;border-top-right-radius:.25rem}.rounded-t-2xl{border-top-left-radius:var(--radius-2xl);border-top-right-radius:var(--radius-2xl)}.rounded-t-lg{border-top-left-radius:var(--radius-lg);border-top-right-radius:var(--radius-lg)}.rounded-t-xl{border-top-left-radius:var(--radius-xl);border-top-right-radius:var(--radius-xl)}.rounded-l-lg{border-top-left-radius:var(--radius-lg);border-bottom-left-radius:var(--radius-lg)}.rounded-l-md{border-top-left-radius:var(--radius-md);border-bottom-left-radius:var(--radius-md)}.rounded-l-none{border-top-left-radius:0;border-bottom-left-radius:0}.rounded-l-xl{border-top-left-radius:var(--radius-xl);border-bottom-left-radius:var(--radius-xl)}.rounded-tl{border-top-left-radius:.25rem}.rounded-tl-lg{border-top-left-radius:var(--radius-lg)}.rounded-tl-sm{border-top-left-radius:var(--radius-sm)}.rounded-r-lg{border-top-right-radius:var(--radius-lg);border-bottom-right-radius:var(--radius-lg)}.rounded-r-md{border-top-right-radius:var(--radius-md);border-bottom-right-radius:var(--radius-md)}.rounded-tr{border-top-right-radius:.25rem}.rounded-tr-lg{border-top-right-radius:var(--radius-lg)}.rounded-tr-sm{border-top-right-radius:var(--radius-sm)}.rounded-b-lg{border-bottom-right-radius:var(--radius-lg);border-bottom-left-radius:var(--radius-lg)}.rounded-b-none{border-bottom-right-radius:0;border-bottom-left-radius:0}.rounded-br{border-bottom-right-radius:.25rem}.rounded-br-lg{border-bottom-right-radius:var(--radius-lg)}.rounded-br-md{border-bottom-right-radius:var(--radius-md)}.rounded-bl{border-bottom-left-radius:.25rem}.rounded-bl-lg{border-bottom-left-radius:var(--radius-lg)}.rounded-bl-md{border-bottom-left-radius:var(--radius-md)}.border{border-style:var(--tw-border-style);border-width:1px}.border-0{border-style:var(--tw-border-style);border-width:0}.border-2{border-style:var(--tw-border-style);border-width:2px}.border-4{border-style:var(--tw-border-style);border-width:4px}.border-t{border-top-style:var(--tw-border-style);border-top-width:1px}.border-t-0{border-top-style:var(--tw-border-style);border-top-width:0}.border-t-4{border-top-style:var(--tw-border-style);border-top-width:4px}.border-r{border-right-style:var(--tw-border-style);border-right-width:1px}.border-r-0{border-right-style:var(--tw-border-style);border-right-width:0}.border-r-4{border-right-style:var(--tw-border-style);border-right-width:4px}.border-b{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.border-b-2{border-bottom-style:var(--tw-border-style);border-bottom-width:2px}.border-b-4{border-bottom-style:var(--tw-border-style);border-bottom-width:4px}.border-l{border-left-style:var(--tw-border-style);border-left-width:1px}.border-l-0{border-left-style:var(--tw-border-style);border-left-width:0}.border-l-2{border-left-style:var(--tw-border-style);border-left-width:2px}.border-l-4{border-left-style:var(--tw-border-style);border-left-width:4px}.border-dashed{--tw-border-style:dashed;border-style:dashed}.border-none{--tw-border-style:none;border-style:none}.border-\\[\\#635bff\\]\\/30{border-color:oklab(57.843% .0338314 -.232163/.3)}.border-\\[var\\(--mieweb-border\\)\\]{border-color:var(--mieweb-border)}.border-amber-200{border-color:var(--color-amber-200)}.border-blue-200{border-color:var(--color-blue-200)}.border-blue-500{border-color:var(--color-blue-500)}.border-blue-500\\/50{border-color:#3080ff80}@supports (color:color-mix(in lab, red, red)){.border-blue-500\\/50{border-color:color-mix(in oklab, var(--color-blue-500) 50%, transparent)}}.border-blue-600{border-color:var(--color-blue-600)}.border-blue-800{border-color:var(--color-blue-800)}.border-border,.border-border\\/50{border-color:var(--color-border)}@supports (color:color-mix(in lab, red, red)){.border-border\\/50{border-color:color-mix(in oklab, var(--color-border) 50%, transparent)}}.border-border\\/80{border-color:var(--color-border)}@supports (color:color-mix(in lab, red, red)){.border-border\\/80{border-color:color-mix(in oklab, var(--color-border) 80%, transparent)}}.border-chart-1{border-color:var(--color-chart-1)}.border-chart-2{border-color:var(--color-chart-2)}.border-chart-3{border-color:var(--color-chart-3)}.border-chart-4{border-color:var(--color-chart-4)}.border-chart-5{border-color:var(--color-chart-5)}.border-current{border-color:currentColor}.border-destructive{border-color:var(--color-destructive)}.border-destructive-200{border-color:var(--color-destructive-200)}.border-destructive-300{border-color:var(--color-destructive-300)}.border-destructive\\/20{border-color:var(--color-destructive)}@supports (color:color-mix(in lab, red, red)){.border-destructive\\/20{border-color:color-mix(in oklab, var(--color-destructive) 20%, transparent)}}.border-destructive\\/30{border-color:var(--color-destructive)}@supports (color:color-mix(in lab, red, red)){.border-destructive\\/30{border-color:color-mix(in oklab, var(--color-destructive) 30%, transparent)}}.border-destructive\\/50{border-color:var(--color-destructive)}@supports (color:color-mix(in lab, red, red)){.border-destructive\\/50{border-color:color-mix(in oklab, var(--color-destructive) 50%, transparent)}}.border-foreground{border-color:var(--color-foreground)}.border-gray-100{border-color:var(--color-gray-100)}.border-gray-200{border-color:var(--color-gray-200)}.border-gray-300{border-color:var(--color-gray-300)}.border-gray-700{border-color:var(--color-gray-700)}.border-green-200{border-color:var(--color-green-200)}.border-green-500{border-color:var(--color-green-500)}.border-green-500\\/50{border-color:#00c75880}@supports (color:color-mix(in lab, red, red)){.border-green-500\\/50{border-color:color-mix(in oklab, var(--color-green-500) 50%, transparent)}}.border-green-800{border-color:var(--color-green-800)}.border-info-200{border-color:var(--color-info-200)}.border-info-300{border-color:var(--color-info-300)}.border-info\\/30{border-color:var(--color-info)}@supports (color:color-mix(in lab, red, red)){.border-info\\/30{border-color:color-mix(in oklab, var(--color-info) 30%, transparent)}}.border-input{border-color:var(--color-input)}.border-muted{border-color:var(--color-muted)}.border-muted-foreground,.border-muted-foreground\\/25{border-color:var(--color-muted-foreground)}@supports (color:color-mix(in lab, red, red)){.border-muted-foreground\\/25{border-color:color-mix(in oklab, var(--color-muted-foreground) 25%, transparent)}}.border-muted-foreground\\/40{border-color:var(--color-muted-foreground)}@supports (color:color-mix(in lab, red, red)){.border-muted-foreground\\/40{border-color:color-mix(in oklab, var(--color-muted-foreground) 40%, transparent)}}.border-neutral-50{border-color:var(--color-neutral-50)}.border-neutral-100{border-color:var(--color-neutral-100)}.border-neutral-200{border-color:var(--color-neutral-200)}.border-neutral-300{border-color:var(--color-neutral-300)}.border-neutral-500{border-color:var(--color-neutral-500)}.border-primary{border-color:var(--color-primary)}.border-primary-200{border-color:var(--color-primary-200)}.border-primary-500{border-color:var(--color-primary-500)}.border-primary-800{border-color:var(--color-primary-800)}.border-primary\\/30{border-color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.border-primary\\/30{border-color:color-mix(in oklab, var(--color-primary) 30%, transparent)}}.border-primary\\/50{border-color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.border-primary\\/50{border-color:color-mix(in oklab, var(--color-primary) 50%, transparent)}}.border-red-200{border-color:var(--color-red-200)}.border-red-300{border-color:var(--color-red-300)}.border-red-400{border-color:var(--color-red-400)}.border-red-500{border-color:var(--color-red-500)}.border-red-500\\/50{border-color:#fb2c3680}@supports (color:color-mix(in lab, red, red)){.border-red-500\\/50{border-color:color-mix(in oklab, var(--color-red-500) 50%, transparent)}}.border-red-800{border-color:var(--color-red-800)}.border-secondary{border-color:var(--color-secondary)}.border-secondary-200{border-color:var(--color-secondary-200)}.border-success{border-color:var(--color-success)}.border-success-200{border-color:var(--color-success-200)}.border-success-300{border-color:var(--color-success-300)}.border-success\\/30{border-color:var(--color-success)}@supports (color:color-mix(in lab, red, red)){.border-success\\/30{border-color:color-mix(in oklab, var(--color-success) 30%, transparent)}}.border-success\\/50{border-color:var(--color-success)}@supports (color:color-mix(in lab, red, red)){.border-success\\/50{border-color:color-mix(in oklab, var(--color-success) 50%, transparent)}}.border-transparent{border-color:#0000}.border-warning{border-color:var(--color-warning)}.border-warning-200{border-color:var(--color-warning-200)}.border-warning-300{border-color:var(--color-warning-300)}.border-warning-700{border-color:var(--color-warning-700)}.border-warning\\/30{border-color:var(--color-warning)}@supports (color:color-mix(in lab, red, red)){.border-warning\\/30{border-color:color-mix(in oklab, var(--color-warning) 30%, transparent)}}.border-white{border-color:var(--color-white)}.border-white\\/10{border-color:#ffffff1a}@supports (color:color-mix(in lab, red, red)){.border-white\\/10{border-color:color-mix(in oklab, var(--color-white) 10%, transparent)}}.border-white\\/30{border-color:#ffffff4d}@supports (color:color-mix(in lab, red, red)){.border-white\\/30{border-color:color-mix(in oklab, var(--color-white) 30%, transparent)}}.border-white\\/40{border-color:#fff6}@supports (color:color-mix(in lab, red, red)){.border-white\\/40{border-color:color-mix(in oklab, var(--color-white) 40%, transparent)}}.border-yellow-200{border-color:var(--color-yellow-200)}.border-yellow-300{border-color:var(--color-yellow-300)}.border-yellow-400{border-color:var(--color-yellow-400)}.border-yellow-500{border-color:var(--color-yellow-500)}.border-yellow-500\\/50{border-color:#edb20080}@supports (color:color-mix(in lab, red, red)){.border-yellow-500\\/50{border-color:color-mix(in oklab, var(--color-yellow-500) 50%, transparent)}}.border-yellow-800{border-color:var(--color-yellow-800)}.border-t-transparent{border-top-color:#0000}.bg-\\[\\#635bff\\]\\/10{background-color:oklab(57.843% .0338314 -.232163/.1)}.bg-\\[var\\(--mieweb-background\\)\\]{background-color:var(--mieweb-background)}.bg-\\[var\\(--mieweb-card\\)\\]{background-color:var(--mieweb-card)}.bg-\\[var\\(--mieweb-destructive\\)\\]{background-color:var(--mieweb-destructive)}.bg-\\[var\\(--mieweb-muted\\)\\]{background-color:var(--mieweb-muted)}.bg-\\[var\\(--mieweb-primary-500\\)\\]{background-color:var(--mieweb-primary-500)}.bg-\\[var\\(--mieweb-success\\)\\]{background-color:var(--mieweb-success)}.bg-amber-50{background-color:var(--color-amber-50)}.bg-amber-100{background-color:var(--color-amber-100)}.bg-amber-500{background-color:var(--color-amber-500)}.bg-amber-600{background-color:var(--color-amber-600)}.bg-amber-700{background-color:var(--color-amber-700)}.bg-background,.bg-background\\/60{background-color:var(--color-background)}@supports (color:color-mix(in lab, red, red)){.bg-background\\/60{background-color:color-mix(in oklab, var(--color-background) 60%, transparent)}}.bg-background\\/80{background-color:var(--color-background)}@supports (color:color-mix(in lab, red, red)){.bg-background\\/80{background-color:color-mix(in oklab, var(--color-background) 80%, transparent)}}.bg-background\\/90{background-color:var(--color-background)}@supports (color:color-mix(in lab, red, red)){.bg-background\\/90{background-color:color-mix(in oklab, var(--color-background) 90%, transparent)}}.bg-background\\/95{background-color:var(--color-background)}@supports (color:color-mix(in lab, red, red)){.bg-background\\/95{background-color:color-mix(in oklab, var(--color-background) 95%, transparent)}}.bg-black{background-color:var(--color-black)}.bg-black\\/0{background-color:#0000}@supports (color:color-mix(in lab, red, red)){.bg-black\\/0{background-color:color-mix(in oklab, var(--color-black) 0%, transparent)}}.bg-black\\/30{background-color:#0000004d}@supports (color:color-mix(in lab, red, red)){.bg-black\\/30{background-color:color-mix(in oklab, var(--color-black) 30%, transparent)}}.bg-black\\/40{background-color:#0006}@supports (color:color-mix(in lab, red, red)){.bg-black\\/40{background-color:color-mix(in oklab, var(--color-black) 40%, transparent)}}.bg-black\\/50{background-color:#00000080}@supports (color:color-mix(in lab, red, red)){.bg-black\\/50{background-color:color-mix(in oklab, var(--color-black) 50%, transparent)}}.bg-black\\/60{background-color:#0009}@supports (color:color-mix(in lab, red, red)){.bg-black\\/60{background-color:color-mix(in oklab, var(--color-black) 60%, transparent)}}.bg-black\\/70{background-color:#000000b3}@supports (color:color-mix(in lab, red, red)){.bg-black\\/70{background-color:color-mix(in oklab, var(--color-black) 70%, transparent)}}.bg-black\\/90{background-color:#000000e6}@supports (color:color-mix(in lab, red, red)){.bg-black\\/90{background-color:color-mix(in oklab, var(--color-black) 90%, transparent)}}.bg-blue-50{background-color:var(--color-blue-50)}.bg-blue-50\\/50{background-color:#eff6ff80}@supports (color:color-mix(in lab, red, red)){.bg-blue-50\\/50{background-color:color-mix(in oklab, var(--color-blue-50) 50%, transparent)}}.bg-blue-100{background-color:var(--color-blue-100)}.bg-blue-200{background-color:var(--color-blue-200)}.bg-blue-500{background-color:var(--color-blue-500)}.bg-blue-700{background-color:var(--color-blue-700)}.bg-blue-900{background-color:var(--color-blue-900)}.bg-border{background-color:var(--color-border)}.bg-card,.bg-card\\/80{background-color:var(--color-card)}@supports (color:color-mix(in lab, red, red)){.bg-card\\/80{background-color:color-mix(in oklab, var(--color-card) 80%, transparent)}}.bg-chart-1{background-color:var(--color-chart-1)}.bg-chart-2{background-color:var(--color-chart-2)}.bg-chart-3{background-color:var(--color-chart-3)}.bg-chart-4{background-color:var(--color-chart-4)}.bg-chart-5{background-color:var(--color-chart-5)}.bg-current{background-color:currentColor}.bg-cyan-100{background-color:var(--color-cyan-100)}.bg-destructive{background-color:var(--color-destructive)}.bg-destructive-50{background-color:var(--color-destructive-50)}.bg-destructive-100{background-color:var(--color-destructive-100)}.bg-destructive-500{background-color:var(--color-destructive-500)}.bg-destructive-600{background-color:var(--color-destructive-600)}.bg-destructive\\/5{background-color:var(--color-destructive)}@supports (color:color-mix(in lab, red, red)){.bg-destructive\\/5{background-color:color-mix(in oklab, var(--color-destructive) 5%, transparent)}}.bg-destructive\\/10{background-color:var(--color-destructive)}@supports (color:color-mix(in lab, red, red)){.bg-destructive\\/10{background-color:color-mix(in oklab, var(--color-destructive) 10%, transparent)}}.bg-emerald-100{background-color:var(--color-emerald-100)}.bg-foreground,.bg-foreground\\/50{background-color:var(--color-foreground)}@supports (color:color-mix(in lab, red, red)){.bg-foreground\\/50{background-color:color-mix(in oklab, var(--color-foreground) 50%, transparent)}}.bg-gray-50{background-color:var(--color-gray-50)}.bg-gray-100{background-color:var(--color-gray-100)}.bg-gray-200{background-color:var(--color-gray-200)}.bg-gray-400{background-color:var(--color-gray-400)}.bg-gray-600{background-color:var(--color-gray-600)}.bg-gray-900{background-color:var(--color-gray-900)}.bg-green-50{background-color:var(--color-green-50)}.bg-green-50\\/50{background-color:#f0fdf480}@supports (color:color-mix(in lab, red, red)){.bg-green-50\\/50{background-color:color-mix(in oklab, var(--color-green-50) 50%, transparent)}}.bg-green-100{background-color:var(--color-green-100)}.bg-green-400{background-color:var(--color-green-400)}.bg-green-500{background-color:var(--color-green-500)}.bg-green-500\\/20{background-color:#00c75833}@supports (color:color-mix(in lab, red, red)){.bg-green-500\\/20{background-color:color-mix(in oklab, var(--color-green-500) 20%, transparent)}}.bg-green-500\\/80{background-color:#00c758cc}@supports (color:color-mix(in lab, red, red)){.bg-green-500\\/80{background-color:color-mix(in oklab, var(--color-green-500) 80%, transparent)}}.bg-green-500\\/90{background-color:#00c758e6}@supports (color:color-mix(in lab, red, red)){.bg-green-500\\/90{background-color:color-mix(in oklab, var(--color-green-500) 90%, transparent)}}.bg-green-600{background-color:var(--color-green-600)}.bg-green-700{background-color:var(--color-green-700)}.bg-info{background-color:var(--color-info)}.bg-info-50{background-color:var(--color-info-50)}.bg-info-100{background-color:var(--color-info-100)}.bg-info-500{background-color:var(--color-info-500)}.bg-info-600{background-color:var(--color-info-600)}.bg-info\\/10{background-color:var(--color-info)}@supports (color:color-mix(in lab, red, red)){.bg-info\\/10{background-color:color-mix(in oklab, var(--color-info) 10%, transparent)}}.bg-muted{background-color:var(--color-muted)}.bg-muted-foreground{background-color:var(--color-muted-foreground)}.bg-muted\\/10{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.bg-muted\\/10{background-color:color-mix(in oklab, var(--color-muted) 10%, transparent)}}.bg-muted\\/30{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.bg-muted\\/30{background-color:color-mix(in oklab, var(--color-muted) 30%, transparent)}}.bg-muted\\/50{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.bg-muted\\/50{background-color:color-mix(in oklab, var(--color-muted) 50%, transparent)}}.bg-neutral-50{background-color:var(--color-neutral-50)}.bg-neutral-100{background-color:var(--color-neutral-100)}.bg-neutral-200{background-color:var(--color-neutral-200)}.bg-neutral-300{background-color:var(--color-neutral-300)}.bg-neutral-400{background-color:var(--color-neutral-400)}.bg-neutral-500{background-color:var(--color-neutral-500)}.bg-neutral-600{background-color:var(--color-neutral-600)}.bg-neutral-700{background-color:var(--color-neutral-700)}.bg-neutral-800{background-color:var(--color-neutral-800)}.bg-neutral-900{background-color:var(--color-neutral-900)}.bg-orange-50{background-color:var(--color-orange-50)}.bg-orange-100{background-color:var(--color-orange-100)}.bg-orange-500{background-color:var(--color-orange-500)}.bg-orange-600{background-color:var(--color-orange-600)}.bg-pink-600{background-color:var(--color-pink-600)}.bg-primary{background-color:var(--color-primary)}.bg-primary-50,.bg-primary-50\\/50{background-color:var(--color-primary-50)}@supports (color:color-mix(in lab, red, red)){.bg-primary-50\\/50{background-color:color-mix(in oklab, var(--color-primary-50) 50%, transparent)}}.bg-primary-50\\/90{background-color:var(--color-primary-50)}@supports (color:color-mix(in lab, red, red)){.bg-primary-50\\/90{background-color:color-mix(in oklab, var(--color-primary-50) 90%, transparent)}}.bg-primary-100{background-color:var(--color-primary-100)}.bg-primary-200{background-color:var(--color-primary-200)}.bg-primary-300{background-color:var(--color-primary-300)}.bg-primary-400{background-color:var(--color-primary-400)}.bg-primary-500,.bg-primary-500\\/10{background-color:var(--color-primary-500)}@supports (color:color-mix(in lab, red, red)){.bg-primary-500\\/10{background-color:color-mix(in oklab, var(--color-primary-500) 10%, transparent)}}.bg-primary-600{background-color:var(--color-primary-600)}.bg-primary-700,.bg-primary-700\\/50{background-color:var(--color-primary-700)}@supports (color:color-mix(in lab, red, red)){.bg-primary-700\\/50{background-color:color-mix(in oklab, var(--color-primary-700) 50%, transparent)}}.bg-primary-800,.bg-primary-800\\/30{background-color:var(--color-primary-800)}@supports (color:color-mix(in lab, red, red)){.bg-primary-800\\/30{background-color:color-mix(in oklab, var(--color-primary-800) 30%, transparent)}}.bg-primary-900{background-color:var(--color-primary-900)}.bg-primary-950{background-color:var(--color-primary-950)}.bg-primary\\/5{background-color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.bg-primary\\/5{background-color:color-mix(in oklab, var(--color-primary) 5%, transparent)}}.bg-primary\\/10{background-color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.bg-primary\\/10{background-color:color-mix(in oklab, var(--color-primary) 10%, transparent)}}.bg-purple-50{background-color:var(--color-purple-50)}.bg-purple-100{background-color:var(--color-purple-100)}.bg-purple-600{background-color:var(--color-purple-600)}.bg-red-50{background-color:var(--color-red-50)}.bg-red-50\\/50{background-color:#fef2f280}@supports (color:color-mix(in lab, red, red)){.bg-red-50\\/50{background-color:color-mix(in oklab, var(--color-red-50) 50%, transparent)}}.bg-red-100{background-color:var(--color-red-100)}.bg-red-400{background-color:var(--color-red-400)}.bg-red-400\\/40{background-color:#ff656866}@supports (color:color-mix(in lab, red, red)){.bg-red-400\\/40{background-color:color-mix(in oklab, var(--color-red-400) 40%, transparent)}}.bg-red-500{background-color:var(--color-red-500)}.bg-red-500\\/10{background-color:#fb2c361a}@supports (color:color-mix(in lab, red, red)){.bg-red-500\\/10{background-color:color-mix(in oklab, var(--color-red-500) 10%, transparent)}}.bg-red-500\\/20{background-color:#fb2c3633}@supports (color:color-mix(in lab, red, red)){.bg-red-500\\/20{background-color:color-mix(in oklab, var(--color-red-500) 20%, transparent)}}.bg-red-500\\/30{background-color:#fb2c364d}@supports (color:color-mix(in lab, red, red)){.bg-red-500\\/30{background-color:color-mix(in oklab, var(--color-red-500) 30%, transparent)}}.bg-red-600{background-color:var(--color-red-600)}.bg-red-700{background-color:var(--color-red-700)}.bg-rose-100{background-color:var(--color-rose-100)}.bg-secondary{background-color:var(--color-secondary)}.bg-secondary-50{background-color:var(--color-secondary-50)}.bg-secondary-100{background-color:var(--color-secondary-100)}.bg-secondary-500{background-color:var(--color-secondary-500)}.bg-secondary-600{background-color:var(--color-secondary-600)}.bg-sky-100{background-color:var(--color-sky-100)}.bg-slate-900{background-color:var(--color-slate-900)}.bg-success{background-color:var(--color-success)}.bg-success-50{background-color:var(--color-success-50)}.bg-success-100{background-color:var(--color-success-100)}.bg-success-500{background-color:var(--color-success-500)}.bg-success-600{background-color:var(--color-success-600)}.bg-success-700{background-color:var(--color-success-700)}.bg-success\\/10{background-color:var(--color-success)}@supports (color:color-mix(in lab, red, red)){.bg-success\\/10{background-color:color-mix(in oklab, var(--color-success) 10%, transparent)}}.bg-teal-600{background-color:var(--color-teal-600)}.bg-transparent{background-color:#0000}.bg-violet-100{background-color:var(--color-violet-100)}.bg-violet-500{background-color:var(--color-violet-500)}.bg-warning{background-color:var(--color-warning)}.bg-warning-50{background-color:var(--color-warning-50)}.bg-warning-100{background-color:var(--color-warning-100)}.bg-warning-500{background-color:var(--color-warning-500)}.bg-warning-600{background-color:var(--color-warning-600)}.bg-warning-700{background-color:var(--color-warning-700)}.bg-warning\\/10{background-color:var(--color-warning)}@supports (color:color-mix(in lab, red, red)){.bg-warning\\/10{background-color:color-mix(in oklab, var(--color-warning) 10%, transparent)}}.bg-white{background-color:var(--color-white)}.bg-white\\/10{background-color:#ffffff1a}@supports (color:color-mix(in lab, red, red)){.bg-white\\/10{background-color:color-mix(in oklab, var(--color-white) 10%, transparent)}}.bg-white\\/20{background-color:#fff3}@supports (color:color-mix(in lab, red, red)){.bg-white\\/20{background-color:color-mix(in oklab, var(--color-white) 20%, transparent)}}.bg-white\\/50{background-color:#ffffff80}@supports (color:color-mix(in lab, red, red)){.bg-white\\/50{background-color:color-mix(in oklab, var(--color-white) 50%, transparent)}}.bg-white\\/80{background-color:#fffc}@supports (color:color-mix(in lab, red, red)){.bg-white\\/80{background-color:color-mix(in oklab, var(--color-white) 80%, transparent)}}.bg-white\\/90{background-color:#ffffffe6}@supports (color:color-mix(in lab, red, red)){.bg-white\\/90{background-color:color-mix(in oklab, var(--color-white) 90%, transparent)}}.bg-yellow-50{background-color:var(--color-yellow-50)}.bg-yellow-100{background-color:var(--color-yellow-100)}.bg-yellow-400{background-color:var(--color-yellow-400)}.bg-yellow-500{background-color:var(--color-yellow-500)}.bg-yellow-600{background-color:var(--color-yellow-600)}.bg-yellow-700{background-color:var(--color-yellow-700)}.bg-gradient-to-br{--tw-gradient-position:to bottom right in oklab;background-image:linear-gradient(var(--tw-gradient-stops))}.bg-gradient-to-r{--tw-gradient-position:to right in oklab;background-image:linear-gradient(var(--tw-gradient-stops))}.bg-gradient-to-t{--tw-gradient-position:to top in oklab;background-image:linear-gradient(var(--tw-gradient-stops))}.from-blue-600{--tw-gradient-from:var(--color-blue-600);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-gray-200{--tw-gradient-from:var(--color-gray-200);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-neutral-900\\/60{--tw-gradient-from:var(--color-neutral-900)}@supports (color:color-mix(in lab, red, red)){.from-neutral-900\\/60{--tw-gradient-from:color-mix(in oklab, var(--color-neutral-900) 60%, transparent)}}.from-neutral-900\\/60{--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-primary-500{--tw-gradient-from:var(--color-primary-500);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-transparent{--tw-gradient-from:transparent;--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-violet-500{--tw-gradient-from:var(--color-violet-500);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.via-gray-100{--tw-gradient-via:var(--color-gray-100);--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)}.via-white\\/20{--tw-gradient-via:#fff3}@supports (color:color-mix(in lab, red, red)){.via-white\\/20{--tw-gradient-via:color-mix(in oklab, var(--color-white) 20%, transparent)}}.via-white\\/20{--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)}.to-blue-800{--tw-gradient-to:var(--color-blue-800);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-gray-200{--tw-gradient-to:var(--color-gray-200);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-purple-600{--tw-gradient-to:var(--color-purple-600);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-transparent{--tw-gradient-to:transparent;--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.bg-\\[length\\:1\\.5em_1\\.5em\\]{background-size:1.5em 1.5em}.bg-\\[length\\:1rem_100\\%\\]{background-size:1rem 100%}.bg-\\[length\\:200\\%_100\\%\\]{background-size:200% 100%}.bg-\\[right_0\\.5rem_center\\]{background-position:right .5rem center}.bg-right{background-position:100%}.bg-no-repeat{background-repeat:no-repeat}.fill-warning{fill:var(--color-warning)}.stroke-green-500{stroke:var(--color-green-500)}.stroke-neutral-200{stroke:var(--color-neutral-200)}.stroke-primary-500{stroke:var(--color-primary-500)}.stroke-red-500{stroke:var(--color-red-500)}.stroke-yellow-500{stroke:var(--color-yellow-500)}.object-contain{object-fit:contain}.object-cover{object-fit:cover}.p-0{padding:calc(var(--spacing) * 0)}.p-0\\.5{padding:calc(var(--spacing) * .5)}.p-1{padding:calc(var(--spacing) * 1)}.p-1\\.5{padding:calc(var(--spacing) * 1.5)}.p-2{padding:calc(var(--spacing) * 2)}.p-3{padding:calc(var(--spacing) * 3)}.p-4{padding:calc(var(--spacing) * 4)}.p-5{padding:calc(var(--spacing) * 5)}.p-6{padding:calc(var(--spacing) * 6)}.p-8{padding:calc(var(--spacing) * 8)}.p-20{padding:calc(var(--spacing) * 20)}.px-1{padding-inline:calc(var(--spacing) * 1)}.px-1\\.5{padding-inline:calc(var(--spacing) * 1.5)}.px-2{padding-inline:calc(var(--spacing) * 2)}.px-2\\.5{padding-inline:calc(var(--spacing) * 2.5)}.px-3{padding-inline:calc(var(--spacing) * 3)}.px-4{padding-inline:calc(var(--spacing) * 4)}.px-5{padding-inline:calc(var(--spacing) * 5)}.px-6{padding-inline:calc(var(--spacing) * 6)}.py-0{padding-block:calc(var(--spacing) * 0)}.py-0\\.5{padding-block:calc(var(--spacing) * .5)}.py-1{padding-block:calc(var(--spacing) * 1)}.py-1\\.5{padding-block:calc(var(--spacing) * 1.5)}.py-2{padding-block:calc(var(--spacing) * 2)}.py-2\\.5{padding-block:calc(var(--spacing) * 2.5)}.py-3{padding-block:calc(var(--spacing) * 3)}.py-4{padding-block:calc(var(--spacing) * 4)}.py-6{padding-block:calc(var(--spacing) * 6)}.py-8{padding-block:calc(var(--spacing) * 8)}.py-12{padding-block:calc(var(--spacing) * 12)}.py-16{padding-block:calc(var(--spacing) * 16)}.pt-0{padding-top:calc(var(--spacing) * 0)}.pt-0\\.5{padding-top:calc(var(--spacing) * .5)}.pt-2{padding-top:calc(var(--spacing) * 2)}.pt-3{padding-top:calc(var(--spacing) * 3)}.pt-4{padding-top:calc(var(--spacing) * 4)}.pt-6{padding-top:calc(var(--spacing) * 6)}.pt-8{padding-top:calc(var(--spacing) * 8)}.pt-24{padding-top:calc(var(--spacing) * 24)}.pr-2{padding-right:calc(var(--spacing) * 2)}.pr-3{padding-right:calc(var(--spacing) * 3)}.pr-4{padding-right:calc(var(--spacing) * 4)}.pr-8{padding-right:calc(var(--spacing) * 8)}.pr-10{padding-right:calc(var(--spacing) * 10)}.pr-12{padding-right:calc(var(--spacing) * 12)}.pr-14{padding-right:calc(var(--spacing) * 14)}.pr-16{padding-right:calc(var(--spacing) * 16)}.pb-2{padding-bottom:calc(var(--spacing) * 2)}.pb-3{padding-bottom:calc(var(--spacing) * 3)}.pb-4{padding-bottom:calc(var(--spacing) * 4)}.pb-6{padding-bottom:calc(var(--spacing) * 6)}.pl-0{padding-left:calc(var(--spacing) * 0)}.pl-2{padding-left:calc(var(--spacing) * 2)}.pl-3{padding-left:calc(var(--spacing) * 3)}.pl-4{padding-left:calc(var(--spacing) * 4)}.pl-6{padding-left:calc(var(--spacing) * 6)}.pl-7{padding-left:calc(var(--spacing) * 7)}.pl-8{padding-left:calc(var(--spacing) * 8)}.pl-9{padding-left:calc(var(--spacing) * 9)}.pl-10{padding-left:calc(var(--spacing) * 10)}.pl-11{padding-left:calc(var(--spacing) * 11)}.pl-12{padding-left:calc(var(--spacing) * 12)}.text-center{text-align:center}.text-left{text-align:left}.text-right{text-align:right}.align-middle{vertical-align:middle}.font-mono{font-family:var(--font-mono)}.font-sans{font-family:var(--font-sans)}.text-2xl{font-size:var(--text-2xl);line-height:var(--tw-leading,var(--text-2xl--line-height))}.text-3xl{font-size:var(--text-3xl);line-height:var(--tw-leading,var(--text-3xl--line-height))}.text-4xl{font-size:var(--text-4xl);line-height:var(--tw-leading,var(--text-4xl--line-height))}.text-5xl{font-size:var(--text-5xl);line-height:var(--tw-leading,var(--text-5xl--line-height))}.text-6xl{font-size:var(--text-6xl);line-height:var(--tw-leading,var(--text-6xl--line-height))}.text-base{font-size:var(--text-base);line-height:var(--tw-leading,var(--text-base--line-height))}.text-lg{font-size:var(--text-lg);line-height:var(--tw-leading,var(--text-lg--line-height))}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.text-xl{font-size:var(--text-xl);line-height:var(--tw-leading,var(--text-xl--line-height))}.text-xs{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))}.text-\\[8px\\]{font-size:8px}.text-\\[9px\\]{font-size:9px}.text-\\[10px\\]{font-size:10px}.text-\\[11px\\]{font-size:11px}.leading-none{--tw-leading:1;line-height:1}.leading-normal{--tw-leading:var(--leading-normal);line-height:var(--leading-normal)}.leading-relaxed{--tw-leading:var(--leading-relaxed);line-height:var(--leading-relaxed)}.leading-tight{--tw-leading:var(--leading-tight);line-height:var(--leading-tight)}.font-bold{--tw-font-weight:var(--font-weight-bold);font-weight:var(--font-weight-bold)}.font-medium{--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)}.font-normal{--tw-font-weight:var(--font-weight-normal);font-weight:var(--font-weight-normal)}.font-semibold{--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.tracking-tight{--tw-tracking:var(--tracking-tight);letter-spacing:var(--tracking-tight)}.tracking-wide{--tw-tracking:var(--tracking-wide);letter-spacing:var(--tracking-wide)}.tracking-wider{--tw-tracking:var(--tracking-wider);letter-spacing:var(--tracking-wider)}.break-words{overflow-wrap:break-word}.break-all{word-break:break-all}.whitespace-nowrap{white-space:nowrap}.whitespace-pre-line{white-space:pre-line}.whitespace-pre-wrap{white-space:pre-wrap}.text-\\[\\#0A66C2\\]{color:#0a66c2}.text-\\[\\#635bff\\]{color:#635bff}.text-\\[var\\(--mieweb-muted-foreground\\)\\]{color:var(--mieweb-muted-foreground)}.text-\\[var\\(--mieweb-primary-500\\)\\]{color:var(--mieweb-primary-500)}.text-\\[var\\(--mieweb-primary-700\\)\\]{color:var(--mieweb-primary-700)}.text-amber-500{color:var(--color-amber-500)}.text-amber-600{color:var(--color-amber-600)}.text-amber-700{color:var(--color-amber-700)}.text-amber-800{color:var(--color-amber-800)}.text-background{color:var(--color-background)}.text-blue-100{color:var(--color-blue-100)}.text-blue-500{color:var(--color-blue-500)}.text-blue-600{color:var(--color-blue-600)}.text-blue-700{color:var(--color-blue-700)}.text-blue-800{color:var(--color-blue-800)}.text-blue-900{color:var(--color-blue-900)}.text-card-foreground{color:var(--color-card-foreground)}.text-chart-1{color:var(--color-chart-1)}.text-chart-2{color:var(--color-chart-2)}.text-chart-3{color:var(--color-chart-3)}.text-chart-4{color:var(--color-chart-4)}.text-chart-5{color:var(--color-chart-5)}.text-current{color:currentColor}.text-cyan-500{color:var(--color-cyan-500)}.text-destructive{color:var(--color-destructive)}.text-destructive-500{color:var(--color-destructive-500)}.text-destructive-600{color:var(--color-destructive-600)}.text-destructive-700{color:var(--color-destructive-700)}.text-destructive-800{color:var(--color-destructive-800)}.text-destructive-900{color:var(--color-destructive-900)}.text-destructive-foreground{color:var(--color-destructive-foreground)}.text-emerald-600{color:var(--color-emerald-600)}.text-emerald-700{color:var(--color-emerald-700)}.text-foreground,.text-foreground\\/70{color:var(--color-foreground)}@supports (color:color-mix(in lab, red, red)){.text-foreground\\/70{color:color-mix(in oklab, var(--color-foreground) 70%, transparent)}}.text-gray-300{color:var(--color-gray-300)}.text-gray-400{color:var(--color-gray-400)}.text-gray-500{color:var(--color-gray-500)}.text-gray-600{color:var(--color-gray-600)}.text-gray-700{color:var(--color-gray-700)}.text-gray-900{color:var(--color-gray-900)}.text-green-400{color:var(--color-green-400)}.text-green-500{color:var(--color-green-500)}.text-green-600{color:var(--color-green-600)}.text-green-700{color:var(--color-green-700)}.text-green-800{color:var(--color-green-800)}.text-green-900{color:var(--color-green-900)}.text-indigo-600{color:var(--color-indigo-600)}.text-info{color:var(--color-info)}.text-info-500{color:var(--color-info-500)}.text-info-600{color:var(--color-info-600)}.text-info-700{color:var(--color-info-700)}.text-info-800{color:var(--color-info-800)}.text-info-900{color:var(--color-info-900)}.text-info-foreground{color:var(--color-info-foreground)}.text-muted-foreground,.text-muted-foreground\\/30{color:var(--color-muted-foreground)}@supports (color:color-mix(in lab, red, red)){.text-muted-foreground\\/30{color:color-mix(in oklab, var(--color-muted-foreground) 30%, transparent)}}.text-muted-foreground\\/40{color:var(--color-muted-foreground)}@supports (color:color-mix(in lab, red, red)){.text-muted-foreground\\/40{color:color-mix(in oklab, var(--color-muted-foreground) 40%, transparent)}}.text-muted-foreground\\/50{color:var(--color-muted-foreground)}@supports (color:color-mix(in lab, red, red)){.text-muted-foreground\\/50{color:color-mix(in oklab, var(--color-muted-foreground) 50%, transparent)}}.text-muted-foreground\\/60{color:var(--color-muted-foreground)}@supports (color:color-mix(in lab, red, red)){.text-muted-foreground\\/60{color:color-mix(in oklab, var(--color-muted-foreground) 60%, transparent)}}.text-muted-foreground\\/70{color:var(--color-muted-foreground)}@supports (color:color-mix(in lab, red, red)){.text-muted-foreground\\/70{color:color-mix(in oklab, var(--color-muted-foreground) 70%, transparent)}}.text-neutral-300{color:var(--color-neutral-300)}.text-neutral-400{color:var(--color-neutral-400)}.text-neutral-500{color:var(--color-neutral-500)}.text-neutral-600{color:var(--color-neutral-600)}.text-neutral-700{color:var(--color-neutral-700)}.text-neutral-800{color:var(--color-neutral-800)}.text-neutral-900{color:var(--color-neutral-900)}.text-orange-500{color:var(--color-orange-500)}.text-orange-600{color:var(--color-orange-600)}.text-orange-700{color:var(--color-orange-700)}.text-primary{color:var(--color-primary)}.text-primary-500{color:var(--color-primary-500)}.text-primary-600{color:var(--color-primary-600)}.text-primary-700{color:var(--color-primary-700)}.text-primary-800{color:var(--color-primary-800)}.text-primary-900{color:var(--color-primary-900)}.text-primary-foreground,.text-primary-foreground\\/90{color:var(--color-primary-foreground)}@supports (color:color-mix(in lab, red, red)){.text-primary-foreground\\/90{color:color-mix(in oklab, var(--color-primary-foreground) 90%, transparent)}}.text-primary\\/80{color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.text-primary\\/80{color:color-mix(in oklab, var(--color-primary) 80%, transparent)}}.text-purple-500{color:var(--color-purple-500)}.text-purple-600{color:var(--color-purple-600)}.text-purple-700{color:var(--color-purple-700)}.text-red-400{color:var(--color-red-400)}.text-red-500{color:var(--color-red-500)}.text-red-600{color:var(--color-red-600)}.text-red-700{color:var(--color-red-700)}.text-red-800{color:var(--color-red-800)}.text-red-900{color:var(--color-red-900)}.text-rose-600{color:var(--color-rose-600)}.text-secondary{color:var(--color-secondary)}.text-secondary-500{color:var(--color-secondary-500)}.text-secondary-600{color:var(--color-secondary-600)}.text-secondary-700{color:var(--color-secondary-700)}.text-secondary-foreground{color:var(--color-secondary-foreground)}.text-sky-600{color:var(--color-sky-600)}.text-sky-700{color:var(--color-sky-700)}.text-slate-400{color:var(--color-slate-400)}.text-success{color:var(--color-success)}.text-success-500{color:var(--color-success-500)}.text-success-600{color:var(--color-success-600)}.text-success-700{color:var(--color-success-700)}.text-success-800{color:var(--color-success-800)}.text-success-900{color:var(--color-success-900)}.text-success-foreground{color:var(--color-success-foreground)}.text-violet-600{color:var(--color-violet-600)}.text-violet-700{color:var(--color-violet-700)}.text-warning{color:var(--color-warning)}.text-warning-50{color:var(--color-warning-50)}.text-warning-500{color:var(--color-warning-500)}.text-warning-600{color:var(--color-warning-600)}.text-warning-700{color:var(--color-warning-700)}.text-warning-800{color:var(--color-warning-800)}.text-warning-900{color:var(--color-warning-900)}.text-warning-foreground{color:var(--color-warning-foreground)}.text-white{color:var(--color-white)}.text-white\\/40{color:#fff6}@supports (color:color-mix(in lab, red, red)){.text-white\\/40{color:color-mix(in oklab, var(--color-white) 40%, transparent)}}.text-white\\/50{color:#ffffff80}@supports (color:color-mix(in lab, red, red)){.text-white\\/50{color:color-mix(in oklab, var(--color-white) 50%, transparent)}}.text-white\\/60{color:#fff9}@supports (color:color-mix(in lab, red, red)){.text-white\\/60{color:color-mix(in oklab, var(--color-white) 60%, transparent)}}.text-white\\/70{color:#ffffffb3}@supports (color:color-mix(in lab, red, red)){.text-white\\/70{color:color-mix(in oklab, var(--color-white) 70%, transparent)}}.text-white\\/80{color:#fffc}@supports (color:color-mix(in lab, red, red)){.text-white\\/80{color:color-mix(in oklab, var(--color-white) 80%, transparent)}}.text-white\\/90{color:#ffffffe6}@supports (color:color-mix(in lab, red, red)){.text-white\\/90{color:color-mix(in oklab, var(--color-white) 90%, transparent)}}.text-yellow-500{color:var(--color-yellow-500)}.text-yellow-600{color:var(--color-yellow-600)}.text-yellow-700{color:var(--color-yellow-700)}.text-yellow-800{color:var(--color-yellow-800)}.text-yellow-900{color:var(--color-yellow-900)}.capitalize{text-transform:capitalize}.uppercase{text-transform:uppercase}.italic{font-style:italic}.not-italic{font-style:normal}.tabular-nums{--tw-numeric-spacing:tabular-nums;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)}.line-through{text-decoration-line:line-through}.underline{text-decoration-line:underline}.underline-offset-2{text-underline-offset:2px}.underline-offset-4{text-underline-offset:4px}.placeholder-gray-500::placeholder{color:var(--color-gray-500)}.placeholder-neutral-400::placeholder{color:var(--color-neutral-400)}.placeholder-white\\/60::placeholder{color:#fff9}@supports (color:color-mix(in lab, red, red)){.placeholder-white\\/60::placeholder{color:color-mix(in oklab, var(--color-white) 60%, transparent)}}.accent-primary{accent-color:var(--color-primary)}.opacity-0{opacity:0}.opacity-25{opacity:.25}.opacity-50{opacity:.5}.opacity-60{opacity:.6}.opacity-70{opacity:.7}.opacity-75{opacity:.75}.opacity-90{opacity:.9}.opacity-100{opacity:1}.shadow{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px var(--tw-shadow-color,#00000040);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px var(--tw-shadow-color,#0000001a), 0 4px 6px -4px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px var(--tw-shadow-color,#0000001a), 0 2px 4px -2px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-none{--tw-shadow:0 0 #0000;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px var(--tw-shadow-color,#0000001a), 0 8px 10px -6px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.ring{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.ring-0{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.ring-1{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.ring-2{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.ring-4{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-card{--tw-shadow-color:var(--color-card)}@supports (color:color-mix(in lab, red, red)){.shadow-card{--tw-shadow-color:color-mix(in oklab, var(--color-card) var(--tw-shadow-alpha), transparent)}}.shadow-primary-500\\/30{--tw-shadow-color:var(--color-primary-500)}@supports (color:color-mix(in lab, red, red)){.shadow-primary-500\\/30{--tw-shadow-color:color-mix(in oklab, color-mix(in oklab, var(--color-primary-500) 30%, transparent) var(--tw-shadow-alpha), transparent)}}.shadow-red-500\\/30{--tw-shadow-color:#fb2c364d}@supports (color:color-mix(in lab, red, red)){.shadow-red-500\\/30{--tw-shadow-color:color-mix(in oklab, color-mix(in oklab, var(--color-red-500) 30%, transparent) var(--tw-shadow-alpha), transparent)}}.ring-black\\/5{--tw-ring-color:#0000000d}@supports (color:color-mix(in lab, red, red)){.ring-black\\/5{--tw-ring-color:color-mix(in oklab, var(--color-black) 5%, transparent)}}.ring-blue-100{--tw-ring-color:var(--color-blue-100)}.ring-green-100{--tw-ring-color:var(--color-green-100)}.ring-neutral-100{--tw-ring-color:var(--color-neutral-100)}.ring-neutral-400{--tw-ring-color:var(--color-neutral-400)}.ring-orange-100{--tw-ring-color:var(--color-orange-100)}.ring-primary{--tw-ring-color:var(--color-primary)}.ring-primary-100{--tw-ring-color:var(--color-primary-100)}.ring-primary-200{--tw-ring-color:var(--color-primary-200)}.ring-primary-400\\/30{--tw-ring-color:var(--color-primary-400)}@supports (color:color-mix(in lab, red, red)){.ring-primary-400\\/30{--tw-ring-color:color-mix(in oklab, var(--color-primary-400) 30%, transparent)}}.ring-primary-500{--tw-ring-color:var(--color-primary-500)}.ring-primary-600{--tw-ring-color:var(--color-primary-600)}.ring-purple-100{--tw-ring-color:var(--color-purple-100)}.ring-red-100{--tw-ring-color:var(--color-red-100)}.ring-red-500\\/50{--tw-ring-color:#fb2c3680}@supports (color:color-mix(in lab, red, red)){.ring-red-500\\/50{--tw-ring-color:color-mix(in oklab, var(--color-red-500) 50%, transparent)}}.ring-ring{--tw-ring-color:var(--color-ring)}.ring-warning-700\\/50{--tw-ring-color:var(--color-warning-700)}@supports (color:color-mix(in lab, red, red)){.ring-warning-700\\/50{--tw-ring-color:color-mix(in oklab, var(--color-warning-700) 50%, transparent)}}.ring-white{--tw-ring-color:var(--color-white)}.ring-offset-2{--tw-ring-offset-width:2px;--tw-ring-offset-shadow:var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)}.outline{outline-style:var(--tw-outline-style);outline-width:1px}.blur{--tw-blur:blur(8px);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.brightness-0{--tw-brightness:brightness(0%);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.drop-shadow{--tw-drop-shadow-size:drop-shadow(0 1px 2px var(--tw-drop-shadow-color,#0000001a)) drop-shadow(0 1px 1px var(--tw-drop-shadow-color,#0000000f));--tw-drop-shadow:drop-shadow(0 1px 2px #0000001a) drop-shadow(0 1px 1px #0000000f);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.grayscale{--tw-grayscale:grayscale(100%);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.invert{--tw-invert:invert(100%);filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.filter{filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.backdrop-blur{--tw-backdrop-blur:blur(8px);-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.backdrop-blur-md{--tw-backdrop-blur:blur(var(--blur-md));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.backdrop-blur-sm{--tw-backdrop-blur:blur(var(--blur-sm));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}.transition{transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,-webkit-backdrop-filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-all{transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-colors{transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-opacity{transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-shadow{transition-property:box-shadow;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-transform{transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.duration-75{--tw-duration:75ms;transition-duration:75ms}.duration-100{--tw-duration:.1s;transition-duration:.1s}.duration-150{--tw-duration:.15s;transition-duration:.15s}.duration-200{--tw-duration:.2s;transition-duration:.2s}.duration-300{--tw-duration:.3s;transition-duration:.3s}.ease-in{--tw-ease:var(--ease-in);transition-timing-function:var(--ease-in)}.ease-in-out{--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)}.ease-out{--tw-ease:var(--ease-out);transition-timing-function:var(--ease-out)}.outline-none{--tw-outline-style:none;outline-style:none}.select-none{-webkit-user-select:none;user-select:none}.\\[animation-delay\\:-0\\.3s\\]{animation-delay:-.3s}.\\[animation-delay\\:-0\\.15s\\]{animation-delay:-.15s}@media (hover:hover){.group-hover\\:visible:is(:where(.group):hover *){visibility:visible}.group-hover\\:bg-black\\/30:is(:where(.group):hover *){background-color:#0000004d}@supports (color:color-mix(in lab, red, red)){.group-hover\\:bg-black\\/30:is(:where(.group):hover *){background-color:color-mix(in oklab, var(--color-black) 30%, transparent)}}.group-hover\\:text-foreground:is(:where(.group):hover *){color:var(--color-foreground)}.group-hover\\:text-primary-500:is(:where(.group):hover *){color:var(--color-primary-500)}.group-hover\\:text-primary-900:is(:where(.group):hover *){color:var(--color-primary-900)}.group-hover\\:opacity-100:is(:where(.group):hover *){opacity:1}}.group-data-\\[disabled\\=true\\]\\:pointer-events-none:is(:where(.group)[data-disabled=true] *){pointer-events:none}.group-data-\\[disabled\\=true\\]\\:cursor-not-allowed:is(:where(.group)[data-disabled=true] *){cursor:not-allowed}.group-data-\\[disabled\\=true\\]\\:opacity-50:is(:where(.group)[data-disabled=true] *){opacity:.5}.peer-checked\\:scale-100:is(:where(.peer):checked~*){--tw-scale-x:100%;--tw-scale-y:100%;--tw-scale-z:100%;scale:var(--tw-scale-x) var(--tw-scale-y)}.peer-checked\\:opacity-100:is(:where(.peer):checked~*),.peer-indeterminate\\:opacity-100:is(:where(.peer):indeterminate~*){opacity:1}.peer-placeholder-shown\\:translate-y-0:is(:where(.peer):placeholder-shown~*){--tw-translate-y:calc(var(--spacing) * 0);translate:var(--tw-translate-x) var(--tw-translate-y)}.peer-placeholder-shown\\:scale-100:is(:where(.peer):placeholder-shown~*){--tw-scale-x:100%;--tw-scale-y:100%;--tw-scale-z:100%;scale:var(--tw-scale-x) var(--tw-scale-y)}@media (hover:hover){.peer-hover\\:shadow-lg:is(:where(.peer):hover~*){--tw-shadow:0 10px 15px -3px var(--tw-shadow-color,#0000001a), 0 4px 6px -4px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}}.peer-focus\\:-translate-y-2:is(:where(.peer):focus~*){--tw-translate-y:calc(var(--spacing) * -2);translate:var(--tw-translate-x) var(--tw-translate-y)}.peer-focus\\:scale-75:is(:where(.peer):focus~*){--tw-scale-x:75%;--tw-scale-y:75%;--tw-scale-z:75%;scale:var(--tw-scale-x) var(--tw-scale-y)}.peer-focus-visible\\:ring-2:is(:where(.peer):focus-visible~*){--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.peer-focus-visible\\:ring-ring:is(:where(.peer):focus-visible~*){--tw-ring-color:var(--color-ring)}.peer-focus-visible\\:ring-offset-2:is(:where(.peer):focus-visible~*){--tw-ring-offset-width:2px;--tw-ring-offset-shadow:var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)}.peer-focus-visible\\:outline-none:is(:where(.peer):focus-visible~*){--tw-outline-style:none;outline-style:none}.peer-active\\:scale-110:is(:where(.peer):active~*){--tw-scale-x:110%;--tw-scale-y:110%;--tw-scale-z:110%;scale:var(--tw-scale-x) var(--tw-scale-y)}.peer-active\\:shadow-xl:is(:where(.peer):active~*){--tw-shadow:0 20px 25px -5px var(--tw-shadow-color,#0000001a), 0 8px 10px -6px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.peer-\\[\\:not\\(\\:placeholder-shown\\)\\]\\:-translate-y-2:is(:where(.peer):not(:placeholder-shown)~*){--tw-translate-y:calc(var(--spacing) * -2);translate:var(--tw-translate-x) var(--tw-translate-y)}.peer-\\[\\:not\\(\\:placeholder-shown\\)\\]\\:scale-75:is(:where(.peer):not(:placeholder-shown)~*){--tw-scale-x:75%;--tw-scale-y:75%;--tw-scale-z:75%;scale:var(--tw-scale-x) var(--tw-scale-y)}.placeholder\\:text-muted-foreground::placeholder{color:var(--color-muted-foreground)}.placeholder\\:text-neutral-400::placeholder{color:var(--color-neutral-400)}.placeholder\\:text-neutral-500::placeholder{color:var(--color-neutral-500)}.placeholder\\:text-warning-700::placeholder{color:var(--color-warning-700)}.first\\:rounded-t-xl:first-child{border-top-left-radius:var(--radius-xl);border-top-right-radius:var(--radius-xl)}.last\\:border-0:last-child{border-style:var(--tw-border-style);border-width:0}.checked\\:border-primary-500:checked{border-color:var(--color-primary-500)}.checked\\:bg-primary-500:checked{background-color:var(--color-primary-500)}.indeterminate\\:border-primary-500:indeterminate{border-color:var(--color-primary-500)}.indeterminate\\:bg-primary-500:indeterminate{background-color:var(--color-primary-500)}.focus-within\\:ring-2:focus-within{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.focus-within\\:ring-primary-500:focus-within{--tw-ring-color:var(--color-primary-500)}.focus-within\\:ring-offset-2:focus-within{--tw-ring-offset-width:2px;--tw-ring-offset-shadow:var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)}.focus-within\\:outline-none:focus-within{--tw-outline-style:none;outline-style:none}@media (hover:hover){.hover\\:scale-\\[1\\.02\\]:hover{scale:1.02}.hover\\:border-blue-300:hover{border-color:var(--color-blue-300)}.hover\\:border-border:hover,.hover\\:border-border\\/80:hover{border-color:var(--color-border)}@supports (color:color-mix(in lab, red, red)){.hover\\:border-border\\/80:hover{border-color:color-mix(in oklab, var(--color-border) 80%, transparent)}}.hover\\:border-gray-300:hover{border-color:var(--color-gray-300)}.hover\\:border-gray-400:hover{border-color:var(--color-gray-400)}.hover\\:border-green-300:hover{border-color:var(--color-green-300)}.hover\\:border-muted-foreground:hover,.hover\\:border-muted-foreground\\/50:hover{border-color:var(--color-muted-foreground)}@supports (color:color-mix(in lab, red, red)){.hover\\:border-muted-foreground\\/50:hover{border-color:color-mix(in oklab, var(--color-muted-foreground) 50%, transparent)}}.hover\\:border-neutral-200:hover{border-color:var(--color-neutral-200)}.hover\\:border-neutral-300:hover{border-color:var(--color-neutral-300)}.hover\\:border-primary:hover{border-color:var(--color-primary)}.hover\\:border-primary-200:hover{border-color:var(--color-primary-200)}.hover\\:border-primary-300:hover{border-color:var(--color-primary-300)}.hover\\:border-primary-400:hover{border-color:var(--color-primary-400)}.hover\\:border-red-300:hover{border-color:var(--color-red-300)}.hover\\:border-red-500:hover{border-color:var(--color-red-500)}.hover\\:border-yellow-300:hover{border-color:var(--color-yellow-300)}.hover\\:bg-amber-800:hover{background-color:var(--color-amber-800)}.hover\\:bg-black\\/10:hover{background-color:#0000001a}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-black\\/10:hover{background-color:color-mix(in oklab, var(--color-black) 10%, transparent)}}.hover\\:bg-blue-50:hover{background-color:var(--color-blue-50)}.hover\\:bg-blue-200:hover{background-color:var(--color-blue-200)}.hover\\:bg-destructive\\/10:hover{background-color:var(--color-destructive)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-destructive\\/10:hover{background-color:color-mix(in oklab, var(--color-destructive) 10%, transparent)}}.hover\\:bg-foreground:hover{background-color:var(--color-foreground)}.hover\\:bg-gray-50:hover{background-color:var(--color-gray-50)}.hover\\:bg-gray-100:hover{background-color:var(--color-gray-100)}.hover\\:bg-gray-200:hover{background-color:var(--color-gray-200)}.hover\\:bg-green-50:hover{background-color:var(--color-green-50)}.hover\\:bg-green-200:hover{background-color:var(--color-green-200)}.hover\\:bg-green-600:hover{background-color:var(--color-green-600)}.hover\\:bg-green-800:hover{background-color:var(--color-green-800)}.hover\\:bg-muted:hover,.hover\\:bg-muted\\/10:hover{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-muted\\/10:hover{background-color:color-mix(in oklab, var(--color-muted) 10%, transparent)}}.hover\\:bg-muted\\/20:hover{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-muted\\/20:hover{background-color:color-mix(in oklab, var(--color-muted) 20%, transparent)}}.hover\\:bg-muted\\/50:hover{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-muted\\/50:hover{background-color:color-mix(in oklab, var(--color-muted) 50%, transparent)}}.hover\\:bg-muted\\/60:hover{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-muted\\/60:hover{background-color:color-mix(in oklab, var(--color-muted) 60%, transparent)}}.hover\\:bg-muted\\/80:hover{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-muted\\/80:hover{background-color:color-mix(in oklab, var(--color-muted) 80%, transparent)}}.hover\\:bg-neutral-50:hover{background-color:var(--color-neutral-50)}.hover\\:bg-neutral-100:hover{background-color:var(--color-neutral-100)}.hover\\:bg-neutral-200:hover{background-color:var(--color-neutral-200)}.hover\\:bg-neutral-300:hover{background-color:var(--color-neutral-300)}.hover\\:bg-neutral-700:hover{background-color:var(--color-neutral-700)}.hover\\:bg-primary-50:hover,.hover\\:bg-primary-50\\/50:hover{background-color:var(--color-primary-50)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-primary-50\\/50:hover{background-color:color-mix(in oklab, var(--color-primary-50) 50%, transparent)}}.hover\\:bg-primary-100:hover{background-color:var(--color-primary-100)}.hover\\:bg-primary-200:hover{background-color:var(--color-primary-200)}.hover\\:bg-primary-600:hover{background-color:var(--color-primary-600)}.hover\\:bg-primary-700:hover{background-color:var(--color-primary-700)}.hover\\:bg-primary-800:hover{background-color:var(--color-primary-800)}.hover\\:bg-primary\\/5:hover{background-color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-primary\\/5:hover{background-color:color-mix(in oklab, var(--color-primary) 5%, transparent)}}.hover\\:bg-primary\\/10:hover{background-color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-primary\\/10:hover{background-color:color-mix(in oklab, var(--color-primary) 10%, transparent)}}.hover\\:bg-primary\\/20:hover{background-color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-primary\\/20:hover{background-color:color-mix(in oklab, var(--color-primary) 20%, transparent)}}.hover\\:bg-primary\\/90:hover{background-color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-primary\\/90:hover{background-color:color-mix(in oklab, var(--color-primary) 90%, transparent)}}.hover\\:bg-red-50:hover{background-color:var(--color-red-50)}.hover\\:bg-red-200:hover{background-color:var(--color-red-200)}.hover\\:bg-red-500\\/10:hover{background-color:#fb2c361a}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-red-500\\/10:hover{background-color:color-mix(in oklab, var(--color-red-500) 10%, transparent)}}.hover\\:bg-red-500\\/20:hover{background-color:#fb2c3633}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-red-500\\/20:hover{background-color:color-mix(in oklab, var(--color-red-500) 20%, transparent)}}.hover\\:bg-red-600:hover{background-color:var(--color-red-600)}.hover\\:bg-red-700:hover{background-color:var(--color-red-700)}.hover\\:bg-transparent:hover{background-color:#0000}.hover\\:bg-white:hover{background-color:var(--color-white)}.hover\\:bg-white\\/10:hover{background-color:#ffffff1a}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-white\\/10:hover{background-color:color-mix(in oklab, var(--color-white) 10%, transparent)}}.hover\\:bg-white\\/20:hover{background-color:#fff3}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-white\\/20:hover{background-color:color-mix(in oklab, var(--color-white) 20%, transparent)}}.hover\\:bg-white\\/90:hover{background-color:#ffffffe6}@supports (color:color-mix(in lab, red, red)){.hover\\:bg-white\\/90:hover{background-color:color-mix(in oklab, var(--color-white) 90%, transparent)}}.hover\\:bg-yellow-50:hover{background-color:var(--color-yellow-50)}.hover\\:bg-yellow-200:hover{background-color:var(--color-yellow-200)}.hover\\:bg-yellow-700:hover{background-color:var(--color-yellow-700)}.hover\\:text-\\[\\#635bff\\]:hover{color:#635bff}.hover\\:text-blue-500:hover{color:var(--color-blue-500)}.hover\\:text-blue-700:hover{color:var(--color-blue-700)}.hover\\:text-destructive:hover,.hover\\:text-destructive\\/80:hover{color:var(--color-destructive)}@supports (color:color-mix(in lab, red, red)){.hover\\:text-destructive\\/80:hover{color:color-mix(in oklab, var(--color-destructive) 80%, transparent)}}.hover\\:text-foreground:hover{color:var(--color-foreground)}.hover\\:text-gray-600:hover{color:var(--color-gray-600)}.hover\\:text-gray-700:hover{color:var(--color-gray-700)}.hover\\:text-gray-800:hover{color:var(--color-gray-800)}.hover\\:text-gray-900:hover{color:var(--color-gray-900)}.hover\\:text-green-500:hover{color:var(--color-green-500)}.hover\\:text-neutral-600:hover{color:var(--color-neutral-600)}.hover\\:text-neutral-700:hover{color:var(--color-neutral-700)}.hover\\:text-neutral-900:hover{color:var(--color-neutral-900)}.hover\\:text-primary:hover{color:var(--color-primary)}.hover\\:text-primary-600:hover{color:var(--color-primary-600)}.hover\\:text-primary-700:hover{color:var(--color-primary-700)}.hover\\:text-primary-900:hover{color:var(--color-primary-900)}.hover\\:text-primary\\/80:hover{color:var(--color-primary)}@supports (color:color-mix(in lab, red, red)){.hover\\:text-primary\\/80:hover{color:color-mix(in oklab, var(--color-primary) 80%, transparent)}}.hover\\:text-red-500:hover{color:var(--color-red-500)}.hover\\:text-red-500\\/80:hover{color:#fb2c36cc}@supports (color:color-mix(in lab, red, red)){.hover\\:text-red-500\\/80:hover{color:color-mix(in oklab, var(--color-red-500) 80%, transparent)}}.hover\\:text-red-600:hover{color:var(--color-red-600)}.hover\\:text-red-700:hover{color:var(--color-red-700)}.hover\\:text-white:hover{color:var(--color-white)}.hover\\:text-white\\/80:hover{color:#fffc}@supports (color:color-mix(in lab, red, red)){.hover\\:text-white\\/80:hover{color:color-mix(in oklab, var(--color-white) 80%, transparent)}}.hover\\:no-underline:hover{text-decoration-line:none}.hover\\:underline:hover{text-decoration-line:underline}.hover\\:opacity-80:hover{opacity:.8}.hover\\:opacity-100:hover{opacity:1}.hover\\:shadow-md:hover{--tw-shadow:0 4px 6px -1px var(--tw-shadow-color,#0000001a), 0 2px 4px -2px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.hover\\:shadow-sm:hover{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.hover\\:ring-2:hover{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.hover\\:ring-primary-500:hover{--tw-ring-color:var(--color-primary-500)}}.focus\\:z-10:focus{z-index:10}.focus\\:translate-y-0:focus{--tw-translate-y:calc(var(--spacing) * 0);translate:var(--tw-translate-x) var(--tw-translate-y)}.focus\\:border-destructive:focus{border-color:var(--color-destructive)}.focus\\:border-primary:focus{border-color:var(--color-primary)}.focus\\:border-primary-500:focus{border-color:var(--color-primary-500)}.focus\\:border-success:focus{border-color:var(--color-success)}.focus\\:border-transparent:focus{border-color:#0000}.focus\\:border-white\\/60:focus{border-color:#fff9}@supports (color:color-mix(in lab, red, red)){.focus\\:border-white\\/60:focus{border-color:color-mix(in oklab, var(--color-white) 60%, transparent)}}.focus\\:bg-neutral-50:focus{background-color:var(--color-neutral-50)}.focus\\:bg-neutral-100:focus{background-color:var(--color-neutral-100)}.focus\\:bg-red-50:focus{background-color:var(--color-red-50)}.focus\\:bg-white:focus{background-color:var(--color-white)}.focus\\:text-foreground:focus{color:var(--color-foreground)}.focus\\:opacity-100:focus{opacity:1}.focus\\:ring-1:focus{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.focus\\:ring-2:focus{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.focus\\:ring-\\[var\\(--mieweb-ring\\)\\]:focus{--tw-ring-color:var(--mieweb-ring)}.focus\\:ring-blue-500:focus{--tw-ring-color:var(--color-blue-500)}.focus\\:ring-current:focus{--tw-ring-color:currentcolor}.focus\\:ring-destructive:focus,.focus\\:ring-destructive\\/20:focus{--tw-ring-color:var(--color-destructive)}@supports (color:color-mix(in lab, red, red)){.focus\\:ring-destructive\\/20:focus{--tw-ring-color:color-mix(in oklab, var(--color-destructive) 20%, transparent)}}.focus\\:ring-gray-500:focus{--tw-ring-color:var(--color-gray-500)}.focus\\:ring-green-500:focus{--tw-ring-color:var(--color-green-500)}.focus\\:ring-neutral-400:focus{--tw-ring-color:var(--color-neutral-400)}.focus\\:ring-primary:focus{--tw-ring-color:var(--color-primary)}.focus\\:ring-primary-500:focus,.focus\\:ring-primary-500\\/20:focus{--tw-ring-color:var(--color-primary-500)}@supports (color:color-mix(in lab, red, red)){.focus\\:ring-primary-500\\/20:focus{--tw-ring-color:color-mix(in oklab, var(--color-primary-500) 20%, transparent)}}.focus\\:ring-primary-500\\/40:focus{--tw-ring-color:var(--color-primary-500)}@supports (color:color-mix(in lab, red, red)){.focus\\:ring-primary-500\\/40:focus{--tw-ring-color:color-mix(in oklab, var(--color-primary-500) 40%, transparent)}}.focus\\:ring-red-500:focus{--tw-ring-color:var(--color-red-500)}.focus\\:ring-ring:focus{--tw-ring-color:var(--color-ring)}.focus\\:ring-success\\/20:focus{--tw-ring-color:var(--color-success)}@supports (color:color-mix(in lab, red, red)){.focus\\:ring-success\\/20:focus{--tw-ring-color:color-mix(in oklab, var(--color-success) 20%, transparent)}}.focus\\:ring-white:focus{--tw-ring-color:var(--color-white)}.focus\\:ring-yellow-500:focus{--tw-ring-color:var(--color-yellow-500)}.focus\\:ring-offset-1:focus{--tw-ring-offset-width:1px;--tw-ring-offset-shadow:var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)}.focus\\:ring-offset-2:focus{--tw-ring-offset-width:2px;--tw-ring-offset-shadow:var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)}.focus\\:outline-none:focus{--tw-outline-style:none;outline-style:none}.focus-visible\\:bg-muted\\/50:focus-visible{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.focus-visible\\:bg-muted\\/50:focus-visible{background-color:color-mix(in oklab, var(--color-muted) 50%, transparent)}}.focus-visible\\:opacity-100:focus-visible{opacity:1}.focus-visible\\:ring-0:focus-visible{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.focus-visible\\:ring-2:focus-visible{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.focus-visible\\:ring-primary-500:focus-visible{--tw-ring-color:var(--color-primary-500)}.focus-visible\\:ring-ring:focus-visible{--tw-ring-color:var(--color-ring)}.focus-visible\\:ring-offset-0:focus-visible{--tw-ring-offset-width:0px;--tw-ring-offset-shadow:var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)}.focus-visible\\:ring-offset-2:focus-visible{--tw-ring-offset-width:2px;--tw-ring-offset-shadow:var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)}.focus-visible\\:ring-offset-background:focus-visible{--tw-ring-offset-color:var(--color-background)}.focus-visible\\:outline-none:focus-visible{--tw-outline-style:none;outline-style:none}.active\\:scale-95:active{--tw-scale-x:95%;--tw-scale-y:95%;--tw-scale-z:95%;scale:var(--tw-scale-x) var(--tw-scale-y)}.active\\:scale-\\[0\\.98\\]:active{scale:.98}.active\\:bg-neutral-200:active{background-color:var(--color-neutral-200)}.active\\:bg-neutral-400:active{background-color:var(--color-neutral-400)}.active\\:bg-primary-100:active{background-color:var(--color-primary-100)}.active\\:bg-primary-800:active{background-color:var(--color-primary-800)}.active\\:bg-primary-900:active{background-color:var(--color-primary-900)}.active\\:bg-red-800:active{background-color:var(--color-red-800)}.active\\:text-primary-950:active{color:var(--color-primary-950)}.disabled\\:pointer-events-none:disabled{pointer-events:none}.disabled\\:cursor-default:disabled{cursor:default}.disabled\\:cursor-not-allowed:disabled{cursor:not-allowed}.disabled\\:bg-gray-50:disabled{background-color:var(--color-gray-50)}.disabled\\:bg-muted:disabled{background-color:var(--color-muted)}.disabled\\:text-gray-300:disabled{color:var(--color-gray-300)}.disabled\\:text-gray-500:disabled{color:var(--color-gray-500)}.disabled\\:text-muted-foreground:disabled{color:var(--color-muted-foreground)}.disabled\\:opacity-50:disabled{opacity:.5}@media (hover:hover){.disabled\\:hover\\:bg-transparent:disabled:hover{background-color:#0000}}.data-\\[active\\=true\\]\\:border-primary-500[data-active=true]{border-color:var(--color-primary-500)}.data-\\[active\\=true\\]\\:bg-primary-50[data-active=true]{background-color:var(--color-primary-50)}.data-\\[active\\=true\\]\\:bg-primary-500[data-active=true]{background-color:var(--color-primary-500)}.data-\\[active\\=true\\]\\:font-semibold[data-active=true]{--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.data-\\[active\\=true\\]\\:text-primary-500[data-active=true]{color:var(--color-primary-500)}.data-\\[active\\=true\\]\\:text-white[data-active=true]{color:var(--color-white)}.data-\\[selected\\=true\\]\\:bg-muted[data-selected=true]{background-color:var(--color-muted)}.data-\\[state\\=active\\]\\:border-border[data-state=active]{border-color:var(--color-border)}.data-\\[state\\=active\\]\\:border-primary-700[data-state=active]{border-color:var(--color-primary-700)}.data-\\[state\\=active\\]\\:border-b-background[data-state=active]{border-bottom-color:var(--color-background)}.data-\\[state\\=active\\]\\:bg-background[data-state=active]{background-color:var(--color-background)}.data-\\[state\\=active\\]\\:text-foreground[data-state=active]{color:var(--color-foreground)}.data-\\[state\\=active\\]\\:text-primary-800[data-state=active]{color:var(--color-primary-800)}.data-\\[state\\=active\\]\\:shadow-sm[data-state=active]{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.data-\\[state\\=checked\\]\\:translate-x-4[data-state=checked]{--tw-translate-x:calc(var(--spacing) * 4);translate:var(--tw-translate-x) var(--tw-translate-y)}.data-\\[state\\=checked\\]\\:translate-x-5[data-state=checked]{--tw-translate-x:calc(var(--spacing) * 5);translate:var(--tw-translate-x) var(--tw-translate-y)}.data-\\[state\\=checked\\]\\:translate-x-7[data-state=checked]{--tw-translate-x:calc(var(--spacing) * 7);translate:var(--tw-translate-x) var(--tw-translate-y)}.data-\\[state\\=checked\\]\\:bg-primary-500[data-state=checked]{background-color:var(--color-primary-500)}@supports ((-webkit-backdrop-filter:var(--tw)) or (backdrop-filter:var(--tw))){.supports-\\[backdrop-filter\\]\\:bg-background\\/60{background-color:var(--color-background)}@supports (color:color-mix(in lab, red, red)){.supports-\\[backdrop-filter\\]\\:bg-background\\/60{background-color:color-mix(in oklab, var(--color-background) 60%, transparent)}}}@media (min-width:40rem){.sm\\:not-sr-only{clip-path:none;white-space:normal;width:auto;height:auto;margin:0;padding:0;position:static;overflow:visible}.sm\\:col-span-1{grid-column:span 1/span 1}.sm\\:block{display:block}.sm\\:flex{display:flex}.sm\\:hidden{display:none}.sm\\:inline{display:inline}.sm\\:inline-flex{display:inline-flex}.sm\\:table-cell{display:table-cell}.sm\\:max-h-\\[calc\\(100dvh-2rem\\)\\]{max-height:calc(100dvh - 2rem)}.sm\\:min-h-0{min-height:calc(var(--spacing) * 0)}.sm\\:w-1\\/2{width:50%}.sm\\:w-28{width:calc(var(--spacing) * 28)}.sm\\:w-40{width:calc(var(--spacing) * 40)}.sm\\:w-64{width:calc(var(--spacing) * 64)}.sm\\:max-w-2xl{max-width:var(--container-2xl)}.sm\\:max-w-3xl{max-width:var(--container-3xl)}.sm\\:max-w-4xl{max-width:var(--container-4xl)}.sm\\:max-w-\\[70\\%\\]{max-width:70%}.sm\\:max-w-lg{max-width:var(--container-lg)}.sm\\:max-w-md{max-width:var(--container-md)}.sm\\:max-w-sm{max-width:var(--container-sm)}.sm\\:max-w-xl{max-width:var(--container-xl)}.sm\\:min-w-\\[300px\\]{min-width:300px}.sm\\:grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.sm\\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.sm\\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.sm\\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.sm\\:grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}.sm\\:flex-row{flex-direction:row}.sm\\:flex-nowrap{flex-wrap:nowrap}.sm\\:items-center{align-items:center}.sm\\:justify-between{justify-content:space-between}.sm\\:justify-end{justify-content:flex-end}.sm\\:rounded-xl{border-radius:var(--radius-xl)}.sm\\:p-4{padding:calc(var(--spacing) * 4)}.sm\\:p-8{padding:calc(var(--spacing) * 8)}.sm\\:text-left{text-align:left}.sm\\:text-right{text-align:right}.sm\\:text-3xl{font-size:var(--text-3xl);line-height:var(--tw-leading,var(--text-3xl--line-height))}.sm\\:text-8xl{font-size:var(--text-8xl);line-height:var(--tw-leading,var(--text-8xl--line-height))}}@media (min-width:48rem){.md\\:right-4{right:calc(var(--spacing) * 4)}.md\\:left-auto{left:auto}.md\\:order-2{order:2}.md\\:order-3{order:3}.md\\:order-4{order:4}.md\\:col-span-2{grid-column:span 2/span 2}.md\\:col-span-3{grid-column:span 3/span 3}.md\\:col-span-6{grid-column:span 6/span 6}.md\\:my-0{margin-block:calc(var(--spacing) * 0)}.md\\:mt-0{margin-top:calc(var(--spacing) * 0)}.md\\:mb-0{margin-bottom:calc(var(--spacing) * 0)}.md\\:block{display:block}.md\\:flex{display:flex}.md\\:grid{display:grid}.md\\:hidden{display:none}.md\\:inline{display:inline}.md\\:inline-flex{display:inline-flex}.md\\:table-cell{display:table-cell}.md\\:max-h-\\[calc\\(100vh_-_4rem\\)\\]{max-height:calc(100vh - 4rem)}.md\\:w-1\\/2{width:50%}.md\\:w-auto{width:auto}.md\\:max-w-sm{max-width:var(--container-sm)}.md\\:min-w-\\[26rem\\]{min-width:26rem}.md\\:shrink-0{flex-shrink:0}.md\\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.md\\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.md\\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}.md\\:grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}.md\\:grid-cols-8{grid-template-columns:repeat(8,minmax(0,1fr))}.md\\:flex-col{flex-direction:column}.md\\:flex-row{flex-direction:row}.md\\:items-center{align-items:center}.md\\:justify-between{justify-content:space-between}.md\\:justify-center{justify-content:center}.md\\:gap-2{gap:calc(var(--spacing) * 2)}.md\\:border-t-0{border-top-style:var(--tw-border-style);border-top-width:0}.md\\:border-l{border-left-style:var(--tw-border-style);border-left-width:1px}.md\\:text-left{text-align:left}.md\\:text-4xl{font-size:var(--text-4xl);line-height:var(--tw-leading,var(--text-4xl--line-height))}.md\\:text-xl{font-size:var(--text-xl);line-height:var(--tw-leading,var(--text-xl--line-height))}}@media (min-width:64rem){.lg\\:static{position:static}.lg\\:col-span-1{grid-column:span 1/span 1}.lg\\:col-span-2{grid-column:span 2/span 2}.lg\\:col-span-3{grid-column:span 3/span 3}.lg\\:col-span-4{grid-column:span 4/span 4}.lg\\:col-span-8{grid-column:span 8/span 8}.lg\\:block{display:block}.lg\\:flex{display:flex}.lg\\:hidden{display:none}.lg\\:inline{display:inline}.lg\\:table-cell{display:table-cell}.lg\\:max-w-md{max-width:var(--container-md)}.lg\\:min-w-\\[300px\\]{min-width:300px}.lg\\:translate-x-0{--tw-translate-x:calc(var(--spacing) * 0);translate:var(--tw-translate-x) var(--tw-translate-y)}.lg\\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.lg\\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.lg\\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.lg\\:grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}.lg\\:grid-cols-10{grid-template-columns:repeat(10,minmax(0,1fr))}.lg\\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}.lg\\:border-r{border-right-style:var(--tw-border-style);border-right-width:1px}.lg\\:border-neutral-200{border-color:var(--color-neutral-200)}.lg\\:p-6{padding:calc(var(--spacing) * 6)}.lg\\:px-6{padding-inline:calc(var(--spacing) * 6)}.lg\\:text-5xl{font-size:var(--text-5xl);line-height:var(--tw-leading,var(--text-5xl--line-height))}.lg\\:shadow-none{--tw-shadow:0 0 #0000;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}}@media (min-width:80rem){.xl\\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}}:where(.dark\\:divide-gray-700:where([data-theme=dark],[data-theme=dark] *)>:not(:last-child)){border-color:var(--color-gray-700)}:where(.dark\\:divide-gray-800:where([data-theme=dark],[data-theme=dark] *)>:not(:last-child)){border-color:var(--color-gray-800)}:where(.dark\\:divide-neutral-700:where([data-theme=dark],[data-theme=dark] *)>:not(:last-child)){border-color:var(--color-neutral-700)}:where(.dark\\:divide-neutral-800:where([data-theme=dark],[data-theme=dark] *)>:not(:last-child)){border-color:var(--color-neutral-800)}.dark\\:border-b:where([data-theme=dark],[data-theme=dark] *){border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.dark\\:border-amber-700:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-amber-700)}.dark\\:border-amber-800:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-amber-800)}.dark\\:border-amber-800\\/40:where([data-theme=dark],[data-theme=dark] *){border-color:#953d0066}@supports (color:color-mix(in lab, red, red)){.dark\\:border-amber-800\\/40:where([data-theme=dark],[data-theme=dark] *){border-color:color-mix(in oklab, var(--color-amber-800) 40%, transparent)}}.dark\\:border-blue-800:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-blue-800)}.dark\\:border-border\\/40:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-border)}@supports (color:color-mix(in lab, red, red)){.dark\\:border-border\\/40:where([data-theme=dark],[data-theme=dark] *){border-color:color-mix(in oklab, var(--color-border) 40%, transparent)}}.dark\\:border-gray-400:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-gray-400)}.dark\\:border-gray-500:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-gray-500)}.dark\\:border-gray-600:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-gray-600)}.dark\\:border-gray-700:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-gray-700)}.dark\\:border-gray-800:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-gray-800)}.dark\\:border-green-800:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-green-800)}.dark\\:border-neutral-600:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-neutral-600)}.dark\\:border-neutral-700:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-neutral-700)}.dark\\:border-primary-300:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-primary-300)}.dark\\:border-primary-400:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-primary-400)}.dark\\:border-primary-800:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-primary-800)}.dark\\:border-red-600:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-red-600)}.dark\\:border-red-700:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-red-700)}.dark\\:border-red-800:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-red-800)}.dark\\:border-warning-400:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-warning-400)}.dark\\:border-yellow-600:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-yellow-600)}.dark\\:border-yellow-700:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-yellow-700)}.dark\\:border-yellow-800:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-yellow-800)}.dark\\:bg-\\[\\#635bff\\]\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:oklab(57.843% .0338314 -.232163/.2)}.dark\\:bg-amber-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#7b330633}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-amber-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-amber-900) 20%, transparent)}}.dark\\:bg-amber-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#7b33064d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-amber-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-amber-900) 30%, transparent)}}.dark\\:bg-amber-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#7b330666}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-amber-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-amber-900) 40%, transparent)}}.dark\\:bg-amber-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#7b330680}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-amber-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-amber-900) 50%, transparent)}}.dark\\:bg-amber-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#46190166}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-amber-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-amber-950) 40%, transparent)}}.dark\\:bg-black\\/70:where([data-theme=dark],[data-theme=dark] *){background-color:#000000b3}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-black\\/70:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-black) 70%, transparent)}}.dark\\:bg-blue-400:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-blue-400)}.dark\\:bg-blue-800:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-blue-800)}.dark\\:bg-blue-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-blue-900)}.dark\\:bg-blue-900\\/10:where([data-theme=dark],[data-theme=dark] *){background-color:#1c398e1a}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-blue-900\\/10:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-blue-900) 10%, transparent)}}.dark\\:bg-blue-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#1c398e33}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-blue-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-blue-900) 20%, transparent)}}.dark\\:bg-blue-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#1c398e4d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-blue-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-blue-900) 30%, transparent)}}.dark\\:bg-blue-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#1c398e80}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-blue-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-blue-900) 50%, transparent)}}.dark\\:bg-blue-950\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#16245633}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-blue-950\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-blue-950) 20%, transparent)}}.dark\\:bg-blue-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#16245666}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-blue-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-blue-950) 40%, transparent)}}.dark\\:bg-blue-950\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#16245680}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-blue-950\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-blue-950) 50%, transparent)}}.dark\\:bg-cyan-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#104e644d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-cyan-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-cyan-900) 30%, transparent)}}.dark\\:bg-destructive-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-destructive-900)}.dark\\:bg-destructive-950:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-destructive-950)}.dark\\:bg-emerald-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#004e3b4d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-emerald-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-emerald-900) 30%, transparent)}}.dark\\:bg-emerald-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#004e3b66}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-emerald-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-emerald-900) 40%, transparent)}}.dark\\:bg-emerald-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#004e3b80}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-emerald-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-emerald-900) 50%, transparent)}}.dark\\:bg-gray-600:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-gray-600)}.dark\\:bg-gray-700:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-gray-700)}.dark\\:bg-gray-800:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-gray-800)}.dark\\:bg-gray-800\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#1e293980}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-gray-800\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-gray-800) 50%, transparent)}}.dark\\:bg-gray-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-gray-900)}.dark\\:bg-gray-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#10182880}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-gray-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-gray-900) 50%, transparent)}}.dark\\:bg-gray-900\\/80:where([data-theme=dark],[data-theme=dark] *){background-color:#101828cc}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-gray-900\\/80:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-gray-900) 80%, transparent)}}.dark\\:bg-gray-950:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-gray-950)}.dark\\:bg-green-400:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-green-400)}.dark\\:bg-green-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-green-900)}.dark\\:bg-green-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#0d542b33}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-green-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-green-900) 20%, transparent)}}.dark\\:bg-green-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#0d542b4d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-green-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-green-900) 30%, transparent)}}.dark\\:bg-green-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#0d542b80}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-green-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-green-900) 50%, transparent)}}.dark\\:bg-green-950:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-green-950)}.dark\\:bg-green-950\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#032e1533}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-green-950\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-green-950) 20%, transparent)}}.dark\\:bg-green-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#032e1566}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-green-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-green-950) 40%, transparent)}}.dark\\:bg-info-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-info-900)}.dark\\:bg-info-950:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-info-950)}.dark\\:bg-muted:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-muted)}.dark\\:bg-neutral-100:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-neutral-100)}.dark\\:bg-neutral-400:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-neutral-400)}.dark\\:bg-neutral-600:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-neutral-600)}.dark\\:bg-neutral-700:where([data-theme=dark],[data-theme=dark] *),.dark\\:bg-neutral-700\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-neutral-700)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-neutral-700\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-neutral-700) 50%, transparent)}}.dark\\:bg-neutral-800:where([data-theme=dark],[data-theme=dark] *),.dark\\:bg-neutral-800\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-neutral-800)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-neutral-800\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-neutral-800) 50%, transparent)}}.dark\\:bg-neutral-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-neutral-900)}.dark\\:bg-neutral-950:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-neutral-950)}.dark\\:bg-orange-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#7e2a0c33}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-orange-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-orange-900) 20%, transparent)}}.dark\\:bg-orange-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#7e2a0c4d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-orange-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-orange-900) 30%, transparent)}}.dark\\:bg-orange-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#7e2a0c66}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-orange-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-orange-900) 40%, transparent)}}.dark\\:bg-orange-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#7e2a0c80}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-orange-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-orange-900) 50%, transparent)}}.dark\\:bg-primary-400:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-400)}.dark\\:bg-primary-500:where([data-theme=dark],[data-theme=dark] *),.dark\\:bg-primary-500\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-500)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-primary-500\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-primary-500) 20%, transparent)}}.dark\\:bg-primary-600:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-600)}.dark\\:bg-primary-800:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-800)}.dark\\:bg-primary-900:where([data-theme=dark],[data-theme=dark] *),.dark\\:bg-primary-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-900)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-primary-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-primary-900) 20%, transparent)}}.dark\\:bg-primary-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-900)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-primary-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-primary-900) 30%, transparent)}}.dark\\:bg-primary-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-900)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-primary-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-primary-900) 40%, transparent)}}.dark\\:bg-primary-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-900)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-primary-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-primary-900) 50%, transparent)}}.dark\\:bg-primary-900\\/90:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-900)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-primary-900\\/90:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-primary-900) 90%, transparent)}}.dark\\:bg-primary-950:where([data-theme=dark],[data-theme=dark] *),.dark\\:bg-primary-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-primary-950)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-primary-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-primary-950) 40%, transparent)}}.dark\\:bg-purple-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#59168b33}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-purple-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-purple-900) 20%, transparent)}}.dark\\:bg-purple-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#59168b4d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-purple-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-purple-900) 30%, transparent)}}.dark\\:bg-red-500:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-red-500)}.dark\\:bg-red-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-red-900)}.dark\\:bg-red-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#82181a33}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-red-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-red-900) 20%, transparent)}}.dark\\:bg-red-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#82181a4d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-red-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-red-900) 30%, transparent)}}.dark\\:bg-red-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#82181a66}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-red-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-red-900) 40%, transparent)}}.dark\\:bg-red-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#82181a80}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-red-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-red-900) 50%, transparent)}}.dark\\:bg-red-950:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-red-950)}.dark\\:bg-red-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#46080966}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-red-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-red-950) 40%, transparent)}}.dark\\:bg-rose-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#8b083680}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-rose-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-rose-900) 50%, transparent)}}.dark\\:bg-secondary-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-secondary-900)}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-secondary-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-secondary-900) 30%, transparent)}}.dark\\:bg-sky-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#024a704d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-sky-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-sky-900) 30%, transparent)}}.dark\\:bg-sky-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#024a7066}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-sky-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-sky-900) 40%, transparent)}}.dark\\:bg-sky-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#024a7080}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-sky-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-sky-900) 50%, transparent)}}.dark\\:bg-success-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-success-900)}.dark\\:bg-success-950:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-success-950)}.dark\\:bg-violet-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#4d179a66}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-violet-900\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-violet-900) 40%, transparent)}}.dark\\:bg-violet-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:#4d179a80}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-violet-900\\/50:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-violet-900) 50%, transparent)}}.dark\\:bg-warning-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-warning-900)}.dark\\:bg-warning-950:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-warning-950)}.dark\\:bg-yellow-900:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-yellow-900)}.dark\\:bg-yellow-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#733e0a33}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-yellow-900\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-yellow-900) 20%, transparent)}}.dark\\:bg-yellow-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:#733e0a4d}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-yellow-900\\/30:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-yellow-900) 30%, transparent)}}.dark\\:bg-yellow-950:where([data-theme=dark],[data-theme=dark] *){background-color:var(--color-yellow-950)}.dark\\:bg-yellow-950\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:#43200433}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-yellow-950\\/20:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-yellow-950) 20%, transparent)}}.dark\\:bg-yellow-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:#43200466}@supports (color:color-mix(in lab, red, red)){.dark\\:bg-yellow-950\\/40:where([data-theme=dark],[data-theme=dark] *){background-color:color-mix(in oklab, var(--color-yellow-950) 40%, transparent)}}.dark\\:from-gray-700:where([data-theme=dark],[data-theme=dark] *){--tw-gradient-from:var(--color-gray-700);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.dark\\:via-gray-600:where([data-theme=dark],[data-theme=dark] *){--tw-gradient-via:var(--color-gray-600);--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)}.dark\\:to-gray-700:where([data-theme=dark],[data-theme=dark] *){--tw-gradient-to:var(--color-gray-700);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.dark\\:stroke-neutral-700:where([data-theme=dark],[data-theme=dark] *){stroke:var(--color-neutral-700)}.dark\\:text-\\[var\\(--mieweb-primary-400\\)\\]:where([data-theme=dark],[data-theme=dark] *){color:var(--mieweb-primary-400)}.dark\\:text-amber-200:where([data-theme=dark],[data-theme=dark] *){color:var(--color-amber-200)}.dark\\:text-amber-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-amber-300)}.dark\\:text-amber-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-amber-400)}.dark\\:text-blue-100:where([data-theme=dark],[data-theme=dark] *){color:var(--color-blue-100)}.dark\\:text-blue-200:where([data-theme=dark],[data-theme=dark] *){color:var(--color-blue-200)}.dark\\:text-blue-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-blue-300)}.dark\\:text-blue-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-blue-400)}.dark\\:text-destructive-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-destructive-300)}.dark\\:text-destructive-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-destructive-400)}.dark\\:text-emerald-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-emerald-300)}.dark\\:text-emerald-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-emerald-400)}.dark\\:text-foreground\\/70:where([data-theme=dark],[data-theme=dark] *){color:var(--color-foreground)}@supports (color:color-mix(in lab, red, red)){.dark\\:text-foreground\\/70:where([data-theme=dark],[data-theme=dark] *){color:color-mix(in oklab, var(--color-foreground) 70%, transparent)}}.dark\\:text-gray-100:where([data-theme=dark],[data-theme=dark] *){color:var(--color-gray-100)}.dark\\:text-gray-200:where([data-theme=dark],[data-theme=dark] *){color:var(--color-gray-200)}.dark\\:text-gray-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-gray-300)}.dark\\:text-gray-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-gray-400)}.dark\\:text-gray-500:where([data-theme=dark],[data-theme=dark] *){color:var(--color-gray-500)}.dark\\:text-gray-600:where([data-theme=dark],[data-theme=dark] *){color:var(--color-gray-600)}.dark\\:text-green-100:where([data-theme=dark],[data-theme=dark] *){color:var(--color-green-100)}.dark\\:text-green-200:where([data-theme=dark],[data-theme=dark] *){color:var(--color-green-200)}.dark\\:text-green-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-green-300)}.dark\\:text-green-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-green-400)}.dark\\:text-green-500:where([data-theme=dark],[data-theme=dark] *){color:var(--color-green-500)}.dark\\:text-info-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-info-300)}.dark\\:text-info-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-info-400)}.dark\\:text-neutral-100:where([data-theme=dark],[data-theme=dark] *){color:var(--color-neutral-100)}.dark\\:text-neutral-200:where([data-theme=dark],[data-theme=dark] *){color:var(--color-neutral-200)}.dark\\:text-neutral-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-neutral-300)}.dark\\:text-neutral-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-neutral-400)}.dark\\:text-neutral-500:where([data-theme=dark],[data-theme=dark] *){color:var(--color-neutral-500)}.dark\\:text-neutral-600:where([data-theme=dark],[data-theme=dark] *){color:var(--color-neutral-600)}.dark\\:text-orange-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-orange-300)}.dark\\:text-orange-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-orange-400)}.dark\\:text-primary-100:where([data-theme=dark],[data-theme=dark] *){color:var(--color-primary-100)}.dark\\:text-primary-200:where([data-theme=dark],[data-theme=dark] *){color:var(--color-primary-200)}.dark\\:text-primary-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-primary-300)}.dark\\:text-primary-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-primary-400)}.dark\\:text-primary-foreground:where([data-theme=dark],[data-theme=dark] *){color:var(--color-primary-foreground)}.dark\\:text-purple-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-purple-300)}.dark\\:text-purple-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-purple-400)}.dark\\:text-red-100:where([data-theme=dark],[data-theme=dark] *){color:var(--color-red-100)}.dark\\:text-red-200:where([data-theme=dark],[data-theme=dark] *){color:var(--color-red-200)}.dark\\:text-red-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-red-300)}.dark\\:text-red-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-red-400)}.dark\\:text-rose-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-rose-400)}.dark\\:text-secondary-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-secondary-300)}.dark\\:text-sky-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-sky-300)}.dark\\:text-sky-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-sky-400)}.dark\\:text-success-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-success-300)}.dark\\:text-success-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-success-400)}.dark\\:text-violet-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-violet-300)}.dark\\:text-violet-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-violet-400)}.dark\\:text-warning-200:where([data-theme=dark],[data-theme=dark] *){color:var(--color-warning-200)}.dark\\:text-warning-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-warning-300)}.dark\\:text-warning-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-warning-400)}.dark\\:text-white:where([data-theme=dark],[data-theme=dark] *){color:var(--color-white)}.dark\\:text-yellow-100:where([data-theme=dark],[data-theme=dark] *){color:var(--color-yellow-100)}.dark\\:text-yellow-200:where([data-theme=dark],[data-theme=dark] *){color:var(--color-yellow-200)}.dark\\:text-yellow-300:where([data-theme=dark],[data-theme=dark] *){color:var(--color-yellow-300)}.dark\\:text-yellow-400:where([data-theme=dark],[data-theme=dark] *){color:var(--color-yellow-400)}.dark\\:placeholder-gray-400:where([data-theme=dark],[data-theme=dark] *)::placeholder{color:var(--color-gray-400)}.dark\\:placeholder-neutral-500:where([data-theme=dark],[data-theme=dark] *)::placeholder{color:var(--color-neutral-500)}.dark\\:ring-blue-800\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:#193cb866}@supports (color:color-mix(in lab, red, red)){.dark\\:ring-blue-800\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:color-mix(in oklab, var(--color-blue-800) 40%, transparent)}}.dark\\:ring-gray-700:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:var(--color-gray-700)}.dark\\:ring-green-800\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:#01663066}@supports (color:color-mix(in lab, red, red)){.dark\\:ring-green-800\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:color-mix(in oklab, var(--color-green-800) 40%, transparent)}}.dark\\:ring-neutral-600:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:var(--color-neutral-600)}.dark\\:ring-neutral-700\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:var(--color-neutral-700)}@supports (color:color-mix(in lab, red, red)){.dark\\:ring-neutral-700\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:color-mix(in oklab, var(--color-neutral-700) 40%, transparent)}}.dark\\:ring-neutral-900:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:var(--color-neutral-900)}.dark\\:ring-orange-800\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:#9f2d0066}@supports (color:color-mix(in lab, red, red)){.dark\\:ring-orange-800\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:color-mix(in oklab, var(--color-orange-800) 40%, transparent)}}.dark\\:ring-primary-500:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:var(--color-primary-500)}.dark\\:ring-primary-800:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:var(--color-primary-800)}.dark\\:ring-primary-900\\/50:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:var(--color-primary-900)}@supports (color:color-mix(in lab, red, red)){.dark\\:ring-primary-900\\/50:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:color-mix(in oklab, var(--color-primary-900) 50%, transparent)}}.dark\\:ring-purple-800\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:#6e11b066}@supports (color:color-mix(in lab, red, red)){.dark\\:ring-purple-800\\/40:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:color-mix(in oklab, var(--color-purple-800) 40%, transparent)}}.dark\\:ring-red-900\\/50:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:#82181a80}@supports (color:color-mix(in lab, red, red)){.dark\\:ring-red-900\\/50:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:color-mix(in oklab, var(--color-red-900) 50%, transparent)}}.dark\\:ring-warning-400\\/50:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:var(--color-warning-400)}@supports (color:color-mix(in lab, red, red)){.dark\\:ring-warning-400\\/50:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:color-mix(in oklab, var(--color-warning-400) 50%, transparent)}}.dark\\:ring-white\\/10:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:#ffffff1a}@supports (color:color-mix(in lab, red, red)){.dark\\:ring-white\\/10:where([data-theme=dark],[data-theme=dark] *){--tw-ring-color:color-mix(in oklab, var(--color-white) 10%, transparent)}}.dark\\:ring-offset-neutral-900:where([data-theme=dark],[data-theme=dark] *){--tw-ring-offset-color:var(--color-neutral-900)}@media (hover:hover){.dark\\:group-hover\\:text-primary-200:where([data-theme=dark],[data-theme=dark] *):is(:where(.group):hover *){color:var(--color-primary-200)}}.dark\\:placeholder\\:text-neutral-400:where([data-theme=dark],[data-theme=dark] *)::placeholder{color:var(--color-neutral-400)}.dark\\:placeholder\\:text-neutral-500:where([data-theme=dark],[data-theme=dark] *)::placeholder{color:var(--color-neutral-500)}.dark\\:placeholder\\:text-warning-400:where([data-theme=dark],[data-theme=dark] *)::placeholder{color:var(--color-warning-400)}@media (hover:hover){.dark\\:hover\\:border-blue-700:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-blue-700)}.dark\\:hover\\:border-border:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-border)}.dark\\:hover\\:border-gray-300:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-gray-300)}.dark\\:hover\\:border-gray-500:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-gray-500)}.dark\\:hover\\:border-gray-600:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-gray-600)}.dark\\:hover\\:border-green-700:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-green-700)}.dark\\:hover\\:border-neutral-600:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-neutral-600)}.dark\\:hover\\:border-neutral-700:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-neutral-700)}.dark\\:hover\\:border-primary-500:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-primary-500)}.dark\\:hover\\:border-primary-700:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-primary-700)}.dark\\:hover\\:border-primary-800:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-primary-800)}.dark\\:hover\\:border-red-700:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-red-700)}.dark\\:hover\\:border-yellow-700:where([data-theme=dark],[data-theme=dark] *):hover{border-color:var(--color-yellow-700)}.dark\\:hover\\:bg-blue-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#1c398e80}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-blue-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-blue-900) 50%, transparent)}}.dark\\:hover\\:bg-blue-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#16245680}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-blue-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-blue-950) 50%, transparent)}}.dark\\:hover\\:bg-gray-600:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-gray-600)}.dark\\:hover\\:bg-gray-700:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-gray-700)}.dark\\:hover\\:bg-gray-700\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#36415380}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-gray-700\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-gray-700) 50%, transparent)}}.dark\\:hover\\:bg-gray-800:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-gray-800)}.dark\\:hover\\:bg-gray-800\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#1e293980}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-gray-800\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-gray-800) 50%, transparent)}}.dark\\:hover\\:bg-green-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#0d542b80}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-green-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-green-900) 50%, transparent)}}.dark\\:hover\\:bg-green-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#032e1580}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-green-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-green-950) 50%, transparent)}}.dark\\:hover\\:bg-muted\\/30:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-muted\\/30:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-muted) 30%, transparent)}}.dark\\:hover\\:bg-muted\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-muted\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-muted) 50%, transparent)}}.dark\\:hover\\:bg-neutral-600:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-neutral-600)}.dark\\:hover\\:bg-neutral-700:where([data-theme=dark],[data-theme=dark] *):hover,.dark\\:hover\\:bg-neutral-700\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-neutral-700)}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-neutral-700\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-neutral-700) 50%, transparent)}}.dark\\:hover\\:bg-neutral-800:where([data-theme=dark],[data-theme=dark] *):hover,.dark\\:hover\\:bg-neutral-800\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-neutral-800)}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-neutral-800\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-neutral-800) 50%, transparent)}}.dark\\:hover\\:bg-primary-700:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-primary-700)}.dark\\:hover\\:bg-primary-800:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-primary-800)}.dark\\:hover\\:bg-primary-900\\/20:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-primary-900)}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-primary-900\\/20:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-primary-900) 20%, transparent)}}.dark\\:hover\\:bg-primary-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-primary-900)}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-primary-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-primary-900) 50%, transparent)}}.dark\\:hover\\:bg-primary-950:where([data-theme=dark],[data-theme=dark] *):hover,.dark\\:hover\\:bg-primary-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:var(--color-primary-950)}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-primary-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-primary-950) 50%, transparent)}}.dark\\:hover\\:bg-red-900\\/20:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#82181a33}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-red-900\\/20:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-red-900) 20%, transparent)}}.dark\\:hover\\:bg-red-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#82181a80}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-red-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-red-900) 50%, transparent)}}.dark\\:hover\\:bg-red-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#46080980}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-red-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-red-950) 50%, transparent)}}.dark\\:hover\\:bg-white\\/10:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#ffffff1a}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-white\\/10:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-white) 10%, transparent)}}.dark\\:hover\\:bg-yellow-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#733e0a80}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-yellow-900\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-yellow-900) 50%, transparent)}}.dark\\:hover\\:bg-yellow-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:#43200480}@supports (color:color-mix(in lab, red, red)){.dark\\:hover\\:bg-yellow-950\\/50:where([data-theme=dark],[data-theme=dark] *):hover{background-color:color-mix(in oklab, var(--color-yellow-950) 50%, transparent)}}.dark\\:hover\\:text-blue-300:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-blue-300)}.dark\\:hover\\:text-blue-400:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-blue-400)}.dark\\:hover\\:text-gray-100:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-gray-100)}.dark\\:hover\\:text-gray-200:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-gray-200)}.dark\\:hover\\:text-gray-300:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-gray-300)}.dark\\:hover\\:text-green-400:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-green-400)}.dark\\:hover\\:text-neutral-200:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-neutral-200)}.dark\\:hover\\:text-neutral-300:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-neutral-300)}.dark\\:hover\\:text-primary-200:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-primary-200)}.dark\\:hover\\:text-primary-300:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-primary-300)}.dark\\:hover\\:text-primary-400:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-primary-400)}.dark\\:hover\\:text-red-300:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-red-300)}.dark\\:hover\\:text-red-400:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-red-400)}.dark\\:hover\\:text-white:where([data-theme=dark],[data-theme=dark] *):hover{color:var(--color-white)}}.dark\\:focus\\:bg-neutral-700:where([data-theme=dark],[data-theme=dark] *):focus{background-color:var(--color-neutral-700)}.dark\\:focus\\:bg-neutral-800\\/50:where([data-theme=dark],[data-theme=dark] *):focus{background-color:var(--color-neutral-800)}@supports (color:color-mix(in lab, red, red)){.dark\\:focus\\:bg-neutral-800\\/50:where([data-theme=dark],[data-theme=dark] *):focus{background-color:color-mix(in oklab, var(--color-neutral-800) 50%, transparent)}}.dark\\:focus\\:bg-red-900\\/20:where([data-theme=dark],[data-theme=dark] *):focus{background-color:#82181a33}@supports (color:color-mix(in lab, red, red)){.dark\\:focus\\:bg-red-900\\/20:where([data-theme=dark],[data-theme=dark] *):focus{background-color:color-mix(in oklab, var(--color-red-900) 20%, transparent)}}.dark\\:focus\\:ring-offset-neutral-900:where([data-theme=dark],[data-theme=dark] *):focus,.dark\\:focus-visible\\:ring-offset-neutral-900:where([data-theme=dark],[data-theme=dark] *):focus-visible{--tw-ring-offset-color:var(--color-neutral-900)}.dark\\:active\\:bg-neutral-500:where([data-theme=dark],[data-theme=dark] *):active{background-color:var(--color-neutral-500)}.dark\\:active\\:bg-neutral-700:where([data-theme=dark],[data-theme=dark] *):active{background-color:var(--color-neutral-700)}.dark\\:active\\:bg-primary-900:where([data-theme=dark],[data-theme=dark] *):active{background-color:var(--color-primary-900)}.dark\\:disabled\\:text-gray-600:where([data-theme=dark],[data-theme=dark] *):disabled{color:var(--color-gray-600)}.dark\\:data-\\[active\\=true\\]\\:bg-primary-950:where([data-theme=dark],[data-theme=dark] *)[data-active=true]{background-color:var(--color-primary-950)}@media (min-width:64rem){.dark\\:lg\\:border-neutral-700:where([data-theme=dark],[data-theme=dark] *){border-color:var(--color-neutral-700)}}@media print{.print\\:border-0{border-style:var(--tw-border-style);border-width:0}.print\\:shadow-none{--tw-shadow:0 0 #0000;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}}.\\[\\&_\\.ag-cell\\]\\:px-2 .ag-cell{padding-inline:calc(var(--spacing) * 2)}.\\[\\&_\\.ag-cell\\]\\:px-3 .ag-cell{padding-inline:calc(var(--spacing) * 3)}.\\[\\&_\\.ag-cell\\]\\:px-4 .ag-cell{padding-inline:calc(var(--spacing) * 4)}.\\[\\&_\\.ag-cell\\]\\:px-6 .ag-cell{padding-inline:calc(var(--spacing) * 6)}.\\[\\&_\\.ag-header-row\\]\\:h-7 .ag-header-row{height:calc(var(--spacing) * 7)}.\\[\\&_\\.ag-header-row\\]\\:h-8 .ag-header-row{height:calc(var(--spacing) * 8)}.\\[\\&_\\.ag-header-row\\]\\:h-10 .ag-header-row{height:calc(var(--spacing) * 10)}.\\[\\&_\\.ag-header-row\\]\\:h-12 .ag-header-row{height:calc(var(--spacing) * 12)}.\\[\\&_\\.ag-header-row\\]\\:h-14 .ag-header-row{height:calc(var(--spacing) * 14)}.\\[\\&_\\.ag-root-wrapper\\]\\:rounded-lg .ag-root-wrapper{border-radius:var(--radius-lg)}.\\[\\&_\\.ag-root-wrapper\\]\\:border .ag-root-wrapper{border-style:var(--tw-border-style);border-width:1px}.\\[\\&_\\.ag-root-wrapper\\]\\:border-0 .ag-root-wrapper{border-style:var(--tw-border-style);border-width:0}.\\[\\&_\\.ag-root-wrapper\\]\\:border-border .ag-root-wrapper{border-color:var(--color-border)}.\\[\\&_\\.ag-root-wrapper\\]\\:shadow-card .ag-root-wrapper{--tw-shadow-color:var(--color-card)}@supports (color:color-mix(in lab, red, red)){.\\[\\&_\\.ag-root-wrapper\\]\\:shadow-card .ag-root-wrapper{--tw-shadow-color:color-mix(in oklab, var(--color-card) var(--tw-shadow-alpha), transparent)}}.\\[\\&_\\.ag-row\\]\\:h-7 .ag-row{height:calc(var(--spacing) * 7)}.\\[\\&_\\.ag-row\\]\\:h-8 .ag-row{height:calc(var(--spacing) * 8)}.\\[\\&_\\.ag-row\\]\\:h-10 .ag-row{height:calc(var(--spacing) * 10)}.\\[\\&_\\.ag-row\\]\\:h-12 .ag-row{height:calc(var(--spacing) * 12)}.\\[\\&_\\.ag-row\\]\\:h-14 .ag-row{height:calc(var(--spacing) * 14)}.\\[\\&_\\.ag-row-odd\\]\\:bg-muted\\/50 .ag-row-odd{background-color:var(--color-muted)}@supports (color:color-mix(in lab, red, red)){.\\[\\&_\\.ag-row-odd\\]\\:bg-muted\\/50 .ag-row-odd{background-color:color-mix(in oklab, var(--color-muted) 50%, transparent)}}.\\[\\&_button\\]\\:bg-white\\/20 button{background-color:#fff3}@supports (color:color-mix(in lab, red, red)){.\\[\\&_button\\]\\:bg-white\\/20 button{background-color:color-mix(in oklab, var(--color-white) 20%, transparent)}}.\\[\\&_button\\]\\:text-white button{color:var(--color-white)}.\\[\\&_button\\[data-count-badge\\]\\]\\:gap-1\\.5 button[data-count-badge]{gap:calc(var(--spacing) * 1.5)}.\\[\\&_button\\[data-count-badge\\]\\]\\:px-2 button[data-count-badge]{padding-inline:calc(var(--spacing) * 2)}.\\[\\&_button\\[data-count-badge\\]\\]\\:py-0\\.5 button[data-count-badge]{padding-block:calc(var(--spacing) * .5)}.\\[\\&_button\\[data-count-badge\\]\\]\\:text-xs button[data-count-badge]{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))}@media (min-width:48rem){.md\\:\\[\\&_button\\[data-count-badge\\]\\]\\:gap-2 button[data-count-badge]{gap:calc(var(--spacing) * 2)}.md\\:\\[\\&_button\\[data-count-badge\\]\\]\\:px-3 button[data-count-badge]{padding-inline:calc(var(--spacing) * 3)}.md\\:\\[\\&_button\\[data-count-badge\\]\\]\\:py-1 button[data-count-badge]{padding-block:calc(var(--spacing) * 1)}.md\\:\\[\\&_button\\[data-count-badge\\]\\]\\:text-sm button[data-count-badge]{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}}.\\[\\&_div\\]\\:bg-white\\/30 div{background-color:#ffffff4d}@supports (color:color-mix(in lab, red, red)){.\\[\\&_div\\]\\:bg-white\\/30 div{background-color:color-mix(in oklab, var(--color-white) 30%, transparent)}}.\\[\\&_div\\>div\\]\\:bg-white div>div{background-color:var(--color-white)}.\\[\\&_p\\]\\:leading-relaxed p{--tw-leading:var(--leading-relaxed);line-height:var(--leading-relaxed)}.\\[\\&_span\\]\\:text-white\\/80 span{color:#fffc}@supports (color:color-mix(in lab, red, red)){.\\[\\&_span\\]\\:text-white\\/80 span{color:color-mix(in oklab, var(--color-white) 80%, transparent)}}.\\[\\&_tr\\]\\:border-b tr{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.\\[\\&_tr\\:last-child\\]\\:border-0 tr:last-child{border-style:var(--tw-border-style);border-width:0}.\\[\\&\\:has\\(\\[role\\=checkbox\\]\\)\\]\\:pr-0:has([role=checkbox]){padding-right:calc(var(--spacing) * 0)}.\\[\\&\\>\\*\\]\\:min-w-0>*{min-width:calc(var(--spacing) * 0)}.\\[\\&\\>form\\]\\:flex>form{display:flex}.\\[\\&\\>form\\]\\:min-h-0>form{min-height:calc(var(--spacing) * 0)}.\\[\\&\\>form\\]\\:flex-1>form{flex:1}.\\[\\&\\>form\\]\\:flex-col>form{flex-direction:column}.\\[\\&\\>svg\\]\\:absolute>svg{position:absolute}.\\[\\&\\>svg\\]\\:top-4>svg{top:calc(var(--spacing) * 4)}.\\[\\&\\>svg\\]\\:left-4>svg{left:calc(var(--spacing) * 4)}.\\[\\&\\>svg\\]\\:text-current>svg{color:currentColor}.\\[\\&\\>svg\\+div\\]\\:translate-y-\\[-3px\\]>svg+div{--tw-translate-y:-3px;translate:var(--tw-translate-x) var(--tw-translate-y)}.\\[\\&\\>tr\\]\\:last\\:border-b-0>tr:last-child{border-bottom-style:var(--tw-border-style);border-bottom-width:0}}:root{--mieweb-primary-50:#e6f7fc;--mieweb-primary-100:#b3e6f6;--mieweb-primary-200:#80d5f0;--mieweb-primary-300:#4dc4ea;--mieweb-primary-400:#27aae1;--mieweb-primary-500:#27aae1;--mieweb-primary-600:#1f98ca;--mieweb-primary-700:#1786b3;--mieweb-primary-800:#0f749c;--mieweb-primary-900:#086285;--mieweb-primary-950:#00506e;--mieweb-secondary-50:#eef2ff;--mieweb-secondary-100:#e0e7ff;--mieweb-secondary-200:#c7d2fe;--mieweb-secondary-300:#a5b4fc;--mieweb-secondary-400:#818cf8;--mieweb-secondary-500:#6366f1;--mieweb-secondary-600:#4f46e5;--mieweb-secondary-700:#4338ca;--mieweb-secondary-800:#3730a3;--mieweb-secondary-900:#312e81;--mieweb-secondary-950:#1e1b4b;--mieweb-secondary-foreground:#fff;--mieweb-neutral-50:#fafafa;--mieweb-neutral-100:#f5f5f5;--mieweb-neutral-200:#e5e5e5;--mieweb-neutral-300:#d4d4d4;--mieweb-neutral-400:#a3a3a3;--mieweb-neutral-500:#737373;--mieweb-neutral-600:#525252;--mieweb-neutral-700:#404040;--mieweb-neutral-800:#262626;--mieweb-neutral-900:#171717;--mieweb-neutral-950:#0a0a0a;--mieweb-destructive-50:#fef2f2;--mieweb-destructive-100:#fee2e2;--mieweb-destructive-200:#fecaca;--mieweb-destructive-300:#fca5a5;--mieweb-destructive-400:#f87171;--mieweb-destructive-500:#ef4444;--mieweb-destructive-600:#dc2626;--mieweb-destructive-700:#b91c1c;--mieweb-destructive-800:#991b1b;--mieweb-destructive-900:#7f1d1d;--mieweb-destructive-950:#450a0a;--mieweb-destructive-foreground:#fff;--mieweb-success-50:#f0fdf4;--mieweb-success-100:#dcfce7;--mieweb-success-200:#bbf7d0;--mieweb-success-300:#86efac;--mieweb-success-400:#4ade80;--mieweb-success-500:#22c55e;--mieweb-success-600:#16a34a;--mieweb-success-700:#15803d;--mieweb-success-800:#166534;--mieweb-success-900:#14532d;--mieweb-success-950:#052e16;--mieweb-success-foreground:#fff;--mieweb-warning-50:#fffbeb;--mieweb-warning-100:#fef3c7;--mieweb-warning-200:#fde68a;--mieweb-warning-300:#fcd34d;--mieweb-warning-400:#fbbf24;--mieweb-warning-500:#f59e0b;--mieweb-warning-600:#d97706;--mieweb-warning-700:#b45309;--mieweb-warning-800:#92400e;--mieweb-warning-900:#78350f;--mieweb-warning-950:#451a03;--mieweb-warning-foreground:#fff;--mieweb-info-50:#f0f9ff;--mieweb-info-100:#e0f2fe;--mieweb-info-200:#bae6fd;--mieweb-info-300:#7dd3fc;--mieweb-info-400:#38bdf8;--mieweb-info-500:#0ea5e9;--mieweb-info-600:#0284c7;--mieweb-info-700:#0369a1;--mieweb-info-800:#075985;--mieweb-info-900:#0c4a6e;--mieweb-info-950:#082f49;--mieweb-info-foreground:#fff;--mieweb-chart-1:#27aae1;--mieweb-chart-2:#22c55e;--mieweb-chart-3:#f59e0b;--mieweb-chart-4:#ef4444;--mieweb-chart-5:#6366f1;--mieweb-background:#fff;--mieweb-foreground:#171717;--mieweb-card:#fff;--mieweb-card-foreground:#171717;--mieweb-muted:#f5f5f5;--mieweb-muted-foreground:#737373;--mieweb-border:#e5e7eb;--mieweb-input:#e5e7eb;--mieweb-ring:#27aae1;--mieweb-font-sans:\"Nunito\", ui-sans-serif, system-ui, sans-serif;--mieweb-font-mono:ui-monospace, SFMono-Regular, Menlo, monospace;--mieweb-radius-none:0;--mieweb-radius-sm:.25rem;--mieweb-radius-md:.5rem;--mieweb-radius-lg:.75rem;--mieweb-radius-xl:1rem;--mieweb-radius-2xl:1.5rem;--mieweb-radius-full:9999px;--mieweb-shadow-card:0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a;--mieweb-shadow-dropdown:0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a;--mieweb-shadow-modal:0 10px 15px -3px #0000001a, 0 4px 6px -4px #0000001a}[data-theme=dark]{--mieweb-background:#171717;--mieweb-foreground:#fafafa;--mieweb-card:#262626;--mieweb-card-foreground:#fafafa;--mieweb-muted:#404040;--mieweb-muted-foreground:#a1a1aa;--mieweb-border:#404040;--mieweb-input:#404040;--mieweb-ring:#27aae1;--mieweb-destructive-foreground:#fafafa;--mieweb-success-foreground:#fafafa;--mieweb-warning-foreground:#fafafa;--mieweb-info-foreground:#fafafa;--mieweb-secondary-foreground:#fafafa;--mieweb-chart-1:#38bdf8;--mieweb-chart-2:#4ade80;--mieweb-chart-3:#fbbf24;--mieweb-chart-4:#f87171;--mieweb-chart-5:#818cf8}body{font-family:var(--mieweb-font-sans);background-color:var(--mieweb-background);color:var(--mieweb-foreground);-webkit-font-smoothing:antialiased}code,pre,kbd{font-family:var(--mieweb-font-mono)}:focus-visible{outline:2px solid var(--mieweb-ring);outline-offset:2px}.dark{--mieweb-background:#171717;--mieweb-foreground:#fafafa;--mieweb-card:#262626;--mieweb-card-foreground:#fafafa;--mieweb-muted:#404040;--mieweb-muted-foreground:#a1a1aa;--mieweb-border:#404040;--mieweb-input:#404040;--mieweb-ring:#27aae1;--mieweb-destructive-foreground:#fafafa;--mieweb-success-foreground:#fafafa;--mieweb-warning-foreground:#fafafa;--mieweb-info-foreground:#fafafa;--mieweb-secondary-foreground:#fafafa;--mieweb-chart-1:#38bdf8;--mieweb-chart-2:#4ade80;--mieweb-chart-3:#fbbf24;--mieweb-chart-4:#f87171;--mieweb-chart-5:#818cf8}@media (prefers-reduced-motion:reduce){*,:before,:after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}@keyframes waveform{0%,to{transform:scaleY(.3)}50%{transform:scaleY(1)}}.animate-waveform{animation:.5s ease-in-out infinite waveform}@property --tw-translate-x{syntax:\"*\";inherits:false;initial-value:0}@property --tw-translate-y{syntax:\"*\";inherits:false;initial-value:0}@property --tw-translate-z{syntax:\"*\";inherits:false;initial-value:0}@property --tw-scale-x{syntax:\"*\";inherits:false;initial-value:1}@property --tw-scale-y{syntax:\"*\";inherits:false;initial-value:1}@property --tw-scale-z{syntax:\"*\";inherits:false;initial-value:1}@property --tw-rotate-x{syntax:\"*\";inherits:false}@property --tw-rotate-y{syntax:\"*\";inherits:false}@property --tw-rotate-z{syntax:\"*\";inherits:false}@property --tw-skew-x{syntax:\"*\";inherits:false}@property --tw-skew-y{syntax:\"*\";inherits:false}@property --tw-space-y-reverse{syntax:\"*\";inherits:false;initial-value:0}@property --tw-space-x-reverse{syntax:\"*\";inherits:false;initial-value:0}@property --tw-divide-y-reverse{syntax:\"*\";inherits:false;initial-value:0}@property --tw-border-style{syntax:\"*\";inherits:false;initial-value:solid}@property --tw-gradient-position{syntax:\"*\";inherits:false}@property --tw-gradient-from{syntax:\"<color>\";inherits:false;initial-value:#0000}@property --tw-gradient-via{syntax:\"<color>\";inherits:false;initial-value:#0000}@property --tw-gradient-to{syntax:\"<color>\";inherits:false;initial-value:#0000}@property --tw-gradient-stops{syntax:\"*\";inherits:false}@property --tw-gradient-via-stops{syntax:\"*\";inherits:false}@property --tw-gradient-from-position{syntax:\"<length-percentage>\";inherits:false;initial-value:0%}@property --tw-gradient-via-position{syntax:\"<length-percentage>\";inherits:false;initial-value:50%}@property --tw-gradient-to-position{syntax:\"<length-percentage>\";inherits:false;initial-value:100%}@property --tw-leading{syntax:\"*\";inherits:false}@property --tw-font-weight{syntax:\"*\";inherits:false}@property --tw-tracking{syntax:\"*\";inherits:false}@property --tw-ordinal{syntax:\"*\";inherits:false}@property --tw-slashed-zero{syntax:\"*\";inherits:false}@property --tw-numeric-figure{syntax:\"*\";inherits:false}@property --tw-numeric-spacing{syntax:\"*\";inherits:false}@property --tw-numeric-fraction{syntax:\"*\";inherits:false}@property --tw-shadow{syntax:\"*\";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:\"*\";inherits:false}@property --tw-shadow-alpha{syntax:\"<percentage>\";inherits:false;initial-value:100%}@property --tw-inset-shadow{syntax:\"*\";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:\"*\";inherits:false}@property --tw-inset-shadow-alpha{syntax:\"<percentage>\";inherits:false;initial-value:100%}@property --tw-ring-color{syntax:\"*\";inherits:false}@property --tw-ring-shadow{syntax:\"*\";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:\"*\";inherits:false}@property --tw-inset-ring-shadow{syntax:\"*\";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:\"*\";inherits:false}@property --tw-ring-offset-width{syntax:\"<length>\";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:\"*\";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:\"*\";inherits:false;initial-value:0 0 #0000}@property --tw-outline-style{syntax:\"*\";inherits:false;initial-value:solid}@property --tw-blur{syntax:\"*\";inherits:false}@property --tw-brightness{syntax:\"*\";inherits:false}@property --tw-contrast{syntax:\"*\";inherits:false}@property --tw-grayscale{syntax:\"*\";inherits:false}@property --tw-hue-rotate{syntax:\"*\";inherits:false}@property --tw-invert{syntax:\"*\";inherits:false}@property --tw-opacity{syntax:\"*\";inherits:false}@property --tw-saturate{syntax:\"*\";inherits:false}@property --tw-sepia{syntax:\"*\";inherits:false}@property --tw-drop-shadow{syntax:\"*\";inherits:false}@property --tw-drop-shadow-color{syntax:\"*\";inherits:false}@property --tw-drop-shadow-alpha{syntax:\"<percentage>\";inherits:false;initial-value:100%}@property --tw-drop-shadow-size{syntax:\"*\";inherits:false}@property --tw-backdrop-blur{syntax:\"*\";inherits:false}@property --tw-backdrop-brightness{syntax:\"*\";inherits:false}@property --tw-backdrop-contrast{syntax:\"*\";inherits:false}@property --tw-backdrop-grayscale{syntax:\"*\";inherits:false}@property --tw-backdrop-hue-rotate{syntax:\"*\";inherits:false}@property --tw-backdrop-invert{syntax:\"*\";inherits:false}@property --tw-backdrop-opacity{syntax:\"*\";inherits:false}@property --tw-backdrop-saturate{syntax:\"*\";inherits:false}@property --tw-backdrop-sepia{syntax:\"*\";inherits:false}@property --tw-duration{syntax:\"*\";inherits:false}@property --tw-ease{syntax:\"*\";inherits:false}@keyframes spin{to{transform:rotate(360deg)}}@keyframes ping{75%,to{opacity:0;transform:scale(2)}}@keyframes pulse{50%{opacity:.5}}@keyframes bounce{0%,to{animation-timing-function:cubic-bezier(.8,0,1,1);transform:translateY(-25%)}50%{animation-timing-function:cubic-bezier(0,0,.2,1);transform:none}}/**\n * Overrides for @mieweb/ui Tailwind CSS components.\n *\n * @mieweb/ui ships its styles in CSS cascade layers (@layer utilities, etc.).\n * Bootstrap's un-layered resets (e.g. `button { border-radius: 0 }`) have\n * higher cascade priority than any layered rule, breaking component styles.\n *\n * This file re-declares the affected utilities WITHOUT @layer so they match\n * Bootstrap's cascade level and win by specificity (class > type selector).\n */\n\n/* ── Border radius (Bootstrap resets button border-radius to 0) ── */\n.rounded-sm  { border-radius: var(--radius-sm, 0.125rem); }\n.rounded-md  { border-radius: var(--radius-md, 0.375rem); }\n.rounded-lg  { border-radius: var(--radius-lg, 0.5rem); }\n.rounded-xl  { border-radius: var(--radius-xl, 0.75rem); }\n.rounded-2xl { border-radius: var(--radius-2xl, 1rem); }\n.rounded-full { border-radius: 9999px; }\n\n/* ── Border color (ensure Tailwind border-input overrides inherited colors) ── */\n.border-input { border-color: var(--color-input, #e5e7eb); }\n.border-border { border-color: var(--color-border, #e5e7eb); }\n\n/* ── Background colors used by @mieweb/ui components ── */\n.bg-background { background-color: var(--color-background, #fff); }\n.bg-primary-700 { background-color: var(--color-primary-700); }\n\n/* ── Text colors ── */\n.text-foreground { color: var(--color-foreground, #171717); }\n.text-muted-foreground { color: var(--color-muted-foreground, #737373); }\n\n/* ── Font sizes (Bootstrap sets font-size: inherit on buttons/inputs) ── */\n.text-xs { font-size: var(--text-xs, 0.75rem); line-height: var(--tw-leading, var(--text-xs--line-height)); }\n.text-sm { font-size: var(--text-sm, 0.875rem); line-height: var(--tw-leading, var(--text-sm--line-height)); }\n.text-base { font-size: var(--text-base, 1rem); line-height: var(--tw-leading, var(--text-base--line-height)); }\n\n/* ── Padding overrides (Bootstrap .px-3 = 1rem !important vs Tailwind .px-3 = 0.75rem) ── */\n.mw-ui .px-3 { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }\n\n/* ── Compact/dense Select overrides ── */\n\n/* Trigger: reduce height and padding for sm size */\n.mw-ui button[role=\"combobox\"] {\n  height: 1.75rem;    /* 28px instead of 32px */\n  padding: 0 0.5rem;  /* px-2 instead of px-3 */\n  font-size: 0.75rem; /* text-xs instead of text-sm */\n}\n\n/* Dropdown option items: reduce padding and font size */\n[role=\"option\"].px-3.py-2 {\n  padding: 0.25rem 0.5rem !important;  /* py-1 px-2 */\n  font-size: 0.75rem !important;       /* text-xs */\n  gap: 0.25rem;\n}\n\n/* Dropdown option check icon: slightly smaller */\n[role=\"option\"] svg.h-4.w-4 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n\n/* Dropdown search input: reduce padding and font */\n[role=\"listbox\"] ~ div input,\ndiv:has(> [role=\"listbox\"]) input[type=\"text\"] {\n  padding: 0.25rem 0.5rem !important;\n  font-size: 0.75rem !important;\n}\n\n/* Dropdown \"no results\" text */\n[role=\"listbox\"] .px-3.py-2.text-center {\n  padding: 0.25rem 0.5rem !important;\n  font-size: 0.75rem !important;\n}\n\n/* Dropdown container padding */\n[role=\"listbox\"].p-1 {\n  padding: 0.125rem;\n}\n\n/* ── POI dropdown: ensure portaled dropdown is wide enough for names ── */\nbody > div:has([role=\"listbox\"]) {\n  min-width: 220px !important;\n}\n\n/* ── POI selector: borderless combobox to blend with its pill container ── */\n.ychart-poi-selector-wrapper .mw-ui button[role=\"combobox\"] {\n  border: none !important;\n  border-color: transparent !important;\n  box-shadow: none !important;\n  background-color: #f5f5f5 !important;\n}\n\n/* ── Prevent @mieweb/ui body-level styles from leaking into orgchart ── */\n";
     var id = 'ychart-editor-styles';
     // Skip if already loaded (e.g., via separate CSS file)
     if (document.getElementById(id)) return;
@@ -22258,2235 +22258,6 @@ var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "sy
       ...lintKeymap
     ])
   ])();
-  var define_process_env_default = {};
-  class Stack {
-    /**
-    @internal
-    */
-    constructor(p, stack, state, reducePos, pos, score2, buffer, bufferBase, curContext, lookAhead = 0, parent) {
-      this.p = p;
-      this.stack = stack;
-      this.state = state;
-      this.reducePos = reducePos;
-      this.pos = pos;
-      this.score = score2;
-      this.buffer = buffer;
-      this.bufferBase = bufferBase;
-      this.curContext = curContext;
-      this.lookAhead = lookAhead;
-      this.parent = parent;
-    }
-    /**
-    @internal
-    */
-    toString() {
-      return `[${this.stack.filter((_, i2) => i2 % 3 == 0).concat(this.state)}]@${this.pos}${this.score ? "!" + this.score : ""}`;
-    }
-    // Start an empty stack
-    /**
-    @internal
-    */
-    static start(p, state, pos = 0) {
-      let cx2 = p.parser.context;
-      return new Stack(p, [], state, pos, pos, 0, [], 0, cx2 ? new StackContext(cx2, cx2.start) : null, 0, null);
-    }
-    /**
-    The stack's current [context](#lr.ContextTracker) value, if
-    any. Its type will depend on the context tracker's type
-    parameter, or it will be `null` if there is no context
-    tracker.
-    */
-    get context() {
-      return this.curContext ? this.curContext.context : null;
-    }
-    // Push a state onto the stack, tracking its start position as well
-    // as the buffer base at that point.
-    /**
-    @internal
-    */
-    pushState(state, start2) {
-      this.stack.push(this.state, start2, this.bufferBase + this.buffer.length);
-      this.state = state;
-    }
-    // Apply a reduce action
-    /**
-    @internal
-    */
-    reduce(action) {
-      var _a2;
-      let depth = action >> 19, type2 = action & 65535;
-      let { parser: parser2 } = this.p;
-      let lookaheadRecord = this.reducePos < this.pos - 25;
-      if (lookaheadRecord)
-        this.setLookAhead(this.pos);
-      let dPrec = parser2.dynamicPrecedence(type2);
-      if (dPrec)
-        this.score += dPrec;
-      if (depth == 0) {
-        this.pushState(parser2.getGoto(this.state, type2, true), this.reducePos);
-        if (type2 < parser2.minRepeatTerm)
-          this.storeNode(type2, this.reducePos, this.reducePos, lookaheadRecord ? 8 : 4, true);
-        this.reduceContext(type2, this.reducePos);
-        return;
-      }
-      let base2 = this.stack.length - (depth - 1) * 3 - (action & 262144 ? 6 : 0);
-      let start2 = base2 ? this.stack[base2 - 2] : this.p.ranges[0].from, size = this.reducePos - start2;
-      if (size >= 2e3 && !((_a2 = this.p.parser.nodeSet.types[type2]) === null || _a2 === void 0 ? void 0 : _a2.isAnonymous)) {
-        if (start2 == this.p.lastBigReductionStart) {
-          this.p.bigReductionCount++;
-          this.p.lastBigReductionSize = size;
-        } else if (this.p.lastBigReductionSize < size) {
-          this.p.bigReductionCount = 1;
-          this.p.lastBigReductionStart = start2;
-          this.p.lastBigReductionSize = size;
-        }
-      }
-      let bufferBase = base2 ? this.stack[base2 - 1] : 0, count2 = this.bufferBase + this.buffer.length - bufferBase;
-      if (type2 < parser2.minRepeatTerm || action & 131072) {
-        let pos = parser2.stateFlag(
-          this.state,
-          1
-          /* StateFlag.Skipped */
-        ) ? this.pos : this.reducePos;
-        this.storeNode(type2, start2, pos, count2 + 4, true);
-      }
-      if (action & 262144) {
-        this.state = this.stack[base2];
-      } else {
-        let baseStateID = this.stack[base2 - 3];
-        this.state = parser2.getGoto(baseStateID, type2, true);
-      }
-      while (this.stack.length > base2)
-        this.stack.pop();
-      this.reduceContext(type2, start2);
-    }
-    // Shift a value into the buffer
-    /**
-    @internal
-    */
-    storeNode(term, start2, end, size = 4, mustSink = false) {
-      if (term == 0 && (!this.stack.length || this.stack[this.stack.length - 1] < this.buffer.length + this.bufferBase)) {
-        let cur2 = this, top2 = this.buffer.length;
-        if (top2 == 0 && cur2.parent) {
-          top2 = cur2.bufferBase - cur2.parent.bufferBase;
-          cur2 = cur2.parent;
-        }
-        if (top2 > 0 && cur2.buffer[top2 - 4] == 0 && cur2.buffer[top2 - 1] > -1) {
-          if (start2 == end)
-            return;
-          if (cur2.buffer[top2 - 2] >= start2) {
-            cur2.buffer[top2 - 2] = end;
-            return;
-          }
-        }
-      }
-      if (!mustSink || this.pos == end) {
-        this.buffer.push(term, start2, end, size);
-      } else {
-        let index2 = this.buffer.length;
-        if (index2 > 0 && this.buffer[index2 - 4] != 0) {
-          let mustMove = false;
-          for (let scan = index2; scan > 0 && this.buffer[scan - 2] > end; scan -= 4) {
-            if (this.buffer[scan - 1] >= 0) {
-              mustMove = true;
-              break;
-            }
-          }
-          if (mustMove)
-            while (index2 > 0 && this.buffer[index2 - 2] > end) {
-              this.buffer[index2] = this.buffer[index2 - 4];
-              this.buffer[index2 + 1] = this.buffer[index2 - 3];
-              this.buffer[index2 + 2] = this.buffer[index2 - 2];
-              this.buffer[index2 + 3] = this.buffer[index2 - 1];
-              index2 -= 4;
-              if (size > 4)
-                size -= 4;
-            }
-        }
-        this.buffer[index2] = term;
-        this.buffer[index2 + 1] = start2;
-        this.buffer[index2 + 2] = end;
-        this.buffer[index2 + 3] = size;
-      }
-    }
-    // Apply a shift action
-    /**
-    @internal
-    */
-    shift(action, type2, start2, end) {
-      if (action & 131072) {
-        this.pushState(action & 65535, this.pos);
-      } else if ((action & 262144) == 0) {
-        let nextState = action, { parser: parser2 } = this.p;
-        if (end > this.pos || type2 <= parser2.maxNode) {
-          this.pos = end;
-          if (!parser2.stateFlag(
-            nextState,
-            1
-            /* StateFlag.Skipped */
-          ))
-            this.reducePos = end;
-        }
-        this.pushState(nextState, start2);
-        this.shiftContext(type2, start2);
-        if (type2 <= parser2.maxNode)
-          this.buffer.push(type2, start2, end, 4);
-      } else {
-        this.pos = end;
-        this.shiftContext(type2, start2);
-        if (type2 <= this.p.parser.maxNode)
-          this.buffer.push(type2, start2, end, 4);
-      }
-    }
-    // Apply an action
-    /**
-    @internal
-    */
-    apply(action, next, nextStart, nextEnd) {
-      if (action & 65536)
-        this.reduce(action);
-      else
-        this.shift(action, next, nextStart, nextEnd);
-    }
-    // Add a prebuilt (reused) node into the buffer.
-    /**
-    @internal
-    */
-    useNode(value, next) {
-      let index2 = this.p.reused.length - 1;
-      if (index2 < 0 || this.p.reused[index2] != value) {
-        this.p.reused.push(value);
-        index2++;
-      }
-      let start2 = this.pos;
-      this.reducePos = this.pos = start2 + value.length;
-      this.pushState(next, start2);
-      this.buffer.push(
-        index2,
-        start2,
-        this.reducePos,
-        -1
-        /* size == -1 means this is a reused value */
-      );
-      if (this.curContext)
-        this.updateContext(this.curContext.tracker.reuse(this.curContext.context, value, this, this.p.stream.reset(this.pos - value.length)));
-    }
-    // Split the stack. Due to the buffer sharing and the fact
-    // that `this.stack` tends to stay quite shallow, this isn't very
-    // expensive.
-    /**
-    @internal
-    */
-    split() {
-      let parent = this;
-      let off = parent.buffer.length;
-      while (off > 0 && parent.buffer[off - 2] > parent.reducePos)
-        off -= 4;
-      let buffer = parent.buffer.slice(off), base2 = parent.bufferBase + off;
-      while (parent && base2 == parent.bufferBase)
-        parent = parent.parent;
-      return new Stack(this.p, this.stack.slice(), this.state, this.reducePos, this.pos, this.score, buffer, base2, this.curContext, this.lookAhead, parent);
-    }
-    // Try to recover from an error by 'deleting' (ignoring) one token.
-    /**
-    @internal
-    */
-    recoverByDelete(next, nextEnd) {
-      let isNode = next <= this.p.parser.maxNode;
-      if (isNode)
-        this.storeNode(next, this.pos, nextEnd, 4);
-      this.storeNode(0, this.pos, nextEnd, isNode ? 8 : 4);
-      this.pos = this.reducePos = nextEnd;
-      this.score -= 190;
-    }
-    /**
-    Check if the given term would be able to be shifted (optionally
-    after some reductions) on this stack. This can be useful for
-    external tokenizers that want to make sure they only provide a
-    given token when it applies.
-    */
-    canShift(term) {
-      for (let sim = new SimulatedStack(this); ; ) {
-        let action = this.p.parser.stateSlot(
-          sim.state,
-          4
-          /* ParseState.DefaultReduce */
-        ) || this.p.parser.hasAction(sim.state, term);
-        if (action == 0)
-          return false;
-        if ((action & 65536) == 0)
-          return true;
-        sim.reduce(action);
-      }
-    }
-    // Apply up to Recover.MaxNext recovery actions that conceptually
-    // inserts some missing token or rule.
-    /**
-    @internal
-    */
-    recoverByInsert(next) {
-      if (this.stack.length >= 300)
-        return [];
-      let nextStates = this.p.parser.nextStates(this.state);
-      if (nextStates.length > 4 << 1 || this.stack.length >= 120) {
-        let best = [];
-        for (let i2 = 0, s; i2 < nextStates.length; i2 += 2) {
-          if ((s = nextStates[i2 + 1]) != this.state && this.p.parser.hasAction(s, next))
-            best.push(nextStates[i2], s);
-        }
-        if (this.stack.length < 120)
-          for (let i2 = 0; best.length < 4 << 1 && i2 < nextStates.length; i2 += 2) {
-            let s = nextStates[i2 + 1];
-            if (!best.some((v, i22) => i22 & 1 && v == s))
-              best.push(nextStates[i2], s);
-          }
-        nextStates = best;
-      }
-      let result = [];
-      for (let i2 = 0; i2 < nextStates.length && result.length < 4; i2 += 2) {
-        let s = nextStates[i2 + 1];
-        if (s == this.state)
-          continue;
-        let stack = this.split();
-        stack.pushState(s, this.pos);
-        stack.storeNode(0, stack.pos, stack.pos, 4, true);
-        stack.shiftContext(nextStates[i2], this.pos);
-        stack.reducePos = this.pos;
-        stack.score -= 200;
-        result.push(stack);
-      }
-      return result;
-    }
-    // Force a reduce, if possible. Return false if that can't
-    // be done.
-    /**
-    @internal
-    */
-    forceReduce() {
-      let { parser: parser2 } = this.p;
-      let reduce = parser2.stateSlot(
-        this.state,
-        5
-        /* ParseState.ForcedReduce */
-      );
-      if ((reduce & 65536) == 0)
-        return false;
-      if (!parser2.validAction(this.state, reduce)) {
-        let depth = reduce >> 19, term = reduce & 65535;
-        let target = this.stack.length - depth * 3;
-        if (target < 0 || parser2.getGoto(this.stack[target], term, false) < 0) {
-          let backup = this.findForcedReduction();
-          if (backup == null)
-            return false;
-          reduce = backup;
-        }
-        this.storeNode(0, this.pos, this.pos, 4, true);
-        this.score -= 100;
-      }
-      this.reducePos = this.pos;
-      this.reduce(reduce);
-      return true;
-    }
-    /**
-    Try to scan through the automaton to find some kind of reduction
-    that can be applied. Used when the regular ForcedReduce field
-    isn't a valid action. @internal
-    */
-    findForcedReduction() {
-      let { parser: parser2 } = this.p, seen = [];
-      let explore = (state, depth) => {
-        if (seen.includes(state))
-          return;
-        seen.push(state);
-        return parser2.allActions(state, (action) => {
-          if (action & (262144 | 131072)) ;
-          else if (action & 65536) {
-            let rDepth = (action >> 19) - depth;
-            if (rDepth > 1) {
-              let term = action & 65535, target = this.stack.length - rDepth * 3;
-              if (target >= 0 && parser2.getGoto(this.stack[target], term, false) >= 0)
-                return rDepth << 19 | 65536 | term;
-            }
-          } else {
-            let found = explore(action, depth + 1);
-            if (found != null)
-              return found;
-          }
-        });
-      };
-      return explore(this.state, 0);
-    }
-    /**
-    @internal
-    */
-    forceAll() {
-      while (!this.p.parser.stateFlag(
-        this.state,
-        2
-        /* StateFlag.Accepting */
-      )) {
-        if (!this.forceReduce()) {
-          this.storeNode(0, this.pos, this.pos, 4, true);
-          break;
-        }
-      }
-      return this;
-    }
-    /**
-    Check whether this state has no further actions (assumed to be a direct descendant of the
-    top state, since any other states must be able to continue
-    somehow). @internal
-    */
-    get deadEnd() {
-      if (this.stack.length != 3)
-        return false;
-      let { parser: parser2 } = this.p;
-      return parser2.data[parser2.stateSlot(
-        this.state,
-        1
-        /* ParseState.Actions */
-      )] == 65535 && !parser2.stateSlot(
-        this.state,
-        4
-        /* ParseState.DefaultReduce */
-      );
-    }
-    /**
-    Restart the stack (put it back in its start state). Only safe
-    when this.stack.length == 3 (state is directly below the top
-    state). @internal
-    */
-    restart() {
-      this.storeNode(0, this.pos, this.pos, 4, true);
-      this.state = this.stack[0];
-      this.stack.length = 0;
-    }
-    /**
-    @internal
-    */
-    sameState(other) {
-      if (this.state != other.state || this.stack.length != other.stack.length)
-        return false;
-      for (let i2 = 0; i2 < this.stack.length; i2 += 3)
-        if (this.stack[i2] != other.stack[i2])
-          return false;
-      return true;
-    }
-    /**
-    Get the parser used by this stack.
-    */
-    get parser() {
-      return this.p.parser;
-    }
-    /**
-    Test whether a given dialect (by numeric ID, as exported from
-    the terms file) is enabled.
-    */
-    dialectEnabled(dialectID) {
-      return this.p.parser.dialect.flags[dialectID];
-    }
-    shiftContext(term, start2) {
-      if (this.curContext)
-        this.updateContext(this.curContext.tracker.shift(this.curContext.context, term, this, this.p.stream.reset(start2)));
-    }
-    reduceContext(term, start2) {
-      if (this.curContext)
-        this.updateContext(this.curContext.tracker.reduce(this.curContext.context, term, this, this.p.stream.reset(start2)));
-    }
-    /**
-    @internal
-    */
-    emitContext() {
-      let last = this.buffer.length - 1;
-      if (last < 0 || this.buffer[last] != -3)
-        this.buffer.push(this.curContext.hash, this.pos, this.pos, -3);
-    }
-    /**
-    @internal
-    */
-    emitLookAhead() {
-      let last = this.buffer.length - 1;
-      if (last < 0 || this.buffer[last] != -4)
-        this.buffer.push(this.lookAhead, this.pos, this.pos, -4);
-    }
-    updateContext(context) {
-      if (context != this.curContext.context) {
-        let newCx = new StackContext(this.curContext.tracker, context);
-        if (newCx.hash != this.curContext.hash)
-          this.emitContext();
-        this.curContext = newCx;
-      }
-    }
-    /**
-    @internal
-    */
-    setLookAhead(lookAhead) {
-      if (lookAhead > this.lookAhead) {
-        this.emitLookAhead();
-        this.lookAhead = lookAhead;
-      }
-    }
-    /**
-    @internal
-    */
-    close() {
-      if (this.curContext && this.curContext.tracker.strict)
-        this.emitContext();
-      if (this.lookAhead > 0)
-        this.emitLookAhead();
-    }
-  }
-  class StackContext {
-    constructor(tracker, context) {
-      this.tracker = tracker;
-      this.context = context;
-      this.hash = tracker.strict ? tracker.hash(context) : 0;
-    }
-  }
-  class SimulatedStack {
-    constructor(start2) {
-      this.start = start2;
-      this.state = start2.state;
-      this.stack = start2.stack;
-      this.base = this.stack.length;
-    }
-    reduce(action) {
-      let term = action & 65535, depth = action >> 19;
-      if (depth == 0) {
-        if (this.stack == this.start.stack)
-          this.stack = this.stack.slice();
-        this.stack.push(this.state, 0, 0);
-        this.base += 3;
-      } else {
-        this.base -= (depth - 1) * 3;
-      }
-      let goto = this.start.p.parser.getGoto(this.stack[this.base - 3], term, true);
-      this.state = goto;
-    }
-  }
-  class StackBufferCursor {
-    constructor(stack, pos, index2) {
-      this.stack = stack;
-      this.pos = pos;
-      this.index = index2;
-      this.buffer = stack.buffer;
-      if (this.index == 0)
-        this.maybeNext();
-    }
-    static create(stack, pos = stack.bufferBase + stack.buffer.length) {
-      return new StackBufferCursor(stack, pos, pos - stack.bufferBase);
-    }
-    maybeNext() {
-      let next = this.stack.parent;
-      if (next != null) {
-        this.index = this.stack.bufferBase - next.bufferBase;
-        this.stack = next;
-        this.buffer = next.buffer;
-      }
-    }
-    get id() {
-      return this.buffer[this.index - 4];
-    }
-    get start() {
-      return this.buffer[this.index - 3];
-    }
-    get end() {
-      return this.buffer[this.index - 2];
-    }
-    get size() {
-      return this.buffer[this.index - 1];
-    }
-    next() {
-      this.index -= 4;
-      this.pos -= 4;
-      if (this.index == 0)
-        this.maybeNext();
-    }
-    fork() {
-      return new StackBufferCursor(this.stack, this.pos, this.index);
-    }
-  }
-  function decodeArray(input, Type = Uint16Array) {
-    if (typeof input != "string")
-      return input;
-    let array2 = null;
-    for (let pos = 0, out = 0; pos < input.length; ) {
-      let value = 0;
-      for (; ; ) {
-        let next = input.charCodeAt(pos++), stop = false;
-        if (next == 126) {
-          value = 65535;
-          break;
-        }
-        if (next >= 92)
-          next--;
-        if (next >= 34)
-          next--;
-        let digit = next - 32;
-        if (digit >= 46) {
-          digit -= 46;
-          stop = true;
-        }
-        value += digit;
-        if (stop)
-          break;
-        value *= 46;
-      }
-      if (array2)
-        array2[out++] = value;
-      else
-        array2 = new Type(value);
-    }
-    return array2;
-  }
-  class CachedToken {
-    constructor() {
-      this.start = -1;
-      this.value = -1;
-      this.end = -1;
-      this.extended = -1;
-      this.lookAhead = 0;
-      this.mask = 0;
-      this.context = 0;
-    }
-  }
-  const nullToken = new CachedToken();
-  class InputStream {
-    /**
-    @internal
-    */
-    constructor(input, ranges) {
-      this.input = input;
-      this.ranges = ranges;
-      this.chunk = "";
-      this.chunkOff = 0;
-      this.chunk2 = "";
-      this.chunk2Pos = 0;
-      this.next = -1;
-      this.token = nullToken;
-      this.rangeIndex = 0;
-      this.pos = this.chunkPos = ranges[0].from;
-      this.range = ranges[0];
-      this.end = ranges[ranges.length - 1].to;
-      this.readNext();
-    }
-    /**
-    @internal
-    */
-    resolveOffset(offset, assoc) {
-      let range = this.range, index2 = this.rangeIndex;
-      let pos = this.pos + offset;
-      while (pos < range.from) {
-        if (!index2)
-          return null;
-        let next = this.ranges[--index2];
-        pos -= range.from - next.to;
-        range = next;
-      }
-      while (assoc < 0 ? pos > range.to : pos >= range.to) {
-        if (index2 == this.ranges.length - 1)
-          return null;
-        let next = this.ranges[++index2];
-        pos += next.from - range.to;
-        range = next;
-      }
-      return pos;
-    }
-    /**
-    @internal
-    */
-    clipPos(pos) {
-      if (pos >= this.range.from && pos < this.range.to)
-        return pos;
-      for (let range of this.ranges)
-        if (range.to > pos)
-          return Math.max(pos, range.from);
-      return this.end;
-    }
-    /**
-    Look at a code unit near the stream position. `.peek(0)` equals
-    `.next`, `.peek(-1)` gives you the previous character, and so
-    on.
-    
-    Note that looking around during tokenizing creates dependencies
-    on potentially far-away content, which may reduce the
-    effectiveness incremental parsing—when looking forward—or even
-    cause invalid reparses when looking backward more than 25 code
-    units, since the library does not track lookbehind.
-    */
-    peek(offset) {
-      let idx = this.chunkOff + offset, pos, result;
-      if (idx >= 0 && idx < this.chunk.length) {
-        pos = this.pos + offset;
-        result = this.chunk.charCodeAt(idx);
-      } else {
-        let resolved = this.resolveOffset(offset, 1);
-        if (resolved == null)
-          return -1;
-        pos = resolved;
-        if (pos >= this.chunk2Pos && pos < this.chunk2Pos + this.chunk2.length) {
-          result = this.chunk2.charCodeAt(pos - this.chunk2Pos);
-        } else {
-          let i2 = this.rangeIndex, range = this.range;
-          while (range.to <= pos)
-            range = this.ranges[++i2];
-          this.chunk2 = this.input.chunk(this.chunk2Pos = pos);
-          if (pos + this.chunk2.length > range.to)
-            this.chunk2 = this.chunk2.slice(0, range.to - pos);
-          result = this.chunk2.charCodeAt(0);
-        }
-      }
-      if (pos >= this.token.lookAhead)
-        this.token.lookAhead = pos + 1;
-      return result;
-    }
-    /**
-    Accept a token. By default, the end of the token is set to the
-    current stream position, but you can pass an offset (relative to
-    the stream position) to change that.
-    */
-    acceptToken(token, endOffset = 0) {
-      let end = endOffset ? this.resolveOffset(endOffset, -1) : this.pos;
-      if (end == null || end < this.token.start)
-        throw new RangeError("Token end out of bounds");
-      this.token.value = token;
-      this.token.end = end;
-    }
-    /**
-    Accept a token ending at a specific given position.
-    */
-    acceptTokenTo(token, endPos) {
-      this.token.value = token;
-      this.token.end = endPos;
-    }
-    getChunk() {
-      if (this.pos >= this.chunk2Pos && this.pos < this.chunk2Pos + this.chunk2.length) {
-        let { chunk, chunkPos } = this;
-        this.chunk = this.chunk2;
-        this.chunkPos = this.chunk2Pos;
-        this.chunk2 = chunk;
-        this.chunk2Pos = chunkPos;
-        this.chunkOff = this.pos - this.chunkPos;
-      } else {
-        this.chunk2 = this.chunk;
-        this.chunk2Pos = this.chunkPos;
-        let nextChunk = this.input.chunk(this.pos);
-        let end = this.pos + nextChunk.length;
-        this.chunk = end > this.range.to ? nextChunk.slice(0, this.range.to - this.pos) : nextChunk;
-        this.chunkPos = this.pos;
-        this.chunkOff = 0;
-      }
-    }
-    readNext() {
-      if (this.chunkOff >= this.chunk.length) {
-        this.getChunk();
-        if (this.chunkOff == this.chunk.length)
-          return this.next = -1;
-      }
-      return this.next = this.chunk.charCodeAt(this.chunkOff);
-    }
-    /**
-    Move the stream forward N (defaults to 1) code units. Returns
-    the new value of [`next`](#lr.InputStream.next).
-    */
-    advance(n = 1) {
-      this.chunkOff += n;
-      while (this.pos + n >= this.range.to) {
-        if (this.rangeIndex == this.ranges.length - 1)
-          return this.setDone();
-        n -= this.range.to - this.pos;
-        this.range = this.ranges[++this.rangeIndex];
-        this.pos = this.range.from;
-      }
-      this.pos += n;
-      if (this.pos >= this.token.lookAhead)
-        this.token.lookAhead = this.pos + 1;
-      return this.readNext();
-    }
-    setDone() {
-      this.pos = this.chunkPos = this.end;
-      this.range = this.ranges[this.rangeIndex = this.ranges.length - 1];
-      this.chunk = "";
-      return this.next = -1;
-    }
-    /**
-    @internal
-    */
-    reset(pos, token) {
-      if (token) {
-        this.token = token;
-        token.start = pos;
-        token.lookAhead = pos + 1;
-        token.value = token.extended = -1;
-      } else {
-        this.token = nullToken;
-      }
-      if (this.pos != pos) {
-        this.pos = pos;
-        if (pos == this.end) {
-          this.setDone();
-          return this;
-        }
-        while (pos < this.range.from)
-          this.range = this.ranges[--this.rangeIndex];
-        while (pos >= this.range.to)
-          this.range = this.ranges[++this.rangeIndex];
-        if (pos >= this.chunkPos && pos < this.chunkPos + this.chunk.length) {
-          this.chunkOff = pos - this.chunkPos;
-        } else {
-          this.chunk = "";
-          this.chunkOff = 0;
-        }
-        this.readNext();
-      }
-      return this;
-    }
-    /**
-    @internal
-    */
-    read(from, to) {
-      if (from >= this.chunkPos && to <= this.chunkPos + this.chunk.length)
-        return this.chunk.slice(from - this.chunkPos, to - this.chunkPos);
-      if (from >= this.chunk2Pos && to <= this.chunk2Pos + this.chunk2.length)
-        return this.chunk2.slice(from - this.chunk2Pos, to - this.chunk2Pos);
-      if (from >= this.range.from && to <= this.range.to)
-        return this.input.read(from, to);
-      let result = "";
-      for (let r2 of this.ranges) {
-        if (r2.from >= to)
-          break;
-        if (r2.to > from)
-          result += this.input.read(Math.max(r2.from, from), Math.min(r2.to, to));
-      }
-      return result;
-    }
-  }
-  class TokenGroup {
-    constructor(data, id2) {
-      this.data = data;
-      this.id = id2;
-    }
-    token(input, stack) {
-      let { parser: parser2 } = stack.p;
-      readToken(this.data, input, stack, this.id, parser2.data, parser2.tokenPrecTable);
-    }
-  }
-  TokenGroup.prototype.contextual = TokenGroup.prototype.fallback = TokenGroup.prototype.extend = false;
-  TokenGroup.prototype.fallback = TokenGroup.prototype.extend = false;
-  class ExternalTokenizer {
-    /**
-    Create a tokenizer. The first argument is the function that,
-    given an input stream, scans for the types of tokens it
-    recognizes at the stream's position, and calls
-    [`acceptToken`](#lr.InputStream.acceptToken) when it finds
-    one.
-    */
-    constructor(token, options = {}) {
-      this.token = token;
-      this.contextual = !!options.contextual;
-      this.fallback = !!options.fallback;
-      this.extend = !!options.extend;
-    }
-  }
-  function readToken(data, input, stack, group, precTable, precOffset) {
-    let state = 0, groupMask = 1 << group, { dialect } = stack.p.parser;
-    scan: for (; ; ) {
-      if ((groupMask & data[state]) == 0)
-        break;
-      let accEnd = data[state + 1];
-      for (let i2 = state + 3; i2 < accEnd; i2 += 2)
-        if ((data[i2 + 1] & groupMask) > 0) {
-          let term = data[i2];
-          if (dialect.allows(term) && (input.token.value == -1 || input.token.value == term || overrides(term, input.token.value, precTable, precOffset))) {
-            input.acceptToken(term);
-            break;
-          }
-        }
-      let next = input.next, low = 0, high = data[state + 2];
-      if (input.next < 0 && high > low && data[accEnd + high * 3 - 3] == 65535) {
-        state = data[accEnd + high * 3 - 1];
-        continue scan;
-      }
-      for (; low < high; ) {
-        let mid = low + high >> 1;
-        let index2 = accEnd + mid + (mid << 1);
-        let from = data[index2], to = data[index2 + 1] || 65536;
-        if (next < from)
-          high = mid;
-        else if (next >= to)
-          low = mid + 1;
-        else {
-          state = data[index2 + 2];
-          input.advance();
-          continue scan;
-        }
-      }
-      break;
-    }
-  }
-  function findOffset(data, start2, term) {
-    for (let i2 = start2, next; (next = data[i2]) != 65535; i2++)
-      if (next == term)
-        return i2 - start2;
-    return -1;
-  }
-  function overrides(token, prev, tableData, tableOffset) {
-    let iPrev = findOffset(tableData, tableOffset, prev);
-    return iPrev < 0 || findOffset(tableData, tableOffset, token) < iPrev;
-  }
-  const verbose = typeof process != "undefined" && define_process_env_default && /\bparse\b/.test(define_process_env_default.LOG);
-  let stackIDs = null;
-  function cutAt(tree2, pos, side) {
-    let cursor2 = tree2.cursor(IterMode.IncludeAnonymous);
-    cursor2.moveTo(pos);
-    for (; ; ) {
-      if (!(side < 0 ? cursor2.childBefore(pos) : cursor2.childAfter(pos)))
-        for (; ; ) {
-          if ((side < 0 ? cursor2.to < pos : cursor2.from > pos) && !cursor2.type.isError)
-            return side < 0 ? Math.max(0, Math.min(
-              cursor2.to - 1,
-              pos - 25
-              /* Lookahead.Margin */
-            )) : Math.min(tree2.length, Math.max(
-              cursor2.from + 1,
-              pos + 25
-              /* Lookahead.Margin */
-            ));
-          if (side < 0 ? cursor2.prevSibling() : cursor2.nextSibling())
-            break;
-          if (!cursor2.parent())
-            return side < 0 ? 0 : tree2.length;
-        }
-    }
-  }
-  class FragmentCursor {
-    constructor(fragments, nodeSet) {
-      this.fragments = fragments;
-      this.nodeSet = nodeSet;
-      this.i = 0;
-      this.fragment = null;
-      this.safeFrom = -1;
-      this.safeTo = -1;
-      this.trees = [];
-      this.start = [];
-      this.index = [];
-      this.nextFragment();
-    }
-    nextFragment() {
-      let fr = this.fragment = this.i == this.fragments.length ? null : this.fragments[this.i++];
-      if (fr) {
-        this.safeFrom = fr.openStart ? cutAt(fr.tree, fr.from + fr.offset, 1) - fr.offset : fr.from;
-        this.safeTo = fr.openEnd ? cutAt(fr.tree, fr.to + fr.offset, -1) - fr.offset : fr.to;
-        while (this.trees.length) {
-          this.trees.pop();
-          this.start.pop();
-          this.index.pop();
-        }
-        this.trees.push(fr.tree);
-        this.start.push(-fr.offset);
-        this.index.push(0);
-        this.nextStart = this.safeFrom;
-      } else {
-        this.nextStart = 1e9;
-      }
-    }
-    // `pos` must be >= any previously given `pos` for this cursor
-    nodeAt(pos) {
-      if (pos < this.nextStart)
-        return null;
-      while (this.fragment && this.safeTo <= pos)
-        this.nextFragment();
-      if (!this.fragment)
-        return null;
-      for (; ; ) {
-        let last = this.trees.length - 1;
-        if (last < 0) {
-          this.nextFragment();
-          return null;
-        }
-        let top2 = this.trees[last], index2 = this.index[last];
-        if (index2 == top2.children.length) {
-          this.trees.pop();
-          this.start.pop();
-          this.index.pop();
-          continue;
-        }
-        let next = top2.children[index2];
-        let start2 = this.start[last] + top2.positions[index2];
-        if (start2 > pos) {
-          this.nextStart = start2;
-          return null;
-        }
-        if (next instanceof Tree) {
-          if (start2 == pos) {
-            if (start2 < this.safeFrom)
-              return null;
-            let end = start2 + next.length;
-            if (end <= this.safeTo) {
-              let lookAhead = next.prop(NodeProp.lookAhead);
-              if (!lookAhead || end + lookAhead < this.fragment.to)
-                return next;
-            }
-          }
-          this.index[last]++;
-          if (start2 + next.length >= Math.max(this.safeFrom, pos)) {
-            this.trees.push(next);
-            this.start.push(start2);
-            this.index.push(0);
-          }
-        } else {
-          this.index[last]++;
-          this.nextStart = start2 + next.length;
-        }
-      }
-    }
-  }
-  class TokenCache {
-    constructor(parser2, stream) {
-      this.stream = stream;
-      this.tokens = [];
-      this.mainToken = null;
-      this.actions = [];
-      this.tokens = parser2.tokenizers.map((_) => new CachedToken());
-    }
-    getActions(stack) {
-      let actionIndex = 0;
-      let main = null;
-      let { parser: parser2 } = stack.p, { tokenizers } = parser2;
-      let mask = parser2.stateSlot(
-        stack.state,
-        3
-        /* ParseState.TokenizerMask */
-      );
-      let context = stack.curContext ? stack.curContext.hash : 0;
-      let lookAhead = 0;
-      for (let i2 = 0; i2 < tokenizers.length; i2++) {
-        if ((1 << i2 & mask) == 0)
-          continue;
-        let tokenizer = tokenizers[i2], token = this.tokens[i2];
-        if (main && !tokenizer.fallback)
-          continue;
-        if (tokenizer.contextual || token.start != stack.pos || token.mask != mask || token.context != context) {
-          this.updateCachedToken(token, tokenizer, stack);
-          token.mask = mask;
-          token.context = context;
-        }
-        if (token.lookAhead > token.end + 25)
-          lookAhead = Math.max(token.lookAhead, lookAhead);
-        if (token.value != 0) {
-          let startIndex = actionIndex;
-          if (token.extended > -1)
-            actionIndex = this.addActions(stack, token.extended, token.end, actionIndex);
-          actionIndex = this.addActions(stack, token.value, token.end, actionIndex);
-          if (!tokenizer.extend) {
-            main = token;
-            if (actionIndex > startIndex)
-              break;
-          }
-        }
-      }
-      while (this.actions.length > actionIndex)
-        this.actions.pop();
-      if (lookAhead)
-        stack.setLookAhead(lookAhead);
-      if (!main && stack.pos == this.stream.end) {
-        main = new CachedToken();
-        main.value = stack.p.parser.eofTerm;
-        main.start = main.end = stack.pos;
-        actionIndex = this.addActions(stack, main.value, main.end, actionIndex);
-      }
-      this.mainToken = main;
-      return this.actions;
-    }
-    getMainToken(stack) {
-      if (this.mainToken)
-        return this.mainToken;
-      let main = new CachedToken(), { pos, p } = stack;
-      main.start = pos;
-      main.end = Math.min(pos + 1, p.stream.end);
-      main.value = pos == p.stream.end ? p.parser.eofTerm : 0;
-      return main;
-    }
-    updateCachedToken(token, tokenizer, stack) {
-      let start2 = this.stream.clipPos(stack.pos);
-      tokenizer.token(this.stream.reset(start2, token), stack);
-      if (token.value > -1) {
-        let { parser: parser2 } = stack.p;
-        for (let i2 = 0; i2 < parser2.specialized.length; i2++)
-          if (parser2.specialized[i2] == token.value) {
-            let result = parser2.specializers[i2](this.stream.read(token.start, token.end), stack);
-            if (result >= 0 && stack.p.parser.dialect.allows(result >> 1)) {
-              if ((result & 1) == 0)
-                token.value = result >> 1;
-              else
-                token.extended = result >> 1;
-              break;
-            }
-          }
-      } else {
-        token.value = 0;
-        token.end = this.stream.clipPos(start2 + 1);
-      }
-    }
-    putAction(action, token, end, index2) {
-      for (let i2 = 0; i2 < index2; i2 += 3)
-        if (this.actions[i2] == action)
-          return index2;
-      this.actions[index2++] = action;
-      this.actions[index2++] = token;
-      this.actions[index2++] = end;
-      return index2;
-    }
-    addActions(stack, token, end, index2) {
-      let { state } = stack, { parser: parser2 } = stack.p, { data } = parser2;
-      for (let set2 = 0; set2 < 2; set2++) {
-        for (let i2 = parser2.stateSlot(
-          state,
-          set2 ? 2 : 1
-          /* ParseState.Actions */
-        ); ; i2 += 3) {
-          if (data[i2] == 65535) {
-            if (data[i2 + 1] == 1) {
-              i2 = pair(data, i2 + 2);
-            } else {
-              if (index2 == 0 && data[i2 + 1] == 2)
-                index2 = this.putAction(pair(data, i2 + 2), token, end, index2);
-              break;
-            }
-          }
-          if (data[i2] == token)
-            index2 = this.putAction(pair(data, i2 + 1), token, end, index2);
-        }
-      }
-      return index2;
-    }
-  }
-  class Parse {
-    constructor(parser2, input, fragments, ranges) {
-      this.parser = parser2;
-      this.input = input;
-      this.ranges = ranges;
-      this.recovering = 0;
-      this.nextStackID = 9812;
-      this.minStackPos = 0;
-      this.reused = [];
-      this.stoppedAt = null;
-      this.lastBigReductionStart = -1;
-      this.lastBigReductionSize = 0;
-      this.bigReductionCount = 0;
-      this.stream = new InputStream(input, ranges);
-      this.tokens = new TokenCache(parser2, this.stream);
-      this.topTerm = parser2.top[1];
-      let { from } = ranges[0];
-      this.stacks = [Stack.start(this, parser2.top[0], from)];
-      this.fragments = fragments.length && this.stream.end - from > parser2.bufferLength * 4 ? new FragmentCursor(fragments, parser2.nodeSet) : null;
-    }
-    get parsedPos() {
-      return this.minStackPos;
-    }
-    // Move the parser forward. This will process all parse stacks at
-    // `this.pos` and try to advance them to a further position. If no
-    // stack for such a position is found, it'll start error-recovery.
-    //
-    // When the parse is finished, this will return a syntax tree. When
-    // not, it returns `null`.
-    advance() {
-      let stacks = this.stacks, pos = this.minStackPos;
-      let newStacks = this.stacks = [];
-      let stopped, stoppedTokens;
-      if (this.bigReductionCount > 300 && stacks.length == 1) {
-        let [s] = stacks;
-        while (s.forceReduce() && s.stack.length && s.stack[s.stack.length - 2] >= this.lastBigReductionStart) {
-        }
-        this.bigReductionCount = this.lastBigReductionSize = 0;
-      }
-      for (let i2 = 0; i2 < stacks.length; i2++) {
-        let stack = stacks[i2];
-        for (; ; ) {
-          this.tokens.mainToken = null;
-          if (stack.pos > pos) {
-            newStacks.push(stack);
-          } else if (this.advanceStack(stack, newStacks, stacks)) {
-            continue;
-          } else {
-            if (!stopped) {
-              stopped = [];
-              stoppedTokens = [];
-            }
-            stopped.push(stack);
-            let tok = this.tokens.getMainToken(stack);
-            stoppedTokens.push(tok.value, tok.end);
-          }
-          break;
-        }
-      }
-      if (!newStacks.length) {
-        let finished = stopped && findFinished(stopped);
-        if (finished) {
-          if (verbose)
-            console.log("Finish with " + this.stackID(finished));
-          return this.stackToTree(finished);
-        }
-        if (this.parser.strict) {
-          if (verbose && stopped)
-            console.log("Stuck with token " + (this.tokens.mainToken ? this.parser.getName(this.tokens.mainToken.value) : "none"));
-          throw new SyntaxError("No parse at " + pos);
-        }
-        if (!this.recovering)
-          this.recovering = 5;
-      }
-      if (this.recovering && stopped) {
-        let finished = this.stoppedAt != null && stopped[0].pos > this.stoppedAt ? stopped[0] : this.runRecovery(stopped, stoppedTokens, newStacks);
-        if (finished) {
-          if (verbose)
-            console.log("Force-finish " + this.stackID(finished));
-          return this.stackToTree(finished.forceAll());
-        }
-      }
-      if (this.recovering) {
-        let maxRemaining = this.recovering == 1 ? 1 : this.recovering * 3;
-        if (newStacks.length > maxRemaining) {
-          newStacks.sort((a2, b) => b.score - a2.score);
-          while (newStacks.length > maxRemaining)
-            newStacks.pop();
-        }
-        if (newStacks.some((s) => s.reducePos > pos))
-          this.recovering--;
-      } else if (newStacks.length > 1) {
-        outer: for (let i2 = 0; i2 < newStacks.length - 1; i2++) {
-          let stack = newStacks[i2];
-          for (let j = i2 + 1; j < newStacks.length; j++) {
-            let other = newStacks[j];
-            if (stack.sameState(other) || stack.buffer.length > 500 && other.buffer.length > 500) {
-              if ((stack.score - other.score || stack.buffer.length - other.buffer.length) > 0) {
-                newStacks.splice(j--, 1);
-              } else {
-                newStacks.splice(i2--, 1);
-                continue outer;
-              }
-            }
-          }
-        }
-        if (newStacks.length > 12)
-          newStacks.splice(
-            12,
-            newStacks.length - 12
-            /* Rec.MaxStackCount */
-          );
-      }
-      this.minStackPos = newStacks[0].pos;
-      for (let i2 = 1; i2 < newStacks.length; i2++)
-        if (newStacks[i2].pos < this.minStackPos)
-          this.minStackPos = newStacks[i2].pos;
-      return null;
-    }
-    stopAt(pos) {
-      if (this.stoppedAt != null && this.stoppedAt < pos)
-        throw new RangeError("Can't move stoppedAt forward");
-      this.stoppedAt = pos;
-    }
-    // Returns an updated version of the given stack, or null if the
-    // stack can't advance normally. When `split` and `stacks` are
-    // given, stacks split off by ambiguous operations will be pushed to
-    // `split`, or added to `stacks` if they move `pos` forward.
-    advanceStack(stack, stacks, split) {
-      let start2 = stack.pos, { parser: parser2 } = this;
-      let base2 = verbose ? this.stackID(stack) + " -> " : "";
-      if (this.stoppedAt != null && start2 > this.stoppedAt)
-        return stack.forceReduce() ? stack : null;
-      if (this.fragments) {
-        let strictCx = stack.curContext && stack.curContext.tracker.strict, cxHash = strictCx ? stack.curContext.hash : 0;
-        for (let cached = this.fragments.nodeAt(start2); cached; ) {
-          let match = this.parser.nodeSet.types[cached.type.id] == cached.type ? parser2.getGoto(stack.state, cached.type.id) : -1;
-          if (match > -1 && cached.length && (!strictCx || (cached.prop(NodeProp.contextHash) || 0) == cxHash)) {
-            stack.useNode(cached, match);
-            if (verbose)
-              console.log(base2 + this.stackID(stack) + ` (via reuse of ${parser2.getName(cached.type.id)})`);
-            return true;
-          }
-          if (!(cached instanceof Tree) || cached.children.length == 0 || cached.positions[0] > 0)
-            break;
-          let inner = cached.children[0];
-          if (inner instanceof Tree && cached.positions[0] == 0)
-            cached = inner;
-          else
-            break;
-        }
-      }
-      let defaultReduce = parser2.stateSlot(
-        stack.state,
-        4
-        /* ParseState.DefaultReduce */
-      );
-      if (defaultReduce > 0) {
-        stack.reduce(defaultReduce);
-        if (verbose)
-          console.log(base2 + this.stackID(stack) + ` (via always-reduce ${parser2.getName(
-            defaultReduce & 65535
-            /* Action.ValueMask */
-          )})`);
-        return true;
-      }
-      if (stack.stack.length >= 8400) {
-        while (stack.stack.length > 6e3 && stack.forceReduce()) {
-        }
-      }
-      let actions = this.tokens.getActions(stack);
-      for (let i2 = 0; i2 < actions.length; ) {
-        let action = actions[i2++], term = actions[i2++], end = actions[i2++];
-        let last = i2 == actions.length || !split;
-        let localStack = last ? stack : stack.split();
-        let main = this.tokens.mainToken;
-        localStack.apply(action, term, main ? main.start : localStack.pos, end);
-        if (verbose)
-          console.log(base2 + this.stackID(localStack) + ` (via ${(action & 65536) == 0 ? "shift" : `reduce of ${parser2.getName(
-            action & 65535
-            /* Action.ValueMask */
-          )}`} for ${parser2.getName(term)} @ ${start2}${localStack == stack ? "" : ", split"})`);
-        if (last)
-          return true;
-        else if (localStack.pos > start2)
-          stacks.push(localStack);
-        else
-          split.push(localStack);
-      }
-      return false;
-    }
-    // Advance a given stack forward as far as it will go. Returns the
-    // (possibly updated) stack if it got stuck, or null if it moved
-    // forward and was given to `pushStackDedup`.
-    advanceFully(stack, newStacks) {
-      let pos = stack.pos;
-      for (; ; ) {
-        if (!this.advanceStack(stack, null, null))
-          return false;
-        if (stack.pos > pos) {
-          pushStackDedup(stack, newStacks);
-          return true;
-        }
-      }
-    }
-    runRecovery(stacks, tokens, newStacks) {
-      let finished = null, restarted = false;
-      for (let i2 = 0; i2 < stacks.length; i2++) {
-        let stack = stacks[i2], token = tokens[i2 << 1], tokenEnd = tokens[(i2 << 1) + 1];
-        let base2 = verbose ? this.stackID(stack) + " -> " : "";
-        if (stack.deadEnd) {
-          if (restarted)
-            continue;
-          restarted = true;
-          stack.restart();
-          if (verbose)
-            console.log(base2 + this.stackID(stack) + " (restarted)");
-          let done = this.advanceFully(stack, newStacks);
-          if (done)
-            continue;
-        }
-        let force = stack.split(), forceBase = base2;
-        for (let j = 0; force.forceReduce() && j < 10; j++) {
-          if (verbose)
-            console.log(forceBase + this.stackID(force) + " (via force-reduce)");
-          let done = this.advanceFully(force, newStacks);
-          if (done)
-            break;
-          if (verbose)
-            forceBase = this.stackID(force) + " -> ";
-        }
-        for (let insert2 of stack.recoverByInsert(token)) {
-          if (verbose)
-            console.log(base2 + this.stackID(insert2) + " (via recover-insert)");
-          this.advanceFully(insert2, newStacks);
-        }
-        if (this.stream.end > stack.pos) {
-          if (tokenEnd == stack.pos) {
-            tokenEnd++;
-            token = 0;
-          }
-          stack.recoverByDelete(token, tokenEnd);
-          if (verbose)
-            console.log(base2 + this.stackID(stack) + ` (via recover-delete ${this.parser.getName(token)})`);
-          pushStackDedup(stack, newStacks);
-        } else if (!finished || finished.score < stack.score) {
-          finished = stack;
-        }
-      }
-      return finished;
-    }
-    // Convert the stack's buffer to a syntax tree.
-    stackToTree(stack) {
-      stack.close();
-      return Tree.build({
-        buffer: StackBufferCursor.create(stack),
-        nodeSet: this.parser.nodeSet,
-        topID: this.topTerm,
-        maxBufferLength: this.parser.bufferLength,
-        reused: this.reused,
-        start: this.ranges[0].from,
-        length: stack.pos - this.ranges[0].from,
-        minRepeatType: this.parser.minRepeatTerm
-      });
-    }
-    stackID(stack) {
-      let id2 = (stackIDs || (stackIDs = /* @__PURE__ */ new WeakMap())).get(stack);
-      if (!id2)
-        stackIDs.set(stack, id2 = String.fromCodePoint(this.nextStackID++));
-      return id2 + stack;
-    }
-  }
-  function pushStackDedup(stack, newStacks) {
-    for (let i2 = 0; i2 < newStacks.length; i2++) {
-      let other = newStacks[i2];
-      if (other.pos == stack.pos && other.sameState(stack)) {
-        if (newStacks[i2].score < stack.score)
-          newStacks[i2] = stack;
-        return;
-      }
-    }
-    newStacks.push(stack);
-  }
-  class Dialect {
-    constructor(source, flags, disabled) {
-      this.source = source;
-      this.flags = flags;
-      this.disabled = disabled;
-    }
-    allows(term) {
-      return !this.disabled || this.disabled[term] == 0;
-    }
-  }
-  const id$1 = (x2) => x2;
-  class ContextTracker {
-    /**
-    Define a context tracker.
-    */
-    constructor(spec) {
-      this.start = spec.start;
-      this.shift = spec.shift || id$1;
-      this.reduce = spec.reduce || id$1;
-      this.reuse = spec.reuse || id$1;
-      this.hash = spec.hash || (() => 0);
-      this.strict = spec.strict !== false;
-    }
-  }
-  class LRParser extends Parser {
-    /**
-    @internal
-    */
-    constructor(spec) {
-      super();
-      this.wrappers = [];
-      if (spec.version != 14)
-        throw new RangeError(`Parser version (${spec.version}) doesn't match runtime version (${14})`);
-      let nodeNames = spec.nodeNames.split(" ");
-      this.minRepeatTerm = nodeNames.length;
-      for (let i2 = 0; i2 < spec.repeatNodeCount; i2++)
-        nodeNames.push("");
-      let topTerms = Object.keys(spec.topRules).map((r2) => spec.topRules[r2][1]);
-      let nodeProps = [];
-      for (let i2 = 0; i2 < nodeNames.length; i2++)
-        nodeProps.push([]);
-      function setProp(nodeID, prop, value) {
-        nodeProps[nodeID].push([prop, prop.deserialize(String(value))]);
-      }
-      if (spec.nodeProps)
-        for (let propSpec of spec.nodeProps) {
-          let prop = propSpec[0];
-          if (typeof prop == "string")
-            prop = NodeProp[prop];
-          for (let i2 = 1; i2 < propSpec.length; ) {
-            let next = propSpec[i2++];
-            if (next >= 0) {
-              setProp(next, prop, propSpec[i2++]);
-            } else {
-              let value = propSpec[i2 + -next];
-              for (let j = -next; j > 0; j--)
-                setProp(propSpec[i2++], prop, value);
-              i2++;
-            }
-          }
-        }
-      this.nodeSet = new NodeSet(nodeNames.map((name2, i2) => NodeType.define({
-        name: i2 >= this.minRepeatTerm ? void 0 : name2,
-        id: i2,
-        props: nodeProps[i2],
-        top: topTerms.indexOf(i2) > -1,
-        error: i2 == 0,
-        skipped: spec.skippedNodes && spec.skippedNodes.indexOf(i2) > -1
-      })));
-      if (spec.propSources)
-        this.nodeSet = this.nodeSet.extend(...spec.propSources);
-      this.strict = false;
-      this.bufferLength = DefaultBufferLength;
-      let tokenArray = decodeArray(spec.tokenData);
-      this.context = spec.context;
-      this.specializerSpecs = spec.specialized || [];
-      this.specialized = new Uint16Array(this.specializerSpecs.length);
-      for (let i2 = 0; i2 < this.specializerSpecs.length; i2++)
-        this.specialized[i2] = this.specializerSpecs[i2].term;
-      this.specializers = this.specializerSpecs.map(getSpecializer);
-      this.states = decodeArray(spec.states, Uint32Array);
-      this.data = decodeArray(spec.stateData);
-      this.goto = decodeArray(spec.goto);
-      this.maxTerm = spec.maxTerm;
-      this.tokenizers = spec.tokenizers.map((value) => typeof value == "number" ? new TokenGroup(tokenArray, value) : value);
-      this.topRules = spec.topRules;
-      this.dialects = spec.dialects || {};
-      this.dynamicPrecedences = spec.dynamicPrecedences || null;
-      this.tokenPrecTable = spec.tokenPrec;
-      this.termNames = spec.termNames || null;
-      this.maxNode = this.nodeSet.types.length - 1;
-      this.dialect = this.parseDialect();
-      this.top = this.topRules[Object.keys(this.topRules)[0]];
-    }
-    createParse(input, fragments, ranges) {
-      let parse = new Parse(this, input, fragments, ranges);
-      for (let w of this.wrappers)
-        parse = w(parse, input, fragments, ranges);
-      return parse;
-    }
-    /**
-    Get a goto table entry @internal
-    */
-    getGoto(state, term, loose = false) {
-      let table = this.goto;
-      if (term >= table[0])
-        return -1;
-      for (let pos = table[term + 1]; ; ) {
-        let groupTag = table[pos++], last = groupTag & 1;
-        let target = table[pos++];
-        if (last && loose)
-          return target;
-        for (let end = pos + (groupTag >> 1); pos < end; pos++)
-          if (table[pos] == state)
-            return target;
-        if (last)
-          return -1;
-      }
-    }
-    /**
-    Check if this state has an action for a given terminal @internal
-    */
-    hasAction(state, terminal) {
-      let data = this.data;
-      for (let set2 = 0; set2 < 2; set2++) {
-        for (let i2 = this.stateSlot(
-          state,
-          set2 ? 2 : 1
-          /* ParseState.Actions */
-        ), next; ; i2 += 3) {
-          if ((next = data[i2]) == 65535) {
-            if (data[i2 + 1] == 1)
-              next = data[i2 = pair(data, i2 + 2)];
-            else if (data[i2 + 1] == 2)
-              return pair(data, i2 + 2);
-            else
-              break;
-          }
-          if (next == terminal || next == 0)
-            return pair(data, i2 + 1);
-        }
-      }
-      return 0;
-    }
-    /**
-    @internal
-    */
-    stateSlot(state, slot) {
-      return this.states[state * 6 + slot];
-    }
-    /**
-    @internal
-    */
-    stateFlag(state, flag) {
-      return (this.stateSlot(
-        state,
-        0
-        /* ParseState.Flags */
-      ) & flag) > 0;
-    }
-    /**
-    @internal
-    */
-    validAction(state, action) {
-      return !!this.allActions(state, (a2) => a2 == action ? true : null);
-    }
-    /**
-    @internal
-    */
-    allActions(state, action) {
-      let deflt = this.stateSlot(
-        state,
-        4
-        /* ParseState.DefaultReduce */
-      );
-      let result = deflt ? action(deflt) : void 0;
-      for (let i2 = this.stateSlot(
-        state,
-        1
-        /* ParseState.Actions */
-      ); result == null; i2 += 3) {
-        if (this.data[i2] == 65535) {
-          if (this.data[i2 + 1] == 1)
-            i2 = pair(this.data, i2 + 2);
-          else
-            break;
-        }
-        result = action(pair(this.data, i2 + 1));
-      }
-      return result;
-    }
-    /**
-    Get the states that can follow this one through shift actions or
-    goto jumps. @internal
-    */
-    nextStates(state) {
-      let result = [];
-      for (let i2 = this.stateSlot(
-        state,
-        1
-        /* ParseState.Actions */
-      ); ; i2 += 3) {
-        if (this.data[i2] == 65535) {
-          if (this.data[i2 + 1] == 1)
-            i2 = pair(this.data, i2 + 2);
-          else
-            break;
-        }
-        if ((this.data[i2 + 2] & 65536 >> 16) == 0) {
-          let value = this.data[i2 + 1];
-          if (!result.some((v, i22) => i22 & 1 && v == value))
-            result.push(this.data[i2], value);
-        }
-      }
-      return result;
-    }
-    /**
-    Configure the parser. Returns a new parser instance that has the
-    given settings modified. Settings not provided in `config` are
-    kept from the original parser.
-    */
-    configure(config2) {
-      let copy = Object.assign(Object.create(LRParser.prototype), this);
-      if (config2.props)
-        copy.nodeSet = this.nodeSet.extend(...config2.props);
-      if (config2.top) {
-        let info = this.topRules[config2.top];
-        if (!info)
-          throw new RangeError(`Invalid top rule name ${config2.top}`);
-        copy.top = info;
-      }
-      if (config2.tokenizers)
-        copy.tokenizers = this.tokenizers.map((t2) => {
-          let found = config2.tokenizers.find((r2) => r2.from == t2);
-          return found ? found.to : t2;
-        });
-      if (config2.specializers) {
-        copy.specializers = this.specializers.slice();
-        copy.specializerSpecs = this.specializerSpecs.map((s, i2) => {
-          let found = config2.specializers.find((r2) => r2.from == s.external);
-          if (!found)
-            return s;
-          let spec = Object.assign(Object.assign({}, s), { external: found.to });
-          copy.specializers[i2] = getSpecializer(spec);
-          return spec;
-        });
-      }
-      if (config2.contextTracker)
-        copy.context = config2.contextTracker;
-      if (config2.dialect)
-        copy.dialect = this.parseDialect(config2.dialect);
-      if (config2.strict != null)
-        copy.strict = config2.strict;
-      if (config2.wrap)
-        copy.wrappers = copy.wrappers.concat(config2.wrap);
-      if (config2.bufferLength != null)
-        copy.bufferLength = config2.bufferLength;
-      return copy;
-    }
-    /**
-    Tells you whether any [parse wrappers](#lr.ParserConfig.wrap)
-    are registered for this parser.
-    */
-    hasWrappers() {
-      return this.wrappers.length > 0;
-    }
-    /**
-    Returns the name associated with a given term. This will only
-    work for all terms when the parser was generated with the
-    `--names` option. By default, only the names of tagged terms are
-    stored.
-    */
-    getName(term) {
-      return this.termNames ? this.termNames[term] : String(term <= this.maxNode && this.nodeSet.types[term].name || term);
-    }
-    /**
-    The eof term id is always allocated directly after the node
-    types. @internal
-    */
-    get eofTerm() {
-      return this.maxNode + 1;
-    }
-    /**
-    The type of top node produced by the parser.
-    */
-    get topNode() {
-      return this.nodeSet.types[this.top[1]];
-    }
-    /**
-    @internal
-    */
-    dynamicPrecedence(term) {
-      let prec2 = this.dynamicPrecedences;
-      return prec2 == null ? 0 : prec2[term] || 0;
-    }
-    /**
-    @internal
-    */
-    parseDialect(dialect) {
-      let values = Object.keys(this.dialects), flags = values.map(() => false);
-      if (dialect)
-        for (let part of dialect.split(" ")) {
-          let id2 = values.indexOf(part);
-          if (id2 >= 0)
-            flags[id2] = true;
-        }
-      let disabled = null;
-      for (let i2 = 0; i2 < values.length; i2++)
-        if (!flags[i2]) {
-          for (let j = this.dialects[values[i2]], id2; (id2 = this.data[j++]) != 65535; )
-            (disabled || (disabled = new Uint8Array(this.maxTerm + 1)))[id2] = 1;
-        }
-      return new Dialect(dialect, flags, disabled);
-    }
-    /**
-    Used by the output of the parser generator. Not available to
-    user code. @hide
-    */
-    static deserialize(spec) {
-      return new LRParser(spec);
-    }
-  }
-  function pair(data, off) {
-    return data[off] | data[off + 1] << 16;
-  }
-  function findFinished(stacks) {
-    let best = null;
-    for (let stack of stacks) {
-      let stopped = stack.p.stoppedAt;
-      if ((stack.pos == stack.p.stream.end || stopped != null && stack.pos > stopped) && stack.p.parser.stateFlag(
-        stack.state,
-        2
-        /* StateFlag.Accepting */
-      ) && (!best || best.score < stack.score))
-        best = stack;
-    }
-    return best;
-  }
-  function getSpecializer(spec) {
-    if (spec.external) {
-      let mask = spec.extend ? 1 : 0;
-      return (value, stack) => spec.external(value, stack) << 1 | mask;
-    }
-    return spec.get;
-  }
-  const blockEnd = 63, eof = 64, DirectiveEnd = 1, DocEnd = 2, sequenceStartMark = 3, sequenceContinueMark = 4, explicitMapStartMark = 5, explicitMapContinueMark = 6, flowMapMark = 7, mapStartMark = 65, mapContinueMark = 66, Literal = 8, QuotedLiteral = 9, Anchor = 10, Alias = 11, Tag = 12, BlockLiteralContent = 13, BracketL = 19, FlowSequence = 20, Colon = 29, BraceL = 33, FlowMapping = 34, BlockLiteralHeader = 47;
-  const type_Top = 0, type_Seq = 1, type_Map = 2, type_Flow = 3, type_Lit = 4;
-  class Context {
-    constructor(parent, depth, type2) {
-      this.parent = parent;
-      this.depth = depth;
-      this.type = type2;
-      this.hash = (parent ? parent.hash + parent.hash << 8 : 0) + depth + (depth << 4) + type2;
-    }
-  }
-  Context.top = new Context(null, -1, type_Top);
-  function findColumn(input, pos) {
-    for (let col = 0, p = pos - input.pos - 1; ; p--, col++) {
-      let ch = input.peek(p);
-      if (isBreakSpace(ch) || ch == -1) return col;
-    }
-  }
-  function isNonBreakSpace(ch) {
-    return ch == 32 || ch == 9;
-  }
-  function isBreakSpace(ch) {
-    return ch == 10 || ch == 13;
-  }
-  function isSpace(ch) {
-    return isNonBreakSpace(ch) || isBreakSpace(ch);
-  }
-  function isSep(ch) {
-    return ch < 0 || isSpace(ch);
-  }
-  const indentation = new ContextTracker({
-    start: Context.top,
-    reduce(context, term) {
-      return context.type == type_Flow && (term == FlowSequence || term == FlowMapping) ? context.parent : context;
-    },
-    shift(context, term, stack, input) {
-      if (term == sequenceStartMark)
-        return new Context(context, findColumn(input, input.pos), type_Seq);
-      if (term == mapStartMark || term == explicitMapStartMark)
-        return new Context(context, findColumn(input, input.pos), type_Map);
-      if (term == blockEnd)
-        return context.parent;
-      if (term == BracketL || term == BraceL)
-        return new Context(context, 0, type_Flow);
-      if (term == BlockLiteralContent && context.type == type_Lit)
-        return context.parent;
-      if (term == BlockLiteralHeader) {
-        let indent = /[1-9]/.exec(input.read(input.pos, stack.pos));
-        if (indent) return new Context(context, context.depth + +indent[0], type_Lit);
-      }
-      return context;
-    },
-    hash(context) {
-      return context.hash;
-    }
-  });
-  function three(input, ch, off = 0) {
-    return input.peek(off) == ch && input.peek(off + 1) == ch && input.peek(off + 2) == ch && isSep(input.peek(off + 3));
-  }
-  const newlines = new ExternalTokenizer((input, stack) => {
-    if (input.next == -1 && stack.canShift(eof))
-      return input.acceptToken(eof);
-    let prev = input.peek(-1);
-    if ((isBreakSpace(prev) || prev < 0) && stack.context.type != type_Flow) {
-      if (three(
-        input,
-        45
-        /* '-' */
-      )) {
-        if (stack.canShift(blockEnd)) input.acceptToken(blockEnd);
-        else return input.acceptToken(DirectiveEnd, 3);
-      }
-      if (three(
-        input,
-        46
-        /* '.' */
-      )) {
-        if (stack.canShift(blockEnd)) input.acceptToken(blockEnd);
-        else return input.acceptToken(DocEnd, 3);
-      }
-      let depth = 0;
-      while (input.next == 32) {
-        depth++;
-        input.advance();
-      }
-      if ((depth < stack.context.depth || depth == stack.context.depth && stack.context.type == type_Seq && (input.next != 45 || !isSep(input.peek(1)))) && // Not blank
-      input.next != -1 && !isBreakSpace(input.next) && input.next != 35)
-        input.acceptToken(blockEnd, -depth);
-    }
-  }, { contextual: true });
-  const blockMark = new ExternalTokenizer((input, stack) => {
-    if (stack.context.type == type_Flow) {
-      if (input.next == 63) {
-        input.advance();
-        if (isSep(input.next)) input.acceptToken(flowMapMark);
-      }
-      return;
-    }
-    if (input.next == 45) {
-      input.advance();
-      if (isSep(input.next))
-        input.acceptToken(stack.context.type == type_Seq && stack.context.depth == findColumn(input, input.pos - 1) ? sequenceContinueMark : sequenceStartMark);
-    } else if (input.next == 63) {
-      input.advance();
-      if (isSep(input.next))
-        input.acceptToken(stack.context.type == type_Map && stack.context.depth == findColumn(input, input.pos - 1) ? explicitMapContinueMark : explicitMapStartMark);
-    } else {
-      let start2 = input.pos;
-      for (; ; ) {
-        if (isNonBreakSpace(input.next)) {
-          if (input.pos == start2) return;
-          input.advance();
-        } else if (input.next == 33) {
-          readTag(input);
-        } else if (input.next == 38) {
-          readAnchor(input);
-        } else if (input.next == 42) {
-          readAnchor(input);
-          break;
-        } else if (input.next == 39 || input.next == 34) {
-          if (readQuoted(input, true)) break;
-          return;
-        } else if (input.next == 91 || input.next == 123) {
-          if (!scanBrackets(input)) return;
-          break;
-        } else {
-          readPlain(input, true, false, 0);
-          break;
-        }
-      }
-      while (isNonBreakSpace(input.next)) input.advance();
-      if (input.next == 58) {
-        if (input.pos == start2 && stack.canShift(Colon)) return;
-        let after = input.peek(1);
-        if (isSep(after))
-          input.acceptTokenTo(stack.context.type == type_Map && stack.context.depth == findColumn(input, start2) ? mapContinueMark : mapStartMark, start2);
-      }
-    }
-  }, { contextual: true });
-  function uriChar(ch) {
-    return ch > 32 && ch < 127 && ch != 34 && ch != 37 && ch != 44 && ch != 60 && ch != 62 && ch != 92 && ch != 94 && ch != 96 && ch != 123 && ch != 124 && ch != 125;
-  }
-  function hexChar(ch) {
-    return ch >= 48 && ch <= 57 || ch >= 97 && ch <= 102 || ch >= 65 && ch <= 70;
-  }
-  function readUriChar(input, quoted) {
-    if (input.next == 37) {
-      input.advance();
-      if (hexChar(input.next)) input.advance();
-      if (hexChar(input.next)) input.advance();
-      return true;
-    } else if (uriChar(input.next) || quoted && input.next == 44) {
-      input.advance();
-      return true;
-    }
-    return false;
-  }
-  function readTag(input) {
-    input.advance();
-    if (input.next == 60) {
-      input.advance();
-      for (; ; ) {
-        if (!readUriChar(input, true)) {
-          if (input.next == 62) input.advance();
-          break;
-        }
-      }
-    } else {
-      while (readUriChar(input, false)) {
-      }
-    }
-  }
-  function readAnchor(input) {
-    input.advance();
-    while (!isSep(input.next) && charTag(input.tag) != "f") input.advance();
-  }
-  function readQuoted(input, scan) {
-    let quote = input.next, lineBreak = false, start2 = input.pos;
-    input.advance();
-    for (; ; ) {
-      let ch = input.next;
-      if (ch < 0) break;
-      input.advance();
-      if (ch == quote) {
-        if (ch == 39) {
-          if (input.next == 39) input.advance();
-          else break;
-        } else {
-          break;
-        }
-      } else if (ch == 92 && quote == 34) {
-        if (input.next >= 0) input.advance();
-      } else if (isBreakSpace(ch)) {
-        if (scan) return false;
-        lineBreak = true;
-      } else if (scan && input.pos >= start2 + 1024) {
-        return false;
-      }
-    }
-    return !lineBreak;
-  }
-  function scanBrackets(input) {
-    for (let stack = [], end = input.pos + 1024; ; ) {
-      if (input.next == 91 || input.next == 123) {
-        stack.push(input.next);
-        input.advance();
-      } else if (input.next == 39 || input.next == 34) {
-        if (!readQuoted(input, true)) return false;
-      } else if (input.next == 93 || input.next == 125) {
-        if (stack[stack.length - 1] != input.next - 2) return false;
-        stack.pop();
-        input.advance();
-        if (!stack.length) return true;
-      } else if (input.next < 0 || input.pos > end || isBreakSpace(input.next)) {
-        return false;
-      } else {
-        input.advance();
-      }
-    }
-  }
-  const charTable = "iiisiiissisfissssssssssssisssiiissssssssssssssssssssssssssfsfssissssssssssssssssssssssssssfif";
-  function charTag(ch) {
-    if (ch < 33) return "u";
-    if (ch > 125) return "s";
-    return charTable[ch - 33];
-  }
-  function isSafe(ch, inFlow) {
-    let tag = charTag(ch);
-    return tag != "u" && !(inFlow && tag == "f");
-  }
-  function readPlain(input, scan, inFlow, indent) {
-    if (charTag(input.next) == "s" || (input.next == 63 || input.next == 58 || input.next == 45) && isSafe(input.peek(1), inFlow)) {
-      input.advance();
-    } else {
-      return false;
-    }
-    let start2 = input.pos;
-    for (; ; ) {
-      let next = input.next, off = 0, lineIndent = indent + 1;
-      while (isSpace(next)) {
-        if (isBreakSpace(next)) {
-          if (scan) return false;
-          lineIndent = 0;
-        } else {
-          lineIndent++;
-        }
-        next = input.peek(++off);
-      }
-      let safe = next >= 0 && (next == 58 ? isSafe(input.peek(off + 1), inFlow) : next == 35 ? input.peek(off - 1) != 32 : isSafe(next, inFlow));
-      if (!safe || !inFlow && lineIndent <= indent || lineIndent == 0 && !inFlow && (three(input, 45, off) || three(input, 46, off)))
-        break;
-      if (scan && charTag(next) == "f") return false;
-      for (let i2 = off; i2 >= 0; i2--) input.advance();
-      if (scan && input.pos > start2 + 1024) return false;
-    }
-    return true;
-  }
-  const literals = new ExternalTokenizer((input, stack) => {
-    if (input.next == 33) {
-      readTag(input);
-      input.acceptToken(Tag);
-    } else if (input.next == 38 || input.next == 42) {
-      let token = input.next == 38 ? Anchor : Alias;
-      readAnchor(input);
-      input.acceptToken(token);
-    } else if (input.next == 39 || input.next == 34) {
-      readQuoted(input, false);
-      input.acceptToken(QuotedLiteral);
-    } else if (readPlain(input, false, stack.context.type == type_Flow, stack.context.depth)) {
-      input.acceptToken(Literal);
-    }
-  });
-  const blockLiteral = new ExternalTokenizer((input, stack) => {
-    let indent = stack.context.type == type_Lit ? stack.context.depth : -1, upto = input.pos;
-    scan: for (; ; ) {
-      let depth = 0, next = input.next;
-      while (next == 32) next = input.peek(++depth);
-      if (!depth && (three(input, 45, depth) || three(input, 46, depth))) break;
-      if (!isBreakSpace(next)) {
-        if (indent < 0) indent = Math.max(stack.context.depth + 1, depth);
-        if (depth < indent) break;
-      }
-      for (; ; ) {
-        if (input.next < 0) break scan;
-        let isBreak = isBreakSpace(input.next);
-        input.advance();
-        if (isBreak) continue scan;
-        upto = input.pos;
-      }
-    }
-    input.acceptTokenTo(BlockLiteralContent, upto);
-  });
-  const yamlHighlighting = styleTags({
-    DirectiveName: tags.keyword,
-    DirectiveContent: tags.attributeValue,
-    "DirectiveEnd DocEnd": tags.meta,
-    QuotedLiteral: tags.string,
-    BlockLiteralHeader: tags.special(tags.string),
-    BlockLiteralContent: tags.content,
-    Literal: tags.content,
-    "Key/Literal Key/QuotedLiteral": tags.definition(tags.propertyName),
-    "Anchor Alias": tags.labelName,
-    Tag: tags.typeName,
-    Comment: tags.lineComment,
-    ": , -": tags.separator,
-    "?": tags.punctuation,
-    "[ ]": tags.squareBracket,
-    "{ }": tags.brace
-  });
-  const parser = LRParser.deserialize({
-    version: 14,
-    states: "5lQ!ZQgOOO#PQfO'#CpO#uQfO'#DOOOQR'#Dv'#DvO$qQgO'#DRO%gQdO'#DUO%nQgO'#DUO&ROaO'#D[OOQR'#Du'#DuO&{QgO'#D^O'rQgO'#D`OOQR'#Dt'#DtO(iOqO'#DbOOQP'#Dj'#DjO(zQaO'#CmO)YQgO'#CmOOQP'#Cm'#CmQ)jQaOOQ)uQgOOQ]QgOOO*PQdO'#CrO*nQdO'#CtOOQO'#Dw'#DwO+]Q`O'#CxO+hQdO'#CwO+rQ`O'#CwOOQO'#Cv'#CvO+wQdO'#CvOOQO'#Cq'#CqO,UQ`O,59[O,^QfO,59[OOQR,59[,59[OOQO'#Cx'#CxO,eQ`O'#DPO,pQdO'#DPOOQO'#Dx'#DxO,zQdO'#DxO-XQ`O,59jO-aQfO,59jOOQR,59j,59jOOQR'#DS'#DSO-hQcO,59mO-sQgO'#DVO.TQ`O'#DVO.YQcO,59pOOQR'#DX'#DXO#|QfO'#DWO.hQcO'#DWOOQR,59v,59vO.yOWO,59vO/OOaO,59vO/WOaO,59vO/cQgO'#D_OOQR,59x,59xO0VQgO'#DaOOQR,59z,59zOOQP,59|,59|O0yOaO,59|O1ROaO,59|O1aOqO,59|OOQP-E7h-E7hO1oQgO,59XOOQP,59X,59XO2PQaO'#DeO2_QgO'#DeO2oQgO'#DkOOQP'#Dk'#DkQ)jQaOOO3PQdO'#CsOOQO,59^,59^O3kQdO'#CuOOQO,59`,59`OOQO,59c,59cO4VQdO,59cO4aQdO'#CzO4kQ`O'#CzOOQO,59b,59bOOQU,5:Q,5:QOOQR1G.v1G.vO4pQ`O1G.vOOQU-E7d-E7dO4xQdO,59kOOQO,59k,59kO5SQdO'#DQO5^Q`O'#DQOOQO,5:d,5:dOOQU,5:R,5:ROOQR1G/U1G/UO5cQ`O1G/UOOQU-E7e-E7eO5kQgO'#DhO5xQcO1G/XOOQR1G/X1G/XOOQR,59q,59qO6TQgO,59qO6eQdO'#DiO6lQgO'#DiO7PQcO1G/[OOQR1G/[1G/[OOQR,59r,59rO#|QfO,59rOOQR1G/b1G/bO7_OWO1G/bO7dOaO1G/bOOQR,59y,59yOOQR,59{,59{OOQP1G/h1G/hO7lOaO1G/hO7tOaO1G/hO8POaO1G/hOOQP1G.s1G.sO8_QgO,5:POOQP,5:P,5:POOQP,5:V,5:VOOQP-E7i-E7iOOQO,59_,59_OOQO,59a,59aOOQO1G.}1G.}OOQO,59f,59fO8oQdO,59fOOQR7+$b7+$bP,XQ`O'#DfOOQO1G/V1G/VOOQO,59l,59lO8yQdO,59lOOQR7+$p7+$pP9TQ`O'#DgOOQR'#DT'#DTOOQR,5:S,5:SOOQR-E7f-E7fOOQR7+$s7+$sOOQR1G/]1G/]O9YQgO'#DYO9jQ`O'#DYOOQR,5:T,5:TO#|QfO'#DZO9oQcO'#DZOOQR-E7g-E7gOOQR7+$v7+$vOOQR1G/^1G/^OOQR7+$|7+$|O:QOWO7+$|OOQP7+%S7+%SO:VOaO7+%SO:_OaO7+%SOOQP1G/k1G/kOOQO1G/Q1G/QOOQO1G/W1G/WOOQR,59t,59tO:jQgO,59tOOQR,59u,59uO#|QfO,59uOOQR<<Hh<<HhOOQP<<Hn<<HnO:zOaO<<HnOOQR1G/`1G/`OOQR1G/a1G/aOOQPAN>YAN>Y",
-    stateData: ";S~O!fOS!gOS^OS~OP_OQbORSOTUOWROXROYYOZZO[XOcPOqQO!PVO!V[O!cTO~O`cO~P]OVkOWROXROYeOZfO[dOcPOmhOqQO~OboO~P!bOVtOWROXROYeOZfO[dOcPOmrOqQO~OpwO~P#WORSOTUOWROXROYYOZZO[XOcPOqQO!PVO!cTO~OSvP!avP!bvP~P#|OWROXROYeOZfO[dOcPOqQO~OmzO~P%OOm!OOUzP!azP!bzP!dzP~P#|O^!SO!b!QO!f!TO!g!RO~ORSOTUOWROXROcPOqQO!PVO!cTO~OY!UOP!QXQ!QX!V!QX!`!QXS!QX!a!QX!b!QXU!QXm!QX!d!QX~P&aO[!WOP!SXQ!SX!V!SX!`!SXS!SX!a!SX!b!SXU!SXm!SX!d!SX~P&aO^!ZO!W![O!b!YO!f!]O!g!YO~OP!_O!V[OQaX!`aX~OPaXQaX!VaX!`aX~P#|OP!bOQ!cO!V[O~OP_O!V[O~P#|OWROXROY!fOcPOqQObfXmfXofXpfX~OWROXRO[!hOcPOqQObhXmhXohXphX~ObeXmlXoeX~ObkXokX~P%OOm!kO~Om!lObnPonP~P%OOb!pOo!oO~Ob!pO~P!bOm!sOosXpsX~OosXpsX~P%OOm!uOotPptP~P%OOo!xOp!yO~Op!yO~P#WOS!|O!a#OO!b#OO~OUyX!ayX!byX!dyX~P#|Om#QO~OU#SO!a#UO!b#UO!d#RO~Om#WOUzX!azX!bzX!dzX~O]#XO~O!b#XO!g#YO~O^#ZO!b#XO!g#YO~OP!RXQ!RX!V!RX!`!RXS!RX!a!RX!b!RXU!RXm!RX!d!RX~P&aOP!TXQ!TX!V!TX!`!TXS!TX!a!TX!b!TXU!TXm!TX!d!TX~P&aO!b#^O!g#^O~O^#_O!b#^O!f#`O!g#^O~O^#_O!W#aO!b#^O!g#^O~OPaaQaa!Vaa!`aa~P#|OP#cO!V[OQ!XX!`!XX~OP!XXQ!XX!V!XX!`!XX~P#|OP_O!V[OQ!_X!`!_X~P#|OWROXROcPOqQObgXmgXogXpgX~OWROXROcPOqQObiXmiXoiXpiX~Obkaoka~P%OObnXonX~P%OOm#kO~Ob#lOo!oO~Oosapsa~P%OOotXptX~P%OOm#pO~Oo!xOp#qO~OSwP!awP!bwP~P#|OS!|O!a#vO!b#vO~OUya!aya!bya!dya~P#|Om#xO~P%OOm#{OU}P!a}P!b}P!d}P~P#|OU#SO!a$OO!b$OO!d#RO~O]$QO~O!b$QO!g$RO~O!b$SO!g$SO~O^$TO!b$SO!g$SO~O^$TO!b$SO!f$UO!g$SO~OP!XaQ!Xa!V!Xa!`!Xa~P#|Obnaona~P%OOotapta~P%OOo!xO~OU|X!a|X!b|X!d|X~P#|Om$ZO~Om$]OU}X!a}X!b}X!d}X~O]$^O~O!b$_O!g$_O~O^$`O!b$_O!g$_O~OU|a!a|a!b|a!d|a~P#|O!b$cO!g$cO~O",
-    goto: ",]!mPPPPPPPPPPPPPPPPP!nPP!v#v#|$`#|$c$f$j$nP%VPPP!v%Y%^%a%{&O%a&R&U&X&_&b%aP&e&{&e'O'RPP']'a'g'm's'y(XPPPPPPPP(_)e*X+c,VUaObcR#e!c!{ROPQSTUXY_bcdehknrtvz!O!U!W!_!b!c!f!h!k!l!s!u!|#Q#R#S#W#c#k#p#x#{$Z$]QmPR!qnqfPQThknrtv!k!l!s!u#R#k#pR!gdR!ieTlPnTjPnSiPnSqQvQ{TQ!mkQ!trQ!vtR#y#RR!nkTsQvR!wt!RWOSUXY_bcz!O!U!W!_!b!c!|#Q#S#W#c#x#{$Z$]RySR#t!|R|TR|UQ!PUR#|#SR#z#RR#z#SyZOSU_bcz!O!_!b!c!|#Q#S#W#c#x#{$Z$]R!VXR!XYa]O^abc!a!c!eT!da!eQnPR!rnQvQR!{vQ!}yR#u!}Q#T|R#}#TW^Obc!cS!^^!aT!aa!eQ!eaR#f!eW`Obc!cQxSS}U#SQ!`_Q#PzQ#V!OQ#b!_Q#d!bQ#s!|Q#w#QQ$P#WQ$V#cQ$Y#xQ$[#{Q$a$ZR$b$]xZOSU_bcz!O!_!b!c!|#Q#S#W#c#x#{$Z$]Q!VXQ!XYQ#[!UR#]!W!QWOSUXY_bcz!O!U!W!_!b!c!|#Q#S#W#c#x#{$Z$]pfPQThknrtv!k!l!s!u#R#k#pQ!gdQ!ieQ#g!fR#h!hSgPn^pQTkrtv#RQ!jhQ#i!kQ#j!lQ#n!sQ#o!uQ$W#kR$X#pQuQR!zv",
-    nodeNames: "⚠ DirectiveEnd DocEnd - - ? ? ? Literal QuotedLiteral Anchor Alias Tag BlockLiteralContent Comment Stream BOM Document ] [ FlowSequence Item Tagged Anchored Anchored Tagged FlowMapping Pair Key : Pair , } { FlowMapping Pair Pair BlockSequence Item Item BlockMapping Pair Pair Key Pair Pair BlockLiteral BlockLiteralHeader Tagged Anchored Anchored Tagged Directive DirectiveName DirectiveContent Document",
-    maxTerm: 74,
-    context: indentation,
-    nodeProps: [
-      ["isolate", -3, 8, 9, 14, ""],
-      ["openedBy", 18, "[", 32, "{"],
-      ["closedBy", 19, "]", 33, "}"]
-    ],
-    propSources: [yamlHighlighting],
-    skippedNodes: [0],
-    repeatNodeCount: 6,
-    tokenData: "-Y~RnOX#PXY$QYZ$]Z]#P]^$]^p#Ppq$Qqs#Pst$btu#Puv$yv|#P|}&e}![#P![!]'O!]!`#P!`!a'i!a!}#P!}#O*g#O#P#P#P#Q+Q#Q#o#P#o#p+k#p#q'i#q#r,U#r;'S#P;'S;=`#z<%l?HT#P?HT?HU,o?HUO#PQ#UU!WQOY#PZp#Ppq#hq;'S#P;'S;=`#z<%lO#PQ#kTOY#PZs#Pt;'S#P;'S;=`#z<%lO#PQ#}P;=`<%l#P~$VQ!f~XY$Qpq$Q~$bO!g~~$gS^~OY$bZ;'S$b;'S;=`$s<%lO$b~$vP;=`<%l$bR%OX!WQOX%kXY#PZ]%k]^#P^p%kpq#hq;'S%k;'S;=`&_<%lO%kR%rX!WQ!VPOX%kXY#PZ]%k]^#P^p%kpq#hq;'S%k;'S;=`&_<%lO%kR&bP;=`<%l%kR&lUoP!WQOY#PZp#Ppq#hq;'S#P;'S;=`#z<%lO#PR'VUmP!WQOY#PZp#Ppq#hq;'S#P;'S;=`#z<%lO#PR'p[!PP!WQOY#PZp#Ppq#hq{#P{|(f|}#P}!O(f!O!R#P!R![)p![;'S#P;'S;=`#z<%lO#PR(mW!PP!WQOY#PZp#Ppq#hq!R#P!R![)V![;'S#P;'S;=`#z<%lO#PR)^U!PP!WQOY#PZp#Ppq#hq;'S#P;'S;=`#z<%lO#PR)wY!PP!WQOY#PZp#Ppq#hq{#P{|)V|}#P}!O)V!O;'S#P;'S;=`#z<%lO#PR*nUcP!WQOY#PZp#Ppq#hq;'S#P;'S;=`#z<%lO#PR+XUbP!WQOY#PZp#Ppq#hq;'S#P;'S;=`#z<%lO#PR+rUqP!WQOY#PZp#Ppq#hq;'S#P;'S;=`#z<%lO#PR,]UpP!WQOY#PZp#Ppq#hq;'S#P;'S;=`#z<%lO#PR,vU`P!WQOY#PZp#Ppq#hq;'S#P;'S;=`#z<%lO#P",
-    tokenizers: [newlines, blockMark, literals, blockLiteral, 0, 1],
-    topRules: { "Stream": [0, 15] },
-    tokenPrec: 0
-  });
-  const yamlLanguage = /* @__PURE__ */ LRLanguage.define({
-    name: "yaml",
-    parser: /* @__PURE__ */ parser.configure({
-      props: [
-        /* @__PURE__ */ indentNodeProp.add({
-          Stream: (cx2) => {
-            for (let before = cx2.node.resolve(cx2.pos, -1); before && before.to >= cx2.pos; before = before.parent) {
-              if (before.name == "BlockLiteralContent" && before.from < before.to)
-                return cx2.baseIndentFor(before);
-              if (before.name == "BlockLiteral")
-                return cx2.baseIndentFor(before) + cx2.unit;
-              if (before.name == "BlockSequence" || before.name == "BlockMapping")
-                return cx2.column(before.from, 1);
-              if (before.name == "QuotedLiteral")
-                return null;
-              if (before.name == "Literal") {
-                let col = cx2.column(before.from, 1);
-                if (col == cx2.lineIndent(before.from, 1))
-                  return col;
-                if (before.to > cx2.pos)
-                  return null;
-              }
-            }
-            return null;
-          },
-          FlowMapping: /* @__PURE__ */ delimitedIndent({ closing: "}" }),
-          FlowSequence: /* @__PURE__ */ delimitedIndent({ closing: "]" })
-        }),
-        /* @__PURE__ */ foldNodeProp.add({
-          "FlowMapping FlowSequence": foldInside,
-          "Item Pair BlockLiteral": (node, state) => ({ from: state.doc.lineAt(node.from).to, to: node.to })
-        })
-      ]
-    }),
-    languageData: {
-      commentTokens: { line: "#" },
-      indentOnInput: /^\s*[\]\}]$/
-    }
-  });
-  function yaml() {
-    return new LanguageSupport(yamlLanguage);
-  }
-  const chalky = "#e5c07b", coral = "#e06c75", cyan = "#56b6c2", invalid = "#ffffff", ivory = "#abb2bf", stone = "#7d8799", malibu = "#61afef", sage = "#98c379", whiskey = "#d19a66", violet = "#c678dd", darkBackground = "#21252b", highlightBackground = "#2c313a", background = "#282c34", tooltipBackground = "#353a42", selection$1 = "#3E4451", cursor = "#528bff";
-  const oneDarkTheme = /* @__PURE__ */ EditorView.theme({
-    "&": {
-      color: ivory,
-      backgroundColor: background
-    },
-    ".cm-content": {
-      caretColor: cursor
-    },
-    ".cm-cursor, .cm-dropCursor": { borderLeftColor: cursor },
-    "&.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection": { backgroundColor: selection$1 },
-    ".cm-panels": { backgroundColor: darkBackground, color: ivory },
-    ".cm-panels.cm-panels-top": { borderBottom: "2px solid black" },
-    ".cm-panels.cm-panels-bottom": { borderTop: "2px solid black" },
-    ".cm-searchMatch": {
-      backgroundColor: "#72a1ff59",
-      outline: "1px solid #457dff"
-    },
-    ".cm-searchMatch.cm-searchMatch-selected": {
-      backgroundColor: "#6199ff2f"
-    },
-    ".cm-activeLine": { backgroundColor: "#6699ff0b" },
-    ".cm-selectionMatch": { backgroundColor: "#aafe661a" },
-    "&.cm-focused .cm-matchingBracket, &.cm-focused .cm-nonmatchingBracket": {
-      backgroundColor: "#bad0f847"
-    },
-    ".cm-gutters": {
-      backgroundColor: background,
-      color: stone,
-      border: "none"
-    },
-    ".cm-activeLineGutter": {
-      backgroundColor: highlightBackground
-    },
-    ".cm-foldPlaceholder": {
-      backgroundColor: "transparent",
-      border: "none",
-      color: "#ddd"
-    },
-    ".cm-tooltip": {
-      border: "none",
-      backgroundColor: tooltipBackground
-    },
-    ".cm-tooltip .cm-tooltip-arrow:before": {
-      borderTopColor: "transparent",
-      borderBottomColor: "transparent"
-    },
-    ".cm-tooltip .cm-tooltip-arrow:after": {
-      borderTopColor: tooltipBackground,
-      borderBottomColor: tooltipBackground
-    },
-    ".cm-tooltip-autocomplete": {
-      "& > ul > li[aria-selected]": {
-        backgroundColor: highlightBackground,
-        color: ivory
-      }
-    }
-  }, { dark: true });
-  const oneDarkHighlightStyle = /* @__PURE__ */ HighlightStyle.define([
-    {
-      tag: tags.keyword,
-      color: violet
-    },
-    {
-      tag: [tags.name, tags.deleted, tags.character, tags.propertyName, tags.macroName],
-      color: coral
-    },
-    {
-      tag: [/* @__PURE__ */ tags.function(tags.variableName), tags.labelName],
-      color: malibu
-    },
-    {
-      tag: [tags.color, /* @__PURE__ */ tags.constant(tags.name), /* @__PURE__ */ tags.standard(tags.name)],
-      color: whiskey
-    },
-    {
-      tag: [/* @__PURE__ */ tags.definition(tags.name), tags.separator],
-      color: ivory
-    },
-    {
-      tag: [tags.typeName, tags.className, tags.number, tags.changed, tags.annotation, tags.modifier, tags.self, tags.namespace],
-      color: chalky
-    },
-    {
-      tag: [tags.operator, tags.operatorKeyword, tags.url, tags.escape, tags.regexp, tags.link, /* @__PURE__ */ tags.special(tags.string)],
-      color: cyan
-    },
-    {
-      tag: [tags.meta, tags.comment],
-      color: stone
-    },
-    {
-      tag: tags.strong,
-      fontWeight: "bold"
-    },
-    {
-      tag: tags.emphasis,
-      fontStyle: "italic"
-    },
-    {
-      tag: tags.strikethrough,
-      textDecoration: "line-through"
-    },
-    {
-      tag: tags.link,
-      color: stone,
-      textDecoration: "underline"
-    },
-    {
-      tag: tags.heading,
-      fontWeight: "bold",
-      color: coral
-    },
-    {
-      tag: [tags.atom, tags.bool, /* @__PURE__ */ tags.special(tags.variableName)],
-      color: whiskey
-    },
-    {
-      tag: [tags.processingInstruction, tags.string, tags.inserted],
-      color: sage
-    },
-    {
-      tag: tags.invalid,
-      color: invalid
-    }
-  ]);
-  const oneDark = [oneDarkTheme, /* @__PURE__ */ syntaxHighlighting(oneDarkHighlightStyle)];
   /*! js-yaml 4.1.1 https://github.com/nodeca/js-yaml @license MIT */
   function isNothing(subject) {
     return typeof subject === "undefined" || subject === null;
@@ -27691,13 +25462,13 @@ var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "sy
     this._groups = groups;
     this._parents = parents;
   }
-  function selection() {
+  function selection$1() {
     return new Selection$1([[document.documentElement]], root);
   }
   function selection_selection() {
     return this;
   }
-  Selection$1.prototype = selection.prototype = {
+  Selection$1.prototype = selection$1.prototype = {
     constructor: Selection$1,
     select: selection_select,
     selectAll: selection_selectAll,
@@ -29601,7 +27372,7 @@ var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "sy
     }
     return new Transition(subgroups, parents, name2, id2);
   }
-  var Selection = selection.prototype.constructor;
+  var Selection = selection$1.prototype.constructor;
   function transition_selection() {
     return new Selection(this._groups, this._parents);
   }
@@ -29738,7 +27509,7 @@ var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "sy
       if (size === 0) resolve();
     });
   }
-  var id = 0;
+  var id$1 = 0;
   function Transition(groups, parents, name2, id2) {
     this._groups = groups;
     this._parents = parents;
@@ -29746,9 +27517,9 @@ var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "sy
     this._id = id2;
   }
   function newId() {
-    return ++id;
+    return ++id$1;
   }
-  var selection_prototype = selection.prototype;
+  var selection_prototype = selection$1.prototype;
   Transition.prototype = {
     constructor: Transition,
     select: transition_select,
@@ -29816,8 +27587,8 @@ var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "sy
     }
     return new Transition(groups, this._parents, name2, id2);
   }
-  selection.prototype.interrupt = selection_interrupt;
-  selection.prototype.transition = selection_transition;
+  selection$1.prototype.interrupt = selection_interrupt;
+  selection$1.prototype.transition = selection_transition;
   const constant$2 = (x2) => () => x2;
   function ZoomEvent(type2, {
     sourceEvent: sourceEvent2,
@@ -30894,7 +28665,7 @@ var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "sy
     return link$1(bumpX);
   }
   const d3 = {
-    selection,
+    selection: selection$1,
     select,
     max,
     min,
@@ -31049,7 +28820,7 @@ var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "sy
           const countDisplay = total && total > direct ? `${direct}&nbsp[${total}]` : `${direct}`;
           const isExpanded = !!node.children;
           const tooltipText = isExpanded ? `Collapse ${direct} Children` : `Expand ${direct} Children`;
-          const icons = {
+          const icons2 = {
             "left": (d) => d ? `<div class="ychart-expand-btn-content" style="display:flex;"><span class="ychart-expand-btn-icon" style="align-items:center;display:flex;"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M14.283 3.50094L6.51 11.4749C6.37348 11.615 6.29707 11.8029 6.29707 11.9984C6.29707 12.194 6.37348 12.3819 6.51 12.5219L14.283 20.4989C14.3466 20.5643 14.4226 20.6162 14.5066 20.6516C14.5906 20.6871 14.6808 20.7053 14.772 20.7053C14.8632 20.7053 14.9534 20.6871 15.0374 20.6516C15.1214 20.6162 15.1974 20.5643 15.261 20.4989C15.3918 20.365 15.4651 20.1852 15.4651 19.9979C15.4651 19.8107 15.3918 19.6309 15.261 19.4969L7.9515 11.9984L15.261 4.50144C15.3914 4.36756 15.4643 4.18807 15.4643 4.00119C15.4643 3.81431 15.3914 3.63482 15.261 3.50094C15.1974 3.43563 15.1214 3.38371 15.0374 3.34827C14.9534 3.31282 14.8632 3.29456 14.772 3.29456C14.6808 3.29456 14.5906 3.31282 14.5066 3.34827C14.4226 3.38371 14.3466 3.43563 14.283 3.50094V3.50094Z" fill="#716E7B" stroke="#716E7B"/>
                       </svg></span><span class="ychart-expand-btn-count" style="color:#716E7B">${countDisplay} </span></div>` : `<div class="ychart-expand-btn-content" style="display:flex;"><span class="ychart-expand-btn-icon" style="align-items:center;display:flex;"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31075,7 +28846,7 @@ var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "sy
                         </svg></span><span class="ychart-expand-btn-count" style="margin-left:1px;color:#716E7B">${countDisplay} </span></div>
                     `
           };
-          return `<div class="ychart-expand-btn-wrapper" style="border:1px solid #E4E2E9;border-radius:3px;padding:3px;font-size:9px;margin:auto auto;background-color:white;pointer-events:auto;position:relative;" aria-label="${tooltipText}" role="button"><span class="node-tooltip">${tooltipText}</span>${icons[state.layout](node.children)}</div>`;
+          return `<div class="ychart-expand-btn-wrapper" style="border:1px solid #E4E2E9;border-radius:3px;padding:3px;font-size:9px;margin:auto auto;background-color:white;pointer-events:auto;position:relative;" aria-label="${tooltipText}" role="button"><span class="node-tooltip">${tooltipText}</span>${icons2[state.layout](node.children)}</div>`;
         },
         /* Node paging button content and styling. You can access same helper methods as above. */
         pagingButton: (d, i2, arr, state) => {
@@ -32823,6 +30594,252 @@ var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "sy
       attrs.svg && attrs.svg.selectAll("*").remove();
     }
   }
+  const YCHART_VERSION = "1.0.8";
+  function generateUUID() {
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c2) {
+      const r2 = Math.random() * 16 | 0;
+      const v = c2 === "x" ? r2 : r2 & 3 | 8;
+      return v.toString(16);
+    });
+  }
+  function escapeHtml(text) {
+    if (text === null || text === void 0) return "";
+    const str2 = String(text);
+    return str2.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+  }
+  function escapeRegex(str2) {
+    return str2.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+  function fuzzyMatch(pattern, text) {
+    if (!pattern || !text) return 0;
+    if (text.includes(pattern)) return 1;
+    let score2 = 0;
+    let patternIdx = 0;
+    let textIdx = 0;
+    let consecutiveMatches = 0;
+    while (patternIdx < pattern.length && textIdx < text.length) {
+      if (pattern[patternIdx] === text[textIdx]) {
+        score2 += 1 + consecutiveMatches;
+        consecutiveMatches++;
+        patternIdx++;
+      } else {
+        consecutiveMatches = 0;
+      }
+      textIdx++;
+    }
+    if (patternIdx !== pattern.length) return 0;
+    const maxScore = pattern.length * (pattern.length + 1) / 2;
+    return score2 / maxScore;
+  }
+  function parseSchemaField(fieldDefinition, _fieldName) {
+    let aliases;
+    let workingDef = fieldDefinition;
+    const bracketMatch = workingDef.match(/^\s*\[\s*(.+?)\s*\]\s*(.*)$/);
+    if (bracketMatch) {
+      const aliasesStr = bracketMatch[1];
+      workingDef = bracketMatch[2];
+      const aliasParts = aliasesStr.split("|").map((p) => p.trim()).filter((p) => p);
+      aliases = aliasParts.slice(1);
+    }
+    const aliasKeywordMatch = workingDef.match(/\|\s*alias(?:es)?:\s*([^|]+)/i);
+    if (aliasKeywordMatch) {
+      const aliasStr = aliasKeywordMatch[1];
+      const parsedAliases = aliasStr.split(",").map((a2) => a2.trim()).filter((a2) => a2);
+      aliases = aliases ? [...aliases, ...parsedAliases] : parsedAliases;
+      workingDef = workingDef.replace(/\|\s*alias(?:es)?:\s*[^|]+/i, "");
+    }
+    const aliasArrayMatch = workingDef.match(/\|\s*aliases?\s*\[\s*([^\]]+)\s*\]/i);
+    if (aliasArrayMatch) {
+      const aliasStr = aliasArrayMatch[1];
+      const parsedAliases = aliasStr.split(",").map((a2) => a2.trim().replace(/^["']|["']$/g, "")).filter((a2) => a2);
+      aliases = aliases ? [...aliases, ...parsedAliases] : parsedAliases;
+      workingDef = workingDef.replace(/\|\s*aliases?\s*\[[^\]]+\]/i, "");
+    }
+    const parts = workingDef.split("|").map((p) => p.trim()).filter((p) => p);
+    const type2 = parts.find((p) => !["required", "optional", "missing"].includes(p.toLowerCase())) || "string";
+    return {
+      type: type2,
+      required: parts.some((p) => p.toLowerCase() === "required"),
+      missing: parts.some((p) => p.toLowerCase() === "missing"),
+      aliases: aliases && aliases.length > 0 ? aliases : void 0
+    };
+  }
+  function parseFrontMatter(content2, _supervisorFields) {
+    if (content2.startsWith("---")) {
+      const parts = content2.split("---");
+      if (parts.length >= 3) {
+        const frontMatter = parts[1].trim();
+        const yamlData = parts.slice(2).join("---").trim();
+        try {
+          const parsed = load(frontMatter);
+          const options = parsed.options || {};
+          const cardDef = parsed.card || null;
+          const schemaDef = {};
+          let updatedSupervisorFields;
+          if (parsed.schema && typeof parsed.schema === "object") {
+            for (const [fieldName, fieldDef] of Object.entries(parsed.schema)) {
+              if (typeof fieldDef === "string") {
+                const fieldSchema = parseSchemaField(fieldDef, fieldName);
+                schemaDef[fieldName] = fieldSchema;
+                if (fieldSchema.aliases && fieldSchema.aliases.length > 0) {
+                  for (const alias of fieldSchema.aliases) {
+                    schemaDef[alias] = __spreadProps(__spreadValues({}, fieldSchema), { aliases: [fieldName] });
+                  }
+                }
+              }
+            }
+            if (schemaDef.supervisor && schemaDef.supervisor.aliases) {
+              updatedSupervisorFields = ["supervisor", ...schemaDef.supervisor.aliases];
+            }
+          }
+          return { options, schema: schemaDef, card: cardDef, data: yamlData, updatedSupervisorFields };
+        } catch (error) {
+          return { options: {}, schema: {}, card: void 0, data: content2 };
+        }
+      }
+    }
+    return { options: {}, schema: {}, card: void 0, data: content2 };
+  }
+  function resolveMissingParentIds(data, nameField, supervisorFields) {
+    const seenIds = /* @__PURE__ */ new Set();
+    const seenNamesForDedup = /* @__PURE__ */ new Set();
+    const usesNameBasedFormat = data.some((item) => item[nameField] !== void 0) && !data.some((item) => item.id !== void 0 && item.id !== null);
+    const deduplicatedData = data.filter((item) => {
+      if (item.id !== void 0 && item.id !== null) {
+        const idStr = String(item.id);
+        if (seenIds.has(idStr)) {
+          console.warn(`Duplicate id "${idStr}" detected - ignoring duplicate entry`);
+          return false;
+        }
+        seenIds.add(idStr);
+      }
+      if (usesNameBasedFormat && item[nameField]) {
+        const nameStr = String(item[nameField]).toLowerCase();
+        if (seenNamesForDedup.has(nameStr)) {
+          console.warn(`Duplicate name "${item[nameField]}" detected - ignoring duplicate entry`);
+          return false;
+        }
+        seenNamesForDedup.add(nameStr);
+      }
+      return true;
+    });
+    let hasNumericIds = false;
+    let maxNumericId = 0;
+    const existingIds = /* @__PURE__ */ new Set();
+    for (const item of deduplicatedData) {
+      if (item.id !== void 0 && item.id !== null) {
+        existingIds.add(String(item.id));
+        const numId = typeof item.id === "number" ? item.id : parseInt(String(item.id), 10);
+        if (!isNaN(numId) && String(numId) === String(item.id)) {
+          hasNumericIds = true;
+          if (numId > maxNumericId) {
+            maxNumericId = numId;
+          }
+        }
+      }
+    }
+    let autoIdCounter = maxNumericId;
+    const generateId = (item) => {
+      if (item.email) {
+        const emailId = String(item.email).toLowerCase();
+        if (!existingIds.has(emailId)) {
+          existingIds.add(emailId);
+          return emailId;
+        }
+      }
+      if (hasNumericIds || existingIds.size === 0) {
+        autoIdCounter++;
+        return autoIdCounter;
+      } else {
+        let newId2;
+        do {
+          newId2 = `auto-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+        } while (existingIds.has(newId2));
+        existingIds.add(newId2);
+        return newId2;
+      }
+    };
+    const dataWithIds = deduplicatedData.map((item) => {
+      if (item.id === void 0 || item.id === null) {
+        return __spreadProps(__spreadValues({}, item), { id: generateId(item), _autoGeneratedId: true });
+      }
+      return item;
+    });
+    const nameToId = /* @__PURE__ */ new Map();
+    const seenNames = /* @__PURE__ */ new Set();
+    for (const item of dataWithIds) {
+      const name2 = item[nameField];
+      if (name2) {
+        const normalizedName = String(name2).toLowerCase();
+        if (!seenNames.has(normalizedName)) {
+          nameToId.set(normalizedName, item.id);
+          seenNames.add(normalizedName);
+        }
+      }
+    }
+    return dataWithIds.map((item) => {
+      if (item.parentId !== void 0) {
+        return item;
+      }
+      for (const field of supervisorFields) {
+        const supervisorName = item[field];
+        if (supervisorName) {
+          const normalizedName = String(supervisorName).toLowerCase();
+          const parentId = nameToId.get(normalizedName);
+          if (parentId !== void 0) {
+            return __spreadProps(__spreadValues({}, item), { parentId });
+          }
+        }
+      }
+      return __spreadProps(__spreadValues({}, item), { parentId: null });
+    });
+  }
+  function replaceVariables(template, data) {
+    return template.replace(/\$(\w+)\$/g, (_match, fieldName) => {
+      const value = data[fieldName];
+      if (value === null || value === void 0 || value === "") {
+        return "";
+      }
+      return escapeHtml(String(value));
+    });
+  }
+  function renderCardElement(element, data) {
+    const tagName = Object.keys(element)[0];
+    const config2 = element[tagName];
+    if (typeof config2 === "string") {
+      const content22 = replaceVariables(config2, data);
+      if (tagName === "span") {
+        return `<${tagName} style="word-break:break-all">${content22}</${tagName}>`;
+      }
+      return `<${tagName}>${content22}</${tagName}>`;
+    }
+    const cardConfig = config2;
+    const attrs = [];
+    let content2 = "";
+    let children2 = "";
+    if (cardConfig.class) {
+      attrs.push(`class="${cardConfig.class}"`);
+    }
+    if (cardConfig.style) {
+      if (tagName === "span") {
+        const existingStyle = cardConfig.style.trim();
+        const separator = existingStyle.endsWith(";") ? "" : ";";
+        attrs.push(`style="${existingStyle}${separator}word-break:break-all"`);
+      } else {
+        attrs.push(`style="${cardConfig.style}"`);
+      }
+    } else if (tagName === "span") {
+      attrs.push(`style="word-break:break-all"`);
+    }
+    if (cardConfig.content) {
+      content2 = replaceVariables(cardConfig.content, data);
+    }
+    if (cardConfig.children && Array.isArray(cardConfig.children)) {
+      children2 = cardConfig.children.map((child) => renderCardElement(child, data)).join("");
+    }
+    const attrsStr = attrs.length > 0 ? " " + attrs.join(" ") : "";
+    return `<${tagName}${attrsStr}>${content2}${children2}</${tagName}>`;
+  }
   function center(x2, y2) {
     var nodes, strength = 1;
     if (x2 == null) x2 = 0;
@@ -33545,265 +31562,297 @@ ${d.email || ""}`);
       }
     }
   }
-  class NodeHeightSyncService {
-    constructor(container, config2 = {}) {
-      __publicField(this, "container");
-      __publicField(this, "config");
-      __publicField(this, "resizeObserver");
-      __publicField(this, "mutationObserver");
-      __publicField(this, "resizeTimeout");
-      __publicField(this, "currentUnifiedHeight", 0);
-      __publicField(this, "isSyncing", false);
-      __publicField(this, "lastSyncTime", 0);
-      __publicField(this, "pendingSync", false);
-      var _a2, _b, _c, _d, _e;
-      this.container = container;
-      this.config = {
-        fixedHeight: config2.fixedHeight,
-        minHeight: (_a2 = config2.minHeight) != null ? _a2 : 80,
-        maxHeight: (_b = config2.maxHeight) != null ? _b : Infinity,
-        heightPadding: (_c = config2.heightPadding) != null ? _c : 0,
-        resizeDebounce: (_d = config2.resizeDebounce) != null ? _d : 150,
-        onHeightChange: (_e = config2.onHeightChange) != null ? _e : (() => {
-        })
-      };
+  function createDotPattern(patternColor) {
+    const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+    const pattern = document.createElementNS("http://www.w3.org/2000/svg", "pattern");
+    pattern.setAttribute("id", "dotPattern");
+    pattern.setAttribute("width", "20");
+    pattern.setAttribute("height", "20");
+    pattern.setAttribute("patternUnits", "userSpaceOnUse");
+    const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    dot.setAttribute("cx", "5");
+    dot.setAttribute("cy", "5");
+    dot.setAttribute("r", "0.75");
+    dot.setAttribute("fill", patternColor || "var(--yc-color-pattern)");
+    pattern.appendChild(dot);
+    defs.appendChild(pattern);
+    return defs;
+  }
+  function createGridPattern(patternColor) {
+    const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+    const pattern = document.createElementNS("http://www.w3.org/2000/svg", "pattern");
+    pattern.setAttribute("id", "gridPattern");
+    pattern.setAttribute("width", "20");
+    pattern.setAttribute("height", "20");
+    pattern.setAttribute("patternUnits", "userSpaceOnUse");
+    const color2 = patternColor || "var(--yc-color-pattern)";
+    const hLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    hLine.setAttribute("x1", "0");
+    hLine.setAttribute("y1", "0");
+    hLine.setAttribute("x2", "20");
+    hLine.setAttribute("y2", "0");
+    hLine.setAttribute("stroke", color2);
+    hLine.setAttribute("stroke-width", "0.5");
+    hLine.setAttribute("stroke-dasharray", "3, 3");
+    const vLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    vLine.setAttribute("x1", "0");
+    vLine.setAttribute("y1", "0");
+    vLine.setAttribute("x2", "0");
+    vLine.setAttribute("y2", "20");
+    vLine.setAttribute("stroke", color2);
+    vLine.setAttribute("stroke-width", "0.5");
+    vLine.setAttribute("stroke-dasharray", "3, 3");
+    pattern.appendChild(hLine);
+    pattern.appendChild(vLine);
+    defs.appendChild(pattern);
+    return defs;
+  }
+  function applyBackgroundPattern(chartContainer, bgPattern, patternColor) {
+    const svg2 = chartContainer.querySelector("svg");
+    if (!svg2) {
+      console.warn("SVG not found in chart container");
+      return;
     }
-    /**
-     * Initialize height synchronization
-     * Sets up observers and performs initial sync
-     */
-    init() {
-      this.syncNodeHeights();
-      this.observeContentChanges();
+    console.log("Applying background pattern:", bgPattern);
+    let defs = svg2.querySelector("defs");
+    if (!defs) {
+      defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+      svg2.insertBefore(defs, svg2.firstChild);
     }
-    /**
-     * Measure and synchronize all node heights
-     * @returns The unified height applied to all nodes
-     */
-    syncNodeHeights() {
-      if (this.isSyncing) {
-        this.pendingSync = true;
-        return this.currentUnifiedHeight;
-      }
-      const now2 = Date.now();
-      if (now2 - this.lastSyncTime < 100) {
-        this.pendingSync = true;
-        return this.currentUnifiedHeight;
-      }
-      this.isSyncing = true;
-      this.lastSyncTime = now2;
-      try {
-        let targetHeight;
-        if (this.config.fixedHeight !== void 0) {
-          targetHeight = this.config.fixedHeight;
-        } else {
-          this.resetHeightsToAuto();
-          targetHeight = this.measureMaxContentHeight();
-        }
-        if (targetHeight !== this.currentUnifiedHeight) {
-          this.applyUnifiedHeight(targetHeight);
-          this.currentUnifiedHeight = targetHeight;
-          this.config.onHeightChange(targetHeight);
-        }
-        return targetHeight;
-      } finally {
-        setTimeout(() => {
-          this.isSyncing = false;
-          if (this.pendingSync) {
-            this.pendingSync = false;
-            this.debouncedSync();
+    const existingPattern = defs.querySelector("#dotPattern, #gridPattern");
+    if (existingPattern) {
+      existingPattern.remove();
+    }
+    const patternDefs = bgPattern === "dotted" ? createDotPattern(patternColor) : createGridPattern(patternColor);
+    const patternElement = patternDefs.firstChild;
+    if (patternElement) {
+      defs.appendChild(patternElement);
+    }
+    const existingRect = svg2.querySelector("#pattern-background");
+    if (existingRect) {
+      existingRect.remove();
+    }
+    const bgRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    bgRect.setAttribute("id", "pattern-background");
+    bgRect.setAttribute("x", "-50000");
+    bgRect.setAttribute("y", "-50000");
+    bgRect.setAttribute("width", "100000");
+    bgRect.setAttribute("height", "100000");
+    const patternId = bgPattern === "dotted" ? "dotPattern" : "gridPattern";
+    bgRect.setAttribute("fill", `url(#${patternId})`);
+    const firstNonDefsChild = Array.from(svg2.children).find((child) => child.tagName !== "defs");
+    if (firstNonDefsChild) {
+      svg2.insertBefore(bgRect, firstNonDefsChild);
+    } else {
+      svg2.appendChild(bgRect);
+    }
+    console.log("Pattern applied successfully");
+  }
+  function setupPatternPersistence(chartContainer, getBgPattern, patternColor) {
+    let debounceTimeout = null;
+    const observer = new MutationObserver(() => {
+      const bgPattern = getBgPattern();
+      if (bgPattern) {
+        const svg2 = chartContainer.querySelector("svg");
+        const bgRect = svg2 == null ? void 0 : svg2.querySelector("#pattern-background");
+        const patternDef = svg2 == null ? void 0 : svg2.querySelector("#dotPattern, #gridPattern");
+        if (svg2 && (!bgRect || !patternDef)) {
+          if (debounceTimeout) {
+            clearTimeout(debounceTimeout);
           }
-        }, 100);
-      }
-    }
-    /**
-     * Reset all foreignObject and content div heights to 'auto' for measurement
-     */
-    resetHeightsToAuto() {
-      const foreignObjects = this.container.querySelectorAll(
-        "foreignObject.node-foreign-object"
-      );
-      foreignObjects.forEach((fo) => {
-        fo.style.height = "auto";
-        fo.removeAttribute("height");
-        const contentDiv = fo.querySelector(".node-foreign-object-div");
-        if (contentDiv) {
-          contentDiv.style.height = "auto";
-          contentDiv.style.minHeight = "auto";
-        }
-        const innerDiv = contentDiv == null ? void 0 : contentDiv.querySelector("div");
-        if (innerDiv) {
-          innerDiv.style.height = "auto";
-          innerDiv.style.minHeight = "auto";
-        }
-      });
-    }
-    /**
-     * Measure the maximum content height across all nodes
-     * @returns Maximum height found
-     */
-    measureMaxContentHeight() {
-      const foreignObjects = this.container.querySelectorAll(
-        "foreignObject.node-foreign-object"
-      );
-      let maxHeight = this.config.minHeight;
-      foreignObjects.forEach((fo) => {
-        const contentDiv = fo.querySelector(".node-foreign-object-div");
-        if (!contentDiv) return;
-        const cardContent = contentDiv.querySelector('div[style*="position:relative"], div[style*="position: relative"]') || contentDiv.firstElementChild;
-        if (!cardContent) return;
-        cardContent.offsetHeight;
-        const contentHeight = cardContent.offsetHeight;
-        if (contentHeight > maxHeight) {
-          maxHeight = contentHeight;
-        }
-      });
-      maxHeight += this.config.heightPadding;
-      maxHeight = Math.min(maxHeight, this.config.maxHeight);
-      maxHeight = Math.max(maxHeight, this.config.minHeight);
-      return Math.ceil(maxHeight);
-    }
-    /**
-     * Apply the unified height to all nodes
-     * Uses batch DOM updates to prevent flickering
-     * @param height The height to apply
-     */
-    applyUnifiedHeight(height) {
-      const foreignObjects = this.container.querySelectorAll(
-        "foreignObject.node-foreign-object"
-      );
-      const updates = [];
-      foreignObjects.forEach((fo) => {
-        const contentDiv = fo.querySelector(".node-foreign-object-div");
-        const innerDiv = (contentDiv == null ? void 0 : contentDiv.querySelector("div")) || null;
-        updates.push({ fo, contentDiv, innerDiv });
-      });
-      requestAnimationFrame(() => {
-        updates.forEach(({ fo, contentDiv, innerDiv }) => {
-          fo.setAttribute("data-height-synced", "true");
-          fo.setAttribute("height", String(height));
-          fo.style.height = `${height}px`;
-          if (contentDiv) {
-            contentDiv.setAttribute("data-height-synced", "true");
-            contentDiv.style.height = `${height}px`;
-            contentDiv.style.minHeight = `${height}px`;
-          }
-          if (innerDiv) {
-            innerDiv.style.height = `${height}px`;
-            innerDiv.style.minHeight = `${height}px`;
-          }
-        });
-        this.updateNodeDataHeights(height);
-      });
-    }
-    /**
-     * Update the data-driven height values for d3-org-chart nodes
-     * @param height The height to set
-     */
-    updateNodeDataHeights(height) {
-      const nodeGroups = this.container.querySelectorAll(".node");
-      nodeGroups.forEach((nodeGroup) => {
-        const node = nodeGroup;
-        if (node.__data__) {
-          node.__data__.height = height;
-        }
-      });
-    }
-    /**
-     * Observe content changes and trigger re-sync
-     * Uses passive observation to avoid interfering with rendering
-     */
-    observeContentChanges() {
-      this.resizeObserver = new ResizeObserver((entries) => {
-        if (this.isSyncing) return;
-        const hasRealChange = entries.some((entry) => {
-          const el = entry.target;
-          if (el.hasAttribute("data-height-synced") && this.currentUnifiedHeight > 0 && Math.abs(entry.contentRect.height - this.currentUnifiedHeight) < 2) {
-            return false;
-          }
-          return true;
-        });
-        if (hasRealChange) {
-          this.debouncedSync();
-        }
-      });
-      const contentDivs = this.container.querySelectorAll(".node-foreign-object-div");
-      contentDivs.forEach((div) => {
-        if (!div.hasAttribute("data-height-observed")) {
-          div.setAttribute("data-height-observed", "true");
-          this.resizeObserver.observe(div);
-        }
-      });
-      this.mutationObserver = new MutationObserver((mutations) => {
-        if (this.isSyncing) return;
-        const hasNewNodes = mutations.some(
-          (m2) => m2.type === "childList" && (m2.addedNodes.length > 0 || m2.removedNodes.length > 0)
-        );
-        if (hasNewNodes) {
-          const newDivs = this.container.querySelectorAll(".node-foreign-object-div");
-          newDivs.forEach((div) => {
-            if (!this.isObserved(div)) {
-              div.setAttribute("data-height-observed", "true");
-              this.resizeObserver.observe(div);
+          debounceTimeout = setTimeout(() => {
+            const currentPattern = getBgPattern();
+            if (currentPattern) {
+              applyBackgroundPattern(chartContainer, currentPattern, patternColor);
             }
-          });
-          this.debouncedSync();
+          }, 50);
         }
+      }
+    });
+    observer.observe(chartContainer, {
+      childList: true,
+      subtree: true
+    });
+    return observer;
+  }
+  function getToolbarPositionStyles(position) {
+    const margin = "var(--yc-spacing-4xl)";
+    const topMargin = "calc(var(--yc-spacing-4xl) + 50px)";
+    switch (position) {
+      case "topleft":
+        return `top: ${topMargin}; left: ${margin};`;
+      case "topright":
+        return `top: ${margin}; right: ${margin};`;
+      case "bottomleft":
+        return `bottom: ${margin}; left: ${margin};`;
+      case "bottomright":
+        return `bottom: ${margin}; right: ${margin};`;
+      case "topcenter":
+        return `top: ${topMargin}; left: 50%; transform: translateX(-50%);`;
+      case "bottomcenter":
+        return `bottom: ${margin}; left: 50%; transform: translateX(-50%);`;
+      default:
+        return `bottom: ${margin}; left: ${margin};`;
+    }
+  }
+  function getTooltipPosition(position, orientation) {
+    const isVertical = orientation === "vertical";
+    if (isVertical) {
+      if (position.includes("left")) {
+        return `left: calc(100% + var(--yc-spacing-md)); top: 50%; transform: translateY(-50%) scale(0.8);`;
+      }
+      return `right: calc(100% + var(--yc-spacing-md)); top: 50%; transform: translateY(-50%) scale(0.8);`;
+    }
+    if (position.includes("top")) {
+      return `top: calc(100% + var(--yc-spacing-md)); left: 50%; transform: translateX(-50%) scale(0.8);`;
+    }
+    return `bottom: calc(100% + var(--yc-spacing-md)); left: 50%; transform: translateX(-50%) scale(0.8);`;
+  }
+  const icons = {
+    reset: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>`,
+    fit: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`,
+    export: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5-5 5 5M12 15V3"/></svg>`,
+    swap: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3l4 4-4 4M8 21l-4-4 4-4M20 7H4M4 17h16"/></svg>`,
+    forceGraph: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><line x1="12" y1="7" x2="12" y2="10"/><line x1="12" y1="14" x2="12" y2="17"/><line x1="14" y1="12" x2="17" y2="12"/><line x1="7" y1="12" x2="10" y2="12"/></svg>`,
+    orgChart: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>`,
+    expandAll: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>`,
+    collapseAll: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>`,
+    columnAdjust: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="18" rx="1"/><line x1="6.5" y1="8" x2="6.5" y2="16"/><line x1="17.5" y1="8" x2="17.5" y2="16"/></svg>`
+  };
+  function createToolbar(config2) {
+    const toolbar = document.createElement("div");
+    toolbar.setAttribute("data-id", `ychart-toolbar-${config2.instanceId}`);
+    const positionStyles = getToolbarPositionStyles(config2.position);
+    const orientation = config2.orientation === "vertical" ? "column" : "row";
+    toolbar.style.cssText = `
+    position: absolute;
+    ${positionStyles}
+    display: flex;
+    flex-direction: ${orientation};
+    gap: var(--yc-spacing-md);
+    background: var(--yc-color-overlay-bg);
+    backdrop-filter: var(--yc-backdrop-blur);
+    border-radius: var(--yc-border-radius-xl);
+    padding: var(--yc-spacing-md);
+    box-shadow: var(--yc-shadow-2xl);
+    z-index: var(--yc-z-index-toolbar);
+    border: var(--yc-border-width-thin) solid var(--yc-color-shadow-light);
+  `;
+    const buttons = [
+      { id: "fit", icon: icons.fit, tooltip: "Fit to Screen", action: config2.actions.handleFit },
+      { id: "reset", icon: icons.reset, tooltip: "Reset Position", action: config2.actions.handleReset },
+      { id: "expandAll", icon: icons.expandAll, tooltip: "Expand All", action: config2.actions.handleExpandAll },
+      { id: "collapseAll", icon: icons.collapseAll, tooltip: "Collapse All", action: config2.actions.handleCollapseAll },
+      { id: "columnAdjust", icon: icons.columnAdjust, tooltip: "Adjust Child Columns", action: config2.actions.handleColumnAdjustToggle },
+      { id: "swap", icon: icons.swap, tooltip: "Swap Mode", action: config2.actions.handleSwapToggle },
+      { id: "export", icon: icons.export, tooltip: "Export SVG", action: config2.actions.handleExport }
+    ];
+    if (config2.experimental) {
+      buttons.splice(6, 0, {
+        id: "toggleView",
+        icon: config2.currentView === "hierarchy" ? icons.forceGraph : icons.orgChart,
+        tooltip: config2.currentView === "hierarchy" ? "Switch to Force Graph (Experimental)" : "Switch to Org Chart",
+        action: config2.actions.handleToggleView
       });
-      this.mutationObserver.observe(this.container, {
-        childList: true,
-        subtree: true
-      });
     }
-    /**
-     * Check if an element is already being observed
-     */
-    isObserved(element) {
-      return element.hasAttribute("data-height-observed");
-    }
-    /**
-     * Debounced sync to avoid excessive recalculations
-     * Uses a longer debounce for stability
-     */
-    debouncedSync() {
-      if (this.resizeTimeout) {
-        clearTimeout(this.resizeTimeout);
+    const tooltipPosition = getTooltipPosition(config2.position, config2.orientation);
+    buttons.forEach((btn) => {
+      const button = document.createElement("button");
+      button.setAttribute("data-id", `ychart-btn-${btn.id}-${config2.instanceId}`);
+      button.innerHTML = btn.icon;
+      button.setAttribute("data-tooltip", btn.tooltip);
+      button.style.cssText = `
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: var(--yc-width-toolbar-button);
+      height: var(--yc-height-toolbar-button);
+      border: none;
+      background: transparent;
+      color: var(--yc-color-icon);
+      cursor: pointer;
+      border-radius: var(--yc-border-radius-lg);
+      transition: all var(--yc-transition-fast);
+      padding: 0;
+    `;
+      const tooltip = document.createElement("span");
+      tooltip.className = "ychart-tooltip";
+      tooltip.textContent = btn.tooltip;
+      tooltip.style.cssText = `
+      position: absolute;
+      ${tooltipPosition}
+      background: var(--yc-color-overlay-dark);
+      color: white;
+      padding: var(--yc-spacing-sm) var(--yc-spacing-xl);
+      border-radius: var(--yc-border-radius-md);
+      font-size: var(--yc-font-size-sm);
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all var(--yc-transition-fast) var(--yc-transition-bounce);
+      z-index: var(--yc-z-index-search-popup);
+      box-shadow: var(--yc-shadow-md);
+    `;
+      button.appendChild(tooltip);
+      if (btn.id === "toggleView" && config2.experimental) {
+        const badge = document.createElement("span");
+        badge.textContent = "!";
+        badge.style.cssText = `
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        background: var(--yc-color-warning-amber);
+        color: white;
+        border-radius: var(--yc-border-radius-full);
+        width: var(--yc-height-badge);
+        height: var(--yc-height-badge);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: var(--yc-font-size-sm);
+        font-weight: var(--yc-font-weight-bold);
+        box-shadow: var(--yc-shadow-sm);
+      `;
+        button.appendChild(badge);
       }
-      this.resizeTimeout = window.setTimeout(() => {
-        this.syncNodeHeights();
-      }, Math.max(this.config.resizeDebounce, 200));
-    }
-    /**
-     * Get the current unified height
-     */
-    getCurrentHeight() {
-      return this.currentUnifiedHeight;
-    }
-    /**
-     * Manually trigger a sync (useful after data changes)
-     */
-    triggerSync() {
-      requestAnimationFrame(() => {
-        this.syncNodeHeights();
-      });
-    }
-    /**
-     * Clean up observers
-     */
-    destroy() {
-      if (this.resizeObserver) {
-        this.resizeObserver.disconnect();
-        this.resizeObserver = void 0;
-      }
-      if (this.mutationObserver) {
-        this.mutationObserver.disconnect();
-        this.mutationObserver = void 0;
-      }
-      if (this.resizeTimeout) {
-        clearTimeout(this.resizeTimeout);
-        this.resizeTimeout = void 0;
-      }
-    }
+      button.onmouseenter = () => {
+        button.style.background = "var(--yc-color-primary)";
+        button.style.color = "white";
+        button.style.transform = "var(--yc-transform-button-hover)";
+        tooltip.style.opacity = "1";
+        const isVertical = config2.orientation === "vertical";
+        if (isVertical) {
+          tooltip.style.transform = "translateY(-50%) scale(1)";
+        } else {
+          tooltip.style.transform = "translateX(-50%) scale(1)";
+        }
+      };
+      button.onmouseleave = () => {
+        if (btn.id === "swap" && config2.swapModeEnabled) {
+          button.style.background = "var(--yc-color-accent-red)";
+          button.style.color = "white";
+        } else if (btn.id === "columnAdjust" && config2.columnAdjustMode) {
+          button.style.background = "var(--yc-color-accent-purple)";
+          button.style.color = "white";
+        } else {
+          button.style.background = "transparent";
+          button.style.color = "var(--yc-color-icon)";
+        }
+        button.style.transform = "var(--yc-transform-button-active)";
+        tooltip.style.opacity = "0";
+        const isVertical = config2.orientation === "vertical";
+        if (isVertical) {
+          tooltip.style.transform = "translateY(-50%) scale(0.8)";
+        } else {
+          tooltip.style.transform = "translateX(-50%) scale(0.8)";
+        }
+      };
+      button.onclick = btn.action;
+      toolbar.appendChild(button);
+    });
+    return toolbar;
   }
   var jsxRuntime = { exports: {} };
   var reactJsxRuntime_production = {};
@@ -49323,471 +47372,20 @@ ${d.email || ""}`);
       }
     );
   }
-  const YCHART_VERSION = "1.0.8";
-  function generateUUID() {
-    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c2) {
-      const r2 = Math.random() * 16 | 0;
-      const v = c2 === "x" ? r2 : r2 & 3 | 8;
-      return v.toString(16);
-    });
-  }
-  function escapeHtml(text) {
-    if (text === null || text === void 0) return "";
-    const str2 = String(text);
-    return str2.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-  }
-  class YChartEditor2 {
-    constructor(options) {
-      __publicField(this, "viewContainer", null);
-      __publicField(this, "editorContainer", null);
-      __publicField(this, "chartContainer", null);
-      __publicField(this, "editor", null);
-      __publicField(this, "orgChart", null);
-      __publicField(this, "forceGraph", null);
-      __publicField(this, "currentView", "hierarchy");
-      __publicField(this, "swapModeEnabled", false);
-      __publicField(this, "isUpdatingProgrammatically", false);
-      __publicField(this, "defaultOptions");
-      __publicField(this, "initialData", "");
-      __publicField(this, "detailsPanel", null);
-      __publicField(this, "bgPattern");
-      __publicField(this, "toolbar", null);
-      __publicField(this, "toolbarPosition", "bottomleft");
-      __publicField(this, "toolbarOrientation", "horizontal");
-      __publicField(this, "customTemplate", null);
-      __publicField(this, "currentSchema", {});
-      __publicField(this, "cardTemplate", null);
-      __publicField(this, "columnAdjustMode", false);
-      __publicField(this, "columnAdjustButtons", null);
-      __publicField(this, "experimental", false);
-      __publicField(this, "instanceId");
+  class SearchManager {
+    constructor(ctx) {
       __publicField(this, "searchPopup", null);
       __publicField(this, "searchHistoryPopup", null);
-      __publicField(this, "errorBanner", null);
       __publicField(this, "floatingSearchBar", null);
       __publicField(this, "searchResultsDropdown", null);
       __publicField(this, "activeFieldFilters", /* @__PURE__ */ new Map());
       __publicField(this, "filterPopup", null);
-      // Default supervisor field aliases - can be overridden via schema or supervisorLookup()
-      __publicField(this, "supervisorFields", ["supervisor", "reports", "reports_to", "manager", "leader", "parent"]);
-      __publicField(this, "nameField", "name");
-      __publicField(this, "nodeHeightSync", null);
-      // Current merged options (defaultOptions + YAML options)
-      __publicField(this, "currentOptions", {});
-      // Person of Interest feature
-      __publicField(this, "personOfInterest", null);
-      // Currently selected person
-      __publicField(this, "poiSelector", null);
-      __publicField(this, "poiClearBtn", null);
-      __publicField(this, "truthData", []);
-      // Complete YAML data (source of truth)
-      __publicField(this, "expandedSiblings", /* @__PURE__ */ new Set());
-      // Track supervisor nodes with expanded siblings
-      __publicField(this, "supervisorChainExpanded", false);
-      // Track if POI's supervisor chain is expanded
-      __publicField(this, "initialSelf", null);
-      // Initial POI from 'self' option
-      __publicField(this, "selfApplied", false);
-      // Track if initial self POI has been applied
-      // Shadow DOM support
-      __publicField(this, "shadowRoot", null);
-      __publicField(this, "useShadowDOM", false);
-      this.instanceId = generateUUID();
-      this.defaultOptions = __spreadValues({
-        nodeWidth: 220,
-        nodeHeight: 110,
-        childrenMargin: 50,
-        compactMarginBetween: 35,
-        compactMarginPair: 30,
-        neighbourMargin: 20,
-        editorTheme: "dark",
-        collapsible: true,
-        toolbarPosition: "bottomleft",
-        toolbarOrientation: "horizontal"
-      }, options);
-      this.toolbarPosition = this.defaultOptions.toolbarPosition;
-      this.toolbarOrientation = this.defaultOptions.toolbarOrientation;
-      this.experimental = this.defaultOptions.experimental || false;
-      this.useShadowDOM = this.defaultOptions.useShadowDOM || false;
-    }
-    /**
-     * Initialize the view with a container element
-     */
-    initView(containerIdOrElement, yamlData) {
-      const hostContainer = typeof containerIdOrElement === "string" ? document.getElementById(containerIdOrElement) : containerIdOrElement;
-      if (!hostContainer) {
-        throw new Error(`Container not found: ${containerIdOrElement}`);
-      }
-      this.initialData = yamlData;
-      if (this.useShadowDOM) {
-        this.shadowRoot = hostContainer.attachShadow({ mode: "open" });
-        this.injectShadowDOMStyles();
-        const shadowContainer = document.createElement("div");
-        shadowContainer.style.cssText = "width:100%;height:100%;";
-        this.shadowRoot.appendChild(shadowContainer);
-        this.viewContainer = shadowContainer;
-      } else {
-        this.viewContainer = hostContainer;
-      }
-      this.createLayout();
-      this.initializeEditor();
-      this.setupKeyboardShortcuts();
-      this.setupExpandSiblingsHandlers();
-      this.renderChart();
-      this.toggleEditor();
-      console.log(`%cYChart Editor v${YCHART_VERSION}%c initialized successfully${this.useShadowDOM ? " (Shadow DOM)" : ""}`, "color: #667eea; font-weight: bold;", "color: inherit;");
-      return this;
-    }
-    /**
-     * Load new YAML data into the editor and re-render the chart
-     */
-    loadYaml(yamlData) {
-      if (!this.editor) {
-        throw new Error("Editor not initialized. Call initView first.");
-      }
-      this.editor.dispatch({
-        changes: {
-          from: 0,
-          to: this.editor.state.doc.length,
-          insert: yamlData
-        }
-      });
-      this.renderChart();
-      return this;
-    }
-    createLayout() {
-      if (!this.viewContainer) return;
-      this.viewContainer.innerHTML = "";
-      this.viewContainer.classList.add("ychart-container");
-      this.viewContainer.style.cssText = "display:flex;width:100%;height:100%;min-height:0;position:relative;overflow:hidden;";
-      const chartWrapper = document.createElement("div");
-      chartWrapper.className = "ychart-chart-wrapper";
-      chartWrapper.style.cssText = "flex:1;min-width:0;min-height:0;height:100%;position:relative;display:flex;flex-direction:column;overflow:hidden;";
-      this.chartContainer = document.createElement("div");
-      this.chartContainer.id = `ychart-chart-${this.instanceId}`;
-      this.chartContainer.className = "ychart-chart";
-      this.chartContainer.setAttribute("data-id", `ychart-chart-${this.instanceId}`);
-      this.chartContainer.style.cssText = "flex:1;width:100%;min-height:0;position:relative;overflow:hidden;";
-      chartWrapper.appendChild(this.chartContainer);
-      this.detailsPanel = document.createElement("div");
-      this.detailsPanel.id = `ychart-node-details-${this.instanceId}`;
-      this.detailsPanel.setAttribute("data-id", `ychart-node-details-${this.instanceId}`);
-      this.detailsPanel.style.cssText = `
-      display: none;
-      position: absolute;
-      right: var(--yc-spacing-4xl);
-      top: var(--yc-spacing-4xl);
-      background: var(--yc-color-bg-card);
-      border: var(--yc-border-width-medium) solid var(--yc-color-primary);
-      border-radius: var(--yc-border-radius-lg);
-      padding: var(--yc-spacing-5xl);
-      box-shadow: var(--yc-shadow-lg);
-      max-width: var(--yc-width-detail-panel);
-      max-height: 80%;
-      overflow-y: auto;
-      z-index: var(--yc-z-index-detail-panel);
-    `;
-      chartWrapper.appendChild(this.detailsPanel);
-      this.toolbar = this.createToolbar();
-      chartWrapper.appendChild(this.toolbar);
-      this.floatingSearchBar = this.createFloatingSearchBar();
-      chartWrapper.appendChild(this.floatingSearchBar);
-      this.createSearchPopup();
-      this.poiSelector = this.createPOISelector();
-      chartWrapper.appendChild(this.poiSelector);
-      const editorSidebar = document.createElement("div");
-      editorSidebar.id = `ychart-editor-sidebar-${this.instanceId}`;
-      editorSidebar.className = "ychart-editor-panel";
-      editorSidebar.setAttribute("data-id", `ychart-editor-sidebar-${this.instanceId}`);
-      editorSidebar.style.cssText = `
-      width: var(--yc-width-sidebar);
-      height: 100%;
-      min-height: 0;
-      border-left: var(--yc-border-width-thin) solid var(--yc-color-gray-500);
-      overflow: hidden;
-      position: relative;
-      transition: width var(--yc-transition-normal), border-left-width 0s 0.3s;
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-    `;
-      this.errorBanner = document.createElement("div");
-      this.errorBanner.id = `ychart-error-banner-${this.instanceId}`;
-      this.errorBanner.className = "ychart-error-banner";
-      this.errorBanner.style.cssText = `
-      display: none;
-      background: var(--yc-gradient-error);
-      border-bottom: var(--yc-border-width-medium) solid var(--yc-color-error-border);
-      padding: var(--yc-spacing-md) var(--yc-spacing-xl);
-      max-height: var(--yc-height-error-banner-max);
-      overflow-y: auto;
-      font-family: var(--yc-font-family-base);
-      font-size: var(--yc-font-size-base);
-    `;
-      editorSidebar.appendChild(this.errorBanner);
-      const editorHeader = document.createElement("div");
-      editorHeader.style.cssText = `
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: var(--yc-spacing-md) var(--yc-spacing-xl);
-      background: var(--yc-color-editor-bg);
-      border-bottom: var(--yc-border-width-thin) solid var(--yc-color-editor-border);
-    `;
-      const editorTitle = document.createElement("div");
-      editorTitle.textContent = "YAML Editor";
-      editorTitle.style.cssText = "color: var(--yc-color-editor-text); font-size: var(--yc-font-size-sm); font-weight: var(--yc-font-weight-semibold);";
-      editorHeader.appendChild(editorTitle);
-      const formatBtn = document.createElement("button");
-      formatBtn.innerHTML = `
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="16 18 22 12 16 6"/>
-        <polyline points="8 6 2 12 8 18"/>
-      </svg>
-      <span style="margin-left: var(--yc-spacing-xs);">Format</span>
-    `;
-      formatBtn.style.cssText = `
-      display: flex;
-      align-items: center;
-      background: var(--yc-color-primary);
-      color: white;
-      border: none;
-      padding: var(--yc-spacing-xs) var(--yc-spacing-md);
-      border-radius: var(--yc-border-radius-sm);
-      cursor: pointer;
-      font-size: var(--yc-font-size-xs);
-      transition: background var(--yc-transition-fast);
-    `;
-      formatBtn.onmouseenter = () => {
-        formatBtn.style.background = "var(--yc-color-primary-dark)";
-      };
-      formatBtn.onmouseleave = () => {
-        formatBtn.style.background = "var(--yc-color-primary)";
-      };
-      formatBtn.onclick = () => this.handleFormatYAML();
-      editorHeader.appendChild(formatBtn);
-      editorSidebar.appendChild(editorHeader);
-      this.editorContainer = document.createElement("div");
-      this.editorContainer.id = `ychart-editor-${this.instanceId}`;
-      this.editorContainer.className = "ychart-editor";
-      this.editorContainer.setAttribute("data-id", `ychart-editor-${this.instanceId}`);
-      this.editorContainer.style.cssText = "width:100%;flex:1;min-height:0;overflow:hidden;";
-      editorSidebar.appendChild(this.editorContainer);
-      if (this.defaultOptions.collapsible) {
-        const collapseBtn = document.createElement("button");
-        collapseBtn.setAttribute("data-id", `ychart-collapse-editor-${this.instanceId}`);
-        collapseBtn.innerHTML = "▶";
-        collapseBtn.style.cssText = `
-        position: absolute;
-        right: 399px;
-        top: var(--yc-spacing-lg);
-        z-index: var(--yc-z-index-collapse-button);
-        background: var(--yc-color-primary);
-        color: white;
-        border: none;
-        padding: var(--yc-spacing-md) var(--yc-spacing-sm);
-        cursor: pointer;
-        border-radius: var(--yc-border-radius-left);
-        font-size: var(--yc-font-size-sm);
-        transition: right var(--yc-transition-normal);
-        box-shadow: var(--yc-shadow-sm);
-      `;
-        collapseBtn.onclick = () => this.toggleEditor();
-        this.viewContainer.appendChild(collapseBtn);
-      }
-      this.viewContainer.appendChild(chartWrapper);
-      this.viewContainer.appendChild(editorSidebar);
-    }
-    getToolbarPositionStyles() {
-      const margin = "var(--yc-spacing-4xl)";
-      const topMargin = "calc(var(--yc-spacing-4xl) + 50px)";
-      switch (this.toolbarPosition) {
-        case "topleft":
-          return `top: ${topMargin}; left: ${margin};`;
-        case "topright":
-          return `top: ${margin}; right: ${margin};`;
-        case "bottomleft":
-          return `bottom: ${margin}; left: ${margin};`;
-        case "bottomright":
-          return `bottom: ${margin}; right: ${margin};`;
-        case "topcenter":
-          return `top: ${topMargin}; left: 50%; transform: translateX(-50%);`;
-        case "bottomcenter":
-          return `bottom: ${margin}; left: 50%; transform: translateX(-50%);`;
-        default:
-          return `bottom: ${margin}; left: ${margin};`;
-      }
-    }
-    getTooltipPosition() {
-      const isVertical = this.toolbarOrientation === "vertical";
-      if (isVertical) {
-        if (this.toolbarPosition.includes("left")) {
-          return `left: calc(100% + var(--yc-spacing-md)); top: 50%; transform: translateY(-50%) scale(0.8);`;
-        }
-        return `right: calc(100% + var(--yc-spacing-md)); top: 50%; transform: translateY(-50%) scale(0.8);`;
-      }
-      if (this.toolbarPosition.includes("top")) {
-        return `top: calc(100% + var(--yc-spacing-md)); left: 50%; transform: translateX(-50%) scale(0.8);`;
-      }
-      return `bottom: calc(100% + var(--yc-spacing-md)); left: 50%; transform: translateX(-50%) scale(0.8);`;
-    }
-    createToolbar() {
-      const toolbar = document.createElement("div");
-      toolbar.setAttribute("data-id", `ychart-toolbar-${this.instanceId}`);
-      const positionStyles = this.getToolbarPositionStyles();
-      const orientation = this.toolbarOrientation === "vertical" ? "column" : "row";
-      toolbar.style.cssText = `
-      position: absolute;
-      ${positionStyles}
-      display: flex;
-      flex-direction: ${orientation};
-      gap: var(--yc-spacing-md);
-      background: var(--yc-color-overlay-bg);
-      backdrop-filter: var(--yc-backdrop-blur);
-      border-radius: var(--yc-border-radius-xl);
-      padding: var(--yc-spacing-md);
-      box-shadow: var(--yc-shadow-2xl);
-      z-index: var(--yc-z-index-toolbar);
-      border: var(--yc-border-width-thin) solid var(--yc-color-shadow-light);
-    `;
-      const icons = {
-        reset: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>`,
-        fit: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>`,
-        export: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5-5 5 5M12 15V3"/></svg>`,
-        swap: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3l4 4-4 4M8 21l-4-4 4-4M20 7H4M4 17h16"/></svg>`,
-        forceGraph: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><line x1="12" y1="7" x2="12" y2="10"/><line x1="12" y1="14" x2="12" y2="17"/><line x1="14" y1="12" x2="17" y2="12"/><line x1="7" y1="12" x2="10" y2="12"/></svg>`,
-        orgChart: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>`,
-        expandAll: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>`,
-        collapseAll: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>`,
-        columnAdjust: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="18" rx="1"/><line x1="6.5" y1="8" x2="6.5" y2="16"/><line x1="17.5" y1="8" x2="17.5" y2="16"/></svg>`
-      };
-      const buttons = [
-        { id: "fit", icon: icons.fit, tooltip: "Fit to Screen", action: () => this.handleFit() },
-        { id: "reset", icon: icons.reset, tooltip: "Reset Position", action: () => this.handleReset() },
-        { id: "expandAll", icon: icons.expandAll, tooltip: "Expand All", action: () => this.handleExpandAll() },
-        { id: "collapseAll", icon: icons.collapseAll, tooltip: "Collapse All", action: () => this.handleCollapseAll() },
-        { id: "columnAdjust", icon: icons.columnAdjust, tooltip: "Adjust Child Columns", action: () => this.handleColumnAdjustToggle() },
-        { id: "swap", icon: icons.swap, tooltip: "Swap Mode", action: () => this.handleSwapToggle() },
-        { id: "export", icon: icons.export, tooltip: "Export SVG", action: () => this.handleExport() }
-      ];
-      if (this.experimental) {
-        buttons.splice(6, 0, {
-          id: "toggleView",
-          icon: this.currentView === "hierarchy" ? icons.forceGraph : icons.orgChart,
-          tooltip: this.currentView === "hierarchy" ? "Switch to Force Graph (Experimental)" : "Switch to Org Chart",
-          action: () => this.handleToggleView()
-        });
-      }
-      buttons.forEach((btn) => {
-        const button = document.createElement("button");
-        button.setAttribute("data-id", `ychart-btn-${btn.id}-${this.instanceId}`);
-        button.innerHTML = btn.icon;
-        button.setAttribute("data-tooltip", btn.tooltip);
-        button.style.cssText = `
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: var(--yc-width-toolbar-button);
-        height: var(--yc-height-toolbar-button);
-        border: none;
-        background: transparent;
-        color: var(--yc-color-icon);
-        cursor: pointer;
-        border-radius: var(--yc-border-radius-lg);
-        transition: all var(--yc-transition-fast);
-        padding: 0;
-      `;
-        const tooltip = document.createElement("span");
-        tooltip.className = "ychart-tooltip";
-        tooltip.textContent = btn.tooltip;
-        const tooltipPosition = this.getTooltipPosition();
-        tooltip.style.cssText = `
-        position: absolute;
-        ${tooltipPosition}
-        background: var(--yc-color-overlay-dark);
-        color: white;
-        padding: var(--yc-spacing-sm) var(--yc-spacing-xl);
-        border-radius: var(--yc-border-radius-md);
-        font-size: var(--yc-font-size-sm);
-        white-space: nowrap;
-        pointer-events: none;
-        opacity: 0;
-        transform: scale(0.8);
-        transition: all var(--yc-transition-fast) var(--yc-transition-bounce);
-        z-index: var(--yc-z-index-search-popup);
-        box-shadow: var(--yc-shadow-md);
-      `;
-        button.appendChild(tooltip);
-        if (btn.id === "toggleView" && this.experimental) {
-          const badge = document.createElement("span");
-          badge.textContent = "!";
-          badge.style.cssText = `
-          position: absolute;
-          top: -4px;
-          right: -4px;
-          background: var(--yc-color-warning-amber);
-          color: white;
-          border-radius: var(--yc-border-radius-full);
-          width: var(--yc-height-badge);
-          height: var(--yc-height-badge);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: var(--yc-font-size-sm);
-          font-weight: var(--yc-font-weight-bold);
-          box-shadow: var(--yc-shadow-sm);
-        `;
-          button.appendChild(badge);
-        }
-        button.onmouseenter = () => {
-          button.style.background = "var(--yc-color-primary)";
-          button.style.color = "white";
-          button.style.transform = "var(--yc-transform-button-hover)";
-          tooltip.style.opacity = "1";
-          const isVertical = this.toolbarOrientation === "vertical";
-          if (isVertical) {
-            if (this.toolbarPosition.includes("left")) {
-              tooltip.style.transform = "translateY(-50%) scale(1)";
-            } else {
-              tooltip.style.transform = "translateY(-50%) scale(1)";
-            }
-          } else {
-            tooltip.style.transform = "translateX(-50%) scale(1)";
-          }
-        };
-        button.onmouseleave = () => {
-          if (btn.id === "swap" && this.swapModeEnabled) {
-            button.style.background = "var(--yc-color-accent-red)";
-            button.style.color = "white";
-          } else if (btn.id === "columnAdjust" && this.columnAdjustMode) {
-            button.style.background = "var(--yc-color-accent-purple)";
-            button.style.color = "white";
-          } else {
-            button.style.background = "transparent";
-            button.style.color = "var(--yc-color-icon)";
-          }
-          button.style.transform = "var(--yc-transform-button-active)";
-          tooltip.style.opacity = "0";
-          const isVertical = this.toolbarOrientation === "vertical";
-          if (isVertical) {
-            if (this.toolbarPosition.includes("left")) {
-              tooltip.style.transform = "translateY(-50%) scale(0.8)";
-            } else {
-              tooltip.style.transform = "translateY(-50%) scale(0.8)";
-            }
-          } else {
-            tooltip.style.transform = "translateX(-50%) scale(0.8)";
-          }
-        };
-        button.onclick = btn.action;
-        toolbar.appendChild(button);
-      });
-      return toolbar;
+      __publicField(this, "ctx");
+      this.ctx = ctx;
     }
     createFloatingSearchBar() {
       const container = document.createElement("div");
-      container.setAttribute("data-id", `ychart-floating-search-${this.instanceId}`);
+      container.setAttribute("data-id", `ychart-floating-search-${this.ctx.instanceId}`);
       container.className = "ychart-floating-search";
       container.style.cssText = `
       position: absolute;
@@ -49830,7 +47428,7 @@ ${d.email || ""}`);
       const searchInput = document.createElement("input");
       searchInput.type = "text";
       searchInput.placeholder = "Search organization...";
-      searchInput.setAttribute("data-id", `ychart-search-input-${this.instanceId}`);
+      searchInput.setAttribute("data-id", `ychart-search-input-${this.ctx.instanceId}`);
       searchInput.setAttribute("aria-label", "Search organization directory");
       searchInput.style.cssText = `
       flex: 1;
@@ -49842,7 +47440,7 @@ ${d.email || ""}`);
       min-width: 150px;
     `;
       const fieldSelect = document.createElement("select");
-      fieldSelect.setAttribute("data-id", `ychart-search-field-${this.instanceId}`);
+      fieldSelect.setAttribute("data-id", `ychart-search-field-${this.ctx.instanceId}`);
       fieldSelect.setAttribute("aria-label", "Filter search by field");
       fieldSelect.style.cssText = `
       border: none;
@@ -49878,7 +47476,7 @@ ${d.email || ""}`);
         this.updateSearchFieldOptions(fieldSelect);
       });
       const filterBtn = document.createElement("button");
-      filterBtn.setAttribute("data-id", `ychart-filter-btn-${this.instanceId}`);
+      filterBtn.setAttribute("data-id", `ychart-filter-btn-${this.ctx.instanceId}`);
       filterBtn.setAttribute("aria-label", "Filter nodes");
       filterBtn.innerHTML = `
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -49918,7 +47516,7 @@ ${d.email || ""}`);
       searchBarWrapper.appendChild(filterBtn);
       searchBarWrapper.appendChild(shortcutHint);
       const resultsDropdown = document.createElement("div");
-      resultsDropdown.setAttribute("data-id", `ychart-search-results-${this.instanceId}`);
+      resultsDropdown.setAttribute("data-id", `ychart-search-results-${this.ctx.instanceId}`);
       resultsDropdown.className = "ychart-search-results";
       resultsDropdown.style.cssText = `
       display: none;
@@ -49980,153 +47578,8 @@ ${d.email || ""}`);
           }
         }
       });
+      this.floatingSearchBar = container;
       return container;
-    }
-    createPOISelector() {
-      const container = document.createElement("div");
-      container.setAttribute("data-id", `ychart-poi-selector-${this.instanceId}`);
-      container.className = "ychart-poi-selector";
-      container.style.cssText = `
-      position: absolute;
-      top: var(--yc-spacing-4xl);
-      left: var(--yc-spacing-4xl);
-      z-index: var(--yc-z-index-search-popup);
-      display: flex;
-      flex-direction: column;
-      gap: var(--yc-spacing-xs);
-    `;
-      const selectorWrapper = document.createElement("div");
-      selectorWrapper.className = "ychart-poi-selector-wrapper";
-      selectorWrapper.style.cssText = `
-      display: flex;
-      align-items: center;
-      gap: var(--yc-spacing-xs);
-      background: var(--yc-color-bg-card);
-      border-radius: var(--yc-border-radius-pill);
-      padding: var(--yc-spacing-xs) var(--yc-spacing-sm);
-      box-shadow: var(--yc-shadow-2xl);
-      border: none;
-      transition: all var(--yc-transition-fast);
-    `;
-      const focusIcon = document.createElement("span");
-      focusIcon.innerHTML = `
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"/>
-        <circle cx="12" cy="12" r="6"/>
-        <circle cx="12" cy="12" r="2"/>
-      </svg>
-    `;
-      focusIcon.style.cssText = `
-      color: var(--yc-color-text-muted);
-      display: flex;
-      align-items: center;
-      flex-shrink: 0;
-    `;
-      const selectContainer = document.createElement("div");
-      selectContainer.setAttribute("data-id", `ychart-poi-select-${this.instanceId}`);
-      selectContainer.style.cssText = `
-      min-width: 140px;
-      max-width: 180px;
-    `;
-      const clearBtn = document.createElement("button");
-      clearBtn.setAttribute("data-id", `ychart-poi-clear-${this.instanceId}`);
-      clearBtn.setAttribute("aria-label", "Reset focus to root");
-      clearBtn.style.cssText = `
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 22px;
-      height: 22px;
-      border: none;
-      background: var(--yc-color-button-bg);
-      border-radius: var(--yc-border-radius-full);
-      cursor: pointer;
-      color: var(--yc-color-text-muted);
-      flex-shrink: 0;
-      transition: all var(--yc-transition-fast);
-    `;
-      const clearIcon = document.createElement("span");
-      clearIcon.innerHTML = `
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-        <polyline points="9 22 9 12 15 12 15 22"/>
-      </svg>
-    `;
-      clearIcon.style.cssText = "display: flex; align-items: center; justify-content: center;";
-      clearBtn.appendChild(clearIcon);
-      const clearTooltip = document.createElement("span");
-      clearTooltip.className = "ychart-tooltip";
-      clearTooltip.textContent = "Reset to root";
-      clearTooltip.style.cssText = `
-      position: absolute;
-      top: calc(100% + var(--yc-spacing-md));
-      left: 50%;
-      transform: translateX(-50%) scale(0.8);
-      background: var(--yc-color-overlay-dark);
-      color: white;
-      padding: var(--yc-spacing-sm) var(--yc-spacing-xl);
-      border-radius: var(--yc-border-radius-md);
-      font-size: var(--yc-font-size-sm);
-      white-space: nowrap;
-      pointer-events: none;
-      opacity: 0;
-      transition: all var(--yc-transition-fast) var(--yc-transition-bounce);
-      z-index: var(--yc-z-index-search-popup);
-      box-shadow: var(--yc-shadow-md);
-    `;
-      clearBtn.appendChild(clearTooltip);
-      clearBtn.addEventListener("mouseenter", () => {
-        clearBtn.style.background = "var(--yc-color-primary)";
-        clearBtn.style.color = "white";
-        clearTooltip.style.opacity = "1";
-        clearTooltip.style.transform = "translateX(-50%) scale(1)";
-      });
-      clearBtn.addEventListener("mouseleave", () => {
-        clearBtn.style.background = "var(--yc-color-button-bg)";
-        clearBtn.style.color = "var(--yc-color-text-muted)";
-        clearTooltip.style.opacity = "0";
-        clearTooltip.style.transform = "translateX(-50%) scale(0.8)";
-      });
-      clearBtn.addEventListener("click", () => {
-        this.resetToRoot();
-      });
-      this.poiClearBtn = clearBtn;
-      selectorWrapper.appendChild(focusIcon);
-      selectorWrapper.appendChild(selectContainer);
-      selectorWrapper.appendChild(clearBtn);
-      container.appendChild(selectorWrapper);
-      return container;
-    }
-    /**
-     * Reset the POI - clears the person of interest to show the full org chart.
-     * In multi-root scenarios, this shows all root nodes.
-     */
-    resetToRoot() {
-      this.personOfInterest = null;
-      this.expandedSiblings.clear();
-      this.supervisorChainExpanded = false;
-      if (this.poiSelector) {
-        this.updatePOISelector(this.truthData);
-      }
-      this.renderChart();
-      if (this.orgChart) {
-        setTimeout(() => {
-          this.orgChart.fit();
-        }, 100);
-      }
-    }
-    /**
-     * Update the reset button animation state based on POI status
-     */
-    updatePOIResetButtonAnimation() {
-      if (!this.poiClearBtn) return;
-      const isViewingAll = !this.personOfInterest;
-      if (isViewingAll) {
-        this.poiClearBtn.style.animation = "none";
-      } else {
-        this.poiClearBtn.style.animation = "pulseGlow 2s ease-in-out infinite";
-      }
     }
     updateSearchFieldOptions(fieldSelect) {
       const currentValue = fieldSelect.value;
@@ -50145,14 +47598,14 @@ ${d.email || ""}`);
       }
     }
     performGlobalSearch(query, field) {
-      if (!this.searchResultsDropdown || !this.orgChart) return;
+      if (!this.searchResultsDropdown || !this.ctx.getOrgChart()) return;
       const trimmedQuery = query.trim().toLowerCase();
       if (!trimmedQuery) {
         this.searchResultsDropdown.style.display = "none";
         return;
       }
-      const attrs = this.orgChart.getChartState();
-      const allData = this.truthData.length > 0 ? this.truthData : attrs.data || [];
+      const attrs = this.ctx.getOrgChart().getChartState();
+      const allData = this.ctx.getTruthData().length > 0 ? this.ctx.getTruthData() : attrs.data || [];
       const matches = [];
       allData.forEach((item) => {
         const node = { data: item };
@@ -50162,7 +47615,7 @@ ${d.email || ""}`);
           Object.entries(item).forEach(([key, value]) => {
             if (key.startsWith("_") || value === null || value === void 0) return;
             const strValue = String(value).toLowerCase();
-            const score2 = this.fuzzyMatch(trimmedQuery, strValue);
+            const score2 = fuzzyMatch(trimmedQuery, strValue);
             if (score2 > bestScore) {
               bestScore = score2;
               bestField = key;
@@ -50174,7 +47627,7 @@ ${d.email || ""}`);
         } else {
           const fieldValue = item[field];
           if (fieldValue !== null && fieldValue !== void 0) {
-            const score2 = this.fuzzyMatch(trimmedQuery, String(fieldValue).toLowerCase());
+            const score2 = fuzzyMatch(trimmedQuery, String(fieldValue).toLowerCase());
             if (score2 > 0) {
               matches.push({ node, score: score2, matchedField: field });
             }
@@ -50218,7 +47671,7 @@ ${d.email || ""}`);
         const displayTitle = escapeHtml(nodeData.title || "");
         const displayDept = escapeHtml(nodeData.department || "");
         const nodeId = String(nodeData.id);
-        const isCurrentPOI = this.personOfInterest && String(this.personOfInterest.id) === nodeId;
+        const isCurrentPOI = this.ctx.getPersonOfInterest() && String(this.ctx.getPersonOfInterest().id) === nodeId;
         resultItem.innerHTML = `
         <div style="display: flex; justify-content: space-between; align-items: start; gap: var(--yc-spacing-md);">
           <div style="flex: 1; min-width: 0;">
@@ -50291,9 +47744,9 @@ ${d.email || ""}`);
         if (poiBtn) {
           poiBtn.addEventListener("click", (e) => {
             e.stopPropagation();
-            this.setPersonOfInterest(nodeId);
+            this.ctx.setPersonOfInterest(nodeId);
             this.clearFloatingSearch();
-            this.updatePOISelectorValue(nodeId);
+            this.ctx.updatePOISelectorValue(nodeId);
           });
           const poiTooltip = poiBtn.querySelector(".ychart-tooltip");
           const poiArrow = poiBtn.querySelector(".ychart-tooltip-arrow");
@@ -50355,9 +47808,9 @@ ${d.email || ""}`);
             this.clearFloatingSearch();
           } else if (e.key === "p" || e.key === "P") {
             e.preventDefault();
-            this.setPersonOfInterest(nodeId);
+            this.ctx.setPersonOfInterest(nodeId);
             this.clearFloatingSearch();
-            this.updatePOISelectorValue(nodeId);
+            this.ctx.updatePOISelectorValue(nodeId);
           } else if (e.key === "ArrowDown") {
             e.preventDefault();
             const next = resultItem.nextElementSibling;
@@ -50393,170 +47846,11 @@ ${d.email || ""}`);
         this.searchResultsDropdown.innerHTML = "";
       }
     }
-    /**
-     * Update the POI selector dropdown to reflect the current selection
-     */
-    updatePOISelectorValue(_nodeId) {
-      if (this.truthData.length > 0) {
-        this.updatePOISelector(this.truthData);
-      }
-    }
-    handleFit() {
-      if (this.orgChart) {
-        this.orgChart.fit();
-      }
-    }
-    handleReset() {
-      this.renderChart();
-    }
-    handleSwapToggle() {
-      if (!this.orgChart) return;
-      this.swapModeEnabled = !this.swapModeEnabled;
-      if (typeof this.orgChart.enableSwapMode === "function") {
-        this.orgChart.enableSwapMode(this.swapModeEnabled);
-      }
-      if (typeof this.orgChart.onNodeSwap === "function") {
-        this.orgChart.onNodeSwap((data1, data2) => {
-          this.updateYAMLAfterSwap(data1, data2);
-        });
-      }
-      const swapBtn = document.querySelector(`[data-id="ychart-btn-swap-${this.instanceId}"]`);
-      if (swapBtn) {
-        if (this.swapModeEnabled) {
-          swapBtn.style.background = "var(--yc-color-accent-red)";
-          swapBtn.style.color = "white";
-        } else {
-          swapBtn.style.background = "transparent";
-          swapBtn.style.color = "var(--yc-color-icon)";
-        }
-      }
-    }
-    handleToggleView() {
-      if (this.currentView === "hierarchy") {
-        this.renderForceGraph();
-      } else {
-        this.renderChart();
-      }
-      const toggleBtn = document.querySelector(`[data-id="ychart-btn-toggleView-${this.instanceId}"]`);
-      if (toggleBtn) {
-        const icons = {
-          forceGraph: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><line x1="12" y1="7" x2="12" y2="10"/><line x1="12" y1="14" x2="12" y2="17"/><line x1="14" y1="12" x2="17" y2="12"/><line x1="7" y1="12" x2="10" y2="12"/></svg>`,
-          orgChart: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>`
-        };
-        if (this.currentView === "hierarchy") {
-          toggleBtn.innerHTML = icons.forceGraph;
-          toggleBtn.title = "Switch to Force Graph";
-        } else {
-          toggleBtn.innerHTML = icons.orgChart;
-          toggleBtn.title = "Switch to Org Chart";
-        }
-      }
-    }
-    handleExport() {
-      if (this.orgChart && typeof this.orgChart.exportSvg === "function") {
-        this.orgChart.exportSvg();
-      }
-    }
-    handleFormatYAML() {
-      if (!this.editor) return;
-      try {
-        const currentContent = this.editor.state.doc.toString();
-        if (currentContent.startsWith("---")) {
-          const parts = currentContent.split("---");
-          if (parts.length >= 3) {
-            const frontMatter = parts[1].trim();
-            const dataContent = parts.slice(2).join("---").trim();
-            const parsedFrontMatter = load(frontMatter);
-            const cardTemplate = (parsedFrontMatter == null ? void 0 : parsedFrontMatter.card) || null;
-            if (parsedFrontMatter && parsedFrontMatter.card) {
-              delete parsedFrontMatter.card;
-            }
-            const formattedFrontMatter = dump(parsedFrontMatter, {
-              indent: 2,
-              lineWidth: -1,
-              noRefs: true,
-              sortKeys: false
-            });
-            const parsedData = load(dataContent);
-            const formattedData = dump(parsedData, {
-              indent: 2,
-              lineWidth: -1,
-              noRefs: true,
-              sortKeys: false
-            });
-            let cardYaml = "";
-            if (cardTemplate) {
-              const cardMatch = frontMatter.match(/^card:\s*\n((?:[ \t]+.*\n?)*)/m);
-              if (cardMatch) {
-                cardYaml = "card:\n" + cardMatch[1];
-              }
-            }
-            let reconstructedFrontMatter = formattedFrontMatter.trim();
-            if (cardYaml) {
-              reconstructedFrontMatter += "\n" + cardYaml.trim();
-            }
-            const formatted = `---
-${reconstructedFrontMatter}
----
-
-${formattedData.trim()}
-`;
-            this.editor.dispatch({
-              changes: {
-                from: 0,
-                to: this.editor.state.doc.length,
-                insert: formatted
-              }
-            });
-          }
-        } else {
-          const parsed = load(currentContent);
-          const formatted = dump(parsed, {
-            indent: 2,
-            lineWidth: -1,
-            noRefs: true,
-            sortKeys: false
-          });
-          this.editor.dispatch({
-            changes: {
-              from: 0,
-              to: this.editor.state.doc.length,
-              insert: formatted
-            }
-          });
-        }
-        console.log("YAML formatted successfully");
-      } catch (error) {
-        console.error("Failed to format YAML:", error);
-        alert(`Failed to format YAML: ${error instanceof Error ? error.message : "Unknown error"}`);
-      }
-    }
-    handleExpandAll() {
-      if (this.orgChart && typeof this.orgChart.expandAll === "function") {
-        this.orgChart.expandAll();
-        this.orgChart.render();
-        setTimeout(() => {
-          if (this.orgChart) {
-            this.orgChart.fit();
-          }
-        }, 200);
-      }
-    }
-    handleCollapseAll() {
-      if (this.orgChart && typeof this.orgChart.collapseAll === "function") {
-        this.orgChart.collapseAll();
-        this.orgChart.render();
-        setTimeout(() => {
-          if (this.orgChart) {
-            this.orgChart.fit();
-          }
-        }, 200);
-      }
-    }
     createSearchPopup() {
-      if (!this.chartContainer) return;
+      var _a2;
+      if (!this.ctx.getChartContainer()) return;
       const popup = document.createElement("div");
-      popup.setAttribute("data-id", `ychart-search-popup-${this.instanceId}`);
+      popup.setAttribute("data-id", `ychart-search-popup-${this.ctx.instanceId}`);
       popup.style.cssText = `
       position: absolute;
       top: 5px;
@@ -50751,7 +48045,7 @@ ${formattedData.trim()}
           this.closeSearchPopup();
         }
       });
-      this.chartContainer.appendChild(popup);
+      (_a2 = this.ctx.getChartContainer()) == null ? void 0 : _a2.appendChild(popup);
       this.searchPopup = popup;
     }
     createFilterRow(container) {
@@ -50862,11 +48156,11 @@ ${formattedData.trim()}
       return filterRow;
     }
     getAvailableFields() {
-      if (this.currentSchema && Object.keys(this.currentSchema).length > 0) {
-        return Object.keys(this.currentSchema).filter((key) => !key.startsWith("_"));
+      if (this.ctx.getCurrentSchema() && Object.keys(this.ctx.getCurrentSchema()).length > 0) {
+        return Object.keys(this.ctx.getCurrentSchema()).filter((key) => !key.startsWith("_"));
       }
-      if (this.orgChart) {
-        const attrs = this.orgChart.getChartState();
+      if (this.ctx.getOrgChart()) {
+        const attrs = this.ctx.getOrgChart().getChartState();
         const allNodes = attrs.allNodes || [];
         if (allNodes.length > 0) {
           const fields = /* @__PURE__ */ new Set();
@@ -50885,7 +48179,7 @@ ${formattedData.trim()}
     performFuzzySearch(_query, _field) {
       var _a2, _b;
       const suggestionsContainer = (_a2 = this.searchPopup) == null ? void 0 : _a2.querySelector('[data-id="search-suggestions"]');
-      if (!suggestionsContainer || !this.orgChart) return;
+      if (!suggestionsContainer || !this.ctx.getOrgChart()) return;
       const filterRows = (_b = this.searchPopup) == null ? void 0 : _b.querySelectorAll('[data-id="filter-row"]');
       if (!filterRows) return;
       const filters = [];
@@ -50900,7 +48194,7 @@ ${formattedData.trim()}
         suggestionsContainer.style.display = "none";
         return;
       }
-      const attrs = this.orgChart.getChartState();
+      const attrs = this.ctx.getOrgChart().getChartState();
       const allNodes = attrs.allNodes || [];
       const matches = [];
       allNodes.forEach((node) => {
@@ -50909,7 +48203,7 @@ ${formattedData.trim()}
         filters.forEach((filter2) => {
           const fieldValue = node.data[filter2.field];
           if (fieldValue) {
-            const score2 = this.fuzzyMatch(filter2.query, String(fieldValue).toLowerCase());
+            const score2 = fuzzyMatch(filter2.query, String(fieldValue).toLowerCase());
             if (score2 > 0) {
               totalScore += score2;
               matchCount++;
@@ -50968,27 +48262,6 @@ ${formattedData.trim()}
         suggestionsContainer.appendChild(suggestionItem);
       });
     }
-    fuzzyMatch(pattern, text) {
-      if (!pattern || !text) return 0;
-      if (text.includes(pattern)) return 1;
-      let score2 = 0;
-      let patternIdx = 0;
-      let textIdx = 0;
-      let consecutiveMatches = 0;
-      while (patternIdx < pattern.length && textIdx < text.length) {
-        if (pattern[patternIdx] === text[textIdx]) {
-          score2 += 1 + consecutiveMatches;
-          consecutiveMatches++;
-          patternIdx++;
-        } else {
-          consecutiveMatches = 0;
-        }
-        textIdx++;
-      }
-      if (patternIdx !== pattern.length) return 0;
-      const maxScore = pattern.length * (pattern.length + 1) / 2;
-      return score2 / maxScore;
-    }
     closeSearchPopup() {
       if (this.searchPopup) {
         this.searchPopup.style.display = "none";
@@ -51006,7 +48279,6 @@ ${formattedData.trim()}
         this.searchHistoryPopup.style.display = "none";
       }
     }
-    // ─── Field Filter System ─────────────────────────────────
     toggleFilterPopup() {
       if (!this.filterPopup) {
         this.createFilterPopup();
@@ -51019,7 +48291,7 @@ ${formattedData.trim()}
       const searchContainer = this.floatingSearchBar;
       if (!searchContainer) return;
       const popup = document.createElement("div");
-      popup.setAttribute("data-id", `ychart-filter-popup-${this.instanceId}`);
+      popup.setAttribute("data-id", `ychart-filter-popup-${this.ctx.instanceId}`);
       popup.style.cssText = `
       display: none;
       position: absolute;
@@ -51212,7 +48484,7 @@ ${formattedData.trim()}
     populateFilterValues(field, query, dropdown, _selectedBadges) {
       dropdown.innerHTML = "";
       const valueSet = /* @__PURE__ */ new Set();
-      this.truthData.forEach((item) => {
+      this.ctx.getTruthData().forEach((item) => {
         const val = item[field];
         if (val !== null && val !== void 0 && String(val).trim()) {
           valueSet.add(String(val).trim());
@@ -51221,7 +48493,7 @@ ${formattedData.trim()}
       let values = Array.from(valueSet).sort();
       if (query.trim()) {
         const q = query.trim().toLowerCase();
-        values = values.map((v) => ({ value: v, score: this.fuzzyMatch(q, v.toLowerCase()) })).filter((v) => v.score > 0).sort((a2, b) => b.score - a2.score).map((v) => v.value);
+        values = values.map((v) => ({ value: v, score: fuzzyMatch(q, v.toLowerCase()) })).filter((v) => v.score > 0).sort((a2, b) => b.score - a2.score).map((v) => v.value);
       }
       if (values.length === 0) {
         dropdown.style.display = "block";
@@ -51391,15 +48663,15 @@ ${formattedData.trim()}
       }
     }
     applyFieldFilters() {
-      if (!this.orgChart) return;
+      if (!this.ctx.getOrgChart()) return;
       const totalFilters = Array.from(this.activeFieldFilters.values()).reduce((sum2, set2) => sum2 + set2.size, 0);
       if (totalFilters === 0) {
-        this.orgChart.clearHighlighting();
-        this.orgChart.expandAll();
+        this.ctx.getOrgChart().clearHighlighting();
+        this.ctx.getOrgChart().expandAll();
         return;
       }
       const matchedIds = [];
-      this.truthData.forEach((item) => {
+      this.ctx.getTruthData().forEach((item) => {
         let matches = true;
         this.activeFieldFilters.forEach((values, field) => {
           const nodeVal = item[field];
@@ -51412,18 +48684,18 @@ ${formattedData.trim()}
         if (matches) matchedIds.push(item.id);
       });
       if (matchedIds.length === 0) return;
-      const attrs = this.orgChart.getChartState();
+      const attrs = this.ctx.getOrgChart().getChartState();
       attrs.allNodes.forEach((d) => {
         d.data._expanded = false;
         d.data._highlighted = false;
         d.data._upToTheRootHighlighted = false;
       });
       matchedIds.forEach((id2) => {
-        this.orgChart.setHighlighted(id2);
+        this.ctx.getOrgChart().setHighlighted(id2);
       });
-      this.orgChart.render();
+      this.ctx.getOrgChart().render();
       setTimeout(() => {
-        if (this.orgChart) this.orgChart.fit();
+        if (this.ctx.getOrgChart()) this.ctx.getOrgChart().fit();
       }, 300);
     }
     toggleSearchHistory() {
@@ -51441,9 +48713,9 @@ ${formattedData.trim()}
       }
     }
     createSearchHistoryPopup() {
-      if (!this.chartContainer || !this.searchPopup) return;
+      if (!this.ctx.getChartContainer() || !this.searchPopup) return;
       const historyPopup = document.createElement("div");
-      historyPopup.setAttribute("data-id", `ychart-search-history-${this.instanceId}`);
+      historyPopup.setAttribute("data-id", `ychart-search-history-${this.ctx.instanceId}`);
       historyPopup.style.cssText = `
       position: absolute;
       top: calc(100% + 5px);
@@ -51605,7 +48877,7 @@ ${formattedData.trim()}
       });
     }
     getSearchHistoryKey() {
-      return `ychart-search-history-${this.instanceId}`;
+      return `ychart-search-history-${this.ctx.instanceId}`;
     }
     loadSearchHistory() {
       try {
@@ -51661,15 +48933,15 @@ ${formattedData.trim()}
       }
     }
     selectAndHighlightNode(node) {
-      if (!this.orgChart) return;
-      const attrs = this.orgChart.getChartState();
+      if (!this.ctx.getOrgChart()) return;
+      const attrs = this.ctx.getOrgChart().getChartState();
       const nodeId = attrs.nodeId(node.data);
       this.saveSearchToHistory(node);
-      if (typeof this.orgChart.setCentered === "function") {
-        this.orgChart.setCentered(nodeId);
+      if (typeof this.ctx.getOrgChart().setCentered === "function") {
+        this.ctx.getOrgChart().setCentered(nodeId);
       }
       attrs.selectedNodeId = nodeId;
-      this.orgChart.render();
+      this.ctx.getOrgChart().render();
       setTimeout(() => {
         var _a2;
         const svg2 = (_a2 = attrs.svg) == null ? void 0 : _a2.node();
@@ -51681,13 +48953,13 @@ ${formattedData.trim()}
         attrs.onNodeSelect(nodeId);
       }
       setTimeout(() => {
-        if (this.orgChart && typeof this.orgChart.fit === "function") {
-          const updatedAttrs = this.orgChart.getChartState();
+        if (this.ctx.getOrgChart() && typeof this.ctx.getOrgChart().fit === "function") {
+          const updatedAttrs = this.ctx.getOrgChart().getChartState();
           const updatedRoot = updatedAttrs.root;
           const descendants = updatedRoot.descendants();
           const updatedNode = descendants.find((d) => attrs.nodeId(d.data) === nodeId);
           if (updatedNode) {
-            this.orgChart.fit({ nodes: [updatedNode], animate: true });
+            this.ctx.getOrgChart().fit({ nodes: [updatedNode], animate: true });
           }
         }
       }, 400);
@@ -51712,7 +48984,7 @@ ${formattedData.trim()}
         const history2 = this.loadSearchHistory();
         const nodeData = node.data;
         const nodeName = nodeData.name || "";
-        const attrs = (_a2 = this.orgChart) == null ? void 0 : _a2.getChartState();
+        const attrs = (_a2 = this.ctx.getOrgChart()) == null ? void 0 : _a2.getChartState();
         const nodeId = attrs ? attrs.nodeId(nodeData) : "";
         const isDuplicate = history2.some(
           (item) => item.field === field && item.query === query && item.nodeId === nodeId
@@ -51732,10 +49004,36 @@ ${formattedData.trim()}
         console.warn("Failed to save search history:", error);
       }
     }
-    handleColumnAdjustToggle() {
-      if (!this.orgChart) return;
+    /**
+       * Focus the floating search bar
+       */
+    focusFloatingSearch() {
+      if (this.floatingSearchBar) {
+        const searchInput = this.floatingSearchBar.querySelector("input");
+        if (searchInput) {
+          searchInput.focus();
+          searchInput.select();
+        }
+      }
+    }
+  }
+  class ColumnAdjustManager {
+    constructor(ctx) {
+      __publicField(this, "columnAdjustMode", false);
+      __publicField(this, "columnAdjustButtons", null);
+      __publicField(this, "ctx");
+      this.ctx = ctx;
+    }
+    get isActive() {
+      return this.columnAdjustMode;
+    }
+    toggle() {
+      const orgChart = this.ctx.getOrgChart();
+      if (!orgChart) return;
       this.columnAdjustMode = !this.columnAdjustMode;
-      const columnAdjustBtn = document.querySelector(`[data-id="ychart-btn-columnAdjust-${this.instanceId}"]`);
+      const columnAdjustBtn = document.querySelector(
+        `[data-id="ychart-btn-columnAdjust-${this.ctx.instanceId}"]`
+      );
       if (columnAdjustBtn) {
         if (this.columnAdjustMode) {
           columnAdjustBtn.style.background = "var(--yc-color-accent-purple)";
@@ -51744,14 +49042,15 @@ ${formattedData.trim()}
         } else {
           columnAdjustBtn.style.background = "transparent";
           columnAdjustBtn.style.color = "var(--yc-color-icon)";
-          this.hideColumnAdjustButtons();
+          this.hideButtons();
           console.log("Column adjust mode disabled.");
         }
       }
     }
-    handleNodeClickForColumnAdjust(nodeData) {
+    handleNodeClick(nodeData) {
       var _a2, _b;
-      if (!this.columnAdjustMode || !this.chartContainer) return;
+      const chartContainer = this.ctx.getChartContainer();
+      if (!this.columnAdjustMode || !chartContainer) return;
       const childrenCount = (((_a2 = nodeData.children) == null ? void 0 : _a2.length) || 0) + (((_b = nodeData._children) == null ? void 0 : _b.length) || 0);
       if (childrenCount === 0) {
         console.log("This node has no children to arrange.");
@@ -51759,13 +49058,20 @@ ${formattedData.trim()}
       }
       const currentColumns = nodeData.data._childColumns || 2;
       console.log(`Selected node with ${childrenCount} children. Current columns: ${currentColumns}`);
-      this.showColumnAdjustButtons(nodeData, currentColumns, childrenCount);
+      this.showButtons(nodeData, currentColumns, childrenCount);
     }
-    showColumnAdjustButtons(nodeData, currentColumns, childrenCount) {
-      var _a2;
-      this.hideColumnAdjustButtons();
+    hideButtons() {
+      if (this.columnAdjustButtons && this.columnAdjustButtons.parentNode) {
+        this.columnAdjustButtons.parentNode.removeChild(this.columnAdjustButtons);
+        this.columnAdjustButtons = null;
+      }
+    }
+    showButtons(nodeData, currentColumns, childrenCount) {
+      this.hideButtons();
+      const chartContainer = this.ctx.getChartContainer();
+      if (!chartContainer) return;
       this.columnAdjustButtons = document.createElement("div");
-      this.columnAdjustButtons.setAttribute("data-id", `ychart-column-adjust-controls-${this.instanceId}`);
+      this.columnAdjustButtons.setAttribute("data-id", `ychart-column-adjust-controls-${this.ctx.instanceId}`);
       this.columnAdjustButtons.style.cssText = `
       position: absolute;
       top: 50%;
@@ -51826,7 +49132,7 @@ ${formattedData.trim()}
       if (currentColumns > 2) {
         decreaseBtn.onmouseover = () => decreaseBtn.style.background = "var(--yc-color-accent-purple-dark)";
         decreaseBtn.onmouseleave = () => decreaseBtn.style.background = "var(--yc-color-accent-purple)";
-        decreaseBtn.onclick = () => this.adjustNodeColumns(nodeData, currentColumns - 1);
+        decreaseBtn.onclick = () => this.adjustColumns(nodeData, currentColumns - 1);
       }
       const columnDisplay = document.createElement("div");
       columnDisplay.textContent = `${currentColumns} Columns`;
@@ -51856,7 +49162,7 @@ ${formattedData.trim()}
       if (currentColumns < childrenCount) {
         increaseBtn.onmouseover = () => increaseBtn.style.background = "var(--yc-color-accent-purple-dark)";
         increaseBtn.onmouseleave = () => increaseBtn.style.background = "var(--yc-color-accent-purple)";
-        increaseBtn.onclick = () => this.adjustNodeColumns(nodeData, currentColumns + 1);
+        increaseBtn.onclick = () => this.adjustColumns(nodeData, currentColumns + 1);
       }
       controlsWrapper.appendChild(decreaseBtn);
       controlsWrapper.appendChild(columnDisplay);
@@ -51878,68 +49184,2333 @@ ${formattedData.trim()}
     `;
       closeBtn.onmouseover = () => closeBtn.style.background = "var(--yc-color-ui-slate-light)";
       closeBtn.onmouseleave = () => closeBtn.style.background = "var(--yc-color-ui-slate-lighter)";
-      closeBtn.onclick = () => this.hideColumnAdjustButtons();
+      closeBtn.onclick = () => this.hideButtons();
       this.columnAdjustButtons.appendChild(closeBtn);
-      (_a2 = this.chartContainer) == null ? void 0 : _a2.appendChild(this.columnAdjustButtons);
+      chartContainer.appendChild(this.columnAdjustButtons);
     }
-    hideColumnAdjustButtons() {
-      if (this.columnAdjustButtons && this.columnAdjustButtons.parentNode) {
-        this.columnAdjustButtons.parentNode.removeChild(this.columnAdjustButtons);
-        this.columnAdjustButtons = null;
-      }
-    }
-    adjustNodeColumns(nodeData, newColumns) {
+    adjustColumns(nodeData, newColumns) {
       nodeData.data._childColumns = newColumns;
       console.log(`Adjusted columns to ${newColumns} for node:`, nodeData.data.id);
-      if (this.orgChart) {
-        this.orgChart.render();
+      const orgChart = this.ctx.getOrgChart();
+      if (orgChart) {
+        orgChart.render();
         setTimeout(() => {
-          if (this.orgChart) {
-            this.orgChart.fit();
-          }
+          orgChart == null ? void 0 : orgChart.fit();
         }, 200);
       }
-      this.hideColumnAdjustButtons();
+      this.hideButtons();
     }
-    initializeEditor() {
-      if (!this.editorContainer) return;
-      const yamlLinter = linter((view) => {
-        const diagnostics = [];
-        const content2 = view.state.doc.toString();
-        try {
-          const { data: yamlData } = this.parseFrontMatter(content2);
-          const parsed = load(yamlData);
-          if (parsed !== null && parsed !== void 0 && !Array.isArray(parsed)) {
-            const dataStart = content2.lastIndexOf("---");
-            const pos = dataStart !== -1 ? dataStart + 3 : 0;
-            diagnostics.push({
-              from: pos,
-              to: Math.min(pos + 50, content2.length),
-              severity: "error",
-              message: 'YAML data must be an array of objects (start each item with "- ")'
-            });
-          } else if (Array.isArray(parsed)) {
-            const idCounts = /* @__PURE__ */ new Map();
-            let itemIndex = 0;
-            for (const item of parsed) {
-              if (item.id !== void 0 && item.id !== null) {
-                const idStr = String(item.id);
-                if (!idCounts.has(idStr)) {
-                  idCounts.set(idStr, []);
-                }
-                idCounts.get(idStr).push(itemIndex);
-              }
-              itemIndex++;
+  }
+  var define_process_env_default = {};
+  class Stack {
+    /**
+    @internal
+    */
+    constructor(p, stack, state, reducePos, pos, score2, buffer, bufferBase, curContext, lookAhead = 0, parent) {
+      this.p = p;
+      this.stack = stack;
+      this.state = state;
+      this.reducePos = reducePos;
+      this.pos = pos;
+      this.score = score2;
+      this.buffer = buffer;
+      this.bufferBase = bufferBase;
+      this.curContext = curContext;
+      this.lookAhead = lookAhead;
+      this.parent = parent;
+    }
+    /**
+    @internal
+    */
+    toString() {
+      return `[${this.stack.filter((_, i2) => i2 % 3 == 0).concat(this.state)}]@${this.pos}${this.score ? "!" + this.score : ""}`;
+    }
+    // Start an empty stack
+    /**
+    @internal
+    */
+    static start(p, state, pos = 0) {
+      let cx2 = p.parser.context;
+      return new Stack(p, [], state, pos, pos, 0, [], 0, cx2 ? new StackContext(cx2, cx2.start) : null, 0, null);
+    }
+    /**
+    The stack's current [context](#lr.ContextTracker) value, if
+    any. Its type will depend on the context tracker's type
+    parameter, or it will be `null` if there is no context
+    tracker.
+    */
+    get context() {
+      return this.curContext ? this.curContext.context : null;
+    }
+    // Push a state onto the stack, tracking its start position as well
+    // as the buffer base at that point.
+    /**
+    @internal
+    */
+    pushState(state, start2) {
+      this.stack.push(this.state, start2, this.bufferBase + this.buffer.length);
+      this.state = state;
+    }
+    // Apply a reduce action
+    /**
+    @internal
+    */
+    reduce(action) {
+      var _a2;
+      let depth = action >> 19, type2 = action & 65535;
+      let { parser: parser2 } = this.p;
+      let lookaheadRecord = this.reducePos < this.pos - 25;
+      if (lookaheadRecord)
+        this.setLookAhead(this.pos);
+      let dPrec = parser2.dynamicPrecedence(type2);
+      if (dPrec)
+        this.score += dPrec;
+      if (depth == 0) {
+        this.pushState(parser2.getGoto(this.state, type2, true), this.reducePos);
+        if (type2 < parser2.minRepeatTerm)
+          this.storeNode(type2, this.reducePos, this.reducePos, lookaheadRecord ? 8 : 4, true);
+        this.reduceContext(type2, this.reducePos);
+        return;
+      }
+      let base2 = this.stack.length - (depth - 1) * 3 - (action & 262144 ? 6 : 0);
+      let start2 = base2 ? this.stack[base2 - 2] : this.p.ranges[0].from, size = this.reducePos - start2;
+      if (size >= 2e3 && !((_a2 = this.p.parser.nodeSet.types[type2]) === null || _a2 === void 0 ? void 0 : _a2.isAnonymous)) {
+        if (start2 == this.p.lastBigReductionStart) {
+          this.p.bigReductionCount++;
+          this.p.lastBigReductionSize = size;
+        } else if (this.p.lastBigReductionSize < size) {
+          this.p.bigReductionCount = 1;
+          this.p.lastBigReductionStart = start2;
+          this.p.lastBigReductionSize = size;
+        }
+      }
+      let bufferBase = base2 ? this.stack[base2 - 1] : 0, count2 = this.bufferBase + this.buffer.length - bufferBase;
+      if (type2 < parser2.minRepeatTerm || action & 131072) {
+        let pos = parser2.stateFlag(
+          this.state,
+          1
+          /* StateFlag.Skipped */
+        ) ? this.pos : this.reducePos;
+        this.storeNode(type2, start2, pos, count2 + 4, true);
+      }
+      if (action & 262144) {
+        this.state = this.stack[base2];
+      } else {
+        let baseStateID = this.stack[base2 - 3];
+        this.state = parser2.getGoto(baseStateID, type2, true);
+      }
+      while (this.stack.length > base2)
+        this.stack.pop();
+      this.reduceContext(type2, start2);
+    }
+    // Shift a value into the buffer
+    /**
+    @internal
+    */
+    storeNode(term, start2, end, size = 4, mustSink = false) {
+      if (term == 0 && (!this.stack.length || this.stack[this.stack.length - 1] < this.buffer.length + this.bufferBase)) {
+        let cur2 = this, top2 = this.buffer.length;
+        if (top2 == 0 && cur2.parent) {
+          top2 = cur2.bufferBase - cur2.parent.bufferBase;
+          cur2 = cur2.parent;
+        }
+        if (top2 > 0 && cur2.buffer[top2 - 4] == 0 && cur2.buffer[top2 - 1] > -1) {
+          if (start2 == end)
+            return;
+          if (cur2.buffer[top2 - 2] >= start2) {
+            cur2.buffer[top2 - 2] = end;
+            return;
+          }
+        }
+      }
+      if (!mustSink || this.pos == end) {
+        this.buffer.push(term, start2, end, size);
+      } else {
+        let index2 = this.buffer.length;
+        if (index2 > 0 && this.buffer[index2 - 4] != 0) {
+          let mustMove = false;
+          for (let scan = index2; scan > 0 && this.buffer[scan - 2] > end; scan -= 4) {
+            if (this.buffer[scan - 1] >= 0) {
+              mustMove = true;
+              break;
             }
-            for (const [id2, indices] of idCounts) {
+          }
+          if (mustMove)
+            while (index2 > 0 && this.buffer[index2 - 2] > end) {
+              this.buffer[index2] = this.buffer[index2 - 4];
+              this.buffer[index2 + 1] = this.buffer[index2 - 3];
+              this.buffer[index2 + 2] = this.buffer[index2 - 2];
+              this.buffer[index2 + 3] = this.buffer[index2 - 1];
+              index2 -= 4;
+              if (size > 4)
+                size -= 4;
+            }
+        }
+        this.buffer[index2] = term;
+        this.buffer[index2 + 1] = start2;
+        this.buffer[index2 + 2] = end;
+        this.buffer[index2 + 3] = size;
+      }
+    }
+    // Apply a shift action
+    /**
+    @internal
+    */
+    shift(action, type2, start2, end) {
+      if (action & 131072) {
+        this.pushState(action & 65535, this.pos);
+      } else if ((action & 262144) == 0) {
+        let nextState = action, { parser: parser2 } = this.p;
+        if (end > this.pos || type2 <= parser2.maxNode) {
+          this.pos = end;
+          if (!parser2.stateFlag(
+            nextState,
+            1
+            /* StateFlag.Skipped */
+          ))
+            this.reducePos = end;
+        }
+        this.pushState(nextState, start2);
+        this.shiftContext(type2, start2);
+        if (type2 <= parser2.maxNode)
+          this.buffer.push(type2, start2, end, 4);
+      } else {
+        this.pos = end;
+        this.shiftContext(type2, start2);
+        if (type2 <= this.p.parser.maxNode)
+          this.buffer.push(type2, start2, end, 4);
+      }
+    }
+    // Apply an action
+    /**
+    @internal
+    */
+    apply(action, next, nextStart, nextEnd) {
+      if (action & 65536)
+        this.reduce(action);
+      else
+        this.shift(action, next, nextStart, nextEnd);
+    }
+    // Add a prebuilt (reused) node into the buffer.
+    /**
+    @internal
+    */
+    useNode(value, next) {
+      let index2 = this.p.reused.length - 1;
+      if (index2 < 0 || this.p.reused[index2] != value) {
+        this.p.reused.push(value);
+        index2++;
+      }
+      let start2 = this.pos;
+      this.reducePos = this.pos = start2 + value.length;
+      this.pushState(next, start2);
+      this.buffer.push(
+        index2,
+        start2,
+        this.reducePos,
+        -1
+        /* size == -1 means this is a reused value */
+      );
+      if (this.curContext)
+        this.updateContext(this.curContext.tracker.reuse(this.curContext.context, value, this, this.p.stream.reset(this.pos - value.length)));
+    }
+    // Split the stack. Due to the buffer sharing and the fact
+    // that `this.stack` tends to stay quite shallow, this isn't very
+    // expensive.
+    /**
+    @internal
+    */
+    split() {
+      let parent = this;
+      let off = parent.buffer.length;
+      while (off > 0 && parent.buffer[off - 2] > parent.reducePos)
+        off -= 4;
+      let buffer = parent.buffer.slice(off), base2 = parent.bufferBase + off;
+      while (parent && base2 == parent.bufferBase)
+        parent = parent.parent;
+      return new Stack(this.p, this.stack.slice(), this.state, this.reducePos, this.pos, this.score, buffer, base2, this.curContext, this.lookAhead, parent);
+    }
+    // Try to recover from an error by 'deleting' (ignoring) one token.
+    /**
+    @internal
+    */
+    recoverByDelete(next, nextEnd) {
+      let isNode = next <= this.p.parser.maxNode;
+      if (isNode)
+        this.storeNode(next, this.pos, nextEnd, 4);
+      this.storeNode(0, this.pos, nextEnd, isNode ? 8 : 4);
+      this.pos = this.reducePos = nextEnd;
+      this.score -= 190;
+    }
+    /**
+    Check if the given term would be able to be shifted (optionally
+    after some reductions) on this stack. This can be useful for
+    external tokenizers that want to make sure they only provide a
+    given token when it applies.
+    */
+    canShift(term) {
+      for (let sim = new SimulatedStack(this); ; ) {
+        let action = this.p.parser.stateSlot(
+          sim.state,
+          4
+          /* ParseState.DefaultReduce */
+        ) || this.p.parser.hasAction(sim.state, term);
+        if (action == 0)
+          return false;
+        if ((action & 65536) == 0)
+          return true;
+        sim.reduce(action);
+      }
+    }
+    // Apply up to Recover.MaxNext recovery actions that conceptually
+    // inserts some missing token or rule.
+    /**
+    @internal
+    */
+    recoverByInsert(next) {
+      if (this.stack.length >= 300)
+        return [];
+      let nextStates = this.p.parser.nextStates(this.state);
+      if (nextStates.length > 4 << 1 || this.stack.length >= 120) {
+        let best = [];
+        for (let i2 = 0, s; i2 < nextStates.length; i2 += 2) {
+          if ((s = nextStates[i2 + 1]) != this.state && this.p.parser.hasAction(s, next))
+            best.push(nextStates[i2], s);
+        }
+        if (this.stack.length < 120)
+          for (let i2 = 0; best.length < 4 << 1 && i2 < nextStates.length; i2 += 2) {
+            let s = nextStates[i2 + 1];
+            if (!best.some((v, i22) => i22 & 1 && v == s))
+              best.push(nextStates[i2], s);
+          }
+        nextStates = best;
+      }
+      let result = [];
+      for (let i2 = 0; i2 < nextStates.length && result.length < 4; i2 += 2) {
+        let s = nextStates[i2 + 1];
+        if (s == this.state)
+          continue;
+        let stack = this.split();
+        stack.pushState(s, this.pos);
+        stack.storeNode(0, stack.pos, stack.pos, 4, true);
+        stack.shiftContext(nextStates[i2], this.pos);
+        stack.reducePos = this.pos;
+        stack.score -= 200;
+        result.push(stack);
+      }
+      return result;
+    }
+    // Force a reduce, if possible. Return false if that can't
+    // be done.
+    /**
+    @internal
+    */
+    forceReduce() {
+      let { parser: parser2 } = this.p;
+      let reduce = parser2.stateSlot(
+        this.state,
+        5
+        /* ParseState.ForcedReduce */
+      );
+      if ((reduce & 65536) == 0)
+        return false;
+      if (!parser2.validAction(this.state, reduce)) {
+        let depth = reduce >> 19, term = reduce & 65535;
+        let target = this.stack.length - depth * 3;
+        if (target < 0 || parser2.getGoto(this.stack[target], term, false) < 0) {
+          let backup = this.findForcedReduction();
+          if (backup == null)
+            return false;
+          reduce = backup;
+        }
+        this.storeNode(0, this.pos, this.pos, 4, true);
+        this.score -= 100;
+      }
+      this.reducePos = this.pos;
+      this.reduce(reduce);
+      return true;
+    }
+    /**
+    Try to scan through the automaton to find some kind of reduction
+    that can be applied. Used when the regular ForcedReduce field
+    isn't a valid action. @internal
+    */
+    findForcedReduction() {
+      let { parser: parser2 } = this.p, seen = [];
+      let explore = (state, depth) => {
+        if (seen.includes(state))
+          return;
+        seen.push(state);
+        return parser2.allActions(state, (action) => {
+          if (action & (262144 | 131072)) ;
+          else if (action & 65536) {
+            let rDepth = (action >> 19) - depth;
+            if (rDepth > 1) {
+              let term = action & 65535, target = this.stack.length - rDepth * 3;
+              if (target >= 0 && parser2.getGoto(this.stack[target], term, false) >= 0)
+                return rDepth << 19 | 65536 | term;
+            }
+          } else {
+            let found = explore(action, depth + 1);
+            if (found != null)
+              return found;
+          }
+        });
+      };
+      return explore(this.state, 0);
+    }
+    /**
+    @internal
+    */
+    forceAll() {
+      while (!this.p.parser.stateFlag(
+        this.state,
+        2
+        /* StateFlag.Accepting */
+      )) {
+        if (!this.forceReduce()) {
+          this.storeNode(0, this.pos, this.pos, 4, true);
+          break;
+        }
+      }
+      return this;
+    }
+    /**
+    Check whether this state has no further actions (assumed to be a direct descendant of the
+    top state, since any other states must be able to continue
+    somehow). @internal
+    */
+    get deadEnd() {
+      if (this.stack.length != 3)
+        return false;
+      let { parser: parser2 } = this.p;
+      return parser2.data[parser2.stateSlot(
+        this.state,
+        1
+        /* ParseState.Actions */
+      )] == 65535 && !parser2.stateSlot(
+        this.state,
+        4
+        /* ParseState.DefaultReduce */
+      );
+    }
+    /**
+    Restart the stack (put it back in its start state). Only safe
+    when this.stack.length == 3 (state is directly below the top
+    state). @internal
+    */
+    restart() {
+      this.storeNode(0, this.pos, this.pos, 4, true);
+      this.state = this.stack[0];
+      this.stack.length = 0;
+    }
+    /**
+    @internal
+    */
+    sameState(other) {
+      if (this.state != other.state || this.stack.length != other.stack.length)
+        return false;
+      for (let i2 = 0; i2 < this.stack.length; i2 += 3)
+        if (this.stack[i2] != other.stack[i2])
+          return false;
+      return true;
+    }
+    /**
+    Get the parser used by this stack.
+    */
+    get parser() {
+      return this.p.parser;
+    }
+    /**
+    Test whether a given dialect (by numeric ID, as exported from
+    the terms file) is enabled.
+    */
+    dialectEnabled(dialectID) {
+      return this.p.parser.dialect.flags[dialectID];
+    }
+    shiftContext(term, start2) {
+      if (this.curContext)
+        this.updateContext(this.curContext.tracker.shift(this.curContext.context, term, this, this.p.stream.reset(start2)));
+    }
+    reduceContext(term, start2) {
+      if (this.curContext)
+        this.updateContext(this.curContext.tracker.reduce(this.curContext.context, term, this, this.p.stream.reset(start2)));
+    }
+    /**
+    @internal
+    */
+    emitContext() {
+      let last = this.buffer.length - 1;
+      if (last < 0 || this.buffer[last] != -3)
+        this.buffer.push(this.curContext.hash, this.pos, this.pos, -3);
+    }
+    /**
+    @internal
+    */
+    emitLookAhead() {
+      let last = this.buffer.length - 1;
+      if (last < 0 || this.buffer[last] != -4)
+        this.buffer.push(this.lookAhead, this.pos, this.pos, -4);
+    }
+    updateContext(context) {
+      if (context != this.curContext.context) {
+        let newCx = new StackContext(this.curContext.tracker, context);
+        if (newCx.hash != this.curContext.hash)
+          this.emitContext();
+        this.curContext = newCx;
+      }
+    }
+    /**
+    @internal
+    */
+    setLookAhead(lookAhead) {
+      if (lookAhead > this.lookAhead) {
+        this.emitLookAhead();
+        this.lookAhead = lookAhead;
+      }
+    }
+    /**
+    @internal
+    */
+    close() {
+      if (this.curContext && this.curContext.tracker.strict)
+        this.emitContext();
+      if (this.lookAhead > 0)
+        this.emitLookAhead();
+    }
+  }
+  class StackContext {
+    constructor(tracker, context) {
+      this.tracker = tracker;
+      this.context = context;
+      this.hash = tracker.strict ? tracker.hash(context) : 0;
+    }
+  }
+  class SimulatedStack {
+    constructor(start2) {
+      this.start = start2;
+      this.state = start2.state;
+      this.stack = start2.stack;
+      this.base = this.stack.length;
+    }
+    reduce(action) {
+      let term = action & 65535, depth = action >> 19;
+      if (depth == 0) {
+        if (this.stack == this.start.stack)
+          this.stack = this.stack.slice();
+        this.stack.push(this.state, 0, 0);
+        this.base += 3;
+      } else {
+        this.base -= (depth - 1) * 3;
+      }
+      let goto = this.start.p.parser.getGoto(this.stack[this.base - 3], term, true);
+      this.state = goto;
+    }
+  }
+  class StackBufferCursor {
+    constructor(stack, pos, index2) {
+      this.stack = stack;
+      this.pos = pos;
+      this.index = index2;
+      this.buffer = stack.buffer;
+      if (this.index == 0)
+        this.maybeNext();
+    }
+    static create(stack, pos = stack.bufferBase + stack.buffer.length) {
+      return new StackBufferCursor(stack, pos, pos - stack.bufferBase);
+    }
+    maybeNext() {
+      let next = this.stack.parent;
+      if (next != null) {
+        this.index = this.stack.bufferBase - next.bufferBase;
+        this.stack = next;
+        this.buffer = next.buffer;
+      }
+    }
+    get id() {
+      return this.buffer[this.index - 4];
+    }
+    get start() {
+      return this.buffer[this.index - 3];
+    }
+    get end() {
+      return this.buffer[this.index - 2];
+    }
+    get size() {
+      return this.buffer[this.index - 1];
+    }
+    next() {
+      this.index -= 4;
+      this.pos -= 4;
+      if (this.index == 0)
+        this.maybeNext();
+    }
+    fork() {
+      return new StackBufferCursor(this.stack, this.pos, this.index);
+    }
+  }
+  function decodeArray(input, Type = Uint16Array) {
+    if (typeof input != "string")
+      return input;
+    let array2 = null;
+    for (let pos = 0, out = 0; pos < input.length; ) {
+      let value = 0;
+      for (; ; ) {
+        let next = input.charCodeAt(pos++), stop = false;
+        if (next == 126) {
+          value = 65535;
+          break;
+        }
+        if (next >= 92)
+          next--;
+        if (next >= 34)
+          next--;
+        let digit = next - 32;
+        if (digit >= 46) {
+          digit -= 46;
+          stop = true;
+        }
+        value += digit;
+        if (stop)
+          break;
+        value *= 46;
+      }
+      if (array2)
+        array2[out++] = value;
+      else
+        array2 = new Type(value);
+    }
+    return array2;
+  }
+  class CachedToken {
+    constructor() {
+      this.start = -1;
+      this.value = -1;
+      this.end = -1;
+      this.extended = -1;
+      this.lookAhead = 0;
+      this.mask = 0;
+      this.context = 0;
+    }
+  }
+  const nullToken = new CachedToken();
+  class InputStream {
+    /**
+    @internal
+    */
+    constructor(input, ranges) {
+      this.input = input;
+      this.ranges = ranges;
+      this.chunk = "";
+      this.chunkOff = 0;
+      this.chunk2 = "";
+      this.chunk2Pos = 0;
+      this.next = -1;
+      this.token = nullToken;
+      this.rangeIndex = 0;
+      this.pos = this.chunkPos = ranges[0].from;
+      this.range = ranges[0];
+      this.end = ranges[ranges.length - 1].to;
+      this.readNext();
+    }
+    /**
+    @internal
+    */
+    resolveOffset(offset, assoc) {
+      let range = this.range, index2 = this.rangeIndex;
+      let pos = this.pos + offset;
+      while (pos < range.from) {
+        if (!index2)
+          return null;
+        let next = this.ranges[--index2];
+        pos -= range.from - next.to;
+        range = next;
+      }
+      while (assoc < 0 ? pos > range.to : pos >= range.to) {
+        if (index2 == this.ranges.length - 1)
+          return null;
+        let next = this.ranges[++index2];
+        pos += next.from - range.to;
+        range = next;
+      }
+      return pos;
+    }
+    /**
+    @internal
+    */
+    clipPos(pos) {
+      if (pos >= this.range.from && pos < this.range.to)
+        return pos;
+      for (let range of this.ranges)
+        if (range.to > pos)
+          return Math.max(pos, range.from);
+      return this.end;
+    }
+    /**
+    Look at a code unit near the stream position. `.peek(0)` equals
+    `.next`, `.peek(-1)` gives you the previous character, and so
+    on.
+    
+    Note that looking around during tokenizing creates dependencies
+    on potentially far-away content, which may reduce the
+    effectiveness incremental parsing—when looking forward—or even
+    cause invalid reparses when looking backward more than 25 code
+    units, since the library does not track lookbehind.
+    */
+    peek(offset) {
+      let idx = this.chunkOff + offset, pos, result;
+      if (idx >= 0 && idx < this.chunk.length) {
+        pos = this.pos + offset;
+        result = this.chunk.charCodeAt(idx);
+      } else {
+        let resolved = this.resolveOffset(offset, 1);
+        if (resolved == null)
+          return -1;
+        pos = resolved;
+        if (pos >= this.chunk2Pos && pos < this.chunk2Pos + this.chunk2.length) {
+          result = this.chunk2.charCodeAt(pos - this.chunk2Pos);
+        } else {
+          let i2 = this.rangeIndex, range = this.range;
+          while (range.to <= pos)
+            range = this.ranges[++i2];
+          this.chunk2 = this.input.chunk(this.chunk2Pos = pos);
+          if (pos + this.chunk2.length > range.to)
+            this.chunk2 = this.chunk2.slice(0, range.to - pos);
+          result = this.chunk2.charCodeAt(0);
+        }
+      }
+      if (pos >= this.token.lookAhead)
+        this.token.lookAhead = pos + 1;
+      return result;
+    }
+    /**
+    Accept a token. By default, the end of the token is set to the
+    current stream position, but you can pass an offset (relative to
+    the stream position) to change that.
+    */
+    acceptToken(token, endOffset = 0) {
+      let end = endOffset ? this.resolveOffset(endOffset, -1) : this.pos;
+      if (end == null || end < this.token.start)
+        throw new RangeError("Token end out of bounds");
+      this.token.value = token;
+      this.token.end = end;
+    }
+    /**
+    Accept a token ending at a specific given position.
+    */
+    acceptTokenTo(token, endPos) {
+      this.token.value = token;
+      this.token.end = endPos;
+    }
+    getChunk() {
+      if (this.pos >= this.chunk2Pos && this.pos < this.chunk2Pos + this.chunk2.length) {
+        let { chunk, chunkPos } = this;
+        this.chunk = this.chunk2;
+        this.chunkPos = this.chunk2Pos;
+        this.chunk2 = chunk;
+        this.chunk2Pos = chunkPos;
+        this.chunkOff = this.pos - this.chunkPos;
+      } else {
+        this.chunk2 = this.chunk;
+        this.chunk2Pos = this.chunkPos;
+        let nextChunk = this.input.chunk(this.pos);
+        let end = this.pos + nextChunk.length;
+        this.chunk = end > this.range.to ? nextChunk.slice(0, this.range.to - this.pos) : nextChunk;
+        this.chunkPos = this.pos;
+        this.chunkOff = 0;
+      }
+    }
+    readNext() {
+      if (this.chunkOff >= this.chunk.length) {
+        this.getChunk();
+        if (this.chunkOff == this.chunk.length)
+          return this.next = -1;
+      }
+      return this.next = this.chunk.charCodeAt(this.chunkOff);
+    }
+    /**
+    Move the stream forward N (defaults to 1) code units. Returns
+    the new value of [`next`](#lr.InputStream.next).
+    */
+    advance(n = 1) {
+      this.chunkOff += n;
+      while (this.pos + n >= this.range.to) {
+        if (this.rangeIndex == this.ranges.length - 1)
+          return this.setDone();
+        n -= this.range.to - this.pos;
+        this.range = this.ranges[++this.rangeIndex];
+        this.pos = this.range.from;
+      }
+      this.pos += n;
+      if (this.pos >= this.token.lookAhead)
+        this.token.lookAhead = this.pos + 1;
+      return this.readNext();
+    }
+    setDone() {
+      this.pos = this.chunkPos = this.end;
+      this.range = this.ranges[this.rangeIndex = this.ranges.length - 1];
+      this.chunk = "";
+      return this.next = -1;
+    }
+    /**
+    @internal
+    */
+    reset(pos, token) {
+      if (token) {
+        this.token = token;
+        token.start = pos;
+        token.lookAhead = pos + 1;
+        token.value = token.extended = -1;
+      } else {
+        this.token = nullToken;
+      }
+      if (this.pos != pos) {
+        this.pos = pos;
+        if (pos == this.end) {
+          this.setDone();
+          return this;
+        }
+        while (pos < this.range.from)
+          this.range = this.ranges[--this.rangeIndex];
+        while (pos >= this.range.to)
+          this.range = this.ranges[++this.rangeIndex];
+        if (pos >= this.chunkPos && pos < this.chunkPos + this.chunk.length) {
+          this.chunkOff = pos - this.chunkPos;
+        } else {
+          this.chunk = "";
+          this.chunkOff = 0;
+        }
+        this.readNext();
+      }
+      return this;
+    }
+    /**
+    @internal
+    */
+    read(from, to) {
+      if (from >= this.chunkPos && to <= this.chunkPos + this.chunk.length)
+        return this.chunk.slice(from - this.chunkPos, to - this.chunkPos);
+      if (from >= this.chunk2Pos && to <= this.chunk2Pos + this.chunk2.length)
+        return this.chunk2.slice(from - this.chunk2Pos, to - this.chunk2Pos);
+      if (from >= this.range.from && to <= this.range.to)
+        return this.input.read(from, to);
+      let result = "";
+      for (let r2 of this.ranges) {
+        if (r2.from >= to)
+          break;
+        if (r2.to > from)
+          result += this.input.read(Math.max(r2.from, from), Math.min(r2.to, to));
+      }
+      return result;
+    }
+  }
+  class TokenGroup {
+    constructor(data, id2) {
+      this.data = data;
+      this.id = id2;
+    }
+    token(input, stack) {
+      let { parser: parser2 } = stack.p;
+      readToken(this.data, input, stack, this.id, parser2.data, parser2.tokenPrecTable);
+    }
+  }
+  TokenGroup.prototype.contextual = TokenGroup.prototype.fallback = TokenGroup.prototype.extend = false;
+  TokenGroup.prototype.fallback = TokenGroup.prototype.extend = false;
+  class ExternalTokenizer {
+    /**
+    Create a tokenizer. The first argument is the function that,
+    given an input stream, scans for the types of tokens it
+    recognizes at the stream's position, and calls
+    [`acceptToken`](#lr.InputStream.acceptToken) when it finds
+    one.
+    */
+    constructor(token, options = {}) {
+      this.token = token;
+      this.contextual = !!options.contextual;
+      this.fallback = !!options.fallback;
+      this.extend = !!options.extend;
+    }
+  }
+  function readToken(data, input, stack, group, precTable, precOffset) {
+    let state = 0, groupMask = 1 << group, { dialect } = stack.p.parser;
+    scan: for (; ; ) {
+      if ((groupMask & data[state]) == 0)
+        break;
+      let accEnd = data[state + 1];
+      for (let i2 = state + 3; i2 < accEnd; i2 += 2)
+        if ((data[i2 + 1] & groupMask) > 0) {
+          let term = data[i2];
+          if (dialect.allows(term) && (input.token.value == -1 || input.token.value == term || overrides(term, input.token.value, precTable, precOffset))) {
+            input.acceptToken(term);
+            break;
+          }
+        }
+      let next = input.next, low = 0, high = data[state + 2];
+      if (input.next < 0 && high > low && data[accEnd + high * 3 - 3] == 65535) {
+        state = data[accEnd + high * 3 - 1];
+        continue scan;
+      }
+      for (; low < high; ) {
+        let mid = low + high >> 1;
+        let index2 = accEnd + mid + (mid << 1);
+        let from = data[index2], to = data[index2 + 1] || 65536;
+        if (next < from)
+          high = mid;
+        else if (next >= to)
+          low = mid + 1;
+        else {
+          state = data[index2 + 2];
+          input.advance();
+          continue scan;
+        }
+      }
+      break;
+    }
+  }
+  function findOffset(data, start2, term) {
+    for (let i2 = start2, next; (next = data[i2]) != 65535; i2++)
+      if (next == term)
+        return i2 - start2;
+    return -1;
+  }
+  function overrides(token, prev, tableData, tableOffset) {
+    let iPrev = findOffset(tableData, tableOffset, prev);
+    return iPrev < 0 || findOffset(tableData, tableOffset, token) < iPrev;
+  }
+  const verbose = typeof process != "undefined" && define_process_env_default && /\bparse\b/.test(define_process_env_default.LOG);
+  let stackIDs = null;
+  function cutAt(tree2, pos, side) {
+    let cursor2 = tree2.cursor(IterMode.IncludeAnonymous);
+    cursor2.moveTo(pos);
+    for (; ; ) {
+      if (!(side < 0 ? cursor2.childBefore(pos) : cursor2.childAfter(pos)))
+        for (; ; ) {
+          if ((side < 0 ? cursor2.to < pos : cursor2.from > pos) && !cursor2.type.isError)
+            return side < 0 ? Math.max(0, Math.min(
+              cursor2.to - 1,
+              pos - 25
+              /* Lookahead.Margin */
+            )) : Math.min(tree2.length, Math.max(
+              cursor2.from + 1,
+              pos + 25
+              /* Lookahead.Margin */
+            ));
+          if (side < 0 ? cursor2.prevSibling() : cursor2.nextSibling())
+            break;
+          if (!cursor2.parent())
+            return side < 0 ? 0 : tree2.length;
+        }
+    }
+  }
+  class FragmentCursor {
+    constructor(fragments, nodeSet) {
+      this.fragments = fragments;
+      this.nodeSet = nodeSet;
+      this.i = 0;
+      this.fragment = null;
+      this.safeFrom = -1;
+      this.safeTo = -1;
+      this.trees = [];
+      this.start = [];
+      this.index = [];
+      this.nextFragment();
+    }
+    nextFragment() {
+      let fr = this.fragment = this.i == this.fragments.length ? null : this.fragments[this.i++];
+      if (fr) {
+        this.safeFrom = fr.openStart ? cutAt(fr.tree, fr.from + fr.offset, 1) - fr.offset : fr.from;
+        this.safeTo = fr.openEnd ? cutAt(fr.tree, fr.to + fr.offset, -1) - fr.offset : fr.to;
+        while (this.trees.length) {
+          this.trees.pop();
+          this.start.pop();
+          this.index.pop();
+        }
+        this.trees.push(fr.tree);
+        this.start.push(-fr.offset);
+        this.index.push(0);
+        this.nextStart = this.safeFrom;
+      } else {
+        this.nextStart = 1e9;
+      }
+    }
+    // `pos` must be >= any previously given `pos` for this cursor
+    nodeAt(pos) {
+      if (pos < this.nextStart)
+        return null;
+      while (this.fragment && this.safeTo <= pos)
+        this.nextFragment();
+      if (!this.fragment)
+        return null;
+      for (; ; ) {
+        let last = this.trees.length - 1;
+        if (last < 0) {
+          this.nextFragment();
+          return null;
+        }
+        let top2 = this.trees[last], index2 = this.index[last];
+        if (index2 == top2.children.length) {
+          this.trees.pop();
+          this.start.pop();
+          this.index.pop();
+          continue;
+        }
+        let next = top2.children[index2];
+        let start2 = this.start[last] + top2.positions[index2];
+        if (start2 > pos) {
+          this.nextStart = start2;
+          return null;
+        }
+        if (next instanceof Tree) {
+          if (start2 == pos) {
+            if (start2 < this.safeFrom)
+              return null;
+            let end = start2 + next.length;
+            if (end <= this.safeTo) {
+              let lookAhead = next.prop(NodeProp.lookAhead);
+              if (!lookAhead || end + lookAhead < this.fragment.to)
+                return next;
+            }
+          }
+          this.index[last]++;
+          if (start2 + next.length >= Math.max(this.safeFrom, pos)) {
+            this.trees.push(next);
+            this.start.push(start2);
+            this.index.push(0);
+          }
+        } else {
+          this.index[last]++;
+          this.nextStart = start2 + next.length;
+        }
+      }
+    }
+  }
+  class TokenCache {
+    constructor(parser2, stream) {
+      this.stream = stream;
+      this.tokens = [];
+      this.mainToken = null;
+      this.actions = [];
+      this.tokens = parser2.tokenizers.map((_) => new CachedToken());
+    }
+    getActions(stack) {
+      let actionIndex = 0;
+      let main = null;
+      let { parser: parser2 } = stack.p, { tokenizers } = parser2;
+      let mask = parser2.stateSlot(
+        stack.state,
+        3
+        /* ParseState.TokenizerMask */
+      );
+      let context = stack.curContext ? stack.curContext.hash : 0;
+      let lookAhead = 0;
+      for (let i2 = 0; i2 < tokenizers.length; i2++) {
+        if ((1 << i2 & mask) == 0)
+          continue;
+        let tokenizer = tokenizers[i2], token = this.tokens[i2];
+        if (main && !tokenizer.fallback)
+          continue;
+        if (tokenizer.contextual || token.start != stack.pos || token.mask != mask || token.context != context) {
+          this.updateCachedToken(token, tokenizer, stack);
+          token.mask = mask;
+          token.context = context;
+        }
+        if (token.lookAhead > token.end + 25)
+          lookAhead = Math.max(token.lookAhead, lookAhead);
+        if (token.value != 0) {
+          let startIndex = actionIndex;
+          if (token.extended > -1)
+            actionIndex = this.addActions(stack, token.extended, token.end, actionIndex);
+          actionIndex = this.addActions(stack, token.value, token.end, actionIndex);
+          if (!tokenizer.extend) {
+            main = token;
+            if (actionIndex > startIndex)
+              break;
+          }
+        }
+      }
+      while (this.actions.length > actionIndex)
+        this.actions.pop();
+      if (lookAhead)
+        stack.setLookAhead(lookAhead);
+      if (!main && stack.pos == this.stream.end) {
+        main = new CachedToken();
+        main.value = stack.p.parser.eofTerm;
+        main.start = main.end = stack.pos;
+        actionIndex = this.addActions(stack, main.value, main.end, actionIndex);
+      }
+      this.mainToken = main;
+      return this.actions;
+    }
+    getMainToken(stack) {
+      if (this.mainToken)
+        return this.mainToken;
+      let main = new CachedToken(), { pos, p } = stack;
+      main.start = pos;
+      main.end = Math.min(pos + 1, p.stream.end);
+      main.value = pos == p.stream.end ? p.parser.eofTerm : 0;
+      return main;
+    }
+    updateCachedToken(token, tokenizer, stack) {
+      let start2 = this.stream.clipPos(stack.pos);
+      tokenizer.token(this.stream.reset(start2, token), stack);
+      if (token.value > -1) {
+        let { parser: parser2 } = stack.p;
+        for (let i2 = 0; i2 < parser2.specialized.length; i2++)
+          if (parser2.specialized[i2] == token.value) {
+            let result = parser2.specializers[i2](this.stream.read(token.start, token.end), stack);
+            if (result >= 0 && stack.p.parser.dialect.allows(result >> 1)) {
+              if ((result & 1) == 0)
+                token.value = result >> 1;
+              else
+                token.extended = result >> 1;
+              break;
+            }
+          }
+      } else {
+        token.value = 0;
+        token.end = this.stream.clipPos(start2 + 1);
+      }
+    }
+    putAction(action, token, end, index2) {
+      for (let i2 = 0; i2 < index2; i2 += 3)
+        if (this.actions[i2] == action)
+          return index2;
+      this.actions[index2++] = action;
+      this.actions[index2++] = token;
+      this.actions[index2++] = end;
+      return index2;
+    }
+    addActions(stack, token, end, index2) {
+      let { state } = stack, { parser: parser2 } = stack.p, { data } = parser2;
+      for (let set2 = 0; set2 < 2; set2++) {
+        for (let i2 = parser2.stateSlot(
+          state,
+          set2 ? 2 : 1
+          /* ParseState.Actions */
+        ); ; i2 += 3) {
+          if (data[i2] == 65535) {
+            if (data[i2 + 1] == 1) {
+              i2 = pair(data, i2 + 2);
+            } else {
+              if (index2 == 0 && data[i2 + 1] == 2)
+                index2 = this.putAction(pair(data, i2 + 2), token, end, index2);
+              break;
+            }
+          }
+          if (data[i2] == token)
+            index2 = this.putAction(pair(data, i2 + 1), token, end, index2);
+        }
+      }
+      return index2;
+    }
+  }
+  class Parse {
+    constructor(parser2, input, fragments, ranges) {
+      this.parser = parser2;
+      this.input = input;
+      this.ranges = ranges;
+      this.recovering = 0;
+      this.nextStackID = 9812;
+      this.minStackPos = 0;
+      this.reused = [];
+      this.stoppedAt = null;
+      this.lastBigReductionStart = -1;
+      this.lastBigReductionSize = 0;
+      this.bigReductionCount = 0;
+      this.stream = new InputStream(input, ranges);
+      this.tokens = new TokenCache(parser2, this.stream);
+      this.topTerm = parser2.top[1];
+      let { from } = ranges[0];
+      this.stacks = [Stack.start(this, parser2.top[0], from)];
+      this.fragments = fragments.length && this.stream.end - from > parser2.bufferLength * 4 ? new FragmentCursor(fragments, parser2.nodeSet) : null;
+    }
+    get parsedPos() {
+      return this.minStackPos;
+    }
+    // Move the parser forward. This will process all parse stacks at
+    // `this.pos` and try to advance them to a further position. If no
+    // stack for such a position is found, it'll start error-recovery.
+    //
+    // When the parse is finished, this will return a syntax tree. When
+    // not, it returns `null`.
+    advance() {
+      let stacks = this.stacks, pos = this.minStackPos;
+      let newStacks = this.stacks = [];
+      let stopped, stoppedTokens;
+      if (this.bigReductionCount > 300 && stacks.length == 1) {
+        let [s] = stacks;
+        while (s.forceReduce() && s.stack.length && s.stack[s.stack.length - 2] >= this.lastBigReductionStart) {
+        }
+        this.bigReductionCount = this.lastBigReductionSize = 0;
+      }
+      for (let i2 = 0; i2 < stacks.length; i2++) {
+        let stack = stacks[i2];
+        for (; ; ) {
+          this.tokens.mainToken = null;
+          if (stack.pos > pos) {
+            newStacks.push(stack);
+          } else if (this.advanceStack(stack, newStacks, stacks)) {
+            continue;
+          } else {
+            if (!stopped) {
+              stopped = [];
+              stoppedTokens = [];
+            }
+            stopped.push(stack);
+            let tok = this.tokens.getMainToken(stack);
+            stoppedTokens.push(tok.value, tok.end);
+          }
+          break;
+        }
+      }
+      if (!newStacks.length) {
+        let finished = stopped && findFinished(stopped);
+        if (finished) {
+          if (verbose)
+            console.log("Finish with " + this.stackID(finished));
+          return this.stackToTree(finished);
+        }
+        if (this.parser.strict) {
+          if (verbose && stopped)
+            console.log("Stuck with token " + (this.tokens.mainToken ? this.parser.getName(this.tokens.mainToken.value) : "none"));
+          throw new SyntaxError("No parse at " + pos);
+        }
+        if (!this.recovering)
+          this.recovering = 5;
+      }
+      if (this.recovering && stopped) {
+        let finished = this.stoppedAt != null && stopped[0].pos > this.stoppedAt ? stopped[0] : this.runRecovery(stopped, stoppedTokens, newStacks);
+        if (finished) {
+          if (verbose)
+            console.log("Force-finish " + this.stackID(finished));
+          return this.stackToTree(finished.forceAll());
+        }
+      }
+      if (this.recovering) {
+        let maxRemaining = this.recovering == 1 ? 1 : this.recovering * 3;
+        if (newStacks.length > maxRemaining) {
+          newStacks.sort((a2, b) => b.score - a2.score);
+          while (newStacks.length > maxRemaining)
+            newStacks.pop();
+        }
+        if (newStacks.some((s) => s.reducePos > pos))
+          this.recovering--;
+      } else if (newStacks.length > 1) {
+        outer: for (let i2 = 0; i2 < newStacks.length - 1; i2++) {
+          let stack = newStacks[i2];
+          for (let j = i2 + 1; j < newStacks.length; j++) {
+            let other = newStacks[j];
+            if (stack.sameState(other) || stack.buffer.length > 500 && other.buffer.length > 500) {
+              if ((stack.score - other.score || stack.buffer.length - other.buffer.length) > 0) {
+                newStacks.splice(j--, 1);
+              } else {
+                newStacks.splice(i2--, 1);
+                continue outer;
+              }
+            }
+          }
+        }
+        if (newStacks.length > 12)
+          newStacks.splice(
+            12,
+            newStacks.length - 12
+            /* Rec.MaxStackCount */
+          );
+      }
+      this.minStackPos = newStacks[0].pos;
+      for (let i2 = 1; i2 < newStacks.length; i2++)
+        if (newStacks[i2].pos < this.minStackPos)
+          this.minStackPos = newStacks[i2].pos;
+      return null;
+    }
+    stopAt(pos) {
+      if (this.stoppedAt != null && this.stoppedAt < pos)
+        throw new RangeError("Can't move stoppedAt forward");
+      this.stoppedAt = pos;
+    }
+    // Returns an updated version of the given stack, or null if the
+    // stack can't advance normally. When `split` and `stacks` are
+    // given, stacks split off by ambiguous operations will be pushed to
+    // `split`, or added to `stacks` if they move `pos` forward.
+    advanceStack(stack, stacks, split) {
+      let start2 = stack.pos, { parser: parser2 } = this;
+      let base2 = verbose ? this.stackID(stack) + " -> " : "";
+      if (this.stoppedAt != null && start2 > this.stoppedAt)
+        return stack.forceReduce() ? stack : null;
+      if (this.fragments) {
+        let strictCx = stack.curContext && stack.curContext.tracker.strict, cxHash = strictCx ? stack.curContext.hash : 0;
+        for (let cached = this.fragments.nodeAt(start2); cached; ) {
+          let match = this.parser.nodeSet.types[cached.type.id] == cached.type ? parser2.getGoto(stack.state, cached.type.id) : -1;
+          if (match > -1 && cached.length && (!strictCx || (cached.prop(NodeProp.contextHash) || 0) == cxHash)) {
+            stack.useNode(cached, match);
+            if (verbose)
+              console.log(base2 + this.stackID(stack) + ` (via reuse of ${parser2.getName(cached.type.id)})`);
+            return true;
+          }
+          if (!(cached instanceof Tree) || cached.children.length == 0 || cached.positions[0] > 0)
+            break;
+          let inner = cached.children[0];
+          if (inner instanceof Tree && cached.positions[0] == 0)
+            cached = inner;
+          else
+            break;
+        }
+      }
+      let defaultReduce = parser2.stateSlot(
+        stack.state,
+        4
+        /* ParseState.DefaultReduce */
+      );
+      if (defaultReduce > 0) {
+        stack.reduce(defaultReduce);
+        if (verbose)
+          console.log(base2 + this.stackID(stack) + ` (via always-reduce ${parser2.getName(
+            defaultReduce & 65535
+            /* Action.ValueMask */
+          )})`);
+        return true;
+      }
+      if (stack.stack.length >= 8400) {
+        while (stack.stack.length > 6e3 && stack.forceReduce()) {
+        }
+      }
+      let actions = this.tokens.getActions(stack);
+      for (let i2 = 0; i2 < actions.length; ) {
+        let action = actions[i2++], term = actions[i2++], end = actions[i2++];
+        let last = i2 == actions.length || !split;
+        let localStack = last ? stack : stack.split();
+        let main = this.tokens.mainToken;
+        localStack.apply(action, term, main ? main.start : localStack.pos, end);
+        if (verbose)
+          console.log(base2 + this.stackID(localStack) + ` (via ${(action & 65536) == 0 ? "shift" : `reduce of ${parser2.getName(
+            action & 65535
+            /* Action.ValueMask */
+          )}`} for ${parser2.getName(term)} @ ${start2}${localStack == stack ? "" : ", split"})`);
+        if (last)
+          return true;
+        else if (localStack.pos > start2)
+          stacks.push(localStack);
+        else
+          split.push(localStack);
+      }
+      return false;
+    }
+    // Advance a given stack forward as far as it will go. Returns the
+    // (possibly updated) stack if it got stuck, or null if it moved
+    // forward and was given to `pushStackDedup`.
+    advanceFully(stack, newStacks) {
+      let pos = stack.pos;
+      for (; ; ) {
+        if (!this.advanceStack(stack, null, null))
+          return false;
+        if (stack.pos > pos) {
+          pushStackDedup(stack, newStacks);
+          return true;
+        }
+      }
+    }
+    runRecovery(stacks, tokens, newStacks) {
+      let finished = null, restarted = false;
+      for (let i2 = 0; i2 < stacks.length; i2++) {
+        let stack = stacks[i2], token = tokens[i2 << 1], tokenEnd = tokens[(i2 << 1) + 1];
+        let base2 = verbose ? this.stackID(stack) + " -> " : "";
+        if (stack.deadEnd) {
+          if (restarted)
+            continue;
+          restarted = true;
+          stack.restart();
+          if (verbose)
+            console.log(base2 + this.stackID(stack) + " (restarted)");
+          let done = this.advanceFully(stack, newStacks);
+          if (done)
+            continue;
+        }
+        let force = stack.split(), forceBase = base2;
+        for (let j = 0; force.forceReduce() && j < 10; j++) {
+          if (verbose)
+            console.log(forceBase + this.stackID(force) + " (via force-reduce)");
+          let done = this.advanceFully(force, newStacks);
+          if (done)
+            break;
+          if (verbose)
+            forceBase = this.stackID(force) + " -> ";
+        }
+        for (let insert2 of stack.recoverByInsert(token)) {
+          if (verbose)
+            console.log(base2 + this.stackID(insert2) + " (via recover-insert)");
+          this.advanceFully(insert2, newStacks);
+        }
+        if (this.stream.end > stack.pos) {
+          if (tokenEnd == stack.pos) {
+            tokenEnd++;
+            token = 0;
+          }
+          stack.recoverByDelete(token, tokenEnd);
+          if (verbose)
+            console.log(base2 + this.stackID(stack) + ` (via recover-delete ${this.parser.getName(token)})`);
+          pushStackDedup(stack, newStacks);
+        } else if (!finished || finished.score < stack.score) {
+          finished = stack;
+        }
+      }
+      return finished;
+    }
+    // Convert the stack's buffer to a syntax tree.
+    stackToTree(stack) {
+      stack.close();
+      return Tree.build({
+        buffer: StackBufferCursor.create(stack),
+        nodeSet: this.parser.nodeSet,
+        topID: this.topTerm,
+        maxBufferLength: this.parser.bufferLength,
+        reused: this.reused,
+        start: this.ranges[0].from,
+        length: stack.pos - this.ranges[0].from,
+        minRepeatType: this.parser.minRepeatTerm
+      });
+    }
+    stackID(stack) {
+      let id2 = (stackIDs || (stackIDs = /* @__PURE__ */ new WeakMap())).get(stack);
+      if (!id2)
+        stackIDs.set(stack, id2 = String.fromCodePoint(this.nextStackID++));
+      return id2 + stack;
+    }
+  }
+  function pushStackDedup(stack, newStacks) {
+    for (let i2 = 0; i2 < newStacks.length; i2++) {
+      let other = newStacks[i2];
+      if (other.pos == stack.pos && other.sameState(stack)) {
+        if (newStacks[i2].score < stack.score)
+          newStacks[i2] = stack;
+        return;
+      }
+    }
+    newStacks.push(stack);
+  }
+  class Dialect {
+    constructor(source, flags, disabled) {
+      this.source = source;
+      this.flags = flags;
+      this.disabled = disabled;
+    }
+    allows(term) {
+      return !this.disabled || this.disabled[term] == 0;
+    }
+  }
+  const id = (x2) => x2;
+  class ContextTracker {
+    /**
+    Define a context tracker.
+    */
+    constructor(spec) {
+      this.start = spec.start;
+      this.shift = spec.shift || id;
+      this.reduce = spec.reduce || id;
+      this.reuse = spec.reuse || id;
+      this.hash = spec.hash || (() => 0);
+      this.strict = spec.strict !== false;
+    }
+  }
+  class LRParser extends Parser {
+    /**
+    @internal
+    */
+    constructor(spec) {
+      super();
+      this.wrappers = [];
+      if (spec.version != 14)
+        throw new RangeError(`Parser version (${spec.version}) doesn't match runtime version (${14})`);
+      let nodeNames = spec.nodeNames.split(" ");
+      this.minRepeatTerm = nodeNames.length;
+      for (let i2 = 0; i2 < spec.repeatNodeCount; i2++)
+        nodeNames.push("");
+      let topTerms = Object.keys(spec.topRules).map((r2) => spec.topRules[r2][1]);
+      let nodeProps = [];
+      for (let i2 = 0; i2 < nodeNames.length; i2++)
+        nodeProps.push([]);
+      function setProp(nodeID, prop, value) {
+        nodeProps[nodeID].push([prop, prop.deserialize(String(value))]);
+      }
+      if (spec.nodeProps)
+        for (let propSpec of spec.nodeProps) {
+          let prop = propSpec[0];
+          if (typeof prop == "string")
+            prop = NodeProp[prop];
+          for (let i2 = 1; i2 < propSpec.length; ) {
+            let next = propSpec[i2++];
+            if (next >= 0) {
+              setProp(next, prop, propSpec[i2++]);
+            } else {
+              let value = propSpec[i2 + -next];
+              for (let j = -next; j > 0; j--)
+                setProp(propSpec[i2++], prop, value);
+              i2++;
+            }
+          }
+        }
+      this.nodeSet = new NodeSet(nodeNames.map((name2, i2) => NodeType.define({
+        name: i2 >= this.minRepeatTerm ? void 0 : name2,
+        id: i2,
+        props: nodeProps[i2],
+        top: topTerms.indexOf(i2) > -1,
+        error: i2 == 0,
+        skipped: spec.skippedNodes && spec.skippedNodes.indexOf(i2) > -1
+      })));
+      if (spec.propSources)
+        this.nodeSet = this.nodeSet.extend(...spec.propSources);
+      this.strict = false;
+      this.bufferLength = DefaultBufferLength;
+      let tokenArray = decodeArray(spec.tokenData);
+      this.context = spec.context;
+      this.specializerSpecs = spec.specialized || [];
+      this.specialized = new Uint16Array(this.specializerSpecs.length);
+      for (let i2 = 0; i2 < this.specializerSpecs.length; i2++)
+        this.specialized[i2] = this.specializerSpecs[i2].term;
+      this.specializers = this.specializerSpecs.map(getSpecializer);
+      this.states = decodeArray(spec.states, Uint32Array);
+      this.data = decodeArray(spec.stateData);
+      this.goto = decodeArray(spec.goto);
+      this.maxTerm = spec.maxTerm;
+      this.tokenizers = spec.tokenizers.map((value) => typeof value == "number" ? new TokenGroup(tokenArray, value) : value);
+      this.topRules = spec.topRules;
+      this.dialects = spec.dialects || {};
+      this.dynamicPrecedences = spec.dynamicPrecedences || null;
+      this.tokenPrecTable = spec.tokenPrec;
+      this.termNames = spec.termNames || null;
+      this.maxNode = this.nodeSet.types.length - 1;
+      this.dialect = this.parseDialect();
+      this.top = this.topRules[Object.keys(this.topRules)[0]];
+    }
+    createParse(input, fragments, ranges) {
+      let parse = new Parse(this, input, fragments, ranges);
+      for (let w of this.wrappers)
+        parse = w(parse, input, fragments, ranges);
+      return parse;
+    }
+    /**
+    Get a goto table entry @internal
+    */
+    getGoto(state, term, loose = false) {
+      let table = this.goto;
+      if (term >= table[0])
+        return -1;
+      for (let pos = table[term + 1]; ; ) {
+        let groupTag = table[pos++], last = groupTag & 1;
+        let target = table[pos++];
+        if (last && loose)
+          return target;
+        for (let end = pos + (groupTag >> 1); pos < end; pos++)
+          if (table[pos] == state)
+            return target;
+        if (last)
+          return -1;
+      }
+    }
+    /**
+    Check if this state has an action for a given terminal @internal
+    */
+    hasAction(state, terminal) {
+      let data = this.data;
+      for (let set2 = 0; set2 < 2; set2++) {
+        for (let i2 = this.stateSlot(
+          state,
+          set2 ? 2 : 1
+          /* ParseState.Actions */
+        ), next; ; i2 += 3) {
+          if ((next = data[i2]) == 65535) {
+            if (data[i2 + 1] == 1)
+              next = data[i2 = pair(data, i2 + 2)];
+            else if (data[i2 + 1] == 2)
+              return pair(data, i2 + 2);
+            else
+              break;
+          }
+          if (next == terminal || next == 0)
+            return pair(data, i2 + 1);
+        }
+      }
+      return 0;
+    }
+    /**
+    @internal
+    */
+    stateSlot(state, slot) {
+      return this.states[state * 6 + slot];
+    }
+    /**
+    @internal
+    */
+    stateFlag(state, flag) {
+      return (this.stateSlot(
+        state,
+        0
+        /* ParseState.Flags */
+      ) & flag) > 0;
+    }
+    /**
+    @internal
+    */
+    validAction(state, action) {
+      return !!this.allActions(state, (a2) => a2 == action ? true : null);
+    }
+    /**
+    @internal
+    */
+    allActions(state, action) {
+      let deflt = this.stateSlot(
+        state,
+        4
+        /* ParseState.DefaultReduce */
+      );
+      let result = deflt ? action(deflt) : void 0;
+      for (let i2 = this.stateSlot(
+        state,
+        1
+        /* ParseState.Actions */
+      ); result == null; i2 += 3) {
+        if (this.data[i2] == 65535) {
+          if (this.data[i2 + 1] == 1)
+            i2 = pair(this.data, i2 + 2);
+          else
+            break;
+        }
+        result = action(pair(this.data, i2 + 1));
+      }
+      return result;
+    }
+    /**
+    Get the states that can follow this one through shift actions or
+    goto jumps. @internal
+    */
+    nextStates(state) {
+      let result = [];
+      for (let i2 = this.stateSlot(
+        state,
+        1
+        /* ParseState.Actions */
+      ); ; i2 += 3) {
+        if (this.data[i2] == 65535) {
+          if (this.data[i2 + 1] == 1)
+            i2 = pair(this.data, i2 + 2);
+          else
+            break;
+        }
+        if ((this.data[i2 + 2] & 65536 >> 16) == 0) {
+          let value = this.data[i2 + 1];
+          if (!result.some((v, i22) => i22 & 1 && v == value))
+            result.push(this.data[i2], value);
+        }
+      }
+      return result;
+    }
+    /**
+    Configure the parser. Returns a new parser instance that has the
+    given settings modified. Settings not provided in `config` are
+    kept from the original parser.
+    */
+    configure(config2) {
+      let copy = Object.assign(Object.create(LRParser.prototype), this);
+      if (config2.props)
+        copy.nodeSet = this.nodeSet.extend(...config2.props);
+      if (config2.top) {
+        let info = this.topRules[config2.top];
+        if (!info)
+          throw new RangeError(`Invalid top rule name ${config2.top}`);
+        copy.top = info;
+      }
+      if (config2.tokenizers)
+        copy.tokenizers = this.tokenizers.map((t2) => {
+          let found = config2.tokenizers.find((r2) => r2.from == t2);
+          return found ? found.to : t2;
+        });
+      if (config2.specializers) {
+        copy.specializers = this.specializers.slice();
+        copy.specializerSpecs = this.specializerSpecs.map((s, i2) => {
+          let found = config2.specializers.find((r2) => r2.from == s.external);
+          if (!found)
+            return s;
+          let spec = Object.assign(Object.assign({}, s), { external: found.to });
+          copy.specializers[i2] = getSpecializer(spec);
+          return spec;
+        });
+      }
+      if (config2.contextTracker)
+        copy.context = config2.contextTracker;
+      if (config2.dialect)
+        copy.dialect = this.parseDialect(config2.dialect);
+      if (config2.strict != null)
+        copy.strict = config2.strict;
+      if (config2.wrap)
+        copy.wrappers = copy.wrappers.concat(config2.wrap);
+      if (config2.bufferLength != null)
+        copy.bufferLength = config2.bufferLength;
+      return copy;
+    }
+    /**
+    Tells you whether any [parse wrappers](#lr.ParserConfig.wrap)
+    are registered for this parser.
+    */
+    hasWrappers() {
+      return this.wrappers.length > 0;
+    }
+    /**
+    Returns the name associated with a given term. This will only
+    work for all terms when the parser was generated with the
+    `--names` option. By default, only the names of tagged terms are
+    stored.
+    */
+    getName(term) {
+      return this.termNames ? this.termNames[term] : String(term <= this.maxNode && this.nodeSet.types[term].name || term);
+    }
+    /**
+    The eof term id is always allocated directly after the node
+    types. @internal
+    */
+    get eofTerm() {
+      return this.maxNode + 1;
+    }
+    /**
+    The type of top node produced by the parser.
+    */
+    get topNode() {
+      return this.nodeSet.types[this.top[1]];
+    }
+    /**
+    @internal
+    */
+    dynamicPrecedence(term) {
+      let prec2 = this.dynamicPrecedences;
+      return prec2 == null ? 0 : prec2[term] || 0;
+    }
+    /**
+    @internal
+    */
+    parseDialect(dialect) {
+      let values = Object.keys(this.dialects), flags = values.map(() => false);
+      if (dialect)
+        for (let part of dialect.split(" ")) {
+          let id2 = values.indexOf(part);
+          if (id2 >= 0)
+            flags[id2] = true;
+        }
+      let disabled = null;
+      for (let i2 = 0; i2 < values.length; i2++)
+        if (!flags[i2]) {
+          for (let j = this.dialects[values[i2]], id2; (id2 = this.data[j++]) != 65535; )
+            (disabled || (disabled = new Uint8Array(this.maxTerm + 1)))[id2] = 1;
+        }
+      return new Dialect(dialect, flags, disabled);
+    }
+    /**
+    Used by the output of the parser generator. Not available to
+    user code. @hide
+    */
+    static deserialize(spec) {
+      return new LRParser(spec);
+    }
+  }
+  function pair(data, off) {
+    return data[off] | data[off + 1] << 16;
+  }
+  function findFinished(stacks) {
+    let best = null;
+    for (let stack of stacks) {
+      let stopped = stack.p.stoppedAt;
+      if ((stack.pos == stack.p.stream.end || stopped != null && stack.pos > stopped) && stack.p.parser.stateFlag(
+        stack.state,
+        2
+        /* StateFlag.Accepting */
+      ) && (!best || best.score < stack.score))
+        best = stack;
+    }
+    return best;
+  }
+  function getSpecializer(spec) {
+    if (spec.external) {
+      let mask = spec.extend ? 1 : 0;
+      return (value, stack) => spec.external(value, stack) << 1 | mask;
+    }
+    return spec.get;
+  }
+  const blockEnd = 63, eof = 64, DirectiveEnd = 1, DocEnd = 2, sequenceStartMark = 3, sequenceContinueMark = 4, explicitMapStartMark = 5, explicitMapContinueMark = 6, flowMapMark = 7, mapStartMark = 65, mapContinueMark = 66, Literal = 8, QuotedLiteral = 9, Anchor = 10, Alias = 11, Tag = 12, BlockLiteralContent = 13, BracketL = 19, FlowSequence = 20, Colon = 29, BraceL = 33, FlowMapping = 34, BlockLiteralHeader = 47;
+  const type_Top = 0, type_Seq = 1, type_Map = 2, type_Flow = 3, type_Lit = 4;
+  class Context {
+    constructor(parent, depth, type2) {
+      this.parent = parent;
+      this.depth = depth;
+      this.type = type2;
+      this.hash = (parent ? parent.hash + parent.hash << 8 : 0) + depth + (depth << 4) + type2;
+    }
+  }
+  Context.top = new Context(null, -1, type_Top);
+  function findColumn(input, pos) {
+    for (let col = 0, p = pos - input.pos - 1; ; p--, col++) {
+      let ch = input.peek(p);
+      if (isBreakSpace(ch) || ch == -1) return col;
+    }
+  }
+  function isNonBreakSpace(ch) {
+    return ch == 32 || ch == 9;
+  }
+  function isBreakSpace(ch) {
+    return ch == 10 || ch == 13;
+  }
+  function isSpace(ch) {
+    return isNonBreakSpace(ch) || isBreakSpace(ch);
+  }
+  function isSep(ch) {
+    return ch < 0 || isSpace(ch);
+  }
+  const indentation = new ContextTracker({
+    start: Context.top,
+    reduce(context, term) {
+      return context.type == type_Flow && (term == FlowSequence || term == FlowMapping) ? context.parent : context;
+    },
+    shift(context, term, stack, input) {
+      if (term == sequenceStartMark)
+        return new Context(context, findColumn(input, input.pos), type_Seq);
+      if (term == mapStartMark || term == explicitMapStartMark)
+        return new Context(context, findColumn(input, input.pos), type_Map);
+      if (term == blockEnd)
+        return context.parent;
+      if (term == BracketL || term == BraceL)
+        return new Context(context, 0, type_Flow);
+      if (term == BlockLiteralContent && context.type == type_Lit)
+        return context.parent;
+      if (term == BlockLiteralHeader) {
+        let indent = /[1-9]/.exec(input.read(input.pos, stack.pos));
+        if (indent) return new Context(context, context.depth + +indent[0], type_Lit);
+      }
+      return context;
+    },
+    hash(context) {
+      return context.hash;
+    }
+  });
+  function three(input, ch, off = 0) {
+    return input.peek(off) == ch && input.peek(off + 1) == ch && input.peek(off + 2) == ch && isSep(input.peek(off + 3));
+  }
+  const newlines = new ExternalTokenizer((input, stack) => {
+    if (input.next == -1 && stack.canShift(eof))
+      return input.acceptToken(eof);
+    let prev = input.peek(-1);
+    if ((isBreakSpace(prev) || prev < 0) && stack.context.type != type_Flow) {
+      if (three(
+        input,
+        45
+        /* '-' */
+      )) {
+        if (stack.canShift(blockEnd)) input.acceptToken(blockEnd);
+        else return input.acceptToken(DirectiveEnd, 3);
+      }
+      if (three(
+        input,
+        46
+        /* '.' */
+      )) {
+        if (stack.canShift(blockEnd)) input.acceptToken(blockEnd);
+        else return input.acceptToken(DocEnd, 3);
+      }
+      let depth = 0;
+      while (input.next == 32) {
+        depth++;
+        input.advance();
+      }
+      if ((depth < stack.context.depth || depth == stack.context.depth && stack.context.type == type_Seq && (input.next != 45 || !isSep(input.peek(1)))) && // Not blank
+      input.next != -1 && !isBreakSpace(input.next) && input.next != 35)
+        input.acceptToken(blockEnd, -depth);
+    }
+  }, { contextual: true });
+  const blockMark = new ExternalTokenizer((input, stack) => {
+    if (stack.context.type == type_Flow) {
+      if (input.next == 63) {
+        input.advance();
+        if (isSep(input.next)) input.acceptToken(flowMapMark);
+      }
+      return;
+    }
+    if (input.next == 45) {
+      input.advance();
+      if (isSep(input.next))
+        input.acceptToken(stack.context.type == type_Seq && stack.context.depth == findColumn(input, input.pos - 1) ? sequenceContinueMark : sequenceStartMark);
+    } else if (input.next == 63) {
+      input.advance();
+      if (isSep(input.next))
+        input.acceptToken(stack.context.type == type_Map && stack.context.depth == findColumn(input, input.pos - 1) ? explicitMapContinueMark : explicitMapStartMark);
+    } else {
+      let start2 = input.pos;
+      for (; ; ) {
+        if (isNonBreakSpace(input.next)) {
+          if (input.pos == start2) return;
+          input.advance();
+        } else if (input.next == 33) {
+          readTag(input);
+        } else if (input.next == 38) {
+          readAnchor(input);
+        } else if (input.next == 42) {
+          readAnchor(input);
+          break;
+        } else if (input.next == 39 || input.next == 34) {
+          if (readQuoted(input, true)) break;
+          return;
+        } else if (input.next == 91 || input.next == 123) {
+          if (!scanBrackets(input)) return;
+          break;
+        } else {
+          readPlain(input, true, false, 0);
+          break;
+        }
+      }
+      while (isNonBreakSpace(input.next)) input.advance();
+      if (input.next == 58) {
+        if (input.pos == start2 && stack.canShift(Colon)) return;
+        let after = input.peek(1);
+        if (isSep(after))
+          input.acceptTokenTo(stack.context.type == type_Map && stack.context.depth == findColumn(input, start2) ? mapContinueMark : mapStartMark, start2);
+      }
+    }
+  }, { contextual: true });
+  function uriChar(ch) {
+    return ch > 32 && ch < 127 && ch != 34 && ch != 37 && ch != 44 && ch != 60 && ch != 62 && ch != 92 && ch != 94 && ch != 96 && ch != 123 && ch != 124 && ch != 125;
+  }
+  function hexChar(ch) {
+    return ch >= 48 && ch <= 57 || ch >= 97 && ch <= 102 || ch >= 65 && ch <= 70;
+  }
+  function readUriChar(input, quoted) {
+    if (input.next == 37) {
+      input.advance();
+      if (hexChar(input.next)) input.advance();
+      if (hexChar(input.next)) input.advance();
+      return true;
+    } else if (uriChar(input.next) || quoted && input.next == 44) {
+      input.advance();
+      return true;
+    }
+    return false;
+  }
+  function readTag(input) {
+    input.advance();
+    if (input.next == 60) {
+      input.advance();
+      for (; ; ) {
+        if (!readUriChar(input, true)) {
+          if (input.next == 62) input.advance();
+          break;
+        }
+      }
+    } else {
+      while (readUriChar(input, false)) {
+      }
+    }
+  }
+  function readAnchor(input) {
+    input.advance();
+    while (!isSep(input.next) && charTag(input.tag) != "f") input.advance();
+  }
+  function readQuoted(input, scan) {
+    let quote = input.next, lineBreak = false, start2 = input.pos;
+    input.advance();
+    for (; ; ) {
+      let ch = input.next;
+      if (ch < 0) break;
+      input.advance();
+      if (ch == quote) {
+        if (ch == 39) {
+          if (input.next == 39) input.advance();
+          else break;
+        } else {
+          break;
+        }
+      } else if (ch == 92 && quote == 34) {
+        if (input.next >= 0) input.advance();
+      } else if (isBreakSpace(ch)) {
+        if (scan) return false;
+        lineBreak = true;
+      } else if (scan && input.pos >= start2 + 1024) {
+        return false;
+      }
+    }
+    return !lineBreak;
+  }
+  function scanBrackets(input) {
+    for (let stack = [], end = input.pos + 1024; ; ) {
+      if (input.next == 91 || input.next == 123) {
+        stack.push(input.next);
+        input.advance();
+      } else if (input.next == 39 || input.next == 34) {
+        if (!readQuoted(input, true)) return false;
+      } else if (input.next == 93 || input.next == 125) {
+        if (stack[stack.length - 1] != input.next - 2) return false;
+        stack.pop();
+        input.advance();
+        if (!stack.length) return true;
+      } else if (input.next < 0 || input.pos > end || isBreakSpace(input.next)) {
+        return false;
+      } else {
+        input.advance();
+      }
+    }
+  }
+  const charTable = "iiisiiissisfissssssssssssisssiiissssssssssssssssssssssssssfsfssissssssssssssssssssssssssssfif";
+  function charTag(ch) {
+    if (ch < 33) return "u";
+    if (ch > 125) return "s";
+    return charTable[ch - 33];
+  }
+  function isSafe(ch, inFlow) {
+    let tag = charTag(ch);
+    return tag != "u" && !(inFlow && tag == "f");
+  }
+  function readPlain(input, scan, inFlow, indent) {
+    if (charTag(input.next) == "s" || (input.next == 63 || input.next == 58 || input.next == 45) && isSafe(input.peek(1), inFlow)) {
+      input.advance();
+    } else {
+      return false;
+    }
+    let start2 = input.pos;
+    for (; ; ) {
+      let next = input.next, off = 0, lineIndent = indent + 1;
+      while (isSpace(next)) {
+        if (isBreakSpace(next)) {
+          if (scan) return false;
+          lineIndent = 0;
+        } else {
+          lineIndent++;
+        }
+        next = input.peek(++off);
+      }
+      let safe = next >= 0 && (next == 58 ? isSafe(input.peek(off + 1), inFlow) : next == 35 ? input.peek(off - 1) != 32 : isSafe(next, inFlow));
+      if (!safe || !inFlow && lineIndent <= indent || lineIndent == 0 && !inFlow && (three(input, 45, off) || three(input, 46, off)))
+        break;
+      if (scan && charTag(next) == "f") return false;
+      for (let i2 = off; i2 >= 0; i2--) input.advance();
+      if (scan && input.pos > start2 + 1024) return false;
+    }
+    return true;
+  }
+  const literals = new ExternalTokenizer((input, stack) => {
+    if (input.next == 33) {
+      readTag(input);
+      input.acceptToken(Tag);
+    } else if (input.next == 38 || input.next == 42) {
+      let token = input.next == 38 ? Anchor : Alias;
+      readAnchor(input);
+      input.acceptToken(token);
+    } else if (input.next == 39 || input.next == 34) {
+      readQuoted(input, false);
+      input.acceptToken(QuotedLiteral);
+    } else if (readPlain(input, false, stack.context.type == type_Flow, stack.context.depth)) {
+      input.acceptToken(Literal);
+    }
+  });
+  const blockLiteral = new ExternalTokenizer((input, stack) => {
+    let indent = stack.context.type == type_Lit ? stack.context.depth : -1, upto = input.pos;
+    scan: for (; ; ) {
+      let depth = 0, next = input.next;
+      while (next == 32) next = input.peek(++depth);
+      if (!depth && (three(input, 45, depth) || three(input, 46, depth))) break;
+      if (!isBreakSpace(next)) {
+        if (indent < 0) indent = Math.max(stack.context.depth + 1, depth);
+        if (depth < indent) break;
+      }
+      for (; ; ) {
+        if (input.next < 0) break scan;
+        let isBreak = isBreakSpace(input.next);
+        input.advance();
+        if (isBreak) continue scan;
+        upto = input.pos;
+      }
+    }
+    input.acceptTokenTo(BlockLiteralContent, upto);
+  });
+  const yamlHighlighting = styleTags({
+    DirectiveName: tags.keyword,
+    DirectiveContent: tags.attributeValue,
+    "DirectiveEnd DocEnd": tags.meta,
+    QuotedLiteral: tags.string,
+    BlockLiteralHeader: tags.special(tags.string),
+    BlockLiteralContent: tags.content,
+    Literal: tags.content,
+    "Key/Literal Key/QuotedLiteral": tags.definition(tags.propertyName),
+    "Anchor Alias": tags.labelName,
+    Tag: tags.typeName,
+    Comment: tags.lineComment,
+    ": , -": tags.separator,
+    "?": tags.punctuation,
+    "[ ]": tags.squareBracket,
+    "{ }": tags.brace
+  });
+  const parser = LRParser.deserialize({
+    version: 14,
+    states: "5lQ!ZQgOOO#PQfO'#CpO#uQfO'#DOOOQR'#Dv'#DvO$qQgO'#DRO%gQdO'#DUO%nQgO'#DUO&ROaO'#D[OOQR'#Du'#DuO&{QgO'#D^O'rQgO'#D`OOQR'#Dt'#DtO(iOqO'#DbOOQP'#Dj'#DjO(zQaO'#CmO)YQgO'#CmOOQP'#Cm'#CmQ)jQaOOQ)uQgOOQ]QgOOO*PQdO'#CrO*nQdO'#CtOOQO'#Dw'#DwO+]Q`O'#CxO+hQdO'#CwO+rQ`O'#CwOOQO'#Cv'#CvO+wQdO'#CvOOQO'#Cq'#CqO,UQ`O,59[O,^QfO,59[OOQR,59[,59[OOQO'#Cx'#CxO,eQ`O'#DPO,pQdO'#DPOOQO'#Dx'#DxO,zQdO'#DxO-XQ`O,59jO-aQfO,59jOOQR,59j,59jOOQR'#DS'#DSO-hQcO,59mO-sQgO'#DVO.TQ`O'#DVO.YQcO,59pOOQR'#DX'#DXO#|QfO'#DWO.hQcO'#DWOOQR,59v,59vO.yOWO,59vO/OOaO,59vO/WOaO,59vO/cQgO'#D_OOQR,59x,59xO0VQgO'#DaOOQR,59z,59zOOQP,59|,59|O0yOaO,59|O1ROaO,59|O1aOqO,59|OOQP-E7h-E7hO1oQgO,59XOOQP,59X,59XO2PQaO'#DeO2_QgO'#DeO2oQgO'#DkOOQP'#Dk'#DkQ)jQaOOO3PQdO'#CsOOQO,59^,59^O3kQdO'#CuOOQO,59`,59`OOQO,59c,59cO4VQdO,59cO4aQdO'#CzO4kQ`O'#CzOOQO,59b,59bOOQU,5:Q,5:QOOQR1G.v1G.vO4pQ`O1G.vOOQU-E7d-E7dO4xQdO,59kOOQO,59k,59kO5SQdO'#DQO5^Q`O'#DQOOQO,5:d,5:dOOQU,5:R,5:ROOQR1G/U1G/UO5cQ`O1G/UOOQU-E7e-E7eO5kQgO'#DhO5xQcO1G/XOOQR1G/X1G/XOOQR,59q,59qO6TQgO,59qO6eQdO'#DiO6lQgO'#DiO7PQcO1G/[OOQR1G/[1G/[OOQR,59r,59rO#|QfO,59rOOQR1G/b1G/bO7_OWO1G/bO7dOaO1G/bOOQR,59y,59yOOQR,59{,59{OOQP1G/h1G/hO7lOaO1G/hO7tOaO1G/hO8POaO1G/hOOQP1G.s1G.sO8_QgO,5:POOQP,5:P,5:POOQP,5:V,5:VOOQP-E7i-E7iOOQO,59_,59_OOQO,59a,59aOOQO1G.}1G.}OOQO,59f,59fO8oQdO,59fOOQR7+$b7+$bP,XQ`O'#DfOOQO1G/V1G/VOOQO,59l,59lO8yQdO,59lOOQR7+$p7+$pP9TQ`O'#DgOOQR'#DT'#DTOOQR,5:S,5:SOOQR-E7f-E7fOOQR7+$s7+$sOOQR1G/]1G/]O9YQgO'#DYO9jQ`O'#DYOOQR,5:T,5:TO#|QfO'#DZO9oQcO'#DZOOQR-E7g-E7gOOQR7+$v7+$vOOQR1G/^1G/^OOQR7+$|7+$|O:QOWO7+$|OOQP7+%S7+%SO:VOaO7+%SO:_OaO7+%SOOQP1G/k1G/kOOQO1G/Q1G/QOOQO1G/W1G/WOOQR,59t,59tO:jQgO,59tOOQR,59u,59uO#|QfO,59uOOQR<<Hh<<HhOOQP<<Hn<<HnO:zOaO<<HnOOQR1G/`1G/`OOQR1G/a1G/aOOQPAN>YAN>Y",
+    stateData: ";S~O!fOS!gOS^OS~OP_OQbORSOTUOWROXROYYOZZO[XOcPOqQO!PVO!V[O!cTO~O`cO~P]OVkOWROXROYeOZfO[dOcPOmhOqQO~OboO~P!bOVtOWROXROYeOZfO[dOcPOmrOqQO~OpwO~P#WORSOTUOWROXROYYOZZO[XOcPOqQO!PVO!cTO~OSvP!avP!bvP~P#|OWROXROYeOZfO[dOcPOqQO~OmzO~P%OOm!OOUzP!azP!bzP!dzP~P#|O^!SO!b!QO!f!TO!g!RO~ORSOTUOWROXROcPOqQO!PVO!cTO~OY!UOP!QXQ!QX!V!QX!`!QXS!QX!a!QX!b!QXU!QXm!QX!d!QX~P&aO[!WOP!SXQ!SX!V!SX!`!SXS!SX!a!SX!b!SXU!SXm!SX!d!SX~P&aO^!ZO!W![O!b!YO!f!]O!g!YO~OP!_O!V[OQaX!`aX~OPaXQaX!VaX!`aX~P#|OP!bOQ!cO!V[O~OP_O!V[O~P#|OWROXROY!fOcPOqQObfXmfXofXpfX~OWROXRO[!hOcPOqQObhXmhXohXphX~ObeXmlXoeX~ObkXokX~P%OOm!kO~Om!lObnPonP~P%OOb!pOo!oO~Ob!pO~P!bOm!sOosXpsX~OosXpsX~P%OOm!uOotPptP~P%OOo!xOp!yO~Op!yO~P#WOS!|O!a#OO!b#OO~OUyX!ayX!byX!dyX~P#|Om#QO~OU#SO!a#UO!b#UO!d#RO~Om#WOUzX!azX!bzX!dzX~O]#XO~O!b#XO!g#YO~O^#ZO!b#XO!g#YO~OP!RXQ!RX!V!RX!`!RXS!RX!a!RX!b!RXU!RXm!RX!d!RX~P&aOP!TXQ!TX!V!TX!`!TXS!TX!a!TX!b!TXU!TXm!TX!d!TX~P&aO!b#^O!g#^O~O^#_O!b#^O!f#`O!g#^O~O^#_O!W#aO!b#^O!g#^O~OPaaQaa!Vaa!`aa~P#|OP#cO!V[OQ!XX!`!XX~OP!XXQ!XX!V!XX!`!XX~P#|OP_O!V[OQ!_X!`!_X~P#|OWROXROcPOqQObgXmgXogXpgX~OWROXROcPOqQObiXmiXoiXpiX~Obkaoka~P%OObnXonX~P%OOm#kO~Ob#lOo!oO~Oosapsa~P%OOotXptX~P%OOm#pO~Oo!xOp#qO~OSwP!awP!bwP~P#|OS!|O!a#vO!b#vO~OUya!aya!bya!dya~P#|Om#xO~P%OOm#{OU}P!a}P!b}P!d}P~P#|OU#SO!a$OO!b$OO!d#RO~O]$QO~O!b$QO!g$RO~O!b$SO!g$SO~O^$TO!b$SO!g$SO~O^$TO!b$SO!f$UO!g$SO~OP!XaQ!Xa!V!Xa!`!Xa~P#|Obnaona~P%OOotapta~P%OOo!xO~OU|X!a|X!b|X!d|X~P#|Om$ZO~Om$]OU}X!a}X!b}X!d}X~O]$^O~O!b$_O!g$_O~O^$`O!b$_O!g$_O~OU|a!a|a!b|a!d|a~P#|O!b$cO!g$cO~O",
+    goto: ",]!mPPPPPPPPPPPPPPPPP!nPP!v#v#|$`#|$c$f$j$nP%VPPP!v%Y%^%a%{&O%a&R&U&X&_&b%aP&e&{&e'O'RPP']'a'g'm's'y(XPPPPPPPP(_)e*X+c,VUaObcR#e!c!{ROPQSTUXY_bcdehknrtvz!O!U!W!_!b!c!f!h!k!l!s!u!|#Q#R#S#W#c#k#p#x#{$Z$]QmPR!qnqfPQThknrtv!k!l!s!u#R#k#pR!gdR!ieTlPnTjPnSiPnSqQvQ{TQ!mkQ!trQ!vtR#y#RR!nkTsQvR!wt!RWOSUXY_bcz!O!U!W!_!b!c!|#Q#S#W#c#x#{$Z$]RySR#t!|R|TR|UQ!PUR#|#SR#z#RR#z#SyZOSU_bcz!O!_!b!c!|#Q#S#W#c#x#{$Z$]R!VXR!XYa]O^abc!a!c!eT!da!eQnPR!rnQvQR!{vQ!}yR#u!}Q#T|R#}#TW^Obc!cS!^^!aT!aa!eQ!eaR#f!eW`Obc!cQxSS}U#SQ!`_Q#PzQ#V!OQ#b!_Q#d!bQ#s!|Q#w#QQ$P#WQ$V#cQ$Y#xQ$[#{Q$a$ZR$b$]xZOSU_bcz!O!_!b!c!|#Q#S#W#c#x#{$Z$]Q!VXQ!XYQ#[!UR#]!W!QWOSUXY_bcz!O!U!W!_!b!c!|#Q#S#W#c#x#{$Z$]pfPQThknrtv!k!l!s!u#R#k#pQ!gdQ!ieQ#g!fR#h!hSgPn^pQTkrtv#RQ!jhQ#i!kQ#j!lQ#n!sQ#o!uQ$W#kR$X#pQuQR!zv",
+    nodeNames: "⚠ DirectiveEnd DocEnd - - ? ? ? Literal QuotedLiteral Anchor Alias Tag BlockLiteralContent Comment Stream BOM Document ] [ FlowSequence Item Tagged Anchored Anchored Tagged FlowMapping Pair Key : Pair , } { FlowMapping Pair Pair BlockSequence Item Item BlockMapping Pair Pair Key Pair Pair BlockLiteral BlockLiteralHeader Tagged Anchored Anchored Tagged Directive DirectiveName DirectiveContent Document",
+    maxTerm: 74,
+    context: indentation,
+    nodeProps: [
+      ["isolate", -3, 8, 9, 14, ""],
+      ["openedBy", 18, "[", 32, "{"],
+      ["closedBy", 19, "]", 33, "}"]
+    ],
+    propSources: [yamlHighlighting],
+    skippedNodes: [0],
+    repeatNodeCount: 6,
+    tokenData: "-Y~RnOX#PXY$QYZ$]Z]#P]^$]^p#Ppq$Qqs#Pst$btu#Puv$yv|#P|}&e}![#P![!]'O!]!`#P!`!a'i!a!}#P!}#O*g#O#P#P#P#Q+Q#Q#o#P#o#p+k#p#q'i#q#r,U#r;'S#P;'S;=`#z<%l?HT#P?HT?HU,o?HUO#PQ#UU!WQOY#PZp#Ppq#hq;'S#P;'S;=`#z<%lO#PQ#kTOY#PZs#Pt;'S#P;'S;=`#z<%lO#PQ#}P;=`<%l#P~$VQ!f~XY$Qpq$Q~$bO!g~~$gS^~OY$bZ;'S$b;'S;=`$s<%lO$b~$vP;=`<%l$bR%OX!WQOX%kXY#PZ]%k]^#P^p%kpq#hq;'S%k;'S;=`&_<%lO%kR%rX!WQ!VPOX%kXY#PZ]%k]^#P^p%kpq#hq;'S%k;'S;=`&_<%lO%kR&bP;=`<%l%kR&lUoP!WQOY#PZp#Ppq#hq;'S#P;'S;=`#z<%lO#PR'VUmP!WQOY#PZp#Ppq#hq;'S#P;'S;=`#z<%lO#PR'p[!PP!WQOY#PZp#Ppq#hq{#P{|(f|}#P}!O(f!O!R#P!R![)p![;'S#P;'S;=`#z<%lO#PR(mW!PP!WQOY#PZp#Ppq#hq!R#P!R![)V![;'S#P;'S;=`#z<%lO#PR)^U!PP!WQOY#PZp#Ppq#hq;'S#P;'S;=`#z<%lO#PR)wY!PP!WQOY#PZp#Ppq#hq{#P{|)V|}#P}!O)V!O;'S#P;'S;=`#z<%lO#PR*nUcP!WQOY#PZp#Ppq#hq;'S#P;'S;=`#z<%lO#PR+XUbP!WQOY#PZp#Ppq#hq;'S#P;'S;=`#z<%lO#PR+rUqP!WQOY#PZp#Ppq#hq;'S#P;'S;=`#z<%lO#PR,]UpP!WQOY#PZp#Ppq#hq;'S#P;'S;=`#z<%lO#PR,vU`P!WQOY#PZp#Ppq#hq;'S#P;'S;=`#z<%lO#P",
+    tokenizers: [newlines, blockMark, literals, blockLiteral, 0, 1],
+    topRules: { "Stream": [0, 15] },
+    tokenPrec: 0
+  });
+  const yamlLanguage = /* @__PURE__ */ LRLanguage.define({
+    name: "yaml",
+    parser: /* @__PURE__ */ parser.configure({
+      props: [
+        /* @__PURE__ */ indentNodeProp.add({
+          Stream: (cx2) => {
+            for (let before = cx2.node.resolve(cx2.pos, -1); before && before.to >= cx2.pos; before = before.parent) {
+              if (before.name == "BlockLiteralContent" && before.from < before.to)
+                return cx2.baseIndentFor(before);
+              if (before.name == "BlockLiteral")
+                return cx2.baseIndentFor(before) + cx2.unit;
+              if (before.name == "BlockSequence" || before.name == "BlockMapping")
+                return cx2.column(before.from, 1);
+              if (before.name == "QuotedLiteral")
+                return null;
+              if (before.name == "Literal") {
+                let col = cx2.column(before.from, 1);
+                if (col == cx2.lineIndent(before.from, 1))
+                  return col;
+                if (before.to > cx2.pos)
+                  return null;
+              }
+            }
+            return null;
+          },
+          FlowMapping: /* @__PURE__ */ delimitedIndent({ closing: "}" }),
+          FlowSequence: /* @__PURE__ */ delimitedIndent({ closing: "]" })
+        }),
+        /* @__PURE__ */ foldNodeProp.add({
+          "FlowMapping FlowSequence": foldInside,
+          "Item Pair BlockLiteral": (node, state) => ({ from: state.doc.lineAt(node.from).to, to: node.to })
+        })
+      ]
+    }),
+    languageData: {
+      commentTokens: { line: "#" },
+      indentOnInput: /^\s*[\]\}]$/
+    }
+  });
+  function yaml() {
+    return new LanguageSupport(yamlLanguage);
+  }
+  const chalky = "#e5c07b", coral = "#e06c75", cyan = "#56b6c2", invalid = "#ffffff", ivory = "#abb2bf", stone = "#7d8799", malibu = "#61afef", sage = "#98c379", whiskey = "#d19a66", violet = "#c678dd", darkBackground = "#21252b", highlightBackground = "#2c313a", background = "#282c34", tooltipBackground = "#353a42", selection = "#3E4451", cursor = "#528bff";
+  const oneDarkTheme = /* @__PURE__ */ EditorView.theme({
+    "&": {
+      color: ivory,
+      backgroundColor: background
+    },
+    ".cm-content": {
+      caretColor: cursor
+    },
+    ".cm-cursor, .cm-dropCursor": { borderLeftColor: cursor },
+    "&.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection": { backgroundColor: selection },
+    ".cm-panels": { backgroundColor: darkBackground, color: ivory },
+    ".cm-panels.cm-panels-top": { borderBottom: "2px solid black" },
+    ".cm-panels.cm-panels-bottom": { borderTop: "2px solid black" },
+    ".cm-searchMatch": {
+      backgroundColor: "#72a1ff59",
+      outline: "1px solid #457dff"
+    },
+    ".cm-searchMatch.cm-searchMatch-selected": {
+      backgroundColor: "#6199ff2f"
+    },
+    ".cm-activeLine": { backgroundColor: "#6699ff0b" },
+    ".cm-selectionMatch": { backgroundColor: "#aafe661a" },
+    "&.cm-focused .cm-matchingBracket, &.cm-focused .cm-nonmatchingBracket": {
+      backgroundColor: "#bad0f847"
+    },
+    ".cm-gutters": {
+      backgroundColor: background,
+      color: stone,
+      border: "none"
+    },
+    ".cm-activeLineGutter": {
+      backgroundColor: highlightBackground
+    },
+    ".cm-foldPlaceholder": {
+      backgroundColor: "transparent",
+      border: "none",
+      color: "#ddd"
+    },
+    ".cm-tooltip": {
+      border: "none",
+      backgroundColor: tooltipBackground
+    },
+    ".cm-tooltip .cm-tooltip-arrow:before": {
+      borderTopColor: "transparent",
+      borderBottomColor: "transparent"
+    },
+    ".cm-tooltip .cm-tooltip-arrow:after": {
+      borderTopColor: tooltipBackground,
+      borderBottomColor: tooltipBackground
+    },
+    ".cm-tooltip-autocomplete": {
+      "& > ul > li[aria-selected]": {
+        backgroundColor: highlightBackground,
+        color: ivory
+      }
+    }
+  }, { dark: true });
+  const oneDarkHighlightStyle = /* @__PURE__ */ HighlightStyle.define([
+    {
+      tag: tags.keyword,
+      color: violet
+    },
+    {
+      tag: [tags.name, tags.deleted, tags.character, tags.propertyName, tags.macroName],
+      color: coral
+    },
+    {
+      tag: [/* @__PURE__ */ tags.function(tags.variableName), tags.labelName],
+      color: malibu
+    },
+    {
+      tag: [tags.color, /* @__PURE__ */ tags.constant(tags.name), /* @__PURE__ */ tags.standard(tags.name)],
+      color: whiskey
+    },
+    {
+      tag: [/* @__PURE__ */ tags.definition(tags.name), tags.separator],
+      color: ivory
+    },
+    {
+      tag: [tags.typeName, tags.className, tags.number, tags.changed, tags.annotation, tags.modifier, tags.self, tags.namespace],
+      color: chalky
+    },
+    {
+      tag: [tags.operator, tags.operatorKeyword, tags.url, tags.escape, tags.regexp, tags.link, /* @__PURE__ */ tags.special(tags.string)],
+      color: cyan
+    },
+    {
+      tag: [tags.meta, tags.comment],
+      color: stone
+    },
+    {
+      tag: tags.strong,
+      fontWeight: "bold"
+    },
+    {
+      tag: tags.emphasis,
+      fontStyle: "italic"
+    },
+    {
+      tag: tags.strikethrough,
+      textDecoration: "line-through"
+    },
+    {
+      tag: tags.link,
+      color: stone,
+      textDecoration: "underline"
+    },
+    {
+      tag: tags.heading,
+      fontWeight: "bold",
+      color: coral
+    },
+    {
+      tag: [tags.atom, tags.bool, /* @__PURE__ */ tags.special(tags.variableName)],
+      color: whiskey
+    },
+    {
+      tag: [tags.processingInstruction, tags.string, tags.inserted],
+      color: sage
+    },
+    {
+      tag: tags.invalid,
+      color: invalid
+    }
+  ]);
+  const oneDark = [oneDarkTheme, /* @__PURE__ */ syntaxHighlighting(oneDarkHighlightStyle)];
+  function createYamlLinter(parseFrontMatter2, onDiagnostics) {
+    return linter((view) => {
+      const diagnostics = [];
+      const content2 = view.state.doc.toString();
+      try {
+        const { data: yamlData } = parseFrontMatter2(content2);
+        const parsed = load(yamlData);
+        if (parsed !== null && parsed !== void 0 && !Array.isArray(parsed)) {
+          const dataStart = content2.lastIndexOf("---");
+          const pos = dataStart !== -1 ? dataStart + 3 : 0;
+          diagnostics.push({
+            from: pos,
+            to: Math.min(pos + 50, content2.length),
+            severity: "error",
+            message: 'YAML data must be an array of objects (start each item with "- ")'
+          });
+        } else if (Array.isArray(parsed)) {
+          const idCounts = /* @__PURE__ */ new Map();
+          let itemIndex = 0;
+          for (const item of parsed) {
+            if (item.id !== void 0 && item.id !== null) {
+              const idStr = String(item.id);
+              if (!idCounts.has(idStr)) {
+                idCounts.set(idStr, []);
+              }
+              idCounts.get(idStr).push(itemIndex);
+            }
+            itemIndex++;
+          }
+          for (const [id2, indices] of idCounts) {
+            if (indices.length > 1) {
+              for (let i2 = 1; i2 < indices.length; i2++) {
+                const idPattern = new RegExp(`^-\\s*id:\\s*${escapeRegex(String(id2))}\\s*$`, "gm");
+                let match;
+                let matchCount = 0;
+                let errorPos = 0;
+                let errorEnd = content2.length;
+                while ((match = idPattern.exec(content2)) !== null) {
+                  if (matchCount === i2) {
+                    errorPos = match.index;
+                    errorEnd = match.index + match[0].length;
+                    break;
+                  }
+                  matchCount++;
+                }
+                const lineNumber = content2.substring(0, errorPos).split("\n").length;
+                diagnostics.push({
+                  from: errorPos,
+                  to: errorEnd,
+                  severity: "warning",
+                  message: `Line ${lineNumber}: Duplicate id "${id2}" - this node will be ignored (first occurrence at position ${indices[0] + 1} will be used)`
+                });
+              }
+            }
+          }
+          const nameCounts = /* @__PURE__ */ new Map();
+          itemIndex = 0;
+          for (const item of parsed) {
+            if (item.name !== void 0 && item.name !== null) {
+              const nameStr = String(item.name).toLowerCase();
+              if (!nameCounts.has(nameStr)) {
+                nameCounts.set(nameStr, []);
+              }
+              nameCounts.get(nameStr).push(itemIndex);
+            }
+            itemIndex++;
+          }
+          const hasNameField = parsed.some((item) => item.name !== void 0);
+          const hasIdField = parsed.some((item) => item.id !== void 0);
+          const usesNameFormat = hasNameField && !hasIdField;
+          if (usesNameFormat) {
+            for (const [, indices] of nameCounts) {
               if (indices.length > 1) {
                 for (let i2 = 1; i2 < indices.length; i2++) {
-                  const idPattern = new RegExp(`^-\\s*id:\\s*${this.escapeRegex(String(id2))}\\s*$`, "gm");
+                  const item = parsed[indices[i2]];
+                  const namePattern = new RegExp(`^-\\s*name:\\s*${escapeRegex(item.name)}`, "gm");
                   let match;
                   let matchCount = 0;
                   let errorPos = 0;
                   let errorEnd = content2.length;
-                  while ((match = idPattern.exec(content2)) !== null) {
+                  while ((match = namePattern.exec(content2)) !== null) {
                     if (matchCount === i2) {
                       errorPos = match.index;
                       errorEnd = match.index + match[0].length;
@@ -51952,116 +51523,60 @@ ${formattedData.trim()}
                     from: errorPos,
                     to: errorEnd,
                     severity: "warning",
-                    message: `Line ${lineNumber}: Duplicate id "${id2}" - this node will be ignored (first occurrence at position ${indices[0] + 1} will be used)`
-                  });
-                }
-              }
-            }
-            const nameCounts = /* @__PURE__ */ new Map();
-            itemIndex = 0;
-            for (const item of parsed) {
-              if (item.name !== void 0 && item.name !== null) {
-                const nameStr = String(item.name).toLowerCase();
-                if (!nameCounts.has(nameStr)) {
-                  nameCounts.set(nameStr, []);
-                }
-                nameCounts.get(nameStr).push(itemIndex);
-              }
-              itemIndex++;
-            }
-            const hasNameField = parsed.some((item) => item.name !== void 0);
-            const hasIdField = parsed.some((item) => item.id !== void 0);
-            const usesNameFormat = hasNameField && !hasIdField;
-            if (usesNameFormat) {
-              for (const [, indices] of nameCounts) {
-                if (indices.length > 1) {
-                  for (let i2 = 1; i2 < indices.length; i2++) {
-                    const item = parsed[indices[i2]];
-                    const namePattern = new RegExp(`^-\\s*name:\\s*${this.escapeRegex(item.name)}`, "gm");
-                    let match;
-                    let matchCount = 0;
-                    let errorPos = 0;
-                    let errorEnd = content2.length;
-                    while ((match = namePattern.exec(content2)) !== null) {
-                      if (matchCount === i2) {
-                        errorPos = match.index;
-                        errorEnd = match.index + match[0].length;
-                        break;
-                      }
-                      matchCount++;
-                    }
-                    const lineNumber = content2.substring(0, errorPos).split("\n").length;
-                    diagnostics.push({
-                      from: errorPos,
-                      to: errorEnd,
-                      severity: "warning",
-                      message: `Line ${lineNumber}: Duplicate name "${item.name}" - this node will be ignored (first occurrence will be used)`
-                    });
-                  }
-                }
-              }
-            }
-            if (usesNameFormat) {
-            } else {
-              const nodeIds = /* @__PURE__ */ new Set();
-              for (const item of parsed) {
-                if (item.id !== void 0 && item.id !== null) {
-                  nodeIds.add(String(item.id));
-                }
-                if (item.email) {
-                  nodeIds.add(String(item.email).toLowerCase());
-                }
-              }
-              for (const item of parsed) {
-                const parentId = item.parentId;
-                if (parentId !== null && parentId !== void 0 && !nodeIds.has(String(parentId)) && !nodeIds.has(String(parentId).toLowerCase())) {
-                  const itemIdPattern = new RegExp(`^-\\s*id:\\s*${item.id}\\s*$`, "m");
-                  const parentIdPattern = new RegExp(`parentId:\\s*${parentId}`, "m");
-                  const itemMatch = content2.match(itemIdPattern);
-                  let errorPos = 0;
-                  let errorEnd = content2.length;
-                  if (itemMatch && itemMatch.index !== void 0) {
-                    const afterId = content2.substring(itemMatch.index);
-                    const parentIdMatch = afterId.match(parentIdPattern);
-                    if (parentIdMatch && parentIdMatch.index !== void 0) {
-                      errorPos = itemMatch.index + parentIdMatch.index;
-                      errorEnd = errorPos + parentIdMatch[0].length;
-                    }
-                  }
-                  const lineNumber = content2.substring(0, errorPos).split("\n").length;
-                  diagnostics.push({
-                    from: errorPos,
-                    to: errorEnd,
-                    severity: "error",
-                    message: `Line ${lineNumber}: Invalid parentId "${parentId}" - no node with this id exists`
+                    message: `Line ${lineNumber}: Duplicate name "${item.name}" - this node will be ignored (first occurrence will be used)`
                   });
                 }
               }
             }
           }
-        } catch (e) {
-          if (e instanceof YAMLException) {
-            const mark = e.mark;
-            if (mark) {
-              const line = Math.min(mark.line + 1, view.state.doc.lines);
-              const lineInfo = view.state.doc.line(line);
-              const from = lineInfo.from + Math.min(mark.column, lineInfo.length);
-              const to = lineInfo.to;
-              diagnostics.push({
-                from,
-                to,
-                severity: "error",
-                message: `Line ${line}: ${e.reason || e.message}`
-              });
-            } else {
-              diagnostics.push({
-                from: 0,
-                to: Math.min(50, content2.length),
-                severity: "error",
-                message: e.message
-              });
+          if (usesNameFormat) {
+          } else {
+            const nodeIds = /* @__PURE__ */ new Set();
+            for (const item of parsed) {
+              if (item.id !== void 0 && item.id !== null) {
+                nodeIds.add(String(item.id));
+              }
+              if (item.email) {
+                nodeIds.add(String(item.email).toLowerCase());
+              }
             }
-          } else if (e instanceof Error) {
+            for (const item of parsed) {
+              const parentId = item.parentId;
+              if (parentId !== null && parentId !== void 0 && !nodeIds.has(String(parentId)) && !nodeIds.has(String(parentId).toLowerCase())) {
+                const itemIdPattern = new RegExp(`^-\\s*id:\\s*${item.id}\\s*$`, "m");
+                const parentIdPattern = new RegExp(`parentId:\\s*${parentId}`, "m");
+                const itemMatch = content2.match(itemIdPattern);
+                let errorPos = 0;
+                let errorEnd = content2.length;
+                if (itemMatch && itemMatch.index !== void 0) {
+                  const afterId = content2.substring(itemMatch.index);
+                  const parentIdMatch = afterId.match(parentIdPattern);
+                  if (parentIdMatch && parentIdMatch.index !== void 0) {
+                    errorPos = itemMatch.index + parentIdMatch.index;
+                    errorEnd = errorPos + parentIdMatch[0].length;
+                  }
+                }
+                const lineNumber = content2.substring(0, errorPos).split("\n").length;
+                diagnostics.push({
+                  from: errorPos,
+                  to: errorEnd,
+                  severity: "error",
+                  message: `Line ${lineNumber}: Invalid parentId "${parentId}" - no node with this id exists`
+                });
+              }
+            }
+          }
+        }
+      } catch (e) {
+        if (e instanceof YAMLException) {
+          const mark = e.mark;
+          if (mark) {
+            const line = Math.min(mark.line + 1, view.state.doc.lines);
+            const lineInfo = view.state.doc.line(line);
+            const from = lineInfo.from + Math.min(mark.column, lineInfo.length);
+            const to = lineInfo.to;
+            diagnostics.push({ from, to, severity: "error", message: `Line ${line}: ${e.reason || e.message}` });
+          } else {
             diagnostics.push({
               from: 0,
               to: Math.min(50, content2.length),
@@ -52069,943 +51584,666 @@ ${formattedData.trim()}
               message: e.message
             });
           }
+        } else if (e instanceof Error) {
+          diagnostics.push({
+            from: 0,
+            to: Math.min(50, content2.length),
+            severity: "error",
+            message: e.message
+          });
         }
-        this.updateErrorBanner(diagnostics, view);
-        return diagnostics;
-      }, { delay: 300 });
-      const extensions = [
-        basicSetup,
-        yaml(),
-        lintGutter(),
-        yamlLinter,
-        EditorView.updateListener.of((update) => {
-          if (update.docChanged && !this.isUpdatingProgrammatically) {
-            this.renderChart();
-          }
-        })
-      ];
-      if (this.defaultOptions.editorTheme === "dark") {
-        extensions.push(oneDark);
       }
-      extensions.push(
-        EditorView.theme({
-          "&": {
-            height: "100%"
-          },
-          ".cm-scroller": {
-            overflow: "auto"
-          }
-        })
-      );
-      this.editor = new EditorView({
-        doc: this.initialData,
-        extensions,
-        parent: this.editorContainer
-      });
-      setTimeout(() => {
-        if (this.editor) {
-          this.editor.requestMeasure();
+      onDiagnostics(diagnostics, view);
+      return diagnostics;
+    }, { delay: 300 });
+  }
+  function createEditor(container, initialData, theme2, parseFrontMatter2, onDiagnostics, onDocChanged) {
+    const yamlLinter = createYamlLinter(parseFrontMatter2, onDiagnostics);
+    const extensions = [
+      basicSetup,
+      yaml(),
+      lintGutter(),
+      yamlLinter,
+      EditorView.updateListener.of((update) => {
+        if (update.docChanged) {
+          onDocChanged();
         }
-      }, 100);
+      })
+    ];
+    if (theme2 === "dark") {
+      extensions.push(oneDark);
     }
-    toggleEditor() {
-      const sidebar = document.getElementById(`ychart-editor-sidebar-${this.instanceId}`);
-      const collapseBtn = document.querySelector(`[data-id="ychart-collapse-editor-${this.instanceId}"]`);
-      if (!sidebar || !collapseBtn) return;
-      const isCollapsed = sidebar.style.width === "0px";
-      if (isCollapsed) {
-        sidebar.style.width = "400px";
-        sidebar.style.borderLeftWidth = "1px";
-        sidebar.style.transition = "width 0.3s ease, border-left-width 0s 0s";
-        collapseBtn.style.right = "399px";
-        collapseBtn.innerHTML = "▶";
-        setTimeout(() => {
-          if (this.editor) {
-            this.editor.requestMeasure();
-          }
-        }, 350);
-      } else {
-        sidebar.style.width = "0px";
-        sidebar.style.borderLeftWidth = "0px";
-        sidebar.style.transition = "width 0.3s ease, border-left-width 0s 0.3s";
-        collapseBtn.style.right = "-1px";
-        collapseBtn.innerHTML = "◀";
-      }
-      setTimeout(() => {
-        if (this.orgChart && this.chartContainer) {
-          console.log("Re-rendering and fitting chart to new container bounds...");
-          this.orgChart.render().fit();
-          if (this.bgPattern) {
-            setTimeout(() => this.applyBackgroundPattern(), 50);
-          }
-        }
-      }, 250);
+    extensions.push(
+      EditorView.theme({
+        "&": { height: "100%" },
+        ".cm-scroller": { overflow: "auto" }
+      })
+    );
+    const editor = new EditorView({
+      doc: initialData,
+      extensions,
+      parent: container
+    });
+    setTimeout(() => editor.requestMeasure(), 100);
+    return editor;
+  }
+  function updateErrorBanner(banner, diagnostics, view, jumpToLine) {
+    const errors = diagnostics.filter((d) => d.severity === "error");
+    const warnings = diagnostics.filter((d) => d.severity === "warning");
+    if (errors.length === 0 && warnings.length === 0) {
+      banner.style.display = "none";
+      return;
     }
-    /**
-     * Update the error banner with current diagnostics
-     */
-    updateErrorBanner(diagnostics, view) {
-      if (!this.errorBanner) return;
-      const errors = diagnostics.filter((d) => d.severity === "error");
-      const warnings = diagnostics.filter((d) => d.severity === "warning");
-      const banner = this.errorBanner;
-      if (errors.length === 0 && warnings.length === 0) {
-        banner.style.display = "none";
-        return;
-      }
-      banner.style.display = "block";
-      banner.innerHTML = "";
-      const header = document.createElement("div");
-      header.style.cssText = `
+    banner.style.display = "block";
+    banner.innerHTML = "";
+    const header = document.createElement("div");
+    header.style.cssText = `
+    display: flex;
+    align-items: center;
+    gap: var(--yc-spacing-md);
+    margin-bottom: 6px;
+    font-weight: var(--yc-font-weight-semibold);
+    color: var(--yc-color-error-red-dark);
+  `;
+    header.innerHTML = `
+    <span style="font-size: var(--yc-font-size-xl);">⚠️</span>
+    <span>${errors.length} error${errors.length !== 1 ? "s" : ""}${warnings.length > 0 ? `, ${warnings.length} warning${warnings.length !== 1 ? "s" : ""}` : ""}</span>
+  `;
+    banner.appendChild(header);
+    const allDiagnostics = [...errors, ...warnings];
+    allDiagnostics.forEach((diagnostic, index2) => {
+      const errorItem = document.createElement("div");
+      errorItem.style.cssText = `
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: var(--yc-spacing-md);
-      margin-bottom: 6px;
-      font-weight: var(--yc-font-weight-semibold);
-      color: var(--yc-color-error-red-dark);
+      padding: 4px 0;
+      ${index2 < allDiagnostics.length - 1 ? "border-bottom: 1px solid rgba(239, 68, 68, 0.2);" : ""}
     `;
-      header.innerHTML = `
-      <span style="font-size: var(--yc-font-size-xl);">⚠️</span>
-      <span>${errors.length} error${errors.length !== 1 ? "s" : ""}${warnings.length > 0 ? `, ${warnings.length} warning${warnings.length !== 1 ? "s" : ""}` : ""}</span>
-    `;
-      banner.appendChild(header);
-      const allDiagnostics = [...errors, ...warnings];
-      allDiagnostics.forEach((diagnostic, index2) => {
-        const errorItem = document.createElement("div");
-        errorItem.style.cssText = `
-        display: flex;
-        align-items: flex-start;
-        gap: var(--yc-spacing-md);
-        padding: 4px 0;
-        ${index2 < allDiagnostics.length - 1 ? "border-bottom: 1px solid rgba(239, 68, 68, 0.2);" : ""}
-      `;
-        const lineMatch = diagnostic.message.match(/^Line (\d+):/);
-        let lineNumber;
-        let displayMessage;
-        if (lineMatch) {
-          lineNumber = parseInt(lineMatch[1], 10);
-          displayMessage = diagnostic.message.replace(/^Line \d+:\s*/, "");
-        } else {
-          const doc2 = view.state.doc;
-          lineNumber = doc2.lineAt(diagnostic.from).number;
-          displayMessage = diagnostic.message;
-        }
-        const jumpBtn = document.createElement("button");
-        jumpBtn.textContent = `L${lineNumber}`;
-        jumpBtn.title = `Jump to line ${lineNumber}`;
-        jumpBtn.style.cssText = `
-        background: ${diagnostic.severity === "error" ? "var(--yc-color-error-red-light)" : "var(--yc-color-warning-amber-dark)"};
-        color: white;
-        border: none;
-        border-radius: var(--yc-border-radius-sm);
-        padding: 2px 8px;
-        font-size: var(--yc-font-size-xs);
-        font-weight: var(--yc-font-weight-semibold);
-        cursor: pointer;
-        flex-shrink: 0;
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
-      `;
-        jumpBtn.onmouseover = () => {
-          jumpBtn.style.background = diagnostic.severity === "error" ? "var(--yc-color-error-red-dark)" : "var(--yc-color-warning-amber-darker)";
-        };
-        jumpBtn.onmouseleave = () => {
-          jumpBtn.style.background = diagnostic.severity === "error" ? "var(--yc-color-error-red-light)" : "var(--yc-color-warning-amber-dark)";
-        };
-        jumpBtn.onclick = () => {
-          this.jumpToLine(lineNumber);
-        };
-        const messageSpan = document.createElement("span");
-        messageSpan.textContent = displayMessage;
-        messageSpan.style.cssText = `
-        color: var(--yc-color-error-red-text);
-        flex: 1;
-        word-break: break-word;
-      `;
-        errorItem.appendChild(jumpBtn);
-        errorItem.appendChild(messageSpan);
-        banner.appendChild(errorItem);
-      });
-    }
-    /**
-     * Jump to a specific line in the editor
-     */
-    jumpToLine(lineNumber) {
-      if (!this.editor) return;
-      const doc2 = this.editor.state.doc;
-      const line = doc2.line(Math.min(lineNumber, doc2.lines));
-      this.editor.dispatch({
-        selection: { anchor: line.from },
-        scrollIntoView: true,
-        effects: EditorView.scrollIntoView(line.from, { y: "center" })
-      });
-      this.editor.focus();
-    }
-    /**
-     * Set up keyboard shortcuts for the editor
-     */
-    setupKeyboardShortcuts() {
-      document.addEventListener("keydown", (event) => {
-        if (event.ctrlKey && event.key === "`") {
-          event.preventDefault();
-          this.toggleEditorAndFindSelectedNode();
-        }
-        if ((event.metaKey || event.ctrlKey) && event.key === "k") {
-          event.preventDefault();
-          this.focusFloatingSearch();
-        }
-      });
-    }
-    /**
-     * Focus the floating search bar
-     */
-    focusFloatingSearch() {
-      if (this.floatingSearchBar) {
-        const searchInput = this.floatingSearchBar.querySelector("input");
-        if (searchInput) {
-          searchInput.focus();
-          searchInput.select();
-        }
-      }
-    }
-    /**
-     * Toggle the editor panel and scroll to the currently selected node
-     */
-    toggleEditorAndFindSelectedNode() {
-      const sidebar = document.getElementById(`ychart-editor-sidebar-${this.instanceId}`);
-      if (!sidebar) return;
-      const isCollapsed = sidebar.style.width === "0px";
-      this.toggleEditor();
-      if (isCollapsed) {
-        setTimeout(() => {
-          this.scrollToSelectedNode();
-        }, 400);
-      }
-    }
-    /**
-     * Find the currently selected node in the YAML and scroll to it in the editor
-     */
-    scrollToSelectedNode() {
-      if (!this.editor || !this.orgChart) return;
-      const chartState = this.orgChart.getChartState();
-      const selectedNodeId = chartState == null ? void 0 : chartState.selectedNodeId;
-      if (!selectedNodeId) {
-        console.log("No node selected");
-        return;
-      }
-      console.log("Finding node with ID:", selectedNodeId);
-      const content2 = this.editor.state.doc.toString();
-      const idPattern = new RegExp(`^-?\\s*id:\\s*${selectedNodeId}\\s*$`, "m");
-      const match = content2.match(idPattern);
-      if (match && match.index !== void 0) {
-        let blockStart = match.index;
-        const beforeMatch = content2.substring(0, match.index);
-        const lastDash = beforeMatch.lastIndexOf("\n- ");
-        if (lastDash !== -1) {
-          blockStart = lastDash + 1;
-        }
-        const lineNumber = content2.substring(0, blockStart).split("\n").length;
-        const line = this.editor.state.doc.line(lineNumber);
-        this.editor.dispatch({
-          selection: { anchor: line.from, head: line.to },
-          scrollIntoView: true
-        });
-        this.editor.focus();
-        console.log(`Scrolled to node ${selectedNodeId} at line ${lineNumber}`);
+      const lineMatch = diagnostic.message.match(/^Line (\d+):/);
+      let lineNumber;
+      let displayMessage;
+      if (lineMatch) {
+        lineNumber = parseInt(lineMatch[1], 10);
+        displayMessage = diagnostic.message.replace(/^Line \d+:\s*/, "");
       } else {
-        console.log(`Node with ID ${selectedNodeId} not found in YAML`);
+        const doc2 = view.state.doc;
+        lineNumber = doc2.lineAt(diagnostic.from).number;
+        displayMessage = diagnostic.message;
       }
-    }
-    parseFrontMatter(content2) {
-      if (content2.startsWith("---")) {
-        const parts = content2.split("---");
+      const jumpBtn = document.createElement("button");
+      jumpBtn.textContent = `L${lineNumber}`;
+      jumpBtn.title = `Jump to line ${lineNumber}`;
+      jumpBtn.style.cssText = `
+      background: ${diagnostic.severity === "error" ? "var(--yc-color-error-red-light)" : "var(--yc-color-warning-amber-dark)"};
+      color: white;
+      border: none;
+      border-radius: var(--yc-border-radius-sm);
+      padding: 2px 8px;
+      font-size: var(--yc-font-size-xs);
+      font-weight: var(--yc-font-weight-semibold);
+      cursor: pointer;
+      flex-shrink: 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+    `;
+      jumpBtn.onmouseover = () => {
+        jumpBtn.style.background = diagnostic.severity === "error" ? "var(--yc-color-error-red-dark)" : "var(--yc-color-warning-amber-darker)";
+      };
+      jumpBtn.onmouseleave = () => {
+        jumpBtn.style.background = diagnostic.severity === "error" ? "var(--yc-color-error-red-light)" : "var(--yc-color-warning-amber-dark)";
+      };
+      jumpBtn.onclick = () => jumpToLine(lineNumber);
+      const messageSpan = document.createElement("span");
+      messageSpan.textContent = displayMessage;
+      messageSpan.style.cssText = `
+      color: var(--yc-color-error-red-text);
+      flex: 1;
+      word-break: break-word;
+    `;
+      errorItem.appendChild(jumpBtn);
+      errorItem.appendChild(messageSpan);
+      banner.appendChild(errorItem);
+    });
+  }
+  function jumpToEditorLine(editor, lineNumber) {
+    const doc2 = editor.state.doc;
+    const line = doc2.line(Math.min(lineNumber, doc2.lines));
+    editor.dispatch({
+      selection: { anchor: line.from },
+      scrollIntoView: true,
+      effects: EditorView.scrollIntoView(line.from, { y: "center" })
+    });
+    editor.focus();
+  }
+  function formatYAML(editor) {
+    try {
+      const currentContent = editor.state.doc.toString();
+      if (currentContent.startsWith("---")) {
+        const parts = currentContent.split("---");
         if (parts.length >= 3) {
           const frontMatter = parts[1].trim();
-          const yamlData = parts.slice(2).join("---").trim();
-          try {
-            const parsed = load(frontMatter);
-            const options = parsed.options || {};
-            const cardDef = parsed.card || null;
-            const schemaDef = {};
-            if (parsed.schema && typeof parsed.schema === "object") {
-              for (const [fieldName, fieldDef] of Object.entries(parsed.schema)) {
-                if (typeof fieldDef === "string") {
-                  const fieldSchema = this.parseSchemaField(fieldDef, fieldName);
-                  schemaDef[fieldName] = fieldSchema;
-                  if (fieldSchema.aliases && fieldSchema.aliases.length > 0) {
-                    for (const alias of fieldSchema.aliases) {
-                      schemaDef[alias] = __spreadProps(__spreadValues({}, fieldSchema), { aliases: [fieldName] });
-                    }
-                  }
-                }
-              }
-              if (schemaDef.supervisor && schemaDef.supervisor.aliases) {
-                this.supervisorFields = ["supervisor", ...schemaDef.supervisor.aliases];
-              }
-            }
-            return { options, schema: schemaDef, card: cardDef, data: yamlData };
-          } catch (error) {
-            return { options: {}, schema: {}, card: void 0, data: content2 };
+          const dataContent = parts.slice(2).join("---").trim();
+          const parsedFrontMatter = load(frontMatter);
+          const cardTemplate = (parsedFrontMatter == null ? void 0 : parsedFrontMatter.card) || null;
+          if (parsedFrontMatter && parsedFrontMatter.card) {
+            delete parsedFrontMatter.card;
           }
-        }
-      }
-      return { options: {}, schema: {}, card: void 0, data: content2 };
-    }
-    /**
-     * Parse a schema field definition string.
-     * 
-     * Supported formats:
-     *   1. Basic: "string | required"
-     *   2. Bracket aliases: "[ supervisor | leader | manager ] string | optional"
-     *   3. Alias keyword: "string | optional | alias: leader, manager, reports_to"
-     *   4. Aliases array: "string | optional | aliases[leader, manager]"
-     * 
-     * Examples:
-     *   - "string | required" -> type: string, required: true
-     *   - "string | optional" -> type: string, required: false
-     *   - "[ supervisor | leader | manager ]" -> aliases: ['leader', 'manager']
-     *   - "string | optional | alias: leader, manager" -> aliases: ['leader', 'manager']
-     *   - "string | optional | aliases[leader, manager]" -> aliases: ['leader', 'manager']
-     */
-    parseSchemaField(fieldDefinition, _fieldName) {
-      let aliases;
-      let workingDef = fieldDefinition;
-      const bracketMatch = workingDef.match(/^\s*\[\s*(.+?)\s*\]\s*(.*)$/);
-      if (bracketMatch) {
-        const aliasesStr = bracketMatch[1];
-        workingDef = bracketMatch[2];
-        const aliasParts = aliasesStr.split("|").map((p) => p.trim()).filter((p) => p);
-        aliases = aliasParts.slice(1);
-      }
-      const aliasKeywordMatch = workingDef.match(/\|\s*alias(?:es)?:\s*([^|]+)/i);
-      if (aliasKeywordMatch) {
-        const aliasStr = aliasKeywordMatch[1];
-        const parsedAliases = aliasStr.split(",").map((a2) => a2.trim()).filter((a2) => a2);
-        aliases = aliases ? [...aliases, ...parsedAliases] : parsedAliases;
-        workingDef = workingDef.replace(/\|\s*alias(?:es)?:\s*[^|]+/i, "");
-      }
-      const aliasArrayMatch = workingDef.match(/\|\s*aliases?\s*\[\s*([^\]]+)\s*\]/i);
-      if (aliasArrayMatch) {
-        const aliasStr = aliasArrayMatch[1];
-        const parsedAliases = aliasStr.split(",").map((a2) => a2.trim().replace(/^["']|["']$/g, "")).filter((a2) => a2);
-        aliases = aliases ? [...aliases, ...parsedAliases] : parsedAliases;
-        workingDef = workingDef.replace(/\|\s*aliases?\s*\[[^\]]+\]/i, "");
-      }
-      const parts = workingDef.split("|").map((p) => p.trim()).filter((p) => p);
-      const type2 = parts.find((p) => !["required", "optional", "missing"].includes(p.toLowerCase())) || "string";
-      return {
-        type: type2,
-        required: parts.some((p) => p.toLowerCase() === "required"),
-        missing: parts.some((p) => p.toLowerCase() === "missing"),
-        aliases: aliases && aliases.length > 0 ? aliases : void 0
-      };
-    }
-    /**
-     * Escape special regex characters in a string for safe use in RegExp constructor.
-     */
-    escapeRegex(str2) {
-      return str2.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    }
-    renderCardElement(element, data) {
-      const tagName = Object.keys(element)[0];
-      const config2 = element[tagName];
-      if (typeof config2 === "string") {
-        const content22 = this.replaceVariables(config2, data);
-        if (tagName === "span") {
-          return `<${tagName} style="word-break:break-all">${content22}</${tagName}>`;
-        }
-        return `<${tagName}>${content22}</${tagName}>`;
-      }
-      const attrs = [];
-      let content2 = "";
-      let children2 = "";
-      if (config2.class) {
-        attrs.push(`class="${config2.class}"`);
-      }
-      if (config2.style) {
-        if (tagName === "span") {
-          const existingStyle = config2.style.trim();
-          const separator = existingStyle.endsWith(";") ? "" : ";";
-          attrs.push(`style="${existingStyle}${separator}word-break:break-all"`);
-        } else {
-          attrs.push(`style="${config2.style}"`);
-        }
-      } else if (tagName === "span") {
-        attrs.push(`style="word-break:break-all"`);
-      }
-      if (config2.content) {
-        content2 = this.replaceVariables(config2.content, data);
-      }
-      if (config2.children && Array.isArray(config2.children)) {
-        children2 = config2.children.map((child) => this.renderCardElement(child, data)).join("");
-      }
-      const attrsStr = attrs.length > 0 ? " " + attrs.join(" ") : "";
-      return `<${tagName}${attrsStr}>${content2}${children2}</${tagName}>`;
-    }
-    replaceVariables(template, data) {
-      return template.replace(/\$(\w+)\$/g, (_match, fieldName) => {
-        const value = data[fieldName];
-        if (value === null || value === void 0 || value === "") {
-          return "";
-        }
-        return escapeHtml(String(value));
-      });
-    }
-    /**
-     * Resolve missing parentId values by looking up supervisor names.
-     * This allows YAML data to omit parentId if a supervisor field contains
-     * the name of another node. Also auto-generates missing id values.
-     * 
-     * Supports multiple supervisor field aliases configurable via schema:
-     *   supervisor: [ supervisor | leader | manager | reports_to ]
-     * Or via .supervisorLookup() fluent API.
-     */
-    resolveMissingParentIds(data) {
-      const seenIds = /* @__PURE__ */ new Set();
-      const seenNamesForDedup = /* @__PURE__ */ new Set();
-      const usesNameBasedFormat = data.some((item) => item[this.nameField] !== void 0) && !data.some((item) => item.id !== void 0 && item.id !== null);
-      const deduplicatedData = data.filter((item) => {
-        if (item.id !== void 0 && item.id !== null) {
-          const idStr = String(item.id);
-          if (seenIds.has(idStr)) {
-            console.warn(`Duplicate id "${idStr}" detected - ignoring duplicate entry`);
-            return false;
-          }
-          seenIds.add(idStr);
-        }
-        if (usesNameBasedFormat && item[this.nameField]) {
-          const nameStr = String(item[this.nameField]).toLowerCase();
-          if (seenNamesForDedup.has(nameStr)) {
-            console.warn(`Duplicate name "${item[this.nameField]}" detected - ignoring duplicate entry`);
-            return false;
-          }
-          seenNamesForDedup.add(nameStr);
-        }
-        return true;
-      });
-      let hasNumericIds = false;
-      let maxNumericId = 0;
-      const existingIds = /* @__PURE__ */ new Set();
-      for (const item of deduplicatedData) {
-        if (item.id !== void 0 && item.id !== null) {
-          existingIds.add(String(item.id));
-          const numId = typeof item.id === "number" ? item.id : parseInt(String(item.id), 10);
-          if (!isNaN(numId) && String(numId) === String(item.id)) {
-            hasNumericIds = true;
-            if (numId > maxNumericId) {
-              maxNumericId = numId;
+          const formattedFrontMatter = dump(parsedFrontMatter, {
+            indent: 2,
+            lineWidth: -1,
+            noRefs: true,
+            sortKeys: false
+          });
+          const parsedData = load(dataContent);
+          const formattedData = dump(parsedData, {
+            indent: 2,
+            lineWidth: -1,
+            noRefs: true,
+            sortKeys: false
+          });
+          let cardYaml = "";
+          if (cardTemplate) {
+            const cardMatch = frontMatter.match(/^card:\s*\n((?:[ \t]+.*\n?)*)/m);
+            if (cardMatch) {
+              cardYaml = "card:\n" + cardMatch[1];
             }
           }
-        }
-      }
-      let autoIdCounter = maxNumericId;
-      const generateId = (item) => {
-        if (item.email) {
-          const emailId = String(item.email).toLowerCase();
-          if (!existingIds.has(emailId)) {
-            existingIds.add(emailId);
-            return emailId;
+          let reconstructedFrontMatter = formattedFrontMatter.trim();
+          if (cardYaml) {
+            reconstructedFrontMatter += "\n" + cardYaml.trim();
           }
+          const formatted = `---
+${reconstructedFrontMatter}
+---
+
+${formattedData.trim()}
+`;
+          editor.dispatch({
+            changes: { from: 0, to: editor.state.doc.length, insert: formatted }
+          });
         }
-        if (hasNumericIds || existingIds.size === 0) {
-          autoIdCounter++;
-          return autoIdCounter;
-        } else {
-          let newId2;
-          do {
-            newId2 = `auto-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-          } while (existingIds.has(newId2));
-          existingIds.add(newId2);
-          return newId2;
-        }
-      };
-      const dataWithIds = deduplicatedData.map((item) => {
-        if (item.id === void 0 || item.id === null) {
-          return __spreadProps(__spreadValues({}, item), { id: generateId(item), _autoGeneratedId: true });
-        }
-        return item;
-      });
-      const nameToId = /* @__PURE__ */ new Map();
-      const seenNames = /* @__PURE__ */ new Set();
-      for (const item of dataWithIds) {
-        const name2 = item[this.nameField];
-        if (name2) {
-          const normalizedName = String(name2).toLowerCase();
-          if (!seenNames.has(normalizedName)) {
-            nameToId.set(normalizedName, item.id);
-            seenNames.add(normalizedName);
-          }
-        }
-      }
-      return dataWithIds.map((item) => {
-        if (item.parentId !== void 0) {
-          return item;
-        }
-        for (const field of this.supervisorFields) {
-          const supervisorName = item[field];
-          if (supervisorName) {
-            const normalizedName = String(supervisorName).toLowerCase();
-            const parentId = nameToId.get(normalizedName);
-            if (parentId !== void 0) {
-              return __spreadProps(__spreadValues({}, item), { parentId });
-            }
-          }
-        }
-        return __spreadProps(__spreadValues({}, item), { parentId: null });
-      });
-    }
-    /**
-     * Configure the field names used for supervisor-based parentId resolution.
-     * When a node is missing a parentId, the parser will attempt to find a parent
-     * by matching the supervisor field value to another node's name field.
-     * 
-     * By default, the following fields are checked in order:
-     * 'supervisor', 'reports', 'reports_to', 'manager', 'leader', 'parent'
-     * 
-     * @param supervisorFieldNames - The field(s) containing the supervisor's name. 
-     *                               Can be a single string or an array of field names to check in order.
-     * @param nameFieldName - The field containing the node's name for matching (default: 'name')
-     */
-    supervisorLookup(supervisorFieldNames, nameFieldName = "name") {
-      this.supervisorFields = Array.isArray(supervisorFieldNames) ? supervisorFieldNames : [supervisorFieldNames];
-      this.nameField = nameFieldName;
-      if (this.orgChart) {
-        this.renderChart();
-      }
-      return this;
-    }
-    /**
-     * Set the initial Person of Interest (POI) programmatically.
-     * The chart will focus on this person, showing their supervisory chain and direct reports.
-     * 
-     * Can be called before or after initialization:
-     * - Before: Sets the initial POI to apply when chart first renders
-     * - After: Immediately sets the POI and re-renders the chart
-     * 
-     * @param selfValue - The id, name, email, or any field value that identifies the person.
-     *                    Pass null or empty string to clear the POI.
-     * 
-     * @example
-     * // Set by email
-     * editor.self('john.doe@company.com');
-     * 
-     * @example
-     * // Set by name
-     * editor.self('John Doe');
-     * 
-     * @example
-     * // Set by id
-     * editor.self(5);
-     */
-    self(selfValue) {
-      if (selfValue === null || selfValue === "") {
-        this.initialSelf = null;
-        this.selfApplied = false;
-        if (this.orgChart && this.truthData.length > 0) {
-          this.setPersonOfInterest("");
-        }
-        return this;
-      }
-      this.initialSelf = selfValue;
-      this.selfApplied = false;
-      if (this.orgChart && this.truthData.length > 0) {
-        const personId = this.resolveSelfToPersonId(selfValue);
-        if (personId) {
-          this.setPersonOfInterest(personId);
-        }
-        this.selfApplied = true;
-      }
-      return this;
-    }
-    /**
-     * Resolve a 'self' identifier to a person's ID.
-     * Searches across multiple fields to find a matching person.
-     * 
-     * @param selfValue - The value to search for (id, name, email, etc.)
-     * @returns The person's ID if found, null otherwise
-     */
-    resolveSelfToPersonId(selfValue) {
-      if (!this.truthData || this.truthData.length === 0) {
-        return null;
-      }
-      const searchValue = String(selfValue).toLowerCase();
-      const searchFields = ["id", "email", this.nameField, "name", "title", ...this.supervisorFields];
-      const exactIdMatch = this.truthData.find(
-        (item) => String(item.id) === String(selfValue)
-      );
-      if (exactIdMatch) {
-        return String(exactIdMatch.id);
-      }
-      for (const field of searchFields) {
-        if (field === "id") continue;
-        const match = this.truthData.find((item) => {
-          const fieldValue = item[field];
-          if (fieldValue === void 0 || fieldValue === null) return false;
-          return String(fieldValue).toLowerCase() === searchValue;
+      } else {
+        const parsed = load(currentContent);
+        const formatted = dump(parsed, {
+          indent: 2,
+          lineWidth: -1,
+          noRefs: true,
+          sortKeys: false
         });
-        if (match) {
-          return String(match.id);
-        }
+        editor.dispatch({
+          changes: { from: 0, to: editor.state.doc.length, insert: formatted }
+        });
       }
-      console.warn(`[YChart] Could not resolve 'self' value "${selfValue}" to any person in the data`);
-      return null;
+      console.log("YAML formatted successfully");
+    } catch (error) {
+      console.error("Failed to format YAML:", error);
+      alert(`Failed to format YAML: ${error instanceof Error ? error.message : "Unknown error"}`);
     }
-    /**
-     * Apply the initial 'self' POI if set in options.
-     * This is called once after the first chart render.
-     */
-    applyInitialSelf() {
-      if (this.selfApplied || this.initialSelf === null) {
-        return;
-      }
-      this.selfApplied = true;
-      const personId = this.resolveSelfToPersonId(this.initialSelf);
-      if (personId) {
-        setTimeout(() => {
-          this.setPersonOfInterest(personId);
-        }, 200);
-      }
+  }
+  function scrollToNodeInEditor(editor, selectedNodeId) {
+    if (!selectedNodeId) {
+      console.log("No node selected");
+      return;
     }
-    /**
-     * Set the person of interest and filter the chart to show only relevant nodes
-     */
-    setPersonOfInterest(personId) {
-      if (!personId) {
-        this.personOfInterest = null;
-        this.expandedSiblings.clear();
-        this.supervisorChainExpanded = false;
-        this.renderChart();
-        this.updatePOIResetButtonAnimation();
-        return;
+    console.log("Finding node with ID:", selectedNodeId);
+    const content2 = editor.state.doc.toString();
+    const idPattern = new RegExp(`^-?\\s*id:\\s*${selectedNodeId}\\s*$`, "m");
+    const match = content2.match(idPattern);
+    if (match && match.index !== void 0) {
+      let blockStart = match.index;
+      const beforeMatch = content2.substring(0, match.index);
+      const lastDash = beforeMatch.lastIndexOf("\n- ");
+      if (lastDash !== -1) {
+        blockStart = lastDash + 1;
       }
-      const person = this.truthData.find((item) => String(item.id) === personId);
-      if (!person) return;
-      this.personOfInterest = person;
-      this.expandedSiblings.clear();
-      this.expandedSiblings.add(String(person.id));
-      this.supervisorChainExpanded = false;
-      this.renderChart();
-      this.updatePOIResetButtonAnimation();
-      setTimeout(() => {
-        this.centerOnPOI();
-        this.selectNode(person.id);
-      }, 150);
-    }
-    /**
-     * Center the view on the person of interest
-     */
-    centerOnPOI() {
-      if (!this.orgChart || !this.personOfInterest) return;
-      try {
-        const attrs = this.orgChart.getChartState();
-        const allNodes = attrs.allNodes || [];
-        const poiNode = allNodes.find((node) => node.data.id === this.personOfInterest.id);
-        if (poiNode) {
-          this.orgChart.setCentered(poiNode.data.id);
-        }
-      } catch (error) {
-      }
-    }
-    /**
-     * Select a node in the org chart (visually highlight it)
-     */
-    selectNode(nodeId) {
-      if (!this.orgChart) return;
-      try {
-        const attrs = this.orgChart.getChartState();
-        attrs.selectedNodeId = nodeId;
-        if (attrs.root) {
-          this.orgChart.update(attrs.root);
-        }
-      } catch (error) {
-      }
-    }
-    /**
-     * Filter data based on person of interest
-     * Shows: POI, their direct children, and their direct supervisory chain to root
-     */
-    /**
-     * Build virtual data list from truth data based on POI selection.
-     * 
-     * When a POI is set:
-     * - Start with POI node
-     * - Procedurally add each supervisor up to root
-     * - Exclude siblings of chain nodes unless expandedSiblings includes that node
-     * 
-     * This compares truth list (complete YAML) to virtual list (what's displayed).
-     */
-    buildVirtualData(data) {
-      const virtualData = data.map((item) => __spreadValues({}, item));
-      virtualData.forEach((item) => {
-        delete item._expanded;
-        delete item._centered;
+      const lineNumber = content2.substring(0, blockStart).split("\n").length;
+      const line = editor.state.doc.line(lineNumber);
+      editor.dispatch({
+        selection: { anchor: line.from, head: line.to },
+        scrollIntoView: true
       });
-      if (!this.personOfInterest) {
-        return virtualData;
-      }
-      const poiId = this.personOfInterest.id;
-      const dataMap = new Map(virtualData.map((item) => [item.id, item]));
-      const childrenMap = /* @__PURE__ */ new Map();
-      virtualData.forEach((item) => {
-        if (item.parentId != null) {
-          if (!childrenMap.has(item.parentId)) {
-            childrenMap.set(item.parentId, []);
-          }
-          childrenMap.get(item.parentId).push(item);
+      editor.focus();
+      console.log(`Scrolled to node ${selectedNodeId} at line ${lineNumber}`);
+    } else {
+      console.log(`Node with ID ${selectedNodeId} not found in YAML`);
+    }
+  }
+  function buildExpandSiblingsBtn(nodeId, showExpandSiblings, siblingsExpanded, siblingCount) {
+    if (!showExpandSiblings) return "";
+    const userIcon = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#716E7B"/></svg>`;
+    const tooltipText = siblingsExpanded ? "Hide Siblings" : `Show ${siblingCount} Siblings`;
+    return `
+    <div class="expand-siblings-btn" data-node-id="${nodeId}" style="position:absolute;bottom:-10px;left:10%;transform:translateX(-50%);border:1px solid #E4E2E9;border-radius:3px;padding:2px 5px;font-size:9px;background-color:white;display:flex;align-items:center;gap:2px;cursor:pointer;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,0.1);" aria-label="${tooltipText}" role="button" tabindex="0">
+      <span class="node-tooltip">${tooltipText}</span>
+      <span style="display:flex;align-items:center;">${userIcon}</span>
+      <span style="color:#716E7B;">${siblingsExpanded ? "−" : "+"}${siblingCount}</span>
+    </div>
+  `;
+  }
+  function buildExpandSupervisorChainBtn(show, supervisorChainExpanded, hiddenSupervisorCount) {
+    if (!show) return "";
+    const upArrowIcon = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4l-8 8h5v8h6v-8h5l-8-8z" fill="#716E7B"/></svg>`;
+    const tooltip = supervisorChainExpanded ? "Collapse Supervisor Chain" : `Expand Supervisor Chain (${hiddenSupervisorCount} above)`;
+    const label = supervisorChainExpanded ? "−" : `+${hiddenSupervisorCount}`;
+    return `
+    <div class="expand-supervisor-chain-btn" style="position:absolute;top:-28px;left:50%;transform:translateX(-50%);border:1px solid #E4E2E9;border-radius:4px;padding:3px 8px;font-size:10px;background-color:white;display:flex;align-items:center;gap:3px;cursor:pointer;z-index:100;box-shadow:0 2px 4px rgba(0,0,0,0.12);" aria-label="${tooltip}" role="button" tabindex="0">
+      <span class="node-tooltip">${tooltip}</span>
+      <span style="display:flex;align-items:center;">${upArrowIcon}</span>
+      <span style="color:#716E7B;font-weight:500;">${label}</span>
+    </div>
+  `;
+  }
+  function renderNodeContent(d, ctx, poiButtons) {
+    const { expandSiblingsBtn, expandSupervisorChainBtn } = poiButtons;
+    if (ctx.customTemplate) {
+      return ctx.customTemplate(d, ctx.currentSchema);
+    }
+    if (ctx.cardTemplate && Array.isArray(ctx.cardTemplate)) {
+      const cardHtml = ctx.cardTemplate.map((element) => renderCardElement(element, d.data)).join("");
+      const nodeHeight = ctx.currentOptions.nodeHeight || ctx.defaultOptions.nodeHeight || 110;
+      return `
+      <div style="width:${d.width}px !important;height:${nodeHeight}px !important;padding:var(--yc-spacing-xl);background:var(--yc-color-text-inverse);border:var(--yc-border-width-medium) solid var(--yc-color-primary);border-radius:var(--yc-border-radius-lg);box-sizing:border-box;position:relative">
+        <div class="details-btn" style="position:absolute;top:var(--yc-spacing-xs);right:var(--yc-spacing-xs);width:var(--yc-height-icon-sm);height:var(--yc-height-icon-sm);background:var(--yc-color-gray-300);border-radius:var(--yc-border-radius-full);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);z-index:var(--yc-z-index-overlay);border:var(--yc-border-width-thin) solid var(--yc-color-gray-500);" title="Show Details" aria-label="Show Details" role="button" tabindex="0">ℹ</div>
+        ${expandSupervisorChainBtn}
+        ${expandSiblingsBtn}
+        ${cardHtml}
+      </div>
+    `;
+    }
+    const defaultNodeHeight = ctx.currentOptions.nodeHeight || ctx.defaultOptions.nodeHeight || 110;
+    return `
+    <div style="width:${d.width}px !important;height:${defaultNodeHeight}px !important;padding:var(--yc-spacing-xl);background:var(--yc-color-text-inverse);border:var(--yc-border-width-medium) solid var(--yc-color-primary);border-radius:var(--yc-border-radius-lg);box-sizing:border-box;display:flex;align-items:center;gap:var(--yc-spacing-xl);position:relative">
+      <div class="details-btn" style="position:absolute;top:var(--yc-spacing-xs);right:var(--yc-spacing-xs);width:var(--yc-height-icon-sm);height:var(--yc-height-icon-sm);background:var(--yc-color-gray-300);border-radius:var(--yc-border-radius-full);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);z-index:var(--yc-z-index-overlay);border:var(--yc-border-width-thin) solid var(--yc-color-gray-500);" title="Show Details" aria-label="Show Details" role="button" tabindex="0">ℹ</div>
+      ${expandSupervisorChainBtn}
+      ${expandSiblingsBtn}
+      <div style="flex:1;min-width:0">
+        <div style="font-size:var(--yc-font-size-md);font-weight:var(--yc-font-weight-bold);color:var(--yc-color-text-primary);margin-bottom:var(--yc-spacing-xs);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(d.data.name)}</div>
+        <div style="font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(d.data.title)}</div>
+        <div style="font-size:var(--yc-font-size-xs);color:var(--yc-color-gray-600);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(d.data.department)}</div>
+      </div>
+    </div>
+  `;
+  }
+  function renderNodeDetails(data, instanceId) {
+    let html = '<div class="node-details-content" style="font-family:var(--yc-font-family-base);">';
+    html += `<h3 style="margin:0 0 var(--yc-spacing-3xl) 0;color:var(--yc-color-text-primary);">${escapeHtml(data.name) || "Unknown"}</h3>`;
+    html += '<div style="display:grid;gap:var(--yc-spacing-md);">';
+    for (const [key, value] of Object.entries(data)) {
+      if (key.startsWith("_") || key === "picture") continue;
+      const label = escapeHtml(key.charAt(0).toUpperCase() + key.slice(1));
+      html += `
+      <div style="display:grid;grid-template-columns:120px 1fr;gap:var(--yc-spacing-md);">
+        <span style="font-weight:var(--yc-font-weight-semibold);color:var(--yc-color-text-secondary);">${label}:</span>
+        <span style="color:var(--yc-color-text-primary);">${escapeHtml(value) || "N/A"}</span>
+      </div>
+    `;
+    }
+    html += "</div>";
+    html += `<button onclick="document.getElementById('ychart-node-details-${instanceId}').style.display='none'" style="margin-top:var(--yc-spacing-3xl);padding:var(--yc-spacing-md) var(--yc-spacing-3xl);background:var(--yc-color-primary);color:white;border:none;border-radius:var(--yc-border-radius-sm);cursor:pointer;width:100%;">Close</button>`;
+    html += "</div>";
+    return html;
+  }
+  function buildVirtualData(data, state) {
+    const virtualData = data.map((item) => __spreadValues({}, item));
+    virtualData.forEach((item) => {
+      delete item._expanded;
+      delete item._centered;
+    });
+    if (!state.personOfInterest) {
+      return virtualData;
+    }
+    const poiId = state.personOfInterest.id;
+    const dataMap = new Map(virtualData.map((item) => [item.id, item]));
+    const childrenMap = /* @__PURE__ */ new Map();
+    virtualData.forEach((item) => {
+      if (item.parentId != null) {
+        if (!childrenMap.has(item.parentId)) {
+          childrenMap.set(item.parentId, []);
         }
-      });
-      const rootNodes = virtualData.filter((item) => item.parentId === null || item.parentId === void 0);
-      const isMultiRoot = rootNodes.length > 1;
-      const poiNodeData = dataMap.get(poiId);
-      const poiIsRoot = poiNodeData && (poiNodeData.parentId === null || poiNodeData.parentId === void 0);
-      if (poiIsRoot && !isMultiRoot) {
+        childrenMap.get(item.parentId).push(item);
+      }
+    });
+    const rootNodes = virtualData.filter((item) => item.parentId === null || item.parentId === void 0);
+    const isMultiRoot = rootNodes.length > 1;
+    const poiNodeData = dataMap.get(poiId);
+    const poiIsRoot = poiNodeData && (poiNodeData.parentId === null || poiNodeData.parentId === void 0);
+    if (poiIsRoot && !isMultiRoot) {
+      if (poiNodeData) {
+        poiNodeData._expanded = true;
+      }
+      return virtualData;
+    }
+    if (poiIsRoot && isMultiRoot) {
+      const poiIdStr = String(poiId);
+      if (state.expandedSiblings.has(poiIdStr)) {
         if (poiNodeData) {
           poiNodeData._expanded = true;
         }
         return virtualData;
-      }
-      if (poiIsRoot && isMultiRoot) {
-        const poiIdStr = String(poiId);
-        if (this.expandedSiblings.has(poiIdStr)) {
-          if (poiNodeData) {
-            poiNodeData._expanded = true;
-          }
-          return virtualData;
-        } else {
-          const visibleNodeIds2 = /* @__PURE__ */ new Set();
-          visibleNodeIds2.add(poiId);
-          const addDescendants = (nodeId) => {
-            const children2 = childrenMap.get(nodeId) || [];
-            children2.forEach((child) => {
-              visibleNodeIds2.add(child.id);
-              addDescendants(child.id);
-            });
-          };
-          addDescendants(poiId);
-          const filteredData2 = virtualData.filter((item) => visibleNodeIds2.has(item.id));
-          const poiInFiltered = filteredData2.find((item) => item.id === poiId);
-          if (poiInFiltered) {
-            poiInFiltered._expanded = true;
-          }
-          return filteredData2;
-        }
-      }
-      const supervisoryChain = [];
-      let currentId = poiId;
-      while (currentId != null) {
-        supervisoryChain.push(currentId);
-        const currentNode = dataMap.get(currentId);
-        if (!currentNode) break;
-        currentId = currentNode.parentId;
-      }
-      const supervisoryChainSet = new Set(supervisoryChain);
-      const visibleNodeIds = /* @__PURE__ */ new Set();
-      const addAllDescendants = (nodeId) => {
-        const children2 = childrenMap.get(nodeId) || [];
-        children2.forEach((child) => {
-          visibleNodeIds.add(child.id);
-          addAllDescendants(child.id);
-        });
-      };
-      visibleNodeIds.add(poiId);
-      if (this.supervisorChainExpanded) {
-        supervisoryChain.forEach((id2) => visibleNodeIds.add(id2));
       } else {
-        const poiNode = dataMap.get(poiId);
-        if (poiNode && poiNode.parentId != null) {
-          visibleNodeIds.add(poiNode.parentId);
+        const visibleNodeIds2 = /* @__PURE__ */ new Set();
+        visibleNodeIds2.add(poiId);
+        const addDescendants = (nodeId) => {
+          const children2 = childrenMap.get(nodeId) || [];
+          children2.forEach((child) => {
+            visibleNodeIds2.add(child.id);
+            addDescendants(child.id);
+          });
+        };
+        addDescendants(poiId);
+        const filteredData2 = virtualData.filter((item) => visibleNodeIds2.has(item.id));
+        const poiInFiltered = filteredData2.find((item) => item.id === poiId);
+        if (poiInFiltered) {
+          poiInFiltered._expanded = true;
         }
+        return filteredData2;
       }
-      const poiChildren = childrenMap.get(poiId) || [];
-      poiChildren.forEach((child) => {
+    }
+    const supervisoryChain = [];
+    let currentId = poiId;
+    while (currentId != null) {
+      supervisoryChain.push(currentId);
+      const currentNode = dataMap.get(currentId);
+      if (!currentNode) break;
+      currentId = currentNode.parentId;
+    }
+    const supervisoryChainSet = new Set(supervisoryChain);
+    const visibleNodeIds = /* @__PURE__ */ new Set();
+    const addAllDescendants = (nodeId) => {
+      const children2 = childrenMap.get(nodeId) || [];
+      children2.forEach((child) => {
         visibleNodeIds.add(child.id);
         addAllDescendants(child.id);
       });
-      const visibleChainNodes = supervisoryChain.filter((id2) => visibleNodeIds.has(id2));
-      visibleChainNodes.forEach((chainNodeId) => {
-        const nodeIdStr = String(chainNodeId);
-        if (this.expandedSiblings.has(nodeIdStr)) {
-          const chainNode = dataMap.get(chainNodeId);
-          if (chainNode) {
-            const isChainNodeRoot = chainNode.parentId === null || chainNode.parentId === void 0;
-            if (isChainNodeRoot) {
-              rootNodes.forEach((rootSibling) => {
-                if (rootSibling.id === chainNodeId) return;
-                visibleNodeIds.add(rootSibling.id);
-                addAllDescendants(rootSibling.id);
-              });
-            } else {
-              const siblings = childrenMap.get(chainNode.parentId) || [];
-              siblings.forEach((sibling) => {
-                if (sibling.id === chainNodeId) return;
-                visibleNodeIds.add(sibling.id);
-                addAllDescendants(sibling.id);
-              });
-            }
-          }
-        }
-      });
-      const filteredData = virtualData.filter((item) => visibleNodeIds.has(item.id));
-      const poiDirectChildrenIds = new Set((childrenMap.get(poiId) || []).map((child) => child.id));
-      if (!this.supervisorChainExpanded) {
-        const poiNode = dataMap.get(poiId);
-        if (poiNode && poiNode.parentId != null) {
-          const directSupervisor = filteredData.find((item) => item.id === poiNode.parentId);
-          if (directSupervisor) {
-            directSupervisor.parentId = null;
-          }
-        }
-      }
-      filteredData.forEach((item) => {
-        if (supervisoryChainSet.has(item.id)) {
-          item._expanded = true;
-        }
-        if (poiDirectChildrenIds.has(item.id)) {
-          item._expanded = true;
-        }
-      });
-      const poiNodeFiltered = filteredData.find((item) => item.id === poiId);
-      if (poiNodeFiltered) {
-        poiNodeFiltered._centered = true;
-        poiNodeFiltered._expanded = true;
-      }
-      return filteredData;
-    }
-    /**
-     * Check if a node should show the expand siblings button.
-     * Only supervisor nodes in the POI's chain (except root) should show this button.
-     * For root nodes in multi-root scenarios, show button if there are other roots.
-     */
-    shouldShowExpandSiblings(nodeId) {
-      if (!this.personOfInterest) return false;
-      const poiId = this.personOfInterest.id;
-      const dataMap = new Map(this.truthData.map((item) => [item.id, item]));
+    };
+    visibleNodeIds.add(poiId);
+    if (state.supervisorChainExpanded) {
+      supervisoryChain.forEach((id2) => visibleNodeIds.add(id2));
+    } else {
       const poiNode = dataMap.get(poiId);
-      if (!poiNode) return false;
-      const supervisoryChain = [];
-      let currentId = poiId;
-      while (currentId != null) {
-        supervisoryChain.push(currentId);
-        const currentNode = dataMap.get(currentId);
-        if (!currentNode) break;
-        currentId = currentNode.parentId;
+      if (poiNode && poiNode.parentId != null) {
+        visibleNodeIds.add(poiNode.parentId);
       }
-      if (!supervisoryChain.includes(nodeId)) return false;
-      const node = dataMap.get(nodeId);
-      if (!node) return false;
-      const isRootNode = node.parentId === null || node.parentId === void 0;
-      if (isRootNode) {
-        const otherRoots = this.truthData.filter(
-          (item) => (item.parentId === null || item.parentId === void 0) && item.id !== nodeId
-        );
-        return otherRoots.length > 0;
-      }
-      const siblingCount = this.getSiblingCount(nodeId);
-      return siblingCount > 0;
     }
-    /**
-     * Get the count of siblings for a node (from truth data).
-     * For root nodes, returns count of other root nodes (multi-root siblings).
-     */
-    getSiblingCount(nodeId) {
-      const dataMap = new Map(this.truthData.map((item) => [item.id, item]));
-      const node = dataMap.get(nodeId);
-      if (!node) return 0;
-      const isRootNode = node.parentId === null || node.parentId === void 0;
-      if (isRootNode) {
-        const otherRoots = this.truthData.filter(
-          (item) => (item.parentId === null || item.parentId === void 0) && item.id !== nodeId
-        );
-        return otherRoots.length;
+    const poiChildren = childrenMap.get(poiId) || [];
+    poiChildren.forEach((child) => {
+      visibleNodeIds.add(child.id);
+      addAllDescendants(child.id);
+    });
+    const visibleChainNodes = supervisoryChain.filter((id2) => visibleNodeIds.has(id2));
+    visibleChainNodes.forEach((chainNodeId) => {
+      const nodeIdStr = String(chainNodeId);
+      if (state.expandedSiblings.has(nodeIdStr)) {
+        const chainNode = dataMap.get(chainNodeId);
+        if (chainNode) {
+          const isChainNodeRoot = chainNode.parentId === null || chainNode.parentId === void 0;
+          if (isChainNodeRoot) {
+            rootNodes.forEach((rootSibling) => {
+              if (rootSibling.id === chainNodeId) return;
+              visibleNodeIds.add(rootSibling.id);
+              addAllDescendants(rootSibling.id);
+            });
+          } else {
+            const siblings = childrenMap.get(chainNode.parentId) || [];
+            siblings.forEach((sibling) => {
+              if (sibling.id === chainNodeId) return;
+              visibleNodeIds.add(sibling.id);
+              addAllDescendants(sibling.id);
+            });
+          }
+        }
       }
-      const siblings = this.truthData.filter(
-        (item) => item.parentId === node.parentId && item.id !== nodeId
+    });
+    const filteredData = virtualData.filter((item) => visibleNodeIds.has(item.id));
+    const poiDirectChildrenIds = new Set((childrenMap.get(poiId) || []).map((child) => child.id));
+    if (!state.supervisorChainExpanded) {
+      const poiNode = dataMap.get(poiId);
+      if (poiNode && poiNode.parentId != null) {
+        const directSupervisor = filteredData.find((item) => item.id === poiNode.parentId);
+        if (directSupervisor) {
+          directSupervisor.parentId = null;
+        }
+      }
+    }
+    filteredData.forEach((item) => {
+      if (supervisoryChainSet.has(item.id)) {
+        item._expanded = true;
+      }
+      if (poiDirectChildrenIds.has(item.id)) {
+        item._expanded = true;
+      }
+    });
+    const poiNodeFiltered = filteredData.find((item) => item.id === poiId);
+    if (poiNodeFiltered) {
+      poiNodeFiltered._centered = true;
+      poiNodeFiltered._expanded = true;
+    }
+    return filteredData;
+  }
+  function shouldShowExpandSiblings(nodeId, personOfInterest, truthData) {
+    if (!personOfInterest) return false;
+    const poiId = personOfInterest.id;
+    const dataMap = new Map(truthData.map((item) => [item.id, item]));
+    const poiNode = dataMap.get(poiId);
+    if (!poiNode) return false;
+    const supervisoryChain = [];
+    let currentId = poiId;
+    while (currentId != null) {
+      supervisoryChain.push(currentId);
+      const currentNode = dataMap.get(currentId);
+      if (!currentNode) break;
+      currentId = currentNode.parentId;
+    }
+    if (!supervisoryChain.includes(nodeId)) return false;
+    const node = dataMap.get(nodeId);
+    if (!node) return false;
+    const isRootNode = node.parentId === null || node.parentId === void 0;
+    if (isRootNode) {
+      const otherRoots = truthData.filter(
+        (item) => (item.parentId === null || item.parentId === void 0) && item.id !== nodeId
       );
-      return siblings.length;
+      return otherRoots.length > 0;
     }
-    /**
-     * Get the supervisor chain info for the POI.
-     * Returns { directSupervisor: name, chainLength: number of people above direct supervisor }
-     */
-    getSupervisorChainInfo() {
-      if (!this.personOfInterest) {
-        return { directSupervisor: null, chainLength: 0 };
-      }
-      const poiId = this.personOfInterest.id;
-      const dataMap = new Map(this.truthData.map((item) => [item.id, item]));
-      const poiNode = dataMap.get(poiId);
-      if (!poiNode || poiNode.parentId == null) {
-        return { directSupervisor: null, chainLength: 0 };
-      }
-      const directSupervisor = dataMap.get(poiNode.parentId);
-      if (!directSupervisor) {
-        return { directSupervisor: null, chainLength: 0 };
-      }
-      let chainLength = 0;
-      let currentId = directSupervisor.parentId;
-      while (currentId != null) {
-        chainLength++;
-        const currentNode = dataMap.get(currentId);
-        if (!currentNode) break;
-        currentId = currentNode.parentId;
-      }
-      return { directSupervisor, chainLength };
+    return getSiblingCount(nodeId, truthData) > 0;
+  }
+  function getSiblingCount(nodeId, truthData) {
+    const dataMap = new Map(truthData.map((item) => [item.id, item]));
+    const node = dataMap.get(nodeId);
+    if (!node) return 0;
+    const isRootNode = node.parentId === null || node.parentId === void 0;
+    if (isRootNode) {
+      return truthData.filter(
+        (item) => (item.parentId === null || item.parentId === void 0) && item.id !== nodeId
+      ).length;
     }
-    /**
-     * Check if a node is the topmost visible supervisor in the current view.
-     * This is always the direct supervisor of POI (stays static regardless of expansion state).
-     */
-    isTopmostVisibleSupervisor(nodeId) {
-      if (!this.personOfInterest) return false;
-      const poiId = this.personOfInterest.id;
-      const dataMap = new Map(this.truthData.map((item) => [item.id, item]));
-      const poiNode = dataMap.get(poiId);
-      if (!poiNode || poiNode.parentId == null) return false;
-      return nodeId === poiNode.parentId;
+    return truthData.filter(
+      (item) => item.parentId === node.parentId && item.id !== nodeId
+    ).length;
+  }
+  function getSupervisorChainInfo(personOfInterest, truthData) {
+    if (!personOfInterest) {
+      return { directSupervisor: null, chainLength: 0 };
     }
-    /**
-     * Get the count of hidden supervisors above a given node.
-     * Used to show how many nodes will be revealed when expanding.
-     */
-    getHiddenSupervisorCount(nodeId) {
-      if (!this.personOfInterest) return 0;
-      const dataMap = new Map(this.truthData.map((item) => [item.id, item]));
-      const node = dataMap.get(nodeId);
-      if (!node) return 0;
-      let count2 = 0;
-      let currentId = node.parentId;
-      while (currentId != null) {
-        count2++;
-        const currentNode = dataMap.get(currentId);
-        if (!currentNode) break;
-        currentId = currentNode.parentId;
-      }
-      return count2;
+    const poiId = personOfInterest.id;
+    const dataMap = new Map(truthData.map((item) => [item.id, item]));
+    const poiNode = dataMap.get(poiId);
+    if (!poiNode || poiNode.parentId == null) {
+      return { directSupervisor: null, chainLength: 0 };
     }
-    /**
-     * Toggle the supervisor chain expansion for POI
-     */
-    toggleSupervisorChainExpansion() {
-      this.supervisorChainExpanded = !this.supervisorChainExpanded;
-      this.renderChart();
+    const directSupervisor = dataMap.get(poiNode.parentId);
+    if (!directSupervisor) {
+      return { directSupervisor: null, chainLength: 0 };
     }
-    /**
-     * Toggle siblings expansion for a supervisor node
-     */
-    toggleSiblingsExpansion(nodeId) {
-      const nodeIdStr = String(nodeId);
-      if (this.expandedSiblings.has(nodeIdStr)) {
-        this.expandedSiblings.delete(nodeIdStr);
-      } else {
-        this.expandedSiblings.add(nodeIdStr);
-      }
-      this.renderChart();
+    let chainLength = 0;
+    let currentId = directSupervisor.parentId;
+    while (currentId != null) {
+      chainLength++;
+      const currentNode = dataMap.get(currentId);
+      if (!currentNode) break;
+      currentId = currentNode.parentId;
     }
-    /**
-     * Set up event handlers for expand siblings buttons
-     */
+    return { directSupervisor, chainLength };
+  }
+  function isTopmostVisibleSupervisor(nodeId, personOfInterest, truthData) {
+    if (!personOfInterest) return false;
+    const poiId = personOfInterest.id;
+    const dataMap = new Map(truthData.map((item) => [item.id, item]));
+    const poiNode = dataMap.get(poiId);
+    if (!poiNode || poiNode.parentId == null) return false;
+    return nodeId === poiNode.parentId;
+  }
+  function getHiddenSupervisorCount(nodeId, personOfInterest, truthData) {
+    if (!personOfInterest) return 0;
+    const dataMap = new Map(truthData.map((item) => [item.id, item]));
+    const node = dataMap.get(nodeId);
+    if (!node) return 0;
+    let count2 = 0;
+    let currentId = node.parentId;
+    while (currentId != null) {
+      count2++;
+      const currentNode = dataMap.get(currentId);
+      if (!currentNode) break;
+      currentId = currentNode.parentId;
+    }
+    return count2;
+  }
+  class POIManager {
+    constructor(ctx) {
+      __publicField(this, "ctx");
+      // POI state
+      __publicField(this, "personOfInterest", null);
+      __publicField(this, "expandedSiblings", /* @__PURE__ */ new Set());
+      __publicField(this, "supervisorChainExpanded", false);
+      __publicField(this, "initialSelf", null);
+      __publicField(this, "selfApplied", false);
+      // DOM references
+      __publicField(this, "poiSelector", null);
+      __publicField(this, "poiClearBtn", null);
+      this.ctx = ctx;
+    }
+    /** Create the POI selector DOM element */
+    createPOISelector() {
+      const container = document.createElement("div");
+      container.setAttribute("data-id", `ychart-poi-selector-${this.ctx.instanceId}`);
+      container.className = "ychart-poi-selector";
+      container.style.cssText = `
+      position: absolute;
+      top: var(--yc-spacing-4xl);
+      left: var(--yc-spacing-4xl);
+      z-index: var(--yc-z-index-search-popup);
+      display: flex;
+      flex-direction: column;
+      gap: var(--yc-spacing-xs);
+    `;
+      const selectorWrapper = document.createElement("div");
+      selectorWrapper.className = "ychart-poi-selector-wrapper";
+      selectorWrapper.style.cssText = `
+      display: flex;
+      align-items: center;
+      gap: var(--yc-spacing-xs);
+      background: var(--yc-color-bg-card);
+      border-radius: var(--yc-border-radius-pill);
+      padding: var(--yc-spacing-xs) var(--yc-spacing-sm);
+      box-shadow: var(--yc-shadow-2xl);
+      border: none;
+      transition: all var(--yc-transition-fast);
+    `;
+      const focusIcon = document.createElement("span");
+      focusIcon.innerHTML = `
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <circle cx="12" cy="12" r="6"/>
+        <circle cx="12" cy="12" r="2"/>
+      </svg>
+    `;
+      focusIcon.style.cssText = `
+      color: var(--yc-color-text-muted);
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    `;
+      const selectContainer = document.createElement("div");
+      selectContainer.setAttribute("data-id", `ychart-poi-select-${this.ctx.instanceId}`);
+      selectContainer.style.cssText = `
+      min-width: 140px;
+      max-width: 180px;
+    `;
+      const clearBtn = document.createElement("button");
+      clearBtn.setAttribute("data-id", `ychart-poi-clear-${this.ctx.instanceId}`);
+      clearBtn.setAttribute("aria-label", "Reset focus to root");
+      clearBtn.style.cssText = `
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border: none;
+      background: var(--yc-color-button-bg);
+      border-radius: var(--yc-border-radius-full);
+      cursor: pointer;
+      color: var(--yc-color-text-muted);
+      flex-shrink: 0;
+      transition: all var(--yc-transition-fast);
+    `;
+      const clearIcon = document.createElement("span");
+      clearIcon.innerHTML = `
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+    `;
+      clearIcon.style.cssText = "display: flex; align-items: center; justify-content: center;";
+      clearBtn.appendChild(clearIcon);
+      const clearTooltip = document.createElement("span");
+      clearTooltip.className = "ychart-tooltip";
+      clearTooltip.textContent = "Reset to root";
+      clearTooltip.style.cssText = `
+      position: absolute;
+      top: calc(100% + var(--yc-spacing-md));
+      left: 50%;
+      transform: translateX(-50%) scale(0.8);
+      background: var(--yc-color-overlay-dark);
+      color: white;
+      padding: var(--yc-spacing-sm) var(--yc-spacing-xl);
+      border-radius: var(--yc-border-radius-md);
+      font-size: var(--yc-font-size-sm);
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: all var(--yc-transition-fast) var(--yc-transition-bounce);
+      z-index: var(--yc-z-index-search-popup);
+      box-shadow: var(--yc-shadow-md);
+    `;
+      clearBtn.appendChild(clearTooltip);
+      clearBtn.addEventListener("mouseenter", () => {
+        clearBtn.style.background = "var(--yc-color-primary)";
+        clearBtn.style.color = "white";
+        clearTooltip.style.opacity = "1";
+        clearTooltip.style.transform = "translateX(-50%) scale(1)";
+      });
+      clearBtn.addEventListener("mouseleave", () => {
+        clearBtn.style.background = "var(--yc-color-button-bg)";
+        clearBtn.style.color = "var(--yc-color-text-muted)";
+        clearTooltip.style.opacity = "0";
+        clearTooltip.style.transform = "translateX(-50%) scale(0.8)";
+      });
+      clearBtn.addEventListener("click", () => {
+        this.resetToRoot();
+      });
+      this.poiClearBtn = clearBtn;
+      selectorWrapper.appendChild(focusIcon);
+      selectorWrapper.appendChild(selectContainer);
+      selectorWrapper.appendChild(clearBtn);
+      container.appendChild(selectorWrapper);
+      this.poiSelector = container;
+      return container;
+    }
+    /** Set up event delegation for expand siblings / supervisor chain buttons */
     setupExpandSiblingsHandlers() {
-      if (!this.chartContainer) return;
-      this.chartContainer.addEventListener("click", (e) => {
+      const chartContainer = this.ctx.getChartContainer();
+      if (!chartContainer) return;
+      chartContainer.addEventListener("click", (e) => {
         const target = e.target;
         const expandSiblingsBtn = target.closest(".expand-siblings-btn");
         if (expandSiblingsBtn) {
@@ -53024,33 +52262,147 @@ ${formattedData.trim()}
         }
       });
     }
-    /**
-     * Update the POI selector dropdown with all people in the org
-     */
+    // ── POI state management ──
+    resetToRoot() {
+      this.personOfInterest = null;
+      this.expandedSiblings.clear();
+      this.supervisorChainExpanded = false;
+      this.updatePOISelector(this.ctx.getTruthData());
+      this.ctx.renderChart();
+      const orgChart = this.ctx.getOrgChart();
+      if (orgChart) {
+        setTimeout(() => orgChart.fit(), 100);
+      }
+    }
+    setPersonOfInterest(personId) {
+      if (!personId) {
+        this.personOfInterest = null;
+        this.expandedSiblings.clear();
+        this.supervisorChainExpanded = false;
+        this.ctx.renderChart();
+        this.updateResetButtonAnimation();
+        return;
+      }
+      const person = this.ctx.getTruthData().find((item) => String(item.id) === personId);
+      if (!person) return;
+      this.personOfInterest = person;
+      this.expandedSiblings.clear();
+      this.expandedSiblings.add(String(person.id));
+      this.supervisorChainExpanded = false;
+      this.ctx.renderChart();
+      this.updateResetButtonAnimation();
+      setTimeout(() => {
+        this.centerOnPOI();
+        this.selectNode(person.id);
+      }, 150);
+    }
+    updatePOISelectorValue(_nodeId) {
+      const truthData = this.ctx.getTruthData();
+      if (truthData.length > 0) {
+        this.updatePOISelector(truthData);
+      }
+    }
+    /** Resolve a 'self' identifier to a person's ID */
+    resolveSelfToPersonId(selfValue) {
+      const truthData = this.ctx.getTruthData();
+      if (!truthData || truthData.length === 0) return null;
+      const searchValue = String(selfValue).toLowerCase();
+      const nameField = this.ctx.getNameField();
+      const supervisorFields = this.ctx.getSupervisorFields();
+      const searchFields = ["id", "email", nameField, "name", "title", ...supervisorFields];
+      const exactIdMatch = truthData.find((item) => String(item.id) === String(selfValue));
+      if (exactIdMatch) return String(exactIdMatch.id);
+      for (const field of searchFields) {
+        if (field === "id") continue;
+        const match = truthData.find((item) => {
+          const fieldValue = item[field];
+          if (fieldValue === void 0 || fieldValue === null) return false;
+          return String(fieldValue).toLowerCase() === searchValue;
+        });
+        if (match) return String(match.id);
+      }
+      console.warn(`[YChart] Could not resolve 'self' value "${selfValue}" to any person in the data`);
+      return null;
+    }
+    /** Apply the initial 'self' POI if set in options (called once after first chart render) */
+    applyInitialSelf() {
+      if (this.selfApplied || this.initialSelf === null) return;
+      this.selfApplied = true;
+      const personId = this.resolveSelfToPersonId(this.initialSelf);
+      if (personId) {
+        setTimeout(() => this.setPersonOfInterest(personId), 200);
+      }
+    }
+    // ── POI data delegation (thin wrappers) ──
+    buildVirtualData(data) {
+      return buildVirtualData(data, this.getState());
+    }
+    shouldShowExpandSiblings(nodeId) {
+      return shouldShowExpandSiblings(nodeId, this.personOfInterest, this.ctx.getTruthData());
+    }
+    getSiblingCount(nodeId) {
+      return getSiblingCount(nodeId, this.ctx.getTruthData());
+    }
+    getSupervisorChainInfo() {
+      return getSupervisorChainInfo(this.personOfInterest, this.ctx.getTruthData());
+    }
+    isTopmostVisibleSupervisor(nodeId) {
+      return isTopmostVisibleSupervisor(nodeId, this.personOfInterest, this.ctx.getTruthData());
+    }
+    getHiddenSupervisorCount(nodeId) {
+      return getHiddenSupervisorCount(nodeId, this.personOfInterest, this.ctx.getTruthData());
+    }
+    // ── Internal helpers ──
+    getState() {
+      return {
+        personOfInterest: this.personOfInterest,
+        truthData: this.ctx.getTruthData(),
+        expandedSiblings: this.expandedSiblings,
+        supervisorChainExpanded: this.supervisorChainExpanded
+      };
+    }
+    updateResetButtonAnimation() {
+      if (!this.poiClearBtn) return;
+      if (!this.personOfInterest) {
+        this.poiClearBtn.style.animation = "none";
+      } else {
+        this.poiClearBtn.style.animation = "pulseGlow 2s ease-in-out infinite";
+      }
+    }
+    toggleSupervisorChainExpansion() {
+      this.supervisorChainExpanded = !this.supervisorChainExpanded;
+      this.ctx.renderChart();
+    }
+    toggleSiblingsExpansion(nodeId) {
+      const nodeIdStr = String(nodeId);
+      if (this.expandedSiblings.has(nodeIdStr)) {
+        this.expandedSiblings.delete(nodeIdStr);
+      } else {
+        this.expandedSiblings.add(nodeIdStr);
+      }
+      this.ctx.renderChart();
+    }
     updatePOISelector(data) {
       if (!this.poiSelector) return;
-      const selectContainer = this.poiSelector.querySelector(`[data-id="ychart-poi-select-${this.instanceId}"]`);
+      const selectContainer = this.poiSelector.querySelector(
+        `[data-id="ychart-poi-select-${this.ctx.instanceId}"]`
+      );
       if (!selectContainer) return;
+      const truthData = this.ctx.getTruthData();
       const seenIds = /* @__PURE__ */ new Set();
       const uniqueData = data.filter((item) => {
         const idStr = String(item.id);
-        if (seenIds.has(idStr)) {
-          return false;
-        }
+        if (seenIds.has(idStr)) return false;
         seenIds.add(idStr);
         return true;
       });
-      const rootNode = this.truthData.find((item) => item.parentId === null || item.parentId === void 0) || uniqueData.find((item) => item.parentId === null || item.parentId === void 0);
-      const sortedData = [...uniqueData].sort((a2, b) => {
-        const nameA = (a2.name || "").toLowerCase();
-        const nameB = (b.name || "").toLowerCase();
-        return nameA.localeCompare(nameB);
-      });
+      const rootNode = truthData.find((item) => item.parentId === null || item.parentId === void 0) || uniqueData.find((item) => item.parentId === null || item.parentId === void 0);
+      const sortedData = [...uniqueData].sort(
+        (a2, b) => (a2.name || "").toLowerCase().localeCompare((b.name || "").toLowerCase())
+      );
       const options = sortedData.map((item) => {
         let label = item.name || String(item.id);
-        if (rootNode && item.id === rootNode.id) {
-          label += " [Root]";
-        }
+        if (rootNode && item.id === rootNode.id) label += " [Root]";
         return { label, value: String(item.id) };
       });
       const currentValue = this.personOfInterest ? String(this.personOfInterest.id) : "";
@@ -53066,501 +52418,171 @@ ${formattedData.trim()}
         }
       });
     }
-    renderChart() {
+    centerOnPOI() {
+      const orgChart = this.ctx.getOrgChart();
+      if (!orgChart || !this.personOfInterest) return;
       try {
-        if (this.forceGraph) {
-          this.forceGraph.stop();
-          this.forceGraph = null;
+        const attrs = orgChart.getChartState();
+        const allNodes = attrs.allNodes || [];
+        const poiNode = allNodes.find((node) => node.data.id === this.personOfInterest.id);
+        if (poiNode) {
+          orgChart.setCentered(poiNode.data.id);
         }
-        if (!this.editor) return;
-        const yamlContent = this.editor.state.doc.toString();
-        const { options: userOptions, schema: schemaDef, card: cardDef, data: yamlData } = this.parseFrontMatter(yamlContent);
-        const options = __spreadValues(__spreadValues({}, this.defaultOptions), userOptions);
-        this.currentOptions = options;
-        if (!this.selfApplied && options.self !== void 0) {
-          this.initialSelf = options.self;
-        }
-        let parsedData = load(yamlData);
-        this.currentSchema = schemaDef;
-        this.cardTemplate = cardDef || null;
-        if (!Array.isArray(parsedData)) {
-          throw new Error("YAML must be an array");
-        }
-        const resolvedData = this.resolveMissingParentIds(parsedData);
-        this.truthData = resolvedData;
-        this.updatePOISelector(resolvedData);
-        const virtualData = this.buildVirtualData(resolvedData);
-        if (!this.orgChart) {
-          this.orgChart = new OrgChart();
-        }
-        this.orgChart.container(`#ychart-chart-${this.instanceId}`).data(virtualData).nodeHeight(() => options.nodeHeight).nodeWidth(() => options.nodeWidth).childrenMargin(() => options.childrenMargin).compactMarginBetween(() => options.compactMarginBetween).compactMarginPair(() => options.compactMarginPair).neighbourMargin(() => options.neighbourMargin).onNodeClick((d, _i, _arr) => {
-          if (this.columnAdjustMode) {
-            this.handleNodeClickForColumnAdjust(d);
-          }
-        }).onNodeDetailsClick((d) => {
-          this.showNodeDetails(d.data);
-        }).nodeContent((d) => this.getNodeContent(d)).render();
-        this.setupPatternPersistence();
-        if (this.bgPattern) {
-          setTimeout(() => this.applyBackgroundPattern(), 10);
-        }
-        setTimeout(() => {
-          if (this.orgChart && this.chartContainer) {
-            this.orgChart.fit();
-            if (this.bgPattern) {
-              this.applyBackgroundPattern();
-            }
-            this.initializeHeightSync();
-            this.applyInitialSelf();
-          }
-        }, 100);
-        this.currentView = "hierarchy";
-      } catch (error) {
+      } catch (_error) {
       }
     }
-    getNodeContent(d) {
-      const showExpandSiblings = this.shouldShowExpandSiblings(d.data.id);
-      const siblingsExpanded = this.expandedSiblings.has(String(d.data.id));
-      const siblingCount = showExpandSiblings ? this.getSiblingCount(d.data.id) : 0;
-      const userIcon = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#716E7B"/></svg>`;
-      const siblingsTooltipText = siblingsExpanded ? "Hide Siblings" : `Show ${siblingCount} Siblings`;
-      const expandSiblingsBtn = showExpandSiblings ? `
-      <div class="expand-siblings-btn" data-node-id="${d.data.id}" style="position:absolute;bottom:-10px;left:10%;transform:translateX(-50%);border:1px solid #E4E2E9;border-radius:3px;padding:2px 5px;font-size:9px;background-color:white;display:flex;align-items:center;gap:2px;cursor:pointer;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,0.1);" aria-label="${siblingsTooltipText}" role="button" tabindex="0">
-        <span class="node-tooltip">${siblingsTooltipText}</span>
-        <span style="display:flex;align-items:center;">${userIcon}</span>
-        <span style="color:#716E7B;">${siblingsExpanded ? "−" : "+"}${siblingCount}</span>
-      </div>
-    ` : "";
-      const { directSupervisor } = this.getSupervisorChainInfo();
-      const isTopmostVisibleSupervisor = this.isTopmostVisibleSupervisor(d.data.id);
-      const showSupervisorChainBtn = isTopmostVisibleSupervisor && directSupervisor !== null;
-      const upArrowIcon = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4l-8 8h5v8h6v-8h5l-8-8z" fill="#716E7B"/></svg>`;
-      const hiddenSupervisorCount = this.getHiddenSupervisorCount(d.data.id);
-      const supervisorChainTooltip = this.supervisorChainExpanded ? "Collapse Supervisor Chain" : `Expand Supervisor Chain (${hiddenSupervisorCount} above)`;
-      const supervisorChainLabel = this.supervisorChainExpanded ? "−" : `+${hiddenSupervisorCount}`;
-      const expandSupervisorChainBtn = showSupervisorChainBtn ? `
-      <div class="expand-supervisor-chain-btn" style="position:absolute;top:-28px;left:50%;transform:translateX(-50%);border:1px solid #E4E2E9;border-radius:4px;padding:3px 8px;font-size:10px;background-color:white;display:flex;align-items:center;gap:3px;cursor:pointer;z-index:100;box-shadow:0 2px 4px rgba(0,0,0,0.12);" aria-label="${supervisorChainTooltip}" role="button" tabindex="0">
-        <span class="node-tooltip">${supervisorChainTooltip}</span>
-        <span style="display:flex;align-items:center;">${upArrowIcon}</span>
-        <span style="color:#716E7B;font-weight:500;">${supervisorChainLabel}</span>
-      </div>
-    ` : "";
-      if (this.customTemplate) {
-        const customContent = this.customTemplate(d, this.currentSchema);
-        return customContent;
+    selectNode(nodeId) {
+      const orgChart = this.ctx.getOrgChart();
+      if (!orgChart) return;
+      try {
+        const attrs = orgChart.getChartState();
+        attrs.selectedNodeId = nodeId;
+        if (attrs.root) {
+          orgChart.update(attrs.root);
+        }
+      } catch (_error) {
       }
-      if (this.cardTemplate && Array.isArray(this.cardTemplate)) {
-        const cardHtml = this.cardTemplate.map((element) => this.renderCardElement(element, d.data)).join("");
-        const nodeHeight = this.currentOptions.nodeHeight || this.defaultOptions.nodeHeight || 110;
-        return `
-        <div style="width:${d.width}px !important;height:${nodeHeight}px !important;padding:var(--yc-spacing-xl);background:var(--yc-color-text-inverse);border:var(--yc-border-width-medium) solid var(--yc-color-primary);border-radius:var(--yc-border-radius-lg);box-sizing:border-box;position:relative">
-          <div class="details-btn" style="position:absolute;top:var(--yc-spacing-xs);right:var(--yc-spacing-xs);width:var(--yc-height-icon-sm);height:var(--yc-height-icon-sm);background:var(--yc-color-gray-300);border-radius:var(--yc-border-radius-full);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);z-index:var(--yc-z-index-overlay);border:var(--yc-border-width-thin) solid var(--yc-color-gray-500);" title="Show Details" aria-label="Show Details" role="button" tabindex="0">ℹ</div>
-          ${expandSupervisorChainBtn}
-          ${expandSiblingsBtn}
-          ${cardHtml}
-        </div>
-      `;
-      }
-      const defaultNodeHeight = this.currentOptions.nodeHeight || this.defaultOptions.nodeHeight || 110;
-      return `
-      <div style="width:${d.width}px !important;height:${defaultNodeHeight}px !important;padding:var(--yc-spacing-xl);background:var(--yc-color-text-inverse);border:var(--yc-border-width-medium) solid var(--yc-color-primary);border-radius:var(--yc-border-radius-lg);box-sizing:border-box;display:flex;align-items:center;gap:var(--yc-spacing-xl);position:relative">
-        <div class="details-btn" style="position:absolute;top:var(--yc-spacing-xs);right:var(--yc-spacing-xs);width:var(--yc-height-icon-sm);height:var(--yc-height-icon-sm);background:var(--yc-color-gray-300);border-radius:var(--yc-border-radius-full);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);z-index:var(--yc-z-index-overlay);border:var(--yc-border-width-thin) solid var(--yc-color-gray-500);" title="Show Details" aria-label="Show Details" role="button" tabindex="0">ℹ</div>
-        ${expandSupervisorChainBtn}
-        ${expandSiblingsBtn}
-        <div style="flex:1;min-width:0">
-          <div style="font-size:var(--yc-font-size-md);font-weight:var(--yc-font-weight-bold);color:var(--yc-color-text-primary);margin-bottom:var(--yc-spacing-xs);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(d.data.name)}</div>
-          <div style="font-size:var(--yc-font-size-sm);color:var(--yc-color-text-secondary);margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(d.data.title)}</div>
-          <div style="font-size:var(--yc-font-size-xs);color:var(--yc-color-gray-600);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(d.data.department)}</div>
-        </div>
-      </div>
+    }
+  }
+  function buildLayout(viewContainer, config2) {
+    const { instanceId, collapsible, onToggleEditor, onFormatYAML } = config2;
+    viewContainer.innerHTML = "";
+    viewContainer.classList.add("ychart-container");
+    viewContainer.style.cssText = "display:flex;width:100%;height:100%;min-height:0;position:relative;overflow:hidden;";
+    const chartWrapper = document.createElement("div");
+    chartWrapper.className = "ychart-chart-wrapper";
+    chartWrapper.style.cssText = "flex:1;min-width:0;min-height:0;height:100%;position:relative;display:flex;flex-direction:column;overflow:hidden;";
+    const chartContainer = document.createElement("div");
+    chartContainer.id = `ychart-chart-${instanceId}`;
+    chartContainer.className = "ychart-chart";
+    chartContainer.setAttribute("data-id", `ychart-chart-${instanceId}`);
+    chartContainer.style.cssText = "flex:1;width:100%;min-height:0;position:relative;overflow:hidden;";
+    chartWrapper.appendChild(chartContainer);
+    const detailsPanel = document.createElement("div");
+    detailsPanel.id = `ychart-node-details-${instanceId}`;
+    detailsPanel.setAttribute("data-id", `ychart-node-details-${instanceId}`);
+    detailsPanel.style.cssText = `
+    display: none;
+    position: absolute;
+    right: var(--yc-spacing-4xl);
+    top: var(--yc-spacing-4xl);
+    background: var(--yc-color-bg-card);
+    border: var(--yc-border-width-medium) solid var(--yc-color-primary);
+    border-radius: var(--yc-border-radius-lg);
+    padding: var(--yc-spacing-5xl);
+    box-shadow: var(--yc-shadow-lg);
+    max-width: var(--yc-width-detail-panel);
+    max-height: 80%;
+    overflow-y: auto;
+    z-index: var(--yc-z-index-detail-panel);
+  `;
+    chartWrapper.appendChild(detailsPanel);
+    const editorSidebar = document.createElement("div");
+    editorSidebar.id = `ychart-editor-sidebar-${instanceId}`;
+    editorSidebar.className = "ychart-editor-panel";
+    editorSidebar.setAttribute("data-id", `ychart-editor-sidebar-${instanceId}`);
+    editorSidebar.style.cssText = `
+    width: var(--yc-width-sidebar);
+    height: 100%;
+    min-height: 0;
+    border-left: var(--yc-border-width-thin) solid var(--yc-color-gray-500);
+    overflow: hidden;
+    position: relative;
+    transition: width var(--yc-transition-normal), border-left-width 0s 0.3s;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+  `;
+    const errorBanner = document.createElement("div");
+    errorBanner.id = `ychart-error-banner-${instanceId}`;
+    errorBanner.className = "ychart-error-banner";
+    errorBanner.style.cssText = `
+    display: none;
+    background: var(--yc-gradient-error);
+    border-bottom: var(--yc-border-width-medium) solid var(--yc-color-error-border);
+    padding: var(--yc-spacing-md) var(--yc-spacing-xl);
+    max-height: var(--yc-height-error-banner-max);
+    overflow-y: auto;
+    font-family: var(--yc-font-family-base);
+    font-size: var(--yc-font-size-base);
+  `;
+    editorSidebar.appendChild(errorBanner);
+    const editorHeader = document.createElement("div");
+    editorHeader.style.cssText = `
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--yc-spacing-md) var(--yc-spacing-xl);
+    background: var(--yc-color-editor-bg);
+    border-bottom: var(--yc-border-width-thin) solid var(--yc-color-editor-border);
+  `;
+    const editorTitle = document.createElement("div");
+    editorTitle.textContent = "YAML Editor";
+    editorTitle.style.cssText = "color: var(--yc-color-editor-text); font-size: var(--yc-font-size-sm); font-weight: var(--yc-font-weight-semibold);";
+    editorHeader.appendChild(editorTitle);
+    const formatBtn = document.createElement("button");
+    formatBtn.innerHTML = `
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="16 18 22 12 16 6"/>
+      <polyline points="8 6 2 12 8 18"/>
+    </svg>
+    <span style="margin-left: var(--yc-spacing-xs);">Format</span>
+  `;
+    formatBtn.style.cssText = `
+    display: flex;
+    align-items: center;
+    background: var(--yc-color-primary);
+    color: white;
+    border: none;
+    padding: var(--yc-spacing-xs) var(--yc-spacing-md);
+    border-radius: var(--yc-border-radius-sm);
+    cursor: pointer;
+    font-size: var(--yc-font-size-xs);
+    transition: background var(--yc-transition-fast);
+  `;
+    formatBtn.onmouseenter = () => {
+      formatBtn.style.background = "var(--yc-color-primary-dark)";
+    };
+    formatBtn.onmouseleave = () => {
+      formatBtn.style.background = "var(--yc-color-primary)";
+    };
+    formatBtn.onclick = () => onFormatYAML();
+    editorHeader.appendChild(formatBtn);
+    editorSidebar.appendChild(editorHeader);
+    const editorContainer = document.createElement("div");
+    editorContainer.id = `ychart-editor-${instanceId}`;
+    editorContainer.className = "ychart-editor";
+    editorContainer.setAttribute("data-id", `ychart-editor-${instanceId}`);
+    editorContainer.style.cssText = "width:100%;flex:1;min-height:0;overflow:hidden;";
+    editorSidebar.appendChild(editorContainer);
+    if (collapsible) {
+      const collapseBtn = document.createElement("button");
+      collapseBtn.setAttribute("data-id", `ychart-collapse-editor-${instanceId}`);
+      collapseBtn.innerHTML = "▶";
+      collapseBtn.style.cssText = `
+      position: absolute;
+      right: 399px;
+      top: var(--yc-spacing-lg);
+      z-index: var(--yc-z-index-collapse-button);
+      background: var(--yc-color-primary);
+      color: white;
+      border: none;
+      padding: var(--yc-spacing-md) var(--yc-spacing-sm);
+      cursor: pointer;
+      border-radius: var(--yc-border-radius-left);
+      font-size: var(--yc-font-size-sm);
+      transition: right var(--yc-transition-normal);
+      box-shadow: var(--yc-shadow-sm);
     `;
+      collapseBtn.onclick = () => onToggleEditor();
+      viewContainer.appendChild(collapseBtn);
     }
-    showNodeDetails(data) {
-      if (!this.detailsPanel) return;
-      let html = '<div class="node-details-content" style="font-family:var(--yc-font-family-base);">';
-      html += `<h3 style="margin:0 0 var(--yc-spacing-3xl) 0;color:var(--yc-color-text-primary);">${escapeHtml(data.name) || "Unknown"}</h3>`;
-      html += '<div style="display:grid;gap:var(--yc-spacing-md);">';
-      for (const [key, value] of Object.entries(data)) {
-        if (key.startsWith("_") || key === "picture") continue;
-        const label = escapeHtml(key.charAt(0).toUpperCase() + key.slice(1));
-        html += `
-        <div style="display:grid;grid-template-columns:120px 1fr;gap:var(--yc-spacing-md);">
-          <span style="font-weight:var(--yc-font-weight-semibold);color:var(--yc-color-text-secondary);">${label}:</span>
-          <span style="color:var(--yc-color-text-primary);">${escapeHtml(value) || "N/A"}</span>
-        </div>
-      `;
-      }
-      html += "</div>";
-      html += `<button onclick="document.getElementById('ychart-node-details-${this.instanceId}').style.display='none'" style="margin-top:var(--yc-spacing-3xl);padding:var(--yc-spacing-md) var(--yc-spacing-3xl);background:var(--yc-color-primary);color:white;border:none;border-radius:var(--yc-border-radius-sm);cursor:pointer;width:100%;">Close</button>`;
-      html += "</div>";
-      this.detailsPanel.innerHTML = html;
-      this.detailsPanel.style.display = "block";
-    }
-    createDotPattern() {
-      const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
-      const pattern = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "pattern"
-      );
-      pattern.setAttribute("id", "dotPattern");
-      pattern.setAttribute("width", "20");
-      pattern.setAttribute("height", "20");
-      pattern.setAttribute("patternUnits", "userSpaceOnUse");
-      const dot = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "circle"
-      );
-      dot.setAttribute("cx", "5");
-      dot.setAttribute("cy", "5");
-      dot.setAttribute("r", "0.75");
-      dot.setAttribute("fill", this.defaultOptions.patternColor || "var(--yc-color-pattern)");
-      pattern.appendChild(dot);
-      defs.appendChild(pattern);
-      return defs;
-    }
-    createGridPattern() {
-      const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
-      const pattern = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "pattern"
-      );
-      pattern.setAttribute("id", "gridPattern");
-      pattern.setAttribute("width", "20");
-      pattern.setAttribute("height", "20");
-      pattern.setAttribute("patternUnits", "userSpaceOnUse");
-      const hLine = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "line"
-      );
-      hLine.setAttribute("x1", "0");
-      hLine.setAttribute("y1", "0");
-      hLine.setAttribute("x2", "20");
-      hLine.setAttribute("y2", "0");
-      hLine.setAttribute("stroke", this.defaultOptions.patternColor || "var(--yc-color-pattern)");
-      hLine.setAttribute("stroke-width", "0.5");
-      hLine.setAttribute("stroke-dasharray", "3, 3");
-      const vLine = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "line"
-      );
-      vLine.setAttribute("x1", "0");
-      vLine.setAttribute("y1", "0");
-      vLine.setAttribute("x2", "0");
-      vLine.setAttribute("y2", "20");
-      vLine.setAttribute("stroke", this.defaultOptions.patternColor || "var(--yc-color-pattern)");
-      vLine.setAttribute("stroke-width", "0.5");
-      vLine.setAttribute("stroke-dasharray", "3, 3");
-      pattern.appendChild(hLine);
-      pattern.appendChild(vLine);
-      defs.appendChild(pattern);
-      return defs;
-    }
-    applyBackgroundPattern() {
-      if (!this.chartContainer) return;
-      const svg2 = this.chartContainer.querySelector("svg");
-      if (!svg2) {
-        console.warn("SVG not found in chart container");
-        return;
-      }
-      console.log("Applying background pattern:", this.bgPattern);
-      let defs = svg2.querySelector("defs");
-      if (!defs) {
-        defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
-        svg2.insertBefore(defs, svg2.firstChild);
-      }
-      const existingPattern = defs.querySelector("#dotPattern, #gridPattern");
-      if (existingPattern) {
-        existingPattern.remove();
-      }
-      const patternDefs = this.bgPattern === "dotted" ? this.createDotPattern() : this.createGridPattern();
-      const patternElement = patternDefs.firstChild;
-      if (patternElement) {
-        defs.appendChild(patternElement);
-      }
-      const existingRect = svg2.querySelector("#pattern-background");
-      if (existingRect) {
-        existingRect.remove();
-      }
-      const bgRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-      bgRect.setAttribute("id", "pattern-background");
-      bgRect.setAttribute("x", "-50000");
-      bgRect.setAttribute("y", "-50000");
-      bgRect.setAttribute("width", "100000");
-      bgRect.setAttribute("height", "100000");
-      const patternId = this.bgPattern === "dotted" ? "dotPattern" : "gridPattern";
-      bgRect.setAttribute("fill", `url(#${patternId})`);
-      const firstNonDefsChild = Array.from(svg2.children).find((child) => child.tagName !== "defs");
-      if (firstNonDefsChild) {
-        svg2.insertBefore(bgRect, firstNonDefsChild);
-      } else {
-        svg2.appendChild(bgRect);
-      }
-      console.log("Pattern applied successfully");
-    }
-    setupPatternPersistence() {
-      if (!this.chartContainer) return;
-      if (this._patternObserver) {
-        return;
-      }
-      const observer = new MutationObserver(() => {
-        var _a2;
-        if (this.bgPattern) {
-          const svg2 = (_a2 = this.chartContainer) == null ? void 0 : _a2.querySelector("svg");
-          const bgRect = svg2 == null ? void 0 : svg2.querySelector("#pattern-background");
-          const patternDef = svg2 == null ? void 0 : svg2.querySelector("#dotPattern, #gridPattern");
-          if (svg2 && (!bgRect || !patternDef)) {
-            if (this._patternDebounce) {
-              clearTimeout(this._patternDebounce);
-            }
-            this._patternDebounce = setTimeout(() => {
-              this.applyBackgroundPattern();
-            }, 50);
-          }
-        }
-      });
-      observer.observe(this.chartContainer, {
-        childList: true,
-        subtree: true
-      });
-      this._patternObserver = observer;
-    }
-    /**
-     * Initialize node height synchronization service
-     * Ensures all nodes have the same height based on the configured nodeHeight option
-     */
-    initializeHeightSync() {
-      if (!this.chartContainer) return;
-      if (this.nodeHeightSync) {
-        this.nodeHeightSync.destroy();
-      }
-      const svg2 = this.chartContainer.querySelector("svg");
-      if (!svg2) {
-        console.warn("SVG not found for height sync");
-        return;
-      }
-      const configuredNodeHeight = this.currentOptions.nodeHeight || this.defaultOptions.nodeHeight || 110;
-      this.nodeHeightSync = new NodeHeightSyncService(svg2, {
-        fixedHeight: configuredNodeHeight,
-        // Use configured nodeHeight as the fixed height
-        minHeight: configuredNodeHeight,
-        // Also set as minimum for safety
-        maxHeight: 500,
-        // Reasonable max to prevent excessive heights
-        heightPadding: 0,
-        // No extra padding since we're using fixed height
-        resizeDebounce: 250,
-        // Longer debounce for stability
-        onHeightChange: (newHeight) => {
-          if (this.orgChart) {
-            requestAnimationFrame(() => {
-              var _a2, _b, _c;
-              (_a2 = this.orgChart) == null ? void 0 : _a2.nodeHeight(() => newHeight);
-              (_c = (_b = this.orgChart) == null ? void 0 : _b.updateHtmlOverlay) == null ? void 0 : _c.call(_b);
-            });
-          }
-        }
-      });
-      this.nodeHeightSync.init();
-    }
-    renderForceGraph() {
-      try {
-        if (!this.editor) return;
-        const yamlContent = this.editor.state.doc.toString();
-        const { data: yamlData } = this.parseFrontMatter(yamlContent);
-        const parsedData = load(yamlData);
-        if (!Array.isArray(parsedData)) {
-          throw new Error("YAML must be an array");
-        }
-        const resolvedData = this.resolveMissingParentIds(parsedData);
-        if (this.forceGraph) {
-          this.forceGraph.stop();
-        }
-        this.forceGraph = new ForceGraph("ychart-chart", (data) => this.showNodeDetails(data));
-        this.forceGraph.render(resolvedData);
-        this.currentView = "force";
-      } catch (error) {
-      }
-    }
-    /**
-     * Attach enable swap mode button (DEPRECATED - buttons are now built-in)
-     * @deprecated Use the built-in toolbar instead
-     */
-    enableSwapBtn(btnIdOrElement) {
-      console.warn("enableSwapBtn is deprecated. Buttons are now built into the canvas.");
-      const btn = typeof btnIdOrElement === "string" ? document.getElementById(btnIdOrElement) : btnIdOrElement;
-      if (!btn) {
-        console.warn(`Swap button not found: ${btnIdOrElement}`);
-        return this;
-      }
-      btn.addEventListener("click", () => this.handleSwapToggle());
-      return this;
-    }
-    /**
-     * Attach reset position button (DEPRECATED - buttons are now built-in)
-     * @deprecated Use the built-in toolbar instead
-     */
-    resetBtn(btnIdOrElement) {
-      console.warn("resetBtn is deprecated. Buttons are now built into the canvas.");
-      const btn = typeof btnIdOrElement === "string" ? document.getElementById(btnIdOrElement) : btnIdOrElement;
-      if (!btn) {
-        console.warn(`Reset button not found: ${btnIdOrElement}`);
-        return this;
-      }
-      btn.addEventListener("click", () => this.handleReset());
-      return this;
-    }
-    /**
-     * Attach export SVG button (DEPRECATED - buttons are now built-in)
-     * @deprecated Use the built-in toolbar instead
-     */
-    exportSVGBtn(btnIdOrElement) {
-      console.warn("exportSVGBtn is deprecated. Buttons are now built into the canvas.");
-      const btn = typeof btnIdOrElement === "string" ? document.getElementById(btnIdOrElement) : btnIdOrElement;
-      if (!btn) {
-        console.warn(`Export button not found: ${btnIdOrElement}`);
-        return this;
-      }
-      btn.addEventListener("click", () => this.handleExport());
-      return this;
-    }
-    /**
-     * Attach toggle view button (DEPRECATED - buttons are now built-in)
-     * @deprecated Use the built-in toolbar instead
-     */
-    toggleViewBtn(btnIdOrElement) {
-      console.warn("toggleViewBtn is deprecated. Buttons are now built into the canvas.");
-      const btn = typeof btnIdOrElement === "string" ? document.getElementById(btnIdOrElement) : btnIdOrElement;
-      if (!btn) {
-        console.warn(`Toggle view button not found: ${btnIdOrElement}`);
-        return this;
-      }
-      btn.addEventListener("click", () => this.handleToggleView());
-      return this;
-    }
-    /**
-     * Set background pattern style
-     */
-    bgPatternStyle(style) {
-      this.bgPattern = style;
-      this.renderChart();
-      return this;
-    }
-    /**
-     * Set action button position and orientation
-     */
-    actionBtnPos(position, orientation) {
-      this.toolbarPosition = position;
-      this.toolbarOrientation = orientation;
-      if (this.toolbar && this.toolbar.parentElement) {
-        const parent = this.toolbar.parentElement;
-        parent.removeChild(this.toolbar);
-        this.toolbar = this.createToolbar();
-        parent.appendChild(this.toolbar);
-      }
-      return this;
-    }
-    /**
-     * Set custom template function for node rendering
-     * The function receives:
-     * - d: node data object with d.data (your YAML properties), d.width, d.height
-     * - schema: the schema definition from front matter
-     */
-    template(templateFn) {
-      this.customTemplate = templateFn;
-      if (this.orgChart) {
-        this.renderChart();
-      }
-      return this;
-    }
-    updateYAMLAfterSwap(data1, data2) {
-      try {
-        if (!this.editor) return;
-        this.isUpdatingProgrammatically = true;
-        const yamlContent = this.editor.state.doc.toString();
-        const { options: userOptions, schema: schemaDef, data: yamlData } = this.parseFrontMatter(yamlContent);
-        const parsedData = load(yamlData);
-        if (!Array.isArray(parsedData)) {
-          console.error("Cannot update YAML: not an array");
-          return;
-        }
-        const idx1 = parsedData.findIndex((item) => String(item.id) === String(data1.id));
-        const idx2 = parsedData.findIndex((item) => String(item.id) === String(data2.id));
-        if (idx1 === -1 || idx2 === -1) {
-          console.error("Could not find nodes in YAML data");
-          return;
-        }
-        [parsedData[idx1], parsedData[idx2]] = [parsedData[idx2], parsedData[idx1]];
-        const frontMatter = `---
-options:
-${Object.entries(userOptions).map(([key, value]) => `  ${key}: ${value}`).join("\n")}
-schema:
-${Object.entries(schemaDef).map(([key, field]) => {
-          const modifiers2 = [field.type, field.required ? "required" : "optional", field.missing ? "missing" : ""].filter(Boolean);
-          return `  ${key}: ${modifiers2.join(" | ")}`;
-        }).join("\n")}
----
-
-`;
-        const newYamlData = dump(parsedData, {
-          indent: 2,
-          lineWidth: -1,
-          noRefs: true
-        });
-        const newContent = frontMatter + newYamlData;
-        this.editor.dispatch({
-          changes: {
-            from: 0,
-            to: this.editor.state.doc.length,
-            insert: newContent
-          }
-        });
-        console.log(`Nodes swapped: ${data1.name} ↔ ${data2.name}`);
-      } catch (error) {
-        console.error("Error updating YAML after swap:", error);
-      } finally {
-        this.isUpdatingProgrammatically = false;
-      }
-    }
-    /**
-     * Get current YAML content
-     */
-    getYAML() {
-      var _a2;
-      return ((_a2 = this.editor) == null ? void 0 : _a2.state.doc.toString()) || "";
-    }
-    /**
-     * Update YAML content programmatically
-     */
-    setYAML(yamlContent) {
-      if (!this.editor) return this;
-      this.isUpdatingProgrammatically = true;
-      this.editor.dispatch({
-        changes: {
-          from: 0,
-          to: this.editor.state.doc.length,
-          insert: yamlContent
-        }
-      });
-      this.isUpdatingProgrammatically = false;
-      this.renderChart();
-      return this;
-    }
-    /**
-     * Inject CSS styles into Shadow DOM for style encapsulation.
-     * This includes all CSS variables and library styles needed for YChart.
-     */
-    injectShadowDOMStyles() {
-      if (!this.shadowRoot) return;
-      const styleElement = document.createElement("style");
-      styleElement.textContent = this.getShadowDOMStyles();
-      this.shadowRoot.appendChild(styleElement);
-    }
-    /**
-     * Get the complete CSS styles for Shadow DOM injection.
-     * This is a comprehensive stylesheet that includes all YChart styles.
-     */
-    getShadowDOMStyles() {
-      return `
+    viewContainer.appendChild(chartWrapper);
+    viewContainer.appendChild(editorSidebar);
+    return { chartWrapper, chartContainer, detailsPanel, editorSidebar, errorBanner, editorContainer };
+  }
+  function getShadowDOMStyles() {
+    return `
       /* =============================================================================
        * YChart Design System Variables
        * ============================================================================= */
@@ -54123,10 +53145,913 @@ ${Object.entries(schemaDef).map(([key, field]) => {
         }
       }
     `;
+  }
+  class NodeHeightSyncService {
+    constructor(container, config2 = {}) {
+      __publicField(this, "container");
+      __publicField(this, "config");
+      __publicField(this, "resizeObserver");
+      __publicField(this, "mutationObserver");
+      __publicField(this, "resizeTimeout");
+      __publicField(this, "currentUnifiedHeight", 0);
+      __publicField(this, "isSyncing", false);
+      __publicField(this, "lastSyncTime", 0);
+      __publicField(this, "pendingSync", false);
+      var _a2, _b, _c, _d, _e;
+      this.container = container;
+      this.config = {
+        fixedHeight: config2.fixedHeight,
+        minHeight: (_a2 = config2.minHeight) != null ? _a2 : 80,
+        maxHeight: (_b = config2.maxHeight) != null ? _b : Infinity,
+        heightPadding: (_c = config2.heightPadding) != null ? _c : 0,
+        resizeDebounce: (_d = config2.resizeDebounce) != null ? _d : 150,
+        onHeightChange: (_e = config2.onHeightChange) != null ? _e : (() => {
+        })
+      };
     }
     /**
-     * Get the Shadow DOM root if Shadow DOM is enabled
+     * Initialize height synchronization
+     * Sets up observers and performs initial sync
      */
+    init() {
+      this.syncNodeHeights();
+      this.observeContentChanges();
+    }
+    /**
+     * Measure and synchronize all node heights
+     * @returns The unified height applied to all nodes
+     */
+    syncNodeHeights() {
+      if (this.isSyncing) {
+        this.pendingSync = true;
+        return this.currentUnifiedHeight;
+      }
+      const now2 = Date.now();
+      if (now2 - this.lastSyncTime < 100) {
+        this.pendingSync = true;
+        return this.currentUnifiedHeight;
+      }
+      this.isSyncing = true;
+      this.lastSyncTime = now2;
+      try {
+        let targetHeight;
+        if (this.config.fixedHeight !== void 0) {
+          targetHeight = this.config.fixedHeight;
+        } else {
+          this.resetHeightsToAuto();
+          targetHeight = this.measureMaxContentHeight();
+        }
+        if (targetHeight !== this.currentUnifiedHeight) {
+          this.applyUnifiedHeight(targetHeight);
+          this.currentUnifiedHeight = targetHeight;
+          this.config.onHeightChange(targetHeight);
+        }
+        return targetHeight;
+      } finally {
+        setTimeout(() => {
+          this.isSyncing = false;
+          if (this.pendingSync) {
+            this.pendingSync = false;
+            this.debouncedSync();
+          }
+        }, 100);
+      }
+    }
+    /**
+     * Reset all foreignObject and content div heights to 'auto' for measurement
+     */
+    resetHeightsToAuto() {
+      const foreignObjects = this.container.querySelectorAll(
+        "foreignObject.node-foreign-object"
+      );
+      foreignObjects.forEach((fo) => {
+        fo.style.height = "auto";
+        fo.removeAttribute("height");
+        const contentDiv = fo.querySelector(".node-foreign-object-div");
+        if (contentDiv) {
+          contentDiv.style.height = "auto";
+          contentDiv.style.minHeight = "auto";
+        }
+        const innerDiv = contentDiv == null ? void 0 : contentDiv.querySelector("div");
+        if (innerDiv) {
+          innerDiv.style.height = "auto";
+          innerDiv.style.minHeight = "auto";
+        }
+      });
+    }
+    /**
+     * Measure the maximum content height across all nodes
+     * @returns Maximum height found
+     */
+    measureMaxContentHeight() {
+      const foreignObjects = this.container.querySelectorAll(
+        "foreignObject.node-foreign-object"
+      );
+      let maxHeight = this.config.minHeight;
+      foreignObjects.forEach((fo) => {
+        const contentDiv = fo.querySelector(".node-foreign-object-div");
+        if (!contentDiv) return;
+        const cardContent = contentDiv.querySelector('div[style*="position:relative"], div[style*="position: relative"]') || contentDiv.firstElementChild;
+        if (!cardContent) return;
+        cardContent.offsetHeight;
+        const contentHeight = cardContent.offsetHeight;
+        if (contentHeight > maxHeight) {
+          maxHeight = contentHeight;
+        }
+      });
+      maxHeight += this.config.heightPadding;
+      maxHeight = Math.min(maxHeight, this.config.maxHeight);
+      maxHeight = Math.max(maxHeight, this.config.minHeight);
+      return Math.ceil(maxHeight);
+    }
+    /**
+     * Apply the unified height to all nodes
+     * Uses batch DOM updates to prevent flickering
+     * @param height The height to apply
+     */
+    applyUnifiedHeight(height) {
+      const foreignObjects = this.container.querySelectorAll(
+        "foreignObject.node-foreign-object"
+      );
+      const updates = [];
+      foreignObjects.forEach((fo) => {
+        const contentDiv = fo.querySelector(".node-foreign-object-div");
+        const innerDiv = (contentDiv == null ? void 0 : contentDiv.querySelector("div")) || null;
+        updates.push({ fo, contentDiv, innerDiv });
+      });
+      requestAnimationFrame(() => {
+        updates.forEach(({ fo, contentDiv, innerDiv }) => {
+          fo.setAttribute("data-height-synced", "true");
+          fo.setAttribute("height", String(height));
+          fo.style.height = `${height}px`;
+          if (contentDiv) {
+            contentDiv.setAttribute("data-height-synced", "true");
+            contentDiv.style.height = `${height}px`;
+            contentDiv.style.minHeight = `${height}px`;
+          }
+          if (innerDiv) {
+            innerDiv.style.height = `${height}px`;
+            innerDiv.style.minHeight = `${height}px`;
+          }
+        });
+        this.updateNodeDataHeights(height);
+      });
+    }
+    /**
+     * Update the data-driven height values for d3-org-chart nodes
+     * @param height The height to set
+     */
+    updateNodeDataHeights(height) {
+      const nodeGroups = this.container.querySelectorAll(".node");
+      nodeGroups.forEach((nodeGroup) => {
+        const node = nodeGroup;
+        if (node.__data__) {
+          node.__data__.height = height;
+        }
+      });
+    }
+    /**
+     * Observe content changes and trigger re-sync
+     * Uses passive observation to avoid interfering with rendering
+     */
+    observeContentChanges() {
+      this.resizeObserver = new ResizeObserver((entries) => {
+        if (this.isSyncing) return;
+        const hasRealChange = entries.some((entry) => {
+          const el = entry.target;
+          if (el.hasAttribute("data-height-synced") && this.currentUnifiedHeight > 0 && Math.abs(entry.contentRect.height - this.currentUnifiedHeight) < 2) {
+            return false;
+          }
+          return true;
+        });
+        if (hasRealChange) {
+          this.debouncedSync();
+        }
+      });
+      const contentDivs = this.container.querySelectorAll(".node-foreign-object-div");
+      contentDivs.forEach((div) => {
+        if (!div.hasAttribute("data-height-observed")) {
+          div.setAttribute("data-height-observed", "true");
+          this.resizeObserver.observe(div);
+        }
+      });
+      this.mutationObserver = new MutationObserver((mutations) => {
+        if (this.isSyncing) return;
+        const hasNewNodes = mutations.some(
+          (m2) => m2.type === "childList" && (m2.addedNodes.length > 0 || m2.removedNodes.length > 0)
+        );
+        if (hasNewNodes) {
+          const newDivs = this.container.querySelectorAll(".node-foreign-object-div");
+          newDivs.forEach((div) => {
+            if (!this.isObserved(div)) {
+              div.setAttribute("data-height-observed", "true");
+              this.resizeObserver.observe(div);
+            }
+          });
+          this.debouncedSync();
+        }
+      });
+      this.mutationObserver.observe(this.container, {
+        childList: true,
+        subtree: true
+      });
+    }
+    /**
+     * Check if an element is already being observed
+     */
+    isObserved(element) {
+      return element.hasAttribute("data-height-observed");
+    }
+    /**
+     * Debounced sync to avoid excessive recalculations
+     * Uses a longer debounce for stability
+     */
+    debouncedSync() {
+      if (this.resizeTimeout) {
+        clearTimeout(this.resizeTimeout);
+      }
+      this.resizeTimeout = window.setTimeout(() => {
+        this.syncNodeHeights();
+      }, Math.max(this.config.resizeDebounce, 200));
+    }
+    /**
+     * Get the current unified height
+     */
+    getCurrentHeight() {
+      return this.currentUnifiedHeight;
+    }
+    /**
+     * Manually trigger a sync (useful after data changes)
+     */
+    triggerSync() {
+      requestAnimationFrame(() => {
+        this.syncNodeHeights();
+      });
+    }
+    /**
+     * Clean up observers
+     */
+    destroy() {
+      if (this.resizeObserver) {
+        this.resizeObserver.disconnect();
+        this.resizeObserver = void 0;
+      }
+      if (this.mutationObserver) {
+        this.mutationObserver.disconnect();
+        this.mutationObserver = void 0;
+      }
+      if (this.resizeTimeout) {
+        clearTimeout(this.resizeTimeout);
+        this.resizeTimeout = void 0;
+      }
+    }
+  }
+  class YChartEditor2 {
+    constructor(options) {
+      __publicField(this, "viewContainer", null);
+      __publicField(this, "editorContainer", null);
+      __publicField(this, "chartContainer", null);
+      __publicField(this, "editor", null);
+      __publicField(this, "orgChart", null);
+      __publicField(this, "forceGraph", null);
+      __publicField(this, "currentView", "hierarchy");
+      __publicField(this, "swapModeEnabled", false);
+      __publicField(this, "isUpdatingProgrammatically", false);
+      __publicField(this, "defaultOptions");
+      __publicField(this, "initialData", "");
+      __publicField(this, "detailsPanel", null);
+      __publicField(this, "bgPattern");
+      __publicField(this, "toolbar", null);
+      __publicField(this, "toolbarPosition", "bottomleft");
+      __publicField(this, "toolbarOrientation", "horizontal");
+      __publicField(this, "customTemplate", null);
+      __publicField(this, "currentSchema", {});
+      __publicField(this, "cardTemplate", null);
+      __publicField(this, "columnAdjustManager");
+      __publicField(this, "experimental", false);
+      __publicField(this, "instanceId");
+      __publicField(this, "errorBanner", null);
+      __publicField(this, "searchManager");
+      __publicField(this, "poiManager");
+      // Default supervisor field aliases - can be overridden via schema or supervisorLookup()
+      __publicField(this, "supervisorFields", ["supervisor", "reports", "reports_to", "manager", "leader", "parent"]);
+      __publicField(this, "nameField", "name");
+      __publicField(this, "nodeHeightSync", null);
+      // Current merged options (defaultOptions + YAML options)
+      __publicField(this, "currentOptions", {});
+      // Truth data (complete YAML data)
+      __publicField(this, "truthData", []);
+      // Shadow DOM support
+      __publicField(this, "shadowRoot", null);
+      __publicField(this, "useShadowDOM", false);
+      this.instanceId = generateUUID();
+      this.defaultOptions = __spreadValues({
+        nodeWidth: 220,
+        nodeHeight: 110,
+        childrenMargin: 50,
+        compactMarginBetween: 35,
+        compactMarginPair: 30,
+        neighbourMargin: 20,
+        editorTheme: "dark",
+        collapsible: true,
+        toolbarPosition: "bottomleft",
+        toolbarOrientation: "horizontal"
+      }, options);
+      this.toolbarPosition = this.defaultOptions.toolbarPosition;
+      this.toolbarOrientation = this.defaultOptions.toolbarOrientation;
+      this.experimental = this.defaultOptions.experimental || false;
+      this.useShadowDOM = this.defaultOptions.useShadowDOM || false;
+    }
+    /**
+     * Initialize the view with a container element
+     */
+    initView(containerIdOrElement, yamlData) {
+      const hostContainer = typeof containerIdOrElement === "string" ? document.getElementById(containerIdOrElement) : containerIdOrElement;
+      if (!hostContainer) {
+        throw new Error(`Container not found: ${containerIdOrElement}`);
+      }
+      this.initialData = yamlData;
+      if (this.useShadowDOM) {
+        this.shadowRoot = hostContainer.attachShadow({ mode: "open" });
+        this.injectShadowDOMStyles();
+        const shadowContainer = document.createElement("div");
+        shadowContainer.style.cssText = "width:100%;height:100%;";
+        this.shadowRoot.appendChild(shadowContainer);
+        this.viewContainer = shadowContainer;
+      } else {
+        this.viewContainer = hostContainer;
+      }
+      this.createLayout();
+      this.initializeEditor();
+      this.setupKeyboardShortcuts();
+      this.poiManager.setupExpandSiblingsHandlers();
+      this.renderChart();
+      this.toggleEditor();
+      console.log(`%cYChart Editor v${YCHART_VERSION}%c initialized successfully${this.useShadowDOM ? " (Shadow DOM)" : ""}`, "color: #667eea; font-weight: bold;", "color: inherit;");
+      return this;
+    }
+    /**
+     * Load new YAML data into the editor and re-render the chart
+     */
+    loadYaml(yamlData) {
+      if (!this.editor) {
+        throw new Error("Editor not initialized. Call initView first.");
+      }
+      this.editor.dispatch({
+        changes: {
+          from: 0,
+          to: this.editor.state.doc.length,
+          insert: yamlData
+        }
+      });
+      this.renderChart();
+      return this;
+    }
+    createLayout() {
+      var _a2;
+      if (!this.viewContainer) return;
+      const layout = buildLayout(this.viewContainer, {
+        instanceId: this.instanceId,
+        collapsible: (_a2 = this.defaultOptions.collapsible) != null ? _a2 : true,
+        onToggleEditor: () => this.toggleEditor(),
+        onFormatYAML: () => this.handleFormatYAML()
+      });
+      this.chartContainer = layout.chartContainer;
+      this.detailsPanel = layout.detailsPanel;
+      this.editorContainer = layout.editorContainer;
+      this.errorBanner = layout.errorBanner;
+      this.columnAdjustManager = new ColumnAdjustManager({
+        instanceId: this.instanceId,
+        getChartContainer: () => this.chartContainer,
+        getOrgChart: () => this.orgChart
+      });
+      this.toolbar = this.createToolbar();
+      layout.chartWrapper.appendChild(this.toolbar);
+      this.searchManager = new SearchManager({
+        instanceId: this.instanceId,
+        getOrgChart: () => this.orgChart,
+        getTruthData: () => this.truthData,
+        getCurrentSchema: () => this.currentSchema,
+        getChartContainer: () => this.chartContainer,
+        getPersonOfInterest: () => this.poiManager.personOfInterest,
+        setPersonOfInterest: (id2) => this.poiManager.setPersonOfInterest(id2),
+        updatePOISelectorValue: (id2) => this.poiManager.updatePOISelectorValue(id2)
+      });
+      const floatingSearchBar = this.searchManager.createFloatingSearchBar();
+      layout.chartWrapper.appendChild(floatingSearchBar);
+      this.searchManager.createSearchPopup();
+      this.poiManager = new POIManager({
+        instanceId: this.instanceId,
+        getOrgChart: () => this.orgChart,
+        getTruthData: () => this.truthData,
+        getSupervisorFields: () => this.supervisorFields,
+        getNameField: () => this.nameField,
+        getChartContainer: () => this.chartContainer,
+        renderChart: () => this.renderChart()
+      });
+      layout.chartWrapper.appendChild(this.poiManager.createPOISelector());
+    }
+    createToolbar() {
+      var _a2, _b;
+      return createToolbar({
+        instanceId: this.instanceId,
+        position: this.toolbarPosition,
+        orientation: this.toolbarOrientation,
+        experimental: this.experimental,
+        currentView: this.currentView,
+        swapModeEnabled: this.swapModeEnabled,
+        columnAdjustMode: (_b = (_a2 = this.columnAdjustManager) == null ? void 0 : _a2.isActive) != null ? _b : false,
+        actions: {
+          handleFit: () => this.handleFit(),
+          handleReset: () => this.handleReset(),
+          handleExpandAll: () => this.handleExpandAll(),
+          handleCollapseAll: () => this.handleCollapseAll(),
+          handleColumnAdjustToggle: () => this.columnAdjustManager.toggle(),
+          handleSwapToggle: () => this.handleSwapToggle(),
+          handleExport: () => this.handleExport(),
+          handleToggleView: () => this.handleToggleView()
+        }
+      });
+    }
+    handleFit() {
+      if (this.orgChart) {
+        this.orgChart.fit();
+      }
+    }
+    handleReset() {
+      this.renderChart();
+    }
+    handleSwapToggle() {
+      if (!this.orgChart) return;
+      this.swapModeEnabled = !this.swapModeEnabled;
+      if (typeof this.orgChart.enableSwapMode === "function") {
+        this.orgChart.enableSwapMode(this.swapModeEnabled);
+      }
+      if (typeof this.orgChart.onNodeSwap === "function") {
+        this.orgChart.onNodeSwap((data1, data2) => {
+          this.updateYAMLAfterSwap(data1, data2);
+        });
+      }
+      const swapBtn = document.querySelector(`[data-id="ychart-btn-swap-${this.instanceId}"]`);
+      if (swapBtn) {
+        if (this.swapModeEnabled) {
+          swapBtn.style.background = "var(--yc-color-accent-red)";
+          swapBtn.style.color = "white";
+        } else {
+          swapBtn.style.background = "transparent";
+          swapBtn.style.color = "var(--yc-color-icon)";
+        }
+      }
+    }
+    handleToggleView() {
+      if (this.currentView === "hierarchy") {
+        this.renderForceGraph();
+      } else {
+        this.renderChart();
+      }
+      const toggleBtn = document.querySelector(`[data-id="ychart-btn-toggleView-${this.instanceId}"]`);
+      if (toggleBtn) {
+        const icons2 = {
+          forceGraph: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><line x1="12" y1="7" x2="12" y2="10"/><line x1="12" y1="14" x2="12" y2="17"/><line x1="14" y1="12" x2="17" y2="12"/><line x1="7" y1="12" x2="10" y2="12"/></svg>`,
+          orgChart: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>`
+        };
+        if (this.currentView === "hierarchy") {
+          toggleBtn.innerHTML = icons2.forceGraph;
+          toggleBtn.title = "Switch to Force Graph";
+        } else {
+          toggleBtn.innerHTML = icons2.orgChart;
+          toggleBtn.title = "Switch to Org Chart";
+        }
+      }
+    }
+    handleExport() {
+      if (this.orgChart && typeof this.orgChart.exportSvg === "function") {
+        this.orgChart.exportSvg();
+      }
+    }
+    handleFormatYAML() {
+      if (!this.editor) return;
+      formatYAML(this.editor);
+    }
+    handleExpandAll() {
+      if (this.orgChart && typeof this.orgChart.expandAll === "function") {
+        this.orgChart.expandAll();
+        this.orgChart.render();
+        setTimeout(() => {
+          if (this.orgChart) {
+            this.orgChart.fit();
+          }
+        }, 200);
+      }
+    }
+    handleCollapseAll() {
+      if (this.orgChart && typeof this.orgChart.collapseAll === "function") {
+        this.orgChart.collapseAll();
+        this.orgChart.render();
+        setTimeout(() => {
+          if (this.orgChart) {
+            this.orgChart.fit();
+          }
+        }, 200);
+      }
+    }
+    initializeEditor() {
+      if (!this.editorContainer) return;
+      this.editor = createEditor(
+        this.editorContainer,
+        this.initialData,
+        this.defaultOptions.editorTheme,
+        (content2) => this.parseFrontMatter(content2),
+        (diagnostics, view) => {
+          if (this.errorBanner) {
+            updateErrorBanner(this.errorBanner, diagnostics, view, (line) => this.jumpToLine(line));
+          }
+        },
+        () => {
+          if (!this.isUpdatingProgrammatically) {
+            this.renderChart();
+          }
+        }
+      );
+    }
+    toggleEditor() {
+      const sidebar = document.getElementById(`ychart-editor-sidebar-${this.instanceId}`);
+      const collapseBtn = document.querySelector(`[data-id="ychart-collapse-editor-${this.instanceId}"]`);
+      if (!sidebar || !collapseBtn) return;
+      const isCollapsed = sidebar.style.width === "0px";
+      if (isCollapsed) {
+        sidebar.style.width = "400px";
+        sidebar.style.borderLeftWidth = "1px";
+        sidebar.style.transition = "width 0.3s ease, border-left-width 0s 0s";
+        collapseBtn.style.right = "399px";
+        collapseBtn.innerHTML = "▶";
+        setTimeout(() => {
+          if (this.editor) {
+            this.editor.requestMeasure();
+          }
+        }, 350);
+      } else {
+        sidebar.style.width = "0px";
+        sidebar.style.borderLeftWidth = "0px";
+        sidebar.style.transition = "width 0.3s ease, border-left-width 0s 0.3s";
+        collapseBtn.style.right = "-1px";
+        collapseBtn.innerHTML = "◀";
+      }
+      setTimeout(() => {
+        if (this.orgChart && this.chartContainer) {
+          console.log("Re-rendering and fitting chart to new container bounds...");
+          this.orgChart.render().fit();
+          if (this.bgPattern) {
+            setTimeout(() => applyBackgroundPattern(this.chartContainer, this.bgPattern, this.defaultOptions.patternColor), 50);
+          }
+        }
+      }, 250);
+    }
+    /**
+     * Jump to a specific line in the editor
+     */
+    jumpToLine(lineNumber) {
+      if (!this.editor) return;
+      jumpToEditorLine(this.editor, lineNumber);
+    }
+    /**
+     * Set up keyboard shortcuts for the editor
+     */
+    setupKeyboardShortcuts() {
+      document.addEventListener("keydown", (event) => {
+        if (event.ctrlKey && event.key === "`") {
+          event.preventDefault();
+          this.toggleEditorAndFindSelectedNode();
+        }
+        if ((event.metaKey || event.ctrlKey) && event.key === "k") {
+          event.preventDefault();
+          this.searchManager.focusFloatingSearch();
+        }
+      });
+    }
+    toggleEditorAndFindSelectedNode() {
+      const sidebar = document.getElementById(`ychart-editor-sidebar-${this.instanceId}`);
+      if (!sidebar) return;
+      const isCollapsed = sidebar.style.width === "0px";
+      this.toggleEditor();
+      if (isCollapsed) {
+        setTimeout(() => this.scrollToSelectedNode(), 400);
+      }
+    }
+    scrollToSelectedNode() {
+      if (!this.editor || !this.orgChart) return;
+      const chartState = this.orgChart.getChartState();
+      scrollToNodeInEditor(this.editor, chartState == null ? void 0 : chartState.selectedNodeId);
+    }
+    parseFrontMatter(content2) {
+      const result = parseFrontMatter(content2, this.supervisorFields);
+      if (result.updatedSupervisorFields) {
+        this.supervisorFields = result.updatedSupervisorFields;
+      }
+      return result;
+    }
+    resolveMissingParentIds(data) {
+      return resolveMissingParentIds(data, this.nameField, this.supervisorFields);
+    }
+    /**
+     * Configure the field names used for supervisor-based parentId resolution.
+     * When a node is missing a parentId, the parser will attempt to find a parent
+     * by matching the supervisor field value to another node's name field.
+     * 
+     * By default, the following fields are checked in order:
+     * 'supervisor', 'reports', 'reports_to', 'manager', 'leader', 'parent'
+     * 
+     * @param supervisorFieldNames - The field(s) containing the supervisor's name. 
+     *                               Can be a single string or an array of field names to check in order.
+     * @param nameFieldName - The field containing the node's name for matching (default: 'name')
+     */
+    supervisorLookup(supervisorFieldNames, nameFieldName = "name") {
+      this.supervisorFields = Array.isArray(supervisorFieldNames) ? supervisorFieldNames : [supervisorFieldNames];
+      this.nameField = nameFieldName;
+      if (this.orgChart) {
+        this.renderChart();
+      }
+      return this;
+    }
+    /**
+     * Set the initial Person of Interest (POI) programmatically.
+     * @param selfValue - The id, name, email, or any field value that identifies the person.
+     */
+    self(selfValue) {
+      if (selfValue === null || selfValue === "") {
+        this.poiManager.initialSelf = null;
+        this.poiManager.selfApplied = false;
+        if (this.orgChart && this.truthData.length > 0) {
+          this.poiManager.setPersonOfInterest("");
+        }
+        return this;
+      }
+      this.poiManager.initialSelf = selfValue;
+      this.poiManager.selfApplied = false;
+      if (this.orgChart && this.truthData.length > 0) {
+        const personId = this.poiManager.resolveSelfToPersonId(selfValue);
+        if (personId) {
+          this.poiManager.setPersonOfInterest(personId);
+        }
+        this.poiManager.selfApplied = true;
+      }
+      return this;
+    }
+    renderChart() {
+      try {
+        if (this.forceGraph) {
+          this.forceGraph.stop();
+          this.forceGraph = null;
+        }
+        if (!this.editor) return;
+        const yamlContent = this.editor.state.doc.toString();
+        const { options: userOptions, schema: schemaDef, card: cardDef, data: yamlData } = this.parseFrontMatter(yamlContent);
+        const options = __spreadValues(__spreadValues({}, this.defaultOptions), userOptions);
+        this.currentOptions = options;
+        if (!this.poiManager.selfApplied && options.self !== void 0) {
+          this.poiManager.initialSelf = options.self;
+        }
+        let parsedData = load(yamlData);
+        this.currentSchema = schemaDef;
+        this.cardTemplate = cardDef || null;
+        if (!Array.isArray(parsedData)) {
+          throw new Error("YAML must be an array");
+        }
+        const resolvedData = this.resolveMissingParentIds(parsedData);
+        this.truthData = resolvedData;
+        this.poiManager.updatePOISelector(resolvedData);
+        const virtualData = this.poiManager.buildVirtualData(resolvedData);
+        if (!this.orgChart) {
+          this.orgChart = new OrgChart();
+        }
+        this.orgChart.container(`#ychart-chart-${this.instanceId}`).data(virtualData).nodeHeight(() => options.nodeHeight).nodeWidth(() => options.nodeWidth).childrenMargin(() => options.childrenMargin).compactMarginBetween(() => options.compactMarginBetween).compactMarginPair(() => options.compactMarginPair).neighbourMargin(() => options.neighbourMargin).onNodeClick((d, _i, _arr) => {
+          if (this.columnAdjustManager.isActive) {
+            this.columnAdjustManager.handleNodeClick(d);
+          }
+        }).onNodeDetailsClick((d) => {
+          this.showNodeDetails(d.data);
+        }).nodeContent((d) => this.getNodeContent(d)).render();
+        setupPatternPersistence(this.chartContainer, () => this.bgPattern, this.defaultOptions.patternColor);
+        if (this.bgPattern) {
+          setTimeout(() => applyBackgroundPattern(this.chartContainer, this.bgPattern, this.defaultOptions.patternColor), 10);
+        }
+        setTimeout(() => {
+          if (this.orgChart && this.chartContainer) {
+            this.orgChart.fit();
+            if (this.bgPattern) {
+              applyBackgroundPattern(this.chartContainer, this.bgPattern, this.defaultOptions.patternColor);
+            }
+            this.initializeHeightSync();
+            this.poiManager.applyInitialSelf();
+          }
+        }, 100);
+        this.currentView = "hierarchy";
+      } catch (error) {
+      }
+    }
+    getNodeContent(d) {
+      const showExpandSiblings = this.poiManager.shouldShowExpandSiblings(d.data.id);
+      const siblingsExpanded = this.poiManager.expandedSiblings.has(String(d.data.id));
+      const siblingCount = showExpandSiblings ? this.poiManager.getSiblingCount(d.data.id) : 0;
+      const { directSupervisor } = this.poiManager.getSupervisorChainInfo();
+      const isTopmost = this.poiManager.isTopmostVisibleSupervisor(d.data.id);
+      const showSupervisorChainBtn = isTopmost && directSupervisor !== null;
+      const hiddenSupervisorCount = this.poiManager.getHiddenSupervisorCount(d.data.id);
+      const poiButtons = {
+        expandSiblingsBtn: buildExpandSiblingsBtn(d.data.id, showExpandSiblings, siblingsExpanded, siblingCount),
+        expandSupervisorChainBtn: buildExpandSupervisorChainBtn(showSupervisorChainBtn, this.poiManager.supervisorChainExpanded, hiddenSupervisorCount)
+      };
+      return renderNodeContent(d, {
+        currentSchema: this.currentSchema,
+        cardTemplate: this.cardTemplate,
+        customTemplate: this.customTemplate,
+        currentOptions: this.currentOptions,
+        defaultOptions: this.defaultOptions
+      }, poiButtons);
+    }
+    showNodeDetails(data) {
+      if (!this.detailsPanel) return;
+      this.detailsPanel.innerHTML = renderNodeDetails(data, this.instanceId);
+      this.detailsPanel.style.display = "block";
+    }
+    /**
+    * Initialize node height synchronization service
+    * Ensures all nodes have the same height based on the configured nodeHeight option
+    */
+    initializeHeightSync() {
+      if (!this.chartContainer) return;
+      if (this.nodeHeightSync) {
+        this.nodeHeightSync.destroy();
+      }
+      const svg2 = this.chartContainer.querySelector("svg");
+      if (!svg2) {
+        console.warn("SVG not found for height sync");
+        return;
+      }
+      const configuredNodeHeight = this.currentOptions.nodeHeight || this.defaultOptions.nodeHeight || 110;
+      this.nodeHeightSync = new NodeHeightSyncService(svg2, {
+        fixedHeight: configuredNodeHeight,
+        // Use configured nodeHeight as the fixed height
+        minHeight: configuredNodeHeight,
+        // Also set as minimum for safety
+        maxHeight: 500,
+        // Reasonable max to prevent excessive heights
+        heightPadding: 0,
+        // No extra padding since we're using fixed height
+        resizeDebounce: 250,
+        // Longer debounce for stability
+        onHeightChange: (newHeight) => {
+          if (this.orgChart) {
+            requestAnimationFrame(() => {
+              var _a2, _b, _c;
+              (_a2 = this.orgChart) == null ? void 0 : _a2.nodeHeight(() => newHeight);
+              (_c = (_b = this.orgChart) == null ? void 0 : _b.updateHtmlOverlay) == null ? void 0 : _c.call(_b);
+            });
+          }
+        }
+      });
+      this.nodeHeightSync.init();
+    }
+    renderForceGraph() {
+      try {
+        if (!this.editor) return;
+        const yamlContent = this.editor.state.doc.toString();
+        const { data: yamlData } = this.parseFrontMatter(yamlContent);
+        const parsedData = load(yamlData);
+        if (!Array.isArray(parsedData)) {
+          throw new Error("YAML must be an array");
+        }
+        const resolvedData = this.resolveMissingParentIds(parsedData);
+        if (this.forceGraph) {
+          this.forceGraph.stop();
+        }
+        this.forceGraph = new ForceGraph("ychart-chart", (data) => this.showNodeDetails(data));
+        this.forceGraph.render(resolvedData);
+        this.currentView = "force";
+      } catch (error) {
+      }
+    }
+    /**
+     * Set background pattern style
+     */
+    bgPatternStyle(style) {
+      this.bgPattern = style;
+      this.renderChart();
+      return this;
+    }
+    /**
+     * Set action button position and orientation
+     */
+    actionBtnPos(position, orientation) {
+      this.toolbarPosition = position;
+      this.toolbarOrientation = orientation;
+      if (this.toolbar && this.toolbar.parentElement) {
+        const parent = this.toolbar.parentElement;
+        parent.removeChild(this.toolbar);
+        this.toolbar = this.createToolbar();
+        parent.appendChild(this.toolbar);
+      }
+      return this;
+    }
+    /**
+     * Set custom template function for node rendering
+     * The function receives:
+     * - d: node data object with d.data (your YAML properties), d.width, d.height
+     * - schema: the schema definition from front matter
+     */
+    template(templateFn) {
+      this.customTemplate = templateFn;
+      if (this.orgChart) {
+        this.renderChart();
+      }
+      return this;
+    }
+    updateYAMLAfterSwap(data1, data2) {
+      try {
+        if (!this.editor) return;
+        this.isUpdatingProgrammatically = true;
+        const yamlContent = this.editor.state.doc.toString();
+        const { options: userOptions, schema: schemaDef, data: yamlData } = this.parseFrontMatter(yamlContent);
+        const parsedData = load(yamlData);
+        if (!Array.isArray(parsedData)) {
+          console.error("Cannot update YAML: not an array");
+          return;
+        }
+        const idx1 = parsedData.findIndex((item) => String(item.id) === String(data1.id));
+        const idx2 = parsedData.findIndex((item) => String(item.id) === String(data2.id));
+        if (idx1 === -1 || idx2 === -1) {
+          console.error("Could not find nodes in YAML data");
+          return;
+        }
+        [parsedData[idx1], parsedData[idx2]] = [parsedData[idx2], parsedData[idx1]];
+        const frontMatter = `---
+options:
+${Object.entries(userOptions).map(([key, value]) => `  ${key}: ${value}`).join("\n")}
+schema:
+${Object.entries(schemaDef).map(([key, field]) => {
+          const modifiers2 = [field.type, field.required ? "required" : "optional", field.missing ? "missing" : ""].filter(Boolean);
+          return `  ${key}: ${modifiers2.join(" | ")}`;
+        }).join("\n")}
+---
+
+`;
+        const newYamlData = dump(parsedData, {
+          indent: 2,
+          lineWidth: -1,
+          noRefs: true
+        });
+        const newContent = frontMatter + newYamlData;
+        this.editor.dispatch({
+          changes: {
+            from: 0,
+            to: this.editor.state.doc.length,
+            insert: newContent
+          }
+        });
+        console.log(`Nodes swapped: ${data1.name} ↔ ${data2.name}`);
+      } catch (error) {
+        console.error("Error updating YAML after swap:", error);
+      } finally {
+        this.isUpdatingProgrammatically = false;
+      }
+    }
+    /**
+     * Get current YAML content
+     */
+    getYAML() {
+      var _a2;
+      return ((_a2 = this.editor) == null ? void 0 : _a2.state.doc.toString()) || "";
+    }
+    /**
+     * Update YAML content programmatically
+     */
+    setYAML(yamlContent) {
+      if (!this.editor) return this;
+      this.isUpdatingProgrammatically = true;
+      this.editor.dispatch({
+        changes: {
+          from: 0,
+          to: this.editor.state.doc.length,
+          insert: yamlContent
+        }
+      });
+      this.isUpdatingProgrammatically = false;
+      this.renderChart();
+      return this;
+    }
+    /**
+     * Inject CSS styles into Shadow DOM for style encapsulation.
+     * This includes all CSS variables and library styles needed for YChart.
+     */
+    injectShadowDOMStyles() {
+      if (!this.shadowRoot) return;
+      const styleElement = document.createElement("style");
+      styleElement.textContent = getShadowDOMStyles();
+      this.shadowRoot.appendChild(styleElement);
+    }
+    /**
+    * Get the Shadow DOM root if Shadow DOM is enabled
+    */
     getShadowRoot() {
       return this.shadowRoot;
     }
