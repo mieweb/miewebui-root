@@ -13,6 +13,7 @@ These documents capture pitfalls, workarounds, and recommended changes discovere
 | File | Audience | Summary |
 |------|----------|---------|
 | [adopting-mieweb-ui.md](adopting-mieweb-ui.md) | Consumers | **Generic adoption guide** — audit, resolution, testing (brand/dark mode), gap detection for any project |
+| [execution-plan.md](execution-plan.md) | AI / Consumers | **Step-by-step execution plan** — ordered migration steps for AI agents or developers to convert any project |
 | [component-policy.md](component-policy.md) | Organizations | **Component policy** — use first → build locally → contribute upstream |
 | [compliance-prompt.md](compliance-prompt.md) | AI / Consumers | **Reusable AI prompt** — paste into any coding session to audit and migrate a project |
 
