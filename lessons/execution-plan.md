@@ -53,7 +53,7 @@ meteor npm install @mieweb/ui   # Meteor
 
 **Verify installation:**
 ```bash
-node -e "console.log(Object.keys(require('@mieweb/ui')).length + ' exports found')"
+node -e "import('@mieweb/ui').then(m => console.log(Object.keys(m).length + ' exports found'))"
 ```
 
 ---
@@ -79,8 +79,11 @@ Every project has one CSS file that Tailwind processes (e.g. `globals.css`, `sty
 @source "../node_modules/@mieweb/ui/dist";
 
 /* 4. Define dark mode variant for Tailwind 4
-   Must match BOTH class-based (.dark) and attribute-based (data-theme) dark mode */
-@custom-variant dark (&:is(.dark *, [data-theme=dark] *));
+   The canonical @mieweb/ui selector (matches data-theme only): */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+/* If using next-themes with attribute={["class", "data-theme"]}, use this broader
+   selector that also matches the .dark class next-themes adds:
+   @custom-variant dark (&:is(.dark *, [data-theme=dark] *)); */
 ```
 
 #### Required theme block:
@@ -181,7 +184,7 @@ After completing this step, verify:
 
 > Optional but recommended. Brand switching lets the project change its entire color scheme dynamically.
 
-The `@mieweb/ui` brand CSS files (e.g. `bluehive.css`, `mieweb.css`, `webchart.css`) each define the full set of `--mieweb-*` CSS variables in a `:root {}` block. Because they target `:root`, they can't be scoped with `data-brand` attributes out of the box. The working approach is to serve each brand CSS as a separate static file and swap a `<link>` tag at runtime.
+The `@mieweb/ui` brand CSS files (e.g. `bluehive.css`, `mieweb.css`, `webchart.css`) each define the primary color scale, semantic tokens, chart colors, typography, radius, and shadow variables in a `:root {}` block. They do **not** define neutral/accent scales — those require hex fallbacks in the `@theme` block (see Step 2.1). Because they target `:root`, they can't be scoped with `data-brand` attributes out of the box. The working approach is to serve each brand CSS as a separate static file and swap a `<link>` tag at runtime.
 
 ### 3.1 Copy Brand CSS to Public Directory
 
@@ -196,7 +199,7 @@ This makes each brand available at `/brands/{name}.css` (e.g. `/brands/bluehive.
 
 > **Note:** Add this copy step to the project's build/CI pipeline to keep brand files in sync when `@mieweb/ui` is updated.
 
-> **⚠ Known issue (v0.2.x):** The `package.json` `exports` map declares paths like `./brands/bluehive.css` → `./dist/brands/bluehive.css`, but the brand `.css` files may not actually be present in `dist/` in the published package (the JS/TS brand modules are built, but the raw CSS files are not copied by `tsup`). If the `cp` command above finds no `.css` files, copy them from the `@mieweb/ui` source repo instead: `cp /path/to/ui/src/brands/*.css public/brands/`. For Meteor projects using `@import` in CSS, you may need to copy the brand CSS into the project (e.g. `client/brands/`) and use a relative import path instead of the package path.
+> **Note:** As of the current build, the `copy:brand-css` script in `@mieweb/ui`'s build pipeline copies `src/brands/*.css` to `dist/brands/`, so the `cp` command above should work with the published package. If for some reason the `.css` files are missing from `dist/`, copy them from the `@mieweb/ui` source repo instead: `cp /path/to/ui/src/brands/*.css public/brands/`. For Meteor projects using `@import` in CSS, you may need to copy the brand CSS into the project (e.g. `client/brands/`) and use a relative import path instead of the package path.
 
 **Available brands** (check your installed version — more may be added):
 
@@ -382,11 +385,11 @@ Buttons are typically the most numerous component. Replace them first because:
 | `size="sm"` | `size="sm"` | Same |
 | `size="lg"` | `size="lg"` | Same |
 | `size="icon"` | `size="icon"` | Verify availability |
-| `asChild` | `asChild` | Check — may use Slot from Radix |
+| `asChild` | *(not supported)* | `@mieweb/ui` Button renders a native `<button>`, no Radix Slot |
 | `disabled` | `disabled` | Same |
 | `className` | `className` | Same |
 
-> **⚠ Critical:** The variant renames (`default` → `primary`, `destructive` → `danger`) apply to **all** components that accept a variant prop (Button, Badge, Alert, etc.), not just Button.
+> **⚠ Critical:** The variant renames are **component-specific**, not universal. Button uses `primary` (not `default`) and `danger` (not `destructive`). However, Badge keeps `default` as a valid variant and uses `danger` (not `destructive`). Always check each component's actual variant type in the source or Storybook.
 
 **Raw `<button>` replacement pattern:**
 ```tsx
@@ -439,7 +442,7 @@ Choose the variant that most closely matches the button's visual style:
 </Dialog>
 
 // AFTER — @mieweb/ui Modal
-<Modal open={open} onClose={() => setOpen(false)}>
+<Modal open={open} onOpenChange={(isOpen) => setOpen(isOpen)}>
   <ModalHeader>Title</ModalHeader>
   <ModalBody>
     <p>Description</p>
@@ -490,7 +493,7 @@ import { Select } from '@mieweb/ui'
 
 <Select
   value={priority}
-  onChange={(e) => setPriority(e.target.value)}
+  onValueChange={setPriority}
   options={[
     { value: "low", label: "Low" },
     { value: "medium", label: "Medium" },
@@ -500,7 +503,7 @@ import { Select } from '@mieweb/ui'
 />
 ```
 
-> **Note:** `onValueChange(value)` → `onChange(event)` — you must read `e.target.value` from the event.
+> **Note:** Both shadcn and `@mieweb/ui` Select use `onValueChange(value: string)` — the callback receives the value string directly, not a native event.
 
 ### 4d. Data Display
 
@@ -927,17 +930,17 @@ App-specific variables (e.g. `--sidebar-*`) are expected. Hardcoded color variab
 | Components render with missing styles | Tailwind 4 tree-shaking | Add `@source "../node_modules/@mieweb/ui/dist"` |
 | Dark mode toggle does nothing | Missing `@custom-variant dark` | Add to CSS entry |
 | Dark mode toggles but some surfaces stay light | CSS variable fallbacks missing | Add hex fallbacks to `@theme` |
-| Brand switch has no effect | Wrong import path | Use barrel: `from '@mieweb/ui/brands'` |
+| Brand switch has no effect | `<link>` tag not updating | Verify `useBrand` hook is swapping the `<link href>` to `/brands/{name}.css` (see Step 3.2) |
 | PostCSS does nothing | Wrong plugin | Use `@tailwindcss/postcss`, not `tailwindcss` |
 | `var()` resolves to transparent | No CSS variable defined | Add fallback: `var(--token, #hex)` |
 | TypeScript errors on imports | Subpath resolution | Use barrel imports from `@mieweb/ui`, not subpaths |
-| Modal/Dialog doesn't close | API mismatch | shadcn uses `onOpenChange`, @mieweb/ui may use `onClose` |
-| Select dropdown empty | Compound API mismatch | Check if @mieweb/ui Select uses options array vs children |
+| Modal/Dialog doesn't close | API mismatch | Both shadcn and `@mieweb/ui` use `onOpenChange(open: boolean)` |
+| Select dropdown empty | Compound API mismatch | `@mieweb/ui` Select uses `options` array, not compound children |
 | Brand resets on page refresh | `useBrand` only runs on settings page | Add `BrandInitializer` to root layout (see Step 3.3) |
-| `variant="default"` has no effect | Variant renamed | Use `variant="primary"` instead |
+| Button `variant="default"` has no effect | Variant renamed (Button only) | Use `variant="primary"` — but Badge keeps `variant="default"` |
 | `variant="destructive"` has no effect | Variant renamed | Use `variant="danger"` instead |
-| `onValueChange` doesn't fire on Select | Event API changed | Use `onChange` and read `e.target.value` |
-| Brand CSS import fails in Meteor/Rspack | CSS file missing from package dist | Copy from source repo into project; use relative import |
+| `asChild` prop not working | Not supported | `@mieweb/ui` Button renders native `<button>`, no Radix Slot |
+| Brand CSS import fails in Meteor/Rspack | CSS file not found | Copy brand CSS into project; use relative import path |
 
 ---
 
