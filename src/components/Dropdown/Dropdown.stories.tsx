@@ -148,3 +148,23 @@ export const Disabled: Story = {
     </Dropdown>
   ),
 };
+
+export const Searchable: Story = {
+  render: () => (
+    <Dropdown
+      searchable
+      width={280}
+      searchPlaceholder="Search actions..."
+      trigger={<Button>Searchable Menu</Button>}
+    >
+      <DropdownLabel>Patient Actions</DropdownLabel>
+      <DropdownItem searchText="schedule appointment">Schedule Visit</DropdownItem>
+      <DropdownItem searchText="send secure message">Message Patient</DropdownItem>
+      <DropdownItem searchText="upload intake form">Upload Forms</DropdownItem>
+      <DropdownSeparator />
+      <DropdownLabel>Billing</DropdownLabel>
+      <DropdownItem searchText="create claim">Create Claim</DropdownItem>
+      <DropdownItem searchText="collect payment">Collect Payment</DropdownItem>
+    </Dropdown>
+  ),
+};
