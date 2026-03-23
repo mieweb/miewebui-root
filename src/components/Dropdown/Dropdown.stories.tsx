@@ -181,6 +181,7 @@ export const MultiSelect: Story = {
     return (
       <Dropdown
         multiSelect
+        showSelectAll
         width={280}
         selectedValues={selectedValues}
         onSelectedValuesChange={setSelectedValues}
@@ -207,6 +208,7 @@ export const SearchableMultiSelect: Story = {
       <Dropdown
         searchable
         multiSelect
+        showSelectAll
         width={300}
         searchPlaceholder="Search actions..."
         selectedValues={selectedValues}

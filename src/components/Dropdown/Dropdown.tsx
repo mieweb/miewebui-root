@@ -45,6 +45,10 @@ export interface DropdownProps {
   defaultSelectedValues?: string[];
   /** Callback fired when selected values change in multi-select mode */
   onSelectedValuesChange?: (values: string[]) => void;
+  /** Whether to render a select-all control for multi-select dropdowns */
+  showSelectAll?: boolean;
+  /** Label for the select-all control */
+  selectAllLabel?: React.ReactNode;
 }
 
 const placementStyles: Record<DropdownPlacement, string> = {
@@ -210,9 +214,13 @@ function filterDropdownChildren(
       }
 
       if (isDropdownElement(child, DropdownItem)) {
-        const searchText = (
-          child.props.searchText ?? getNodeText(child.props.children)
-        ).toLowerCase();
+        const searchText = [
+          getNodeText(child.props.children),
+          child.props.searchText,
+        ]
+          .filter(Boolean)
+          .join(' ')
+          .toLowerCase();
 
         return searchText.includes(normalizedQuery) ? child : null;
       }
@@ -256,6 +264,30 @@ function filterDropdownChildren(
   return normalizeDropdownSiblings(filteredChildren);
 }
 
+function getSelectableValues(children: React.ReactNode): string[] {
+  return React.Children.toArray(children).flatMap((child) => {
+    if (
+      !React.isValidElement<{ children?: React.ReactNode; value?: unknown }>(
+        child
+      )
+    ) {
+      return [];
+    }
+
+    if (child.type === React.Fragment || child.type === DropdownContent) {
+      return getSelectableValues(child.props.children);
+    }
+
+    if (isDropdownElement(child, DropdownItem)) {
+      return typeof child.props.value === 'string' ? [child.props.value] : [];
+    }
+
+    return child.props.children !== undefined
+      ? getSelectableValues(child.props.children)
+      : [];
+  });
+}
+
 /**
  * An accessible dropdown menu component.
  *
@@ -286,6 +318,8 @@ function Dropdown({
   selectedValues: controlledSelectedValues,
   defaultSelectedValues = [],
   onSelectedValuesChange,
+  showSelectAll = false,
+  selectAllLabel = 'Select all',
 }: DropdownProps) {
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(false);
   const [uncontrolledSelectedValues, setUncontrolledSelectedValues] =
@@ -390,10 +424,40 @@ function Dropdown({
     () => filterDropdownChildren(children, searchQuery),
     [children, searchQuery]
   );
+  const visibleSelectableValues = React.useMemo(
+    () => getSelectableValues(searchable ? filteredChildren : children),
+    [children, filteredChildren, searchable]
+  );
   const hasSearchResults = React.useMemo(
     () => hasVisibleDropdownContent(filteredChildren),
     [filteredChildren]
   );
+  const allVisibleSelected =
+    visibleSelectableValues.length > 0 &&
+    visibleSelectableValues.every((value) => selectedValues.includes(value));
+  const someVisibleSelected = visibleSelectableValues.some((value) =>
+    selectedValues.includes(value)
+  );
+
+  const handleSelectAll = React.useCallback(() => {
+    if (!multiSelect || visibleSelectableValues.length === 0) {
+      return;
+    }
+
+    const visibleValueSet = new Set(visibleSelectableValues);
+
+    setSelectedValues(
+      allVisibleSelected
+        ? selectedValues.filter((value) => !visibleValueSet.has(value))
+        : Array.from(new Set([...selectedValues, ...visibleSelectableValues]))
+    );
+  }, [
+    allVisibleSelected,
+    multiSelect,
+    selectedValues,
+    setSelectedValues,
+    visibleSelectableValues,
+  ]);
 
   return (
     <DropdownContext.Provider value={dropdownContext}>
@@ -430,6 +494,22 @@ function Dropdown({
                 />
               </div>
             )}
+            {multiSelect &&
+              showSelectAll &&
+              visibleSelectableValues.length > 0 && (
+                <>
+                  <div className="p-2">
+                    <DropdownItem
+                      checked={allVisibleSelected}
+                      indeterminate={!allVisibleSelected && someVisibleSelected}
+                      onClick={handleSelectAll}
+                    >
+                      {selectAllLabel}
+                    </DropdownItem>
+                  </div>
+                  <DropdownSeparator />
+                </>
+              )}
             {searchable ? (
               hasSearchResults ? (
                 filteredChildren
@@ -540,35 +620,59 @@ export interface DropdownItemProps extends React.ButtonHTMLAttributes<HTMLButton
   searchText?: string;
   /** Checked state for multi-select items */
   checked?: boolean;
+  /** Indeterminate state for multi-select items */
+  indeterminate?: boolean;
   /** Callback fired when a multi-select item changes */
   onCheckedChange?: (checked: boolean) => void;
 }
 
-function DropdownItemCheckbox({ checked }: { checked: boolean }) {
+function DropdownItemCheckbox({
+  checked,
+  indeterminate = false,
+}: {
+  checked: boolean;
+  indeterminate?: boolean;
+}) {
   return (
     <span
       aria-hidden="true"
       className={cn(
         'flex h-4 w-4 shrink-0 items-center justify-center rounded border-2 transition-colors duration-150',
-        checked
+        checked || indeterminate
           ? 'border-primary-500 bg-primary-500 text-white'
           : 'border-input bg-background text-transparent'
       )}
     >
-      <svg
-        className="h-3 w-3"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 16 16"
-        fill="none"
-      >
-        <path
-          d="M3.5 8.5 6.5 11.5 12.5 4.5"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+      {indeterminate ? (
+        <svg
+          className="h-3 w-3"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 16 16"
+          fill="none"
+        >
+          <path
+            d="M4 8h8"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        </svg>
+      ) : (
+        <svg
+          className="h-3 w-3"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 16 16"
+          fill="none"
+        >
+          <path
+            d="M3.5 8.5 6.5 11.5 12.5 4.5"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      )}
     </span>
   );
 }
@@ -585,6 +689,7 @@ const DropdownItem = React.forwardRef<HTMLButtonElement, DropdownItemProps>(
       children,
       searchText,
       checked,
+      indeterminate = false,
       onCheckedChange,
       onClick,
       value,
@@ -596,7 +701,9 @@ const DropdownItem = React.forwardRef<HTMLButtonElement, DropdownItemProps>(
     const dropdownContext = React.useContext(DropdownContext);
     const itemValue = typeof value === 'string' ? value : undefined;
     const isMultiSelectItem =
-      dropdownContext?.multiSelect === true && itemValue !== undefined;
+      (dropdownContext?.multiSelect === true && itemValue !== undefined) ||
+      checked !== undefined ||
+      indeterminate;
     const isChecked =
       checked ??
       (isMultiSelectItem
@@ -628,7 +735,9 @@ const DropdownItem = React.forwardRef<HTMLButtonElement, DropdownItemProps>(
         ref={ref}
         type="button"
         role={isMultiSelectItem ? 'menuitemcheckbox' : 'menuitem'}
-        aria-checked={isMultiSelectItem ? isChecked : undefined}
+        aria-checked={
+          isMultiSelectItem ? (indeterminate ? 'mixed' : isChecked) : undefined
+        }
         disabled={disabled}
         className={cn(
           'flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm',
@@ -651,7 +760,12 @@ const DropdownItem = React.forwardRef<HTMLButtonElement, DropdownItemProps>(
         value={value}
         {...props}
       >
-        {isMultiSelectItem && <DropdownItemCheckbox checked={isChecked} />}
+        {isMultiSelectItem && (
+          <DropdownItemCheckbox
+            checked={isChecked}
+            indeterminate={indeterminate}
+          />
+        )}
         {icon && <span className="h-4 w-4 shrink-0">{icon}</span>}
         <span className="font-medium">{children}</span>
       </button>

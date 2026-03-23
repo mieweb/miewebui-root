@@ -110,6 +110,30 @@ describe('Dropdown', () => {
     ).not.toBeInTheDocument();
   });
 
+  it('matches both the visible label and custom searchText when searchText is provided', async () => {
+    const user = userEvent.setup();
+
+    renderWithTheme(
+      <Dropdown searchable trigger={<Button>Open menu</Button>}>
+        <DropdownItem searchText="schedule appointment">Schedule Visit</DropdownItem>
+        <DropdownItem searchText="send secure message">Message Patient</DropdownItem>
+      </Dropdown>
+    );
+
+    await user.click(screen.getByRole('button', { name: 'Open menu' }));
+    await user.type(
+      screen.getByRole('searchbox', { name: 'Search dropdown items' }),
+      'visit'
+    );
+
+    expect(
+      screen.getByRole('menuitem', { name: 'Schedule Visit' })
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole('menuitem', { name: 'Message Patient' })
+    ).not.toBeInTheDocument();
+  });
+
   it('supports multi-select items with checkbox semantics', async () => {
     const user = userEvent.setup();
     const handleSelectedValuesChange = vi.fn();
@@ -183,5 +207,119 @@ describe('Dropdown', () => {
     await user.click(messageItem);
 
     expect(messageItem).toHaveAttribute('aria-checked', 'true');
+  });
+
+  it('selects all multi-select items when the select-all control is used', async () => {
+    const user = userEvent.setup();
+
+    function MultiSelectHarness() {
+      const [selectedValues, setSelectedValues] = React.useState<string[]>([]);
+
+      return (
+        <Dropdown
+          multiSelect
+          showSelectAll
+          selectedValues={selectedValues}
+          onSelectedValuesChange={setSelectedValues}
+          trigger={<Button>Open menu</Button>}
+        >
+          <DropdownItem value="alpha">Alpha</DropdownItem>
+          <DropdownItem value="beta">Beta</DropdownItem>
+        </Dropdown>
+      );
+    }
+
+    renderWithTheme(<MultiSelectHarness />);
+
+    await user.click(screen.getByRole('button', { name: 'Open menu' }));
+    await user.click(
+      screen.getByRole('menuitemcheckbox', { name: 'Select all' })
+    );
+
+    expect(
+      screen.getByRole('menuitemcheckbox', { name: 'Alpha' })
+    ).toHaveAttribute('aria-checked', 'true');
+    expect(
+      screen.getByRole('menuitemcheckbox', { name: 'Beta' })
+    ).toHaveAttribute('aria-checked', 'true');
+  });
+
+  it('select all targets only visible searchable items', async () => {
+    const user = userEvent.setup();
+
+    function SearchableSelectAllHarness() {
+      const [selectedValues, setSelectedValues] = React.useState<string[]>([
+        'alpha',
+      ]);
+
+      return (
+        <Dropdown
+          searchable
+          multiSelect
+          showSelectAll
+          selectedValues={selectedValues}
+          onSelectedValuesChange={setSelectedValues}
+          trigger={<Button>Open menu</Button>}
+        >
+          <DropdownItem value="alpha" searchText="alpha primary">
+            Alpha
+          </DropdownItem>
+          <DropdownItem value="beta" searchText="beta visible">
+            Beta
+          </DropdownItem>
+          <DropdownItem value="gamma" searchText="gamma visible">
+            Gamma
+          </DropdownItem>
+        </Dropdown>
+      );
+    }
+
+    renderWithTheme(<SearchableSelectAllHarness />);
+
+    await user.click(screen.getByRole('button', { name: 'Open menu' }));
+    await user.type(
+      screen.getByRole('searchbox', { name: 'Search dropdown items' }),
+      'visible'
+    );
+
+    const selectAllItem = screen.getByRole('menuitemcheckbox', {
+      name: 'Select all',
+    });
+
+    expect(selectAllItem).toHaveAttribute('aria-checked', 'false');
+    expect(
+      screen.queryByRole('menuitemcheckbox', { name: 'Alpha' })
+    ).not.toBeInTheDocument();
+
+    await user.click(selectAllItem);
+
+    expect(
+      screen.getByRole('menuitemcheckbox', { name: 'Beta' })
+    ).toHaveAttribute('aria-checked', 'true');
+    expect(
+      screen.getByRole('menuitemcheckbox', { name: 'Gamma' })
+    ).toHaveAttribute('aria-checked', 'true');
+  });
+
+  it('shows an indeterminate select-all state when some visible items are selected', async () => {
+    const user = userEvent.setup();
+
+    renderWithTheme(
+      <Dropdown
+        multiSelect
+        showSelectAll
+        selectedValues={['alpha']}
+        trigger={<Button>Open menu</Button>}
+      >
+        <DropdownItem value="alpha">Alpha</DropdownItem>
+        <DropdownItem value="beta">Beta</DropdownItem>
+      </Dropdown>
+    );
+
+    await user.click(screen.getByRole('button', { name: 'Open menu' }));
+
+    expect(
+      screen.getByRole('menuitemcheckbox', { name: 'Select all' })
+    ).toHaveAttribute('aria-checked', 'mixed');
   });
 });
