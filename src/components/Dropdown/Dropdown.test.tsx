@@ -1,4 +1,5 @@
-import { describe, expect, it } from 'vitest';
+import * as React from 'react';
+import { describe, expect, it, vi } from 'vitest';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderWithTheme } from '../../test/test-utils';
@@ -107,5 +108,80 @@ describe('Dropdown', () => {
     expect(
       screen.queryByRole('menuitem', { name: 'Archive' })
     ).not.toBeInTheDocument();
+  });
+
+  it('supports multi-select items with checkbox semantics', async () => {
+    const user = userEvent.setup();
+    const handleSelectedValuesChange = vi.fn();
+
+    renderWithTheme(
+      <Dropdown
+        multiSelect
+        defaultSelectedValues={['alpha']}
+        onSelectedValuesChange={handleSelectedValuesChange}
+        trigger={<Button>Open menu</Button>}
+      >
+        <DropdownItem value="alpha">Alpha</DropdownItem>
+        <DropdownItem value="beta">Beta</DropdownItem>
+      </Dropdown>
+    );
+
+    await user.click(screen.getByRole('button', { name: 'Open menu' }));
+
+    const alphaItem = screen.getByRole('menuitemcheckbox', { name: 'Alpha' });
+    const betaItem = screen.getByRole('menuitemcheckbox', { name: 'Beta' });
+
+    expect(alphaItem).toHaveAttribute('aria-checked', 'true');
+    expect(betaItem).toHaveAttribute('aria-checked', 'false');
+
+    await user.click(betaItem);
+
+    expect(betaItem).toHaveAttribute('aria-checked', 'true');
+    expect(handleSelectedValuesChange).toHaveBeenCalledWith(['alpha', 'beta']);
+  });
+
+  it('keeps multi-select behavior when filtering searchable dropdowns', async () => {
+    const user = userEvent.setup();
+
+    function SearchableMultiSelectHarness() {
+      const [selectedValues, setSelectedValues] = React.useState<string[]>([]);
+
+      return (
+        <Dropdown
+          searchable
+          multiSelect
+          selectedValues={selectedValues}
+          onSelectedValuesChange={setSelectedValues}
+          trigger={<Button>Open menu</Button>}
+        >
+          <DropdownItem value="schedule" searchText="schedule appointment">
+            Schedule Visit
+          </DropdownItem>
+          <DropdownItem value="message" searchText="send secure message">
+            Message Patient
+          </DropdownItem>
+        </Dropdown>
+      );
+    }
+
+    renderWithTheme(<SearchableMultiSelectHarness />);
+
+    await user.click(screen.getByRole('button', { name: 'Open menu' }));
+    await user.type(
+      screen.getByRole('searchbox', { name: 'Search dropdown items' }),
+      'secure'
+    );
+
+    const messageItem = screen.getByRole('menuitemcheckbox', {
+      name: 'Message Patient',
+    });
+
+    expect(
+      screen.queryByRole('menuitemcheckbox', { name: 'Schedule Visit' })
+    ).not.toBeInTheDocument();
+
+    await user.click(messageItem);
+
+    expect(messageItem).toHaveAttribute('aria-checked', 'true');
   });
 });

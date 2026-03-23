@@ -37,6 +37,14 @@ export interface DropdownProps {
   searchAriaLabel?: string;
   /** Content to render when no items match the search query */
   searchEmptyState?: React.ReactNode;
+  /** Whether dropdown items support multi-select checkboxes */
+  multiSelect?: boolean;
+  /** Selected item values for controlled multi-select dropdowns */
+  selectedValues?: string[];
+  /** Initial selected item values for uncontrolled multi-select dropdowns */
+  defaultSelectedValues?: string[];
+  /** Callback fired when selected values change in multi-select mode */
+  onSelectedValuesChange?: (values: string[]) => void;
 }
 
 const placementStyles: Record<DropdownPlacement, string> = {
@@ -44,6 +52,14 @@ const placementStyles: Record<DropdownPlacement, string> = {
   'bottom-end': 'top-full right-0 mt-2',
   bottom: 'top-full left-1/2 -translate-x-1/2 mt-2',
 };
+
+interface DropdownContextValue {
+  multiSelect: boolean;
+  selectedValues: string[];
+  toggleSelectedValue: (value: string) => void;
+}
+
+const DropdownContext = React.createContext<DropdownContextValue | null>(null);
 
 function getNodeText(node: React.ReactNode): string {
   if (typeof node === 'string' || typeof node === 'number') {
@@ -108,7 +124,9 @@ function hasVisibleDropdownContent(node: React.ReactNode): boolean {
   return true;
 }
 
-function normalizeDropdownSiblings(children: React.ReactNode[]): React.ReactNode[] {
+function normalizeDropdownSiblings(
+  children: React.ReactNode[]
+): React.ReactNode[] {
   const hasContentBefore = (index: number) => {
     for (let current = index - 1; current >= 0; current -= 1) {
       const child = children[current];
@@ -264,15 +282,25 @@ function Dropdown({
   searchPlaceholder = 'Search...',
   searchAriaLabel = 'Search dropdown items',
   searchEmptyState = 'No results found',
+  multiSelect = false,
+  selectedValues: controlledSelectedValues,
+  defaultSelectedValues = [],
+  onSelectedValuesChange,
 }: DropdownProps) {
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(false);
+  const [uncontrolledSelectedValues, setUncontrolledSelectedValues] =
+    React.useState(defaultSelectedValues);
   const [searchQuery, setSearchQuery] = React.useState('');
   const containerRef = React.useRef<HTMLDivElement>(null);
   const searchInputRef = React.useRef<HTMLInputElement>(null);
   const menuId = React.useId();
 
   const isControlled = controlledOpen !== undefined;
+  const isSelectedValuesControlled = controlledSelectedValues !== undefined;
   const isOpen = isControlled ? controlledOpen : uncontrolledOpen;
+  const selectedValues = isSelectedValuesControlled
+    ? controlledSelectedValues
+    : uncontrolledSelectedValues;
 
   const setOpen = React.useCallback(
     (value: boolean) => {
@@ -293,6 +321,40 @@ function Dropdown({
   const handleClose = React.useCallback(() => {
     setOpen(false);
   }, [setOpen]);
+
+  const setSelectedValues = React.useCallback(
+    (values: string[]) => {
+      if (!isSelectedValuesControlled) {
+        setUncontrolledSelectedValues(values);
+      }
+      onSelectedValuesChange?.(values);
+    },
+    [isSelectedValuesControlled, onSelectedValuesChange]
+  );
+
+  const toggleSelectedValue = React.useCallback(
+    (value: string) => {
+      if (!multiSelect) {
+        return;
+      }
+
+      setSelectedValues(
+        selectedValues.includes(value)
+          ? selectedValues.filter((selectedValue) => selectedValue !== value)
+          : [...selectedValues, value]
+      );
+    },
+    [multiSelect, selectedValues, setSelectedValues]
+  );
+
+  const dropdownContext = React.useMemo<DropdownContextValue>(
+    () => ({
+      multiSelect,
+      selectedValues,
+      toggleSelectedValue,
+    }),
+    [multiSelect, selectedValues, toggleSelectedValue]
+  );
 
   useClickOutside(containerRef, handleClose);
   useEscapeKey(handleClose, isOpen);
@@ -334,53 +396,55 @@ function Dropdown({
   );
 
   return (
-    <div ref={containerRef} className="relative inline-flex">
-      {triggerElement}
-      {isOpen && (
-        <div
-          id={menuId}
-          role="menu"
-          style={widthStyle}
-          className={cn(
-            'absolute z-50 min-w-[12rem]',
-            'rounded-xl border border-neutral-200 bg-white shadow-lg',
-            'dark:border-neutral-700 dark:bg-neutral-800',
-            'animate-in fade-in zoom-in-95 duration-100',
-            placementStyles[placement],
-            className
-          )}
-        >
-          {searchable && (
-            <div className="border-b border-neutral-200 p-2 dark:border-neutral-700">
-              <input
-                ref={searchInputRef}
-                type="search"
-                value={searchQuery}
-                onChange={(event) => setSearchQuery(event.target.value)}
-                placeholder={searchPlaceholder}
-                aria-label={searchAriaLabel}
-                className={cn(
-                  inputVariants({ size: 'sm' }),
-                  'text-sm',
-                  'dark:border-neutral-600 dark:bg-neutral-700 dark:text-neutral-100'
-                )}
-              />
-            </div>
-          )}
-          {searchable ? (
-            hasSearchResults ? (
-              filteredChildren
-            ) : (
-              <div className="px-3 py-4 text-center text-sm text-neutral-500 dark:text-neutral-400">
-                {searchEmptyState}
+    <DropdownContext.Provider value={dropdownContext}>
+      <div ref={containerRef} className="relative inline-flex">
+        {triggerElement}
+        {isOpen && (
+          <div
+            id={menuId}
+            role="menu"
+            style={widthStyle}
+            className={cn(
+              'absolute z-50 min-w-[12rem]',
+              'rounded-xl border border-neutral-200 bg-white shadow-lg',
+              'dark:border-neutral-700 dark:bg-neutral-800',
+              'animate-in fade-in zoom-in-95 duration-100',
+              placementStyles[placement],
+              className
+            )}
+          >
+            {searchable && (
+              <div className="border-b border-neutral-200 p-2 dark:border-neutral-700">
+                <input
+                  ref={searchInputRef}
+                  type="search"
+                  value={searchQuery}
+                  onChange={(event) => setSearchQuery(event.target.value)}
+                  placeholder={searchPlaceholder}
+                  aria-label={searchAriaLabel}
+                  className={cn(
+                    inputVariants({ size: 'sm' }),
+                    'text-sm',
+                    'dark:border-neutral-600 dark:bg-neutral-700 dark:text-neutral-100'
+                  )}
+                />
               </div>
-            )
-          ) : (
-            children
-          )}
-        </div>
-      )}
-    </div>
+            )}
+            {searchable ? (
+              hasSearchResults ? (
+                filteredChildren
+              ) : (
+                <div className="px-3 py-4 text-center text-sm text-neutral-500 dark:text-neutral-400">
+                  {searchEmptyState}
+                </div>
+              )
+            ) : (
+              children
+            )}
+          </div>
+        )}
+      </div>
+    </DropdownContext.Provider>
   );
 }
 
@@ -474,17 +538,98 @@ export interface DropdownItemProps extends React.ButtonHTMLAttributes<HTMLButton
   variant?: 'default' | 'danger';
   /** Optional text used when filtering searchable dropdown items */
   searchText?: string;
+  /** Checked state for multi-select items */
+  checked?: boolean;
+  /** Callback fired when a multi-select item changes */
+  onCheckedChange?: (checked: boolean) => void;
+}
+
+function DropdownItemCheckbox({ checked }: { checked: boolean }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={cn(
+        'flex h-4 w-4 shrink-0 items-center justify-center rounded border-2 transition-colors duration-150',
+        checked
+          ? 'border-primary-500 bg-primary-500 text-white'
+          : 'border-input bg-background text-transparent'
+      )}
+    >
+      <svg
+        className="h-3 w-3"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 16 16"
+        fill="none"
+      >
+        <path
+          d="M3.5 8.5 6.5 11.5 12.5 4.5"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </span>
+  );
 }
 
 /**
  * An item within a Dropdown menu.
  */
 const DropdownItem = React.forwardRef<HTMLButtonElement, DropdownItemProps>(
-  ({ className, icon, variant = 'default', children, searchText, ...props }, ref) => {
+  (
+    {
+      className,
+      icon,
+      variant = 'default',
+      children,
+      searchText,
+      checked,
+      onCheckedChange,
+      onClick,
+      value,
+      disabled,
+      ...props
+    },
+    ref
+  ) => {
+    const dropdownContext = React.useContext(DropdownContext);
+    const itemValue = typeof value === 'string' ? value : undefined;
+    const isMultiSelectItem =
+      dropdownContext?.multiSelect === true && itemValue !== undefined;
+    const isChecked =
+      checked ??
+      (isMultiSelectItem
+        ? dropdownContext.selectedValues.includes(itemValue)
+        : false);
+
+    const handleClick = React.useCallback(
+      (event: React.MouseEvent<HTMLButtonElement>) => {
+        if (isMultiSelectItem && itemValue && !disabled) {
+          dropdownContext.toggleSelectedValue(itemValue);
+          onCheckedChange?.(!isChecked);
+        }
+
+        onClick?.(event);
+      },
+      [
+        disabled,
+        dropdownContext,
+        isChecked,
+        isMultiSelectItem,
+        itemValue,
+        onCheckedChange,
+        onClick,
+      ]
+    );
+
     return (
       <button
         ref={ref}
-        role="menuitem"
+        type="button"
+        role={isMultiSelectItem ? 'menuitemcheckbox' : 'menuitem'}
+        aria-checked={isMultiSelectItem ? isChecked : undefined}
+        disabled={disabled}
         className={cn(
           'flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm',
           'transition-colors duration-150',
@@ -502,8 +647,11 @@ const DropdownItem = React.forwardRef<HTMLButtonElement, DropdownItemProps>(
           className
         )}
         data-search-text={searchText}
+        onClick={handleClick}
+        value={value}
         {...props}
       >
+        {isMultiSelectItem && <DropdownItemCheckbox checked={isChecked} />}
         {icon && <span className="h-4 w-4 shrink-0">{icon}</span>}
         <span className="font-medium">{children}</span>
       </button>

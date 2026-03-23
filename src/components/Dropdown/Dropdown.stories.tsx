@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   Dropdown,
@@ -158,8 +159,12 @@ export const Searchable: Story = {
       trigger={<Button>Searchable Menu</Button>}
     >
       <DropdownLabel>Patient Actions</DropdownLabel>
-      <DropdownItem searchText="schedule appointment">Schedule Visit</DropdownItem>
-      <DropdownItem searchText="send secure message">Message Patient</DropdownItem>
+      <DropdownItem searchText="schedule appointment">
+        Schedule Visit
+      </DropdownItem>
+      <DropdownItem searchText="send secure message">
+        Message Patient
+      </DropdownItem>
       <DropdownItem searchText="upload intake form">Upload Forms</DropdownItem>
       <DropdownSeparator />
       <DropdownLabel>Billing</DropdownLabel>
@@ -167,4 +172,66 @@ export const Searchable: Story = {
       <DropdownItem searchText="collect payment">Collect Payment</DropdownItem>
     </Dropdown>
   ),
+};
+
+export const MultiSelect: Story = {
+  render: () => {
+    const [selectedValues, setSelectedValues] = React.useState(['schedule']);
+
+    return (
+      <Dropdown
+        multiSelect
+        width={280}
+        selectedValues={selectedValues}
+        onSelectedValuesChange={setSelectedValues}
+        trigger={<Button>Multi-Select Menu</Button>}
+      >
+        <DropdownLabel>Patient Actions</DropdownLabel>
+        <DropdownItem value="schedule">Schedule Visit</DropdownItem>
+        <DropdownItem value="message">Message Patient</DropdownItem>
+        <DropdownItem value="forms">Upload Forms</DropdownItem>
+        <DropdownSeparator />
+        <DropdownLabel>Billing</DropdownLabel>
+        <DropdownItem value="claim">Create Claim</DropdownItem>
+        <DropdownItem value="payment">Collect Payment</DropdownItem>
+      </Dropdown>
+    );
+  },
+};
+
+export const SearchableMultiSelect: Story = {
+  render: () => {
+    const [selectedValues, setSelectedValues] = React.useState(['message']);
+
+    return (
+      <Dropdown
+        searchable
+        multiSelect
+        width={300}
+        searchPlaceholder="Search actions..."
+        selectedValues={selectedValues}
+        onSelectedValuesChange={setSelectedValues}
+        trigger={<Button>Searchable Multi-Select</Button>}
+      >
+        <DropdownLabel>Patient Actions</DropdownLabel>
+        <DropdownItem value="schedule" searchText="schedule appointment">
+          Schedule Visit
+        </DropdownItem>
+        <DropdownItem value="message" searchText="send secure message">
+          Message Patient
+        </DropdownItem>
+        <DropdownItem value="forms" searchText="upload intake form">
+          Upload Forms
+        </DropdownItem>
+        <DropdownSeparator />
+        <DropdownLabel>Billing</DropdownLabel>
+        <DropdownItem value="claim" searchText="create insurance claim">
+          Create Claim
+        </DropdownItem>
+        <DropdownItem value="payment" searchText="collect payment">
+          Collect Payment
+        </DropdownItem>
+      </Dropdown>
+    );
+  },
 };
