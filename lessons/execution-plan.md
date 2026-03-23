@@ -1100,6 +1100,7 @@ Create `MIEWEB-UI-MIGRATION.md` in the project root with the following sections:
 | Raw `<input>` elements | X | Y |
 | Raw `<select>` elements | X | Y |
 | Raw `<textarea>` elements | X | Y |
+| Raw `<table>` elements | X | Y |
 | shadcn/local wrapper files | X | Y |
 | `@mieweb/ui` import lines | 0 | Y |
 | Total dependencies | X | Y |
