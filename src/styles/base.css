@@ -1237,10 +1237,20 @@ body.condensed [data-slot='select-wrapper'] {
   gap: 0.25rem !important;
 }
 
-/* Trigger button: reduced height & padding */
+/* Trigger button: reduced height & border-radius */
 body.condensed [data-slot='select-trigger'] {
-  font-size: 0.8125rem !important;
   border-radius: 0.375rem !important;
+}
+
+/* Condensed typography per select trigger size */
+body.condensed [data-slot='select-trigger'].text-sm {
+  font-size: 0.75rem !important;
+}
+body.condensed [data-slot='select-trigger'].text-base {
+  font-size: 0.875rem !important;
+}
+body.condensed [data-slot='select-trigger'].text-lg {
+  font-size: 1rem !important;
 }
 
 body.condensed [data-slot='select-trigger'].h-8 {
