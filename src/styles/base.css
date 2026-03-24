@@ -1342,3 +1342,65 @@ body.condensed [data-slot='checkbox-group-error'] {
   line-height: 0.875rem !important;
   margin-top: 0.25rem !important;
 }
+
+/* ── Radio ── */
+
+/* Wrapper: tighter gap between radio and label */
+body.condensed [data-slot='radio-wrapper'] {
+  gap: 0.375rem !important;
+}
+
+/* Radio input: single condensed size (14px circle) */
+body.condensed [data-slot='radio'] {
+  height: 0.875rem !important;
+  width: 0.875rem !important;
+  border-width: 1.5px !important;
+}
+
+/* Dot indicator: condensed size */
+body.condensed [data-slot='radio-dot'] {
+  height: 0.375rem !important;
+  width: 0.375rem !important;
+}
+
+/* Label: smaller */
+body.condensed [data-slot='radio-label'] {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+}
+
+/* Description: smaller */
+body.condensed [data-slot='radio-description'] {
+  font-size: 0.625rem !important;
+  line-height: 0.875rem !important;
+}
+
+/* ── Radio Group ── */
+
+/* Group fieldset: tighter gap */
+body.condensed [data-slot='radio-group'] {
+  gap: 0.25rem !important;
+}
+
+/* Legend: smaller */
+body.condensed [data-slot='radio-group-legend'] {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+}
+
+/* Group description: smaller */
+body.condensed [data-slot='radio-group-description'] {
+  font-size: 0.625rem !important;
+  line-height: 0.875rem !important;
+}
+
+/* Group items: tighter gaps */
+body.condensed [data-slot='radio-group-items'] {
+  gap: 0.25rem !important;
+}
+
+/* Group error: smaller */
+body.condensed [data-slot='radio-group-error'] {
+  font-size: 0.6875rem !important;
+  line-height: 0.875rem !important;
+}
