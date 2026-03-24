@@ -122,7 +122,12 @@ export function StripeBadge({
   }
 
   return (
-    <div className={badgeClasses} data-slot="stripe-badge" role="img" aria-label="Powered by Stripe">
+    <div
+      className={badgeClasses}
+      data-slot="stripe-badge"
+      role="img"
+      aria-label="Powered by Stripe"
+    >
       {content}
     </div>
   );

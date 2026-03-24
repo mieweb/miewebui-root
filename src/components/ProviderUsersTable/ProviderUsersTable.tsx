@@ -238,7 +238,10 @@ export function ProviderUsersTable({
   }
 
   return (
-    <div data-slot="provider-users-table" className={`overflow-x-auto ${className}`}>
+    <div
+      data-slot="provider-users-table"
+      className={`overflow-x-auto ${className}`}
+    >
       <Table>
         <TableHeader>
           <TableRow>

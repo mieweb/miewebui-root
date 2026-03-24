@@ -1029,7 +1029,9 @@ body.condensed [data-slot='ag-grid'] .ag-body-horizontal-scroll {
   min-height: 0 !important;
   max-height: 0 !important;
   opacity: 0;
-  transition: height 0.15s, opacity 0.15s;
+  transition:
+    height 0.15s,
+    opacity 0.15s;
 }
 
 body.condensed [data-slot='ag-grid']:hover .ag-body-horizontal-scroll {
@@ -1043,7 +1045,9 @@ body.condensed [data-slot='ag-grid'] .ag-body-vertical-scroll {
   min-width: 0 !important;
   max-width: 0 !important;
   opacity: 0;
-  transition: width 0.15s, opacity 0.15s;
+  transition:
+    width 0.15s,
+    opacity 0.15s;
 }
 
 body.condensed [data-slot='ag-grid']:hover .ag-body-vertical-scroll {
