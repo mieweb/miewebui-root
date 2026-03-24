@@ -1269,3 +1269,76 @@ body.condensed [data-slot='button'].w-10 {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
+
+/* ── Checkbox ── */
+
+/* Wrapper: tighter gap */
+body.condensed [data-slot='checkbox-wrapper'] {
+  gap: 0.125rem !important;
+}
+
+/* Row: tighter gap between checkbox and label */
+body.condensed [data-slot='checkbox-row'] {
+  gap: 0.375rem !important;
+}
+
+/* Checkbox input: single condensed size (14px square) */
+body.condensed [data-slot='checkbox'] {
+  height: 0.875rem !important;
+  width: 0.875rem !important;
+  border-width: 1.5px !important;
+  border-radius: 0.125rem !important;
+}
+
+/* Indicator span: match checkbox size */
+body.condensed [data-slot='checkbox-indicator'] svg {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+/* Label: smaller */
+body.condensed [data-slot='checkbox-label'] {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+}
+
+/* Description: smaller */
+body.condensed [data-slot='checkbox-description'] {
+  font-size: 0.625rem !important;
+  line-height: 0.875rem !important;
+  margin-top: 0 !important;
+}
+
+/* Error: smaller */
+body.condensed [data-slot='checkbox-error'] {
+  font-size: 0.6875rem !important;
+  line-height: 0.875rem !important;
+}
+
+/* ── Checkbox Group ── */
+
+/* Legend: smaller */
+body.condensed [data-slot='checkbox-group-legend'] {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* Group description: smaller, tighter margin */
+body.condensed [data-slot='checkbox-group-description'] {
+  font-size: 0.625rem !important;
+  line-height: 0.875rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Group items: tighter gaps */
+body.condensed [data-slot='checkbox-group-items'] {
+  gap: 0.25rem !important;
+}
+
+/* Group error: smaller, tighter margin */
+body.condensed [data-slot='checkbox-group-error'] {
+  font-size: 0.6875rem !important;
+  line-height: 0.875rem !important;
+  margin-top: 0.25rem !important;
+}
