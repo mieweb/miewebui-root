@@ -244,7 +244,12 @@ function Select({
     const rect = triggerRef.current.getBoundingClientRect();
     const spaceBelow = window.innerHeight - rect.bottom;
     const spaceAbove = rect.top;
-    const estimatedDropdownHeight = Math.min(flatOptions.length * 40 + 16, 300);
+    const isCondensed = document.body.classList.contains('condensed');
+    const optionHeight = isCondensed ? 28 : 40;
+    const estimatedDropdownHeight = Math.min(
+      flatOptions.length * optionHeight + 16,
+      300
+    );
     const openAbove =
       spaceBelow < estimatedDropdownHeight && spaceAbove > spaceBelow;
 
