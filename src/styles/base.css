@@ -2050,3 +2050,121 @@ body.condensed [data-slot='referral-modal-summary'] p {
 body.condensed [data-slot='referral-modal-summary-total'] {
   font-size: 0.875rem !important;
 }
+
+/* ============================================================
+   DateRangePicker – condensed density overrides
+   ============================================================ */
+
+/* Trigger button: compact height, smaller font, narrower width */
+body.condensed [data-slot='date-range-trigger'] {
+  height: 1.75rem !important;
+  padding: 0.125rem 0.5rem !important;
+  font-size: 0.75rem !important;
+  gap: 0.25rem !important;
+  width: 14rem !important;
+  border-radius: 0.375rem !important;
+}
+
+body.condensed [data-slot='date-range-trigger-icon'] {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+}
+
+/* Desktop popup: tighter border-radius */
+body.condensed [data-slot='date-range-popup'] {
+  border-radius: 0.375rem !important;
+}
+
+/* Preset sidebar: narrower, tighter padding */
+body.condensed [data-slot='date-range-presets'] {
+  width: 9rem !important;
+  padding: 0.375rem !important;
+  gap: 0.125rem !important;
+}
+
+body.condensed [data-slot='date-range-preset'] {
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.6875rem !important;
+  border-radius: 0.25rem !important;
+}
+
+/* Calendar panel: tighter padding */
+body.condensed [data-slot='date-range-calendar'] {
+  padding: 0.5rem !important;
+}
+
+/* Subtitle */
+body.condensed [data-slot='date-range-subtitle'] {
+  font-size: 0.6875rem !important;
+  margin-bottom: 0.375rem !important;
+}
+
+/* Dual calendar container: smaller gap */
+body.condensed [data-slot='date-range-calendars'] {
+  gap: 1rem !important;
+}
+
+/* Month navigation header */
+body.condensed [data-slot='date-range-month-header'] {
+  margin-bottom: 0.25rem !important;
+}
+
+body.condensed [data-slot='date-range-month-label'] {
+  font-size: 0.6875rem !important;
+}
+
+body.condensed [data-slot='date-range-nav'] {
+  padding: 0.125rem !important;
+}
+
+body.condensed [data-slot='date-range-nav'] svg {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+}
+
+/* Month grid: narrower to match smaller day cells */
+body.condensed [data-slot='date-range-grid'] {
+  width: 12.25rem !important;
+}
+
+/* Weekday header row */
+body.condensed [data-slot='date-range-weekdays'] {
+  margin-bottom: 0 !important;
+}
+
+body.condensed [data-slot='date-range-weekday'] {
+  font-size: 0.5625rem !important;
+  padding-top: 0.125rem !important;
+  padding-bottom: 0.125rem !important;
+}
+
+/* Day cells: smaller for density */
+body.condensed [data-slot='date-range-day'] {
+  height: 1.5rem !important;
+  width: 1.75rem !important;
+  font-size: 0.625rem !important;
+}
+
+/* Mobile sheet: tighter padding, shrink to fit condensed grid */
+body.condensed [data-slot='date-range-mobile-sheet'] {
+  padding: 0.75rem 1rem 1rem !important;
+  max-width: 15rem !important;
+}
+
+body.condensed [data-slot='date-range-mobile-handle'] {
+  margin-bottom: 0.375rem !important;
+}
+
+body.condensed [data-slot='date-range-mobile-title'] {
+  font-size: 0.875rem !important;
+  margin-bottom: 0.375rem !important;
+}
+
+/* Mobile done button */
+body.condensed [data-slot='date-range-mobile-done'] {
+  padding-top: 0.375rem !important;
+  padding-bottom: 0.375rem !important;
+  margin-top: 0.75rem !important;
+  font-size: 0.6875rem !important;
+  border-radius: 0.375rem !important;
+}
