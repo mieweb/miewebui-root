@@ -1446,3 +1446,24 @@ body.condensed [data-slot='switch-description'] {
   font-size: 0.625rem !important;
   line-height: 0.875rem !important;
 }
+
+/* ── Address ── */
+
+/* Single condensed font size regardless of size prop */
+body.condensed [data-slot='address'] {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+}
+
+/* Address card: tighter padding */
+body.condensed [data-slot='address-card'] {
+  padding: 0.5rem !important;
+  border-radius: 0.375rem !important;
+}
+
+/* Address card title: smaller */
+body.condensed [data-slot='address-card-title'] {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+  margin-bottom: 0.25rem !important;
+}
