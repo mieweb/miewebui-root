@@ -1264,7 +1264,7 @@ body.condensed [data-slot='button'] {
 }
 
 /* Icon-only button: square condensed size */
-body.condensed [data-slot='button'].w-10 {
+body.condensed [data-slot='button'][data-size='icon'] {
   width: 1.75rem !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
@@ -1426,13 +1426,11 @@ body.condensed [data-slot='switch-thumb'] {
 }
 
 body.condensed [data-slot='switch-thumb'][data-state='checked'] {
-  translate: 0.875rem !important;
-  transform: none !important;
+  transform: translateX(0.875rem) !important;
 }
 
 body.condensed [data-slot='switch-thumb'][data-state='unchecked'] {
-  translate: 0.125rem !important;
-  transform: none !important;
+  transform: translateX(0.125rem) !important;
 }
 
 /* Label: smaller */
@@ -1478,9 +1476,9 @@ body.condensed [data-slot='address-card-phone'] {
 
 /* ── AdditionalFields ── */
 
-/* Wrapper: tighter spacing */
-body.condensed [data-slot='additional-fields'] {
-  gap: 0.25rem !important;
+/* Wrapper: tighter spacing (space-y uses margin-bottom in Tailwind 4) */
+body.condensed [data-slot='additional-fields'] > :not(:last-child) {
+  margin-bottom: 0.25rem !important;
 }
 
 /* Title / collapsible header: smaller */
