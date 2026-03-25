@@ -1426,11 +1426,13 @@ body.condensed [data-slot='switch-thumb'] {
 }
 
 body.condensed [data-slot='switch-thumb'][data-state='checked'] {
-  transform: translateX(0.75rem) !important;
+  translate: 0.875rem !important;
+  transform: none !important;
 }
 
 body.condensed [data-slot='switch-thumb'][data-state='unchecked'] {
-  transform: translateX(0.125rem) !important;
+  translate: 0.125rem !important;
+  transform: none !important;
 }
 
 /* Label: smaller */
