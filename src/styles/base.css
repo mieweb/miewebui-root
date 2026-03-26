@@ -2971,3 +2971,54 @@ body.condensed [data-slot='perm-summary-subtitle'] {
 body.condensed [data-slot='perm-summary'] .text-sm.italic {
   font-size: 0.6875rem !important;
 }
+
+/* =============================================================================
+   PhoneInputGroup — condensed density overrides
+   ============================================================================= */
+
+/* Container: tighter vertical spacing (space-y-3 → 0.25rem) */
+body.condensed [data-slot='phone-group'] > :not(:last-child) {
+  margin-bottom: 0.25rem !important;
+}
+
+/* Row: tighter gap */
+body.condensed [data-slot='phone-row'] {
+  gap: 0.25rem !important;
+}
+
+/* Type select: condensed height, font, padding */
+body.condensed [data-slot='phone-type-select'] {
+  height: 1.75rem !important;
+  min-height: 1.75rem !important;
+  font-size: 0.75rem !important;
+  padding: 0 0.5rem !important;
+  border-radius: 0.375rem !important;
+}
+
+/* Shrink the type select column in condensed */
+body.condensed [data-slot='phone-row'] > .w-24,
+body.condensed [data-slot='phone-row'] > .sm\\:w-32 {
+  width: 5rem !important;
+}
+
+/* Reduce label offset in condensed (label 16px + gap 4px = 20px) */
+body.condensed [data-slot='phone-type-select'].mt-\[26px\] {
+  margin-top: 1.25rem !important;
+}
+
+body.condensed [data-slot='phone-action'].mt-\[26px\] {
+  margin-top: 1.25rem !important;
+}
+
+/* Add/remove buttons: smaller padding */
+body.condensed [data-slot='phone-add-btn'],
+body.condensed [data-slot='phone-remove-btn'] {
+  padding: 0.25rem !important;
+}
+
+/* Add/remove icons: smaller */
+body.condensed [data-slot='phone-add-icon'],
+body.condensed [data-slot='phone-remove-icon'] {
+  width: 0.875rem !important;
+  height: 0.875rem !important;
+}
