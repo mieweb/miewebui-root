@@ -256,11 +256,7 @@ export function InviteUserModal({
           >
             Cancel
           </Button>
-          <Button
-            type="submit"
-            disabled={!isValid || isSubmitting}
-            data-slot="invite-user-submit"
-          >
+          <Button type="submit" disabled={!isValid || isSubmitting}>
             {isSubmitting ? (
               <>
                 <svg
