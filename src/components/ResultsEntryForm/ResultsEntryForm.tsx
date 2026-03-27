@@ -255,9 +255,9 @@ export const ResultsEntryForm = React.forwardRef<
   );
 
   return (
-    <div className={cn('space-y-6', className)}>
+    <div className={cn('space-y-6', className)} data-slot="ref-form">
       {/* Test Results Section */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center" data-slot="ref-row">
         <div className="sm:w-1/2">
           <RadioGroup
             name="result"
@@ -285,9 +285,9 @@ export const ResultsEntryForm = React.forwardRef<
       </div>
 
       {/* Date Drawn */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center" data-slot="ref-row">
         <div className="sm:w-1/2">
-          <span className="font-semibold">{dateDrawn}:</span>
+          <span className="font-semibold" data-slot="ref-date-label">{dateDrawn}:</span>
         </div>
         <div className="sm:w-1/2">
           <Input
@@ -300,9 +300,9 @@ export const ResultsEntryForm = React.forwardRef<
       </div>
 
       {/* Date Completed */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center" data-slot="ref-row">
         <div className="sm:w-1/2">
-          <span className="font-semibold">{dateCompleted}:</span>
+          <span className="font-semibold" data-slot="ref-date-label">{dateCompleted}:</span>
         </div>
         <div className="sm:w-1/2">
           <Input
@@ -316,7 +316,7 @@ export const ResultsEntryForm = React.forwardRef<
 
       {/* Apply to All Services */}
       {showApplyToAll && (
-        <div className="flex justify-end">
+        <div className="flex justify-end" data-slot="ref-apply-all">
           <Checkbox
             id="apply-to-all"
             label={useResultsForAllServices}
@@ -340,9 +340,9 @@ export const ResultsEntryForm = React.forwardRef<
 
       {/* File Upload */}
       {showFileUpload && (
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="bg-muted border-input rounded-l-md border border-r-0 px-3 py-2 text-sm font-medium">
+        <div data-slot="ref-file-upload">
+          <div className="flex items-center gap-2" data-slot="ref-file-row">
+            <span className="bg-muted border-input rounded-l-md border border-r-0 px-3 py-2 text-sm font-medium" data-slot="ref-file-badge">
               {results}
             </span>
             <Input
@@ -371,17 +371,19 @@ export const ResultsEntryForm = React.forwardRef<
 
           {/* File List */}
           {files.length > 0 && (
-            <div className="mt-2 space-y-1">
+            <div className="mt-2 space-y-1" data-slot="ref-file-list">
               {files.map((file, index) => (
                 <div
                   key={index}
                   className="bg-muted/50 flex items-center justify-between rounded px-3 py-1.5 text-sm"
+                  data-slot="ref-file-item"
                 >
                   <span className="truncate">{file.name}</span>
                   <button
                     type="button"
                     onClick={() => removeFile(index)}
                     className="text-muted-foreground hover:text-destructive ml-2"
+                    data-slot="ref-file-remove"
                   >
                     <X className="h-4 w-4" />
                   </button>
@@ -394,14 +396,15 @@ export const ResultsEntryForm = React.forwardRef<
 
       {/* Provider Contacts */}
       {providerContacts.length > 0 ? (
-        <div>
-          <h5 className="mb-2 font-semibold">{provider}</h5>
-          <hr className="mb-3" />
-          <div className="max-h-40 space-y-2 overflow-y-auto">
+        <div data-slot="ref-providers">
+          <h5 className="mb-2 font-semibold" data-slot="ref-provider-heading">{provider}</h5>
+          <hr className="mb-3" data-slot="ref-provider-divider" />
+          <div className="max-h-40 space-y-2 overflow-y-auto" data-slot="ref-contact-list">
             {providerContacts.map((contact) => (
               <div
                 key={contact.id}
                 className="hover:bg-muted/50 flex items-center gap-3 rounded px-3 py-2"
+                data-slot="ref-contact-row"
               >
                 <Checkbox
                   id={`contact-${contact.id}`}
@@ -411,6 +414,7 @@ export const ResultsEntryForm = React.forwardRef<
                 <label
                   htmlFor={`contact-${contact.id}`}
                   className="cursor-pointer text-sm"
+                  data-slot="ref-contact-label"
                 >
                   {contact.firstName} {contact.lastName}
                   {contact.degree && (
@@ -432,8 +436,8 @@ export const ResultsEntryForm = React.forwardRef<
         </div>
       ) : (
         showFileUpload && (
-          <div className="bg-warning/10 border-warning/30 rounded-lg border p-4">
-            <h4 className="flex items-center gap-2 font-semibold">
+          <div className="bg-warning/10 border-warning/30 rounded-lg border p-4" data-slot="ref-no-providers">
+            <h4 className="flex items-center gap-2 font-semibold" data-slot="ref-no-providers-heading">
               <AlertCircle className="text-warning h-5 w-5" />
               {noProviderContacts}
             </h4>
@@ -452,7 +456,7 @@ export const ResultsEntryForm = React.forwardRef<
 
       {/* Error Message */}
       {showError && (
-        <p className="text-destructive text-sm font-medium">
+        <p className="text-destructive text-sm font-medium" data-slot="ref-error">
           {pleaseSelectResult}
         </p>
       )}
@@ -512,8 +516,8 @@ export function ResultsEntryModal({
 
       <ModalBody>
         {employeeName && (
-          <div className="bg-muted mb-4 rounded-lg p-3">
-            <p className="text-muted-foreground text-sm">
+          <div className="bg-muted mb-4 rounded-lg p-3" data-slot="ref-employee-banner">
+            <p className="text-muted-foreground text-sm" data-slot="ref-employee-text">
               Employee:{' '}
               <span className="text-foreground font-medium">
                 {employeeName}
