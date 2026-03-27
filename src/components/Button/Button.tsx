@@ -115,9 +115,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
+    const resolvedSize = size ?? 'md';
     return (
       <button
-        className={cn(buttonVariants({ variant, size, fullWidth }), className)}
+        data-slot="button"
+        data-size={resolvedSize}
+        className={cn(
+          buttonVariants({ variant, size: resolvedSize, fullWidth }),
+          className
+        )}
         ref={ref}
         disabled={disabled || isLoading}
         aria-busy={isLoading}

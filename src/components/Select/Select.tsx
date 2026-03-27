@@ -244,7 +244,12 @@ function Select({
     const rect = triggerRef.current.getBoundingClientRect();
     const spaceBelow = window.innerHeight - rect.bottom;
     const spaceAbove = rect.top;
-    const estimatedDropdownHeight = Math.min(flatOptions.length * 40 + 16, 300);
+    const isCondensed = document.body.classList.contains('condensed');
+    const optionHeight = isCondensed ? 28 : 40;
+    const estimatedDropdownHeight = Math.min(
+      flatOptions.length * optionHeight + 16,
+      300
+    );
     const openAbove =
       spaceBelow < estimatedDropdownHeight && spaceAbove > spaceBelow;
 
@@ -351,14 +356,21 @@ function Select({
   }, [searchQuery, filteredFlatOptions.length]);
 
   // Build aria-describedby
-  const describedByIds = [error ? errorId : null, helperText ? helperId : null]
+  const describedByIds = [
+    error ? errorId : null,
+    helperText && !error ? helperId : null,
+  ]
     .filter(Boolean)
     .join(' ');
 
   return (
-    <div className={cn('flex flex-col gap-1.5', className)}>
+    <div
+      data-slot="select-wrapper"
+      className={cn('flex flex-col gap-1.5', className)}
+    >
       {label && (
         <label
+          data-slot="select-label"
           htmlFor={selectId}
           className={cn(
             'text-foreground text-sm font-medium',
@@ -372,6 +384,7 @@ function Select({
       <div ref={containerRef} className="relative">
         {/* Trigger Button */}
         <button
+          data-slot="select-trigger"
           ref={triggerRef}
           id={selectId}
           type="button"
@@ -408,6 +421,7 @@ function Select({
         {isOpen &&
           createPortal(
             <div
+              data-slot="select-dropdown"
               ref={dropdownRef}
               style={dropdownStyle}
               className={cn(
@@ -417,7 +431,10 @@ function Select({
             >
               {/* Search Input */}
               {searchable && (
-                <div className="border-border border-b p-2">
+                <div
+                  data-slot="select-search"
+                  className="border-border border-b p-2"
+                >
                   <input
                     ref={searchInputRef}
                     type="text"
@@ -441,6 +458,7 @@ function Select({
                 id={listboxId}
                 role="listbox"
                 aria-label={label || 'Options'}
+                data-slot="select-listbox"
                 className="flex-1 overflow-auto p-1"
               >
                 {filteredFlatOptions.length === 0 ? (
@@ -453,7 +471,10 @@ function Select({
                       // Render group
                       return (
                         <li key={`group-${item.label}`} role="presentation">
-                          <div className="text-muted-foreground px-3 py-1.5 text-xs font-semibold tracking-wider uppercase">
+                          <div
+                            data-slot="select-group-label"
+                            className="text-muted-foreground px-3 py-1.5 text-xs font-semibold tracking-wider uppercase"
+                          >
                             {item.label}
                           </div>
                           <ul role="group" aria-label={item.label}>
@@ -509,14 +530,23 @@ function Select({
 
       {/* Error Message */}
       {error && (
-        <p id={errorId} className="text-destructive text-sm" role="alert">
+        <p
+          id={errorId}
+          data-slot="select-error"
+          className="text-destructive text-sm"
+          role="alert"
+        >
           {error}
         </p>
       )}
 
       {/* Helper Text */}
       {helperText && !error && (
-        <p id={helperId} className="text-muted-foreground text-sm">
+        <p
+          id={helperId}
+          data-slot="select-helper"
+          className="text-muted-foreground text-sm"
+        >
           {helperText}
         </p>
       )}
@@ -556,6 +586,7 @@ function SelectOptionItem({
 
   return (
     <li
+      data-slot="select-option"
       role="option"
       aria-selected={isSelected}
       aria-disabled={option.disabled}

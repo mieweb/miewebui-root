@@ -441,13 +441,14 @@ export function DateRangePicker({
     }
 
     return (
-      <div className="w-[280px]">
+      <div className="w-[280px]" data-slot="date-range-grid">
         {/* Day headers */}
-        <div className="mb-1 grid grid-cols-7">
+        <div className="mb-1 grid grid-cols-7" data-slot="date-range-weekdays">
           {weekdayNames.map((dayName) => (
             <div
               key={dayName}
               className="text-muted-foreground py-1 text-center text-xs font-medium"
+              data-slot="date-range-weekday"
             >
               {dayName}
             </div>
@@ -455,7 +456,7 @@ export function DateRangePicker({
         </div>
 
         {/* Day grid */}
-        <div className="grid grid-cols-7">
+        <div className="grid grid-cols-7" data-slot="date-range-day-grid">
           {cells.map((cell, index) => {
             const date = new Date(cell.year, cell.month, cell.day);
             const inRange = isInRange(date);
@@ -467,6 +468,7 @@ export function DateRangePicker({
               <button
                 key={index}
                 type="button"
+                data-slot="date-range-day"
                 onClick={() => handleDayClick(cell.day, cell.month, cell.year)}
                 onMouseEnter={() => {
                   if (selectingEnd) {
@@ -506,7 +508,11 @@ export function DateRangePicker({
   };
 
   return (
-    <div ref={wrapperRef} className={cn('relative inline-block', className)}>
+    <div
+      ref={wrapperRef}
+      className={cn('relative inline-block', className)}
+      data-slot="date-range-picker"
+    >
       {/* Trigger Button */}
       <button
         ref={triggerRef}
@@ -514,6 +520,7 @@ export function DateRangePicker({
         onClick={toggleCalendar}
         aria-expanded={isCalendarOpen}
         aria-haspopup="dialog"
+        data-slot="date-range-trigger"
         className={cn(
           'border-input bg-background hover:bg-muted',
           'inline-flex w-[300px] items-center gap-2 rounded-md border px-4 py-2 text-left text-sm font-normal',
@@ -522,7 +529,7 @@ export function DateRangePicker({
           !displayValue && 'text-muted-foreground'
         )}
       >
-        <Calendar className="h-4 w-4" />
+        <Calendar className="h-4 w-4" data-slot="date-range-trigger-icon" />
         {displayValue || placeholder}
       </button>
 
@@ -530,6 +537,7 @@ export function DateRangePicker({
       {isMobileVariant && isCalendarOpen && (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
         <div
+          data-slot="date-range-mobile-overlay"
           className="fixed inset-0 z-50 flex items-end justify-center bg-black/40"
           onClick={(event) => {
             if (event.target !== event.currentTarget) return;
@@ -554,27 +562,39 @@ export function DateRangePicker({
             role="dialog"
             aria-modal="true"
             aria-labelledby="mobile-date-range-title"
+            data-slot="date-range-mobile-sheet"
           >
             {/* Drag handle */}
-            <div className="bg-muted mx-auto mb-4 h-1 w-10 rounded-full" />
+            <div
+              className="bg-muted mx-auto mb-4 h-1 w-10 rounded-full"
+              data-slot="date-range-mobile-handle"
+            />
             <h3
               id="mobile-date-range-title"
               className="mb-4 text-lg font-semibold"
+              data-slot="date-range-mobile-title"
             >
               {placeholder}
             </h3>
 
             {/* Single month navigation */}
-            <div className="mb-3 flex items-center justify-center gap-4">
+            <div
+              className="mb-3 flex items-center justify-center gap-4"
+              data-slot="date-range-month-header"
+            >
               <button
                 type="button"
                 onClick={goToPrevMonth}
                 className="hover:bg-muted rounded-md p-1 transition-colors"
                 aria-label="Previous month"
+                data-slot="date-range-nav"
               >
                 <ChevronLeft className="h-4 w-4" />
               </button>
-              <div className="text-sm font-medium">
+              <div
+                className="text-sm font-medium"
+                data-slot="date-range-month-label"
+              >
                 {monthNames[leftMonth]} {leftYear}
               </div>
               <button
@@ -582,6 +602,7 @@ export function DateRangePicker({
                 onClick={goToNextMonth}
                 className="hover:bg-muted rounded-md p-1 transition-colors"
                 aria-label="Next month"
+                data-slot="date-range-nav"
               >
                 <ChevronRight className="h-4 w-4" />
               </button>
@@ -598,6 +619,7 @@ export function DateRangePicker({
             {/* Done button */}
             <button
               type="button"
+              data-slot="date-range-mobile-done"
               onClick={() => {
                 setIsCalendarOpen(false);
                 setSelectingEnd(false);
@@ -623,6 +645,7 @@ export function DateRangePicker({
           )}
           role="dialog"
           aria-label="Choose date range"
+          data-slot="date-range-popup"
         >
           <div className="flex">
             {/* Preset sidebar — hidden on small screens in responsive mode */}
@@ -632,12 +655,14 @@ export function DateRangePicker({
                   'border-border flex w-[200px] shrink-0 flex-col gap-0.5 border-r p-3',
                   isResponsive && 'hidden md:flex'
                 )}
+                data-slot="date-range-presets"
               >
                 {finalPresets.map((preset) => (
                   <button
                     key={preset.key}
                     type="button"
                     onClick={() => handlePresetSelect(preset.key)}
+                    data-slot="date-range-preset"
                     className={cn(
                       'rounded-md px-3 py-1.5 text-left text-sm transition-colors',
                       'hover:bg-muted',
@@ -652,28 +677,39 @@ export function DateRangePicker({
             )}
 
             {/* Calendar panel */}
-            <div className="p-4">
+            <div className="p-4" data-slot="date-range-calendar">
               {/* Subtitle */}
-              <p className="text-muted-foreground mb-4 text-sm">
+              <p
+                className="text-muted-foreground mb-4 text-sm"
+                data-slot="date-range-subtitle"
+              >
                 Select a start and end date from the calendar.
               </p>
 
               <div
                 className="flex gap-8"
                 onMouseLeave={() => setHoverDate(null)}
+                data-slot="date-range-calendars"
               >
                 {/* Left month */}
                 <div>
-                  <div className="mb-3 flex items-center">
+                  <div
+                    className="mb-3 flex items-center"
+                    data-slot="date-range-month-header"
+                  >
                     <button
                       type="button"
                       onClick={goToPrevMonth}
                       className="hover:bg-muted rounded-md p-1 transition-colors"
                       aria-label="Previous month"
+                      data-slot="date-range-nav"
                     >
                       <ChevronLeft className="h-4 w-4" />
                     </button>
-                    <div className="flex-1 text-center text-sm font-medium">
+                    <div
+                      className="flex-1 text-center text-sm font-medium"
+                      data-slot="date-range-month-label"
+                    >
                       {monthNames[leftMonth]} {leftYear}
                     </div>
                     {/* Show right chevron on left month in responsive single-cal mode */}
@@ -683,6 +719,7 @@ export function DateRangePicker({
                         onClick={goToNextMonth}
                         className="hover:bg-muted rounded-md p-1 transition-colors md:hidden"
                         aria-label="Next month"
+                        data-slot="date-range-nav"
                       >
                         <ChevronRight className="h-4 w-4" />
                       </button>
@@ -693,8 +730,14 @@ export function DateRangePicker({
 
                 {/* Right month — hidden on small screens in responsive mode */}
                 <div className={cn(isResponsive && 'hidden md:block')}>
-                  <div className="mb-3 flex items-center">
-                    <div className="flex-1 text-center text-sm font-medium">
+                  <div
+                    className="mb-3 flex items-center"
+                    data-slot="date-range-month-header"
+                  >
+                    <div
+                      className="flex-1 text-center text-sm font-medium"
+                      data-slot="date-range-month-label"
+                    >
                       {monthNames[rightMonth]} {rightYear}
                     </div>
                     <button
@@ -702,6 +745,7 @@ export function DateRangePicker({
                       onClick={goToNextMonth}
                       className="hover:bg-muted rounded-md p-1 transition-colors"
                       aria-label="Next month"
+                      data-slot="date-range-nav"
                     >
                       <ChevronRight className="h-4 w-4" />
                     </button>
@@ -777,6 +821,7 @@ export function DateRangeFilter({
         </Button>
       }
       className="w-56"
+      data-slot="date-range-filter"
     >
       {finalPresets.map((preset) => (
         <DropdownItem
