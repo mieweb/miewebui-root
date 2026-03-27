@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 @import './condensed-view.css';
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant dark (&:where(.dark, [data-theme=dark], .dark *, [data-theme=dark] *));
 
 /**
  * BlueHive Brand Theme

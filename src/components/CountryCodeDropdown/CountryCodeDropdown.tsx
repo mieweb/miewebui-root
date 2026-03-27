@@ -1,8 +1,15 @@
 import * as React from 'react';
-import { PhoneNumberUtil, PhoneNumberFormat } from 'google-libphonenumber';
+import * as libphonenumber from 'google-libphonenumber';
 import { cn } from '../../utils/cn';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useEscapeKey } from '../../hooks/useEscapeKey';
+
+const PhoneNumberUtil =
+  (libphonenumber as unknown as { default?: typeof libphonenumber }).default
+    ?.PhoneNumberUtil ?? libphonenumber.PhoneNumberUtil;
+const PhoneNumberFormat =
+  (libphonenumber as unknown as { default?: typeof libphonenumber }).default
+    ?.PhoneNumberFormat ?? libphonenumber.PhoneNumberFormat;
 
 // =============================================================================
 // Types
