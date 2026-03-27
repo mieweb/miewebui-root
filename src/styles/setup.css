@@ -10,7 +10,7 @@
  * Required lines for your CSS entry point:
  *
  *   @source "../node_modules/@mieweb/ui/dist";
- *   @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+ *   @custom-variant dark (&:where(.dark, [data-theme=dark], .dark *, [data-theme=dark] *));
  *
  * Adjust the @source path if your CSS file is not at the project root.
  * For example, if your CSS is in src/, use:
@@ -24,13 +24,13 @@
  *    generated (Tailwind 4 doesn't scan node_modules by default).
  *
  * 2. @custom-variant dark registers the dark mode variant so that
- *    `dark:bg-neutral-900` works with the `data-theme="dark"` attribute
- *    that @mieweb/ui uses for theme switching.
+ *    `dark:bg-neutral-900` works with either the `.dark` CSS class or
+ *    `data-theme="dark"` attribute that @mieweb/ui uses for theme switching.
  */
 
 /* Reference — copy into your project's CSS entry point:
 
 @source "../node_modules/@mieweb/ui/dist";
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant dark (&:where(.dark, [data-theme=dark], .dark *, [data-theme=dark] *));
 
 */

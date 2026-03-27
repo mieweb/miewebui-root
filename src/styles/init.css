@@ -24,7 +24,7 @@
  */
 
 /* ── Dark Mode Variant ───────────────────────────────────────────────── */
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant dark (&:where(.dark, [data-theme=dark], .dark *, [data-theme=dark] *));
 
 /* ── Theme: Color Scales with Fallbacks ──────────────────────────────── */
 @theme {
