@@ -229,18 +229,7 @@ export function HRISProviderSelector({
               className="mb-3 flex h-16 w-16 items-center justify-center"
               data-slot="hris-card-icon"
             >
-              <img
-                src="/images/app/icon-csv.svg"
-                alt="CSV"
-                className="h-12 w-12 object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling?.classList.remove(
-                    'hidden'
-                  );
-                }}
-              />
-              <i className="fas fa-file-csv text-muted-foreground hidden text-4xl" />
+              <i className="fas fa-file-csv text-muted-foreground text-4xl" />
             </div>
             <span
               className="text-foreground text-center text-sm font-medium"
