@@ -29,6 +29,7 @@ export function AppHeader({
 }: AppHeaderProps): React.JSX.Element {
   return (
     <header
+      data-slot="app-header"
       data-testid={testId}
       className={cn(
         'flex items-center justify-between px-4 lg:px-6',
@@ -63,6 +64,7 @@ export function AppHeaderSection({
 }: AppHeaderSectionProps): React.JSX.Element {
   return (
     <div
+      data-slot="app-header-section"
       className={cn(
         'flex items-center gap-3',
         align === 'left' && 'mr-auto',
@@ -94,7 +96,7 @@ export function AppHeaderTitle({
   className,
 }: AppHeaderTitleProps): React.JSX.Element {
   return (
-    <div className={cn('min-w-0', className)}>
+    <div data-slot="app-header-title" className={cn('min-w-0', className)}>
       <h1 className="truncate text-lg font-semibold text-gray-900 dark:text-white">
         {children}
       </h1>
@@ -122,7 +124,12 @@ export function AppHeaderActions({
   className,
 }: AppHeaderActionsProps): React.JSX.Element {
   return (
-    <div className={cn('flex items-center gap-2', className)}>{children}</div>
+    <div
+      data-slot="app-header-actions"
+      className={cn('flex items-center gap-2', className)}
+    >
+      {children}
+    </div>
   );
 }
 
@@ -140,6 +147,7 @@ export function AppHeaderDivider({
 }: AppHeaderDividerProps): React.JSX.Element {
   return (
     <div
+      data-slot="app-header-divider"
       className={cn('mx-2 h-6 w-px bg-gray-200 dark:bg-gray-700', className)}
       aria-hidden="true"
     />
@@ -179,6 +187,7 @@ export function AppHeaderIconButton({
   return (
     <button
       onClick={onClick}
+      data-slot="app-header-icon-btn"
       data-testid={testId}
       className={cn(
         'relative rounded-lg p-2 transition-colors',
@@ -257,6 +266,7 @@ export function AppHeaderSearch({
   return (
     <button
       onClick={onClick}
+      data-slot="app-header-search"
       data-testid={testId}
       className={cn(
         'flex items-center gap-3 rounded-lg border border-gray-300 dark:border-gray-600',
@@ -328,6 +338,7 @@ export function AppHeaderUserMenu({
   return (
     <button
       onClick={onClick}
+      data-slot="app-header-user-menu"
       data-testid={testId}
       className={cn(
         'flex items-center gap-3 rounded-lg px-2 py-1.5 transition-colors',
