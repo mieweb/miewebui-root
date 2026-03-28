@@ -422,47 +422,111 @@ body.condensed [data-slot='card'] {
   padding: 0.375rem !important;
 }
 
-/* Accent bar: thinner in condensed */
+/* Accent bar: preserve left padding for accent */
 body.condensed [data-slot='card'].pl-4 {
   padding-left: 1rem !important;
 }
 
 /* Card header: tighter gap and bottom spacing */
 body.condensed [data-slot='card-header'] {
-  gap: 0.5rem !important;
-  padding-bottom: 0.5rem !important;
+  gap: 0.25rem !important;
+  padding-bottom: 0.375rem !important;
 }
 
 /* Card title: smaller */
 body.condensed [data-slot='card-title'] {
-  font-size: 0.875rem !important;
-  line-height: 1.25rem !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.125rem !important;
 }
 
 /* Card description: smaller */
 body.condensed [data-slot='card-description'] {
+  font-size: 0.6875rem !important;
+  line-height: 1rem !important;
+}
+
+/* General text inside card content: smaller */
+body.condensed [data-slot='card-content'] p,
+body.condensed [data-slot='card-content'] span,
+body.condensed [data-slot='card-content'] li {
   font-size: 0.75rem !important;
+  line-height: 1.125rem !important;
+}
+
+body.condensed [data-slot='card-content'] .font-medium {
+  font-size: 0.8125rem !important;
+}
+
+body.condensed [data-slot='card-content'] h3 {
+  font-size: 0.8125rem !important;
   line-height: 1.125rem !important;
 }
 
 /* Card footer / actions: tighter top spacing */
 body.condensed [data-slot='card-footer'],
 body.condensed [data-slot='card-actions'] {
-  padding-top: 0.5rem !important;
+  padding-top: 0.375rem !important;
   gap: 0.25rem !important;
+}
+
+/* Card footer text: smaller price, labels */
+body.condensed [data-slot='card-footer'] .text-2xl {
+  font-size: 1.125rem !important;
+  line-height: 1.375rem !important;
+}
+
+body.condensed [data-slot='card-footer'] .text-sm {
+  font-size: 0.6875rem !important;
 }
 
 /* Card divider: tighter margins */
 body.condensed [data-slot='card-divider'] {
-  margin-top: 0.5rem !important;
-  margin-bottom: 0.5rem !important;
+  margin-top: 0.375rem !important;
+  margin-bottom: 0.375rem !important;
 }
 
-/* Card media: tighter negative margins for condensed padding */
+/* Card media: smaller height + tighter negative margins */
 body.condensed [data-slot='card-media'] {
   margin-left: -0.375rem !important;
   margin-right: -0.375rem !important;
   margin-top: -0.375rem !important;
+}
+
+body.condensed [data-slot='card-media'] img {
+  max-height: 120px !important;
+  object-fit: cover !important;
+}
+
+/* Raw images in no-padding / horizontal cards */
+body.condensed [data-slot='card'] > img {
+  max-height: 120px !important;
+  object-fit: cover !important;
+}
+
+/* Horizontal card: image fills card height, narrower width */
+body.condensed [data-slot='card'] > img.h-48 {
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  width: 5rem !important;
+  object-fit: cover !important;
+}
+
+/* Generic paragraphs in raw wrapper divs (NoPadding, MediaOverlay patterns) */
+body.condensed [data-slot='card'] > div p {
+  font-size: 0.75rem !important;
+  line-height: 1.125rem !important;
+}
+
+body.condensed [data-slot='card'] > div h3 {
+  font-size: 0.8125rem !important;
+  line-height: 1.125rem !important;
+}
+
+/* Media overlay text */
+body.condensed [data-slot='card-media'] .text-xl {
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
 }
 
 /* Card badge: smaller */
@@ -483,12 +547,29 @@ body.condensed [data-slot='card-stat'] {
 }
 
 body.condensed [data-slot='card-stat'] .text-2xl {
-  font-size: 1.25rem !important;
-  line-height: 1.5rem !important;
+  font-size: 1.125rem !important;
+  line-height: 1.375rem !important;
 }
 
 body.condensed [data-slot='card-stat'] .text-sm {
   font-size: 0.6875rem !important;
+}
+
+/* Stat icon container: smaller */
+body.condensed [data-slot='card-stat'] .rounded-lg.p-2 {
+  padding: 0.25rem !important;
+  border-radius: 0.25rem !important;
+}
+
+body.condensed [data-slot='card-stat'] .rounded-lg.p-2 svg {
+  width: 0.875rem !important;
+  height: 0.875rem !important;
+}
+
+/* Icons inside card content: smaller */
+body.condensed [data-slot='card-content'] svg.h-4 {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
 }
 
 /* ── ServiceGrid + ServiceCard ── condensed density overrides ── */
