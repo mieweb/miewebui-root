@@ -110,6 +110,9 @@ body.condensed [data-slot='connection-overlay-card'] svg.h-12 {
 body.condensed [data-slot='connection-overlay-content'] p {
   font-size: 0.75rem !important;
   line-height: 1.125rem !important;
+}
+
+body.condensed [data-slot='connection-overlay-content'] p + p {
   margin-top: 0.25rem !important;
 }
 
@@ -132,7 +135,8 @@ body.condensed [data-slot='update-overlay-card'] {
   max-width: 28rem !important;
 }
 
-body.condensed [data-slot='update-overlay-card'] img {
+body.condensed [data-slot='update-overlay-card'] img,
+body.condensed [data-slot='update-overlay-card'] svg.h-12 {
   height: 2rem !important;
   width: 2rem !important;
 }
@@ -140,6 +144,9 @@ body.condensed [data-slot='update-overlay-card'] img {
 body.condensed [data-slot='update-overlay-content'] p {
   font-size: 0.75rem !important;
   line-height: 1.125rem !important;
+}
+
+body.condensed [data-slot='update-overlay-content'] p + p {
   margin-top: 0.25rem !important;
 }
 

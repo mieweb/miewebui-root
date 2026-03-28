@@ -209,7 +209,7 @@ export function UpdateAvailableOverlay({
   onUpdateNow,
   onLater,
   logoUrl,
-  appName = 'BlueHive',
+  appName = 'App',
   className,
 }: UpdateAvailableOverlayProps) {
   if (!isVisible || !update.available) return null;
