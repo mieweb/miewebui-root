@@ -104,7 +104,7 @@ export function QuickLinksCard({
                   {link.badge}
                 </span>
               )}
-              {!link.badge && layout !== 'grid' && (
+              {link.badge == null && layout !== 'grid' && (
                 <svg
                   data-slot="quick-links-chevron"
                   className="text-muted-foreground h-4 w-4"

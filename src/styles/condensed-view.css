@@ -512,7 +512,10 @@ body.condensed [data-slot='card'] > img.h-48 {
 }
 
 /* Generic paragraphs in raw wrapper divs (NoPadding, MediaOverlay patterns) */
-body.condensed [data-slot='card'] > div p {
+body.condensed
+  [data-slot='card']
+  > div:not([data-slot='card-header'])
+  p:not([data-slot='card-description']) {
   font-size: 0.75rem !important;
   line-height: 1.125rem !important;
 }
@@ -3887,7 +3890,7 @@ body.condensed [data-slot='site-footer-main'] {
 }
 
 /* Brand logo: tighter bottom margin */
-body.condensed [data-slot='site-footer-brand'] > div:first-child {
+body.condensed [data-slot='site-footer-brand-logo'] {
   margin-bottom: 0.25rem !important;
 }
 
@@ -3910,8 +3913,8 @@ body.condensed [data-slot='site-footer-link-title'] {
 }
 
 /* Link section list items: tighter spacing */
-body.condensed [data-slot='site-footer-link-section'] ul {
-  --spacing: 0.125rem !important;
+body.condensed [data-slot='site-footer-link-section'] ul > li + li {
+  margin-top: 0.125rem !important;
 }
 
 body.condensed [data-slot='site-footer-link-section'] a {
@@ -3954,7 +3957,7 @@ body.condensed [data-slot='site-footer-bottom'] {
   padding-top: 0.5rem !important;
 }
 
-body.condensed [data-slot='site-footer-bottom'] > div:first-child {
+body.condensed [data-slot='site-footer-bottom-row'] {
   margin-bottom: 0.25rem !important;
 }
 

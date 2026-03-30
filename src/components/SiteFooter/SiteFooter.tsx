@@ -531,7 +531,7 @@ export function SiteFooter({
           {/* Brand & Description */}
           <div data-slot="site-footer-brand" className="lg:col-span-4">
             {(logo.name || logo.src) && (
-              <div className="mb-4">
+              <div data-slot="site-footer-brand-logo" className="mb-4">
                 {logo.href ? (
                   <a
                     href={logo.href}
@@ -653,7 +653,10 @@ export function SiteFooter({
           )}
         >
           {/* Legal Links & Copyright */}
-          <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div
+            data-slot="site-footer-bottom-row"
+            className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+          >
             <CopyrightText companyName={companyName} variant={colorVariant} />
             <LegalLinks
               privacyHref={privacyHref}

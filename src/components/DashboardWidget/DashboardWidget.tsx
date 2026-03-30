@@ -341,6 +341,7 @@ function DashboardWidgetTableInner<T extends Record<string, unknown>>(
     return (
       <div
         ref={ref}
+        data-slot="dashboard-widget-table"
         className={cn(
           'text-muted-foreground flex items-center justify-center py-6 text-sm',
           className
