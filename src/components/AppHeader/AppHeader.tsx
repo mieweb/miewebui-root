@@ -220,6 +220,7 @@ export function AppHeaderIconButton({
 }: AppHeaderIconButtonProps): React.JSX.Element {
   return (
     <button
+      type="button"
       onClick={onClick}
       data-slot="app-header-icon-btn"
       data-testid={testId}
@@ -299,6 +300,7 @@ export function AppHeaderSearch({
 }: AppHeaderSearchProps): React.JSX.Element {
   return (
     <button
+      type="button"
       onClick={onClick}
       data-slot="app-header-search"
       data-testid={testId}
@@ -371,6 +373,7 @@ export function AppHeaderUserMenu({
 
   return (
     <button
+      type="button"
       onClick={onClick}
       data-slot="app-header-user-menu"
       data-testid={testId}
