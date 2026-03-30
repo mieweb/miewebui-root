@@ -325,7 +325,7 @@ export const Playground: Story = {
     } as Record<string, unknown>),
   },
   render: (args) => {
-    const key = ((args as Record<string, unknown>).variant ??
+    const key = ((args as unknown as Record<string, unknown>).variant ??
       'info') as VariantKey;
     const preset = variantMap[key];
 
