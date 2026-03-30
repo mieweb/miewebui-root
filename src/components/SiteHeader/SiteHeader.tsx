@@ -682,7 +682,7 @@ export function SiteHeader({
   return (
     <>
       {/* Spacer for fixed header */}
-      <div className="h-16" aria-hidden="true" />
+      <div data-slot="site-header-spacer" className="h-16" aria-hidden="true" />
 
       <header
         data-slot="site-header"
@@ -796,7 +796,11 @@ export function CompactHeader({
 
   return (
     <>
-      <div className="h-14" aria-hidden="true" />
+      <div
+        data-slot="site-header-compact-spacer"
+        className="h-14"
+        aria-hidden="true"
+      />
       <header
         data-slot="site-header-compact"
         className={cn(

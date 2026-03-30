@@ -511,7 +511,7 @@ function WidgetRowActionMenu<T extends Record<string, unknown>>({
         )}
         aria-haspopup="menu"
         aria-expanded={open}
-        aria-label="Row actions"
+        aria-label={`Row actions for row ${rowIndex + 1}`}
       >
         <MoreHorizontalIcon size={14} />
       </button>
@@ -535,9 +535,9 @@ function WidgetRowActionMenu<T extends Record<string, unknown>>({
               'animate-in fade-in zoom-in-95 duration-100'
             )}
           >
-            {visibleActions.map((action, i) => (
+            {visibleActions.map((action) => (
               <button
-                key={i}
+                key={action.label}
                 role="menuitem"
                 type="button"
                 className={cn(

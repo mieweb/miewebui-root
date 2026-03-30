@@ -4138,8 +4138,10 @@ body.condensed [data-slot='site-header-row'] {
   height: 2.5rem !important;
 }
 
-/* Spacer: reduced header height (2.5rem) means consumers must adjust any
-   adjacent spacer div to match; can't be reliably targeted from this stylesheet. */
+/* Spacer: match condensed header height */
+body.condensed [data-slot='site-header-spacer'] {
+  height: 2.5rem !important;
+}
 
 /* Logo content: tighter gap */
 body.condensed [data-slot='site-header-logo-content'] {
@@ -4224,6 +4226,11 @@ body.condensed [data-slot='site-header-mobile-btn'] svg {
 
 /* CompactHeader: shorter */
 body.condensed [data-slot='site-header-compact-row'] {
+  height: 2.25rem !important;
+}
+
+/* CompactHeader spacer: match condensed row height */
+body.condensed [data-slot='site-header-compact-spacer'] {
   height: 2.25rem !important;
 }
 
