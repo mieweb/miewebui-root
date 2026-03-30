@@ -891,6 +891,52 @@ body.condensed [data-slot='stripe-secure-badge'] span {
   font-size: 0.5625rem;
 }
 
+/* ── Table ── condensed density overrides ── */
+
+/* Table root: smaller base text */
+body.condensed [data-slot='table'] {
+  font-size: 0.75rem !important;
+}
+
+/* Table head cells: shorter height, less padding, smaller text */
+body.condensed [data-slot='table-head'] {
+  height: 1.75rem !important;
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.6875rem !important;
+}
+
+/* Sort button inside head: smaller gap */
+body.condensed [data-slot='table-head'] button {
+  gap: 0.125rem !important;
+}
+
+/* Sort icon: smaller */
+body.condensed [data-slot='table-head'] svg {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+}
+
+/* Table cells: less padding */
+body.condensed [data-slot='table-cell'] {
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.75rem !important;
+}
+
+/* Table footer: smaller text */
+body.condensed [data-slot='table-footer'] {
+  font-size: 0.75rem !important;
+}
+
+body.condensed [data-slot='table-footer'] td {
+  padding: 0.25rem 0.5rem !important;
+}
+
+/* Table caption: smaller */
+body.condensed [data-slot='table-caption'] {
+  font-size: 0.6875rem !important;
+  margin-top: 0.25rem !important;
+}
+
 /* ── StepIndicator ── condensed density overrides ── */
 
 /* Circles: shrink from md 2rem to 1.25rem */
