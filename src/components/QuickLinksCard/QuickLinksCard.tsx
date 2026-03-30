@@ -96,7 +96,7 @@ export function QuickLinksCard({
                   </span>
                 )}
               </span>
-              {link.badge !== undefined && (
+              {link.badge != null && (
                 <span
                   data-slot="quick-links-badge"
                   className="bg-primary/10 ml-2 rounded-full px-2 py-0.5 text-xs font-medium text-[var(--mieweb-primary-700)] dark:text-[var(--mieweb-primary-400)]"
