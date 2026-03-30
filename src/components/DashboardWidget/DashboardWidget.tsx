@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../utils/cn';
 import { Card, CardContent, CardHeader } from '../Card';
@@ -518,7 +518,7 @@ function WidgetRowActionMenu<T extends Record<string, unknown>>({
 
       {open &&
         menuPos &&
-        ReactDOM.createPortal(
+        createPortal(
           <div
             ref={menuRef}
             role="menu"
