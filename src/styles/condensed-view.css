@@ -4222,3 +4222,31 @@ body.condensed [data-slot='site-header-compact-title'] {
   font-size: 0.875rem !important;
   line-height: 1.25rem !important;
 }
+
+/* ========================================================================== *
+   Tabs — condensed density overrides
+ * ========================================================================== */
+
+/* TabsList — tighter padding for pills variant */
+body.condensed [data-slot='tabs-list'] {
+  gap: 0 !important;
+}
+
+/* TabsTrigger — reduce padding and font size */
+body.condensed [data-slot='tabs-trigger'] {
+  padding: 0.25rem 0.75rem !important;
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+  gap: 0.25rem !important;
+}
+
+/* TabsTrigger icon — slightly smaller */
+body.condensed [data-slot='tabs-trigger-icon'] svg {
+  width: 0.875rem !important;
+  height: 0.875rem !important;
+}
+
+/* TabsContent — less top margin */
+body.condensed [data-slot='tabs-content'] {
+  margin-top: 0.5rem !important;
+}
