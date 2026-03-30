@@ -417,11 +417,307 @@ body.condensed [data-slot='provider-users-table'] .py-12 svg {
 
 /* ── Card ── condensed density overrides ── */
 
-body.condensed [data-slot='card'] {
+body.condensed [data-slot='card']:not(.p-0) {
   border-radius: 0.375rem;
-  padding-top: 0.375rem !important;
-  padding-right: 0.375rem !important;
+  padding: 0.375rem !important;
+}
+
+/* Accent bar: preserve left padding for accent */
+body.condensed [data-slot='card'].pl-4 {
+  padding-left: 1rem !important;
+}
+
+/* Card header: tighter gap and bottom spacing */
+body.condensed [data-slot='card-header'] {
+  gap: 0.25rem !important;
   padding-bottom: 0.375rem !important;
+}
+
+/* Card title: smaller */
+body.condensed [data-slot='card-title'] {
+  font-size: 0.8125rem !important;
+  line-height: 1.125rem !important;
+}
+
+/* Card description: smaller */
+body.condensed [data-slot='card-description'] {
+  font-size: 0.6875rem !important;
+  line-height: 1rem !important;
+}
+
+/* General text inside card content: smaller */
+body.condensed [data-slot='card-content'] p,
+body.condensed [data-slot='card-content'] li {
+  font-size: 0.75rem !important;
+  line-height: 1.125rem !important;
+}
+
+body.condensed [data-slot='card-content'] .font-medium {
+  font-size: 0.8125rem !important;
+}
+
+body.condensed [data-slot='card-content'] h3 {
+  font-size: 0.8125rem !important;
+  line-height: 1.125rem !important;
+}
+
+/* Card footer / actions: tighter top spacing */
+body.condensed [data-slot='card-footer'],
+body.condensed [data-slot='card-actions'] {
+  padding-top: 0.375rem !important;
+  gap: 0.25rem !important;
+}
+
+/* Card footer text: smaller price, labels */
+body.condensed [data-slot='card-footer'] .text-2xl {
+  font-size: 1.125rem !important;
+  line-height: 1.375rem !important;
+}
+
+body.condensed [data-slot='card-footer'] .text-sm {
+  font-size: 0.6875rem !important;
+}
+
+/* Card divider: tighter margins */
+body.condensed [data-slot='card-divider'] {
+  margin-top: 0.375rem !important;
+  margin-bottom: 0.375rem !important;
+}
+
+/* Card media: smaller height + tighter negative margins */
+body.condensed [data-slot='card-media'] {
+  margin-left: -0.375rem !important;
+  margin-right: -0.375rem !important;
+  margin-top: -0.375rem !important;
+}
+
+body.condensed [data-slot='card-media'] img {
+  max-height: 120px !important;
+  object-fit: cover !important;
+}
+
+/* Raw images in no-padding / horizontal cards */
+body.condensed [data-slot='card'] > img {
+  max-height: 120px !important;
+  object-fit: cover !important;
+}
+
+/* Horizontal card: image fills card height, narrower width */
+body.condensed [data-slot='card'] > img.h-48 {
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  width: 5rem !important;
+  object-fit: cover !important;
+}
+
+/* Generic paragraphs in raw wrapper divs (NoPadding, MediaOverlay patterns) */
+body.condensed
+  [data-slot='card']
+  > div:not([data-slot='card-header'])
+  p:not([data-slot='card-description']) {
+  font-size: 0.75rem !important;
+  line-height: 1.125rem !important;
+}
+
+body.condensed [data-slot='card'] > div h3 {
+  font-size: 0.8125rem !important;
+  line-height: 1.125rem !important;
+}
+
+/* Media overlay text */
+body.condensed [data-slot='card-media'] .text-xl {
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+
+/* Card badge: smaller */
+body.condensed [data-slot='card-badge'] {
+  font-size: 0.625rem !important;
+  padding: 0.125rem 0.375rem !important;
+  border-radius: 0.25rem !important;
+}
+
+/* Card collapsible: smaller toggle text */
+body.condensed [data-slot='card-collapsible'] button {
+  font-size: 0.75rem !important;
+}
+
+/* Card stat: tighter layout */
+body.condensed [data-slot='card-stat'] {
+  gap: 0.375rem !important;
+}
+
+body.condensed [data-slot='card-stat'] .text-2xl {
+  font-size: 1.125rem !important;
+  line-height: 1.375rem !important;
+}
+
+body.condensed [data-slot='card-stat'] .text-sm {
+  font-size: 0.6875rem !important;
+}
+
+/* Stat icon container: smaller */
+body.condensed [data-slot='card-stat'] .rounded-lg.p-2 {
+  padding: 0.25rem !important;
+  border-radius: 0.25rem !important;
+}
+
+body.condensed [data-slot='card-stat'] .rounded-lg.p-2 svg {
+  width: 0.875rem !important;
+  height: 0.875rem !important;
+}
+
+/* Icons inside card content: smaller */
+body.condensed [data-slot='card-content'] svg.h-4 {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+}
+
+/* ── DashboardWidget ── condensed density overrides ── */
+
+/* Widget header: tighter padding and smaller title */
+body.condensed [data-slot='dashboard-widget-header'] {
+  padding: 0.375rem 0.5rem !important;
+  gap: 0.25rem !important;
+}
+
+body.condensed [data-slot='dashboard-widget-header'] h3 {
+  font-size: 0.6875rem !important;
+  line-height: 1rem !important;
+}
+
+/* Count badge: smaller */
+body.condensed [data-slot='dashboard-widget-header'] span.rounded-full {
+  height: 1rem !important;
+  min-width: 1rem !important;
+  font-size: 0.5625rem !important;
+  padding-left: 0.25rem !important;
+  padding-right: 0.25rem !important;
+}
+
+/* Header icon: smaller */
+body.condensed
+  [data-slot='dashboard-widget-header']
+  .text-muted-foreground
+  svg {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+}
+
+/* Header add button: smaller */
+body.condensed [data-slot='dashboard-widget-header'] button.h-7 {
+  height: 1.25rem !important;
+  width: 1.25rem !important;
+}
+
+body.condensed [data-slot='dashboard-widget-header'] button.h-7 svg {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+}
+
+/* Widget body: tighter padding */
+body.condensed [data-slot='dashboard-widget-body'] {
+  padding: 0.375rem 0.5rem !important;
+}
+
+/* Widget footer: tighter */
+body.condensed [data-slot='dashboard-widget-footer'] {
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.6875rem !important;
+}
+
+/* Info grid: tighter gaps and smaller text */
+body.condensed [data-slot='dashboard-widget-info'] {
+  gap: 0.25rem 0.75rem !important;
+}
+
+body.condensed [data-slot='dashboard-widget-info'] dt {
+  font-size: 0.5625rem !important;
+  line-height: 0.875rem !important;
+}
+
+body.condensed [data-slot='dashboard-widget-info'] dd {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+  margin-top: 0 !important;
+}
+
+/* Table: tighter cells (keep horizontal px-4 to align with card header through -mx-4 bleed) */
+body.condensed [data-slot='dashboard-widget-table'] td,
+body.condensed [data-slot='dashboard-widget-table'] th {
+  padding: 0.25rem 1rem !important;
+  font-size: 0.75rem !important;
+}
+
+body.condensed [data-slot='dashboard-widget-table'] th {
+  font-size: 0.625rem !important;
+}
+
+/* Table overflow menu trigger: smaller */
+body.condensed [data-slot='dashboard-widget-table'] button {
+  padding: 0.125rem !important;
+}
+
+body.condensed [data-slot='dashboard-widget-table'] button svg {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+}
+
+/* Actions grid: tighter layout */
+body.condensed [data-slot='dashboard-widget-actions'] {
+  gap: 0.25rem !important;
+}
+
+body.condensed [data-slot='dashboard-widget-actions'] button,
+body.condensed [data-slot='dashboard-widget-actions'] a {
+  padding: 0.25rem 0.5rem !important;
+  gap: 0.25rem !important;
+  border-radius: 0.25rem !important;
+}
+
+body.condensed [data-slot='dashboard-widget-actions'] span.rounded-md {
+  width: 1.125rem !important;
+  height: 1.125rem !important;
+}
+
+body.condensed [data-slot='dashboard-widget-actions'] span.rounded-md svg {
+  width: 0.625rem !important;
+  height: 0.625rem !important;
+}
+
+body.condensed [data-slot='dashboard-widget-actions'] span.text-sm {
+  font-size: 0.75rem !important;
+}
+
+/* Data cards: tighter spacing (space-y-3 uses margin, not gap) */
+body.condensed [data-slot='dashboard-widget-data-cards'] > * + * {
+  margin-top: 0.375rem !important;
+}
+
+body.condensed [data-slot='dashboard-widget-data-cards'] .grid {
+  gap: 0.25rem 0.75rem !important;
+}
+
+body.condensed [data-slot='dashboard-widget-data-cards'] dt {
+  font-size: 0.5625rem !important;
+  line-height: 0.875rem !important;
+}
+
+body.condensed [data-slot='dashboard-widget-data-cards'] dd {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+  margin-top: 0 !important;
+}
+
+body.condensed [data-slot='dashboard-widget-data-cards'] dd span {
+  font-size: 0.625rem !important;
+}
+
+/* Data cards footer */
+body.condensed [data-slot='dashboard-widget-data-cards'] .border-t {
+  padding-top: 0.25rem !important;
+  font-size: 0.625rem !important;
 }
 
 /* ── ServiceGrid + ServiceCard ── condensed density overrides ── */
@@ -593,6 +889,141 @@ body.condensed [data-slot='stripe-secure-badge'] svg {
 
 body.condensed [data-slot='stripe-secure-badge'] span {
   font-size: 0.5625rem;
+}
+
+/* ── Table ── condensed density overrides ── */
+
+/* Table root: smaller base text */
+body.condensed [data-slot='table'] {
+  font-size: 0.75rem !important;
+}
+
+/* Table head cells: shorter height, less padding, smaller text */
+body.condensed [data-slot='table-head'] {
+  height: 1.75rem !important;
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.6875rem !important;
+}
+
+/* Sort button inside head: smaller gap */
+body.condensed [data-slot='table-head'] button {
+  gap: 0.125rem !important;
+}
+
+/* Sort icon: smaller */
+body.condensed [data-slot='table-head'] svg {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+}
+
+/* Table cells: less padding */
+body.condensed [data-slot='table-cell'] {
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.75rem !important;
+}
+
+/* Table footer: smaller text */
+body.condensed [data-slot='table-footer'] {
+  font-size: 0.75rem !important;
+}
+
+body.condensed [data-slot='table-footer'] td {
+  padding: 0.25rem 0.5rem !important;
+}
+
+/* Table caption: smaller */
+body.condensed [data-slot='table-caption'] {
+  font-size: 0.6875rem !important;
+  margin-top: 0.25rem !important;
+}
+
+/* DashboardWidget table override: preserve horizontal padding (cells need px-4
+   to align with card header because the table wrapper uses -mx-4 bleed) */
+body.condensed [data-slot='dashboard-widget-table'] [data-slot='table-cell'],
+body.condensed [data-slot='dashboard-widget-table'] [data-slot='table-head'] {
+  padding: 0.25rem 1rem !important;
+}
+
+/* ── StepIndicator ── condensed density overrides ── */
+
+/* Circles: shrink from md 2rem to 1.25rem */
+body.condensed [data-slot='step-indicator-circle'] {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  font-size: 0.5625rem !important;
+}
+
+/* Icons inside circles */
+body.condensed [data-slot='step-indicator-circle'] svg {
+  width: 0.625rem !important;
+  height: 0.625rem !important;
+}
+
+/* Ring for current step: thinner ring + offset so connector doesn't overlap the circle */
+body.condensed [data-slot='step-indicator-circle'][aria-current='step'] {
+  box-shadow:
+    0 0 0 1px var(--color-white, #fff),
+    0 0 0 2px var(--color-primary-600, #0891b2) !important;
+}
+
+/* Dark mode: adjust ring-offset color */
+:is(.dark, [data-theme='dark'])
+  body.condensed
+  [data-slot='step-indicator-circle'][aria-current='step'],
+body.condensed:is(.dark, [data-theme='dark'])
+  [data-slot='step-indicator-circle'][aria-current='step'] {
+  box-shadow:
+    0 0 0 1px var(--color-neutral-900, #171717),
+    0 0 0 2px var(--color-primary-500, #06b6d4) !important;
+}
+
+/* Horizontal connectors: thinner */
+body.condensed [data-slot='step-indicator-connector'] {
+  height: 1px !important;
+}
+
+/* Vertical connector: narrower column, shorter min-height */
+body.condensed
+  [data-slot='step-indicator'][class*='flex-col']
+  [data-slot='step-indicator-connector'] {
+  width: 1.25rem !important;
+  min-height: 0.5rem !important;
+  height: auto !important;
+}
+
+body.condensed
+  [data-slot='step-indicator'][class*='flex-col']
+  [data-slot='step-indicator-connector']
+  > div {
+  min-height: 0.5rem !important;
+}
+
+/* Labels: smaller text */
+body.condensed [data-slot='step-indicator-label'] {
+  font-size: 0.625rem !important;
+  line-height: 0.875rem !important;
+}
+
+body.condensed [data-slot='step-indicator-label'] p {
+  font-size: 0.625rem !important;
+  line-height: 0.875rem !important;
+}
+
+/* Description: smaller */
+body.condensed [data-slot='step-indicator-description'] {
+  font-size: 0.5625rem !important;
+  line-height: 0.75rem !important;
+  margin-top: 0.125rem !important;
+}
+
+/* Label margin (horizontal layout): tighter */
+body.condensed [data-slot='step-indicator'] .mt-2 {
+  margin-top: 0.25rem !important;
+}
+
+/* Vertical gaps: tighter */
+body.condensed [data-slot='step-indicator'][class*='flex-col'] {
+  gap: 0.25rem !important;
 }
 
 /* ── TimelineProgress ── condensed density overrides ── */
@@ -3295,4 +3726,543 @@ body.condensed [data-slot='slider-thumb'] {
 body.condensed [data-slot='slider-minmax'] {
   font-size: 0.625rem !important;
   margin-top: 0.125rem !important;
+}
+
+/* =========================================================================
+   AppHeader — compact header bar
+   ========================================================================= */
+
+/* Main header: reduce height and padding */
+body.condensed [data-slot='app-header'] {
+  height: 2.5rem !important;
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+}
+
+/* Brand: tighter gap, smaller logo and name */
+body.condensed [data-slot='app-header-brand'] {
+  gap: 0.375rem !important;
+}
+
+body.condensed [data-slot='app-header-brand-logo'] > * {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  font-size: 0.625rem !important;
+  border-radius: 0.25rem !important;
+}
+
+body.condensed [data-slot='app-header-brand-name'] {
+  font-size: 0.8125rem !important;
+}
+
+/* Sections: tighter gap */
+body.condensed [data-slot='app-header-section'] {
+  gap: 0.375rem !important;
+}
+
+/* Title: smaller text */
+body.condensed [data-slot='app-header-title'] h1 {
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+
+body.condensed [data-slot='app-header-title'] p {
+  font-size: 0.6875rem !important;
+  line-height: 1rem !important;
+}
+
+/* Actions: tighter gap */
+body.condensed [data-slot='app-header-actions'] {
+  gap: 0.25rem !important;
+}
+
+/* Divider: shorter */
+body.condensed [data-slot='app-header-divider'] {
+  height: 1rem !important;
+  margin-left: 0.375rem !important;
+  margin-right: 0.375rem !important;
+}
+
+/* Icon button: smaller hit area and icon */
+body.condensed [data-slot='app-header-icon-btn'] {
+  padding: 0.25rem !important;
+  border-radius: 0.375rem !important;
+}
+
+body.condensed [data-slot='app-header-icon-btn'] > span:not(.absolute) {
+  width: 1rem !important;
+  height: 1rem !important;
+}
+
+body.condensed [data-slot='app-header-icon-btn'] > span:not(.absolute) > svg {
+  width: 1rem !important;
+  height: 1rem !important;
+}
+
+/* Icon button badge: smaller */
+body.condensed [data-slot='app-header-icon-btn'] > span.absolute {
+  height: 14px !important;
+  min-width: 14px !important;
+  font-size: 8px !important;
+  padding: 0 2px !important;
+  top: -2px !important;
+  right: -2px !important;
+}
+
+/* Search trigger: slimmer and smaller */
+body.condensed [data-slot='app-header-search'] {
+  padding: 0.25rem 0.5rem !important;
+  gap: 0.375rem !important;
+  font-size: 0.75rem !important;
+  border-radius: 0.375rem !important;
+  min-width: 160px !important;
+}
+
+body.condensed [data-slot='app-header-search'] svg {
+  width: 0.875rem !important;
+  height: 0.875rem !important;
+}
+
+body.condensed [data-slot='app-header-search'] kbd {
+  font-size: 0.625rem !important;
+  padding: 0.0625rem 0.25rem !important;
+}
+
+/* User menu: compact avatar and tighter layout */
+body.condensed [data-slot='app-header-user-menu'] {
+  padding: 0.125rem 0.375rem !important;
+  gap: 0.375rem !important;
+  border-radius: 0.375rem !important;
+}
+
+body.condensed [data-slot='app-header-user-avatar'] {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  font-size: 0.625rem !important;
+}
+
+body.condensed [data-slot='app-header-user-name'] {
+  font-size: 0.75rem !important;
+  max-width: 120px !important;
+}
+
+body.condensed [data-slot='app-header-user-email'] {
+  font-size: 0.625rem !important;
+  max-width: 120px !important;
+}
+
+body.condensed [data-slot='app-header-user-menu'] > svg {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+}
+
+/* =========================================================================
+   PageHeader — condensed density overrides
+   ========================================================================= */
+
+/* Root: tighter vertical padding */
+body.condensed [data-slot='page-header'] {
+  padding-top: 0.375rem !important;
+  padding-bottom: 0.375rem !important;
+}
+
+/* Row: tighter gap between title area and actions */
+body.condensed [data-slot='page-header-row'] {
+  gap: 0.5rem !important;
+}
+
+/* Icon: scale down */
+body.condensed [data-slot='page-header-icon'] {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+}
+
+body.condensed [data-slot='page-header-icon'] svg {
+  width: 1rem !important;
+  height: 1rem !important;
+}
+
+/* Circular icon containers (e.g. ProviderExample avatar) */
+body.condensed [data-slot='page-header-icon'] > div {
+  width: 1.75rem !important;
+  height: 1.75rem !important;
+}
+
+body.condensed [data-slot='page-header-icon'] > div svg {
+  width: 1rem !important;
+  height: 1rem !important;
+}
+
+/* Title: smaller text */
+body.condensed [data-slot='page-header-title'] {
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+
+/* Subtitle: smaller, tighter top margin */
+body.condensed [data-slot='page-header-subtitle'] {
+  font-size: 0.6875rem !important;
+  line-height: 1rem !important;
+  margin-top: 0.125rem !important;
+}
+
+/* Actions: tighter gap */
+body.condensed [data-slot='page-header-actions'] {
+  gap: 0.25rem !important;
+}
+
+/* Children area: tighter top margin */
+body.condensed [data-slot='page-header-content'] {
+  margin-top: 0.25rem !important;
+}
+
+/* =========================================================================
+   QuickLinksCard — condensed density overrides
+   ========================================================================= */
+
+/* List container: tighter gaps */
+body.condensed [data-slot='quick-links-list'] {
+  gap: 0.125rem !important;
+}
+
+/* Grid layout: tighter gap */
+body.condensed [data-slot='quick-links-list'].grid {
+  gap: 0.375rem !important;
+}
+
+/* Icon: smaller */
+body.condensed [data-slot='quick-links-icon'] svg {
+  width: 1rem !important;
+  height: 1rem !important;
+}
+
+/* Label text: smaller */
+body.condensed [data-slot='quick-links-label'] > span:first-child {
+  font-size: 0.75rem !important;
+  line-height: 1.125rem !important;
+}
+
+/* Description: smaller */
+body.condensed [data-slot='quick-links-description'] {
+  font-size: 0.625rem !important;
+  line-height: 0.875rem !important;
+}
+
+/* Badge: smaller */
+body.condensed [data-slot='quick-links-badge'] {
+  font-size: 0.625rem !important;
+  padding: 0.0625rem 0.375rem !important;
+}
+
+/* Chevron: smaller */
+body.condensed [data-slot='quick-links-chevron'] {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+}
+
+/* =========================================================================
+   QuickAction — condensed density overrides
+   ========================================================================= */
+
+/* Card: tighter padding, smaller border radius */
+body.condensed [data-slot='quick-action'] {
+  padding: 0.5rem 0.625rem !important;
+  gap: 0.5rem !important;
+  border-radius: 0.5rem !important;
+}
+
+/* Icon container: smaller */
+body.condensed [data-slot='quick-action-icon'] {
+  width: 2rem !important;
+  height: 2rem !important;
+  min-width: 2rem !important;
+  border-radius: 0.375rem !important;
+}
+
+body.condensed [data-slot='quick-action-icon'] svg {
+  width: 1rem !important;
+  height: 1rem !important;
+}
+
+/* Title: smaller */
+body.condensed [data-slot='quick-action-title'] {
+  font-size: 0.8125rem !important;
+  line-height: 1.125rem !important;
+}
+
+/* Subtitle: smaller */
+body.condensed [data-slot='quick-action-subtitle'] {
+  font-size: 0.6875rem !important;
+  line-height: 1rem !important;
+}
+
+/* Group title: smaller, tighter bottom margin */
+body.condensed [data-slot='quick-action-group-title'] {
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Group grid: tighter gap */
+body.condensed [data-slot='quick-action-group-grid'] {
+  gap: 0.5rem !important;
+}
+
+/* =========================================================================
+   SiteFooter — condensed density overrides
+   ========================================================================= */
+
+/* Container: tighter vertical padding */
+body.condensed [data-slot='site-footer-container'] {
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+/* Main grid: tighter gap and bottom margin */
+body.condensed [data-slot='site-footer-main'] {
+  gap: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Brand logo: tighter bottom margin */
+body.condensed [data-slot='site-footer-brand-logo'] {
+  margin-bottom: 0.25rem !important;
+}
+
+/* Description: smaller */
+body.condensed [data-slot='site-footer-description'] {
+  font-size: 0.75rem !important;
+  line-height: 1.125rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* Link groups grid: tighter gap */
+body.condensed [data-slot='site-footer-links'] {
+  gap: 0.5rem !important;
+}
+
+/* Link section title: smaller, tighter margin */
+body.condensed [data-slot='site-footer-link-title'] {
+  font-size: 0.6875rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* Link section list items: tighter spacing */
+body.condensed [data-slot='site-footer-link-section'] ul > li + li {
+  margin-top: 0.125rem !important;
+}
+
+body.condensed [data-slot='site-footer-link-section'] a {
+  font-size: 0.75rem !important;
+}
+
+/* Social links: tighter gap, smaller icons */
+body.condensed [data-slot='site-footer-social'] {
+  gap: 0.25rem !important;
+}
+
+body.condensed [data-slot='site-footer-social-link'] {
+  width: 2rem !important;
+  height: 2rem !important;
+  font-size: 0.875rem !important;
+}
+
+/* Newsletter section: tighter padding */
+body.condensed [data-slot='site-footer-newsletter'] {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Newsletter title: smaller */
+body.condensed [data-slot='site-footer-newsletter'] h3 {
+  font-size: 0.75rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* Newsletter form: smaller inputs */
+body.condensed [data-slot='site-footer-newsletter-form'] input,
+body.condensed [data-slot='site-footer-newsletter-form'] button {
+  padding: 0.25rem 0.625rem !important;
+  font-size: 0.75rem !important;
+}
+
+/* Bottom section: tighter top padding and inner margin */
+body.condensed [data-slot='site-footer-bottom'] {
+  padding-top: 0.5rem !important;
+}
+
+body.condensed [data-slot='site-footer-bottom-row'] {
+  margin-bottom: 0.25rem !important;
+}
+
+/* Copyright: smaller */
+body.condensed [data-slot='site-footer-copyright'] {
+  font-size: 0.6875rem !important;
+}
+
+/* Legal links: smaller, tighter gaps */
+body.condensed [data-slot='site-footer-legal'] {
+  gap: 0.25rem !important;
+}
+
+body.condensed [data-slot='site-footer-legal'] a {
+  font-size: 0.6875rem !important;
+}
+
+/* Disclaimer: smaller */
+body.condensed [data-slot='site-footer-disclaimer'] {
+  font-size: 0.625rem !important;
+  line-height: 0.875rem !important;
+}
+
+/* SimpleFooter: tighter vertical padding */
+body.condensed [data-slot='site-footer-simple'] {
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+}
+
+body.condensed [data-slot='site-footer-simple'] a {
+  font-size: 0.6875rem !important;
+}
+
+/* =========================================================================
+   SiteHeader — condensed density overrides
+   (mirrors AppHeader approach: reduced height, compact logo/nav/auth)
+   ========================================================================= */
+
+/* Main header: height is driven by the row element, no direct overrides needed */
+
+/* Row: shorter height, like AppHeader 2.5rem */
+body.condensed [data-slot='site-header-row'] {
+  height: 2.5rem !important;
+}
+
+/* Spacer: match condensed header height */
+body.condensed [data-slot='site-header-spacer'] {
+  height: 2.5rem !important;
+}
+
+/* Logo content: tighter gap */
+body.condensed [data-slot='site-header-logo-content'] {
+  gap: 0.375rem !important;
+}
+
+/* Logo icon/avatar: smaller */
+body.condensed [data-slot='site-header-logo-icon'] {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  font-size: 0.625rem !important;
+  border-radius: 0.25rem !important;
+}
+
+/* Logo name: smaller */
+body.condensed [data-slot='site-header-logo-name'] {
+  font-size: 0.875rem !important;
+}
+
+/* Nav: tighter gap */
+body.condensed [data-slot='site-header-nav'] {
+  gap: 0.125rem !important;
+}
+
+/* Nav links: smaller padding and font */
+body.condensed [data-slot='site-header-nav-link'] {
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.75rem !important;
+  border-radius: 0.25rem !important;
+}
+
+/* Auth buttons: smaller */
+body.condensed [data-slot='site-header-auth'] {
+  gap: 0.375rem !important;
+}
+
+body.condensed [data-slot='site-header-auth'] a,
+body.condensed [data-slot='site-header-auth'] button {
+  padding: 0.25rem 0.625rem !important;
+  font-size: 0.75rem !important;
+  border-radius: 0.25rem !important;
+}
+
+/* User menu: compact */
+body.condensed [data-slot='site-header-user-menu'] button {
+  gap: 0.25rem !important;
+  padding: 0.125rem !important;
+}
+
+/* User avatar: smaller */
+body.condensed [data-slot='site-header-user-avatar'] {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  font-size: 0.625rem !important;
+}
+
+/* User dropdown: smaller text and padding */
+body.condensed [data-slot='site-header-user-dropdown'] {
+  width: 12rem !important;
+}
+
+body.condensed [data-slot='site-header-user-dropdown'] p {
+  font-size: 0.75rem !important;
+}
+
+body.condensed [data-slot='site-header-user-dropdown'] a,
+body.condensed [data-slot='site-header-user-dropdown'] button {
+  padding: 0.25rem 0.75rem !important;
+  font-size: 0.75rem !important;
+}
+
+/* Mobile menu button: smaller */
+body.condensed [data-slot='site-header-mobile-btn'] {
+  padding: 0.25rem !important;
+  border-radius: 0.25rem !important;
+}
+
+body.condensed [data-slot='site-header-mobile-btn'] svg {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+}
+
+/* CompactHeader: shorter */
+body.condensed [data-slot='site-header-compact-row'] {
+  height: 2.25rem !important;
+}
+
+/* CompactHeader spacer: match condensed row height */
+body.condensed [data-slot='site-header-compact-spacer'] {
+  height: 2.25rem !important;
+}
+
+body.condensed [data-slot='site-header-compact-title'] {
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+
+/* ========================================================================== *
+   Tabs — condensed density overrides
+ * ========================================================================== */
+
+/* TabsList — tighter padding for pills variant */
+body.condensed [data-slot='tabs-list'] {
+  gap: 0 !important;
+}
+
+/* TabsTrigger — reduce padding and font size */
+body.condensed [data-slot='tabs-trigger'] {
+  padding: 0.25rem 0.75rem !important;
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+  gap: 0.25rem !important;
+}
+
+/* TabsTrigger icon — slightly smaller */
+body.condensed [data-slot='tabs-trigger-icon'] svg {
+  width: 0.875rem !important;
+  height: 0.875rem !important;
+}
+
+/* TabsContent — less top margin */
+body.condensed [data-slot='tabs-content'] {
+  margin-top: 0.5rem !important;
 }
