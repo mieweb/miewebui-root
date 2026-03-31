@@ -5073,3 +5073,76 @@ body.condensed [data-slot='rejection-modal-details'] textarea {
   font-size: 0.6875rem !important;
   border-radius: 0.25rem !important;
 }
+
+/* ========================================================================
+   SetupServiceModal — condensed overrides
+   Inherits: Modal, Button, Input, Select, Switch condensed overrides
+   ======================================================================== */
+
+/* Error message box */
+body.condensed [data-slot='setup-service-error'] {
+  padding: 0.375rem 0.5rem !important;
+  border-radius: 0.375rem !important;
+}
+
+body.condensed [data-slot='setup-service-error'] p {
+  font-size: 0.6875rem !important;
+  line-height: 1rem !important;
+}
+
+/* Description field */
+body.condensed [data-slot='setup-service-description'] label {
+  font-size: 0.6875rem !important;
+  margin-bottom: 0.125rem !important;
+}
+
+body.condensed [data-slot='setup-service-description'] textarea {
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.6875rem !important;
+  line-height: 1rem !important;
+  border-radius: 0.25rem !important;
+}
+
+/* Price field */
+body.condensed [data-slot='setup-service-price'] label {
+  font-size: 0.6875rem !important;
+  margin-bottom: 0.125rem !important;
+}
+
+body.condensed [data-slot='setup-service-price'] span {
+  font-size: 0.6875rem !important;
+}
+
+body.condensed [data-slot='setup-service-price'] input {
+  padding: 0.25rem 0.5rem 0.25rem 1.25rem !important;
+  font-size: 0.6875rem !important;
+  line-height: 1rem !important;
+  border-radius: 0.25rem !important;
+}
+
+/* Toggles container */
+body.condensed [data-slot='setup-service-toggles'] {
+  gap: 0.375rem !important;
+  padding-top: 0.25rem !important;
+}
+
+/* Individual toggle rows */
+body.condensed [data-slot='setup-service-toggle'] {
+  gap: 0.5rem !important;
+}
+
+body.condensed [data-slot='setup-service-toggle'] p:first-child {
+  font-size: 0.6875rem !important;
+  line-height: 1rem !important;
+}
+
+body.condensed [data-slot='setup-service-toggle'] p:last-child {
+  font-size: 0.625rem !important;
+  line-height: 0.875rem !important;
+}
+
+/* Inventory sub-field */
+body.condensed [data-slot='setup-service-inventory'] {
+  margin-left: 0.5rem !important;
+  padding-left: 0.5rem !important;
+}
