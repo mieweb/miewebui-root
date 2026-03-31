@@ -5542,10 +5542,6 @@ body.condensed [data-slot='sidebar-content'] {
 }
 
 /* Nav – tighter spacing between items */
-body.condensed [data-slot='sidebar-nav'] {
-  gap: 0.125rem !important;
-}
-
 body.condensed [data-slot='sidebar-nav'] > * + * {
   margin-top: 0.125rem !important;
 }

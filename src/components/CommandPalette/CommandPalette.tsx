@@ -366,7 +366,6 @@ export function CommandPalette({
           <div
             ref={listRef}
             data-slot="command-palette-results"
-            role="listbox"
             className="max-h-[60vh] overflow-y-auto"
           >
             {filteredItems.length === 0 ? (
@@ -426,8 +425,7 @@ export function CommandPalette({
                           return (
                             <div
                               key={item.id}
-                              role="option"
-                              aria-selected={isSelected}
+                              role="button"
                               data-index={currentIndex}
                               data-slot="command-palette-item"
                               onClick={() => handleItemClick(item)}
