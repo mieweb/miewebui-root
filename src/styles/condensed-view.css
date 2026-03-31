@@ -5146,3 +5146,14 @@ body.condensed [data-slot='setup-service-inventory'] {
   margin-left: 0.5rem !important;
   padding-left: 0.5rem !important;
 }
+
+/* ========================================================================
+   Tooltip — condensed overrides
+   ======================================================================== */
+
+body.condensed [data-slot='tooltip'] {
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.625rem !important;
+  line-height: 0.875rem !important;
+  border-radius: 0.25rem !important;
+}
