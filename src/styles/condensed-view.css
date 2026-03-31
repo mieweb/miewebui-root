@@ -4266,3 +4266,407 @@ body.condensed [data-slot='tabs-trigger-icon'] svg {
 body.condensed [data-slot='tabs-content'] {
   margin-top: 0.5rem !important;
 }
+
+/* ========================================================================== *
+   AudioPlayer — condensed density overrides
+ * ========================================================================== */
+
+/* Compact variant: tighter padding and gap */
+body.condensed [data-slot='audio-player'][data-variant='compact'] {
+  padding: 0.375rem 0.5rem !important;
+  gap: 0.375rem !important;
+}
+
+/* Waveform variant: tighter padding and gap */
+body.condensed [data-slot='audio-player'][data-variant='waveform'] {
+  padding: 0.5rem 0.75rem !important;
+  gap: 0.375rem !important;
+}
+
+/* Play button — smaller in condensed */
+body.condensed [data-slot='audio-player-play-btn'] {
+  height: 1.25rem !important;
+  width: 1.25rem !important;
+}
+
+/* Extra spacing between play button and slider in compact variant */
+body.condensed
+  [data-slot='audio-player'][data-variant='compact']
+  [data-slot='audio-player-play-btn'] {
+  margin-right: 0.25rem !important;
+}
+
+body.condensed [data-slot='audio-player-play-btn'] svg {
+  width: 0.625rem !important;
+  height: 0.625rem !important;
+}
+
+/* Title — smaller font */
+body.condensed [data-slot='audio-player-title'] {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+}
+
+/* Time display — slightly smaller */
+body.condensed [data-slot='audio-player-time'],
+body.condensed [data-slot='audio-player-duration'] {
+  font-size: 0.625rem !important;
+  line-height: 0.875rem !important;
+}
+
+/* Progress bar — thinner track */
+body.condensed [data-slot='audio-player-progress'] {
+  height: 0.25rem !important;
+}
+
+/* Progress bar thumb — keep size compatible with positioning */
+body.condensed [data-slot='audio-player-progress'] > div:last-child {
+  height: 0.75rem !important;
+  width: 0.75rem !important;
+}
+
+/* Waveform container — shorter and scaled down */
+body.condensed [data-slot='audio-player-waveform'] {
+  height: 2.5rem !important;
+  transform: scaleY(0.5) !important;
+  transform-origin: center !important;
+}
+
+/* Controls row — tighter gap */
+body.condensed [data-slot='audio-player-controls'] {
+  gap: 0.375rem !important;
+}
+
+/* Playback rate select — smaller */
+body.condensed [data-slot='audio-player-rate'] {
+  font-size: 0.625rem !important;
+  padding: 0.125rem 0.25rem !important;
+}
+
+/* Podcast story composition — cover art + header (Storybook-only) */
+body.sb-show-main.condensed [data-slot='podcast-cover'] {
+  width: 3.5rem !important;
+  height: 3.5rem !important;
+  border-radius: 0.375rem !important;
+}
+
+body.sb-show-main.condensed [data-slot='podcast-cover'] > div {
+  font-size: 1.125rem !important;
+}
+
+body.sb-show-main.condensed [data-slot='podcast-header'] {
+  gap: 0.625rem !important;
+}
+
+/* ========================================================================== *
+   AudioRecorder — condensed density overrides
+ * ========================================================================== */
+
+/* Container — tighter padding and gap */
+body.condensed [data-slot='audio-recorder'] {
+  padding: 0.375rem !important;
+  gap: 0.25rem !important;
+  border-radius: 0.375rem !important;
+}
+
+/* Waveform container — shorter than sm variant (50px) */
+body.condensed [data-slot='audio-recorder-waveform'] {
+  border-radius: 0.25rem !important;
+  height: 2.5rem !important;
+  transform: scaleY(0.5) !important;
+  transform-origin: center !important;
+}
+
+/* Status row — smaller gap */
+body.condensed [data-slot='audio-recorder-status'] {
+  gap: 0.25rem !important;
+}
+
+/* Recording indicator — smaller dot and text */
+body.condensed [data-slot='audio-recorder-indicator'] {
+  gap: 0.125rem !important;
+}
+
+body.condensed [data-slot='audio-recorder-indicator'] > div {
+  height: 0.375rem !important;
+  width: 0.375rem !important;
+}
+
+body.condensed [data-slot='audio-recorder-indicator'] > span {
+  font-size: 0.5625rem !important;
+}
+
+/* Time display — smaller font */
+body.condensed [data-slot='audio-recorder-time'] {
+  font-size: 0.5625rem !important;
+}
+
+/* Controls row — tighter gap */
+body.condensed [data-slot='audio-recorder-controls'] {
+  gap: 0.25rem !important;
+}
+
+/* Control buttons — smaller than sm variant */
+body.condensed [data-slot='audio-recorder-controls'] button {
+  height: 1.5rem !important;
+  width: 1.5rem !important;
+}
+
+body.condensed [data-slot='audio-recorder-controls'] button svg {
+  height: 0.75rem !important;
+  width: 0.75rem !important;
+}
+
+/* ========================================================================== *
+   DocumentScanner — condensed density overrides
+ * ========================================================================== */
+
+/* Container — tighter padding and border-radius */
+body.condensed [data-slot='doc-scanner'] {
+  padding: 0.75rem !important;
+  border-radius: 0.5rem !important;
+}
+
+/* Header — less margin */
+body.condensed [data-slot='doc-scanner-header'] {
+  margin-bottom: 0.5rem !important;
+}
+
+body.condensed [data-slot='doc-scanner-header'] h2 {
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+
+body.condensed [data-slot='doc-scanner-header'] p {
+  font-size: 0.75rem !important;
+}
+
+/* DropZone — shorter minimum height, tighter padding */
+body.condensed [data-slot='doc-scanner-dropzone'] {
+  min-height: 120px !important;
+  padding: 0.75rem !important;
+  border-radius: 0.5rem !important;
+}
+
+/* DropZone content — tighter gap and smaller text */
+body.condensed [data-slot='doc-scanner-dropzone-content'] {
+  gap: 0.375rem !important;
+}
+
+body.condensed [data-slot='doc-scanner-dropzone-content'] p {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+}
+
+body.condensed
+  [data-slot='doc-scanner-dropzone-content']
+  .space-y-1
+  > :not([hidden])
+  ~ :not([hidden]) {
+  margin-top: 0 !important;
+}
+
+body.condensed [data-slot='doc-scanner-dropzone-content'] .space-y-1 p {
+  font-size: 0.6875rem !important;
+  line-height: 0.875rem !important;
+}
+
+/* Upload icon circle — smaller */
+body.condensed [data-slot='doc-scanner-upload-icon'] {
+  height: 2.25rem !important;
+  width: 2.25rem !important;
+}
+
+body.condensed [data-slot='doc-scanner-upload-icon'] svg {
+  height: 1.125rem !important;
+  width: 1.125rem !important;
+}
+
+/* File preview grid — tighter gap */
+body.condensed [data-slot='doc-scanner-preview'] {
+  gap: 0.5rem !important;
+}
+
+/* Preview items — smaller border-radius */
+body.condensed [data-slot='doc-scanner-preview-item'] {
+  border-radius: 0.375rem !important;
+}
+
+/* Preview file info — tighter padding, smaller text */
+body.condensed [data-slot='doc-scanner-preview-info'] {
+  padding: 0.25rem 0.375rem !important;
+}
+
+body.condensed [data-slot='doc-scanner-preview-info'] p:first-child {
+  font-size: 0.6875rem !important;
+}
+
+body.condensed [data-slot='doc-scanner-preview-info'] p:last-child {
+  font-size: 0.5625rem !important;
+}
+
+/* Action buttons row — tighter gap */
+body.condensed [data-slot='doc-scanner-actions'] {
+  gap: 0.375rem !important;
+}
+
+/* ============================================================
+   FileManager — condensed overrides
+   ============================================================ */
+
+/* Root — tighter spacing between sections */
+body.condensed [data-slot='file-manager'] {
+  gap: 0.25rem !important;
+}
+
+/* Dropzone card — smaller margin and border */
+body.condensed [data-slot='file-manager-dropzone'] {
+  margin-bottom: 0.5rem !important;
+}
+
+/* Dropzone content — tighter padding */
+body.condensed [data-slot='file-manager-dropzone-content'] {
+  padding: 0.75rem !important;
+}
+
+/* Upload icon circle — shrink from 3rem to 2rem */
+body.condensed [data-slot='file-manager-upload-icon'] {
+  height: 2rem !important;
+  width: 2rem !important;
+  margin-bottom: 0.375rem !important;
+}
+
+body.condensed [data-slot='file-manager-upload-icon'] svg {
+  height: 1rem !important;
+  width: 1rem !important;
+}
+
+/* Dropzone text — smaller */
+body.condensed [data-slot='file-manager-dropzone-content'] p:first-of-type {
+  font-size: 0.75rem !important;
+}
+
+body.condensed [data-slot='file-manager-dropzone-content'] p:last-of-type {
+  font-size: 0.625rem !important;
+  margin-top: 0.125rem !important;
+}
+
+/* Upload progress — tighter */
+body.condensed [data-slot='file-manager-progress'] {
+  margin-bottom: 0.5rem !important;
+}
+
+body.condensed [data-slot='file-manager-progress'] .mb-2 {
+  margin-bottom: 0.25rem !important;
+  font-size: 0.6875rem !important;
+}
+
+/* Error message — smaller padding and text */
+body.condensed [data-slot='file-manager-error'] {
+  padding: 0.375rem 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+body.condensed [data-slot='file-manager-error'] p {
+  font-size: 0.6875rem !important;
+}
+
+/* Storage info — smaller padding and text */
+body.condensed [data-slot='file-manager-storage'] {
+  padding: 0.375rem 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+body.condensed [data-slot='file-manager-storage'] p {
+  font-size: 0.6875rem !important;
+}
+
+/* Table header — tighter padding and height */
+body.condensed [data-slot='file-manager-table'] th {
+  padding-top: 0.375rem !important;
+  padding-bottom: 0.375rem !important;
+  font-size: 0.625rem !important;
+  height: 2rem !important;
+}
+
+/* Table rows — tighter padding */
+body.condensed [data-slot='file-manager-row'] td {
+  padding-top: 0.375rem !important;
+  padding-bottom: 0.375rem !important;
+}
+
+/* File icon in rows — shrink */
+body.condensed [data-slot='file-manager-row'] svg {
+  height: 0.875rem !important;
+  width: 0.875rem !important;
+}
+
+/* Filename text — smaller */
+body.condensed [data-slot='file-manager-row'] span {
+  font-size: 0.75rem !important;
+}
+
+/* 3-dot action menu trigger — smaller */
+body.condensed [data-slot='file-manager-actions'] button {
+  height: 1.25rem !important;
+  width: 1.25rem !important;
+}
+
+body.condensed [data-slot='file-manager-actions'] button svg {
+  height: 0.75rem !important;
+  width: 0.75rem !important;
+}
+
+/* Empty state — compact */
+body.condensed [data-slot='file-manager-empty'] svg {
+  height: 2rem !important;
+  width: 2rem !important;
+  margin-bottom: 0.375rem !important;
+}
+
+body.condensed [data-slot='file-manager-empty'] p:first-of-type {
+  font-size: 0.75rem !important;
+}
+
+body.condensed [data-slot='file-manager-empty'] p:last-of-type {
+  font-size: 0.625rem !important;
+}
+
+/* ============================================================
+   RecordButton — condensed overrides
+   Sizes: sm=2.5rem, md=3rem, lg=3.5rem → condensed: 1.75rem
+   Icons: sm=1rem, md=1.25rem, lg=1.5rem → condensed: 0.875rem
+   All animations (pulse, waveform, spin) preserved untouched.
+   ============================================================ */
+
+/* Wrapper — tighter gap between button and labels */
+body.condensed [data-slot='record-button'] {
+  gap: 0.25rem !important;
+}
+
+/* Button trigger — uniform condensed size */
+body.condensed [data-slot='record-button-trigger'] {
+  width: 1.75rem !important;
+  height: 1.75rem !important;
+}
+
+/* Icon inside button — scale down */
+body.condensed [data-slot='record-button-icon'] svg {
+  width: 0.875rem !important;
+  height: 0.875rem !important;
+}
+
+/* Waveform bars — shorter */
+body.condensed [data-slot='record-button-waveform'] span {
+  height: 0.375rem !important;
+}
+
+/* Duration text — smaller */
+body.condensed [data-slot='record-button-duration'] {
+  font-size: 0.625rem !important;
+}
+
+/* Transcription label — smaller */
+body.condensed [data-slot='record-button-transcription'] {
+  font-size: 0.625rem !important;
+}
