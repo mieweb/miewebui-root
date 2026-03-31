@@ -243,6 +243,7 @@ function ProgressBar({
   return (
     <div
       ref={progressRef}
+      data-slot="audio-player-progress"
       role="slider"
       aria-label="Audio progress"
       aria-valuemin={0}
@@ -516,6 +517,7 @@ function Waveform({
   return (
     <div
       ref={containerRef}
+      data-slot="audio-player-waveform"
       role={showHoverCursor ? 'slider' : undefined}
       aria-label={showHoverCursor ? 'Audio progress' : undefined}
       aria-valuemin={showHoverCursor ? 0 : undefined}
@@ -867,6 +869,7 @@ const AudioPlayer = React.forwardRef<
   const renderPlayButton = () => (
     <button
       type="button"
+      data-slot="audio-player-play-btn"
       onClick={handlePlay}
       disabled={disabled || isLoading}
       className={cn(playButtonVariants({ variant, size }))}
@@ -890,6 +893,7 @@ const AudioPlayer = React.forwardRef<
     const isShowingHoverTime = useHoverTime && hoverTime !== null;
     return (
       <span
+        data-slot="audio-player-time"
         className={cn(
           'font-mono text-xs tabular-nums',
           isShowingHoverTime
@@ -906,6 +910,7 @@ const AudioPlayer = React.forwardRef<
     if (!showPlaybackRate) return null;
     return (
       <select
+        data-slot="audio-player-rate"
         value={playbackRate}
         onChange={(e) => setPlaybackRate(Number(e.target.value))}
         className="rounded border border-neutral-200 bg-transparent px-1 py-0.5 text-xs dark:border-neutral-700"
@@ -928,16 +933,23 @@ const AudioPlayer = React.forwardRef<
     return (
       <div
         ref={containerRef}
+        data-slot="audio-player"
         className={cn(audioPlayerVariants({ variant, size }), className)}
       >
         {renderPlayButton()}
         {title && (
-          <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+          <span
+            data-slot="audio-player-title"
+            className="text-sm font-medium text-neutral-700 dark:text-neutral-300"
+          >
             {title}
           </span>
         )}
         {showDuration && displayDuration > 0 && (
-          <span className="font-mono text-xs text-neutral-500 tabular-nums dark:text-neutral-400">
+          <span
+            data-slot="audio-player-duration"
+            className="font-mono text-xs text-neutral-500 tabular-nums dark:text-neutral-400"
+          >
             {isPlaying ? formatTime(currentTime) : formatTime(displayDuration)}
           </span>
         )}
@@ -951,6 +963,7 @@ const AudioPlayer = React.forwardRef<
     return (
       <div
         ref={containerRef}
+        data-slot="audio-player"
         className={cn(audioPlayerVariants({ variant, size }), className)}
       >
         {renderPlayButton()}
@@ -972,10 +985,14 @@ const AudioPlayer = React.forwardRef<
   return (
     <div
       ref={containerRef}
+      data-slot="audio-player"
       className={cn(audioPlayerVariants({ variant, size }), className)}
     >
       {title && (
-        <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+        <span
+          data-slot="audio-player-title"
+          className="text-sm font-medium text-neutral-700 dark:text-neutral-300"
+        >
           {title}
         </span>
       )}
@@ -995,7 +1012,10 @@ const AudioPlayer = React.forwardRef<
         cursorColor={waveformCursorColor}
         waveformRef={waveformMethodsRef}
       />
-      <div className="flex items-center gap-3">
+      <div
+        data-slot="audio-player-controls"
+        className="flex items-center gap-3"
+      >
         {renderPlayButton()}
         <div className="flex flex-1 items-center justify-between">
           {renderTime(true)}

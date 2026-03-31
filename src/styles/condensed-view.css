@@ -4266,3 +4266,87 @@ body.condensed [data-slot='tabs-trigger-icon'] svg {
 body.condensed [data-slot='tabs-content'] {
   margin-top: 0.5rem !important;
 }
+
+/* ========================================================================== *
+   AudioPlayer — condensed density overrides
+ * ========================================================================== */
+
+/* Compact variant: tighter padding and gap */
+body.condensed [data-slot='audio-player'].p-3 {
+  padding: 0.375rem 0.5rem !important;
+  gap: 0.375rem !important;
+}
+
+/* Waveform variant: tighter padding and gap */
+body.condensed [data-slot='audio-player'].p-4 {
+  padding: 0.5rem 0.75rem !important;
+  gap: 0.375rem !important;
+}
+
+/* Play button — smaller in condensed */
+body.condensed [data-slot='audio-player-play-btn'] {
+  height: 1.75rem !important;
+  width: 1.75rem !important;
+}
+
+body.condensed [data-slot='audio-player-play-btn'] svg {
+  width: 0.875rem !important;
+  height: 0.875rem !important;
+}
+
+/* Title — smaller font */
+body.condensed [data-slot='audio-player-title'] {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+}
+
+/* Time display — slightly smaller */
+body.condensed [data-slot='audio-player-time'],
+body.condensed [data-slot='audio-player-duration'] {
+  font-size: 0.625rem !important;
+  line-height: 0.875rem !important;
+}
+
+/* Progress bar — thinner track */
+body.condensed [data-slot='audio-player-progress'] {
+  height: 0.25rem !important;
+}
+
+/* Progress bar thumb — smaller */
+body.condensed [data-slot='audio-player-progress'] > div:last-child {
+  height: 0.5rem !important;
+  width: 0.5rem !important;
+}
+
+/* Waveform container — scale down proportionally */
+body.condensed [data-slot='audio-player-waveform'] {
+  transform: scaleY(0.625) !important;
+  transform-origin: center !important;
+  height: auto !important;
+}
+
+/* Controls row — tighter gap */
+body.condensed [data-slot='audio-player-controls'] {
+  gap: 0.375rem !important;
+}
+
+/* Playback rate select — smaller */
+body.condensed [data-slot='audio-player-rate'] {
+  font-size: 0.625rem !important;
+  padding: 0.125rem 0.25rem !important;
+}
+
+/* Podcast story composition — cover art + header */
+body.condensed [data-slot='podcast-cover'] {
+  width: 3.5rem !important;
+  height: 3.5rem !important;
+  border-radius: 0.375rem !important;
+}
+
+body.condensed [data-slot='podcast-cover'] > div {
+  font-size: 1.125rem !important;
+}
+
+body.condensed [data-slot='podcast-header'] {
+  gap: 0.625rem !important;
+}

@@ -503,8 +503,11 @@ export const PodcastPlayer: Story = {
   render: () => (
     <Card className="w-[500px]">
       <CardContent className="pt-6">
-        <div className="flex gap-4">
-          <div className="bg-primary-500 h-24 w-24 shrink-0 overflow-hidden rounded-lg">
+        <div className="flex gap-4" data-slot="podcast-header">
+          <div
+            className="bg-primary-500 h-24 w-24 shrink-0 overflow-hidden rounded-lg"
+            data-slot="podcast-cover"
+          >
             <div className="flex h-full items-center justify-center text-2xl text-white">
               🎙️
             </div>
