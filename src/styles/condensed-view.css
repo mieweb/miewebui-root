@@ -4285,13 +4285,14 @@ body.condensed [data-slot='audio-player'].p-4 {
 
 /* Play button — smaller in condensed */
 body.condensed [data-slot='audio-player-play-btn'] {
-  height: 1.75rem !important;
-  width: 1.75rem !important;
+  height: 1.25rem !important;
+  width: 1.25rem !important;
+  margin-right: 0.25rem !important;
 }
 
 body.condensed [data-slot='audio-player-play-btn'] svg {
-  width: 0.875rem !important;
-  height: 0.875rem !important;
+  width: 0.625rem !important;
+  height: 0.625rem !important;
 }
 
 /* Title — smaller font */
