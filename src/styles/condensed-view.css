@@ -4503,3 +4503,123 @@ body.condensed [data-slot='doc-scanner-preview-info'] p:last-child {
 body.condensed [data-slot='doc-scanner-actions'] {
   gap: 0.375rem !important;
 }
+
+/* ============================================================
+   FileManager — condensed overrides
+   ============================================================ */
+
+/* Root — tighter spacing between sections */
+body.condensed [data-slot='file-manager'] {
+  gap: 0.25rem !important;
+}
+
+/* Dropzone card — smaller margin and border */
+body.condensed [data-slot='file-manager-dropzone'] {
+  margin-bottom: 0.5rem !important;
+}
+
+/* Dropzone content — tighter padding */
+body.condensed [data-slot='file-manager-dropzone-content'] {
+  padding: 0.75rem !important;
+}
+
+/* Upload icon circle — shrink from 3rem to 2rem */
+body.condensed [data-slot='file-manager-upload-icon'] {
+  height: 2rem !important;
+  width: 2rem !important;
+  margin-bottom: 0.375rem !important;
+}
+
+body.condensed [data-slot='file-manager-upload-icon'] svg {
+  height: 1rem !important;
+  width: 1rem !important;
+}
+
+/* Dropzone text — smaller */
+body.condensed [data-slot='file-manager-dropzone-content'] p:first-of-type {
+  font-size: 0.75rem !important;
+}
+
+body.condensed [data-slot='file-manager-dropzone-content'] p:last-of-type {
+  font-size: 0.625rem !important;
+  margin-top: 0.125rem !important;
+}
+
+/* Upload progress — tighter */
+body.condensed [data-slot='file-manager-progress'] {
+  margin-bottom: 0.5rem !important;
+}
+
+body.condensed [data-slot='file-manager-progress'] .mb-2 {
+  margin-bottom: 0.25rem !important;
+  font-size: 0.6875rem !important;
+}
+
+/* Error message — smaller padding and text */
+body.condensed [data-slot='file-manager-error'] {
+  padding: 0.375rem 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+body.condensed [data-slot='file-manager-error'] p {
+  font-size: 0.6875rem !important;
+}
+
+/* Storage info — smaller padding and text */
+body.condensed [data-slot='file-manager-storage'] {
+  padding: 0.375rem 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+body.condensed [data-slot='file-manager-storage'] p {
+  font-size: 0.6875rem !important;
+}
+
+/* Table header — tighter padding */
+body.condensed [data-slot='file-manager-table'] th {
+  padding-top: 0.375rem !important;
+  padding-bottom: 0.375rem !important;
+  font-size: 0.625rem !important;
+}
+
+/* Table rows — tighter padding */
+body.condensed [data-slot='file-manager-row'] td {
+  padding-top: 0.375rem !important;
+  padding-bottom: 0.375rem !important;
+}
+
+/* File icon in rows — shrink */
+body.condensed [data-slot='file-manager-row'] svg {
+  height: 0.875rem !important;
+  width: 0.875rem !important;
+}
+
+/* Filename text — smaller */
+body.condensed [data-slot='file-manager-row'] span {
+  font-size: 0.75rem !important;
+}
+
+/* Action buttons — smaller hit area */
+body.condensed [data-slot='file-manager-actions'] button {
+  padding: 0.25rem !important;
+}
+
+body.condensed [data-slot='file-manager-actions'] svg {
+  height: 0.75rem !important;
+  width: 0.75rem !important;
+}
+
+/* Empty state — compact */
+body.condensed [data-slot='file-manager-empty'] svg {
+  height: 2rem !important;
+  width: 2rem !important;
+  margin-bottom: 0.375rem !important;
+}
+
+body.condensed [data-slot='file-manager-empty'] p:first-of-type {
+  font-size: 0.75rem !important;
+}
+
+body.condensed [data-slot='file-manager-empty'] p:last-of-type {
+  font-size: 0.625rem !important;
+}

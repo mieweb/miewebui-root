@@ -193,10 +193,11 @@ export function FileManager({
   };
 
   return (
-    <div className={className}>
+    <div data-slot="file-manager" className={className}>
       {/* Dropzone */}
       {showDropzone && (
         <Card
+          data-slot="file-manager-dropzone"
           className={`mb-4 cursor-pointer border-2 border-dashed transition-all duration-200 ${
             isDragging
               ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
@@ -207,8 +208,9 @@ export function FileManager({
           onDrop={handleDrop}
           onClick={handleUploadClick}
         >
-          <div className="flex flex-col items-center justify-center p-6">
+          <div data-slot="file-manager-dropzone-content" className="flex flex-col items-center justify-center p-6">
             <div
+              data-slot="file-manager-upload-icon"
               className={`mb-3 flex h-12 w-12 items-center justify-center rounded-full ${
                 isDragging
                   ? 'bg-blue-100 dark:bg-blue-800'
@@ -249,7 +251,7 @@ export function FileManager({
 
       {/* Upload Progress */}
       {isUploading && uploadProgress !== undefined && (
-        <div className="mb-4">
+        <div data-slot="file-manager-progress" className="mb-4">
           <div className="mb-2 flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
             <span>Uploading...</span>
             <span>{uploadProgress}%</span>
@@ -260,7 +262,7 @@ export function FileManager({
 
       {/* Error Message */}
       {errorMessage && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-900/20">
+        <div data-slot="file-manager-error" className="mb-4 rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-900/20">
           <p className="text-sm text-red-600 dark:text-red-400">
             {errorMessage}
           </p>
@@ -269,7 +271,7 @@ export function FileManager({
 
       {/* Storage Usage */}
       {totalStorageUsed !== undefined && (
-        <div className="mb-4 rounded-lg bg-gray-50 p-3 text-center dark:bg-gray-800">
+        <div data-slot="file-manager-storage" className="mb-4 rounded-lg bg-gray-50 p-3 text-center dark:bg-gray-800">
           <p className="text-sm text-gray-600 dark:text-gray-400">
             Used Storage:{' '}
             <span className="font-semibold text-gray-900 dark:text-white">
@@ -286,7 +288,7 @@ export function FileManager({
       )}
 
       {/* File Table */}
-      <div className="overflow-x-auto">
+      <div data-slot="file-manager-table" className="overflow-x-auto">
         <table className="w-full">
           <thead>
             <tr className="border-b border-gray-200 dark:border-gray-700">
@@ -309,6 +311,7 @@ export function FileManager({
               files.map((file) => (
                 <tr
                   key={file.id}
+                  data-slot="file-manager-row"
                   className="hover:bg-gray-50 dark:hover:bg-gray-800/50"
                 >
                   <td className="py-3">
@@ -330,7 +333,7 @@ export function FileManager({
                     </span>
                   </td>
                   <td className="py-3">
-                    <div className="flex items-center justify-end gap-1">
+                    <div data-slot="file-manager-actions" className="flex items-center justify-end gap-1">
                       {onPreview && (
                         <button
                           type="button"
@@ -410,7 +413,7 @@ export function FileManager({
             ) : (
               <tr>
                 <td colSpan={4} className="py-8">
-                  <div className="text-center">
+                  <div data-slot="file-manager-empty" className="text-center">
                     <svg
                       className="mx-auto mb-3 h-12 w-12 text-gray-300 dark:text-gray-600"
                       fill="none"
