@@ -5290,3 +5290,77 @@ body.condensed [data-slot='command-palette-trigger'] kbd {
   padding: 0.0625rem 0.25rem !important;
   font-size: 0.625rem !important;
 }
+
+/* ========================================================================
+   LanguageSelector — condensed overrides
+   ======================================================================== */
+
+/* Dropdown variant — trigger button */
+body.condensed [data-slot='language-selector-trigger'] {
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.75rem !important;
+  gap: 0.25rem !important;
+  border-radius: 0.375rem !important;
+}
+
+body.condensed [data-slot='language-selector-trigger'] span {
+  gap: 0.25rem !important;
+}
+
+body.condensed [data-slot='language-selector-trigger'] span .text-base {
+  font-size: 0.8125rem !important;
+}
+
+body.condensed [data-slot='language-selector-trigger'] svg {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+}
+
+/* Dropdown menu */
+body.condensed [data-slot='language-selector-dropdown'] {
+  min-width: 9rem !important;
+  border-radius: 0.375rem !important;
+}
+
+body.condensed [data-slot='language-selector-dropdown'] ul {
+  padding-top: 0.125rem !important;
+  padding-bottom: 0.125rem !important;
+}
+
+/* Dropdown options */
+body.condensed [data-slot='language-selector-option'] {
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.6875rem !important;
+  gap: 0.25rem !important;
+}
+
+body.condensed [data-slot='language-selector-option'] .text-base {
+  font-size: 0.75rem !important;
+}
+
+body.condensed [data-slot='language-selector-option'] svg {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+}
+
+/* Native variant */
+body.condensed [data-slot='language-selector-native'] select {
+  padding: 0.25rem 1.5rem 0.25rem 0.5rem !important;
+  font-size: 0.6875rem !important;
+  border-radius: 0.375rem !important;
+}
+
+body.condensed [data-slot='language-selector-native'] svg {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+}
+
+/* Inline variant */
+body.condensed [data-slot='language-selector-inline'] {
+  border-radius: 0.375rem !important;
+}
+
+body.condensed [data-slot='language-selector-inline-option'] {
+  padding: 0.125rem 0.375rem !important;
+  font-size: 0.6875rem !important;
+}
