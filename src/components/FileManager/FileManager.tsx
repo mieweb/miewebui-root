@@ -4,12 +4,7 @@ import * as React from 'react';
 import { createPortal } from 'react-dom';
 import { cn } from '../../utils/cn';
 import { Card } from '../Card/Card';
-import {
-  DownloadIcon,
-  EyeIcon,
-  MoreHorizontalIcon,
-  TrashIcon,
-} from '../Icons';
+import { DownloadIcon, EyeIcon, MoreHorizontalIcon, TrashIcon } from '../Icons';
 import { Progress } from '../Progress/Progress';
 import {
   Table,
@@ -225,7 +220,10 @@ export function FileManager({
           onDrop={handleDrop}
           onClick={handleUploadClick}
         >
-          <div data-slot="file-manager-dropzone-content" className="flex flex-col items-center justify-center p-6">
+          <div
+            data-slot="file-manager-dropzone-content"
+            className="flex flex-col items-center justify-center p-6"
+          >
             <div
               data-slot="file-manager-upload-icon"
               className={`mb-3 flex h-12 w-12 items-center justify-center rounded-full ${
@@ -279,7 +277,10 @@ export function FileManager({
 
       {/* Error Message */}
       {errorMessage && (
-        <div data-slot="file-manager-error" className="mb-4 rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-900/20">
+        <div
+          data-slot="file-manager-error"
+          className="mb-4 rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-900/20"
+        >
           <p className="text-sm text-red-600 dark:text-red-400">
             {errorMessage}
           </p>
@@ -288,7 +289,10 @@ export function FileManager({
 
       {/* Storage Usage */}
       {totalStorageUsed !== undefined && (
-        <div data-slot="file-manager-storage" className="mb-4 rounded-lg bg-gray-50 p-3 text-center dark:bg-gray-800">
+        <div
+          data-slot="file-manager-storage"
+          className="mb-4 rounded-lg bg-gray-50 p-3 text-center dark:bg-gray-800"
+        >
           <p className="text-sm text-gray-600 dark:text-gray-400">
             Used Storage:{' '}
             <span className="font-semibold text-gray-900 dark:text-white">

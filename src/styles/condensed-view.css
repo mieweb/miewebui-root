@@ -4290,7 +4290,9 @@ body.condensed [data-slot='audio-player-play-btn'] {
 }
 
 /* Extra spacing between play button and slider in compact variant */
-body.condensed [data-variant='compact'] [data-slot='audio-player-play-btn'] {
+body.condensed
+  [data-slot='audio-player'][data-variant='compact']
+  [data-slot='audio-player-play-btn'] {
   margin-right: 0.25rem !important;
 }
 
@@ -4435,7 +4437,7 @@ body.condensed [data-slot='doc-scanner-header'] h2 {
   line-height: 1.25rem !important;
 }
 
-body.condensed [data-slot='doc-scanner-header'] [data-slot='text'] {
+body.condensed [data-slot='doc-scanner-header'] p {
   font-size: 0.75rem !important;
 }
 
@@ -4451,16 +4453,20 @@ body.condensed [data-slot='doc-scanner-dropzone-content'] {
   gap: 0.375rem !important;
 }
 
-body.condensed [data-slot='doc-scanner-dropzone-content'] [data-slot='text'] {
+body.condensed [data-slot='doc-scanner-dropzone-content'] p {
   font-size: 0.75rem !important;
   line-height: 1rem !important;
 }
 
-body.condensed [data-slot='doc-scanner-dropzone-content'] .space-y-1 {
-  gap: 0 !important;
+body.condensed
+  [data-slot='doc-scanner-dropzone-content']
+  .space-y-1
+  > :not([hidden])
+  ~ :not([hidden]) {
+  margin-top: 0 !important;
 }
 
-body.condensed [data-slot='doc-scanner-dropzone-content'] .space-y-1 [data-slot='text'] {
+body.condensed [data-slot='doc-scanner-dropzone-content'] .space-y-1 p {
   font-size: 0.6875rem !important;
   line-height: 0.875rem !important;
 }

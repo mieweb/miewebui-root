@@ -201,7 +201,10 @@ function WaveformBars({ size }: { size: RecordButtonSize }) {
   const barHeight = size === 'sm' ? 'h-2' : size === 'md' ? 'h-3' : 'h-4';
 
   return (
-    <div data-slot="record-button-waveform" className="flex items-center gap-0.5">
+    <div
+      data-slot="record-button-waveform"
+      className="flex items-center gap-0.5"
+    >
       {[0, 1, 2, 3, 4].map((i) => (
         <span
           key={i}
@@ -659,7 +662,10 @@ const RecordButton = React.forwardRef<HTMLButtonElement, RecordButtonProps>(
     };
 
     return (
-      <div data-slot="record-button" className="relative inline-flex items-center gap-2">
+      <div
+        data-slot="record-button"
+        className="relative inline-flex items-center gap-2"
+      >
         <button
           ref={ref}
           type="button"
@@ -682,19 +688,27 @@ const RecordButton = React.forwardRef<HTMLButtonElement, RecordButtonProps>(
           )}
 
           {/* Icon */}
-          <span data-slot="record-button-icon" className="relative z-10">{renderIcon()}</span>
+          <span data-slot="record-button-icon" className="relative z-10">
+            {renderIcon()}
+          </span>
         </button>
 
         {/* Duration display */}
         {showDuration && isRecording && (
-          <span data-slot="record-button-duration" className="text-destructive font-mono text-xs tabular-nums">
+          <span
+            data-slot="record-button-duration"
+            className="text-destructive font-mono text-xs tabular-nums"
+          >
             {formatDuration(duration)}
           </span>
         )}
 
         {/* Transcription state label */}
         {showTranscriptionState && getTranscriptionLabel() && (
-          <span data-slot="record-button-transcription" className="text-primary text-xs font-medium">
+          <span
+            data-slot="record-button-transcription"
+            className="text-primary text-xs font-medium"
+          >
             {getTranscriptionLabel()}
           </span>
         )}
