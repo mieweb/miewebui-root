@@ -4272,13 +4272,13 @@ body.condensed [data-slot='tabs-content'] {
  * ========================================================================== */
 
 /* Compact variant: tighter padding and gap */
-body.condensed [data-slot='audio-player'].p-3 {
+body.condensed [data-slot='audio-player'][data-variant='compact'] {
   padding: 0.375rem 0.5rem !important;
   gap: 0.375rem !important;
 }
 
 /* Waveform variant: tighter padding and gap */
-body.condensed [data-slot='audio-player'].p-4 {
+body.condensed [data-slot='audio-player'][data-variant='waveform'] {
   padding: 0.5rem 0.75rem !important;
   gap: 0.375rem !important;
 }
@@ -4313,17 +4313,16 @@ body.condensed [data-slot='audio-player-progress'] {
   height: 0.25rem !important;
 }
 
-/* Progress bar thumb — smaller */
+/* Progress bar thumb — keep size compatible with positioning */
 body.condensed [data-slot='audio-player-progress'] > div:last-child {
-  height: 0.5rem !important;
-  width: 0.5rem !important;
+  height: 0.75rem !important;
+  width: 0.75rem !important;
 }
 
 /* Waveform container — scale down proportionally */
 body.condensed [data-slot='audio-player-waveform'] {
   transform: scaleY(0.625) !important;
   transform-origin: center !important;
-  height: auto !important;
 }
 
 /* Controls row — tighter gap */

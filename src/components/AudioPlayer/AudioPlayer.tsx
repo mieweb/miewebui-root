@@ -934,6 +934,7 @@ const AudioPlayer = React.forwardRef<
       <div
         ref={containerRef}
         data-slot="audio-player"
+        data-variant="inline"
         className={cn(audioPlayerVariants({ variant, size }), className)}
       >
         {renderPlayButton()}
@@ -964,6 +965,7 @@ const AudioPlayer = React.forwardRef<
       <div
         ref={containerRef}
         data-slot="audio-player"
+        data-variant="compact"
         className={cn(audioPlayerVariants({ variant, size }), className)}
       >
         {renderPlayButton()}
@@ -986,6 +988,7 @@ const AudioPlayer = React.forwardRef<
     <div
       ref={containerRef}
       data-slot="audio-player"
+      data-variant="waveform"
       className={cn(audioPlayerVariants({ variant, size }), className)}
     >
       {title && (
