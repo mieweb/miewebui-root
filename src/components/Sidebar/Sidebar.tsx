@@ -137,6 +137,7 @@ export function Sidebar({
       {/* Mobile backdrop */}
       {isMobileViewport && isMobileOpen && (
         <div
+          data-slot="sidebar-backdrop"
           className="fixed inset-0 z-40 bg-black/50 lg:hidden"
           onClick={closeMobile}
           aria-hidden="true"
@@ -145,6 +146,7 @@ export function Sidebar({
 
       {/* Sidebar */}
       <nav
+        data-slot="sidebar"
         data-testid={testId}
         className={cn(
           'flex h-screen flex-col',
@@ -193,6 +195,7 @@ export function SidebarHeader({
 
   return (
     <div
+      data-slot="sidebar-header"
       className={cn(
         'flex items-center border-b border-neutral-200 py-4 dark:border-neutral-700',
         showCollapsed ? 'justify-center px-2' : 'justify-between px-4',
@@ -239,6 +242,7 @@ export function SidebarFooter({
 
   return (
     <div
+      data-slot="sidebar-footer"
       className={cn(
         'mt-auto border-t border-neutral-200 py-4 dark:border-neutral-700',
         showCollapsed ? 'flex justify-center px-2' : 'px-4',
@@ -265,7 +269,10 @@ export function SidebarContent({
   className,
 }: SidebarContentProps): React.JSX.Element {
   return (
-    <div className={cn('flex-1 overflow-y-auto py-4', className)}>
+    <div
+      data-slot="sidebar-content"
+      className={cn('flex-1 overflow-y-auto py-4', className)}
+    >
       {children}
     </div>
   );
@@ -285,7 +292,11 @@ export function SidebarNav({
   children,
   className,
 }: SidebarNavProps): React.JSX.Element {
-  return <nav className={cn('space-y-1 px-2', className)}>{children}</nav>;
+  return (
+    <nav data-slot="sidebar-nav" className={cn('space-y-1 px-2', className)}>
+      {children}
+    </nav>
+  );
 }
 
 // =============================================================================
@@ -335,9 +346,10 @@ export function SidebarNavGroup({
   }, [groupId, toggleGroup]);
 
   return (
-    <div className={cn('mb-2', className)}>
+    <div data-slot="sidebar-nav-group" className={cn('mb-2', className)}>
       {/* Group Header */}
       <button
+        data-slot="sidebar-nav-group-button"
         onClick={handleToggle}
         className={cn(
           'flex w-full items-center rounded-lg px-3 py-2 text-sm font-semibold',
@@ -485,6 +497,7 @@ export function SidebarNavItem({
   if (href && !disabled) {
     return (
       <a
+        data-slot="sidebar-nav-item"
         href={href}
         onClick={handleClick}
         data-testid={testId}
@@ -498,6 +511,7 @@ export function SidebarNavItem({
 
   return (
     <button
+      data-slot="sidebar-nav-item"
       onClick={handleClick}
       disabled={disabled}
       data-testid={testId}
@@ -654,7 +668,7 @@ export function SidebarSearch({
   if (showCollapsed) return <></>;
 
   return (
-    <div className={cn('px-3 py-2', className)}>
+    <div data-slot="sidebar-search" className={cn('px-3 py-2', className)}>
       <div className="relative">
         <div className="absolute top-1/2 left-3 -translate-y-1/2 text-neutral-400">
           <SearchIcon />
