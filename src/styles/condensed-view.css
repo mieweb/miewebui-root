@@ -4599,12 +4599,13 @@ body.condensed [data-slot='file-manager-row'] span {
   font-size: 0.75rem !important;
 }
 
-/* Action buttons — smaller hit area */
+/* 3-dot action menu trigger — smaller */
 body.condensed [data-slot='file-manager-actions'] button {
-  padding: 0.25rem !important;
+  height: 1.25rem !important;
+  width: 1.25rem !important;
 }
 
-body.condensed [data-slot='file-manager-actions'] svg {
+body.condensed [data-slot='file-manager-actions'] button svg {
   height: 0.75rem !important;
   width: 0.75rem !important;
 }
