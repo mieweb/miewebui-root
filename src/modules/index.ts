@@ -63,8 +63,8 @@ export { ShortcutManager } from './shortcutManager';
 export type { ShortcutManagerContext } from './shortcutManager';
 
 // Shadow DOM
-// Shadow DOM
 export { getShadowDOMStyles } from './shadowDomStyles';
+export { ShadowDOMManager } from './shadowDomManager';
 
 // Services
 export { NodeHeightSyncService, createNodeHeightSync } from './nodeHeightSyncService';

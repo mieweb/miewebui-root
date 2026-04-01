@@ -21,7 +21,7 @@ import {
   SidebarManager,
   SwapHandler,
   ShortcutManager,
-  getShadowDOMStyles,
+  ShadowDOMManager,
   unmountAllReactRoots,
   // Editor
   createEditor,
@@ -81,8 +81,7 @@ class YChartEditor {
   // Truth data (complete YAML data)
   private truthData: any[] = [];
   // Shadow DOM support
-  private shadowRoot: ShadowRoot | null = null;
-  private useShadowDOM: boolean = false;
+  private shadowDomManager!: ShadowDOMManager;
   
   constructor(options?: YChartOptions) {
     this.instanceId = generateUUID();
@@ -104,7 +103,6 @@ class YChartEditor {
     this.toolbarPosition = this.defaultOptions.toolbarPosition!;
     this.toolbarOrientation = this.defaultOptions.toolbarOrientation!;
     this.experimental = this.defaultOptions.experimental || false;
-    this.useShadowDOM = this.defaultOptions.useShadowDOM || false;
   }
 
   /**
@@ -123,20 +121,8 @@ class YChartEditor {
     this.initialData = yamlData;
 
     // Set up Shadow DOM if enabled
-    if (this.useShadowDOM) {
-      this.shadowRoot = hostContainer.attachShadow({ mode: 'open' });
-      
-      // Inject styles into Shadow DOM
-      this.injectShadowDOMStyles();
-      
-      // Create a container inside the shadow root
-      const shadowContainer = document.createElement('div');
-      shadowContainer.style.cssText = 'width:100%;height:100%;';
-      this.shadowRoot.appendChild(shadowContainer);
-      this.viewContainer = shadowContainer;
-    } else {
-      this.viewContainer = hostContainer;
-    }
+    this.shadowDomManager = new ShadowDOMManager(this.defaultOptions.useShadowDOM || false);
+    this.viewContainer = this.shadowDomManager.attachTo(hostContainer);
 
     // Create the layout structure
     this.createLayout();
@@ -163,7 +149,7 @@ class YChartEditor {
     // }, 10);
 
     // eslint-disable-next-line no-console -- Intentional: Display version on successful init
-    console.log(`%cYChart Editor v${YCHART_VERSION}%c initialized successfully${this.useShadowDOM ? ' (Shadow DOM)' : ''}`, 'color: #667eea; font-weight: bold;', 'color: inherit;');
+    console.log(`%cYChart Editor v${YCHART_VERSION}%c initialized successfully${this.shadowDomManager.isEnabled() ? ' (Shadow DOM)' : ''}`, 'color: #667eea; font-weight: bold;', 'color: inherit;');
 
     return this;
   
@@ -742,29 +728,17 @@ class YChartEditor {
   }
 
   /**
-   * Inject CSS styles into Shadow DOM for style encapsulation.
-   * This includes all CSS variables and library styles needed for YChart.
-   */
-  private injectShadowDOMStyles(): void {
-    if (!this.shadowRoot) return;
-
-    const styleElement = document.createElement('style');
-    styleElement.textContent = getShadowDOMStyles();
-    this.shadowRoot.appendChild(styleElement);
-  }
-
-    /**
    * Get the Shadow DOM root if Shadow DOM is enabled
    */
   getShadowRoot(): ShadowRoot | null {
-    return this.shadowRoot;
+    return this.shadowDomManager?.getRoot() ?? null;
   }
 
   /**
    * Check if Shadow DOM is enabled
    */
   isShadowDOMEnabled(): boolean {
-    return this.useShadowDOM && this.shadowRoot !== null;
+    return this.shadowDomManager?.isEnabled() ?? false;
   }
 
   /**
