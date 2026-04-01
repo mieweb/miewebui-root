@@ -31615,12 +31615,11 @@ ${d.email || ""}`);
     return defs;
   }
   function applyBackgroundPattern(chartContainer, bgPattern, patternColor) {
-    const svg2 = chartContainer.querySelector("svg");
+    const svg2 = chartContainer.querySelector("svg.svg-chart-container") || chartContainer.querySelector(":scope > svg");
     if (!svg2) {
       console.warn("SVG not found in chart container");
       return;
     }
-    console.log("Applying background pattern:", bgPattern);
     let defs = svg2.querySelector("defs");
     if (!defs) {
       defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
@@ -31653,14 +31652,13 @@ ${d.email || ""}`);
     } else {
       svg2.appendChild(bgRect);
     }
-    console.log("Pattern applied successfully");
   }
   function setupPatternPersistence(chartContainer, getBgPattern, patternColor) {
     let debounceTimeout = null;
     const observer = new MutationObserver(() => {
       const bgPattern = getBgPattern();
       if (bgPattern) {
-        const svg2 = chartContainer.querySelector("svg");
+        const svg2 = chartContainer.querySelector("svg.svg-chart-container") || chartContainer.querySelector(":scope > svg");
         const bgRect = svg2 == null ? void 0 : svg2.querySelector("#pattern-background");
         const patternDef = svg2 == null ? void 0 : svg2.querySelector("#dotPattern, #gridPattern");
         if (svg2 && (!bgRect || !patternDef)) {

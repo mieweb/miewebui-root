@@ -13,7 +13,7 @@ export function createDotPattern(patternColor?: string): SVGDefsElement {
   const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
   dot.setAttribute("cx", "5");
   dot.setAttribute("cy", "5");
-  dot.setAttribute("r", "1.2");
+  dot.setAttribute("r", "0.75");
   dot.setAttribute("fill", patternColor || "var(--yc-color-pattern)");
 
   pattern.appendChild(dot);
