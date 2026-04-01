@@ -110,6 +110,7 @@ function SkeletonMessage({
 }: SkeletonMessageProps) {
   return (
     <div
+      data-slot="skeleton-message"
       className={cn(
         'flex items-end gap-2',
         isOutgoing ? 'flex-row-reverse' : 'flex-row',
@@ -162,6 +163,7 @@ function TypingIndicator({ typingState, className }: TypingIndicatorProps) {
 
   return (
     <div
+      data-slot="typing-indicator"
       className={cn('flex items-center gap-2 px-4 py-2', className)}
       role="status"
       aria-live="polite"
@@ -206,6 +208,7 @@ export interface DateSeparatorProps {
 function DateSeparator({ label, className }: DateSeparatorProps) {
   return (
     <div
+      data-slot="date-separator"
       className={cn('flex items-center justify-center py-4', className)}
       role="separator"
       aria-label={label}
@@ -253,6 +256,7 @@ function EmptyState({
 }: EmptyStateProps) {
   return (
     <div
+      data-slot="message-empty-state"
       className={cn(
         'flex flex-1 flex-col items-center justify-center p-8 text-center',
         className
@@ -309,7 +313,10 @@ function LoadMoreButton({
   className,
 }: LoadMoreButtonProps) {
   return (
-    <div className={cn('flex justify-center py-4', className)}>
+    <div
+      data-slot="load-more-button"
+      className={cn('flex justify-center py-4', className)}
+    >
       <button
         type="button"
         onClick={onClick}
@@ -518,6 +525,7 @@ const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
     return (
       <div
         ref={scrollContainerRef}
+        data-slot="message-list"
         className={cn(
           'flex flex-1 flex-col overflow-y-auto',
           'scroll-smooth',
@@ -534,7 +542,10 @@ const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
         )}
 
         {/* Messages grouped by date */}
-        <div className="flex flex-col gap-1 p-4">
+        <div
+          data-slot="message-list-content"
+          className="flex flex-col gap-1 p-4"
+        >
           {messageGroups.map((group) => (
             <React.Fragment key={group.date}>
               {/* Date separator */}
