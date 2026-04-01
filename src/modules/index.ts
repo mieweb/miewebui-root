@@ -50,6 +50,10 @@ export type { LayoutElements, LayoutConfig } from './layoutBuilder';
 export { SidebarManager } from './sidebarManager';
 export type { SidebarManagerContext } from './sidebarManager';
 
+// Render pipeline
+export { RenderPipeline } from './renderPipeline';
+export type { RenderPipelineContext } from './renderPipeline';
+
 // Shadow DOM
 // Shadow DOM
 export { getShadowDOMStyles } from './shadowDomStyles';
