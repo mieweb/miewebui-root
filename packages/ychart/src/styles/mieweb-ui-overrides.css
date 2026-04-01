@@ -1,0 +1,93 @@
+/**
+ * Overrides for @mieweb/ui Tailwind CSS components.
+ *
+ * @mieweb/ui ships its styles in CSS cascade layers (@layer utilities, etc.).
+ * Bootstrap's un-layered resets (e.g. `button { border-radius: 0 }`) have
+ * higher cascade priority than any layered rule, breaking component styles.
+ *
+ * This file re-declares the affected utilities WITHOUT @layer so they match
+ * Bootstrap's cascade level and win by specificity (class > type selector).
+ */
+
+/* ── Border radius (Bootstrap resets button border-radius to 0) ── */
+.rounded-sm  { border-radius: var(--radius-sm, 0.125rem); }
+.rounded-md  { border-radius: var(--radius-md, 0.375rem); }
+.rounded-lg  { border-radius: var(--radius-lg, 0.5rem); }
+.rounded-xl  { border-radius: var(--radius-xl, 0.75rem); }
+.rounded-2xl { border-radius: var(--radius-2xl, 1rem); }
+.rounded-full { border-radius: 9999px; }
+
+/* ── Border color (ensure Tailwind border-input overrides inherited colors) ── */
+.border-input { border-color: var(--color-input, #e5e7eb); }
+.border-border { border-color: var(--color-border, #e5e7eb); }
+
+/* ── Background colors used by @mieweb/ui components ── */
+.bg-background { background-color: var(--color-background, #fff); }
+.bg-primary-700 { background-color: var(--color-primary-700); }
+
+/* ── Text colors ── */
+.text-foreground { color: var(--color-foreground, #171717); }
+.text-muted-foreground { color: var(--color-muted-foreground, #737373); }
+
+/* ── Font sizes (Bootstrap sets font-size: inherit on buttons/inputs) ── */
+.text-xs { font-size: var(--text-xs, 0.75rem); line-height: var(--tw-leading, var(--text-xs--line-height)); }
+.text-sm { font-size: var(--text-sm, 0.875rem); line-height: var(--tw-leading, var(--text-sm--line-height)); }
+.text-base { font-size: var(--text-base, 1rem); line-height: var(--tw-leading, var(--text-base--line-height)); }
+
+/* ── Padding overrides (Bootstrap .px-3 = 1rem !important vs Tailwind .px-3 = 0.75rem) ── */
+.mw-ui .px-3 { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
+
+/* ── Compact/dense Select overrides ── */
+
+/* Trigger: reduce height and padding for sm size */
+.mw-ui button[role="combobox"] {
+  height: 1.75rem;    /* 28px instead of 32px */
+  padding: 0 0.5rem;  /* px-2 instead of px-3 */
+  font-size: 0.75rem; /* text-xs instead of text-sm */
+}
+
+/* Dropdown option items: reduce padding and font size */
+[role="option"].px-3.py-2 {
+  padding: 0.25rem 0.5rem !important;  /* py-1 px-2 */
+  font-size: 0.75rem !important;       /* text-xs */
+  gap: 0.25rem;
+}
+
+/* Dropdown option check icon: slightly smaller */
+[role="option"] svg.h-4.w-4 {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+/* Dropdown search input: reduce padding and font */
+[role="listbox"] ~ div input,
+div:has(> [role="listbox"]) input[type="text"] {
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.75rem !important;
+}
+
+/* Dropdown "no results" text */
+[role="listbox"] .px-3.py-2.text-center {
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.75rem !important;
+}
+
+/* Dropdown container padding */
+[role="listbox"].p-1 {
+  padding: 0.125rem;
+}
+
+/* ── POI dropdown: ensure portaled dropdown is wide enough for names ── */
+body > div:has([role="listbox"]) {
+  min-width: 220px !important;
+}
+
+/* ── POI selector: borderless combobox to blend with its pill container ── */
+.ychart-poi-selector-wrapper .mw-ui button[role="combobox"] {
+  border: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  background-color: #f5f5f5 !important;
+}
+
+/* ── Prevent @mieweb/ui body-level styles from leaking into orgchart ── */

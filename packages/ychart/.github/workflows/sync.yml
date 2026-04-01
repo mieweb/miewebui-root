@@ -1,0 +1,37 @@
+name: Sync Repository
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  sync:
+    runs-on: self-hosted
+    
+    steps:
+      - name: Pull latest changes
+        run: |
+          cd /home/pralambomanarivo/orgchart
+          git fetch origin
+          
+          # Check if there are local changes to stash
+          if ! git diff --quiet || ! git diff --cached --quiet; then
+            echo "Stashing local changes..."
+            git stash push -m "Auto-stash before sync $(date)"
+            STASHED=true
+          else
+            STASHED=false
+          fi
+          
+          # Pull latest changes
+          git pull origin main
+          
+          # Restore stashed changes if any
+          if [ "$STASHED" = true ]; then
+            echo "Restoring stashed changes..."
+            git stash pop || echo "Warning: Could not auto-restore stash. Run 'git stash pop' manually."
+          fi
+          
+          echo "Repository synced at $(date)"

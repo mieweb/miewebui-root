@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YChart Editor - Interactive Org Chart</title>
+    
+    <!-- Load YChart Editor CSS and JS from dist -->
+    <link rel="stylesheet" href="./dist/ychart.css">
+    <script src="./dist/ychart-editor.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background: var(--yc-gradient-primary);
+        }
+
+        .app-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: var(--yc-gradient-header-dark);
+            backdrop-filter: var(--yc-backdrop-blur);
+            padding: 1.5rem 2rem;
+            box-shadow: var(--yc-shadow-header);
+            z-index: 10;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--yc-gradient-rainbow);
+            background-size: 200% 100%;
+            animation: rainbow 3s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 200% 0%;
+            }
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--yc-gradient-title-light);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--yc-color-header-subtext);
+            font-size: 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-left {
+            flex: 1;
+        }
+
+        .git-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.85rem;
+            padding-top: 0.5rem;
+        }
+
+        .git-info a {
+            color: var(--yc-color-overlay-white-90);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: color 0.2s;
+        }
+
+        .git-info a:hover {
+            color: var(--yc-color-text-inverse);
+            text-decoration: underline;
+        }
+
+        .git-info svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .commit-hash {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, monospace;
+            background: var(--yc-color-overlay-white-15);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .examples-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .examples-selector label {
+            font-size: 0.85rem;
+            color: var(--yc-color-overlay-white-90);
+        }
+
+        .examples-selector select {
+            padding: 0.35rem 0.6rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.15);
+            color: white;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .examples-selector select:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        .examples-selector select:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255,255,255,0.4);
+        }
+
+        .examples-selector select option {
+            background: #4a5568;
+            color: white;
+        }
+
+        .ychart-wrapper {
+            flex: 1;
+            background: var(--yc-color-bg-card);
+            margin: 1rem;
+            border-radius: 12px;
+            box-shadow: var(--yc-shadow-wrapper);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+        
+        /* The YChart container just needs a parent with defined height (flex:1 + min-height:0) */
+        #ychart-container {
+            flex: 1;
+            min-height: 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            color: var(--yc-color-text-inverse);
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .footer a {
+            color: var(--yc-color-text-inverse);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="header-content">
+                <div class="header-left">
+                    <h1>🌟 YChart Editor</h1>
+                    <p>Interactive Organizational Chart Editor with Real-time YAML Editing</p>
+                </div>
+                <div class="git-info">
+                    <a id="repo-link" href="https://github.com/mieweb/ychart" target="_blank" rel="noopener noreferrer" title="View repository on GitHub">
+                        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                        Repo
+                    </a>
+                    <a id="commit-link" href="#" target="_blank" rel="noopener noreferrer" title="View this commit on GitHub">
+                        <span class="commit-hash" id="commit-hash">loading...</span>
+                    </a>
+                </div>
+                <div class="examples-selector">
+                    <label for="example-select">📁 Example:</label>
+                    <select id="example-select">
+                        <option value="default">Org Chart (Default)</option>
+                        <option value="budget">💰 Budget Indicators</option>
+                        <option value="okr">🎯 OKR - Objectives & Key Results</option>
+                        <option value="salary">👥 Salary & Headcount</option>
+                    </select>
+                </div>
+                <div class="examples-selector">
+                    <label for="theme-select">🎨 Theme:</label>
+                    <select id="theme-select">
+                        <option value="default">Default</option>
+                        <option value="bluehive">BlueHive</option>
+                        <option value="enterprise-health">Enterprise Health</option>
+                        <option value="mieweb">MIE Web</option>
+                        <option value="waggleline">Waggleline</option>
+                        <option value="webchart">WebChart</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <div class="ychart-wrapper">
+            <div id="ychart-container"></div>
+        </div>
+
+        <div class="footer">
+            Powered by YChart Editor | <a href="https://orgchart.opensource.mieweb.org/docs" target="_blank">Documentation</a> | <a href="https://github.com/mieweb/ychart" target="_blank">View on GitHub</a>
+        </div>
+    </div>
+
+    <script>
+        let currentEditor = null;
+
+        // Hardcoded example YAML data
+        const exampleData = {
+            default: null, // Will use the inline yamlData below
+            budget: `---
+options:
+  nodeWidth: 280
+  nodeHeight: 160
+  childrenMargin: 60
+  compactMarginBetween: 40
+  compactMarginPair: 35
+  neighbourMargin: 25
+schema:
+  id: number | required
+  name: string | required
+  title: string | required
+  department: string | required
+  budget_allocated: number | required
+  budget_spent: number | required
+  budget_remaining: number | optional
+  variance_pct: number | optional
+card:
+  - div:
+      style: font-size:14px;font-weight:700;color:#1a202c;margin-bottom:4px;
+      content: $name$
+  - div:
+      style: font-size:10px;color:#667eea;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;
+      content: $title$
+  - div:
+      style: font-size:11px;color:#2d3748;margin-bottom:4px;
+      children:
+        - span:
+            style: font-weight:600;
+            content: "💰 Allocated: "
+        - span:
+            style: color:#38a169;font-weight:600;
+            content: $budget_allocated$
+  - div:
+      style: font-size:11px;color:#2d3748;margin-bottom:4px;
+      children:
+        - span:
+            style: font-weight:600;
+            content: "📊 Spent: "
+        - span:
+            style: color:#dd6b20;font-weight:600;
+            content: $budget_spent$
+  - div:
+      style: font-size:11px;color:#2d3748;margin-bottom:4px;
+      children:
+        - span:
+            style: font-weight:600;
+            content: "💵 Remaining: "
+        - span:
+            style: color:#3182ce;font-weight:600;
+            content: $budget_remaining$
+  - div:
+      style: font-size:10px;margin-top:6px;padding-top:6px;border-top:1px solid #e2e8f0;
+      children:
+        - span:
+            style: font-weight:600;color:#718096;
+            content: "Variance: "
+        - span:
+            style: font-weight:700;
+            content: $variance_pct$
+---
+
+# Budget Indicators - Hierarchical Roll-up Example
+- id: 1
+  name: Sarah Chen
+  title: Chief Executive Officer
+  department: Executive
+  budget_allocated: "$15,000,000"
+  budget_spent: "$12,450,000"
+  budget_remaining: "$2,550,000"
+  variance_pct: "+17% under budget"
+  parentId: null
+
+- id: 2
+  name: Michael Rodriguez
+  title: Chief Technology Officer
+  department: Technology
+  budget_allocated: "$6,500,000"
+  budget_spent: "$5,800,000"
+  budget_remaining: "$700,000"
+  variance_pct: "+10.8% under budget"
+  parentId: 1
+
+- id: 3
+  name: Emily Watson
+  title: Chief Financial Officer
+  department: Finance
+  budget_allocated: "$2,200,000"
+  budget_spent: "$1,950,000"
+  budget_remaining: "$250,000"
+  variance_pct: "+11.4% under budget"
+  parentId: 1
+
+- id: 4
+  name: David Kim
+  title: Chief Marketing Officer
+  department: Marketing
+  budget_allocated: "$4,800,000"
+  budget_spent: "$4,200,000"
+  budget_remaining: "$600,000"
+  variance_pct: "+12.5% under budget"
+  parentId: 1
+
+- id: 5
+  name: Jennifer Martinez
+  title: VP of Engineering
+  department: Technology
+  budget_allocated: "$3,200,000"
+  budget_spent: "$2,900,000"
+  budget_remaining: "$300,000"
+  variance_pct: "+9.4% under budget"
+  parentId: 2
+
+- id: 6
+  name: Robert Taylor
+  title: VP of Product
+  department: Technology
+  budget_allocated: "$1,800,000"
+  budget_spent: "$1,650,000"
+  budget_remaining: "$150,000"
+  variance_pct: "+8.3% under budget"
+  parentId: 2
+
+- id: 7
+  name: Lisa Anderson
+  title: VP of Data Science
+  department: Technology
+  budget_allocated: "$1,500,000"
+  budget_spent: "$1,250,000"
+  budget_remaining: "$250,000"
+  variance_pct: "+16.7% under budget"
+  parentId: 2
+
+- id: 8
+  name: James Wilson
+  title: Controller
+  department: Finance
+  budget_allocated: "$1,100,000"
+  budget_spent: "$980,000"
+  budget_remaining: "$120,000"
+  variance_pct: "+10.9% under budget"
+  parentId: 3
+
+- id: 9
+  name: Maria Garcia
+  title: Director of FP&A
+  department: Finance
+  budget_allocated: "$850,000"
+  budget_spent: "$720,000"
+  budget_remaining: "$130,000"
+  variance_pct: "+15.3% under budget"
+  parentId: 3
+
+- id: 10
+  name: Christopher Lee
+  title: Director of Brand Marketing
+  department: Marketing
+  budget_allocated: "$2,400,000"
+  budget_spent: "$2,100,000"
+  budget_remaining: "$300,000"
+  variance_pct: "+12.5% under budget"
+  parentId: 4
+
+- id: 11
+  name: Amanda Brown
+  title: Director of Growth Marketing
+  department: Marketing
+  budget_allocated: "$2,000,000"
+  budget_spent: "$1,850,000"
+  budget_remaining: "$150,000"
+  variance_pct: "+7.5% under budget"
+  parentId: 4
+
+- id: 12
+  name: Daniel Thompson
+  title: Senior Engineering Manager
+  department: Technology
+  budget_allocated: "$1,200,000"
+  budget_spent: "$1,100,000"
+  budget_remaining: "$100,000"
+  variance_pct: "+8.3% under budget"
+  parentId: 5
+
+- id: 13
+  name: Jessica White
+  title: Engineering Manager - Frontend
+  department: Technology
+  budget_allocated: "$900,000"
+  budget_spent: "$820,000"
+  budget_remaining: "$80,000"
+  variance_pct: "+8.9% under budget"
+  parentId: 5
+
+- id: 14
+  name: Kevin Harris
+  title: Engineering Manager - Backend
+  department: Technology
+  budget_allocated: "$1,100,000"
+  budget_spent: "$980,000"
+  budget_remaining: "$120,000"
+  variance_pct: "+10.9% under budget"
+  parentId: 5
+
+- id: 15
+  name: Michelle Clark
+  title: Senior Product Manager
+  department: Technology
+  budget_allocated: "$650,000"
+  budget_spent: "$600,000"
+  budget_remaining: "$50,000"
+  variance_pct: "+7.7% under budget"
+  parentId: 6
+
+- id: 16
+  name: Samantha Walker
+  title: Lead Data Scientist
+  department: Technology
+  budget_allocated: "$800,000"
+  budget_spent: "$680,000"
+  budget_remaining: "$120,000"
+  variance_pct: "+15% under budget"
+  parentId: 7
+
+- id: 17
+  name: Rachel Wright
+  title: Content Marketing Manager
+  department: Marketing
+  budget_allocated: "$450,000"
+  budget_spent: "$420,000"
+  budget_remaining: "$30,000"
+  variance_pct: "+6.7% under budget"
+  parentId: 10
+
+- id: 18
+  name: Justin Scott
+  title: Performance Marketing Manager
+  department: Marketing
+  budget_allocated: "$750,000"
+  budget_spent: "$695,000"
+  budget_remaining: "$55,000"
+  variance_pct: "+7.3% under budget"
+  parentId: 11
+`,
+            okr: `---
+options:
+  nodeWidth: 300
+  nodeHeight: 180
+  childrenMargin: 60
+  compactMarginBetween: 45
+  compactMarginPair: 40
+  neighbourMargin: 30
+schema:
+  id: number | required
+  name: string | required
+  title: string | required
+  department: string | required
+  objective: string | required
+  kr1: string | required
+  kr1_progress: number | required
+  kr2: string | required
+  kr2_progress: number | required
+  overall_progress: number | required
+card:
+  - div:
+      style: font-size:13px;font-weight:700;color:#1a202c;margin-bottom:2px;
+      content: $name$
+  - div:
+      style: font-size:9px;color:#667eea;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;
+      content: $title$
+  - div:
+      style: font-size:10px;color:#2d3748;font-weight:600;margin-bottom:6px;padding:4px 6px;background:#f7fafc;border-radius:4px;border-left:3px solid #667eea;
+      children:
+        - span:
+            style: color:#553c9a;
+            content: "🎯 "
+        - span:
+            content: $objective$
+  - div:
+      style: font-size:9px;color:#4a5568;margin-bottom:3px;
+      children:
+        - span:
+            style: font-weight:600;
+            content: "KR1: "
+        - span:
+            content: $kr1$
+        - span:
+            style: font-weight:700;color:#38a169;margin-left:4px;
+            content: $kr1_progress$
+  - div:
+      style: font-size:9px;color:#4a5568;margin-bottom:3px;
+      children:
+        - span:
+            style: font-weight:600;
+            content: "KR2: "
+        - span:
+            content: $kr2$
+        - span:
+            style: font-weight:700;color:#38a169;margin-left:4px;
+            content: $kr2_progress$
+  - div:
+      style: font-size:11px;margin-top:6px;padding-top:6px;border-top:1px solid #e2e8f0;text-align:center;
+      children:
+        - span:
+            style: font-weight:700;color:#2d3748;
+            content: "Overall: "
+        - span:
+            style: font-weight:800;color:#667eea;font-size:13px;
+            content: $overall_progress$
+---
+
+# OKR (Objectives & Key Results) - Hierarchical Roll-up Example
+- id: 1
+  name: Sarah Chen
+  title: Chief Executive Officer
+  department: Executive
+  objective: "Achieve 40% YoY Revenue Growth"
+  kr1: "Expand to 3 new markets"
+  kr1_progress: "67%"
+  kr2: "Increase customer retention to 95%"
+  kr2_progress: "89%"
+  overall_progress: "78%"
+  parentId: null
+
+- id: 2
+  name: Michael Rodriguez
+  title: Chief Technology Officer
+  department: Technology
+  objective: "Deliver Best-in-Class Product Platform"
+  kr1: "Achieve 99.9% uptime"
+  kr1_progress: "99.2%"
+  kr2: "Reduce load time to <500ms"
+  kr2_progress: "85%"
+  overall_progress: "92%"
+  parentId: 1
+
+- id: 3
+  name: Emily Watson
+  title: Chief Financial Officer
+  department: Finance
+  objective: "Optimize Financial Operations"
+  kr1: "Reduce close cycle to 5 days"
+  kr1_progress: "80%"
+  kr2: "Improve forecast accuracy to 95%"
+  kr2_progress: "88%"
+  overall_progress: "84%"
+  parentId: 1
+
+- id: 4
+  name: David Kim
+  title: Chief Marketing Officer
+  department: Marketing
+  objective: "Build Category-Leading Brand"
+  kr1: "Increase brand awareness by 50%"
+  kr1_progress: "72%"
+  kr2: "Generate 10K qualified leads/month"
+  kr2_progress: "65%"
+  overall_progress: "68%"
+  parentId: 1
+
+- id: 5
+  name: Jennifer Martinez
+  title: VP of Engineering
+  department: Technology
+  objective: "Scale Engineering Excellence"
+  kr1: "Increase deployment frequency to 10x/day"
+  kr1_progress: "90%"
+  kr2: "Reduce bug escape rate by 50%"
+  kr2_progress: "78%"
+  overall_progress: "84%"
+  parentId: 2
+
+- id: 6
+  name: Robert Taylor
+  title: VP of Product
+  department: Technology
+  objective: "Drive Product-Led Growth"
+  kr1: "Launch 3 major features"
+  kr1_progress: "100%"
+  kr2: "Increase NPS to 60+"
+  kr2_progress: "85%"
+  overall_progress: "92%"
+  parentId: 2
+
+- id: 7
+  name: Lisa Anderson
+  title: VP of Data Science
+  department: Technology
+  objective: "Enable Data-Driven Decisions"
+  kr1: "Deploy 5 ML models to production"
+  kr1_progress: "80%"
+  kr2: "Reduce prediction latency to <100ms"
+  kr2_progress: "95%"
+  overall_progress: "88%"
+  parentId: 2
+
+- id: 8
+  name: James Wilson
+  title: Controller
+  department: Finance
+  objective: "Ensure Compliance & Accuracy"
+  kr1: "Zero audit findings"
+  kr1_progress: "100%"
+  kr2: "Automate 80% of reconciliations"
+  kr2_progress: "75%"
+  overall_progress: "88%"
+  parentId: 3
+
+- id: 9
+  name: Maria Garcia
+  title: Director of FP&A
+  department: Finance
+  objective: "Transform Financial Planning"
+  kr1: "Implement rolling forecasts"
+  kr1_progress: "90%"
+  kr2: "Reduce variance to <5%"
+  kr2_progress: "70%"
+  overall_progress: "80%"
+  parentId: 3
+
+- id: 10
+  name: Christopher Lee
+  title: Director of Brand Marketing
+  department: Marketing
+  objective: "Elevate Brand Presence"
+  kr1: "Win 2 industry awards"
+  kr1_progress: "50%"
+  kr2: "Achieve 1M social impressions/month"
+  kr2_progress: "85%"
+  overall_progress: "68%"
+  parentId: 4
+
+- id: 11
+  name: Amanda Brown
+  title: Director of Growth Marketing
+  department: Marketing
+  objective: "Accelerate Customer Acquisition"
+  kr1: "Reduce CAC by 25%"
+  kr1_progress: "60%"
+  kr2: "Improve conversion rate to 5%"
+  kr2_progress: "75%"
+  overall_progress: "68%"
+  parentId: 4
+
+- id: 12
+  name: Daniel Thompson
+  title: Senior Engineering Manager
+  department: Technology
+  objective: "Build High-Performance Teams"
+  kr1: "Reduce code review time to <4hrs"
+  kr1_progress: "95%"
+  kr2: "Achieve 90% test coverage"
+  kr2_progress: "82%"
+  overall_progress: "88%"
+  parentId: 5
+
+- id: 13
+  name: Jessica White
+  title: Engineering Manager - Frontend
+  department: Technology
+  objective: "Deliver Exceptional UX"
+  kr1: "Achieve Lighthouse score 95+"
+  kr1_progress: "88%"
+  kr2: "Reduce bundle size by 30%"
+  kr2_progress: "75%"
+  overall_progress: "82%"
+  parentId: 5
+
+- id: 14
+  name: Kevin Harris
+  title: Engineering Manager - Backend
+  department: Technology
+  objective: "Scale Infrastructure"
+  kr1: "Support 10x traffic increase"
+  kr1_progress: "90%"
+  kr2: "Reduce API latency by 40%"
+  kr2_progress: "85%"
+  overall_progress: "88%"
+  parentId: 5
+
+- id: 15
+  name: Michelle Clark
+  title: Senior Product Manager
+  department: Technology
+  objective: "Maximize Feature Adoption"
+  kr1: "Achieve 70% feature adoption"
+  kr1_progress: "82%"
+  kr2: "Reduce time-to-value by 50%"
+  kr2_progress: "70%"
+  overall_progress: "76%"
+  parentId: 6
+
+- id: 16
+  name: Samantha Walker
+  title: Lead Data Scientist
+  department: Technology
+  objective: "Advance Predictive Analytics"
+  kr1: "Improve model accuracy to 95%"
+  kr1_progress: "92%"
+  kr2: "Reduce training time by 60%"
+  kr2_progress: "80%"
+  overall_progress: "86%"
+  parentId: 7
+
+- id: 17
+  name: Rachel Wright
+  title: Content Marketing Manager
+  department: Marketing
+  objective: "Create Compelling Content"
+  kr1: "Publish 20 thought leadership pieces"
+  kr1_progress: "85%"
+  kr2: "Achieve 50K monthly blog views"
+  kr2_progress: "72%"
+  overall_progress: "78%"
+  parentId: 10
+
+- id: 18
+  name: Justin Scott
+  title: Performance Marketing Manager
+  department: Marketing
+  objective: "Optimize Paid Acquisition"
+  kr1: "Achieve 4x ROAS"
+  kr1_progress: "70%"
+  kr2: "Scale spend to $500K/month"
+  kr2_progress: "65%"
+  overall_progress: "68%"
+  parentId: 11
+`,
+            salary: `---
+options:
+  nodeWidth: 270
+  nodeHeight: 165
+  childrenMargin: 60
+  compactMarginBetween: 40
+  compactMarginPair: 35
+  neighbourMargin: 25
+schema:
+  id: number | required
+  name: string | required
+  title: string | required
+  department: string | required
+  direct_reports: number | required
+  total_headcount: number | required
+  direct_salary: number | required
+  total_salary_budget: string | required
+  avg_salary: string | optional
+  open_positions: number | optional
+card:
+  - div:
+      style: font-size:13px;font-weight:700;color:#1a202c;margin-bottom:3px;
+      content: $name$
+  - div:
+      style: font-size:10px;color:#667eea;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;
+      content: $title$
+  - div:
+      style: display:flex;gap:12px;margin-bottom:6px;
+      children:
+        - div:
+            style: font-size:10px;color:#2d3748;
+            children:
+              - span:
+                  style: font-weight:600;
+                  content: "👤 Direct: "
+              - span:
+                  style: color:#3182ce;font-weight:700;
+                  content: $direct_reports$
+        - div:
+            style: font-size:10px;color:#2d3748;
+            children:
+              - span:
+                  style: font-weight:600;
+                  content: "👥 Total: "
+              - span:
+                  style: color:#805ad5;font-weight:700;
+                  content: $total_headcount$
+  - div:
+      style: font-size:10px;color:#2d3748;margin-bottom:4px;
+      children:
+        - span:
+            style: font-weight:600;
+            content: "💵 My Salary: "
+        - span:
+            style: color:#38a169;font-weight:600;
+            content: $direct_salary$
+  - div:
+      style: font-size:10px;color:#2d3748;margin-bottom:4px;
+      children:
+        - span:
+            style: font-weight:600;
+            content: "💰 Team Budget: "
+        - span:
+            style: color:#dd6b20;font-weight:700;
+            content: $total_salary_budget$
+  - div:
+      style: font-size:9px;margin-top:6px;padding-top:6px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;
+      children:
+        - div:
+            style: color:#718096;
+            children:
+              - span:
+                  style: font-weight:600;
+                  content: "Avg: "
+              - span:
+                  content: $avg_salary$
+        - div:
+            style: color:#e53e3e;font-weight:600;
+            children:
+              - span:
+                  content: "🔴 Open: "
+              - span:
+                  content: $open_positions$
+---
+
+# Salary & Headcount - Hierarchical Roll-up Example
+- id: 1
+  name: Sarah Chen
+  title: Chief Executive Officer
+  department: Executive
+  direct_reports: 4
+  total_headcount: 47
+  direct_salary: "$450,000"
+  total_salary_budget: "$8,250,000"
+  avg_salary: "$175,532"
+  open_positions: 5
+  parentId: null
+
+- id: 2
+  name: Michael Rodriguez
+  title: Chief Technology Officer
+  department: Technology
+  direct_reports: 3
+  total_headcount: 22
+  direct_salary: "$380,000"
+  total_salary_budget: "$4,180,000"
+  avg_salary: "$190,000"
+  open_positions: 3
+  parentId: 1
+
+- id: 3
+  name: Emily Watson
+  title: Chief Financial Officer
+  department: Finance
+  direct_reports: 2
+  total_headcount: 6
+  direct_salary: "$340,000"
+  total_salary_budget: "$1,020,000"
+  avg_salary: "$170,000"
+  open_positions: 1
+  parentId: 1
+
+- id: 4
+  name: David Kim
+  title: Chief Marketing Officer
+  department: Marketing
+  direct_reports: 2
+  total_headcount: 8
+  direct_salary: "$320,000"
+  total_salary_budget: "$1,180,000"
+  avg_salary: "$147,500"
+  open_positions: 1
+  parentId: 1
+
+- id: 5
+  name: Jennifer Martinez
+  title: VP of Engineering
+  department: Technology
+  direct_reports: 3
+  total_headcount: 12
+  direct_salary: "$280,000"
+  total_salary_budget: "$2,340,000"
+  avg_salary: "$195,000"
+  open_positions: 2
+  parentId: 2
+
+- id: 6
+  name: Robert Taylor
+  title: VP of Product
+  department: Technology
+  direct_reports: 2
+  total_headcount: 4
+  direct_salary: "$260,000"
+  total_salary_budget: "$700,000"
+  avg_salary: "$175,000"
+  open_positions: 0
+  parentId: 2
+
+- id: 7
+  name: Lisa Anderson
+  title: VP of Data Science
+  department: Technology
+  direct_reports: 2
+  total_headcount: 4
+  direct_salary: "$270,000"
+  total_salary_budget: "$760,000"
+  avg_salary: "$190,000"
+  open_positions: 1
+  parentId: 2
+
+- id: 8
+  name: James Wilson
+  title: Controller
+  department: Finance
+  direct_reports: 1
+  total_headcount: 2
+  direct_salary: "$195,000"
+  total_salary_budget: "$315,000"
+  avg_salary: "$157,500"
+  open_positions: 0
+  parentId: 3
+
+- id: 9
+  name: Maria Garcia
+  title: Director of FP&A
+  department: Finance
+  direct_reports: 1
+  total_headcount: 2
+  direct_salary: "$185,000"
+  total_salary_budget: "$305,000"
+  avg_salary: "$152,500"
+  open_positions: 1
+  parentId: 3
+
+- id: 10
+  name: Christopher Lee
+  title: Director of Brand Marketing
+  department: Marketing
+  direct_reports: 1
+  total_headcount: 2
+  direct_salary: "$175,000"
+  total_salary_budget: "$290,000"
+  avg_salary: "$145,000"
+  open_positions: 0
+  parentId: 4
+
+- id: 11
+  name: Amanda Brown
+  title: Director of Growth Marketing
+  department: Marketing
+  direct_reports: 2
+  total_headcount: 4
+  direct_salary: "$170,000"
+  total_salary_budget: "$425,000"
+  avg_salary: "$106,250"
+  open_positions: 1
+  parentId: 4
+
+- id: 12
+  name: Daniel Thompson
+  title: Senior Engineering Manager
+  department: Technology
+  direct_reports: 2
+  total_headcount: 3
+  direct_salary: "$220,000"
+  total_salary_budget: "$560,000"
+  avg_salary: "$186,667"
+  open_positions: 1
+  parentId: 5
+
+- id: 13
+  name: Jessica White
+  title: Engineering Manager - Frontend
+  department: Technology
+  direct_reports: 2
+  total_headcount: 3
+  direct_salary: "$200,000"
+  total_salary_budget: "$500,000"
+  avg_salary: "$166,667"
+  open_positions: 0
+  parentId: 5
+
+- id: 14
+  name: Kevin Harris
+  title: Engineering Manager - Backend
+  department: Technology
+  direct_reports: 2
+  total_headcount: 3
+  direct_salary: "$205,000"
+  total_salary_budget: "$525,000"
+  avg_salary: "$175,000"
+  open_positions: 1
+  parentId: 5
+
+- id: 15
+  name: Michelle Clark
+  title: Senior Product Manager
+  department: Technology
+  direct_reports: 1
+  total_headcount: 2
+  direct_salary: "$185,000"
+  total_salary_budget: "$320,000"
+  avg_salary: "$160,000"
+  open_positions: 0
+  parentId: 6
+
+- id: 16
+  name: Ryan Lewis
+  title: Product Manager
+  department: Technology
+  direct_reports: 0
+  total_headcount: 1
+  direct_salary: "$145,000"
+  total_salary_budget: "$145,000"
+  avg_salary: "$145,000"
+  open_positions: 0
+  parentId: 6
+
+- id: 17
+  name: Samantha Walker
+  title: Lead Data Scientist
+  department: Technology
+  direct_reports: 1
+  total_headcount: 2
+  direct_salary: "$210,000"
+  total_salary_budget: "$375,000"
+  avg_salary: "$187,500"
+  open_positions: 0
+  parentId: 7
+
+- id: 18
+  name: Brian Hall
+  title: ML Engineer
+  department: Technology
+  direct_reports: 0
+  total_headcount: 1
+  direct_salary: "$175,000"
+  total_salary_budget: "$175,000"
+  avg_salary: "$175,000"
+  open_positions: 1
+  parentId: 7
+
+- id: 19
+  name: Nicole Young
+  title: Senior Accountant
+  department: Finance
+  direct_reports: 0
+  total_headcount: 1
+  direct_salary: "$120,000"
+  total_salary_budget: "$120,000"
+  avg_salary: "$120,000"
+  open_positions: 0
+  parentId: 8
+
+- id: 20
+  name: Andrew King
+  title: Financial Analyst
+  department: Finance
+  direct_reports: 0
+  total_headcount: 1
+  direct_salary: "$95,000"
+  total_salary_budget: "$95,000"
+  avg_salary: "$95,000"
+  open_positions: 0
+  parentId: 9
+
+- id: 21
+  name: Rachel Wright
+  title: Content Marketing Manager
+  department: Marketing
+  direct_reports: 0
+  total_headcount: 1
+  direct_salary: "$115,000"
+  total_salary_budget: "$115,000"
+  avg_salary: "$115,000"
+  open_positions: 0
+  parentId: 10
+
+- id: 22
+  name: Justin Scott
+  title: Performance Marketing Manager
+  department: Marketing
+  direct_reports: 1
+  total_headcount: 2
+  direct_salary: "$125,000"
+  total_salary_budget: "$195,000"
+  avg_salary: "$97,500"
+  open_positions: 0
+  parentId: 11
+
+- id: 23
+  name: Laura Green
+  title: Senior Software Engineer
+  department: Technology
+  direct_reports: 0
+  total_headcount: 1
+  direct_salary: "$185,000"
+  total_salary_budget: "$185,000"
+  avg_salary: "$185,000"
+  open_positions: 0
+  parentId: 12
+
+- id: 24
+  name: Marcus Adams
+  title: Software Engineer
+  department: Technology
+  direct_reports: 0
+  total_headcount: 1
+  direct_salary: "$155,000"
+  total_salary_budget: "$155,000"
+  avg_salary: "$155,000"
+  open_positions: 0
+  parentId: 12
+
+- id: 25
+  name: Olivia Baker
+  title: Frontend Engineer
+  department: Technology
+  direct_reports: 0
+  total_headcount: 1
+  direct_salary: "$150,000"
+  total_salary_budget: "$150,000"
+  avg_salary: "$150,000"
+  open_positions: 0
+  parentId: 13
+
+- id: 26
+  name: Tyler Mitchell
+  title: UX Designer
+  department: Technology
+  direct_reports: 0
+  total_headcount: 1
+  direct_salary: "$140,000"
+  total_salary_budget: "$140,000"
+  avg_salary: "$140,000"
+  open_positions: 0
+  parentId: 13
+
+- id: 27
+  name: Ethan Nelson
+  title: Backend Engineer
+  department: Technology
+  direct_reports: 0
+  total_headcount: 1
+  direct_salary: "$160,000"
+  total_salary_budget: "$160,000"
+  avg_salary: "$160,000"
+  open_positions: 0
+  parentId: 14
+
+- id: 28
+  name: Sophia Carter
+  title: DevOps Engineer
+  department: Technology
+  direct_reports: 0
+  total_headcount: 1
+  direct_salary: "$165,000"
+  total_salary_budget: "$165,000"
+  avg_salary: "$165,000"
+  open_positions: 0
+  parentId: 14
+
+- id: 29
+  name: Isabella Perez
+  title: Data Analyst
+  department: Technology
+  direct_reports: 0
+  total_headcount: 1
+  direct_salary: "$130,000"
+  total_salary_budget: "$130,000"
+  avg_salary: "$130,000"
+  open_positions: 0
+  parentId: 17
+
+- id: 30
+  name: Nathan Roberts
+  title: Marketing Coordinator
+  department: Marketing
+  direct_reports: 0
+  total_headcount: 1
+  direct_salary: "$70,000"
+  total_salary_budget: "$70,000"
+  avg_salary: "$70,000"
+  open_positions: 0
+  parentId: 22
+`
+        };
+
+        // Fetch and display git commit info from GitHub API
+        (async function() {
+            const repoUrl = 'https://github.com/mieweb/ychart';
+            const apiUrl = 'https://api.github.com/repos/mieweb/ychart/commits?per_page=1';
+            
+            const commitHashEl = document.getElementById('commit-hash');
+            const commitLinkEl = document.getElementById('commit-link');
+            
+            try {
+                const response = await fetch(apiUrl);
+                if (response.ok) {
+                    const commits = await response.json();
+                    if (commits && commits.length > 0) {
+                        const commit = commits[0];
+                        const shortHash = commit.sha.substring(0, 7);
+                        
+                        if (commitHashEl) {
+                            commitHashEl.textContent = shortHash;
+                        }
+                        if (commitLinkEl) {
+                            commitLinkEl.href = `${repoUrl}/commit/${commit.sha}`;
+                            commitLinkEl.title = `View commit ${shortHash} on GitHub`;
+                        }
+                    }
+                } else {
+                    // Fallback if API fails
+                    if (commitHashEl) {
+                        commitHashEl.textContent = 'latest';
+                    }
+                }
+            } catch (error) {
+                // Fallback if fetch fails
+                if (commitHashEl) {
+                    commitHashEl.textContent = 'latest';
+                }
+            }
+        })();
+
+        // Generate impressive demo data
+        const yamlData = `---
+options:
+  nodeWidth: 250
+  nodeHeight: 140
+  childrenMargin: 60
+  compactMarginBetween: 40
+  compactMarginPair: 35
+  neighbourMargin: 25
+schema:
+  name: string | required
+  title: string | required
+  department: string | optional
+  email: string | required
+  phone: string | optional
+  location: string | optional
+  supervisor: string | optional
+card:
+  - div:
+      style: font-size:var(--yc-font-size-xl);font-weight:var(--yc-font-weight-bold);color:var(--yc-color-gray-900);margin-bottom:var(--yc-spacing-sm);letter-spacing:-0.5px;
+      content: $name$
+  - div:
+      style: font-size:var(--yc-font-size-xs);color:var(--yc-color-primary);font-weight:var(--yc-font-weight-semibold);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:var(--yc-spacing-md);
+      content: $title$
+  - div:
+      style: font-size:var(--yc-font-size-sm);color:var(--yc-color-icon);margin-bottom:var(--yc-spacing-xs);
+      children:
+        - span:
+            style: font-weight:var(--yc-font-weight-semibold);color:var(--yc-color-text-heading);
+            content: "📧 "
+        - span:
+            style: color:var(--yc-color-primary);
+            content: $email$
+  - div:
+      style: font-size:var(--yc-font-size-xs);color:var(--yc-color-text-muted);margin-bottom:var(--yc-spacing-xxs);
+      children:
+        - span:
+            style: font-weight:var(--yc-font-weight-semibold);
+            content: "📍 "
+        - span:
+            content: $location$
+  - div:
+      style: font-size:var(--yc-font-size-xxs);color:var(--yc-color-text-light);margin-top:var(--yc-spacing-sm);padding-top:var(--yc-spacing-sm);border-top:var(--yc-border-width-thin) solid var(--yc-color-button-border);
+      children:
+        - span:
+            style: font-weight:var(--yc-font-weight-semibold);
+            content: "Reports to: "
+        - span:
+            content: $supervisor$
+---
+
+- name: Sarah Chen
+  title: Chief Executive Officer
+  department: Executive
+  email: sarah.chen@company.com
+  phone: +1 (555) 100-0001
+  location: San Francisco, CA
+  supervisor: Board of Directors
+
+- name: Michael Rodriguez
+  title: Chief Technology Officer
+  department: Technology
+  email: michael.rodriguez@company.com
+  phone: +1 (555) 100-0002
+  location: San Francisco, CA
+  supervisor: Sarah Chen
+
+- name: Emily Watson
+  title: Chief Financial Officer
+  department: Finance
+  email: emily.watson@company.com
+  phone: +1 (555) 100-0003
+  location: New York, NY
+  supervisor: Sarah Chen
+
+- name: David Kim
+  title: Chief Marketing Officer
+  department: Marketing
+  email: david.kim@company.com
+  phone: +1 (555) 100-0004
+  location: Los Angeles, CA
+  supervisor: Sarah Chen
+
+- name: Jennifer Martinez
+  title: VP of Engineering
+  department: Technology
+  email: jennifer.martinez@company.com
+  phone: +1 (555) 100-0005
+  location: San Francisco, CA
+  supervisor: Michael Rodriguez
+
+- name: Robert Taylor
+  title: VP of Product
+  department: Technology
+  email: robert.taylor@company.com
+  phone: +1 (555) 100-0006
+  location: San Francisco, CA
+  supervisor: Michael Rodriguez
+
+- name: Lisa Anderson
+  title: VP of Data Science
+  department: Technology
+  email: lisa.anderson@company.com
+  phone: +1 (555) 100-0007
+  location: Seattle, WA
+  supervisor: Michael Rodriguez
+
+- name: James Wilson
+  title: Controller
+  department: Finance
+  email: james.wilson@company.com
+  phone: +1 (555) 100-0008
+  location: New York, NY
+  supervisor: Emily Watson
+
+- name: Maria Garcia
+  title: Director of FP&A
+  department: Finance
+  email: maria.garcia@company.com
+  phone: +1 (555) 100-0009
+  location: New York, NY
+  supervisor: Emily Watson
+
+- name: Christopher Lee
+  title: Director of Brand Marketing
+  department: Marketing
+  email: christopher.lee@company.com
+  phone: +1 (555) 100-0010
+  location: Los Angeles, CA
+  supervisor: David Kim
+
+- name: Amanda Brown
+  title: Director of Growth Marketing
+  department: Marketing
+  email: amanda.brown@company.com
+  phone: +1 (555) 100-0011
+  location: Austin, TX
+  supervisor: David Kim
+
+- name: Daniel Thompson
+  title: Senior Engineering Manager
+  department: Technology
+  email: daniel.thompson@company.com
+  phone: +1 (555) 100-0012
+  location: San Francisco, CA
+  supervisor: Jennifer Martinez
+
+- name: Jessica White
+  title: Engineering Manager - Frontend
+  department: Technology
+  email: jessica.white@company.com
+  phone: +1 (555) 100-0013
+  location: San Francisco, CA
+  supervisor: Jennifer Martinez
+
+- name: Kevin Harris
+  title: Engineering Manager - Backend
+  department: Technology
+  email: kevin.harris@company.com
+  phone: +1 (555) 100-0014
+  location: San Francisco, CA
+  supervisor: Jennifer Martinez
+
+- name: Michelle Clark
+  title: Senior Product Manager
+  department: Technology
+  email: michelle.clark@company.com
+  phone: +1 (555) 100-0015
+  location: San Francisco, CA
+  supervisor: Robert Taylor
+
+- name: Ryan Lewis
+  title: Product Manager
+  department: Technology
+  email: ryan.lewis@company.com
+  phone: +1 (555) 100-0016
+  location: Remote
+  supervisor: Robert Taylor
+
+- name: Samantha Walker
+  title: Lead Data Scientist
+  department: Technology
+  email: samantha.walker@company.com
+  phone: +1 (555) 100-0017
+  location: Seattle, WA
+  supervisor: Lisa Anderson
+
+- name: Brian Hall
+  title: ML Engineer
+  department: Technology
+  email: brian.hall@company.com
+  phone: +1 (555) 100-0018
+  location: Seattle, WA
+  supervisor: Lisa Anderson
+
+- name: Nicole Young
+  title: Senior Accountant
+  department: Finance
+  email: nicole.young@company.com
+  phone: +1 (555) 100-0019
+  location: New York, NY
+  supervisor: James Wilson
+
+- name: Andrew King
+  title: Financial Analyst
+  department: Finance
+  email: andrew.king@company.com
+  phone: +1 (555) 100-0020
+  location: New York, NY
+  supervisor: Maria Garcia
+
+- name: Rachel Wright
+  title: Content Marketing Manager
+  department: Marketing
+  email: rachel.wright@company.com
+  phone: +1 (555) 100-0021
+  location: Los Angeles, CA
+  supervisor: Christopher Lee
+
+- name: Justin Scott
+  title: Performance Marketing Manager
+  department: Marketing
+  email: justin.scott@company.com
+  phone: +1 (555) 100-0022
+  location: Austin, TX
+  supervisor: Amanda Brown
+
+- name: Laura Green
+  title: Senior Software Engineer
+  department: Technology
+  email: laura.green@company.com
+  phone: +1 (555) 100-0023
+  location: San Francisco, CA
+  supervisor: Daniel Thompson
+
+- name: Marcus Adams
+  title: Software Engineer
+  department: Technology
+  email: marcus.adams@company.com
+  phone: +1 (555) 100-0024
+  location: San Francisco, CA
+  supervisor: Daniel Thompson
+
+- name: Olivia Baker
+  title: Frontend Engineer
+  department: Technology
+  email: olivia.baker@company.com
+  phone: +1 (555) 100-0025
+  location: Remote
+  supervisor: Jessica White
+
+- name: Ethan Nelson
+  title: Backend Engineer
+  department: Technology
+  email: ethan.nelson@company.com
+  phone: +1 (555) 100-0026
+  location: San Francisco, CA
+  supervisor: Kevin Harris
+
+- name: Sophia Carter
+  title: DevOps Engineer
+  department: Technology
+  email: sophia.carter@company.com
+  phone: +1 (555) 100-0027
+  location: Seattle, WA
+  supervisor: Kevin Harris
+
+- name: Tyler Mitchell
+  title: UX Designer
+  department: Technology
+  email: tyler.mitchell@company.com
+  phone: +1 (555) 100-0028
+  location: San Francisco, CA
+  supervisor: Michelle Clark
+
+- name: Isabella Perez
+  title: Data Analyst
+  department: Technology
+  email: isabella.perez@company.com
+  phone: +1 (555) 100-0029
+  location: Seattle, WA
+  supervisor: Samantha Walker
+
+- name: Nathan Roberts
+  title: Marketing Coordinator
+  department: Marketing
+  email: nathan.roberts@company.com
+  phone: +1 (555) 100-0030
+  location: Austin, TX
+  supervisor: Justin Scott
+`;
+
+        function initializeYChartEditor(data) {
+            console.log('🚀 Initializing YChart Editor...');
+            
+            // Clear existing editor if any
+            const container = document.getElementById('ychart-container');
+            if (container) {
+                container.innerHTML = '';
+            }
+            
+            // Initialize YChart Editor with beautiful configuration
+            const editor = new window.YChartEditor({
+                nodeWidth: 250,
+                nodeHeight: 120,
+                editorTheme: 'dark',
+                collapsible: true,
+                toolbarPosition: 'bottomleft',
+                toolbarOrientation: 'horizontal'
+            });
+
+            // Setup the editor
+            editor
+                .initView('ychart-container', data || yamlData)
+                .bgPatternStyle('dotted')
+                .actionBtnPos('bottomleft', 'horizontal');
+
+            console.log('✅ YChart Editor initialized successfully!');
+            console.log('💡 Tips:');
+            console.log('   - Click nodes to view details');
+            console.log('   - Use toolbar buttons to expand/collapse, export, etc.');
+            console.log('   - Edit YAML in the right panel to update the chart');
+            console.log('   - Drag nodes to pan, scroll to zoom');
+            
+            // Make it accessible globally
+            window.ychartEditor = editor;
+            currentEditor = editor;
+            
+            // Auto-fit after a short delay
+            setTimeout(() => {
+                if (editor && editor.orgChart) {
+                    console.log('📐 Auto-fitting chart to viewport...');
+                }
+            }, 500);
+        }
+
+        // Load example from hardcoded data
+        function loadExample(exampleKey) {
+            const data = exampleData[exampleKey];
+            
+            if (!data) {
+                // Use default inline data
+                initializeYChartEditor(yamlData);
+                return;
+            }
+            
+            initializeYChartEditor(data);
+        }
+
+        // Setup example selector
+        function setupExampleSelector() {
+            const select = document.getElementById('example-select');
+            if (select) {
+                select.addEventListener('change', (e) => {
+                    loadExample(e.target.value);
+                });
+            }
+        }
+        
+        // ── Brand Theme Support ──────────────────────────────────────────
+        const brandCSS = {
+            'default': `:root {
+                --mieweb-primary-50: #f8fafc; --mieweb-primary-100: #f1f5f9;
+                --mieweb-primary-200: #e2e8f0; --mieweb-primary-300: #cbd5e1;
+                --mieweb-primary-400: #94a3b8; --mieweb-primary-500: #667eea;
+                --mieweb-primary-600: #5568d3; --mieweb-primary-700: #4a5abb;
+                --mieweb-primary-800: #3e4da3; --mieweb-primary-900: #334089;
+            }`,
+            'bluehive': `:root {
+                --mieweb-primary-50: #e6f7fc; --mieweb-primary-100: #b3e6f6;
+                --mieweb-primary-200: #80d5f0; --mieweb-primary-300: #4dc4ea;
+                --mieweb-primary-400: #27aae1; --mieweb-primary-500: #27aae1;
+                --mieweb-primary-600: #1f98ca; --mieweb-primary-700: #1786b3;
+                --mieweb-primary-800: #0f749c; --mieweb-primary-900: #086285;
+            }`,
+            'enterprise-health': `:root {
+                --mieweb-primary-50: #f5e6f4; --mieweb-primary-100: #e0b8dd;
+                --mieweb-primary-200: #cc8bc7; --mieweb-primary-300: #b85db1;
+                --mieweb-primary-400: #a3409c; --mieweb-primary-500: #6E2B68;
+                --mieweb-primary-600: #62265d; --mieweb-primary-700: #562152;
+                --mieweb-primary-800: #4a1c47; --mieweb-primary-900: #3e173c;
+            }`,
+            'mieweb': `:root {
+                --mieweb-primary-50: #e8f8ef; --mieweb-primary-100: #c5edd6;
+                --mieweb-primary-200: #9fe2bb; --mieweb-primary-300: #79d7a0;
+                --mieweb-primary-400: #53cc85; --mieweb-primary-500: #27ae60;
+                --mieweb-primary-600: #219c55; --mieweb-primary-700: #1b894a;
+                --mieweb-primary-800: #15773e; --mieweb-primary-900: #0f6533;
+            }`,
+            'waggleline': `:root {
+                --mieweb-primary-50: #e6f7ff; --mieweb-primary-100: #bae7ff;
+                --mieweb-primary-200: #91d5ff; --mieweb-primary-300: #69c0ff;
+                --mieweb-primary-400: #40a9ff; --mieweb-primary-500: #17AEED;
+                --mieweb-primary-600: #1296d3; --mieweb-primary-700: #0d7eb9;
+                --mieweb-primary-800: #08669f; --mieweb-primary-900: #034e85;
+            }`,
+            'webchart': `:root {
+                --mieweb-primary-50: #fff7ed; --mieweb-primary-100: #ffedd5;
+                --mieweb-primary-200: #fed7aa; --mieweb-primary-300: #fdba74;
+                --mieweb-primary-400: #fb923c; --mieweb-primary-500: #f97316;
+                --mieweb-primary-600: #ea580c; --mieweb-primary-700: #c2410c;
+                --mieweb-primary-800: #9a3412; --mieweb-primary-900: #7c2d12;
+            }`
+        };
+
+        function setupThemeSelector() {
+            // Create theme style element
+            const style = document.createElement('style');
+            style.id = 'ychart-brand-theme';
+            document.head.appendChild(style);
+
+            const select = document.getElementById('theme-select');
+            if (!select) return;
+
+            // Restore persisted theme or default
+            const savedTheme = localStorage.getItem('ychart-theme') || 'default';
+            select.value = savedTheme;
+            style.textContent = brandCSS[savedTheme] || brandCSS['default'];
+
+            select.addEventListener('change', (e) => {
+                const theme = e.target.value;
+                style.textContent = brandCSS[theme] || brandCSS['default'];
+                localStorage.setItem('ychart-theme', theme);
+                // Re-render chart so stroke colors pick up the new CSS variable values
+                if (currentEditor && currentEditor.orgChart) {
+                    currentEditor.orgChart.render();
+                }
+            });
+        }
+
+        // Initialize when page loads
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                initializeYChartEditor(yamlData);
+                setupExampleSelector();
+                setupThemeSelector();
+            });
+        } else {
+            initializeYChartEditor(yamlData);
+            setupExampleSelector();
+            setupThemeSelector();
+        }
+    </script>
+</body>
+</html>

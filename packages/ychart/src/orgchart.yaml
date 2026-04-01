@@ -1,0 +1,290 @@
+---
+options:
+  nodeWidth: 250
+  nodeHeight: 160
+  childrenMargin: 60
+  compactMarginBetween: 40
+  compactMarginPair: 35
+  neighbourMargin: 25
+  self: null
+schema:
+  name: string | required
+  title: string | required
+  department: string | optional
+  email: string | required
+  phone: string | optional
+  location: string | optional
+  supervisor: string | optional
+card:
+  - div:
+      style: font-size:var(--yc-font-size-xl);font-weight:var(--yc-font-weight-bold);color:var(--yc-color-gray-900);margin-bottom:var(--yc-spacing-sm);letter-spacing:-0.5px;
+      content: $name$
+  - div:
+      style: font-size:var(--yc-font-size-xs);color:var(--yc-color-primary);font-weight:var(--yc-font-weight-semibold);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:var(--yc-spacing-md);
+      content: $title$
+  - div:
+      style: font-size:var(--yc-font-size-sm);color:var(--yc-color-icon);margin-bottom:var(--yc-spacing-xs);
+      children:
+        - span:
+            style: font-weight:var(--yc-font-weight-semibold);color:var(--yc-color-text-heading);
+            content: "📧 "
+        - span:
+            style: color:var(--yc-color-primary);
+            content: $email$
+  - div:
+      style: font-size:var(--yc-font-size-xs);color:var(--yc-color-text-muted);margin-bottom:var(--yc-spacing-xxs);
+      children:
+        - span:
+            style: font-weight:var(--yc-font-weight-semibold);
+            content: "📍 "
+        - span:
+            content: $location$
+  - div:
+      style: font-size:var(--yc-font-size-xxs);color:var(--yc-color-text-light);margin-top:var(--yc-spacing-sm);padding-top:var(--yc-spacing-sm);border-top:var(--yc-border-width-thin) solid var(--yc-color-button-border);
+      children:
+        - span:
+            style: font-weight:var(--yc-font-weight-semibold);
+            content: "Reports to: "
+        - span:
+            content: $supervisor$
+---
+
+- name: Sarah Chen
+  title: Chief Executive Officer
+  department: Executive
+  email: sarah.chen@company.com
+  phone: +1 (555) 100-0001
+  location: San Francisco, CA
+  supervisor: Board of Directors
+
+- name: Michael Rodriguez
+  title: Chief Technology Officer
+  department: Technology
+  email: michael.rodriguez@company.com
+  phone: +1 (555) 100-0002
+  location: San Francisco, CA
+  supervisor: Sarah Chen
+
+- name: Emily Watson
+  title: Chief Financial Officer
+  department: Finance
+  email: emily.watson.long.example@company.com
+  phone: +1 (555) 100-0003
+  location: New York, NY
+  supervisor: Sarah Chen
+
+- name: David Kim
+  title: Chief Marketing Officer & Long Example Name
+  department: Marketing
+  email: david.kim@company.com
+  phone: +1 (555) 100-0004
+  location: Los Angeles, CA
+  supervisor: Sarah Chen
+
+- name: Jennifer Martinez
+  title: VP of Engineering
+  department: Technology
+  email: jennifer.martinez@company.com
+  phone: +1 (555) 100-0005
+  location: San Francisco, CA
+  supervisor: Michael Rodriguez
+
+- name: Robert Taylor
+  title: VP of Product
+  department: Technology
+  email: robert.taylor@company.com
+  phone: +1 (555) 100-0006
+  location: San Francisco, CA
+  supervisor: Michael Rodriguez
+
+- name: Lisa Anderson
+  title: VP of Data Science
+  department: Technology
+  email: lisa.anderson@company.com
+  phone: +1 (555) 100-0007
+  location: Seattle, WA
+  supervisor: Michael Rodriguez
+
+- name: James Wilson
+  title: Controller
+  department: Finance
+  email: james.wilson@company.com
+  phone: +1 (555) 100-0008
+  location: New York, NY
+  supervisor: Emily Watson
+
+- name: Maria Garcia
+  title: Director of FP&A
+  department: Finance
+  email: maria.garcia@company.com
+  phone: +1 (555) 100-0009
+  location: New York, NY
+  supervisor: Emily Watson
+
+- name: Christopher Lee
+  title: Director of Brand Marketing
+  department: Marketing
+  email: christopher.lee@company.com
+  phone: +1 (555) 100-0010
+  location: Los Angeles, CA
+  supervisor: David Kim
+
+- name: Amanda Brown
+  title: Director of Growth Marketing
+  department: Marketing
+  email: amanda.brown@company.com
+  phone: +1 (555) 100-0011
+  location: Austin, TX
+  supervisor: David Kim
+
+- name: Daniel Thompson
+  title: Senior Engineering Manager
+  department: Technology
+  email: daniel.thompson@company.com
+  phone: +1 (555) 100-0012
+  location: San Francisco, CA
+  supervisor: Jennifer Martinez
+
+- name: Jessica White
+  title: Engineering Manager - Frontend
+  department: Technology
+  email: jessica.white@company.com
+  phone: +1 (555) 100-0013
+  location: San Francisco, CA
+  supervisor: Jennifer Martinez
+
+- name: Kevin Harris
+  title: Engineering Manager - Backend
+  department: Technology
+  email: kevin.harris@company.com
+  phone: +1 (555) 100-0014
+  location: San Francisco, CA
+  supervisor: Jennifer Martinez
+
+- name: Michelle Clark
+  title: Senior Product Manager
+  department: Technology
+  email: michelle.clark@company.com
+  phone: +1 (555) 100-0015
+  location: San Francisco, CA
+  supervisor: Robert Taylor
+
+- name: Ryan Lewis
+  title: Product Manager
+  department: Technology
+  email: ryan.lewis@company.com
+  phone: +1 (555) 100-0016
+  location: Remote
+  supervisor: Robert Taylor
+
+- name: Samantha Walker
+  title: Lead Data Scientist
+  department: Technology
+  email: samantha.walker@company.com
+  phone: +1 (555) 100-0017
+  location: Seattle, WA
+  supervisor: Lisa Anderson
+
+- name: Brian Hall
+  title: ML Engineer
+  department: Technology
+  email: brian.hall@company.com
+  phone: +1 (555) 100-0018
+  location: Seattle, WA
+  supervisor: Lisa Anderson
+
+- name: Nicole Young
+  title: Senior Accountant
+  department: Finance
+  email: nicole.young@company.com
+  phone: +1 (555) 100-0019
+  location: New York, NY
+  supervisor: James Wilson
+
+- name: Andrew King
+  title: Financial Analyst
+  department: Finance
+  email: andrew.king@company.com
+  phone: +1 (555) 100-0020
+  location: New York, NY
+  supervisor: Maria Garcia
+
+- name: Rachel Wright
+  title: Content Marketing Manager
+  department: Marketing
+  email: rachel.wright@company.com
+  phone: +1 (555) 100-0021
+  location: Los Angeles, CA
+  supervisor: Christopher Lee
+
+- name: Justin Scott
+  title: Performance Marketing Manager
+  department: Marketing
+  email: justin.scott@company.com
+  phone: +1 (555) 100-0022
+  location: Austin, TX
+  supervisor: Amanda Brown
+
+- name: Laura Green
+  title: Senior Software Engineer
+  department: Technology
+  email: laura.green@company.com
+  phone: +1 (555) 100-0023
+  location: San Francisco, CA
+  supervisor: Daniel Thompson
+
+- name: Marcus Adams
+  title: Software Engineer
+  department: Technology
+  email: marcus.adams@company.com
+  phone: +1 (555) 100-0024
+  location: San Francisco, CA
+  supervisor: Daniel Thompson
+
+- name: Olivia Baker
+  title: Frontend Engineer
+  department: Technology
+  email: olivia.baker@company.com
+  phone: +1 (555) 100-0025
+  location: Remote
+  supervisor: Jessica White
+
+- name: Ethan Nelson
+  title: Backend Engineer
+  department: Technology
+  email: ethan.nelson@company.com
+  phone: +1 (555) 100-0026
+  location: San Francisco, CA
+  supervisor: Kevin Harris
+
+- name: Sophia Carter
+  title: DevOps Engineer
+  department: Technology
+  email: sophia.carter@company.com
+  phone: +1 (555) 100-0027
+  location: Seattle, WA
+  supervisor: Kevin Harris
+
+- name: Tyler Mitchell
+  title: UX Designer
+  department: Technology
+  email: tyler.mitchell@company.com
+  phone: +1 (555) 100-0028
+  location: San Francisco, CA
+  supervisor: Michelle Clark
+
+- name: Isabella Perez
+  title: Data Analyst
+  department: Technology
+  email: isabella.perez@company.com
+  phone: +1 (555) 100-0029
+  location: Seattle, WA
+  supervisor: Samantha Walker
+
+- name: Nathan Roberts
+  title: Marketing Coordinator
+  department: Marketing
+  email: nathan.roberts@company.com
+  phone: +1 (555) 100-0030
+  location: Austin, TX
+  supervisor: Justin Scott

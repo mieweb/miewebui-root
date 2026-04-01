@@ -1,0 +1,25 @@
+@use 'variables' as *;
+
+// Import Bootstrap with YChart variable overrides (for demo page)
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-variables';
+
+/* Tailwind CSS v4 */
+// @import "tailwindcss/theme" layer(theme);
+// @import "tailwindcss/preflight" layer(base);
+// @import "tailwindcss/utilities" layer(utilities);
+// @import "tailwind-variables";
+
+// =============================================================================
+// YChart Library Styles (Scoped)
+// These are the core library styles, scoped under .ychart-container
+// to avoid interfering with host page styles.
+// =============================================================================
+@import 'ychart-lib';
+
+// =============================================================================
+// Demo Page Styles (NOT included in production builds)
+// These styles are only for the demo/development page.
+// When integrating YChart into a production page, these won't affect your site.
+// =============================================================================
+@import 'demo';

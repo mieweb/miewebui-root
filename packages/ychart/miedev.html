@@ -1,0 +1,132 @@
+<!-- Load YChart Editor from local HTTPS preview server -->
+<script src="https://localhost:4173/ychart-editor.js"></script>
+
+<pre id="yaml-editor" style="display: none;">
+- id: {{pat_id}}
+  name: {{full_name}}
+  title: {{title}}
+  email: {{email}}
+  supervisor: {{supervisor_name}}
+<WCQUERY QUERY="SELECT 
+        r.pat_id, 
+        CONCAT(p.last_name, ', ', p.first_name) AS full_name,
+        p.email,
+        r.related_pat_id AS parent_id,
+        sup.pat_id AS sup_id,
+        CONCAT(sup.last_name, ', ', sup.first_name) AS supervisor_name,
+        '' AS title
+    FROM pat_pat_relations r 
+    LEFT JOIN patients p 
+        ON p.pat_id = r.pat_id
+    LEFT JOIN patients AS sup
+        ON sup.pat_id = r.related_pat_id
+    WHERE r.related_pat_id = {{%pq pat_id}}
+        AND r.relation_type_id = (SELECT relation_type_id FROM relation_types WHERE relation_type = 'Supervisor')
+        AND p.active = 1
+        AND r.end_date > CURDATE()"
+    LAYOUT="YAMLTreeLayout" />
+</pre>
+
+<script>
+    function initializeYChartEditor() {
+        console.log('Initializing YChart Editor from localhost...');
+        
+        // Get YAML data from the pre element
+        var preElement = document.getElementById('yaml-editor');
+        var yamlFromPre = preElement ? preElement.textContent.trim() : '';
+        // You can use the pre content directly, or combine it with front matter
+        var yamlData = `---
+options:
+  nodeWidth: 220
+  nodeHeight: 110
+  childrenMargin: 50
+schema:
+  id: number | required
+  name: string | required
+  title: string | optional
+  email: string | required
+  supervisor: string | optional
+card:
+  - div:
+      class: employee-name
+      style: font-size:14px;font-weight:bold;color:#333;margin-bottom:4px;
+      content: $name$
+  - div:
+      style: font-size:12px;color:#666;margin-bottom:2px;
+      content: $title$
+  - div:
+      class: contact-info
+      style: font-size:11px;color:#999;
+      children:
+        - span:
+            style: font-weight:600;
+            content: "Email: "
+        - span:
+            style: color:#667eea;
+            content: $email$
+  - div:
+      class: supervisor-info
+      style: font-size:10px;color:#999;margin-top:4px;
+      children:
+        - span: "Reports to: "
+        - span:
+            style: font-weight:600;
+            content: $supervisor$
+---
+
+${yamlFromPre}`;
+
+        console.log('YAML Data loaded:', yamlData);
+        
+        // Initialize YChart Editor with the latest API
+        var editor = new window.YChartEditor({
+            nodeWidth: 220,
+            nodeHeight: 110,
+            editorTheme: 'dark',
+            collapsible: true,
+            toolbarPosition: 'bottomleft',
+            toolbarOrientation: 'horizontal'
+        });
+
+        // Setup the editor with the new simplified API
+        editor
+            .initView('container', yamlData)
+            .bgPatternStyle('dotted')
+            .actionBtnPos('bottomleft', 'horizontal');
+
+        console.log('✅ YChart Editor initialized successfully!');
+        console.log('💡 Use built-in toolbar buttons in the canvas');
+        
+        // Make it accessible globally for debugging
+        window.ychartEditor = editor;
+    }
+    
+    // Initialize after page loads
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeYChartEditor);
+    } else {
+        initializeYChartEditor();
+    }
+</script>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    #container {
+        width: 100vw;
+        height: 100vh;
+        border: 1px solid #ccc;
+        background-color: whitesmoke;
+        border-radius: 5px;
+        box-sizing: border-box;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+    }
+</style>
+
+<div id="container"></div>

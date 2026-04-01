@@ -1,0 +1,741 @@
+# YChart - Org Chart Editor
+
+A beautiful, interactive organizational chart editor with YAML input powered by **d3-org-chart**. Edit YAML in real-time with front-matter schema configuration and see your org chart update instantly!
+
+* Try it in the [Playground](https://orgchart.opensource.mieweb.org/)
+* [Read the docs](https://orgchart.opensource.mieweb.org/docs)
+
+## Features
+
+- 📝 **YAML Editor** - CodeMirror editor with syntax highlighting
+- 📊 **d3-org-chart** - Professional, battle-tested org chart library by David Bumbeishvili
+- 🎯 **Front Matter Schema** - Configure chart layout using YAML front matter
+- 🎨 **Customizable** - Full control over spacing, layout, and styling
+- 📱 **Responsive** - Works on desktop and mobile devices
+- 💾 **Export** - Download your org chart as SVG or PNG
+- 🔄 **Real-time Updates** - Chart updates as you type
+- ⚡ **Fast & Efficient** - Optimized layout algorithms
+- 🖱️ **Draggable Nodes** - Rearrange nodes by dragging them
+- 💾 **Position Persistence** - Node positions saved in browser localStorage
+- 🔀 **Dual View Modes** - Switch between hierarchical and force-directed graph layouts
+- 👤 **Person of Interest (POI)** - Focus view on a specific person with their chain of command
+- 🔗 **Supervisor Resolution** - Auto-resolve parent relationships from supervisor names
+- 🎭 **Custom Templates** - Define node appearance via YAML or JavaScript
+- 🌐 **CDN Ready** - Use directly from jsDelivr or unpkg
+
+## Getting Started
+
+### Install Dependencies
+
+```bash
+pnpm install
+```
+
+### Run Development Server
+
+```bash
+pnpm dev
+```
+
+### Build for Production
+
+```bash
+pnpm build
+```
+
+## Usage as a Library (NPM/CDN)
+
+### Installation
+
+```bash
+# npm
+npm install @mieweb/ychart
+
+# pnpm
+pnpm add @mieweb/ychart
+
+# yarn
+yarn add @mieweb/ychart
+```
+
+### CDN Usage
+
+You can use YChart directly from a CDN without any build tools:
+
+**jsDelivr (Recommended)**
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mieweb/ychart/dist/ychart.css">
+<script src="https://cdn.jsdelivr.net/npm/@mieweb/ychart/dist/ychart-editor.js"></script>
+```
+
+**unpkg**
+```html
+<link rel="stylesheet" href="https://unpkg.com/@mieweb/ychart/dist/ychart.css">
+<script src="https://unpkg.com/@mieweb/ychart/dist/ychart-editor.js"></script>
+```
+
+**Specific version (recommended for production)**
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mieweb/ychart@1.0.1/dist/ychart.css">
+<script src="https://cdn.jsdelivr.net/npm/@mieweb/ychart@1.0.1/dist/ychart-editor.js"></script>
+```
+
+### ES Module Import
+
+```javascript
+import { YChartEditor } from '@mieweb/ychart';
+import '@mieweb/ychart/style.css';
+
+const editor = new YChartEditor().initView('container', yamlData);
+```
+
+### Loading Styles
+
+When using YChart as a library, you have two options for loading styles:
+
+### Option 1: JS-Only (Automatic CSS Injection)
+
+The JS file includes CSS and auto-injects it. Simple but may cause a brief flash of unstyled content (FOUC):
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@mieweb/ychart/dist/ychart-editor.js"></script>
+```
+
+### Option 2: Separate CSS (Recommended - No FOUC)
+
+Load the CSS file in `<head>` for instant styling, then load JS:
+
+```html
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mieweb/ychart/dist/ychart.css">
+</head>
+<body>
+  <div id="container"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@mieweb/ychart/dist/ychart-editor.js"></script>
+</body>
+```
+
+### Container Sizing (Important!)
+
+**The YChart container must have a defined height.** The library uses CSS flexbox internally and will fill whatever space you give it. Choose one of these approaches:
+
+#### Option A: Explicit Height (Simplest)
+```html
+<div id="container" style="width: 100%; height: 600px;"></div>
+```
+
+#### Option B: Percentage Height (Full Page)
+For percentage heights to work, all parent elements must also have defined heights:
+```html
+<style>
+  html, body { height: 100%; margin: 0; }
+  #container { width: 100%; height: 100%; }
+</style>
+<div id="container"></div>
+```
+
+#### Option C: Flexbox Layout (Recommended for Complex Layouts)
+Use `flex: 1` with `min-height: 0` to let the container fill available space:
+```html
+<style>
+  .app { display: flex; flex-direction: column; height: 100vh; }
+  .header { height: 60px; }
+  .chart-wrapper { flex: 1; min-height: 0; }
+</style>
+<div class="app">
+  <header class="header">My App</header>
+  <div id="container" class="chart-wrapper"></div>
+</div>
+```
+
+> **Note:** The `min-height: 0` is critical for flexbox containers - without it, the content may overflow instead of scrolling.
+
+### Option 3: Critical CSS (Best Performance)
+
+For the best user experience, add critical inline CSS to prevent any flash while styles load:
+
+```html
+<head>
+  <style>
+    /* Critical CSS - prevents FOUC */
+    :root {
+      --yc-color-primary: #667eea;
+      --yc-color-primary-light: #764ba2;
+      --yc-color-bg-secondary: #f5f7fa;
+      --yc-gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    #container { height: 100%; overflow: hidden; }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mieweb/ychart/dist/ychart.css">
+</head>
+```
+
+### Minimal Example
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mieweb/ychart/dist/ychart.css">
+</head>
+<body>
+  <div id="container" style="width: 100%; height: 600px;"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@mieweb/ychart/dist/ychart-editor.js"></script>
+  <script>
+    const yaml = `
+- id: 1
+  name: CEO
+- id: 2
+  parentId: 1
+  name: CTO
+`;
+    new YChartEditor().initView('container', yaml);
+  </script>
+</body>
+</html>
+```
+
+## YAML Format with Front Matter
+
+The editor supports **YAML front matter** for both chart options and data schema validation:
+
+```yaml
+---
+options:
+  nodeWidth: 220
+  nodeHeight: 110
+  childrenMargin: 50
+  compactMarginBetween: 35
+  compactMarginPair: 30
+  neighbourMargin: 20
+schema:
+  id: number | required
+  name: string | required
+  title: string | optional
+  department: string | required
+  email: string | required
+  picture: string | optional | missing
+---
+
+- id: 1
+  name: John Smith
+  title: CEO
+  department: Executive
+  email: john.smith@company.com
+
+- id: 2
+  parentId: 1
+  name: Sarah Johnson
+  title: CTO
+  department: Technology
+  email: sarah.johnson@company.com
+
+- id: 3
+  parentId: 1
+  name: Mike Chen
+  title: CFO
+  department: Finance
+  email: mike.chen@company.com
+```
+
+### Options (Chart Layout)
+
+Configure chart visual layout in the `options` section:
+
+- `nodeWidth` - Width of each node card (default: 220)
+- `nodeHeight` - Height of each node card (default: 110)
+- `childrenMargin` - Vertical space between parent and children (default: 50)
+- `compactMarginBetween` - Horizontal space between sibling nodes (default: 35)
+- `compactMarginPair` - Space for paired nodes (default: 30)
+- `neighbourMargin` - Space between cousin nodes (default: 20)
+
+If any option is missing or the entire `options` section is omitted, defaults are used.
+
+### Schema (Data Validation)
+
+Define your data structure in the `schema` section using the format:
+
+```
+fieldName: type | modifier | modifier
+```
+
+**Types:**
+- `string` - Text values
+- `number` - Numeric values
+- `boolean` - True/false values
+
+**Modifiers:**
+- `required` - Field must be present in every item
+- `optional` - Field may be present but not mandatory
+- `missing` - Field can be completely absent without causing errors (useful for optional fields like profile pictures)
+
+**Examples:**
+```yaml
+schema:
+  id: number | required              # Must exist and be a number
+  name: string | required             # Must exist and be a string
+  title: string | optional            # Can exist, must be string if present
+  email: string | required            # Must exist and be a string
+  picture: string | optional | missing # Can be absent, no validation error
+```
+
+If the `schema` section is omitted, no validation is performed.
+
+### Required Fields
+
+- `id` (number|string) - Unique identifier for each person
+- `name` (string) - The person's name
+
+### Optional Fields
+
+- `parentId` (number|string) - ID of the person's manager (omit for root nodes)
+- `title` (string) - Job title
+- `department` (string) - Department name
+- `email` (string) - Email address
+- `phone` (string) - Phone number
+- Any other custom fields you want to include
+
+### Multiple Root Nodes
+
+Simply omit the `parentId` field for top-level employees:
+
+```yaml
+- id: 1
+  name: CEO
+  title: Chief Executive Officer
+
+- id: 2
+  name: Board Chair
+  title: Board Chairperson
+
+- id: 3
+  parentId: 1
+  name: CTO
+  title: Chief Technology Officer
+```
+
+### Node Ordering
+
+The order of nodes in the YAML determines their visual order within the same hierarchy level:
+
+- **Siblings** (nodes with the same parent) are displayed in the order they appear in YAML
+- Use the **↑ Move Up** and **↓ Move Down** buttons in the node details panel to reorder
+- Reordering only affects nodes at the same level (siblings)
+- Changes are immediately reflected in both the YAML editor and the chart
+
+**Example:**
+```yaml
+- id: 1
+  name: CEO
+  
+- id: 2      # First child - appears first
+  parentId: 1
+  name: CTO
+  
+- id: 3      # Second child - appears second
+  parentId: 1
+  name: CFO
+  
+- id: 4      # Third child - appears third
+  parentId: 1
+  name: CMO
+```
+
+## Using d3-org-chart in Your Project
+
+This project uses the excellent **[d3-org-chart](https://github.com/bumbeishvili/org-chart)** library by David Bumbeishvili.
+
+### Installation
+
+```bash
+npm install d3-org-chart d3
+```
+
+### Basic Usage
+
+```typescript
+import { OrgChart } from 'd3-org-chart';
+
+// Your data - each employee needs an 'id' and 'parentId'
+const data = [
+  { id: 1, name: "John Smith", title: "CEO" },
+  { id: 2, parentId: 1, name: "Sarah Johnson", title: "CTO" },
+  { id: 3, parentId: 1, name: "Mike Chen", title: "CFO" },
+];
+
+// Create and render chart
+new OrgChart()
+  .container('#chart')
+  .data(data)
+  .nodeHeight((_d: any) => 110)
+  .nodeWidth((_d: any) => 220)
+  .childrenMargin((_d: any) => 50)
+  .compactMarginBetween((_d: any) => 35)
+  .neighbourMargin((_d: any) => 20)
+  .render()
+  .fit();
+```
+
+**That's it!** Simple, powerful, and battle-tested.
+
+### Front Matter Configuration
+
+You can configure chart layout and validate data structure using YAML front matter:
+
+```yaml
+---
+options:
+  nodeWidth: 300
+  nodeHeight: 150
+  childrenMargin: 80
+  compactMarginBetween: 50
+  compactMarginPair: 40
+  neighbourMargin: 30
+schema:
+  id: number | required
+  name: string | required
+  title: string | optional
+  department: string | required
+  email: string | required
+  picture: string | optional | missing
+---
+- id: 1
+  name: John Smith
+  title: CEO
+  department: Executive
+  email: john.smith@company.com
+  ...
+```
+
+This allows:
+- Per-chart layout customization via `options`
+- Data validation via `schema` definitions
+- Fields marked with `missing` can be omitted without errors
+
+### Configuration Options
+
+The chart supports configuration through:
+
+1. **Default options** in `main.ts`:
+```typescript
+const defaultOptions = {
+  nodeWidth: 220,
+  nodeHeight: 110,
+  childrenMargin: 50,
+  compactMarginBetween: 35,
+  compactMarginPair: 30,
+  neighbourMargin: 20
+};
+```
+
+2. **YAML front matter** (overrides defaults):
+```yaml
+---
+options:
+  nodeWidth: 300
+  nodeHeight: 150
+  childrenMargin: 80
+schema:
+  id: number | required
+  name: string | required
+  department: string | required
+---
+```
+
+The front matter approach allows you to:
+- **Configure layout per-chart** using `options`
+- **Validate data structure** using `schema`
+- **Use defaults** for any omitted options
+- **Skip validation** by omitting the `schema` section
+
+All configuration values are wrapped as functions when passed to d3-org-chart:
+```typescript
+.nodeWidth((_d: any) => options.nodeWidth)
+.nodeHeight((_d: any) => options.nodeHeight)
+```
+
+For more advanced configuration (colors, animations, custom renderers), see the [d3-org-chart API documentation](https://github.com/bumbeishvili/org-chart#api)
+```
+
+### Custom Node Rendering
+
+The current implementation uses d3-org-chart's default node template with custom HTML styling. You can customize node appearance by modifying the `.nodeContent` method in `main.ts`:
+
+```typescript
+.nodeContent((d: any) => {
+  return `
+    <div class="node-card">
+      <div class="node-name">${d.data.name}</div>
+      <div class="node-title">${d.data.title || ''}</div>
+      <div class="node-department">${d.data.department || ''}</div>
+    </div>
+  `;
+})
+```
+
+Then add corresponding CSS in `style.css`. For more advanced customization options, see the [d3-org-chart customization guide](https://github.com/bumbeishvili/org-chart#customization).
+
+### Key Methods
+
+The application uses these d3-org-chart methods:
+chart.render(data);
+
+// Update with new data (same as render)
+chart.update(newData);
+
+// Export chart as SVG
+chart.exportSvg();
+
+// Export chart as PNG
+chart.exportPng();
+
+// Fit chart to viewport
+chart.fit();
+
+// Resize chart (call after window resize)
+chart.resize();
+```
+
+For the complete API reference and more methods, see the [d3-org-chart documentation](https://github.com/bumbeishvili/org-chart#api).
+
+## Examples
+
+### Example 1: Simple HTML Integration
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <div id="chart" style="width: 100%; height: 600px;"></div>
+  <script type="module">
+    import { OrgChart } from 'd3-org-chart';
+    
+    const data = [
+      { id: 1, name: 'CEO' },
+      { id: 2, parentId: 1, name: 'CTO' },
+      { id: 3, parentId: 1, name: 'CFO' }
+    ];
+    
+    new OrgChart()
+      .container('#chart')
+      .data(data)
+      .nodeHeight((_d) => 110)
+      .nodeWidth((_d) => 220)
+      .render()
+      .fit();
+  </script>
+</body>
+</html>
+```
+
+### Example 2: React Integration
+
+```tsx
+import { useEffect, useRef } from 'react';
+import { OrgChart } from 'd3-org-chart';
+
+interface Employee {
+  id: number;
+  parentId?: number;
+  name: string;
+  title?: string;
+}
+
+export function OrgChartComponent({ data }: { data: Employee[] }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const chartRef = useRef<OrgChart | null>(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      chartRef.current = new OrgChart()
+        .container(containerRef.current)
+        .nodeHeight((_d: any) => 110)
+        .nodeWidth((_d: any) => 220);
+    }
+
+    return () => {
+      if (chartRef.current) {
+        // Cleanup if needed
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (chartRef.current && data) {
+      chartRef.current
+        .data(data)
+        .render()
+        .fit();
+    }
+  }, [data]);
+
+  return <div ref={containerRef} style={{ width: '100%', height: '600px' }} />;
+}
+```
+
+### Example 3: Vue Integration
+
+```vue
+<template>
+  <div ref="chartContainer" style="width: 100%; height: 600px"></div>
+</template>
+
+<script setup lang="ts">
+import { ref, onMounted, watch } from 'vue';
+import { OrgChart } from 'd3-org-chart';
+
+interface Employee {
+  id: number;
+  parentId?: number;
+  name: string;
+  title?: string;
+}
+
+const props = defineProps<{ data: Employee[] }>();
+const chartContainer = ref<HTMLElement>();
+let chart: OrgChart | null = null;
+
+onMounted(() => {
+  if (chartContainer.value) {
+    chart = new OrgChart()
+      .container(chartContainer.value)
+      .nodeHeight((_d: any) => 110)
+      .nodeWidth((_d: any) => 220);
+  }
+});
+
+watch(() => props.data, (newData) => {
+  if (chart && newData) {
+    chart
+      .data(newData)
+      .render()
+      .fit();
+  }
+});
+</script>
+```
+
+## Browser Support
+
+- Chrome/Edge (latest)
+- Firefox (latest)
+- Safari (latest)
+
+## Programmatic API (Fluent Interface)
+
+YChartEditor provides a fluent API for programmatic configuration:
+
+### Basic Initialization
+
+```javascript
+const editor = new YChartEditor()
+  .initView('container', yamlData);
+```
+
+### Person of Interest (POI) - Focus on a Specific Person
+
+```javascript
+// Focus on a person by email, name, or ID
+editor.self('john.doe@company.com');
+editor.self('John Doe');
+editor.self(5);
+
+// Clear POI
+editor.self(null);
+```
+
+When a POI is set, the chart shows:
+- The selected person
+- Their direct reports (and descendants)
+- Their supervisory chain to the root
+- Collapsible siblings at each level
+
+### Supervisor Field Configuration
+
+Configure which fields are used for automatic parent resolution:
+
+```javascript
+// Use 'manager' field instead of default 'supervisor'
+editor.supervisorLookup('manager');
+
+// Check multiple fields in order
+editor.supervisorLookup(['supervisor', 'manager', 'reports_to']);
+
+// Use a custom name field for matching
+editor.supervisorLookup('manager', 'full_name');
+```
+
+Default supervisor fields checked: `supervisor`, `reports`, `reports_to`, `manager`, `leader`, `parent`
+
+### Background Patterns
+
+```javascript
+// Add dotted or dashed background pattern
+editor.bgPatternStyle('dotted');
+editor.bgPatternStyle('dashed');
+```
+
+### Action Button Position
+
+```javascript
+// Position: 'topleft' | 'topright' | 'bottomleft' | 'bottomright'
+// Orientation: 'horizontal' | 'vertical'
+editor.actionBtnPos('bottomleft', 'horizontal');
+editor.actionBtnPos('topright', 'vertical');
+```
+
+### Custom Node Templates
+
+```javascript
+editor.template((d, schema) => `
+  <div style="width:${d.width}px;height:${d.height}px;padding:16px;background:white;border-radius:8px;">
+    <h3>${d.data.name}</h3>
+    <p>${d.data.title || ''}</p>
+  </div>
+`);
+```
+
+### Chaining Example
+
+```javascript
+new YChartEditor({ nodeWidth: 250, nodeHeight: 120 })
+  .initView('container', yamlData)
+  .bgPatternStyle('dotted')
+  .actionBtnPos('bottomright', 'horizontal')
+  .supervisorLookup(['manager', 'supervisor'])
+  .self('jane.smith@company.com')
+  .template((d, schema) => `<div>...</div>`);
+```
+
+### YAML Front Matter: `self` Option
+
+You can also set POI via YAML front matter:
+
+```yaml
+---
+options:
+  nodeWidth: 220
+  nodeHeight: 110
+  self: jane.smith@company.com  # or name, or ID
+---
+- id: 1
+  name: Jane Smith
+  email: jane.smith@company.com
+```
+
+## License
+
+MIT
+
+## Credits
+
+Built with:
+- [d3-org-chart](https://github.com/bumbeishvili/org-chart) by David Bumbeishvili - Org chart visualization
+- [D3.js](https://d3js.org/) - Data visualization
+- [CodeMirror](https://codemirror.net/) - Code editor
+- [js-yaml](https://github.com/nodeca/js-yaml) - YAML parser
+
+---
+
+Made with ❤️ by [MIE](https://mieweb.com/)
+# Test deployment

@@ -1,0 +1,239 @@
+import './styles/styles.scss';
+import YChartEditor from './ychartEditor';
+import orgChartDataRaw from './orgchart.yaml?raw';
+import budgetDataRaw from '../examples/budget-indicators/orgchart.yaml?raw';
+import okrDataRaw from '../examples/okr/orgchart.yaml?raw';
+import salaryDataRaw from '../examples/salary-headcount/orgchart.yaml?raw';
+import multipleRootsDataRaw from '../examples/multiple-roots/orgchart.yaml?raw';
+import { commitHash, commitHashFull, repoUrl } from 'virtual:git-info';
+
+// Brand CSS imports (raw strings for theme switching)
+import bluehiveCSS from '../../ui/src/brands/bluehive.css?raw';
+import enterpriseHealthCSS from '../../ui/src/brands/enterprise-health.css?raw';
+import miewebCSS from '../../ui/src/brands/mieweb.css?raw';
+import wagglelineCSS from '../../ui/src/brands/waggleline.css?raw';
+import webchartCSS from '../../ui/src/brands/webchart.css?raw';
+
+const brandCSS: Record<string, string> = {
+  'default': `:root {
+    --mieweb-primary-50: #f8fafc; --mieweb-primary-100: #f1f5f9;
+    --mieweb-primary-200: #e2e8f0; --mieweb-primary-300: #cbd5e1;
+    --mieweb-primary-400: #94a3b8; --mieweb-primary-500: #667eea;
+    --mieweb-primary-600: #5568d3; --mieweb-primary-700: #4a5abb;
+    --mieweb-primary-800: #3e4da3; --mieweb-primary-900: #334089;
+  }`,
+  'bluehive': bluehiveCSS,
+  'enterprise-health': enterpriseHealthCSS,
+  'mieweb': miewebCSS,
+  'waggleline': wagglelineCSS,
+  'webchart': webchartCSS,
+};
+
+// Example data mapping
+const exampleData: Record<string, string> = {
+  default: orgChartDataRaw,
+  budget: budgetDataRaw,
+  okr: okrDataRaw,
+  salary: salaryDataRaw,
+  'multiple-roots': multipleRootsDataRaw,
+};
+
+// Update git info in header
+function updateGitInfo() {
+  const commitHashEl = document.getElementById('commit-hash');
+  const commitLinkEl = document.getElementById('commit-link') as HTMLAnchorElement;
+  const repoLinkEl = document.getElementById('repo-link') as HTMLAnchorElement;
+
+  if (commitHashEl) {
+    commitHashEl.textContent = commitHash || 'dev';
+  }
+  if (commitLinkEl && commitHashFull && repoUrl) {
+    commitLinkEl.href = `${repoUrl}/commit/${commitHashFull}`;
+    commitLinkEl.title = `View commit ${commitHash} on GitHub`;
+  }
+  if (repoLinkEl && repoUrl) {
+    repoLinkEl.href = repoUrl;
+  }
+}
+
+updateGitInfo();
+
+// HMR support - update git info when the virtual module changes
+if (import.meta.hot) {
+  import.meta.hot.accept('virtual:git-info', (newModule) => {
+    if (newModule) {
+      const commitHashEl = document.getElementById('commit-hash');
+      const commitLinkEl = document.getElementById('commit-link') as HTMLAnchorElement;
+      
+      if (commitHashEl) {
+        commitHashEl.textContent = newModule.commitHash || 'dev';
+      }
+      if (commitLinkEl && newModule.commitHashFull && newModule.repoUrl) {
+        commitLinkEl.href = `${newModule.repoUrl}/commit/${newModule.commitHashFull}`;
+        commitLinkEl.title = `View commit ${newModule.commitHash} on GitHub`;
+      }
+    }
+  });
+}
+
+// Sample YAML data with front matter for options and schema configuration
+const defaultYAML = orgChartDataRaw;
+
+// Alternative example with nested structure (for reference):
+/*
+const alternativeYAML = `---
+schema:
+  id: number | required
+  name: string | required
+  title: string | optional
+  department: string | optional
+card:
+  - div:
+      class: card-wrapper
+      style: padding:var(--yc-spacing-md);
+      children:
+        - h1:
+            class: card-title
+            content: $name$
+        - div:
+            style: font-weight:var(--yc-font-weight-bold);
+            content: $title$
+        - div:
+            class: info-section
+            children:
+              - span: "Email: "
+              - span:
+                  style: color:var(--yc-color-primary);
+                  content: $email$
+---
+
+${orgChartDataRaw}`;
+*/
+
+// Initialize the YChart Editor with builder pattern
+const ychartEditor = new YChartEditor({
+  nodeWidth: 220,
+  nodeHeight: 110,
+  editorTheme: 'dark',
+  collapsible: true,
+  // Optional: Configure toolbar position and orientation at initialization
+  // toolbarPosition: 'topright',
+  // toolbarOrientation: 'vertical'
+});
+
+// Simple initialization - toolbar buttons are now built-in!
+ychartEditor
+  .initView('container', defaultYAML)
+  .bgPatternStyle('dotted') // Optional: 'dotted' or 'dashed'
+  .actionBtnPos('bottomleft', 'horizontal'); // Optional: customize toolbar position and layout
+
+// Note: The card template is now defined in the YAML front matter (see defaultYAML above)
+// You can also use the .template() method for programmatic control (takes priority over YAML card definition)
+
+// Example with .template() method (overrides YAML card definition):
+// ychartEditor
+//   .initView('container', defaultYAML)
+//   .template((d, schema) => {
+//     return `
+//       <div style="width:${d.width}px;height:${d.height}px;padding:12px;">
+//         <div class="title-header">${d.data.name}</div>
+//         ${schema.title ? `<div>${d.data.title}</div>` : ''}
+//       </div>
+//     `;
+//   });
+
+// Alternative YAML with different card structure (commented out):
+// const alternativeYAML = `---
+// schema:
+//   id: number | required
+//   name: string | required
+//   title: string | optional
+// card:
+//   - div:
+//       class: card-wrapper
+//       children:
+//         - h1: $name$
+//         - div:
+//             style: font-weight:bold;
+//             content: $title$
+// ---
+// ${orgChartDataRaw}`;
+
+// Examples of other toolbar positions:
+// .actionBtnPos('topright', 'vertical')    // Top-right corner, vertical layout
+// .actionBtnPos('topcenter', 'horizontal') // Top-center, horizontal layout
+// .actionBtnPos('bottomright', 'horizontal') // Bottom-right corner
+// .actionBtnPos('topleft', 'vertical')     // Top-left corner, vertical layout
+// .actionBtnPos('bottomcenter', 'horizontal') // Bottom-center, horizontal layout
+
+// Note: The following button attachments are deprecated and no longer needed
+// The toolbar is now integrated into the canvas with better UI/UX
+// .enableSwapBtn('toggle-swap')
+// .resetBtn('reset-positions')
+// .exportSVGBtn('export-svg')
+// .toggleViewBtn('toggle-view')
+
+console.log('YChart Editor initialized!');
+
+// Expose editor to window for debugging
+(window as any).ychartEditor = ychartEditor;
+// Test deployment
+
+// Set up example selector
+function setupExampleSelector() {
+  const select = document.getElementById('example-select') as HTMLSelectElement;
+  if (!select) return;
+
+  // Check URL for example parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const exampleParam = urlParams.get('example');
+  if (exampleParam && exampleData[exampleParam]) {
+    select.value = exampleParam;
+    if (exampleParam !== 'default') {
+      ychartEditor.loadYaml(exampleData[exampleParam]);
+    }
+  }
+
+  select.addEventListener('change', (e) => {
+    const value = (e.target as HTMLSelectElement).value;
+    const yaml = exampleData[value];
+    if (yaml) {
+      ychartEditor.loadYaml(yaml);
+      // Update URL without reloading
+      const url = new URL(window.location.href);
+      if (value === 'default') {
+        url.searchParams.delete('example');
+      } else {
+        url.searchParams.set('example', value);
+      }
+      window.history.pushState({}, '', url.toString());
+    }
+  });
+}
+
+setupExampleSelector();
+
+// Theme selector
+function setupThemeSelector() {
+  const style = document.createElement('style');
+  style.id = 'ychart-brand-theme';
+  document.head.appendChild(style);
+
+  const select = document.getElementById('theme-select') as HTMLSelectElement;
+  if (!select) return;
+
+  // Restore persisted theme or default
+  const savedTheme = localStorage.getItem('ychart-theme') || 'default';
+  select.value = savedTheme;
+  style.textContent = brandCSS[savedTheme] || brandCSS['default'];
+
+  select.addEventListener('change', (e) => {
+    const theme = (e.target as HTMLSelectElement).value;
+    style.textContent = brandCSS[theme] || brandCSS['default'];
+    localStorage.setItem('ychart-theme', theme);
+    // Re-render chart so stroke colors pick up the new CSS variable values
+    (ychartEditor as any).orgChart?.render();
+  });
+}
+
+setupThemeSelector();
