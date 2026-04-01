@@ -48671,8 +48671,9 @@ ${d.email || ""}`);
       if (!this.ctx.getOrgChart()) return;
       const totalFilters = Array.from(this.activeFieldFilters.values()).reduce((sum2, set2) => sum2 + set2.size, 0);
       if (totalFilters === 0) {
-        this.ctx.getOrgChart().clearHighlighting();
-        this.ctx.getOrgChart().expandAll();
+        const orgChart = this.ctx.getOrgChart();
+        if (orgChart) orgChart.clearHighlighting();
+        this.ctx.resetToRoot();
         return;
       }
       const matchedIds = [];
@@ -53759,7 +53760,8 @@ ${newYamlData}`;
         getChartContainer: () => this.chartContainer,
         getPersonOfInterest: () => this.poiManager.personOfInterest,
         setPersonOfInterest: (id2) => this.poiManager.setPersonOfInterest(id2),
-        updatePOISelectorValue: (id2) => this.poiManager.updatePOISelectorValue(id2)
+        updatePOISelectorValue: (id2) => this.poiManager.updatePOISelectorValue(id2),
+        resetToRoot: () => this.poiManager.resetToRoot()
       });
       const floatingSearchBar = this.searchManager.createFloatingSearchBar();
       layout.chartWrapper.appendChild(floatingSearchBar);
