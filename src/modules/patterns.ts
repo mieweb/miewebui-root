@@ -13,7 +13,7 @@ export function createDotPattern(patternColor?: string): SVGDefsElement {
   const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
   dot.setAttribute("cx", "5");
   dot.setAttribute("cy", "5");
-  dot.setAttribute("r", "0.75");
+  dot.setAttribute("r", "1.2");
   dot.setAttribute("fill", patternColor || "var(--yc-color-pattern)");
 
   pattern.appendChild(dot);
@@ -71,13 +71,12 @@ export function applyBackgroundPattern(
   bgPattern: 'dotted' | 'dashed',
   patternColor?: string,
 ): void {
-  const svg = chartContainer.querySelector('svg');
+  // Target the main chart SVG specifically, not nested SVGs (e.g. toolbar icons)
+  const svg = chartContainer.querySelector('svg.svg-chart-container') || chartContainer.querySelector(':scope > svg');
   if (!svg) {
     console.warn('SVG not found in chart container');
     return;
   }
-
-  console.log('Applying background pattern:', bgPattern);
 
   // Get or create defs element
   let defs = svg.querySelector('defs');
@@ -126,8 +125,6 @@ export function applyBackgroundPattern(
   } else {
     svg.appendChild(bgRect);
   }
-
-  console.log('Pattern applied successfully');
 }
 
 /**
@@ -144,7 +141,7 @@ export function setupPatternPersistence(
   const observer = new MutationObserver(() => {
     const bgPattern = getBgPattern();
     if (bgPattern) {
-      const svg = chartContainer.querySelector('svg');
+      const svg = chartContainer.querySelector('svg.svg-chart-container') || chartContainer.querySelector(':scope > svg');
       const bgRect = svg?.querySelector('#pattern-background');
       const patternDef = svg?.querySelector('#dotPattern, #gridPattern');
       if (svg && (!bgRect || !patternDef)) {
