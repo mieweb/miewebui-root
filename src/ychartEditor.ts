@@ -18,6 +18,7 @@ import {
   createToolbar as createToolbarFn,
   SearchManager,
   ColumnAdjustManager,
+  SidebarManager,
   getShadowDOMStyles,
   unmountAllReactRoots,
   // Editor
@@ -25,7 +26,6 @@ import {
   updateErrorBanner,
   jumpToEditorLine,
   formatYAML,
-  scrollToNodeInEditor,
   // Node rendering
   buildExpandSiblingsBtn,
   buildExpandSupervisorChainBtn,
@@ -67,6 +67,7 @@ class YChartEditor {
   private errorBanner: HTMLElement | null = null;
   private searchManager!: SearchManager;
   private poiManager!: POIManager;
+  private sidebarManager!: SidebarManager;
 
   // Default supervisor field aliases - can be overridden via schema or supervisorLookup()
   private supervisorFields: string[] = ['supervisor', 'reports', 'reports_to', 'manager', 'leader', 'parent'];
@@ -150,7 +151,7 @@ class YChartEditor {
     this.renderChart();
 
     // Auto-collapse editor after 1 second to ensure proper initialization
-    this.toggleEditor();
+    this.sidebarManager.toggle();
     // setTimeout(() => {
     // }, 10);
 
@@ -187,10 +188,20 @@ class YChartEditor {
   private createLayout(): void {
     if (!this.viewContainer) return;
 
+    // Create sidebar manager
+    this.sidebarManager = new SidebarManager({
+      instanceId: this.instanceId,
+      getEditor: () => this.editor,
+      getOrgChart: () => this.orgChart,
+      getChartContainer: () => this.chartContainer,
+      getBgPattern: () => this.bgPattern,
+      getPatternColor: () => this.defaultOptions.patternColor,
+    });
+
     const layout = buildLayout(this.viewContainer, {
       instanceId: this.instanceId,
       collapsible: this.defaultOptions.collapsible ?? true,
-      onToggleEditor: () => this.toggleEditor(),
+      onToggleEditor: () => this.sidebarManager.toggle(),
       onFormatYAML: () => this.handleFormatYAML(),
     });
 
@@ -377,51 +388,7 @@ class YChartEditor {
     );
   }
 
-  private toggleEditor(): void {
-    const sidebar = document.getElementById(`ychart-editor-sidebar-${this.instanceId}`);
-    const collapseBtn = document.querySelector(`[data-id="ychart-collapse-editor-${this.instanceId}"]`) as HTMLElement;
-    
-    if (!sidebar || !collapseBtn) return;
 
-    const isCollapsed = sidebar.style.width === '0px';
-    
-    if (isCollapsed) {
-      // Expand
-      sidebar.style.width = '400px';
-      sidebar.style.borderLeftWidth = '1px';
-      sidebar.style.transition = 'width 0.3s ease, border-left-width 0s 0s';
-      collapseBtn.style.right = '399px';
-      collapseBtn.innerHTML = '▶';
-      
-      // Force CodeMirror to refresh after expansion animation
-      setTimeout(() => {
-        if (this.editor) {
-          this.editor.requestMeasure();
-        }
-      }, 350);
-    } else {
-      // Collapse
-      sidebar.style.width = '0px';
-      sidebar.style.borderLeftWidth = '0px';
-      sidebar.style.transition = 'width 0.3s ease, border-left-width 0s 0.3s';
-      collapseBtn.style.right = '-1px';
-      collapseBtn.innerHTML = '◀';
-    }
-    
-    // Force chart to recalculate SVG dimensions after toggle animation completes
-    setTimeout(() => {
-      if (this.orgChart && this.chartContainer) {
-        console.log('Re-rendering and fitting chart to new container bounds...');
-        // Force SVG to update by calling render then fit
-        this.orgChart.render().fit();
-        
-        // Reapply background pattern after re-render
-        if (this.bgPattern) {
-          setTimeout(() => applyBackgroundPattern(this.chartContainer!, this.bgPattern!, this.defaultOptions.patternColor), 50);
-        }
-      }
-    }, 250);
-  }
 
   /**
    * Jump to a specific line in the editor
@@ -438,7 +405,7 @@ class YChartEditor {
     document.addEventListener('keydown', (event) => {
       if (event.ctrlKey && event.key === '`') {
         event.preventDefault();
-        this.toggleEditorAndFindSelectedNode();
+        this.sidebarManager.toggleAndScrollToNode();
       }
       if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
         event.preventDefault();
@@ -447,23 +414,7 @@ class YChartEditor {
     });
   }
 
-  private toggleEditorAndFindSelectedNode(): void {
-    const sidebar = document.getElementById(`ychart-editor-sidebar-${this.instanceId}`);
-    if (!sidebar) return;
 
-    const isCollapsed = sidebar.style.width === '0px';
-    this.toggleEditor();
-
-    if (isCollapsed) {
-      setTimeout(() => this.scrollToSelectedNode(), 400);
-    }
-  }
-
-  private scrollToSelectedNode(): void {
-    if (!this.editor || !this.orgChart) return;
-    const chartState = this.orgChart.getChartState();
-    scrollToNodeInEditor(this.editor, chartState?.selectedNodeId);
-  }
 
     private parseFrontMatter(content: string): FrontMatter {
     const result = parseFrontMatterFn(content, this.supervisorFields);

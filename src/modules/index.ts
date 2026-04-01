@@ -46,6 +46,11 @@ export type { POIManagerContext } from './poiManager';
 export { buildLayout } from './layoutBuilder';
 export type { LayoutElements, LayoutConfig } from './layoutBuilder';
 
+// Sidebar
+export { SidebarManager } from './sidebarManager';
+export type { SidebarManagerContext } from './sidebarManager';
+
+// Shadow DOM
 // Shadow DOM
 export { getShadowDOMStyles } from './shadowDomStyles';
 
