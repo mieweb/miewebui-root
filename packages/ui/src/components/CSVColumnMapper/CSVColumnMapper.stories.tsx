@@ -1,0 +1,256 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
+import {
+  CSVColumnMapper,
+  CSVFileUpload,
+  type CSVColumn,
+} from './CSVColumnMapper';
+
+const meta: Meta<typeof CSVColumnMapper> = {
+  title: 'Components/Forms & Inputs/CSVColumnMapper',
+  component: CSVColumnMapper,
+  tags: ['autodocs'],
+  args: {
+    importing: false,
+    importProgress: 0,
+  },
+  argTypes: {
+    // Hide data props that are managed by interactive wrappers
+    columns: { table: { disable: true } },
+    fieldOptions: { table: { disable: true } },
+    childFieldOptions: { table: { disable: true } },
+    // Hide callback props
+    onColumnChange: { table: { disable: true } },
+    onIgnoreToggle: { table: { disable: true } },
+    onBulkAction: { table: { disable: true } },
+    onImport: { table: { disable: true } },
+    // Hide className and labels (complex object)
+    className: { table: { disable: true } },
+    labels: { table: { disable: true } },
+    // Configure visible controls
+    importing: {
+      control: 'boolean',
+      description: 'Whether import is in progress',
+    },
+    importProgress: {
+      control: { type: 'range', min: 0, max: 100, step: 1 },
+      description: 'Import progress (0-100)',
+    },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof CSVColumnMapper>;
+
+const sampleColumns: CSVColumn[] = [
+  { name: 'First Name', sampleValue: 'John', mappedTo: 'firstName' },
+  { name: 'Last Name', sampleValue: 'Doe', mappedTo: 'lastName' },
+  {
+    name: 'Email Address',
+    sampleValue: 'john.doe@example.com',
+    mappedTo: 'email',
+  },
+  { name: 'Phone', sampleValue: '555-123-4567' },
+  { name: 'Street', sampleValue: '123 Main St' },
+  { name: 'City', sampleValue: 'Anytown' },
+  { name: 'State', sampleValue: 'IN' },
+  { name: 'Zip', sampleValue: '46032' },
+  { name: 'DOB', sampleValue: '1985-03-15' },
+  { name: 'Department', sampleValue: 'Engineering' },
+  { name: 'Title', sampleValue: 'Software Developer' },
+  { name: 'Notes', sampleValue: 'Some notes here', ignored: true },
+];
+
+const fieldOptions = [
+  { value: 'firstName', label: 'First Name' },
+  { value: 'lastName', label: 'Last Name' },
+  { value: 'email', label: 'Email' },
+  { value: 'phone', label: 'Phone', hasChildren: true },
+  { value: 'address.street1', label: 'Street Address 1' },
+  { value: 'address.street2', label: 'Street Address 2' },
+  { value: 'address.city', label: 'City' },
+  { value: 'address.state', label: 'State' },
+  { value: 'address.postalCode', label: 'Postal Code' },
+  { value: 'dob', label: 'Date of Birth' },
+  { value: 'department', label: 'Department' },
+  { value: 'title', label: 'Job Title' },
+  { value: 'ssn', label: 'SSN', disabled: true },
+];
+
+const childFieldOptions = {
+  phone: [
+    { value: 'mobile', label: 'Mobile' },
+    { value: 'home', label: 'Home' },
+    { value: 'work', label: 'Work' },
+  ],
+};
+
+// Wrapper for Default story with interactive state
+function CSVColumnMapperWrapper({
+  importing,
+  importProgress,
+}: {
+  importing?: boolean;
+  importProgress?: number;
+}) {
+  const [columns, setColumns] = useState(sampleColumns);
+
+  const handleColumnChange = (
+    index: number,
+    mappedTo: string,
+    childField?: string
+  ) => {
+    setColumns((prev) =>
+      prev.map((col, i) =>
+        i === index ? { ...col, mappedTo, childField } : col
+      )
+    );
+  };
+
+  const handleIgnoreToggle = (index: number, ignored: boolean) => {
+    setColumns((prev) =>
+      prev.map((col, i) => (i === index ? { ...col, ignored } : col))
+    );
+  };
+
+  const handleBulkAction = (
+    action: 'ignoreAll' | 'includeAll' | 'ignoreUncompleted'
+  ) => {
+    setColumns((prev) =>
+      prev.map((col) => {
+        if (action === 'ignoreAll') return { ...col, ignored: true };
+        if (action === 'includeAll') return { ...col, ignored: false };
+        if (action === 'ignoreUncompleted' && !col.mappedTo)
+          return { ...col, ignored: true };
+        return col;
+      })
+    );
+  };
+
+  return (
+    <CSVColumnMapper
+      columns={columns}
+      fieldOptions={fieldOptions}
+      childFieldOptions={childFieldOptions}
+      onColumnChange={handleColumnChange}
+      onIgnoreToggle={handleIgnoreToggle}
+      onBulkAction={handleBulkAction}
+      onImport={() => window.alert('Import triggered!')}
+      importing={importing}
+      importProgress={importProgress}
+    />
+  );
+}
+
+// Wrapper for FileUpload story
+function FileUploadWrapper() {
+  const [file, setFile] = useState<File | null>(null);
+
+  return (
+    <div className="space-y-4">
+      <CSVFileUpload
+        onFileSelect={(f) => {
+          setFile(f);
+          window.alert(`Selected: ${f.name}`);
+        }}
+      />
+      {file && (
+        <p className="text-muted-foreground text-center">
+          Selected file: {file.name}
+        </p>
+      )}
+    </div>
+  );
+}
+
+export const Default: Story = {
+  render: (args) => (
+    <CSVColumnMapperWrapper
+      importing={args.importing}
+      importProgress={args.importProgress}
+    />
+  ),
+};
+
+export const WithPhoneMapping: Story = {
+  args: {
+    columns: [
+      {
+        name: 'Mobile Phone',
+        sampleValue: '555-123-4567',
+        mappedTo: 'phone',
+        childField: 'mobile',
+      },
+      {
+        name: 'Work Phone',
+        sampleValue: '555-987-6543',
+        mappedTo: 'phone',
+        childField: 'work',
+      },
+    ],
+    fieldOptions,
+    childFieldOptions,
+  },
+};
+
+export const WithErrors: Story = {
+  args: {
+    columns: [
+      { name: 'First Name', sampleValue: 'John', mappedTo: 'firstName' },
+      { name: 'Unknown Column', sampleValue: 'abc123', hasError: true },
+      { name: 'Another Unknown', sampleValue: 'xyz789', hasError: true },
+    ],
+    fieldOptions,
+  },
+};
+
+export const Importing: Story = {
+  args: {
+    columns: sampleColumns,
+    fieldOptions,
+    importing: true,
+    importProgress: 45,
+  },
+};
+
+export const AllIgnored: Story = {
+  args: {
+    columns: sampleColumns.map((col) => ({ ...col, ignored: true })),
+    fieldOptions,
+  },
+};
+
+export const FileUpload: StoryObj<typeof CSVFileUpload> = {
+  render: () => <FileUploadWrapper />,
+};
+
+export const FileUploadProcessing: StoryObj<typeof CSVFileUpload> = {
+  render: () => <CSVFileUpload processing />,
+};
+
+export const Mobile: Story = {
+  args: {
+    columns: sampleColumns.slice(0, 4),
+    fieldOptions,
+  },
+  parameters: {
+    viewport: { defaultViewport: 'mobile1' },
+  },
+};
+
+export const CustomLabels: Story = {
+  args: {
+    columns: sampleColumns.slice(0, 4),
+    fieldOptions,
+    labels: {
+      ignoreAll: 'Skip All Columns',
+      includeAll: 'Map All Columns',
+      ignoreUncompleted: 'Skip Unmapped',
+      import: 'Start Import',
+      ensureAccurateData: 'Data Validation',
+      ensureAccurateDataDescription:
+        'Matching records will be updated automatically.',
+      instructions: 'Match your CSV columns to employee fields below.',
+    },
+  },
+};

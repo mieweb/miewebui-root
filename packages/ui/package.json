@@ -1,0 +1,231 @@
+{
+  "name": "@mieweb/ui",
+  "version": "0.2.4",
+  "description": "A themeable, accessible React component library built with Tailwind CSS",
+  "author": "Medical Informatics Engineering, Inc.",
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mieweb/ui.git"
+  },
+  "homepage": "https://github.com/mieweb/ui#readme",
+  "bugs": {
+    "url": "https://github.com/mieweb/ui/issues"
+  },
+  "packageManager": "pnpm@10.29.1",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "tailwindcss",
+    "accessible",
+    "themeable"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./components/*": {
+      "import": {
+        "types": "./dist/components/*/index.d.ts",
+        "default": "./dist/components/*/index.js"
+      },
+      "require": {
+        "types": "./dist/components/*/index.d.cts",
+        "default": "./dist/components/*/index.cjs"
+      }
+    },
+    "./hooks": {
+      "import": {
+        "types": "./dist/hooks/index.d.ts",
+        "default": "./dist/hooks/index.js"
+      },
+      "require": {
+        "types": "./dist/hooks/index.d.cts",
+        "default": "./dist/hooks/index.cjs"
+      }
+    },
+    "./utils": {
+      "import": {
+        "types": "./dist/utils/index.d.ts",
+        "default": "./dist/utils/index.js"
+      },
+      "require": {
+        "types": "./dist/utils/index.d.cts",
+        "default": "./dist/utils/index.cjs"
+      }
+    },
+    "./tailwind-preset": {
+      "import": {
+        "types": "./dist/tailwind-preset.d.ts",
+        "default": "./dist/tailwind-preset.js"
+      },
+      "require": {
+        "types": "./dist/tailwind-preset.d.cts",
+        "default": "./dist/tailwind-preset.cjs"
+      }
+    },
+    "./brands": {
+      "import": {
+        "types": "./dist/brands/index.d.ts",
+        "default": "./dist/brands/index.js"
+      },
+      "require": {
+        "types": "./dist/brands/index.d.cts",
+        "default": "./dist/brands/index.cjs"
+      }
+    },
+    "./brands/bluehive.css": "./dist/brands/bluehive.css",
+    "./brands/mieweb.css": "./dist/brands/mieweb.css",
+    "./brands/ozwell.css": "./dist/brands/ozwell.css",
+    "./brands/webchart.css": "./dist/brands/webchart.css",
+    "./brands/enterprise-health.css": "./dist/brands/enterprise-health.css",
+    "./brands/*": {
+      "import": {
+        "types": "./dist/brands/*.d.ts",
+        "default": "./dist/brands/*.js"
+      },
+      "require": {
+        "types": "./dist/brands/*.d.cts",
+        "default": "./dist/brands/*.cjs"
+      }
+    },
+    "./ag-grid": {
+      "import": {
+        "types": "./dist/ag-grid.d.ts",
+        "default": "./dist/ag-grid.js"
+      },
+      "require": {
+        "types": "./dist/ag-grid.d.cts",
+        "default": "./dist/ag-grid.cjs"
+      }
+    },
+    "./styles.css": "./dist/styles.css",
+    "./styles": "./dist/styles.css",
+    "./init.css": "./dist/styles/init.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup && npm run build:css && npm run copy:brand-css && npm run copy:style-css",
+    "build:css": "npx @tailwindcss/cli -i ./src/styles/base.css -o ./dist/styles.css --minify",
+    "copy:brand-css": "cp src/brands/*.css dist/brands/ 2>/dev/null || true",
+    "copy:style-css": "mkdir -p dist/styles && cp src/styles/init.css dist/styles/ 2>/dev/null || true",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "format": "prettier --check \"src/**/*.{ts,tsx,css}\"",
+    "format:fix": "prettier --write \"src/**/*.{ts,tsx,css}\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test:coverage": "vitest run --coverage",
+    "playwright:install": "playwright install --with-deps",
+    "test:visual": "playwright test",
+    "test:visual:ui": "playwright test --ui",
+    "test:visual:debug": "playwright test --debug",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "ag-grid-community": ">=32.0.0",
+    "ag-grid-react": ">=32.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "wavesurfer.js": ">=7.0.0"
+  },
+  "peerDependenciesMeta": {
+    "ag-grid-community": {
+      "optional": true
+    },
+    "ag-grid-react": {
+      "optional": true
+    },
+    "react": {
+      "optional": false
+    },
+    "react-dom": {
+      "optional": false
+    },
+    "wavesurfer.js": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@swc/helpers": "^0.5.19",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "google-libphonenumber": "^3.2.44",
+    "lucide-react": "^0.562.0",
+    "luxon": "^3.7.2",
+    "tailwind-merge": "^2.6.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.3",
+    "@playwright/test": "^1.58.2",
+    "@storybook/addon-a11y": "^10.2.11",
+    "@storybook/addon-docs": "^10.2.11",
+    "@storybook/addon-links": "^10.2.11",
+    "@storybook/react": "^10.2.11",
+    "@storybook/react-vite": "^10.2.11",
+    "@tailwindcss/cli": "^4.2.1",
+    "@tailwindcss/postcss": "^4.2.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/google-libphonenumber": "^7.4.30",
+    "@types/luxon": "^3.7.1",
+    "@types/node": "^22.19.11",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
+    "@vitest/coverage-v8": "^3.2.4",
+    "ag-grid-community": "^35.1.0",
+    "ag-grid-react": "^35.1.0",
+    "autoprefixer": "^10.4.24",
+    "eslint": "^9.39.3",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-storybook": "^10.2.11",
+    "jsdom": "^26.1.0",
+    "postcss": "^8.5.6",
+    "prettier": "^3.8.1",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "storybook": "^10.2.11",
+    "tailwindcss": "^4.2.1",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vitest": "^3.2.4",
+    "wavesurfer.js": "^7.12.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

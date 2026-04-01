@@ -1,0 +1,606 @@
+'use client';
+
+import * as React from 'react';
+import { Button } from '../Button/Button';
+import { Badge } from '../Badge/Badge';
+import { Input } from '../Input/Input';
+import { Card, CardContent } from '../Card/Card';
+
+export interface OrderDetails {
+  id: string;
+  orderNumber: string;
+  employeeName: string;
+  dateOfBirth?: string;
+  serviceName: string;
+  employerName: string;
+  scheduledDate?: Date | string;
+  notes?: string;
+}
+
+export interface ConfirmationResult {
+  orderId: string;
+  employeeVerified: boolean;
+  consentObtained: boolean;
+  idVerified: boolean;
+  notes?: string;
+}
+
+export interface OrderConfirmationWizardProps {
+  /** Order details to confirm */
+  order: OrderDetails;
+  /** Handler for completing the confirmation */
+  onComplete?: (result: ConfirmationResult) => void;
+  /** Handler for canceling */
+  onCancel?: () => void;
+  /** Handler for step changes */
+  onStepChange?: (step: number) => void;
+  /** Whether submission is in progress */
+  isSubmitting?: boolean;
+  /** Initial step (1-based) */
+  initialStep?: number;
+  /** Custom step titles */
+  stepTitles?: [string, string, string];
+  /** Additional CSS classes */
+  className?: string;
+}
+
+/**
+ * OrderConfirmationWizard provides a 3-step process for confirming orders.
+ */
+export function OrderConfirmationWizard({
+  order,
+  onComplete,
+  onCancel,
+  onStepChange,
+  isSubmitting = false,
+  initialStep = 1,
+  stepTitles = ['Verify Employee', 'Consent & ID', 'Confirmation'],
+  className = '',
+}: OrderConfirmationWizardProps) {
+  const [step, setStep] = React.useState(initialStep);
+  const [employeeVerified, setEmployeeVerified] = React.useState(false);
+  const [verificationNotes, setVerificationNotes] = React.useState('');
+  const [consentObtained, setConsentObtained] = React.useState(false);
+  const [idVerified, setIdVerified] = React.useState(false);
+  const [idType, setIdType] = React.useState('');
+  const [confirmationNotes, setConfirmationNotes] = React.useState('');
+
+  const handleStepChange = (newStep: number) => {
+    setStep(newStep);
+    onStepChange?.(newStep);
+  };
+
+  const handleComplete = () => {
+    if (!onComplete) return;
+    onComplete({
+      orderId: order.id,
+      employeeVerified,
+      consentObtained,
+      idVerified,
+      notes: [verificationNotes, confirmationNotes].filter(Boolean).join('\n'),
+    });
+  };
+
+  const formatDate = (date: Date | string | undefined) => {
+    if (!date) return 'N/A';
+    const d = typeof date === 'string' ? new Date(date) : date;
+    return d.toLocaleDateString();
+  };
+
+  const canProceedStep1 = employeeVerified;
+  const canProceedStep2 = consentObtained && idVerified;
+  const canComplete = canProceedStep1 && canProceedStep2;
+
+  return (
+    <div className={`mx-auto max-w-2xl ${className}`} data-slot="ocw-root">
+      {/* Progress indicator */}
+      <div className="mb-8" data-slot="ocw-progress">
+        <div className="flex items-start justify-between">
+          {stepTitles.map((title, index) => {
+            const stepNum = index + 1;
+            const isActive = step === stepNum;
+            const isComplete = step > stepNum;
+
+            return (
+              <React.Fragment key={stepNum}>
+                <div className="flex flex-col items-center">
+                  <div
+                    data-slot="ocw-step-circle"
+                    className={`flex h-10 w-10 items-center justify-center rounded-full font-medium ${
+                      isComplete
+                        ? 'bg-green-500 text-white'
+                        : isActive
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-gray-200 text-gray-500 dark:bg-gray-700 dark:text-gray-400'
+                    } `}
+                  >
+                    {isComplete ? (
+                      <svg
+                        className="h-5 w-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    ) : (
+                      stepNum
+                    )}
+                  </div>
+                  <span
+                    data-slot="ocw-step-label"
+                    className={`mt-2 text-center text-xs font-medium ${isActive ? 'text-blue-600 dark:text-blue-400' : 'text-gray-500 dark:text-gray-400'} `}
+                  >
+                    {title}
+                  </span>
+                </div>
+                {index < stepTitles.length - 1 && (
+                  <div
+                    data-slot="ocw-step-connector"
+                    className={`mt-5 h-0.5 flex-1 -translate-y-1/2 ${step > stepNum ? 'bg-green-500' : 'bg-gray-200 dark:bg-gray-700'} `}
+                  />
+                )}
+              </React.Fragment>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Order summary */}
+      <div data-slot="ocw-summary-card">
+        <Card className="mb-6">
+          <CardContent className="p-4">
+            <div
+              className="flex items-center justify-between"
+              data-slot="ocw-summary-row"
+            >
+              <div>
+                <p
+                  className="font-medium text-gray-900 dark:text-white"
+                  data-slot="ocw-summary-title"
+                >
+                  {order.orderNumber}
+                </p>
+                <p
+                  className="text-sm text-gray-500 dark:text-gray-400"
+                  data-slot="ocw-summary-subtitle"
+                >
+                  {order.serviceName}
+                </p>
+              </div>
+              <Badge variant="warning">In Progress</Badge>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Step content */}
+      <div data-slot="ocw-step-card">
+        <Card className="mb-6">
+          <CardContent className="p-6" data-slot="ocw-step-content">
+            {/* Step 1: Verify Employee */}
+            {step === 1 && (
+              <div className="space-y-6" data-slot="ocw-step-body">
+                <h3
+                  className="text-lg font-semibold text-gray-900 dark:text-white"
+                  data-slot="ocw-step-title"
+                >
+                  Verify Employee Identity
+                </h3>
+                <p
+                  className="text-sm text-gray-600 dark:text-gray-400"
+                  data-slot="ocw-step-desc"
+                >
+                  Please verify the following information matches the employee
+                  present.
+                </p>
+
+                <div
+                  className="grid grid-cols-2 gap-4 rounded-lg bg-gray-50 p-4 dark:bg-gray-800"
+                  data-slot="ocw-detail-grid"
+                >
+                  <div>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      Employee Name
+                    </p>
+                    <p className="font-medium text-gray-900 dark:text-white">
+                      {order.employeeName}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      Date of Birth
+                    </p>
+                    <p className="font-medium text-gray-900 dark:text-white">
+                      {order.dateOfBirth || 'N/A'}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      Employer
+                    </p>
+                    <p className="font-medium text-gray-900 dark:text-white">
+                      {order.employerName}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      Scheduled
+                    </p>
+                    <p className="font-medium text-gray-900 dark:text-white">
+                      {formatDate(order.scheduledDate)}
+                    </p>
+                  </div>
+                </div>
+
+                <label
+                  className="flex items-start gap-3"
+                  data-slot="ocw-checkbox-row"
+                >
+                  <input
+                    type="checkbox"
+                    checked={employeeVerified}
+                    onChange={(e) => setEmployeeVerified(e.target.checked)}
+                    className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    data-slot="ocw-checkbox"
+                  />
+                  <span
+                    className="text-sm text-gray-700 dark:text-gray-300"
+                    data-slot="ocw-checkbox-label"
+                  >
+                    I confirm the employee&apos;s identity matches the
+                    information above
+                  </span>
+                </label>
+
+                <div>
+                  <label
+                    htmlFor="verification-notes"
+                    className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                    data-slot="ocw-label"
+                  >
+                    Notes (Optional)
+                  </label>
+                  <textarea
+                    id="verification-notes"
+                    data-slot="ocw-textarea"
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                    rows={2}
+                    value={verificationNotes}
+                    onChange={(e) => setVerificationNotes(e.target.value)}
+                    placeholder="Any verification notes..."
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Step 2: Consent & ID */}
+            {step === 2 && (
+              <div className="space-y-6" data-slot="ocw-step-body">
+                <h3
+                  className="text-lg font-semibold text-gray-900 dark:text-white"
+                  data-slot="ocw-step-title"
+                >
+                  Consent & ID Verification
+                </h3>
+                <p
+                  className="text-sm text-gray-600 dark:text-gray-400"
+                  data-slot="ocw-step-desc"
+                >
+                  Obtain consent and verify government-issued identification.
+                </p>
+
+                <label
+                  aria-label="Consent Obtained"
+                  className="flex items-start gap-3 rounded-lg border border-gray-200 p-4 dark:border-gray-700"
+                  data-slot="ocw-checkbox-card"
+                >
+                  <input
+                    type="checkbox"
+                    checked={consentObtained}
+                    onChange={(e) => setConsentObtained(e.target.checked)}
+                    className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    data-slot="ocw-checkbox"
+                  />
+                  <div>
+                    <p
+                      className="font-medium text-gray-900 dark:text-white"
+                      data-slot="ocw-checkbox-card-title"
+                    >
+                      Consent Obtained
+                    </p>
+                    <p
+                      className="text-sm text-gray-500 dark:text-gray-400"
+                      data-slot="ocw-checkbox-card-desc"
+                    >
+                      Employee has provided written or verbal consent for the
+                      requested services
+                    </p>
+                  </div>
+                </label>
+
+                <label
+                  className="flex items-start gap-3 rounded-lg border border-gray-200 p-4 dark:border-gray-700"
+                  data-slot="ocw-checkbox-card"
+                >
+                  <input
+                    type="checkbox"
+                    checked={idVerified}
+                    onChange={(e) => setIdVerified(e.target.checked)}
+                    className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    data-slot="ocw-checkbox"
+                  />
+                  <div className="flex-1">
+                    <p
+                      className="font-medium text-gray-900 dark:text-white"
+                      data-slot="ocw-checkbox-card-title"
+                    >
+                      Photo ID Verified
+                    </p>
+                    <p
+                      className="mb-2 text-sm text-gray-500 dark:text-gray-400"
+                      data-slot="ocw-checkbox-card-desc"
+                    >
+                      Government-issued photo ID matches employee information
+                    </p>
+                    {idVerified && (
+                      <Input
+                        placeholder="ID Type (e.g., Driver's License)"
+                        value={idType}
+                        onChange={(e) => setIdType(e.target.value)}
+                        className="mt-2"
+                      />
+                    )}
+                  </div>
+                </label>
+              </div>
+            )}
+
+            {/* Step 3: Confirmation */}
+            {step === 3 && (
+              <div className="space-y-6" data-slot="ocw-step-body">
+                <h3
+                  className="text-lg font-semibold text-gray-900 dark:text-white"
+                  data-slot="ocw-step-title"
+                >
+                  Review & Confirm
+                </h3>
+                <p
+                  className="text-sm text-gray-600 dark:text-gray-400"
+                  data-slot="ocw-step-desc"
+                >
+                  Review the verification steps before proceeding.
+                </p>
+
+                <div className="space-y-3" data-slot="ocw-confirm-list">
+                  <div
+                    className="flex items-center justify-between rounded-lg bg-green-50 p-3 dark:bg-green-900/20"
+                    data-slot="ocw-confirm-row"
+                  >
+                    <div className="flex items-center gap-3">
+                      <svg
+                        className="h-5 w-5 text-green-600 dark:text-green-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                      <span
+                        className="font-medium text-green-700 dark:text-green-300"
+                        data-slot="ocw-confirm-label"
+                      >
+                        Employee Identity Verified
+                      </span>
+                    </div>
+                    <span className="text-green-600 dark:text-green-400">
+                      ✓
+                    </span>
+                  </div>
+
+                  <div
+                    className="flex items-center justify-between rounded-lg bg-green-50 p-3 dark:bg-green-900/20"
+                    data-slot="ocw-confirm-row"
+                  >
+                    <div className="flex items-center gap-3">
+                      <svg
+                        className="h-5 w-5 text-green-600 dark:text-green-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                      <span
+                        className="font-medium text-green-700 dark:text-green-300"
+                        data-slot="ocw-confirm-label"
+                      >
+                        Consent Obtained
+                      </span>
+                    </div>
+                    <span className="text-green-600 dark:text-green-400">
+                      ✓
+                    </span>
+                  </div>
+
+                  <div
+                    className="flex items-center justify-between rounded-lg bg-green-50 p-3 dark:bg-green-900/20"
+                    data-slot="ocw-confirm-row"
+                  >
+                    <div className="flex items-center gap-3">
+                      <svg
+                        className="h-5 w-5 text-green-600 dark:text-green-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                      <span
+                        className="font-medium text-green-700 dark:text-green-300"
+                        data-slot="ocw-confirm-label"
+                      >
+                        Photo ID Verified {idType && `(${idType})`}
+                      </span>
+                    </div>
+                    <span className="text-green-600 dark:text-green-400">
+                      ✓
+                    </span>
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="confirmation-notes"
+                    className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
+                    data-slot="ocw-label"
+                  >
+                    Additional Notes (Optional)
+                  </label>
+                  <textarea
+                    id="confirmation-notes"
+                    data-slot="ocw-textarea"
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                    rows={3}
+                    value={confirmationNotes}
+                    onChange={(e) => setConfirmationNotes(e.target.value)}
+                    placeholder="Any additional notes for this order..."
+                  />
+                </div>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Navigation */}
+      <div className="flex justify-between" data-slot="ocw-nav">
+        <div>
+          {step > 1 && (
+            <Button
+              variant="ghost"
+              onClick={() => handleStepChange(step - 1)}
+              disabled={isSubmitting}
+            >
+              <svg
+                className="mr-1 h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+              Back
+            </Button>
+          )}
+        </div>
+        <div className="flex gap-2">
+          {onCancel && (
+            <Button
+              variant="outline"
+              onClick={onCancel}
+              disabled={isSubmitting}
+            >
+              Cancel
+            </Button>
+          )}
+          {step < 3 ? (
+            <Button
+              onClick={() => handleStepChange(step + 1)}
+              disabled={step === 1 ? !canProceedStep1 : !canProceedStep2}
+            >
+              Continue
+              <svg
+                className="ml-1 h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </Button>
+          ) : (
+            <Button
+              onClick={handleComplete}
+              disabled={!canComplete || isSubmitting}
+            >
+              {isSubmitting ? (
+                <>
+                  <svg
+                    className="mr-2 -ml-1 h-4 w-4 animate-spin"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    />
+                  </svg>
+                  Processing...
+                </>
+              ) : (
+                <>
+                  Start Service
+                  <svg
+                    className="ml-1 h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </>
+              )}
+            </Button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default OrderConfirmationWizard;

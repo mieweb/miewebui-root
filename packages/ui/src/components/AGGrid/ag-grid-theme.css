@@ -1,0 +1,1629 @@
+/**
+ * AG Grid Theme CSS
+ *
+ * Comprehensive AG Grid theme that integrates with the MIE Web UI design system.
+ * Supports multiple brands, light/dark modes, and full design token integration.
+ *
+ * Features:
+ * - Multi-brand support (MIE Web, BlueHive, Waggleline, WebChart, Enterprise Health)
+ * - Design token integration with CSS variables
+ * - Always-visible scrollbars for better UX on macOS
+ * - Complete dark mode support
+ * - Responsive design with mobile optimizations
+ * - Advanced accessibility features
+ * - Performance optimizations
+ *
+ * @see mieweb-ui brand system for color and typography tokens
+ */
+
+/* ============================================
+   Light Mode Theme Variables
+   ============================================ */
+
+.ag-theme-custom {
+  /* Core colors - using design tokens with fallbacks */
+  --ag-background-color: var(--mieweb-background, #ffffff);
+  --ag-foreground-color: var(--mieweb-foreground, #1a1a1a);
+  --ag-border-color: var(--mieweb-border, #e5e7eb);
+
+  /* Header */
+  --ag-header-background-color: var(--mieweb-muted, #f9fafb);
+  --ag-header-foreground-color: var(--mieweb-muted-foreground, #6b7280);
+  --ag-header-cell-hover-background-color: var(--mieweb-card, #f3f4f6);
+
+  /* Rows */
+  --ag-odd-row-background-color: var(--mieweb-background, #ffffff);
+  --ag-row-hover-color: var(--mieweb-card, #f3f4f6);
+  --ag-selected-row-background-color: var(--mieweb-primary-50, #e6f7ff);
+  --ag-row-border-color: var(--mieweb-border, #f3f4f6);
+
+  /* Grid lines */
+  --ag-cell-horizontal-border: none;
+
+  /* Selections and focus - use primary color from brand */
+  --ag-range-selection-border-color: var(
+    --color-primary,
+    var(--mieweb-primary-600, #27ae60)
+  );
+  --ag-range-selection-background-color: var(
+    --mieweb-primary-50,
+    rgba(39, 174, 96, 0.1)
+  );
+  --ag-input-focus-border-color: var(
+    --color-primary,
+    var(--mieweb-primary-600, #27ae60)
+  );
+
+  /* Checkbox - use primary color from brand */
+  --ag-checkbox-checked-color: var(
+    --color-primary,
+    var(--mieweb-primary-600, #27ae60)
+  );
+  --ag-checkbox-unchecked-color: var(--mieweb-border, #d1d5db);
+  --ag-checkbox-indeterminate-color: var(
+    --color-primary,
+    var(--mieweb-primary-600, #27ae60)
+  );
+
+  /* Typography - use design system fonts */
+  --ag-font-family: var(--mieweb-font-sans, inherit);
+  --ag-font-size: var(--mieweb-text-sm, 14px);
+  --ag-header-font-weight: var(--mieweb-font-semibold, 600);
+  /* Icon font - must use agGridQuartz for icons to render correctly */
+  --ag-icon-font-family: 'agGridQuartz';
+
+  /* Sizing - use design system spacing */
+  --ag-grid-size: var(--mieweb-spacing-1, 6px);
+  --ag-row-height: var(--mieweb-size-12, 52px);
+  --ag-header-height: var(--mieweb-size-12, 48px);
+  --ag-cell-horizontal-padding: var(--mieweb-spacing-4, 16px);
+  --ag-icon-size: var(--mieweb-size-4, 16px);
+
+  /* Scrollbar - always visible and grabbable */
+  --ag-scrollbar-size: 14px;
+
+  /* Borders - use design system radius */
+  --ag-wrapper-border-radius: var(--mieweb-radius-lg, 8px);
+  --ag-border-radius: var(--mieweb-radius-md, 4px);
+
+  /* Control panel */
+  --ag-control-panel-background-color: var(--mieweb-background, #ffffff);
+  --ag-subheader-background-color: var(--mieweb-muted, #f9fafb);
+  --ag-invalid-background-color: var(--mieweb-destructive, #ef4444);
+
+  /* Other colors */
+  --ag-chip-background-color: var(--mieweb-muted, #f3f4f6);
+  --ag-modal-overlay-background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   Dark Mode Theme Variables
+   ============================================ */
+
+.dark .ag-theme-custom,
+:root.dark .ag-theme-custom,
+[data-theme='dark'] .ag-theme-custom,
+.ag-theme-custom.dark {
+  /* Core colors - using dark mode design tokens */
+  --ag-background-color: var(--mieweb-background, #1f2937) !important;
+  --ag-foreground-color: var(--mieweb-foreground, #f9fafb) !important;
+  --ag-border-color: var(--mieweb-border, #374151) !important;
+
+  /* Header */
+  --ag-header-background-color: var(--mieweb-card, #111827) !important;
+  --ag-header-foreground-color: var(
+    --mieweb-muted-foreground,
+    #9ca3af
+  ) !important;
+  --ag-header-cell-hover-background-color: var(
+    --mieweb-muted,
+    #2d3748
+  ) !important;
+
+  /* Rows */
+  --ag-odd-row-background-color: var(--mieweb-background, #1f2937) !important;
+  --ag-row-hover-color: var(--mieweb-muted, #2d3748) !important;
+  --ag-selected-row-background-color: var(
+    --mieweb-primary-100,
+    rgba(39, 174, 96, 0.15)
+  ) !important;
+  --ag-row-border-color: var(--mieweb-border, #374151) !important;
+
+  /* Checkbox - use brand primary */
+  --ag-checkbox-checked-color: var(
+    --color-primary,
+    var(--mieweb-primary-600, #27ae60)
+  ) !important;
+  --ag-checkbox-unchecked-color: var(
+    --mieweb-muted-foreground,
+    #4b5563
+  ) !important;
+
+  /* Scrollbar */
+  --ag-scrollbar-size: 14px;
+}
+
+/* ============================================
+   Brand-Specific Theme Variants
+   ============================================ */
+
+/* MIE Web Brand */
+.ag-brand-mieweb {
+  --ag-primary-color: var(--mieweb-primary-600, #27ae60);
+  --ag-primary-hover: var(--mieweb-primary-700, #219c55);
+  --ag-primary-active: var(--mieweb-primary-800, #1b894a);
+  --ag-font-family: var(
+    --mieweb-font-sans,
+    'Inter',
+    'ui-sans-serif',
+    'system-ui',
+    'sans-serif'
+  );
+}
+
+.ag-brand-mieweb .ag-header-cell-filtered {
+  background-color: var(--mieweb-primary-50, rgba(39, 174, 96, 0.1));
+}
+
+.ag-brand-mieweb .ag-header-cell-filtered .ag-header-cell-text,
+.ag-brand-mieweb .ag-header-cell-filtered .ag-icon-filter {
+  color: var(--mieweb-primary-700, #219c55) !important;
+}
+
+/* BlueHive Brand */
+.ag-brand-bluehive {
+  --ag-primary-color: var(--bluehive-primary-600, #17aeed);
+  --ag-primary-hover: var(--bluehive-primary-700, #1394d9);
+  --ag-primary-active: var(--bluehive-primary-800, #0f7bb5);
+  --ag-font-family: var(
+    --bluehive-font-sans,
+    'Nunito',
+    'ui-sans-serif',
+    'system-ui',
+    'sans-serif'
+  );
+}
+
+.ag-brand-bluehive .ag-header-cell-filtered {
+  background-color: var(--bluehive-primary-50, rgba(23, 174, 237, 0.1));
+}
+
+.ag-brand-bluehive .ag-header-cell-filtered .ag-header-cell-text,
+.ag-brand-bluehive .ag-header-cell-filtered .ag-icon-filter {
+  color: var(--bluehive-primary-700, #1394d9) !important;
+}
+
+/* Apply brand colors to key elements */
+[class*='ag-brand-'] .ag-checkbox-input-wrapper.ag-checked,
+[class*='ag-brand-'] .ag-checkbox-input-wrapper.ag-indeterminate {
+  background-color: var(--ag-primary-color) !important;
+  border-color: var(--ag-primary-color) !important;
+}
+
+[class*='ag-brand-'] .ag-cell-focus {
+  outline-color: var(--ag-primary-color) !important;
+}
+
+/* Enhanced responsive design for mobile */
+@media (max-width: 640px) {
+  .ag-theme-custom {
+    --ag-font-size: 16px; /* Prevent iOS zoom */
+    --ag-row-height: 56px; /* Touch-friendly */
+    --ag-header-height: 52px;
+    --ag-cell-horizontal-padding: 12px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .ag-theme-custom {
+    --ag-border-color: #000000;
+    --ag-row-border-color: #000000;
+  }
+
+  .ag-theme-custom .ag-cell-focus {
+    outline: 3px solid #000000 !important;
+  }
+}
+
+/* Force dark mode background colors on key elements */
+.dark .ag-theme-custom .ag-root-wrapper,
+.dark .ag-theme-custom .ag-root,
+.dark .ag-theme-custom .ag-body,
+.dark .ag-theme-custom .ag-body-viewport,
+.dark .ag-theme-custom .ag-center-cols-viewport,
+.dark .ag-theme-custom .ag-center-cols-container,
+.dark .ag-theme-custom .ag-header,
+.dark .ag-theme-custom .ag-row,
+.dark .ag-theme-custom .ag-row-odd,
+.dark .ag-theme-custom .ag-cell,
+.dark .ag-theme-custom .ag-overlay,
+.dark .ag-theme-custom .ag-overlay-panel,
+.dark .ag-theme-custom .ag-overlay-wrapper {
+  background-color: var(--mieweb-background, #1f2937) !important;
+  color: var(--mieweb-foreground, #f9fafb) !important;
+}
+
+.dark .ag-theme-custom .ag-header {
+  background-color: var(--mieweb-card, #111827) !important;
+}
+
+.dark .ag-theme-custom .ag-header-cell-text,
+.dark .ag-theme-custom .ag-header-cell-label {
+  color: var(--mieweb-muted-foreground, #9ca3af) !important;
+}
+
+.dark .ag-theme-custom .ag-row:hover {
+  background-color: var(--mieweb-muted, #2d3748) !important;
+}
+
+/* ============================================
+   Header Styling
+   ============================================ */
+
+.ag-theme-custom .ag-header {
+  border-bottom: 1px solid var(--ag-border-color);
+  font-weight: 500;
+}
+
+.ag-theme-custom .ag-header-cell {
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  padding: 0 var(--ag-cell-horizontal-padding);
+}
+
+.ag-theme-custom .ag-header-cell-text {
+  color: var(--ag-header-foreground-color);
+  font-weight: 500;
+}
+
+.ag-theme-custom .ag-header-cell:hover .ag-header-cell-text {
+  color: var(--ag-foreground-color);
+}
+
+/* Sort indicator styling - use brand primary color */
+.ag-theme-custom .ag-icon-asc,
+.ag-theme-custom .ag-icon-desc {
+  color: var(--color-primary, var(--mieweb-primary-600, #27ae60));
+}
+
+.ag-theme-custom .ag-sort-indicator-icon {
+  color: var(--mieweb-muted-foreground, #6b7280);
+}
+
+.ag-theme-custom .ag-sort-indicator-icon.ag-sort-active {
+  color: var(--color-primary, var(--mieweb-primary-600, #27ae60));
+}
+
+/* Header menu button - reveal on hover */
+.ag-theme-custom .ag-header-cell-menu-button {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.ag-theme-custom .ag-header-cell:hover .ag-header-cell-menu-button {
+  opacity: 1;
+}
+
+.ag-theme-custom .ag-header-cell-menu-button:hover {
+  color: var(--color-primary, var(--mieweb-primary-600, #27ae60));
+}
+
+/* ============================================
+   Floating Filter Styling
+   ============================================ */
+
+.ag-theme-custom .ag-floating-filter {
+  background-color: var(--ag-header-background-color);
+  border-bottom: 1px solid var(--ag-border-color);
+}
+
+.ag-theme-custom .ag-floating-filter-input {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  border: 1px solid var(--ag-border-color);
+  background-color: var(--ag-background-color);
+  color: var(--ag-foreground-color);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.ag-theme-custom .ag-floating-filter-input:focus {
+  border-color: var(--color-primary, var(--mieweb-primary-600, #27ae60));
+  outline: none;
+  box-shadow: 0 0 0 2px var(--mieweb-primary-100, rgba(39, 174, 96, 0.2));
+}
+
+.ag-theme-custom .ag-floating-filter-button {
+  color: var(--ag-header-foreground-color);
+  transition: color 0.15s ease;
+}
+
+.ag-theme-custom .ag-floating-filter-button:hover {
+  color: var(--color-primary, var(--mieweb-primary-600, #27ae60));
+}
+
+/* Active filter indicator - uses brand primary */
+.ag-theme-custom .ag-header-cell-filtered {
+  background-color: var(--mieweb-primary-50, rgba(39, 174, 96, 0.1));
+}
+
+.ag-theme-custom .ag-header-cell-filtered .ag-header-cell-text {
+  color: var(--color-primary, var(--mieweb-primary-600, #27ae60)) !important;
+}
+
+.ag-theme-custom .ag-header-cell-filtered .ag-icon-filter {
+  color: var(--color-primary, var(--mieweb-primary-600, #27ae60));
+}
+
+/* Dark mode floating filter overrides */
+.dark .ag-theme-custom .ag-floating-filter-input {
+  background-color: var(--mieweb-background, #1f2937) !important;
+  border-color: var(--mieweb-border, #374151) !important;
+  color: var(--mieweb-foreground, #f9fafb) !important;
+}
+
+.dark .ag-theme-custom .ag-floating-filter-input:focus {
+  border-color: var(
+    --color-primary,
+    var(--mieweb-primary-500, #27ae60)
+  ) !important;
+  box-shadow: 0 0 0 2px var(--mieweb-primary-200, rgba(39, 174, 96, 0.3)) !important;
+}
+
+/* ============================================
+   Row Styling
+   ============================================ */
+
+.ag-theme-custom .ag-row {
+  border-bottom: 1px solid var(--ag-row-border-color);
+  transition: background-color 0.15s ease;
+}
+
+.ag-theme-custom .ag-row:last-child {
+  border-bottom: none;
+}
+
+.ag-theme-custom .ag-row:hover {
+  background-color: var(--ag-row-hover-color);
+}
+
+.ag-theme-custom .ag-row-selected {
+  background-color: var(--ag-selected-row-background-color) !important;
+}
+
+/* ============================================
+   Cell Styling
+   ============================================ */
+
+.ag-theme-custom .ag-cell {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--ag-cell-horizontal-padding);
+  line-height: normal;
+  height: 100%;
+}
+
+.ag-theme-custom .ag-cell-value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.ag-theme-custom .ag-cell-wrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* Checkbox column cell - ensure proper vertical centering */
+.ag-theme-custom .ag-cell[col-id='checkbox'] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* ============================================
+   Cell Focus Styling - Brand Primary with Glow
+   ============================================ */
+
+.ag-theme-custom .ag-cell-focus {
+  outline: 2px solid var(--color-primary, var(--mieweb-primary-600, #27ae60)) !important;
+  outline-offset: -2px;
+  box-shadow:
+    0 0 8px var(--mieweb-primary-400, rgba(39, 174, 96, 0.4)),
+    inset 0 0 0 1px var(--mieweb-primary-100, rgba(39, 174, 96, 0.1)) !important;
+  border-radius: var(--mieweb-radius-sm, 4px);
+}
+
+.dark .ag-theme-custom .ag-cell-focus {
+  outline-color: var(
+    --color-primary,
+    var(--mieweb-primary-500, #27ae60)
+  ) !important;
+  box-shadow:
+    0 0 12px var(--mieweb-primary-500, rgba(39, 174, 96, 0.5)),
+    0 0 4px var(--mieweb-primary-400, rgba(39, 174, 96, 0.3)),
+    inset 0 0 0 1px var(--mieweb-primary-200, rgba(39, 174, 96, 0.15)) !important;
+}
+
+/* ============================================
+   Checkbox Styling - Match mieweb-ui Checkbox
+   
+   AG Grid checkboxes use an icon font that shows
+   a checkbox icon as the "checkmark". We override
+   this completely with a pure CSS checkmark.
+   ============================================ */
+
+/* Hide AG Grid's default checkbox icon (the inner checkbox) */
+.ag-theme-custom .ag-checkbox-input-wrapper .ag-checkbox-input,
+.ag-theme-custom .ag-checkbox-input-wrapper .ag-icon {
+  opacity: 0 !important;
+  position: absolute !important;
+  pointer-events: none !important;
+}
+
+/* Hide the ::after pseudo-element that AG Grid uses for icons */
+.ag-theme-custom .ag-checkbox-input-wrapper::after {
+  content: '' !important;
+  display: none !important;
+}
+
+/* Main checkbox wrapper - styled to match mieweb-ui Checkbox */
+.ag-theme-custom .ag-checkbox-input-wrapper {
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+  max-width: 18px !important;
+  max-height: 18px !important;
+  border-radius: var(--mieweb-radius-sm, 4px) !important;
+  border: 2px solid var(--mieweb-input, #d1d5db) !important;
+  background-color: var(--mieweb-background, #ffffff) !important;
+  transition: all 150ms ease !important;
+  cursor: pointer !important;
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+
+/* Hover state */
+.ag-theme-custom .ag-checkbox-input-wrapper:hover {
+  border-color: var(
+    --color-primary,
+    var(--mieweb-primary-600, #27ae60)
+  ) !important;
+  background-color: var(
+    --mieweb-primary-50,
+    rgba(39, 174, 96, 0.08)
+  ) !important;
+}
+
+/* Focus state - matches mieweb-ui focus ring */
+.ag-theme-custom .ag-checkbox-input-wrapper:focus-within {
+  outline: none !important;
+  border-color: var(
+    --color-primary,
+    var(--mieweb-primary-600, #27ae60)
+  ) !important;
+  box-shadow: 0 0 0 2px var(--mieweb-primary-100, rgba(39, 174, 96, 0.2)) !important;
+}
+
+/* Checked state - solid primary background with CSS checkmark */
+.ag-theme-custom .ag-checkbox-input-wrapper.ag-checked {
+  background-color: var(
+    --color-primary,
+    var(--mieweb-primary-600, #27ae60)
+  ) !important;
+  border-color: var(
+    --color-primary,
+    var(--mieweb-primary-600, #27ae60)
+  ) !important;
+}
+
+.ag-theme-custom .ag-checkbox-input-wrapper.ag-checked:hover {
+  background-color: var(--mieweb-primary-700, #219c55) !important;
+  border-color: var(--mieweb-primary-700, #219c55) !important;
+}
+
+/* CSS Checkmark - created with ::before pseudo-element */
+.ag-theme-custom .ag-checkbox-input-wrapper.ag-checked::before {
+  content: '' !important;
+  display: block !important;
+  width: 5px !important;
+  height: 9px !important;
+  border: solid white !important;
+  border-width: 0 2px 2px 0 !important;
+  transform: rotate(45deg) !important;
+  position: absolute !important;
+  top: 1px !important;
+  left: 5px !important;
+}
+
+/* Indeterminate state - horizontal line */
+.ag-theme-custom .ag-checkbox-input-wrapper.ag-indeterminate {
+  background-color: var(
+    --color-primary,
+    var(--mieweb-primary-600, #27ae60)
+  ) !important;
+  border-color: var(
+    --color-primary,
+    var(--mieweb-primary-600, #27ae60)
+  ) !important;
+}
+
+.ag-theme-custom .ag-checkbox-input-wrapper.ag-indeterminate::before {
+  content: '' !important;
+  display: block !important;
+  width: 8px !important;
+  height: 2px !important;
+  background-color: white !important;
+  border: none !important;
+  transform: none !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  margin-top: -1px !important;
+  margin-left: -4px !important;
+  border-radius: 1px !important;
+}
+
+/* ===== Dark Mode Checkbox ===== */
+.dark .ag-theme-custom .ag-checkbox-input-wrapper {
+  border-color: var(--mieweb-input, #4b5563) !important;
+  background-color: transparent !important;
+}
+
+.dark .ag-theme-custom .ag-checkbox-input-wrapper:hover {
+  border-color: var(
+    --color-primary,
+    var(--mieweb-primary-500, #27ae60)
+  ) !important;
+  background-color: var(
+    --mieweb-primary-950,
+    rgba(39, 174, 96, 0.1)
+  ) !important;
+}
+
+.dark .ag-theme-custom .ag-checkbox-input-wrapper:focus-within {
+  border-color: var(
+    --color-primary,
+    var(--mieweb-primary-500, #27ae60)
+  ) !important;
+  box-shadow: 0 0 0 2px var(--mieweb-primary-200, rgba(39, 174, 96, 0.3)) !important;
+}
+
+.dark .ag-theme-custom .ag-checkbox-input-wrapper.ag-checked {
+  background-color: var(
+    --color-primary,
+    var(--mieweb-primary-600, #27ae60)
+  ) !important;
+  border-color: var(
+    --color-primary,
+    var(--mieweb-primary-600, #27ae60)
+  ) !important;
+}
+
+.dark .ag-theme-custom .ag-checkbox-input-wrapper.ag-checked:hover {
+  background-color: var(--mieweb-primary-500, #2ecc71) !important;
+  border-color: var(--mieweb-primary-500, #2ecc71) !important;
+}
+
+.dark .ag-theme-custom .ag-checkbox-input-wrapper.ag-indeterminate {
+  background-color: var(
+    --color-primary,
+    var(--mieweb-primary-600, #27ae60)
+  ) !important;
+  border-color: var(
+    --color-primary,
+    var(--mieweb-primary-600, #27ae60)
+  ) !important;
+}
+
+/* ============================================
+   Scrollbar Styling - Always Visible & Grabbable
+   
+   Forces scrollbars to be always visible on macOS
+   (which hides them by default) and styles them
+   to match the theme.
+   ============================================ */
+
+.ag-theme-custom {
+  scrollbar-gutter: stable both-edges;
+}
+
+/* ----------------------------------------
+   HORIZONTAL SCROLLBAR - Always Visible
+   ---------------------------------------- */
+
+.ag-theme-custom .ag-body-horizontal-scroll {
+  height: 14px !important;
+  min-height: 14px !important;
+  max-height: 14px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
+  background: var(--mieweb-muted, #f3f4f6) !important;
+  border-top: 1px solid var(--mieweb-border, #e5e7eb) !important;
+}
+
+.dark .ag-theme-custom .ag-body-horizontal-scroll {
+  background: var(--mieweb-card, #1f2937) !important;
+  border-top: 1px solid var(--mieweb-border, #374151) !important;
+}
+
+.ag-theme-custom .ag-body-horizontal-scroll-viewport {
+  height: 14px !important;
+  min-height: 14px !important;
+  overflow-x: scroll !important;
+  overflow-y: hidden !important;
+  scrollbar-width: auto !important;
+  scrollbar-color: var(--mieweb-muted-foreground, #9ca3af)
+    var(--mieweb-muted, #f3f4f6) !important;
+}
+
+.dark .ag-theme-custom .ag-body-horizontal-scroll-viewport {
+  scrollbar-color: var(--mieweb-muted-foreground, #6b7280)
+    var(--mieweb-card, #1f2937) !important;
+}
+
+/* ----------------------------------------
+   VERTICAL SCROLLBAR - Always Visible
+   ---------------------------------------- */
+
+.ag-theme-custom .ag-body-vertical-scroll {
+  width: 14px !important;
+  min-width: 14px !important;
+  max-width: 14px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
+  background: var(--mieweb-muted, #f3f4f6) !important;
+  border-left: 1px solid var(--mieweb-border, #e5e7eb) !important;
+}
+
+.dark .ag-theme-custom .ag-body-vertical-scroll {
+  background: var(--mieweb-card, #1f2937) !important;
+  border-left: 1px solid var(--mieweb-border, #374151) !important;
+}
+
+.ag-theme-custom .ag-body-vertical-scroll-viewport {
+  width: 14px !important;
+  min-width: 14px !important;
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+  scrollbar-width: auto !important;
+  scrollbar-color: var(--mieweb-muted-foreground, #9ca3af)
+    var(--mieweb-muted, #f3f4f6) !important;
+}
+
+.dark .ag-theme-custom .ag-body-vertical-scroll-viewport {
+  scrollbar-color: var(--mieweb-muted-foreground, #6b7280)
+    var(--mieweb-card, #1f2937) !important;
+}
+
+/* ----------------------------------------
+   WEBKIT SCROLLBAR STYLING (Chrome/Safari/Edge)
+   ---------------------------------------- */
+
+.ag-theme-custom .ag-body-horizontal-scroll-viewport::-webkit-scrollbar,
+.ag-theme-custom .ag-body-vertical-scroll-viewport::-webkit-scrollbar {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  width: 14px !important;
+  height: 14px !important;
+  display: block !important;
+  background: var(--mieweb-muted, #f3f4f6) !important;
+}
+
+.dark .ag-theme-custom .ag-body-horizontal-scroll-viewport::-webkit-scrollbar,
+.dark .ag-theme-custom .ag-body-vertical-scroll-viewport::-webkit-scrollbar {
+  background: var(--mieweb-card, #1f2937) !important;
+}
+
+.ag-theme-custom .ag-body-horizontal-scroll-viewport::-webkit-scrollbar-track,
+.ag-theme-custom .ag-body-vertical-scroll-viewport::-webkit-scrollbar-track {
+  background: var(--mieweb-muted, #f3f4f6) !important;
+  border-radius: 7px !important;
+}
+
+.dark
+  .ag-theme-custom
+  .ag-body-horizontal-scroll-viewport::-webkit-scrollbar-track,
+.dark
+  .ag-theme-custom
+  .ag-body-vertical-scroll-viewport::-webkit-scrollbar-track {
+  background: var(--mieweb-card, #1f2937) !important;
+}
+
+.ag-theme-custom .ag-body-horizontal-scroll-viewport::-webkit-scrollbar-thumb,
+.ag-theme-custom .ag-body-vertical-scroll-viewport::-webkit-scrollbar-thumb {
+  background: var(--mieweb-muted-foreground, #9ca3af) !important;
+  border-radius: 7px !important;
+  border: 3px solid var(--mieweb-muted, #f3f4f6) !important;
+  background-clip: padding-box !important;
+  min-height: 40px !important;
+  min-width: 40px !important;
+}
+
+.dark
+  .ag-theme-custom
+  .ag-body-horizontal-scroll-viewport::-webkit-scrollbar-thumb,
+.dark
+  .ag-theme-custom
+  .ag-body-vertical-scroll-viewport::-webkit-scrollbar-thumb {
+  background: var(--mieweb-muted-foreground, #6b7280) !important;
+  border: 3px solid var(--mieweb-card, #1f2937) !important;
+  background-clip: padding-box !important;
+}
+
+.ag-theme-custom
+  .ag-body-horizontal-scroll-viewport::-webkit-scrollbar-thumb:hover,
+.ag-theme-custom
+  .ag-body-vertical-scroll-viewport::-webkit-scrollbar-thumb:hover {
+  background: var(--mieweb-foreground, #6b7280) !important;
+}
+
+.dark
+  .ag-theme-custom
+  .ag-body-horizontal-scroll-viewport::-webkit-scrollbar-thumb:hover,
+.dark
+  .ag-theme-custom
+  .ag-body-vertical-scroll-viewport::-webkit-scrollbar-thumb:hover {
+  background: var(--mieweb-muted-foreground, #9ca3af) !important;
+}
+
+.ag-theme-custom
+  .ag-body-horizontal-scroll-viewport::-webkit-scrollbar-thumb:active,
+.ag-theme-custom
+  .ag-body-vertical-scroll-viewport::-webkit-scrollbar-thumb:active {
+  background: var(--mieweb-foreground, #4b5563) !important;
+}
+
+.dark
+  .ag-theme-custom
+  .ag-body-horizontal-scroll-viewport::-webkit-scrollbar-thumb:active,
+.dark
+  .ag-theme-custom
+  .ag-body-vertical-scroll-viewport::-webkit-scrollbar-thumb:active {
+  background: var(--mieweb-foreground, #d1d5db) !important;
+}
+
+.ag-theme-custom .ag-body-horizontal-scroll-viewport::-webkit-scrollbar-corner,
+.ag-theme-custom .ag-body-vertical-scroll-viewport::-webkit-scrollbar-corner {
+  background: var(--mieweb-muted, #f3f4f6) !important;
+}
+
+.dark
+  .ag-theme-custom
+  .ag-body-horizontal-scroll-viewport::-webkit-scrollbar-corner,
+.dark
+  .ag-theme-custom
+  .ag-body-vertical-scroll-viewport::-webkit-scrollbar-corner {
+  background: var(--mieweb-card, #1f2937) !important;
+}
+
+/* Override AG Grid's apple scrollbar visibility */
+.ag-body-horizontal-scroll.ag-apple-scrollbar,
+.ag-body-vertical-scroll.ag-apple-scrollbar {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.ag-body-horizontal-scroll-container,
+.ag-body-vertical-scroll-container {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* ============================================
+   Filter Popup Styling
+   ============================================ */
+
+.ag-theme-custom .ag-popup {
+  border-radius: 8px;
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.08);
+}
+
+.ag-theme-custom .ag-filter {
+  background-color: var(--ag-background-color);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.dark .ag-theme-custom .ag-popup {
+  background-color: #1f2937 !important;
+  border: 1px solid #374151 !important;
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.4),
+    0 8px 10px -6px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .ag-theme-custom .ag-filter {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+}
+
+/* Filter menu styling - use design system tokens */
+.ag-theme-custom .ag-menu {
+  background-color: var(--mieweb-background, #ffffff);
+  border: 1px solid var(--mieweb-border, #e5e7eb);
+  border-radius: var(--mieweb-radius-lg, 8px);
+  box-shadow: var(
+    --mieweb-shadow-dropdown,
+    0 10px 15px -3px rgba(0, 0, 0, 0.1)
+  );
+  padding: var(--mieweb-spacing-2, 8px);
+}
+
+.dark .ag-theme-custom .ag-menu {
+  background-color: var(--mieweb-background, #1f2937) !important;
+  border: 1px solid var(--mieweb-border, #374151) !important;
+  box-shadow: var(
+    --mieweb-shadow-dropdown,
+    0 10px 25px -5px rgba(0, 0, 0, 0.4)
+  ) !important;
+}
+
+.ag-theme-custom .ag-menu-option {
+  padding: var(--mieweb-spacing-2, 8px) var(--mieweb-spacing-3, 12px);
+  border-radius: var(--mieweb-radius-md, 6px);
+  font-size: var(--mieweb-text-sm, 14px);
+  transition: all 150ms ease;
+  color: var(--mieweb-foreground, #1a1a1a);
+  cursor: pointer;
+  position: relative;
+}
+
+.ag-theme-custom .ag-menu-option:hover {
+  background-color: var(--mieweb-primary-50, #e8f8ef);
+  color: var(--mieweb-primary-900, #094d26);
+  transform: translateX(2px);
+}
+
+.ag-theme-custom .ag-menu-option:focus {
+  outline: none;
+  background-color: var(--mieweb-primary-100, #c5edd6);
+  box-shadow: 0 0 0 2px var(--mieweb-primary-200, rgba(39, 174, 96, 0.3));
+}
+
+.dark .ag-theme-custom .ag-menu-option {
+  color: var(--mieweb-foreground, #f9fafb) !important;
+}
+
+.dark .ag-theme-custom .ag-menu-option:hover {
+  background-color: var(
+    --mieweb-primary-900,
+    rgba(39, 174, 96, 0.2)
+  ) !important;
+  color: var(--mieweb-primary-100, #c5edd6) !important;
+  transform: translateX(2px);
+}
+
+.dark .ag-theme-custom .ag-menu-option:focus {
+  background-color: var(
+    --mieweb-primary-800,
+    rgba(39, 174, 96, 0.3)
+  ) !important;
+  box-shadow: 0 0 0 2px var(--mieweb-primary-400, rgba(39, 174, 96, 0.4)) !important;
+}
+
+/* ============================================
+   Enhanced Filter Input Styling - Match Design System
+   ============================================ */
+
+/* Filter input fields - match mieweb-ui Input component styling */
+.ag-theme-custom .ag-filter-body-wrapper input,
+.ag-theme-custom .ag-text-field-input,
+.ag-theme-custom .ag-input-field-input {
+  background-color: var(--mieweb-background, #ffffff);
+  border: 1px solid var(--mieweb-input, #e5e7eb);
+  border-radius: var(--mieweb-radius-md, 6px);
+  padding: var(--mieweb-spacing-2, 8px) var(--mieweb-spacing-3, 12px);
+  font-size: var(--mieweb-text-sm, 14px);
+  font-family: var(--mieweb-font-sans, inherit);
+  color: var(--mieweb-foreground, #1a1a1a);
+  transition: all 150ms ease;
+  min-height: 40px; /* Match mieweb-ui input height */
+  line-height: 1.5;
+}
+
+.ag-theme-custom .ag-filter-body-wrapper input:focus,
+.ag-theme-custom .ag-text-field-input:focus,
+.ag-theme-custom .ag-input-field-input:focus {
+  outline: none;
+  border-color: var(--mieweb-ring, var(--mieweb-primary-600, #27ae60));
+  box-shadow: 0 0 0 2px var(--mieweb-primary-100, rgba(39, 174, 96, 0.2));
+}
+
+.ag-theme-custom .ag-filter-body-wrapper input::placeholder,
+.ag-theme-custom .ag-text-field-input::placeholder,
+.ag-theme-custom .ag-input-field-input::placeholder {
+  color: var(--mieweb-muted-foreground, #6b7280);
+}
+
+/* Dark mode filter inputs */
+.dark .ag-theme-custom .ag-filter-body-wrapper input,
+.dark .ag-theme-custom .ag-text-field-input,
+.dark .ag-theme-custom .ag-input-field-input {
+  background-color: var(--mieweb-background, #1f2937) !important;
+  border: 1px solid var(--mieweb-input, #374151) !important;
+  color: var(--mieweb-foreground, #f9fafb) !important;
+}
+
+.dark .ag-theme-custom .ag-filter-body-wrapper input:focus,
+.dark .ag-theme-custom .ag-text-field-input:focus,
+.dark .ag-theme-custom .ag-input-field-input:focus {
+  border-color: var(
+    --mieweb-ring,
+    var(--mieweb-primary-600, #27ae60)
+  ) !important;
+  box-shadow: 0 0 0 2px var(--mieweb-primary-200, rgba(39, 174, 96, 0.3)) !important;
+}
+
+.dark .ag-theme-custom .ag-filter-body-wrapper input::placeholder,
+.dark .ag-theme-custom .ag-text-field-input::placeholder,
+.dark .ag-theme-custom .ag-input-field-input::placeholder {
+  color: var(--mieweb-muted-foreground, #9ca3af) !important;
+}
+
+/* Filter select/dropdown styling */
+.ag-theme-custom .ag-picker-field-wrapper,
+.ag-theme-custom .ag-select .ag-picker-field-wrapper {
+  background-color: var(--mieweb-background, #ffffff);
+  border: 1px solid var(--mieweb-input, #e5e7eb);
+  border-radius: var(--mieweb-radius-md, 6px);
+  min-height: 40px;
+  padding: 0 var(--mieweb-spacing-3, 12px);
+  transition: all 150ms ease;
+}
+
+.ag-theme-custom .ag-picker-field-wrapper:focus-within,
+.ag-theme-custom .ag-select .ag-picker-field-wrapper:focus-within {
+  border-color: var(--mieweb-ring, var(--mieweb-primary-600, #27ae60));
+  box-shadow: 0 0 0 2px var(--mieweb-primary-100, rgba(39, 174, 96, 0.2));
+}
+
+.ag-theme-custom .ag-picker-field-display {
+  color: var(--mieweb-foreground, #1a1a1a);
+  font-size: var(--mieweb-text-sm, 14px);
+  font-family: var(--mieweb-font-sans, inherit);
+}
+
+.ag-theme-custom .ag-picker-field-icon {
+  color: var(--mieweb-muted-foreground, #6b7280);
+}
+
+/* Dark mode select styling */
+.dark .ag-theme-custom .ag-picker-field-wrapper,
+.dark .ag-theme-custom .ag-select .ag-picker-field-wrapper {
+  background-color: var(--mieweb-background, #1f2937) !important;
+  border: 1px solid var(--mieweb-input, #374151) !important;
+}
+
+.dark .ag-theme-custom .ag-picker-field-wrapper:focus-within,
+.dark .ag-theme-custom .ag-select .ag-picker-field-wrapper:focus-within {
+  border-color: var(
+    --mieweb-ring,
+    var(--mieweb-primary-600, #27ae60)
+  ) !important;
+  box-shadow: 0 0 0 2px var(--mieweb-primary-200, rgba(39, 174, 96, 0.3)) !important;
+}
+
+.dark .ag-theme-custom .ag-picker-field-display {
+  color: var(--mieweb-foreground, #f9fafb) !important;
+}
+
+.dark .ag-theme-custom .ag-picker-field-icon {
+  color: var(--mieweb-muted-foreground, #9ca3af) !important;
+}
+
+/* ===== SELECT/DROPDOWN LIST ITEMS ===== */
+/* These are the dropdown options in filter selects (Equals, Contains, etc.) */
+.ag-theme-custom .ag-select-list,
+.ag-theme-custom .ag-list {
+  background-color: var(--mieweb-background, #ffffff);
+  border: 1px solid var(--mieweb-border, #e5e7eb);
+  border-radius: var(--mieweb-radius-md, 6px);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  padding: var(--mieweb-spacing-1, 4px);
+  overflow: hidden;
+}
+
+.ag-theme-custom .ag-select-list-item,
+.ag-theme-custom .ag-list-item {
+  padding: var(--mieweb-spacing-2, 8px) var(--mieweb-spacing-3, 12px);
+  border-radius: var(--mieweb-radius-md, 6px);
+  font-size: var(--mieweb-text-sm, 14px);
+  font-family: var(--mieweb-font-sans, inherit);
+  color: var(--mieweb-foreground, #1a1a1a);
+  cursor: pointer;
+  transition: all 150ms ease;
+  margin: 2px 0;
+}
+
+.ag-theme-custom .ag-select-list-item:hover,
+.ag-theme-custom .ag-list-item:hover {
+  background-color: var(--mieweb-primary-50, #e8f8ef) !important;
+  color: var(--mieweb-primary-900, #094d26) !important;
+}
+
+.ag-theme-custom .ag-select-list-item:focus,
+.ag-theme-custom .ag-list-item:focus,
+.ag-theme-custom .ag-select-list-item.ag-active-item,
+.ag-theme-custom .ag-list-item.ag-active-item {
+  background-color: var(--mieweb-primary-100, #c5edd6) !important;
+  color: var(--mieweb-primary-900, #094d26) !important;
+  outline: none;
+}
+
+.ag-theme-custom .ag-select-list-item.ag-selected,
+.ag-theme-custom .ag-list-item.ag-selected {
+  background-color: var(--mieweb-primary-100, #c5edd6) !important;
+  color: var(--mieweb-primary-900, #094d26) !important;
+  font-weight: 500;
+}
+
+/* Dark mode select list items */
+.dark .ag-theme-custom .ag-select-list,
+.dark .ag-theme-custom .ag-list {
+  background-color: var(--mieweb-background, #1f2937) !important;
+  border-color: var(--mieweb-border, #374151) !important;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2) !important;
+}
+
+.dark .ag-theme-custom .ag-select-list-item,
+.dark .ag-theme-custom .ag-list-item {
+  color: var(--mieweb-foreground, #f9fafb) !important;
+}
+
+.dark .ag-theme-custom .ag-select-list-item:hover,
+.dark .ag-theme-custom .ag-list-item:hover {
+  background-color: var(
+    --mieweb-primary-900,
+    rgba(39, 174, 96, 0.2)
+  ) !important;
+  color: var(--mieweb-primary-100, #c5edd6) !important;
+}
+
+.dark .ag-theme-custom .ag-select-list-item:focus,
+.dark .ag-theme-custom .ag-list-item:focus,
+.dark .ag-theme-custom .ag-select-list-item.ag-active-item,
+.dark .ag-theme-custom .ag-list-item.ag-active-item {
+  background-color: var(
+    --mieweb-primary-800,
+    rgba(39, 174, 96, 0.3)
+  ) !important;
+  color: var(--mieweb-primary-100, #c5edd6) !important;
+}
+
+.dark .ag-theme-custom .ag-select-list-item.ag-selected,
+.dark .ag-theme-custom .ag-list-item.ag-selected {
+  background-color: var(
+    --mieweb-primary-800,
+    rgba(39, 174, 96, 0.3)
+  ) !important;
+  color: var(--mieweb-primary-100, #c5edd6) !important;
+  font-weight: 500;
+}
+
+/* Filter buttons - match mieweb-ui Button styling */
+.ag-theme-custom .ag-filter-apply-panel button,
+.ag-theme-custom .ag-standard-button {
+  background-color: var(--mieweb-background, #ffffff);
+  border: 1px solid var(--mieweb-input, #e5e7eb);
+  border-radius: var(--mieweb-radius-md, 6px);
+  padding: var(--mieweb-spacing-2, 8px) var(--mieweb-spacing-4, 16px);
+  font-size: var(--mieweb-text-sm, 14px);
+  font-family: var(--mieweb-font-sans, inherit);
+  font-weight: 500;
+  color: var(--mieweb-foreground, #1a1a1a);
+  cursor: pointer;
+  transition: all 150ms ease;
+  min-height: 36px;
+}
+
+.ag-theme-custom .ag-filter-apply-panel button:hover,
+.ag-theme-custom .ag-standard-button:hover {
+  background-color: var(--mieweb-muted, #f3f4f6);
+  border-color: var(--mieweb-border, #d1d5db);
+}
+
+.ag-theme-custom .ag-filter-apply-panel button:focus,
+.ag-theme-custom .ag-standard-button:focus {
+  outline: none;
+  border-color: var(--mieweb-ring, var(--mieweb-primary-600, #27ae60));
+  box-shadow: 0 0 0 2px var(--mieweb-primary-100, rgba(39, 174, 96, 0.2));
+}
+
+/* Primary filter buttons (Apply, OK) */
+.ag-theme-custom .ag-filter-apply-panel button[class*='primary'],
+.ag-theme-custom .ag-standard-button[class*='primary'] {
+  background-color: var(--mieweb-primary-600, #27ae60);
+  border-color: var(--mieweb-primary-600, #27ae60);
+  color: var(--mieweb-primary-foreground, #ffffff);
+}
+
+.ag-theme-custom .ag-filter-apply-panel button[class*='primary']:hover,
+.ag-theme-custom .ag-standard-button[class*='primary']:hover {
+  background-color: var(--mieweb-primary-700, #219c55);
+  border-color: var(--mieweb-primary-700, #219c55);
+}
+
+/* Dark mode filter buttons */
+.dark .ag-theme-custom .ag-filter-apply-panel button,
+.dark .ag-theme-custom .ag-standard-button {
+  background-color: var(--mieweb-background, #1f2937) !important;
+  border: 1px solid var(--mieweb-input, #374151) !important;
+  color: var(--mieweb-foreground, #f9fafb) !important;
+}
+
+.dark .ag-theme-custom .ag-filter-apply-panel button:hover,
+.dark .ag-theme-custom .ag-standard-button:hover {
+  background-color: var(--mieweb-muted, #374151) !important;
+  border-color: var(--mieweb-border, #4b5563) !important;
+}
+
+.dark .ag-theme-custom .ag-filter-apply-panel button[class*='primary'],
+.dark .ag-theme-custom .ag-standard-button[class*='primary'] {
+  background-color: var(--mieweb-primary-600, #27ae60) !important;
+  border-color: var(--mieweb-primary-600, #27ae60) !important;
+  color: var(--mieweb-primary-foreground, #ffffff) !important;
+}
+
+/* Column menu tabs in dark mode */
+.dark .ag-theme-custom .ag-tabs-header {
+  background-color: var(--mieweb-card, #111827) !important;
+  border-bottom: 1px solid var(--mieweb-border, #374151) !important;
+}
+
+.dark .ag-theme-custom .ag-tab {
+  color: var(--mieweb-muted-foreground, #9ca3af) !important;
+}
+
+.dark .ag-theme-custom .ag-tab-selected {
+  color: var(--color-primary, var(--mieweb-primary-500, #27ae60)) !important;
+  border-bottom-color: var(
+    --color-primary,
+    var(--mieweb-primary-500, #27ae60)
+  ) !important;
+}
+
+.dark .ag-theme-custom .ag-tabs-body {
+  background-color: var(--mieweb-background, #1f2937) !important;
+}
+
+/* Column panel (show/hide columns) in dark mode */
+.dark .ag-theme-custom .ag-column-panel {
+  background-color: var(--mieweb-background, #1f2937) !important;
+}
+
+.dark .ag-theme-custom .ag-column-select-header {
+  background-color: var(--mieweb-card, #111827) !important;
+  border-bottom: 1px solid var(--mieweb-border, #374151) !important;
+}
+
+.dark .ag-theme-custom .ag-column-select-column,
+.dark .ag-theme-custom .ag-column-select-column-group {
+  color: var(--mieweb-foreground, #f9fafb) !important;
+}
+
+.dark .ag-theme-custom .ag-column-select-column:hover {
+  background-color: var(--mieweb-muted, #374151) !important;
+}
+
+/* Icons in dark mode */
+.dark .ag-theme-custom .ag-icon {
+  color: var(--mieweb-muted-foreground, #9ca3af) !important;
+}
+
+/* Ensure AG Grid icons use the correct icon font */
+.ag-theme-custom .ag-icon {
+  font-family: 'agGridQuartz' !important;
+}
+
+.dark .ag-theme-custom .ag-header-cell-menu-button .ag-icon {
+  color: var(--mieweb-muted-foreground, #9ca3af) !important;
+}
+
+.dark .ag-theme-custom .ag-header-cell-menu-button:hover .ag-icon {
+  color: var(--color-primary, var(--mieweb-primary-500, #27ae60)) !important;
+}
+
+/* Filter active indicator in dark mode */
+.dark .ag-theme-custom .ag-header-cell-filtered {
+  background-color: var(
+    --mieweb-primary-900,
+    rgba(39, 174, 96, 0.15)
+  ) !important;
+}
+
+.dark .ag-theme-custom .ag-header-cell-filtered .ag-header-cell-text {
+  color: var(--color-primary, var(--mieweb-primary-500, #27ae60)) !important;
+}
+
+.dark .ag-theme-custom .ag-header-cell-filtered .ag-icon-filter {
+  color: var(--color-primary, var(--mieweb-primary-500, #27ae60)) !important;
+}
+
+/* ============================================
+   Wrapper Styling
+   ============================================ */
+
+.ag-theme-custom .ag-root-wrapper {
+  border: 1px solid var(--ag-border-color);
+  border-radius: var(--ag-wrapper-border-radius);
+  overflow: hidden;
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+.dark .ag-theme-custom .ag-root-wrapper {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   Loading & No Rows Overlay
+   ============================================ */
+
+.ag-theme-custom .ag-overlay-loading-wrapper {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.dark .ag-theme-custom .ag-overlay-loading-wrapper {
+  background-color: rgba(31, 41, 55, 0.8);
+}
+
+.ag-theme-custom .ag-overlay-loading-center {
+  background-color: var(--mieweb-background, var(--ag-background-color));
+  border: 1px solid var(--mieweb-border, var(--ag-border-color));
+  border-radius: var(--mieweb-radius-lg, 8px);
+  padding: 24px 32px;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  color: var(--mieweb-foreground, var(--ag-foreground-color));
+}
+
+.dark .ag-theme-custom .ag-overlay-loading-center {
+  background-color: var(--mieweb-card, rgba(31, 41, 55, 0.9));
+}
+
+.ag-theme-custom .ag-overlay-no-rows-wrapper {
+  background-color: var(--mieweb-background, var(--ag-background-color));
+}
+
+.ag-theme-custom .ag-overlay-no-rows-center {
+  color: var(--mieweb-muted-foreground, #6b7280);
+  padding: 48px;
+  font-size: var(--mieweb-text-sm, 14px);
+}
+
+.dark .ag-theme-custom .ag-overlay-no-rows-center {
+  color: var(--mieweb-muted-foreground, #9ca3af);
+}
+
+/* ============================================
+   Pagination Styling
+   ============================================ */
+
+.ag-theme-custom .ag-paging-panel {
+  border-top: 1px solid var(--mieweb-border, var(--ag-border-color));
+  padding: 12px 16px;
+  height: auto;
+  justify-content: flex-end;
+  gap: 8px;
+  background-color: var(--mieweb-muted, #f9fafb);
+}
+
+.dark .ag-theme-custom .ag-paging-panel {
+  border-top-color: var(--mieweb-border, #374151);
+  background-color: var(--mieweb-card, #111827);
+}
+
+.ag-theme-custom .ag-paging-button {
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--mieweb-radius-md, 6px);
+  transition: all 0.15s ease;
+}
+
+.ag-theme-custom .ag-paging-button:hover:not(.ag-disabled) {
+  background-color: var(--mieweb-accent, #e5e7eb);
+}
+
+.dark .ag-theme-custom .ag-paging-button:hover:not(.ag-disabled) {
+  background-color: var(--mieweb-muted, #374151);
+}
+
+.ag-theme-custom .ag-paging-button.ag-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   Tooltip Styling
+   ============================================ */
+
+.ag-theme-custom .ag-tooltip {
+  background-color: var(--mieweb-popover, #111827);
+  color: var(--mieweb-popover-foreground, #f9fafb);
+  border-radius: var(--mieweb-radius-md, 6px);
+  padding: 8px 12px;
+  font-size: var(--mieweb-text-xs, 12px);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   Status Bar
+   ============================================ */
+
+.ag-theme-custom .ag-status-bar {
+  border-top: 1px solid var(--mieweb-border, var(--ag-border-color));
+  padding: 8px 12px;
+  font-size: var(--mieweb-text-xs, 12px);
+  color: var(--mieweb-muted-foreground, #6b7280);
+}
+
+/* ============================================
+   Tool Panel / Side Bar
+   ============================================ */
+
+.ag-theme-custom .ag-tool-panel-wrapper {
+  border-left: 1px solid var(--mieweb-border, var(--ag-border-color));
+  background-color: var(--mieweb-background, var(--ag-background-color));
+}
+
+.ag-theme-custom .ag-side-bar {
+  border-left: 1px solid var(--mieweb-border, var(--ag-border-color));
+}
+
+.ag-theme-custom .ag-side-button {
+  color: var(--mieweb-muted-foreground, #6b7280);
+}
+
+.ag-theme-custom .ag-side-button.ag-selected {
+  color: var(--mieweb-foreground, var(--ag-foreground-color));
+  background-color: var(--mieweb-accent, #f3f4f6);
+}
+
+/* ============================================
+   Pinned Columns
+   ============================================ */
+
+.ag-theme-custom .ag-pinned-left-header,
+.ag-theme-custom .ag-pinned-right-header,
+.ag-theme-custom .ag-pinned-left-cols-container,
+.ag-theme-custom .ag-pinned-right-cols-container {
+  box-shadow: 2px 0 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Column resize handle */
+.ag-theme-custom .ag-header-cell-resize {
+  width: 8px;
+}
+
+.ag-theme-custom .ag-header-cell-resize::after {
+  background-color: var(--ag-border-color);
+  width: 1px;
+}
+
+/* Drag and drop */
+.ag-theme-custom .ag-drag-handle {
+  color: var(--color-muted-foreground, #6b7280);
+}
+
+.ag-theme-custom .ag-row-drag {
+  cursor: grab;
+}
+
+/* ============================================
+   Cell Link Styling
+   ============================================ */
+
+.ag-theme-custom .ag-cell a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ag-theme-custom .ag-cell a:hover {
+  text-decoration: underline;
+}
+
+/* Primary color link styling */
+.ag-theme-custom .ag-cell a.text-primary {
+  color: var(--color-primary, var(--mieweb-primary-600, #27ae60));
+}
+
+/* Truncation for long content */
+.ag-theme-custom .ag-cell .truncate {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Badge styling */
+.ag-theme-custom .ag-cell [class*='rounded-full'] {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   Action Column Styling
+   ============================================ */
+
+.ag-theme-custom .ag-cell[col-id='actions'] {
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.ag-theme-custom .ag-cell[col-id='actions'] button {
+  padding: 4px 8px;
+  border-radius: var(--mieweb-radius-md, 6px);
+  font-size: var(--mieweb-text-xs, 12px);
+  font-weight: 500;
+  transition: all 0.15s ease;
+  background-color: transparent;
+  border: 1px solid var(--mieweb-border, #e5e7eb);
+  color: var(--mieweb-muted-foreground, #6b7280);
+}
+
+.ag-theme-custom .ag-cell[col-id='actions'] button:hover {
+  background-color: var(--mieweb-muted, #f3f4f6);
+  border-color: var(--mieweb-border, #d1d5db);
+  color: var(--mieweb-foreground, #374151);
+}
+
+.dark .ag-theme-custom .ag-cell[col-id='actions'] button {
+  border-color: var(--mieweb-border, #4b5563);
+  color: var(--mieweb-muted-foreground, #9ca3af);
+}
+
+.dark .ag-theme-custom .ag-cell[col-id='actions'] button:hover {
+  background-color: var(--mieweb-muted, #374151);
+  border-color: var(--mieweb-border, #6b7280);
+  color: var(--mieweb-foreground, #f3f4f6);
+}
+
+/* ============================================
+   Responsive Adjustments
+   ============================================ */
+
+@media (max-width: 768px) {
+  .ag-theme-custom {
+    --ag-font-size: 13px;
+    --ag-row-height: 48px;
+    --ag-header-height: 44px;
+    --ag-cell-horizontal-padding: 12px;
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+  .ag-theme-custom {
+    --ag-row-hover-color: transparent;
+    --ag-selected-row-background-color: transparent;
+  }
+
+  .ag-theme-custom .ag-root-wrapper {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+}
+
+/* ============================================
+   Global Cell Vertical Centering Fix
+   Ensures all cell content is vertically centered
+   ============================================ */
+
+.ag-theme-custom .ag-cell,
+.ag-theme-custom .ag-cell-value,
+.ag-theme-custom .ag-cell-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
+}
+
+.ag-theme-custom .ag-cell span {
+  line-height: 1.4;
+}
+
+/* ============================================
+   Status Badge Utility Classes
+   ============================================ */
+
+/* Status verified */
+.ag-theme-custom .status-verified {
+  background-color: var(--mieweb-success-50, #d1fae5);
+  color: var(--mieweb-success-800, #065f46);
+}
+
+.dark .ag-theme-custom .status-verified {
+  background-color: var(--mieweb-success-900, rgba(0, 156, 78, 0.2));
+  color: var(--mieweb-success-400, #4ade80);
+}
+
+/* Status pending */
+.ag-theme-custom .status-pending {
+  background-color: var(--mieweb-warning-50, #fef3c7);
+  color: var(--mieweb-warning-800, #92400e);
+}
+
+.dark .ag-theme-custom .status-pending {
+  background-color: var(--mieweb-warning-900, rgba(255, 210, 0, 0.2));
+  color: var(--mieweb-warning-400, #fbbf24);
+}
+
+/* Status flagged */
+.ag-theme-custom .status-flagged {
+  background-color: var(--mieweb-destructive-50, #fee2e2);
+  color: var(--mieweb-destructive-800, #991b1b);
+}
+
+.dark .ag-theme-custom .status-flagged {
+  background-color: var(--mieweb-destructive-900, rgba(224, 69, 1, 0.2));
+  color: var(--mieweb-destructive-400, #f87171);
+}
+
+/* Status new */
+.ag-theme-custom .status-new {
+  background-color: var(--mieweb-primary-50, #e6f7ff);
+  color: var(--mieweb-primary-800, #0369a1);
+}
+
+.dark .ag-theme-custom .status-new {
+  background-color: var(--mieweb-primary-900, rgba(39, 174, 96, 0.2));
+  color: var(--mieweb-primary-300, #38bdf8);
+}
+
+/* Generic status badge styles */
+.ag-theme-custom .status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+/* Engagement score colors */
+.ag-theme-custom .engagement-high {
+  color: var(--mieweb-success-600, #009c4e);
+  font-weight: 600;
+}
+
+.ag-theme-custom .engagement-medium {
+  color: var(--mieweb-warning-500, #ffd200);
+  font-weight: 600;
+}
+
+.ag-theme-custom .engagement-low {
+  color: var(--mieweb-destructive-600, #e04501);
+  font-weight: 600;
+}
