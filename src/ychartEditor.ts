@@ -232,6 +232,7 @@ class YChartEditor {
       getPersonOfInterest: () => this.poiManager.personOfInterest,
       setPersonOfInterest: (id: string) => this.poiManager.setPersonOfInterest(id),
       updatePOISelectorValue: (id: string) => this.poiManager.updatePOISelectorValue(id),
+      resetToRoot: () => this.poiManager.resetToRoot(),
     });
     const floatingSearchBar = this.searchManager.createFloatingSearchBar();
     layout.chartWrapper.appendChild(floatingSearchBar);

@@ -14,6 +14,7 @@ export interface SearchContext {
   getPersonOfInterest: () => any;
   setPersonOfInterest: (personId: string) => void;
   updatePOISelectorValue: (nodeId: string) => void;
+  resetToRoot: () => void;
 }
 
 /**
@@ -1564,14 +1565,10 @@ private applyFieldFilters(): void {
     const totalFilters = Array.from(this.activeFieldFilters.values()).reduce((sum, set) => sum + set.size, 0);
 
     if (totalFilters === 0) {
-      // No filters: clear highlighting and selection, collapse to root view
+      // No filters: clear highlighting and reset to root
       const orgChart = this.ctx.getOrgChart();
-      orgChart.clearHighlighting();
-      orgChart.collapseAll();
-      orgChart.render();
-      setTimeout(() => {
-        if (this.ctx.getOrgChart()) this.ctx.getOrgChart().fit();
-      }, 100);
+      if (orgChart) orgChart.clearHighlighting();
+      this.ctx.resetToRoot();
       return;
     }
 
