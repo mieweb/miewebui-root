@@ -1,0 +1,23 @@
+{
+  "name": "@mieweb/platform",
+  "version": "0.0.0",
+  "private": true,
+  "description": "MIE monorepo for @mieweb/ui and @mieweb/ychart",
+  "packageManager": "pnpm@10.29.1",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "build:ui": "turbo run build --filter=@mieweb/ui",
+    "build:ychart": "turbo run build --filter=@mieweb/ychart",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "storybook": "pnpm --filter @mieweb/ui storybook"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0"
+  }
+}
