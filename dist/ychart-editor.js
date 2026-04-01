@@ -31555,6 +31555,13 @@ ${d.email || ""}`);
       d.fx = null;
       d.fy = null;
     }
+    /**
+     * Get current positions of all nodes in the force simulation.
+     */
+    getNodes() {
+      var _a2, _b;
+      return (_b = (_a2 = this.simulation) == null ? void 0 : _a2.nodes()) != null ? _b : [];
+    }
     stop() {
       if (this.simulation) {
         this.simulation.stop();
@@ -52581,6 +52588,442 @@ ${formattedData.trim()}
     viewContainer.appendChild(editorSidebar);
     return { chartWrapper, chartContainer, detailsPanel, editorSidebar, errorBanner, editorContainer };
   }
+  class SidebarManager {
+    constructor(ctx) {
+      __publicField(this, "ctx");
+      this.ctx = ctx;
+    }
+    toggle() {
+      const sidebar = document.getElementById(`ychart-editor-sidebar-${this.ctx.instanceId}`);
+      const collapseBtn = document.querySelector(`[data-id="ychart-collapse-editor-${this.ctx.instanceId}"]`);
+      if (!sidebar || !collapseBtn) return;
+      const isCollapsed = sidebar.style.width === "0px";
+      if (isCollapsed) {
+        sidebar.style.width = "400px";
+        sidebar.style.borderLeftWidth = "1px";
+        sidebar.style.transition = "width 0.3s ease, border-left-width 0s 0s";
+        collapseBtn.style.right = "399px";
+        collapseBtn.innerHTML = "▶";
+        setTimeout(() => {
+          const editor = this.ctx.getEditor();
+          if (editor) {
+            editor.requestMeasure();
+          }
+        }, 350);
+      } else {
+        sidebar.style.width = "0px";
+        sidebar.style.borderLeftWidth = "0px";
+        sidebar.style.transition = "width 0.3s ease, border-left-width 0s 0.3s";
+        collapseBtn.style.right = "-1px";
+        collapseBtn.innerHTML = "◀";
+      }
+      setTimeout(() => {
+        const orgChart = this.ctx.getOrgChart();
+        const chartContainer = this.ctx.getChartContainer();
+        if (orgChart && chartContainer) {
+          orgChart.render().fit();
+          const bgPattern = this.ctx.getBgPattern();
+          if (bgPattern) {
+            setTimeout(() => applyBackgroundPattern(chartContainer, bgPattern, this.ctx.getPatternColor()), 50);
+          }
+        }
+      }, 250);
+    }
+    toggleAndScrollToNode() {
+      const sidebar = document.getElementById(`ychart-editor-sidebar-${this.ctx.instanceId}`);
+      if (!sidebar) return;
+      const isCollapsed = sidebar.style.width === "0px";
+      this.toggle();
+      if (isCollapsed) {
+        setTimeout(() => this.scrollToSelectedNode(), 400);
+      }
+    }
+    scrollToSelectedNode() {
+      const editor = this.ctx.getEditor();
+      const orgChart = this.ctx.getOrgChart();
+      if (!editor || !orgChart) return;
+      const chartState = orgChart.getChartState();
+      scrollToNodeInEditor(editor, chartState == null ? void 0 : chartState.selectedNodeId);
+    }
+  }
+  class NodeHeightSyncService {
+    constructor(container, config2 = {}) {
+      __publicField(this, "container");
+      __publicField(this, "config");
+      __publicField(this, "resizeObserver");
+      __publicField(this, "mutationObserver");
+      __publicField(this, "resizeTimeout");
+      __publicField(this, "currentUnifiedHeight", 0);
+      __publicField(this, "isSyncing", false);
+      __publicField(this, "lastSyncTime", 0);
+      __publicField(this, "pendingSync", false);
+      var _a2, _b, _c, _d, _e;
+      this.container = container;
+      this.config = {
+        fixedHeight: config2.fixedHeight,
+        minHeight: (_a2 = config2.minHeight) != null ? _a2 : 80,
+        maxHeight: (_b = config2.maxHeight) != null ? _b : Infinity,
+        heightPadding: (_c = config2.heightPadding) != null ? _c : 0,
+        resizeDebounce: (_d = config2.resizeDebounce) != null ? _d : 150,
+        onHeightChange: (_e = config2.onHeightChange) != null ? _e : (() => {
+        })
+      };
+    }
+    /**
+     * Initialize height synchronization
+     * Sets up observers and performs initial sync
+     */
+    init() {
+      this.syncNodeHeights();
+      this.observeContentChanges();
+    }
+    /**
+     * Measure and synchronize all node heights
+     * @returns The unified height applied to all nodes
+     */
+    syncNodeHeights() {
+      if (this.isSyncing) {
+        this.pendingSync = true;
+        return this.currentUnifiedHeight;
+      }
+      const now2 = Date.now();
+      if (now2 - this.lastSyncTime < 100) {
+        this.pendingSync = true;
+        return this.currentUnifiedHeight;
+      }
+      this.isSyncing = true;
+      this.lastSyncTime = now2;
+      try {
+        let targetHeight;
+        if (this.config.fixedHeight !== void 0) {
+          targetHeight = this.config.fixedHeight;
+        } else {
+          this.resetHeightsToAuto();
+          targetHeight = this.measureMaxContentHeight();
+        }
+        if (targetHeight !== this.currentUnifiedHeight) {
+          this.applyUnifiedHeight(targetHeight);
+          this.currentUnifiedHeight = targetHeight;
+          this.config.onHeightChange(targetHeight);
+        }
+        return targetHeight;
+      } finally {
+        setTimeout(() => {
+          this.isSyncing = false;
+          if (this.pendingSync) {
+            this.pendingSync = false;
+            this.debouncedSync();
+          }
+        }, 100);
+      }
+    }
+    /**
+     * Reset all foreignObject and content div heights to 'auto' for measurement
+     */
+    resetHeightsToAuto() {
+      const foreignObjects = this.container.querySelectorAll(
+        "foreignObject.node-foreign-object"
+      );
+      foreignObjects.forEach((fo) => {
+        fo.style.height = "auto";
+        fo.removeAttribute("height");
+        const contentDiv = fo.querySelector(".node-foreign-object-div");
+        if (contentDiv) {
+          contentDiv.style.height = "auto";
+          contentDiv.style.minHeight = "auto";
+        }
+        const innerDiv = contentDiv == null ? void 0 : contentDiv.querySelector("div");
+        if (innerDiv) {
+          innerDiv.style.height = "auto";
+          innerDiv.style.minHeight = "auto";
+        }
+      });
+    }
+    /**
+     * Measure the maximum content height across all nodes
+     * @returns Maximum height found
+     */
+    measureMaxContentHeight() {
+      const foreignObjects = this.container.querySelectorAll(
+        "foreignObject.node-foreign-object"
+      );
+      let maxHeight = this.config.minHeight;
+      foreignObjects.forEach((fo) => {
+        const contentDiv = fo.querySelector(".node-foreign-object-div");
+        if (!contentDiv) return;
+        const cardContent = contentDiv.querySelector('div[style*="position:relative"], div[style*="position: relative"]') || contentDiv.firstElementChild;
+        if (!cardContent) return;
+        cardContent.offsetHeight;
+        const contentHeight = cardContent.offsetHeight;
+        if (contentHeight > maxHeight) {
+          maxHeight = contentHeight;
+        }
+      });
+      maxHeight += this.config.heightPadding;
+      maxHeight = Math.min(maxHeight, this.config.maxHeight);
+      maxHeight = Math.max(maxHeight, this.config.minHeight);
+      return Math.ceil(maxHeight);
+    }
+    /**
+     * Apply the unified height to all nodes
+     * Uses batch DOM updates to prevent flickering
+     * @param height The height to apply
+     */
+    applyUnifiedHeight(height) {
+      const foreignObjects = this.container.querySelectorAll(
+        "foreignObject.node-foreign-object"
+      );
+      const updates = [];
+      foreignObjects.forEach((fo) => {
+        const contentDiv = fo.querySelector(".node-foreign-object-div");
+        const innerDiv = (contentDiv == null ? void 0 : contentDiv.querySelector("div")) || null;
+        updates.push({ fo, contentDiv, innerDiv });
+      });
+      requestAnimationFrame(() => {
+        updates.forEach(({ fo, contentDiv, innerDiv }) => {
+          fo.setAttribute("data-height-synced", "true");
+          fo.setAttribute("height", String(height));
+          fo.style.height = `${height}px`;
+          if (contentDiv) {
+            contentDiv.setAttribute("data-height-synced", "true");
+            contentDiv.style.height = `${height}px`;
+            contentDiv.style.minHeight = `${height}px`;
+          }
+          if (innerDiv) {
+            innerDiv.style.height = `${height}px`;
+            innerDiv.style.minHeight = `${height}px`;
+          }
+        });
+        this.updateNodeDataHeights(height);
+      });
+    }
+    /**
+     * Update the data-driven height values for d3-org-chart nodes
+     * @param height The height to set
+     */
+    updateNodeDataHeights(height) {
+      const nodeGroups = this.container.querySelectorAll(".node");
+      nodeGroups.forEach((nodeGroup) => {
+        const node = nodeGroup;
+        if (node.__data__) {
+          node.__data__.height = height;
+        }
+      });
+    }
+    /**
+     * Observe content changes and trigger re-sync
+     * Uses passive observation to avoid interfering with rendering
+     */
+    observeContentChanges() {
+      this.resizeObserver = new ResizeObserver((entries) => {
+        if (this.isSyncing) return;
+        const hasRealChange = entries.some((entry) => {
+          const el = entry.target;
+          if (el.hasAttribute("data-height-synced") && this.currentUnifiedHeight > 0 && Math.abs(entry.contentRect.height - this.currentUnifiedHeight) < 2) {
+            return false;
+          }
+          return true;
+        });
+        if (hasRealChange) {
+          this.debouncedSync();
+        }
+      });
+      const contentDivs = this.container.querySelectorAll(".node-foreign-object-div");
+      contentDivs.forEach((div) => {
+        if (!div.hasAttribute("data-height-observed")) {
+          div.setAttribute("data-height-observed", "true");
+          this.resizeObserver.observe(div);
+        }
+      });
+      this.mutationObserver = new MutationObserver((mutations) => {
+        if (this.isSyncing) return;
+        const hasNewNodes = mutations.some(
+          (m2) => m2.type === "childList" && (m2.addedNodes.length > 0 || m2.removedNodes.length > 0)
+        );
+        if (hasNewNodes) {
+          const newDivs = this.container.querySelectorAll(".node-foreign-object-div");
+          newDivs.forEach((div) => {
+            if (!this.isObserved(div)) {
+              div.setAttribute("data-height-observed", "true");
+              this.resizeObserver.observe(div);
+            }
+          });
+          this.debouncedSync();
+        }
+      });
+      this.mutationObserver.observe(this.container, {
+        childList: true,
+        subtree: true
+      });
+    }
+    /**
+     * Check if an element is already being observed
+     */
+    isObserved(element) {
+      return element.hasAttribute("data-height-observed");
+    }
+    /**
+     * Debounced sync to avoid excessive recalculations
+     * Uses a longer debounce for stability
+     */
+    debouncedSync() {
+      if (this.resizeTimeout) {
+        clearTimeout(this.resizeTimeout);
+      }
+      this.resizeTimeout = window.setTimeout(() => {
+        this.syncNodeHeights();
+      }, Math.max(this.config.resizeDebounce, 200));
+    }
+    /**
+     * Get the current unified height
+     */
+    getCurrentHeight() {
+      return this.currentUnifiedHeight;
+    }
+    /**
+     * Manually trigger a sync (useful after data changes)
+     */
+    triggerSync() {
+      requestAnimationFrame(() => {
+        this.syncNodeHeights();
+      });
+    }
+    /**
+     * Clean up observers
+     */
+    destroy() {
+      if (this.resizeObserver) {
+        this.resizeObserver.disconnect();
+        this.resizeObserver = void 0;
+      }
+      if (this.mutationObserver) {
+        this.mutationObserver.disconnect();
+        this.mutationObserver = void 0;
+      }
+      if (this.resizeTimeout) {
+        clearTimeout(this.resizeTimeout);
+        this.resizeTimeout = void 0;
+      }
+    }
+  }
+  class SwapHandler {
+    constructor(ctx) {
+      __publicField(this, "enabled", false);
+      __publicField(this, "ctx");
+      this.ctx = ctx;
+    }
+    toggle() {
+      const orgChart = this.ctx.getOrgChart();
+      if (!orgChart) return;
+      this.enabled = !this.enabled;
+      if (typeof orgChart.enableSwapMode === "function") {
+        orgChart.enableSwapMode(this.enabled);
+      }
+      if (typeof orgChart.onNodeSwap === "function") {
+        orgChart.onNodeSwap((data1, data2) => {
+          this.performSwap(data1, data2);
+        });
+      }
+      const swapBtn = document.querySelector(`[data-id="ychart-btn-swap-${this.ctx.instanceId}"]`);
+      if (swapBtn) {
+        if (this.enabled) {
+          swapBtn.style.background = "var(--yc-color-accent-red)";
+          swapBtn.style.color = "white";
+        } else {
+          swapBtn.style.background = "transparent";
+          swapBtn.style.color = "var(--yc-color-icon)";
+        }
+      }
+    }
+    performSwap(data1, data2) {
+      try {
+        const editor = this.ctx.getEditor();
+        if (!editor) return;
+        this.ctx.setIsUpdatingProgrammatically(true);
+        const yamlContent = editor.state.doc.toString();
+        const { options: userOptions, schema: schemaDef, card: cardDef, data: yamlData } = this.ctx.parseFrontMatter(yamlContent);
+        const parsedData = load(yamlData);
+        if (!Array.isArray(parsedData)) {
+          console.error("Cannot update YAML: not an array");
+          return;
+        }
+        const idx1 = parsedData.findIndex((item) => String(item.id) === String(data1.id));
+        const idx2 = parsedData.findIndex((item) => String(item.id) === String(data2.id));
+        if (idx1 === -1 || idx2 === -1) {
+          console.error("Could not find nodes in YAML data");
+          return;
+        }
+        [parsedData[idx1], parsedData[idx2]] = [parsedData[idx2], parsedData[idx1]];
+        const frontMatterObj = {};
+        if (userOptions && Object.keys(userOptions).length > 0) {
+          frontMatterObj.options = userOptions;
+        }
+        if (schemaDef && Object.keys(schemaDef).length > 0) {
+          const schemaObj = {};
+          for (const [key, field] of Object.entries(schemaDef)) {
+            const modifiers2 = [field.type, field.required ? "required" : "optional", field.missing ? "missing" : ""].filter(Boolean);
+            schemaObj[key] = modifiers2.join(" | ");
+          }
+          frontMatterObj.schema = schemaObj;
+        }
+        if (cardDef) {
+          frontMatterObj.card = cardDef;
+        }
+        const frontMatterYaml = dump(frontMatterObj, {
+          indent: 2,
+          lineWidth: -1,
+          noRefs: true
+        });
+        const newYamlData = dump(parsedData, {
+          indent: 2,
+          lineWidth: -1,
+          noRefs: true
+        });
+        const newContent = `---
+${frontMatterYaml}---
+
+${newYamlData}`;
+        editor.dispatch({
+          changes: {
+            from: 0,
+            to: editor.state.doc.length,
+            insert: newContent
+          }
+        });
+        console.log(`Nodes swapped: ${data1.name} ↔ ${data2.name}`);
+      } catch (error) {
+        console.error("Error updating YAML after swap:", error);
+      } finally {
+        this.ctx.setIsUpdatingProgrammatically(false);
+      }
+    }
+  }
+  class ShortcutManager {
+    constructor(ctx) {
+      __publicField(this, "ctx");
+      __publicField(this, "handleKeyDown", null);
+      this.ctx = ctx;
+    }
+    init() {
+      this.handleKeyDown = (event) => {
+        if (event.ctrlKey && event.key === "`") {
+          event.preventDefault();
+          this.ctx.getSidebarManager().toggleAndScrollToNode();
+        }
+        if ((event.metaKey || event.ctrlKey) && event.key === "k") {
+          event.preventDefault();
+          this.ctx.getSearchManager().focusFloatingSearch();
+        }
+      };
+      document.addEventListener("keydown", this.handleKeyDown);
+    }
+    destroy() {
+      if (this.handleKeyDown) {
+        document.removeEventListener("keydown", this.handleKeyDown);
+        this.handleKeyDown = null;
+      }
+    }
+  }
   function getShadowDOMStyles() {
     return `
       /* =============================================================================
@@ -53146,264 +53589,34 @@ ${formattedData.trim()}
       }
     `;
   }
-  class NodeHeightSyncService {
-    constructor(container, config2 = {}) {
-      __publicField(this, "container");
-      __publicField(this, "config");
-      __publicField(this, "resizeObserver");
-      __publicField(this, "mutationObserver");
-      __publicField(this, "resizeTimeout");
-      __publicField(this, "currentUnifiedHeight", 0);
-      __publicField(this, "isSyncing", false);
-      __publicField(this, "lastSyncTime", 0);
-      __publicField(this, "pendingSync", false);
-      var _a2, _b, _c, _d, _e;
-      this.container = container;
-      this.config = {
-        fixedHeight: config2.fixedHeight,
-        minHeight: (_a2 = config2.minHeight) != null ? _a2 : 80,
-        maxHeight: (_b = config2.maxHeight) != null ? _b : Infinity,
-        heightPadding: (_c = config2.heightPadding) != null ? _c : 0,
-        resizeDebounce: (_d = config2.resizeDebounce) != null ? _d : 150,
-        onHeightChange: (_e = config2.onHeightChange) != null ? _e : (() => {
-        })
-      };
+  class ShadowDOMManager {
+    constructor(enabled) {
+      __publicField(this, "shadowRoot", null);
+      __publicField(this, "enabled");
+      this.enabled = enabled;
     }
     /**
-     * Initialize height synchronization
-     * Sets up observers and performs initial sync
+     * Attach a Shadow DOM to the host element and return the inner container.
+     * If Shadow DOM is not enabled, returns the host element directly.
      */
-    init() {
-      this.syncNodeHeights();
-      this.observeContentChanges();
-    }
-    /**
-     * Measure and synchronize all node heights
-     * @returns The unified height applied to all nodes
-     */
-    syncNodeHeights() {
-      if (this.isSyncing) {
-        this.pendingSync = true;
-        return this.currentUnifiedHeight;
+    attachTo(host) {
+      if (!this.enabled) {
+        return host;
       }
-      const now2 = Date.now();
-      if (now2 - this.lastSyncTime < 100) {
-        this.pendingSync = true;
-        return this.currentUnifiedHeight;
-      }
-      this.isSyncing = true;
-      this.lastSyncTime = now2;
-      try {
-        let targetHeight;
-        if (this.config.fixedHeight !== void 0) {
-          targetHeight = this.config.fixedHeight;
-        } else {
-          this.resetHeightsToAuto();
-          targetHeight = this.measureMaxContentHeight();
-        }
-        if (targetHeight !== this.currentUnifiedHeight) {
-          this.applyUnifiedHeight(targetHeight);
-          this.currentUnifiedHeight = targetHeight;
-          this.config.onHeightChange(targetHeight);
-        }
-        return targetHeight;
-      } finally {
-        setTimeout(() => {
-          this.isSyncing = false;
-          if (this.pendingSync) {
-            this.pendingSync = false;
-            this.debouncedSync();
-          }
-        }, 100);
-      }
+      this.shadowRoot = host.attachShadow({ mode: "open" });
+      const styleElement = document.createElement("style");
+      styleElement.textContent = getShadowDOMStyles();
+      this.shadowRoot.appendChild(styleElement);
+      const shadowContainer = document.createElement("div");
+      shadowContainer.style.cssText = "width:100%;height:100%;";
+      this.shadowRoot.appendChild(shadowContainer);
+      return shadowContainer;
     }
-    /**
-     * Reset all foreignObject and content div heights to 'auto' for measurement
-     */
-    resetHeightsToAuto() {
-      const foreignObjects = this.container.querySelectorAll(
-        "foreignObject.node-foreign-object"
-      );
-      foreignObjects.forEach((fo) => {
-        fo.style.height = "auto";
-        fo.removeAttribute("height");
-        const contentDiv = fo.querySelector(".node-foreign-object-div");
-        if (contentDiv) {
-          contentDiv.style.height = "auto";
-          contentDiv.style.minHeight = "auto";
-        }
-        const innerDiv = contentDiv == null ? void 0 : contentDiv.querySelector("div");
-        if (innerDiv) {
-          innerDiv.style.height = "auto";
-          innerDiv.style.minHeight = "auto";
-        }
-      });
+    getRoot() {
+      return this.shadowRoot;
     }
-    /**
-     * Measure the maximum content height across all nodes
-     * @returns Maximum height found
-     */
-    measureMaxContentHeight() {
-      const foreignObjects = this.container.querySelectorAll(
-        "foreignObject.node-foreign-object"
-      );
-      let maxHeight = this.config.minHeight;
-      foreignObjects.forEach((fo) => {
-        const contentDiv = fo.querySelector(".node-foreign-object-div");
-        if (!contentDiv) return;
-        const cardContent = contentDiv.querySelector('div[style*="position:relative"], div[style*="position: relative"]') || contentDiv.firstElementChild;
-        if (!cardContent) return;
-        cardContent.offsetHeight;
-        const contentHeight = cardContent.offsetHeight;
-        if (contentHeight > maxHeight) {
-          maxHeight = contentHeight;
-        }
-      });
-      maxHeight += this.config.heightPadding;
-      maxHeight = Math.min(maxHeight, this.config.maxHeight);
-      maxHeight = Math.max(maxHeight, this.config.minHeight);
-      return Math.ceil(maxHeight);
-    }
-    /**
-     * Apply the unified height to all nodes
-     * Uses batch DOM updates to prevent flickering
-     * @param height The height to apply
-     */
-    applyUnifiedHeight(height) {
-      const foreignObjects = this.container.querySelectorAll(
-        "foreignObject.node-foreign-object"
-      );
-      const updates = [];
-      foreignObjects.forEach((fo) => {
-        const contentDiv = fo.querySelector(".node-foreign-object-div");
-        const innerDiv = (contentDiv == null ? void 0 : contentDiv.querySelector("div")) || null;
-        updates.push({ fo, contentDiv, innerDiv });
-      });
-      requestAnimationFrame(() => {
-        updates.forEach(({ fo, contentDiv, innerDiv }) => {
-          fo.setAttribute("data-height-synced", "true");
-          fo.setAttribute("height", String(height));
-          fo.style.height = `${height}px`;
-          if (contentDiv) {
-            contentDiv.setAttribute("data-height-synced", "true");
-            contentDiv.style.height = `${height}px`;
-            contentDiv.style.minHeight = `${height}px`;
-          }
-          if (innerDiv) {
-            innerDiv.style.height = `${height}px`;
-            innerDiv.style.minHeight = `${height}px`;
-          }
-        });
-        this.updateNodeDataHeights(height);
-      });
-    }
-    /**
-     * Update the data-driven height values for d3-org-chart nodes
-     * @param height The height to set
-     */
-    updateNodeDataHeights(height) {
-      const nodeGroups = this.container.querySelectorAll(".node");
-      nodeGroups.forEach((nodeGroup) => {
-        const node = nodeGroup;
-        if (node.__data__) {
-          node.__data__.height = height;
-        }
-      });
-    }
-    /**
-     * Observe content changes and trigger re-sync
-     * Uses passive observation to avoid interfering with rendering
-     */
-    observeContentChanges() {
-      this.resizeObserver = new ResizeObserver((entries) => {
-        if (this.isSyncing) return;
-        const hasRealChange = entries.some((entry) => {
-          const el = entry.target;
-          if (el.hasAttribute("data-height-synced") && this.currentUnifiedHeight > 0 && Math.abs(entry.contentRect.height - this.currentUnifiedHeight) < 2) {
-            return false;
-          }
-          return true;
-        });
-        if (hasRealChange) {
-          this.debouncedSync();
-        }
-      });
-      const contentDivs = this.container.querySelectorAll(".node-foreign-object-div");
-      contentDivs.forEach((div) => {
-        if (!div.hasAttribute("data-height-observed")) {
-          div.setAttribute("data-height-observed", "true");
-          this.resizeObserver.observe(div);
-        }
-      });
-      this.mutationObserver = new MutationObserver((mutations) => {
-        if (this.isSyncing) return;
-        const hasNewNodes = mutations.some(
-          (m2) => m2.type === "childList" && (m2.addedNodes.length > 0 || m2.removedNodes.length > 0)
-        );
-        if (hasNewNodes) {
-          const newDivs = this.container.querySelectorAll(".node-foreign-object-div");
-          newDivs.forEach((div) => {
-            if (!this.isObserved(div)) {
-              div.setAttribute("data-height-observed", "true");
-              this.resizeObserver.observe(div);
-            }
-          });
-          this.debouncedSync();
-        }
-      });
-      this.mutationObserver.observe(this.container, {
-        childList: true,
-        subtree: true
-      });
-    }
-    /**
-     * Check if an element is already being observed
-     */
-    isObserved(element) {
-      return element.hasAttribute("data-height-observed");
-    }
-    /**
-     * Debounced sync to avoid excessive recalculations
-     * Uses a longer debounce for stability
-     */
-    debouncedSync() {
-      if (this.resizeTimeout) {
-        clearTimeout(this.resizeTimeout);
-      }
-      this.resizeTimeout = window.setTimeout(() => {
-        this.syncNodeHeights();
-      }, Math.max(this.config.resizeDebounce, 200));
-    }
-    /**
-     * Get the current unified height
-     */
-    getCurrentHeight() {
-      return this.currentUnifiedHeight;
-    }
-    /**
-     * Manually trigger a sync (useful after data changes)
-     */
-    triggerSync() {
-      requestAnimationFrame(() => {
-        this.syncNodeHeights();
-      });
-    }
-    /**
-     * Clean up observers
-     */
-    destroy() {
-      if (this.resizeObserver) {
-        this.resizeObserver.disconnect();
-        this.resizeObserver = void 0;
-      }
-      if (this.mutationObserver) {
-        this.mutationObserver.disconnect();
-        this.mutationObserver = void 0;
-      }
-      if (this.resizeTimeout) {
-        clearTimeout(this.resizeTimeout);
-        this.resizeTimeout = void 0;
-      }
+    isEnabled() {
+      return this.enabled && this.shadowRoot !== null;
     }
   }
   class YChartEditor2 {
@@ -53415,7 +53628,7 @@ ${formattedData.trim()}
       __publicField(this, "orgChart", null);
       __publicField(this, "forceGraph", null);
       __publicField(this, "currentView", "hierarchy");
-      __publicField(this, "swapModeEnabled", false);
+      __publicField(this, "swapHandler");
       __publicField(this, "isUpdatingProgrammatically", false);
       __publicField(this, "defaultOptions");
       __publicField(this, "initialData", "");
@@ -53433,6 +53646,8 @@ ${formattedData.trim()}
       __publicField(this, "errorBanner", null);
       __publicField(this, "searchManager");
       __publicField(this, "poiManager");
+      __publicField(this, "sidebarManager");
+      __publicField(this, "shortcutManager");
       // Default supervisor field aliases - can be overridden via schema or supervisorLookup()
       __publicField(this, "supervisorFields", ["supervisor", "reports", "reports_to", "manager", "leader", "parent"]);
       __publicField(this, "nameField", "name");
@@ -53442,8 +53657,7 @@ ${formattedData.trim()}
       // Truth data (complete YAML data)
       __publicField(this, "truthData", []);
       // Shadow DOM support
-      __publicField(this, "shadowRoot", null);
-      __publicField(this, "useShadowDOM", false);
+      __publicField(this, "shadowDomManager");
       this.instanceId = generateUUID();
       this.defaultOptions = __spreadValues({
         nodeWidth: 220,
@@ -53460,7 +53674,6 @@ ${formattedData.trim()}
       this.toolbarPosition = this.defaultOptions.toolbarPosition;
       this.toolbarOrientation = this.defaultOptions.toolbarOrientation;
       this.experimental = this.defaultOptions.experimental || false;
-      this.useShadowDOM = this.defaultOptions.useShadowDOM || false;
     }
     /**
      * Initialize the view with a container element
@@ -53471,23 +53684,19 @@ ${formattedData.trim()}
         throw new Error(`Container not found: ${containerIdOrElement}`);
       }
       this.initialData = yamlData;
-      if (this.useShadowDOM) {
-        this.shadowRoot = hostContainer.attachShadow({ mode: "open" });
-        this.injectShadowDOMStyles();
-        const shadowContainer = document.createElement("div");
-        shadowContainer.style.cssText = "width:100%;height:100%;";
-        this.shadowRoot.appendChild(shadowContainer);
-        this.viewContainer = shadowContainer;
-      } else {
-        this.viewContainer = hostContainer;
-      }
+      this.shadowDomManager = new ShadowDOMManager(this.defaultOptions.useShadowDOM || false);
+      this.viewContainer = this.shadowDomManager.attachTo(hostContainer);
       this.createLayout();
       this.initializeEditor();
-      this.setupKeyboardShortcuts();
+      this.shortcutManager = new ShortcutManager({
+        getSidebarManager: () => this.sidebarManager,
+        getSearchManager: () => this.searchManager
+      });
+      this.shortcutManager.init();
       this.poiManager.setupExpandSiblingsHandlers();
       this.renderChart();
-      this.toggleEditor();
-      console.log(`%cYChart Editor v${YCHART_VERSION}%c initialized successfully${this.useShadowDOM ? " (Shadow DOM)" : ""}`, "color: #667eea; font-weight: bold;", "color: inherit;");
+      this.sidebarManager.toggle();
+      console.log(`%cYChart Editor v${YCHART_VERSION}%c initialized successfully${this.shadowDomManager.isEnabled() ? " (Shadow DOM)" : ""}`, "color: #667eea; font-weight: bold;", "color: inherit;");
       return this;
     }
     /**
@@ -53510,10 +53719,27 @@ ${formattedData.trim()}
     createLayout() {
       var _a2;
       if (!this.viewContainer) return;
+      this.sidebarManager = new SidebarManager({
+        instanceId: this.instanceId,
+        getEditor: () => this.editor,
+        getOrgChart: () => this.orgChart,
+        getChartContainer: () => this.chartContainer,
+        getBgPattern: () => this.bgPattern,
+        getPatternColor: () => this.defaultOptions.patternColor
+      });
+      this.swapHandler = new SwapHandler({
+        instanceId: this.instanceId,
+        getEditor: () => this.editor,
+        getOrgChart: () => this.orgChart,
+        parseFrontMatter: (content2) => this.parseFrontMatter(content2),
+        setIsUpdatingProgrammatically: (value) => {
+          this.isUpdatingProgrammatically = value;
+        }
+      });
       const layout = buildLayout(this.viewContainer, {
         instanceId: this.instanceId,
         collapsible: (_a2 = this.defaultOptions.collapsible) != null ? _a2 : true,
-        onToggleEditor: () => this.toggleEditor(),
+        onToggleEditor: () => this.sidebarManager.toggle(),
         onFormatYAML: () => this.handleFormatYAML()
       });
       this.chartContainer = layout.chartContainer;
@@ -53552,15 +53778,15 @@ ${formattedData.trim()}
       layout.chartWrapper.appendChild(this.poiManager.createPOISelector());
     }
     createToolbar() {
-      var _a2, _b;
+      var _a2, _b, _c, _d;
       return createToolbar({
         instanceId: this.instanceId,
         position: this.toolbarPosition,
         orientation: this.toolbarOrientation,
         experimental: this.experimental,
         currentView: this.currentView,
-        swapModeEnabled: this.swapModeEnabled,
-        columnAdjustMode: (_b = (_a2 = this.columnAdjustManager) == null ? void 0 : _a2.isActive) != null ? _b : false,
+        swapModeEnabled: (_b = (_a2 = this.swapHandler) == null ? void 0 : _a2.enabled) != null ? _b : false,
+        columnAdjustMode: (_d = (_c = this.columnAdjustManager) == null ? void 0 : _c.isActive) != null ? _d : false,
         actions: {
           handleFit: () => this.handleFit(),
           handleReset: () => this.handleReset(),
@@ -53582,26 +53808,7 @@ ${formattedData.trim()}
       this.renderChart();
     }
     handleSwapToggle() {
-      if (!this.orgChart) return;
-      this.swapModeEnabled = !this.swapModeEnabled;
-      if (typeof this.orgChart.enableSwapMode === "function") {
-        this.orgChart.enableSwapMode(this.swapModeEnabled);
-      }
-      if (typeof this.orgChart.onNodeSwap === "function") {
-        this.orgChart.onNodeSwap((data1, data2) => {
-          this.updateYAMLAfterSwap(data1, data2);
-        });
-      }
-      const swapBtn = document.querySelector(`[data-id="ychart-btn-swap-${this.instanceId}"]`);
-      if (swapBtn) {
-        if (this.swapModeEnabled) {
-          swapBtn.style.background = "var(--yc-color-accent-red)";
-          swapBtn.style.color = "white";
-        } else {
-          swapBtn.style.background = "transparent";
-          swapBtn.style.color = "var(--yc-color-icon)";
-        }
-      }
+      this.swapHandler.toggle();
     }
     handleToggleView() {
       if (this.currentView === "hierarchy") {
@@ -53611,15 +53818,11 @@ ${formattedData.trim()}
       }
       const toggleBtn = document.querySelector(`[data-id="ychart-btn-toggleView-${this.instanceId}"]`);
       if (toggleBtn) {
-        const icons2 = {
-          forceGraph: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><line x1="12" y1="7" x2="12" y2="10"/><line x1="12" y1="14" x2="12" y2="17"/><line x1="14" y1="12" x2="17" y2="12"/><line x1="7" y1="12" x2="10" y2="12"/></svg>`,
-          orgChart: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>`
-        };
         if (this.currentView === "hierarchy") {
-          toggleBtn.innerHTML = icons2.forceGraph;
+          toggleBtn.innerHTML = icons.forceGraph;
           toggleBtn.title = "Switch to Force Graph";
         } else {
-          toggleBtn.innerHTML = icons2.orgChart;
+          toggleBtn.innerHTML = icons.orgChart;
           toggleBtn.title = "Switch to Org Chart";
         }
       }
@@ -53674,74 +53877,12 @@ ${formattedData.trim()}
         }
       );
     }
-    toggleEditor() {
-      const sidebar = document.getElementById(`ychart-editor-sidebar-${this.instanceId}`);
-      const collapseBtn = document.querySelector(`[data-id="ychart-collapse-editor-${this.instanceId}"]`);
-      if (!sidebar || !collapseBtn) return;
-      const isCollapsed = sidebar.style.width === "0px";
-      if (isCollapsed) {
-        sidebar.style.width = "400px";
-        sidebar.style.borderLeftWidth = "1px";
-        sidebar.style.transition = "width 0.3s ease, border-left-width 0s 0s";
-        collapseBtn.style.right = "399px";
-        collapseBtn.innerHTML = "▶";
-        setTimeout(() => {
-          if (this.editor) {
-            this.editor.requestMeasure();
-          }
-        }, 350);
-      } else {
-        sidebar.style.width = "0px";
-        sidebar.style.borderLeftWidth = "0px";
-        sidebar.style.transition = "width 0.3s ease, border-left-width 0s 0.3s";
-        collapseBtn.style.right = "-1px";
-        collapseBtn.innerHTML = "◀";
-      }
-      setTimeout(() => {
-        if (this.orgChart && this.chartContainer) {
-          console.log("Re-rendering and fitting chart to new container bounds...");
-          this.orgChart.render().fit();
-          if (this.bgPattern) {
-            setTimeout(() => applyBackgroundPattern(this.chartContainer, this.bgPattern, this.defaultOptions.patternColor), 50);
-          }
-        }
-      }, 250);
-    }
     /**
      * Jump to a specific line in the editor
      */
     jumpToLine(lineNumber) {
       if (!this.editor) return;
       jumpToEditorLine(this.editor, lineNumber);
-    }
-    /**
-     * Set up keyboard shortcuts for the editor
-     */
-    setupKeyboardShortcuts() {
-      document.addEventListener("keydown", (event) => {
-        if (event.ctrlKey && event.key === "`") {
-          event.preventDefault();
-          this.toggleEditorAndFindSelectedNode();
-        }
-        if ((event.metaKey || event.ctrlKey) && event.key === "k") {
-          event.preventDefault();
-          this.searchManager.focusFloatingSearch();
-        }
-      });
-    }
-    toggleEditorAndFindSelectedNode() {
-      const sidebar = document.getElementById(`ychart-editor-sidebar-${this.instanceId}`);
-      if (!sidebar) return;
-      const isCollapsed = sidebar.style.width === "0px";
-      this.toggleEditor();
-      if (isCollapsed) {
-        setTimeout(() => this.scrollToSelectedNode(), 400);
-      }
-    }
-    scrollToSelectedNode() {
-      if (!this.editor || !this.orgChart) return;
-      const chartState = this.orgChart.getChartState();
-      scrollToNodeInEditor(this.editor, chartState == null ? void 0 : chartState.selectedNodeId);
     }
     parseFrontMatter(content2) {
       const result = parseFrontMatter(content2, this.supervisorFields);
@@ -53966,55 +54107,6 @@ ${formattedData.trim()}
       }
       return this;
     }
-    updateYAMLAfterSwap(data1, data2) {
-      try {
-        if (!this.editor) return;
-        this.isUpdatingProgrammatically = true;
-        const yamlContent = this.editor.state.doc.toString();
-        const { options: userOptions, schema: schemaDef, data: yamlData } = this.parseFrontMatter(yamlContent);
-        const parsedData = load(yamlData);
-        if (!Array.isArray(parsedData)) {
-          console.error("Cannot update YAML: not an array");
-          return;
-        }
-        const idx1 = parsedData.findIndex((item) => String(item.id) === String(data1.id));
-        const idx2 = parsedData.findIndex((item) => String(item.id) === String(data2.id));
-        if (idx1 === -1 || idx2 === -1) {
-          console.error("Could not find nodes in YAML data");
-          return;
-        }
-        [parsedData[idx1], parsedData[idx2]] = [parsedData[idx2], parsedData[idx1]];
-        const frontMatter = `---
-options:
-${Object.entries(userOptions).map(([key, value]) => `  ${key}: ${value}`).join("\n")}
-schema:
-${Object.entries(schemaDef).map(([key, field]) => {
-          const modifiers2 = [field.type, field.required ? "required" : "optional", field.missing ? "missing" : ""].filter(Boolean);
-          return `  ${key}: ${modifiers2.join(" | ")}`;
-        }).join("\n")}
----
-
-`;
-        const newYamlData = dump(parsedData, {
-          indent: 2,
-          lineWidth: -1,
-          noRefs: true
-        });
-        const newContent = frontMatter + newYamlData;
-        this.editor.dispatch({
-          changes: {
-            from: 0,
-            to: this.editor.state.doc.length,
-            insert: newContent
-          }
-        });
-        console.log(`Nodes swapped: ${data1.name} ↔ ${data2.name}`);
-      } catch (error) {
-        console.error("Error updating YAML after swap:", error);
-      } finally {
-        this.isUpdatingProgrammatically = false;
-      }
-    }
     /**
      * Get current YAML content
      */
@@ -54040,31 +54132,74 @@ ${Object.entries(schemaDef).map(([key, field]) => {
       return this;
     }
     /**
-     * Inject CSS styles into Shadow DOM for style encapsulation.
-     * This includes all CSS variables and library styles needed for YChart.
+     * Get the Shadow DOM root if Shadow DOM is enabled
      */
-    injectShadowDOMStyles() {
-      if (!this.shadowRoot) return;
-      const styleElement = document.createElement("style");
-      styleElement.textContent = getShadowDOMStyles();
-      this.shadowRoot.appendChild(styleElement);
-    }
-    /**
-    * Get the Shadow DOM root if Shadow DOM is enabled
-    */
     getShadowRoot() {
-      return this.shadowRoot;
+      var _a2, _b;
+      return (_b = (_a2 = this.shadowDomManager) == null ? void 0 : _a2.getRoot()) != null ? _b : null;
     }
     /**
      * Check if Shadow DOM is enabled
      */
     isShadowDOMEnabled() {
-      return this.useShadowDOM && this.shadowRoot !== null;
+      var _a2, _b;
+      return (_b = (_a2 = this.shadowDomManager) == null ? void 0 : _a2.isEnabled()) != null ? _b : false;
+    }
+    /**
+     * Get the XY coordinates and dimensions of all visible nodes on the canvas.
+     * Returns positions in the chart's internal coordinate space (pre-zoom/pan transform).
+     *
+     * In hierarchy mode, positions are deterministic based on the tree layout.
+     * In force mode, positions reflect the current simulation state and may shift until the simulation settles.
+     *
+     * @returns Array of node coordinates, or an empty array if the chart is not initialized.
+     */
+    getNodeCoordinates() {
+      if (this.currentView === "force" && this.forceGraph) {
+        return this.forceGraph.getNodes().map((n) => {
+          var _a2, _b;
+          return {
+            id: n.id,
+            x: (_a2 = n.x) != null ? _a2 : 0,
+            y: (_b = n.y) != null ? _b : 0,
+            width: 80,
+            height: 80
+          };
+        });
+      }
+      if (!this.orgChart) return [];
+      const attrs = this.orgChart.getChartState();
+      if (!(attrs == null ? void 0 : attrs.allNodes)) return [];
+      return attrs.allNodes.map((node) => {
+        var _a2, _b, _c, _d;
+        return {
+          id: attrs.nodeId(node.data),
+          x: node.x,
+          y: node.y,
+          width: (_b = (_a2 = node.width) != null ? _a2 : this.defaultOptions.nodeWidth) != null ? _b : 0,
+          height: (_d = (_c = node.height) != null ? _c : this.defaultOptions.nodeHeight) != null ? _d : 0
+        };
+      });
+    }
+    /**
+     * Get the XY coordinates and dimensions of a single node by its ID.
+     * Returns null if the node is not found or the chart is not initialized.
+     *
+     * @param nodeId - The unique identifier of the node.
+     * @returns The node's coordinates, or null if not found.
+     */
+    getNodeCoordinateById(nodeId) {
+      var _a2;
+      const all = this.getNodeCoordinates();
+      return (_a2 = all.find((n) => String(n.id) === String(nodeId))) != null ? _a2 : null;
     }
     /**
      * Destroy the instance and clean up
      */
     destroy() {
+      if (this.shortcutManager) {
+        this.shortcutManager.destroy();
+      }
       if (this.forceGraph) {
         this.forceGraph.stop();
       }
