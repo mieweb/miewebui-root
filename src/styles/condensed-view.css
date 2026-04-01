@@ -5662,7 +5662,9 @@ body.condensed [data-slot='conversation-list-item-content'] h3 {
 
 /* List item preview text & timestamp */
 body.condensed [data-slot='conversation-list-item-content'] p,
-body.condensed [data-slot='conversation-list-item-content'] span {
+body.condensed
+  [data-slot='conversation-list-item-content']
+  span:not([data-slot='conversation-list-item-badge']) {
   font-size: 0.625rem !important;
   line-height: 0.875rem !important;
 }
