@@ -1,0 +1,6 @@
+[submodule "packages/ui"]
+	path = packages/ui
+	url = https://github.com/mieweb/ui.git
+[submodule "packages/ychart"]
+	path = packages/ychart
+	url = https://github.com/mieweb/ychart.git
