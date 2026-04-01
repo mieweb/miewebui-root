@@ -119,9 +119,13 @@ function SkeletonMessage({
       aria-hidden="true"
     >
       {showAvatar && !isOutgoing && (
-        <div className="h-8 w-8 animate-pulse rounded-full bg-neutral-200 dark:bg-neutral-700" />
+        <div
+          data-slot="skeleton-avatar"
+          className="h-8 w-8 animate-pulse rounded-full bg-neutral-200 dark:bg-neutral-700"
+        />
       )}
       <div
+        data-slot="skeleton-bubble"
         className={cn(
           'animate-pulse rounded-2xl',
           isOutgoing
@@ -130,7 +134,9 @@ function SkeletonMessage({
           'h-10 w-48'
         )}
       />
-      {showAvatar && isOutgoing && <div className="w-8" />}
+      {showAvatar && isOutgoing && (
+        <div data-slot="skeleton-spacer" className="w-8" />
+      )}
     </div>
   );
 }
@@ -265,7 +271,10 @@ function EmptyState({
       aria-label={title}
     >
       {icon || (
-        <div className="mb-4 rounded-full bg-neutral-100 p-4 dark:bg-neutral-800">
+        <div
+          data-slot="message-empty-state-icon"
+          className="mb-4 rounded-full bg-neutral-100 p-4 dark:bg-neutral-800"
+        >
           <svg
             className="h-12 w-12 text-neutral-500"
             fill="none"

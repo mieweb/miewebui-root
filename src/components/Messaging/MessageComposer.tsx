@@ -521,7 +521,7 @@ const MessageComposer = React.forwardRef<
             )}
 
             {/* Text input */}
-            <div className="relative flex-1">
+            <div data-slot="composer-input-wrapper" className="relative flex-1">
               <textarea
                 ref={textareaRef}
                 data-slot="composer-input"
@@ -547,7 +547,11 @@ const MessageComposer = React.forwardRef<
 
               {/* Character count */}
               {showCharacterCount && (
-                <div id="char-count" className="absolute right-3 bottom-1.5">
+                <div
+                  data-slot="composer-char-count"
+                  id="char-count"
+                  className="absolute right-3 bottom-1.5"
+                >
                   <CharacterCounter current={content.length} max={maxLength} />
                 </div>
               )}

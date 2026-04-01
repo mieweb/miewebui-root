@@ -5718,13 +5718,13 @@ body.condensed [data-slot='message-empty-state'] {
 }
 
 /* Icon wrapper – smaller padding & margin */
-body.condensed [data-slot='message-empty-state'] > div:first-child {
+body.condensed [data-slot='message-empty-state-icon'] {
   padding: 0.5rem !important;
   margin-bottom: 0.5rem !important;
 }
 
 /* Icon SVG – smaller */
-body.condensed [data-slot='message-empty-state'] > div:first-child svg {
+body.condensed [data-slot='message-empty-state-icon'] svg {
   width: 2rem !important;
   height: 2rem !important;
 }
@@ -5806,7 +5806,7 @@ body.condensed [data-slot='message-reactions'] {
   gap: 0.125rem !important;
 }
 
-body.condensed [data-slot='message-reactions'] span {
+body.condensed [data-slot='message-reactions'] > span {
   font-size: 0.5625rem !important;
   padding: 0.0625rem 0.25rem !important;
 }
@@ -5818,12 +5818,12 @@ body.condensed [data-slot='message-system'] {
 }
 
 /* Skeleton messages – smaller placeholders */
-body.condensed [data-slot='skeleton-message'] > div:first-child {
+body.condensed [data-slot='skeleton-avatar'] {
   width: 1.5rem !important;
   height: 1.5rem !important;
 }
 
-body.condensed [data-slot='skeleton-message'] > div:last-child {
+body.condensed [data-slot='skeleton-bubble'] {
   height: 1.75rem !important;
   width: 10rem !important;
 }
@@ -5869,24 +5869,20 @@ body.condensed [data-slot='attachment-picker-button'] svg {
 }
 
 /* Textarea wrapper – eliminate baseline gap */
-body.condensed [data-slot='composer-input-area'] > .relative {
+body.condensed [data-slot='composer-input-wrapper'] {
   display: flex !important;
   align-items: center !important;
 }
 
 /* Character counter – vertically centered */
-body.condensed [data-slot='composer-input-area'] > .relative > #char-count {
+body.condensed [data-slot='composer-char-count'] {
   top: 50% !important;
   bottom: auto !important;
   transform: translateY(-50%) !important;
   right: 0.5rem !important;
 }
 
-body.condensed
-  [data-slot='composer-input-area']
-  > .relative
-  > #char-count
-  span {
+body.condensed [data-slot='composer-char-count'] span {
   font-size: 0.5625rem !important;
 }
 
