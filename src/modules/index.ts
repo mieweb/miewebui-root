@@ -58,6 +58,10 @@ export type { RenderPipelineContext } from './renderPipeline';
 export { SwapHandler } from './swapHandler';
 export type { SwapHandlerContext } from './swapHandler';
 
+// Shortcut manager
+export { ShortcutManager } from './shortcutManager';
+export type { ShortcutManagerContext } from './shortcutManager';
+
 // Shadow DOM
 // Shadow DOM
 export { getShadowDOMStyles } from './shadowDomStyles';

@@ -20,6 +20,7 @@ import {
   ColumnAdjustManager,
   SidebarManager,
   SwapHandler,
+  ShortcutManager,
   getShadowDOMStyles,
   unmountAllReactRoots,
   // Editor
@@ -69,6 +70,7 @@ class YChartEditor {
   private searchManager!: SearchManager;
   private poiManager!: POIManager;
   private sidebarManager!: SidebarManager;
+  private shortcutManager!: ShortcutManager;
 
   // Default supervisor field aliases - can be overridden via schema or supervisorLookup()
   private supervisorFields: string[] = ['supervisor', 'reports', 'reports_to', 'manager', 'leader', 'parent'];
@@ -143,7 +145,11 @@ class YChartEditor {
     this.initializeEditor();
     
     // Set up keyboard shortcuts
-    this.setupKeyboardShortcuts();
+    this.shortcutManager = new ShortcutManager({
+      getSidebarManager: () => this.sidebarManager,
+      getSearchManager: () => this.searchManager,
+    });
+    this.shortcutManager.init();
     
     // Set up expand siblings handlers for POI feature
     this.poiManager.setupExpandSiblingsHandlers();
@@ -383,24 +389,6 @@ class YChartEditor {
     if (!this.editor) return;
     jumpToEditorLine(this.editor, lineNumber);
   }
-
-  /**
-   * Set up keyboard shortcuts for the editor
-   */
-  private setupKeyboardShortcuts(): void {
-    document.addEventListener('keydown', (event) => {
-      if (event.ctrlKey && event.key === '`') {
-        event.preventDefault();
-        this.sidebarManager.toggleAndScrollToNode();
-      }
-      if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
-        event.preventDefault();
-        this.searchManager.focusFloatingSearch();
-      }
-    });
-  }
-
-
 
     private parseFrontMatter(content: string): FrontMatter {
     const result = parseFrontMatterFn(content, this.supervisorFields);
@@ -828,6 +816,9 @@ class YChartEditor {
    * Destroy the instance and clean up
    */
   destroy(): void {
+    if (this.shortcutManager) {
+      this.shortcutManager.destroy();
+    }
     if (this.forceGraph) {
       this.forceGraph.stop();
     }
