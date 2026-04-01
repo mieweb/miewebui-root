@@ -5,7 +5,7 @@
 
 // Types & constants
 export { YCHART_VERSION } from './types';
-export type { YChartOptions, SchemaDefinition, CardElement, CardConfig, FieldSchema, FrontMatter } from './types';
+export type { YChartOptions, SchemaDefinition, CardElement, CardConfig, FieldSchema, FrontMatter, NodeCoordinates } from './types';
 
 // Utilities
 export { generateUUID, escapeHtml, escapeRegex, fuzzyMatch } from './utils';

@@ -171,6 +171,13 @@ export class ForceGraph {
     d.fy = null;
   }
 
+  /**
+   * Get current positions of all nodes in the force simulation.
+   */
+  getNodes(): ForceGraphNode[] {
+    return this.simulation?.nodes() ?? [];
+  }
+
   stop() {
     if (this.simulation) {
       this.simulation.stop();

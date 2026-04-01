@@ -38,7 +38,7 @@ import {
   // Services
   NodeHeightSyncService,
 } from './modules';
-import type { YChartOptions, SchemaDefinition, CardElement, FrontMatter } from './modules';
+import type { YChartOptions, SchemaDefinition, CardElement, FrontMatter, NodeCoordinates } from './modules';
 
 
 class YChartEditor {
@@ -901,6 +901,51 @@ ${Object.entries(schemaDef).map(([key, field]) => {
    */
   isShadowDOMEnabled(): boolean {
     return this.useShadowDOM && this.shadowRoot !== null;
+  }
+
+  /**
+   * Get the XY coordinates and dimensions of all visible nodes on the canvas.
+   * Returns positions in the chart's internal coordinate space (pre-zoom/pan transform).
+   *
+   * In hierarchy mode, positions are deterministic based on the tree layout.
+   * In force mode, positions reflect the current simulation state and may shift until the simulation settles.
+   *
+   * @returns Array of node coordinates, or an empty array if the chart is not initialized.
+   */
+  getNodeCoordinates(): NodeCoordinates[] {
+    if (this.currentView === 'force' && this.forceGraph) {
+      return this.forceGraph.getNodes().map(n => ({
+        id: n.id,
+        x: n.x ?? 0,
+        y: n.y ?? 0,
+        width: 80,
+        height: 80,
+      }));
+    }
+
+    if (!this.orgChart) return [];
+    const attrs = this.orgChart.getChartState();
+    if (!attrs?.allNodes) return [];
+
+    return attrs.allNodes.map((node: any) => ({
+      id: attrs.nodeId(node.data),
+      x: node.x,
+      y: node.y,
+      width: node.width ?? this.defaultOptions.nodeWidth ?? 0,
+      height: node.height ?? this.defaultOptions.nodeHeight ?? 0,
+    }));
+  }
+
+  /**
+   * Get the XY coordinates and dimensions of a single node by its ID.
+   * Returns null if the node is not found or the chart is not initialized.
+   *
+   * @param nodeId - The unique identifier of the node.
+   * @returns The node's coordinates, or null if not found.
+   */
+  getNodeCoordinateById(nodeId: string | number): NodeCoordinates | null {
+    const all = this.getNodeCoordinates();
+    return all.find(n => String(n.id) === String(nodeId)) ?? null;
   }
 
   /**

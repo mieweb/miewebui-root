@@ -56,3 +56,11 @@ export interface FrontMatter {
   card?: CardElement[];
   data: string;
 }
+
+export interface NodeCoordinates {
+  id: string | number;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
