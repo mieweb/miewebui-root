@@ -54,6 +54,10 @@ export type { SidebarManagerContext } from './sidebarManager';
 export { RenderPipeline } from './renderPipeline';
 export type { RenderPipelineContext } from './renderPipeline';
 
+// Swap handler
+export { SwapHandler } from './swapHandler';
+export type { SwapHandlerContext } from './swapHandler';
+
 // Shadow DOM
 // Shadow DOM
 export { getShadowDOMStyles } from './shadowDomStyles';

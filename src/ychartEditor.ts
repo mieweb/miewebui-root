@@ -19,6 +19,7 @@ import {
   SearchManager,
   ColumnAdjustManager,
   SidebarManager,
+  SwapHandler,
   getShadowDOMStyles,
   unmountAllReactRoots,
   // Editor
@@ -49,7 +50,7 @@ class YChartEditor {
   private orgChart: any = null;
   private forceGraph: ForceGraph | null = null;
   private currentView: 'hierarchy' | 'force' = 'hierarchy';
-  private swapModeEnabled = false;
+  private swapHandler!: SwapHandler;
   private isUpdatingProgrammatically = false;
   private defaultOptions: YChartOptions;
   private initialData: string = '';
@@ -198,6 +199,15 @@ class YChartEditor {
       getPatternColor: () => this.defaultOptions.patternColor,
     });
 
+    // Create swap handler
+    this.swapHandler = new SwapHandler({
+      instanceId: this.instanceId,
+      getEditor: () => this.editor,
+      getOrgChart: () => this.orgChart,
+      parseFrontMatter: (content: string) => this.parseFrontMatter(content),
+      setIsUpdatingProgrammatically: (value: boolean) => { this.isUpdatingProgrammatically = value; },
+    });
+
     const layout = buildLayout(this.viewContainer, {
       instanceId: this.instanceId,
       collapsible: this.defaultOptions.collapsible ?? true,
@@ -254,7 +264,7 @@ class YChartEditor {
       orientation: this.toolbarOrientation,
       experimental: this.experimental,
       currentView: this.currentView,
-      swapModeEnabled: this.swapModeEnabled,
+      swapModeEnabled: this.swapHandler?.enabled ?? false,
       columnAdjustMode: this.columnAdjustManager?.isActive ?? false,
       actions: {
         handleFit: () => this.handleFit(),
@@ -280,31 +290,7 @@ class YChartEditor {
   }
 
   private handleSwapToggle(): void {
-    if (!this.orgChart) return;
-
-    this.swapModeEnabled = !this.swapModeEnabled;
-
-    if (typeof this.orgChart.enableSwapMode === 'function') {
-      this.orgChart.enableSwapMode(this.swapModeEnabled);
-    }
-
-    if (typeof this.orgChart.onNodeSwap === 'function') {
-      this.orgChart.onNodeSwap((data1: any, data2: any) => {
-        this.updateYAMLAfterSwap(data1, data2);
-      });
-    }
-
-    // Update button style
-    const swapBtn = document.querySelector(`[data-id="ychart-btn-swap-${this.instanceId}"]`) as HTMLElement;
-    if (swapBtn) {
-      if (this.swapModeEnabled) {
-        swapBtn.style.background = 'var(--yc-color-accent-red)';
-        swapBtn.style.color = 'white';
-      } else {
-        swapBtn.style.background = 'transparent';
-        swapBtn.style.color = 'var(--yc-color-icon)';
-      }
-    }
+    this.swapHandler.toggle();
   }
 
   private handleToggleView(): void {
@@ -736,67 +722,6 @@ class YChartEditor {
     }
     
     return this;
-  }
-
-  private updateYAMLAfterSwap(data1: any, data2: any): void {
-    try {
-      if (!this.editor) return;
-
-      this.isUpdatingProgrammatically = true;
-
-      const yamlContent = this.editor.state.doc.toString();
-      const { options: userOptions, schema: schemaDef, data: yamlData } = this.parseFrontMatter(yamlContent);
-      const parsedData = jsyaml.load(yamlData);
-
-      if (!Array.isArray(parsedData)) {
-        console.error('Cannot update YAML: not an array');
-        return;
-      }
-
-      const idx1 = parsedData.findIndex(item => String(item.id) === String(data1.id));
-      const idx2 = parsedData.findIndex(item => String(item.id) === String(data2.id));
-
-      if (idx1 === -1 || idx2 === -1) {
-        console.error('Could not find nodes in YAML data');
-        return;
-      }
-
-      [parsedData[idx1], parsedData[idx2]] = [parsedData[idx2], parsedData[idx1]];
-
-      const frontMatter = `---
-options:
-${Object.entries(userOptions).map(([key, value]) => `  ${key}: ${value}`).join('\n')}
-schema:
-${Object.entries(schemaDef).map(([key, field]) => {
-  const modifiers = [field.type, field.required ? 'required' : 'optional', field.missing ? 'missing' : ''].filter(Boolean);
-  return `  ${key}: ${modifiers.join(' | ')}`;
-}).join('\n')}
----
-
-`;
-
-      const newYamlData = jsyaml.dump(parsedData, {
-        indent: 2,
-        lineWidth: -1,
-        noRefs: true
-      });
-
-      const newContent = frontMatter + newYamlData;
-
-      this.editor.dispatch({
-        changes: {
-          from: 0,
-          to: this.editor.state.doc.length,
-          insert: newContent
-        }
-      });
-
-      console.log(`Nodes swapped: ${data1.name} ↔ ${data2.name}`);
-    } catch (error) {
-      console.error('Error updating YAML after swap:', error);
-    } finally {
-      this.isUpdatingProgrammatically = false;
-    }
   }
 
   /**
