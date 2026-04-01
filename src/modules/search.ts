@@ -1564,9 +1564,13 @@ private applyFieldFilters(): void {
     const totalFilters = Array.from(this.activeFieldFilters.values()).reduce((sum, set) => sum + set.size, 0);
 
     if (totalFilters === 0) {
-      // No filters: clear highlighting, expand all, re-render
+      // No filters: clear highlighting, reset to root view
       this.ctx.getOrgChart().clearHighlighting();
       this.ctx.getOrgChart().expandAll();
+      this.ctx.getOrgChart().render();
+      setTimeout(() => {
+        if (this.ctx.getOrgChart()) this.ctx.getOrgChart().fit();
+      }, 100);
       return;
     }
 
